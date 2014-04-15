@@ -1,0 +1,275 @@
+[12-Apr-2014 02:26:42 Europe/Helsinki] PHP Fatal error:  Call to a member function set_user() on a non-object in C:\UwAmp\www\application\controllers\user.php on line 32
+[12-Apr-2014 02:26:42 Europe/Helsinki] PHP Stack trace:
+[12-Apr-2014 02:26:42 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[12-Apr-2014 02:26:42 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[12-Apr-2014 02:26:42 Europe/Helsinki] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[12-Apr-2014 02:26:42 Europe/Helsinki] PHP   4. User->register() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[12-Apr-2014 02:27:12 Europe/Helsinki] PHP Fatal error:  Call to undefined function bcrypt() in C:\UwAmp\www\application\models\user_model.php on line 42
+[12-Apr-2014 02:27:12 Europe/Helsinki] PHP Stack trace:
+[12-Apr-2014 02:27:12 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[12-Apr-2014 02:27:12 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[12-Apr-2014 02:27:12 Europe/Helsinki] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[12-Apr-2014 02:27:12 Europe/Helsinki] PHP   4. User->register() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[12-Apr-2014 02:27:12 Europe/Helsinki] PHP   5. User_model->set_user() C:\UwAmp\www\application\controllers\user.php:32
+[12-Apr-2014 03:04:16 Europe/Helsinki] PHP Fatal error:  Call to undefined function bcrypt() in C:\UwAmp\www\application\models\user_model.php on line 42
+[12-Apr-2014 03:04:16 Europe/Helsinki] PHP Stack trace:
+[12-Apr-2014 03:04:16 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[12-Apr-2014 03:04:16 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[12-Apr-2014 03:04:16 Europe/Helsinki] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[12-Apr-2014 03:04:16 Europe/Helsinki] PHP   4. User->register() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[12-Apr-2014 03:04:16 Europe/Helsinki] PHP   5. User_model->set_user() C:\UwAmp\www\application\controllers\user.php:32
+[12-Apr-2014 03:05:08 Europe/Helsinki] PHP Fatal error:  Call to undefined function bcrypt() in C:\UwAmp\www\application\models\user_model.php on line 42
+[12-Apr-2014 03:05:08 Europe/Helsinki] PHP Stack trace:
+[12-Apr-2014 03:05:08 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[12-Apr-2014 03:05:08 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[12-Apr-2014 03:05:08 Europe/Helsinki] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[12-Apr-2014 03:05:08 Europe/Helsinki] PHP   4. User->register() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[12-Apr-2014 03:05:08 Europe/Helsinki] PHP   5. User_model->set_user() C:\UwAmp\www\application\controllers\user.php:32
+[12-Apr-2014 03:07:48 Europe/Helsinki] PHP Fatal error:  Call to undefined function bcrypt() in C:\UwAmp\www\application\models\user_model.php on line 42
+[12-Apr-2014 03:07:48 Europe/Helsinki] PHP Stack trace:
+[12-Apr-2014 03:07:48 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[12-Apr-2014 03:07:48 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[12-Apr-2014 03:07:48 Europe/Helsinki] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[12-Apr-2014 03:07:48 Europe/Helsinki] PHP   4. User->register() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[12-Apr-2014 03:07:48 Europe/Helsinki] PHP   5. User_model->set_user() C:\UwAmp\www\application\controllers\user.php:32
+[12-Apr-2014 03:08:36 Europe/Helsinki] PHP Fatal error:  Call to undefined function bcrypt() in C:\UwAmp\www\application\models\user_model.php on line 42
+[12-Apr-2014 03:08:36 Europe/Helsinki] PHP Stack trace:
+[12-Apr-2014 03:08:36 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[12-Apr-2014 03:08:36 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[12-Apr-2014 03:08:36 Europe/Helsinki] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[12-Apr-2014 03:08:36 Europe/Helsinki] PHP   4. User->register() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[12-Apr-2014 03:08:36 Europe/Helsinki] PHP   5. User_model->set_user() C:\UwAmp\www\application\controllers\user.php:32
+[12-Apr-2014 03:08:37 Europe/Helsinki] PHP Fatal error:  Call to undefined function bcrypt() in C:\UwAmp\www\application\models\user_model.php on line 42
+[12-Apr-2014 03:08:37 Europe/Helsinki] PHP Stack trace:
+[12-Apr-2014 03:08:37 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[12-Apr-2014 03:08:37 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[12-Apr-2014 03:08:37 Europe/Helsinki] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[12-Apr-2014 03:08:37 Europe/Helsinki] PHP   4. User->register() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[12-Apr-2014 03:08:37 Europe/Helsinki] PHP   5. User_model->set_user() C:\UwAmp\www\application\controllers\user.php:32
+[12-Apr-2014 03:08:38 Europe/Helsinki] PHP Fatal error:  Call to undefined function bcrypt() in C:\UwAmp\www\application\models\user_model.php on line 42
+[12-Apr-2014 03:08:38 Europe/Helsinki] PHP Stack trace:
+[12-Apr-2014 03:08:38 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[12-Apr-2014 03:08:38 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[12-Apr-2014 03:08:38 Europe/Helsinki] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[12-Apr-2014 03:08:38 Europe/Helsinki] PHP   4. User->register() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[12-Apr-2014 03:08:38 Europe/Helsinki] PHP   5. User_model->set_user() C:\UwAmp\www\application\controllers\user.php:32
+[12-Apr-2014 03:08:39 Europe/Helsinki] PHP Fatal error:  Call to undefined function bcrypt() in C:\UwAmp\www\application\models\user_model.php on line 42
+[12-Apr-2014 03:08:39 Europe/Helsinki] PHP Stack trace:
+[12-Apr-2014 03:08:39 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[12-Apr-2014 03:08:39 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[12-Apr-2014 03:08:39 Europe/Helsinki] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[12-Apr-2014 03:08:39 Europe/Helsinki] PHP   4. User->register() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[12-Apr-2014 03:08:39 Europe/Helsinki] PHP   5. User_model->set_user() C:\UwAmp\www\application\controllers\user.php:32
+[12-Apr-2014 03:09:57 Europe/Helsinki] PHP Fatal error:  Call to undefined function bcrypt() in C:\UwAmp\www\application\models\user_model.php on line 42
+[12-Apr-2014 03:09:57 Europe/Helsinki] PHP Stack trace:
+[12-Apr-2014 03:09:57 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[12-Apr-2014 03:09:58 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[12-Apr-2014 03:09:58 Europe/Helsinki] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[12-Apr-2014 03:09:58 Europe/Helsinki] PHP   4. User->register() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[12-Apr-2014 03:09:58 Europe/Helsinki] PHP   5. User_model->set_user() C:\UwAmp\www\application\controllers\user.php:32
+[12-Apr-2014 02:10:17 Africa/Johannesburg] PHP Fatal error:  Call to undefined function bcrypt() in C:\UwAmp\www\application\models\user_model.php on line 41
+[12-Apr-2014 02:10:17 Africa/Johannesburg] PHP Stack trace:
+[12-Apr-2014 02:10:17 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[12-Apr-2014 02:10:17 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[12-Apr-2014 02:10:17 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[12-Apr-2014 02:10:17 Africa/Johannesburg] PHP   4. User->register() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[12-Apr-2014 02:10:17 Africa/Johannesburg] PHP   5. User_model->set_user() C:\UwAmp\www\application\controllers\user.php:32
+[12-Apr-2014 02:12:39 Africa/Johannesburg] PHP Fatal error:  Call to undefined function password_hash() in C:\UwAmp\www\application\models\user_model.php on line 41
+[12-Apr-2014 02:12:39 Africa/Johannesburg] PHP Stack trace:
+[12-Apr-2014 02:12:39 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[12-Apr-2014 02:12:39 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[12-Apr-2014 02:12:39 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[12-Apr-2014 02:12:39 Africa/Johannesburg] PHP   4. User->register() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[12-Apr-2014 02:12:39 Africa/Johannesburg] PHP   5. User_model->set_user() C:\UwAmp\www\application\controllers\user.php:32
+[12-Apr-2014 02:15:02 Africa/Johannesburg] PHP Fatal error:  Call to undefined function password_hash() in C:\UwAmp\www\application\models\user_model.php on line 41
+[12-Apr-2014 02:15:02 Africa/Johannesburg] PHP Stack trace:
+[12-Apr-2014 02:15:02 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[12-Apr-2014 02:15:02 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[12-Apr-2014 02:15:03 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[12-Apr-2014 02:15:03 Africa/Johannesburg] PHP   4. User->register() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[12-Apr-2014 02:15:03 Africa/Johannesburg] PHP   5. User_model->set_user() C:\UwAmp\www\application\controllers\user.php:32
+[12-Apr-2014 02:15:03 Africa/Johannesburg] PHP Fatal error:  Call to undefined function password_hash() in C:\UwAmp\www\application\models\user_model.php on line 41
+[12-Apr-2014 02:15:03 Africa/Johannesburg] PHP Stack trace:
+[12-Apr-2014 02:15:03 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[12-Apr-2014 02:15:04 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[12-Apr-2014 02:15:04 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[12-Apr-2014 02:15:04 Africa/Johannesburg] PHP   4. User->register() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[12-Apr-2014 02:15:04 Africa/Johannesburg] PHP   5. User_model->set_user() C:\UwAmp\www\application\controllers\user.php:32
+[12-Apr-2014 02:15:04 Africa/Johannesburg] PHP Fatal error:  Call to undefined function password_hash() in C:\UwAmp\www\application\models\user_model.php on line 41
+[12-Apr-2014 02:15:04 Africa/Johannesburg] PHP Stack trace:
+[12-Apr-2014 02:15:04 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[12-Apr-2014 02:15:04 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[12-Apr-2014 02:15:04 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[12-Apr-2014 02:15:04 Africa/Johannesburg] PHP   4. User->register() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[12-Apr-2014 02:15:04 Africa/Johannesburg] PHP   5. User_model->set_user() C:\UwAmp\www\application\controllers\user.php:32
+[12-Apr-2014 02:15:05 Africa/Johannesburg] PHP Fatal error:  Call to undefined function password_hash() in C:\UwAmp\www\application\models\user_model.php on line 41
+[12-Apr-2014 02:15:05 Africa/Johannesburg] PHP Stack trace:
+[12-Apr-2014 02:15:05 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[12-Apr-2014 02:15:05 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[12-Apr-2014 02:15:05 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[12-Apr-2014 02:15:05 Africa/Johannesburg] PHP   4. User->register() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[12-Apr-2014 02:15:05 Africa/Johannesburg] PHP   5. User_model->set_user() C:\UwAmp\www\application\controllers\user.php:32
+[12-Apr-2014 02:15:05 Africa/Johannesburg] PHP Fatal error:  Call to undefined function password_hash() in C:\UwAmp\www\application\models\user_model.php on line 41
+[12-Apr-2014 02:15:05 Africa/Johannesburg] PHP Stack trace:
+[12-Apr-2014 02:15:05 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[12-Apr-2014 02:15:05 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[12-Apr-2014 02:15:05 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[12-Apr-2014 02:15:05 Africa/Johannesburg] PHP   4. User->register() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[12-Apr-2014 02:15:05 Africa/Johannesburg] PHP   5. User_model->set_user() C:\UwAmp\www\application\controllers\user.php:32
+[12-Apr-2014 02:15:06 Africa/Johannesburg] PHP Fatal error:  Call to undefined function password_hash() in C:\UwAmp\www\application\models\user_model.php on line 41
+[12-Apr-2014 02:15:06 Africa/Johannesburg] PHP Stack trace:
+[12-Apr-2014 02:15:06 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[12-Apr-2014 02:15:06 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[12-Apr-2014 02:15:06 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[12-Apr-2014 02:15:06 Africa/Johannesburg] PHP   4. User->register() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[12-Apr-2014 02:15:06 Africa/Johannesburg] PHP   5. User_model->set_user() C:\UwAmp\www\application\controllers\user.php:32
+[12-Apr-2014 03:17:44 Europe/Helsinki] PHP Fatal error:  Class 'Bcrypt' not found in C:\UwAmp\www\application\models\user_model.php on line 15
+[12-Apr-2014 03:17:44 Europe/Helsinki] PHP Stack trace:
+[12-Apr-2014 03:17:44 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[12-Apr-2014 03:17:44 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[12-Apr-2014 03:17:44 Europe/Helsinki] PHP   3. User->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[12-Apr-2014 03:17:44 Europe/Helsinki] PHP   4. CI_Loader->model() C:\UwAmp\www\application\controllers\user.php:13
+[12-Apr-2014 03:17:44 Europe/Helsinki] PHP   5. User_model->__construct() C:\UwAmp\www\system\core\Loader.php:303
+[12-Apr-2014 03:17:48 Europe/Helsinki] PHP Fatal error:  Class 'Bcrypt' not found in C:\UwAmp\www\application\models\user_model.php on line 15
+[12-Apr-2014 03:17:48 Europe/Helsinki] PHP Stack trace:
+[12-Apr-2014 03:17:48 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[12-Apr-2014 03:17:48 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[12-Apr-2014 03:17:48 Europe/Helsinki] PHP   3. User->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[12-Apr-2014 03:17:48 Europe/Helsinki] PHP   4. CI_Loader->model() C:\UwAmp\www\application\controllers\user.php:13
+[12-Apr-2014 03:17:48 Europe/Helsinki] PHP   5. User_model->__construct() C:\UwAmp\www\system\core\Loader.php:303
+[12-Apr-2014 03:17:53 Europe/Helsinki] PHP Fatal error:  Class 'Bcrypt' not found in C:\UwAmp\www\application\models\user_model.php on line 15
+[12-Apr-2014 03:17:53 Europe/Helsinki] PHP Stack trace:
+[12-Apr-2014 03:17:53 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[12-Apr-2014 03:17:53 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[12-Apr-2014 03:17:53 Europe/Helsinki] PHP   3. User->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[12-Apr-2014 03:17:53 Europe/Helsinki] PHP   4. CI_Loader->model() C:\UwAmp\www\application\controllers\user.php:13
+[12-Apr-2014 03:17:53 Europe/Helsinki] PHP   5. User_model->__construct() C:\UwAmp\www\system\core\Loader.php:303
+[12-Apr-2014 03:18:01 Europe/Helsinki] PHP Fatal error:  Class 'Bcrypt' not found in C:\UwAmp\www\application\models\user_model.php on line 15
+[12-Apr-2014 03:18:01 Europe/Helsinki] PHP Stack trace:
+[12-Apr-2014 03:18:01 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[12-Apr-2014 03:18:01 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[12-Apr-2014 03:18:01 Europe/Helsinki] PHP   3. User->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[12-Apr-2014 03:18:01 Europe/Helsinki] PHP   4. CI_Loader->model() C:\UwAmp\www\application\controllers\user.php:13
+[12-Apr-2014 03:18:01 Europe/Helsinki] PHP   5. User_model->__construct() C:\UwAmp\www\system\core\Loader.php:303
+[12-Apr-2014 03:18:36 Europe/Helsinki] PHP Fatal error:  Class 'Bcrypt' not found in C:\UwAmp\www\application\models\user_model.php on line 15
+[12-Apr-2014 03:18:36 Europe/Helsinki] PHP Stack trace:
+[12-Apr-2014 03:18:36 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[12-Apr-2014 03:18:36 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[12-Apr-2014 03:18:36 Europe/Helsinki] PHP   3. User->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[12-Apr-2014 03:18:36 Europe/Helsinki] PHP   4. CI_Loader->model() C:\UwAmp\www\application\controllers\user.php:13
+[12-Apr-2014 03:18:36 Europe/Helsinki] PHP   5. User_model->__construct() C:\UwAmp\www\system\core\Loader.php:303
+[15-Apr-2014 23:58:31 Europe/Helsinki] PHP Fatal error:  Call to undefined function validation_errors() in C:\UwAmp\www\application\views\header.php on line 19
+[15-Apr-2014 23:58:31 Europe/Helsinki] PHP Stack trace:
+[15-Apr-2014 23:58:31 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[15-Apr-2014 23:58:31 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[15-Apr-2014 23:58:31 Europe/Helsinki] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[15-Apr-2014 23:58:31 Europe/Helsinki] PHP   4. Home->index() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[15-Apr-2014 23:58:31 Europe/Helsinki] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\home.php:11
+[15-Apr-2014 23:58:31 Europe/Helsinki] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[15-Apr-2014 23:58:31 Europe/Helsinki] PHP   7. include() C:\UwAmp\www\system\core\Loader.php:833
+[15-Apr-2014 23:59:00 Europe/Helsinki] PHP Fatal error:  Call to undefined function validation_errors() in C:\UwAmp\www\application\views\header.php on line 19
+[15-Apr-2014 23:59:00 Europe/Helsinki] PHP Stack trace:
+[15-Apr-2014 23:59:00 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[15-Apr-2014 23:59:00 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[15-Apr-2014 23:59:00 Europe/Helsinki] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[15-Apr-2014 23:59:00 Europe/Helsinki] PHP   4. Home->index() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[15-Apr-2014 23:59:00 Europe/Helsinki] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\home.php:11
+[15-Apr-2014 23:59:00 Europe/Helsinki] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[15-Apr-2014 23:59:00 Europe/Helsinki] PHP   7. include() C:\UwAmp\www\system\core\Loader.php:833
+[15-Apr-2014 23:59:01 Europe/Helsinki] PHP Fatal error:  Call to undefined function validation_errors() in C:\UwAmp\www\application\views\header.php on line 19
+[15-Apr-2014 23:59:01 Europe/Helsinki] PHP Stack trace:
+[15-Apr-2014 23:59:01 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[15-Apr-2014 23:59:01 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[15-Apr-2014 23:59:01 Europe/Helsinki] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[15-Apr-2014 23:59:01 Europe/Helsinki] PHP   4. Home->index() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[15-Apr-2014 23:59:01 Europe/Helsinki] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\home.php:11
+[15-Apr-2014 23:59:01 Europe/Helsinki] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[15-Apr-2014 23:59:01 Europe/Helsinki] PHP   7. include() C:\UwAmp\www\system\core\Loader.php:833
+[15-Apr-2014 23:59:02 Europe/Helsinki] PHP Fatal error:  Call to undefined function validation_errors() in C:\UwAmp\www\application\views\header.php on line 19
+[15-Apr-2014 23:59:02 Europe/Helsinki] PHP Stack trace:
+[15-Apr-2014 23:59:02 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[15-Apr-2014 23:59:02 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[15-Apr-2014 23:59:02 Europe/Helsinki] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[15-Apr-2014 23:59:02 Europe/Helsinki] PHP   4. Home->index() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[15-Apr-2014 23:59:02 Europe/Helsinki] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\home.php:11
+[15-Apr-2014 23:59:02 Europe/Helsinki] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[15-Apr-2014 23:59:02 Europe/Helsinki] PHP   7. include() C:\UwAmp\www\system\core\Loader.php:833
+[15-Apr-2014 23:59:02 Europe/Helsinki] PHP Fatal error:  Call to undefined function validation_errors() in C:\UwAmp\www\application\views\header.php on line 19
+[15-Apr-2014 23:59:02 Europe/Helsinki] PHP Stack trace:
+[15-Apr-2014 23:59:02 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[15-Apr-2014 23:59:02 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[15-Apr-2014 23:59:02 Europe/Helsinki] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[15-Apr-2014 23:59:02 Europe/Helsinki] PHP   4. Home->index() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[15-Apr-2014 23:59:02 Europe/Helsinki] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\home.php:11
+[15-Apr-2014 23:59:02 Europe/Helsinki] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[15-Apr-2014 23:59:02 Europe/Helsinki] PHP   7. include() C:\UwAmp\www\system\core\Loader.php:833
+[15-Apr-2014 23:01:59 Africa/Johannesburg] PHP Fatal error:  Call to undefined function validation_errors() in C:\UwAmp\www\application\views\home\home.php on line 11
+[15-Apr-2014 23:01:59 Africa/Johannesburg] PHP Stack trace:
+[15-Apr-2014 23:01:59 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[15-Apr-2014 23:01:59 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[15-Apr-2014 23:01:59 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[15-Apr-2014 23:01:59 Africa/Johannesburg] PHP   4. Home->index() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[15-Apr-2014 23:01:59 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\home.php:19
+[15-Apr-2014 23:01:59 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[15-Apr-2014 23:01:59 Africa/Johannesburg] PHP   7. include() C:\UwAmp\www\system\core\Loader.php:833
+[16-Apr-2014 00:05:09 Europe/Helsinki] PHP Parse error:  syntax error, unexpected T_OBJECT_OPERATOR in C:\UwAmp\www\application\controllers\user.php on line 39
+[16-Apr-2014 00:05:09 Europe/Helsinki] PHP Stack trace:
+[16-Apr-2014 00:05:09 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[16-Apr-2014 00:05:09 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[15-Apr-2014 23:11:57 Africa/Johannesburg] PHP Fatal error:  Cannot use object of type stdClass as array in C:\UwAmp\www\application\controllers\user.php on line 40
+[15-Apr-2014 23:11:57 Africa/Johannesburg] PHP Stack trace:
+[15-Apr-2014 23:11:57 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[15-Apr-2014 23:11:57 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[15-Apr-2014 23:11:57 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[15-Apr-2014 23:11:57 Africa/Johannesburg] PHP   4. User->login() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[15-Apr-2014 23:14:17 Africa/Johannesburg] PHP Fatal error:  Cannot use object of type stdClass as array in C:\UwAmp\www\application\controllers\user.php on line 41
+[15-Apr-2014 23:14:17 Africa/Johannesburg] PHP Stack trace:
+[15-Apr-2014 23:14:17 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[15-Apr-2014 23:14:17 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[15-Apr-2014 23:14:17 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[15-Apr-2014 23:14:17 Africa/Johannesburg] PHP   4. User->login() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[15-Apr-2014 23:14:32 Africa/Johannesburg] PHP Fatal error:  Cannot use object of type stdClass as array in C:\UwAmp\www\application\controllers\user.php on line 42
+[15-Apr-2014 23:14:32 Africa/Johannesburg] PHP Stack trace:
+[15-Apr-2014 23:14:32 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[15-Apr-2014 23:14:32 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[15-Apr-2014 23:14:32 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[15-Apr-2014 23:14:32 Africa/Johannesburg] PHP   4. User->login() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[15-Apr-2014 23:15:21 Africa/Johannesburg] PHP Fatal error:  Cannot use object of type stdClass as array in C:\UwAmp\www\application\controllers\user.php on line 44
+[15-Apr-2014 23:15:21 Africa/Johannesburg] PHP Stack trace:
+[15-Apr-2014 23:15:21 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[15-Apr-2014 23:15:21 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[15-Apr-2014 23:15:21 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[15-Apr-2014 23:15:21 Africa/Johannesburg] PHP   4. User->login() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[15-Apr-2014 23:20:55 Africa/Johannesburg] PHP Fatal error:  Call to undefined method CI_Session::get_userdata() in C:\UwAmp\www\application\controllers\user.php on line 46
+[15-Apr-2014 23:20:55 Africa/Johannesburg] PHP Stack trace:
+[15-Apr-2014 23:20:55 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[15-Apr-2014 23:20:55 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[15-Apr-2014 23:20:55 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[15-Apr-2014 23:20:55 Africa/Johannesburg] PHP   4. User->login() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[15-Apr-2014 23:32:51 Africa/Johannesburg] PHP Fatal error:  Call to undefined function validation_errors() in C:\UwAmp\www\application\views\header.php on line 19
+[15-Apr-2014 23:32:51 Africa/Johannesburg] PHP Stack trace:
+[15-Apr-2014 23:32:51 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[15-Apr-2014 23:32:51 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[15-Apr-2014 23:32:51 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[15-Apr-2014 23:32:51 Africa/Johannesburg] PHP   4. Home->dashboard() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[15-Apr-2014 23:32:51 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\home.php:27
+[15-Apr-2014 23:32:51 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[15-Apr-2014 23:32:51 Africa/Johannesburg] PHP   7. include() C:\UwAmp\www\system\core\Loader.php:833
+[15-Apr-2014 23:33:51 Africa/Johannesburg] PHP Fatal error:  Call to undefined function validation_errors() in C:\UwAmp\www\application\views\header.php on line 20
+[15-Apr-2014 23:33:51 Africa/Johannesburg] PHP Stack trace:
+[15-Apr-2014 23:33:51 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[15-Apr-2014 23:33:51 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[15-Apr-2014 23:33:51 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[15-Apr-2014 23:33:51 Africa/Johannesburg] PHP   4. Home->dashboard() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[15-Apr-2014 23:33:51 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\home.php:27
+[15-Apr-2014 23:33:51 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[15-Apr-2014 23:33:51 Africa/Johannesburg] PHP   7. include() C:\UwAmp\www\system\core\Loader.php:833
+[15-Apr-2014 23:34:07 Africa/Johannesburg] PHP Fatal error:  Call to undefined function form_open() in C:\UwAmp\www\application\views\header.php on line 20
+[15-Apr-2014 23:34:07 Africa/Johannesburg] PHP Stack trace:
+[15-Apr-2014 23:34:07 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[15-Apr-2014 23:34:07 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[15-Apr-2014 23:34:07 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[15-Apr-2014 23:34:07 Africa/Johannesburg] PHP   4. Home->dashboard() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[15-Apr-2014 23:34:07 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\home.php:27
+[15-Apr-2014 23:34:07 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[15-Apr-2014 23:34:07 Africa/Johannesburg] PHP   7. include() C:\UwAmp\www\system\core\Loader.php:833
