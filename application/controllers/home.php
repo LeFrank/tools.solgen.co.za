@@ -12,10 +12,10 @@ class Home extends CI_Controller{
         parent::__construct();
         $this->load->model('user_model');
         $this->load->library('session');
+        $this->load->helper('form');
     }
     
     function index(){
-        $this->load->helper('form');
         $this->load->helper('email');
         $this->load->library('form_validation');
         $this->load->view('header');

@@ -16,7 +16,7 @@
     </head>
     <body>
         <div class="login" id="login">
-            <?php if (!$this->session->userdata("logged-in")) { ?>
+            <?php if (!$this->session->userdata("loggedIn")) { ?>
                 <?php echo form_open('user/login') ?>
                 <label class="login-label">Email</label><input id="email" name="email" value="" />&nbsp;&nbsp;&nbsp;
                 <label class="login-label">Password</label><input id="password" name="password" type="password" value="" />&nbsp;&nbsp;&nbsp;
@@ -24,7 +24,7 @@
                 <a href="/user/register">Register</a>
             </form>
         <?php } else { ?>
-            <a href="/user/logout">Logout</a> 
+            <a href="/user/logout" >Logout</a> 
         <?php } ?>
     </div>
     <div class="header"><a href="/">Solgen Sandbox</a></div>
@@ -32,3 +32,5 @@
     <div class="top-nav">
         <?php $this->load->view("nav")?>
     </div>
+    <div id="contentMain" class="contentMain">
+        

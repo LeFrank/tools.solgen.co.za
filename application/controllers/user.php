@@ -40,18 +40,18 @@ class User extends CI_Controller {
         $user = $this->user_model->login($this->input->post('email') , $this->input->post('password'));
         if(!empty($user)){
             unset($user->password);
-            $this->session->set_userdata("logged-in",TRUE);
+            $this->session->set_userdata("loggedIn",TRUE);
             $this->session->set_userdata("isAdmin",($user->user_type == "admin") ?TRUE: FALSE);
             $this->session->set_userdata("user",$user);
             redirect('/home/dashboard', 'refresh');
         }else{
-            $this->session->set_userdata("logged-in",FALSE);
+            $this->session->set_userdata("loggedIn",FALSE);
             redirect('/user/login', 'refresh');
         }
     }
     
     public function logout(){
-        $this->session->set_userdata("logged-in",FALSE);
+        $this->session->set_userdata("loggedIn",FALSE);
         $this->session->unset_userdata("isAdmin");
         $this->session->unset_userdata("user");
         redirect('/', 'refresh');

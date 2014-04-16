@@ -224,3 +224,6 @@ Custom classes go here
 .clear-float{
     clear:both;
 }
+.contentMain{
+    padding:0px 0px 0px 10px;
+}

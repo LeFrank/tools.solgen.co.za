@@ -273,3 +273,415 @@
 [15-Apr-2014 23:34:07 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\home.php:27
 [15-Apr-2014 23:34:07 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
 [15-Apr-2014 23:34:07 Africa/Johannesburg] PHP   7. include() C:\UwAmp\www\system\core\Loader.php:833
+[16-Apr-2014 23:39:16 Europe/Helsinki] PHP Fatal error:  Call to undefined function redirect() in C:\UwAmp\www\application\controllers\expenses.php on line 17
+[16-Apr-2014 23:39:16 Europe/Helsinki] PHP Stack trace:
+[16-Apr-2014 23:39:16 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[16-Apr-2014 23:39:16 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[16-Apr-2014 23:39:16 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[16-Apr-2014 23:39:38 Europe/Helsinki] PHP Fatal error:  Call to undefined function redirect() in C:\UwAmp\www\application\controllers\expenses.php on line 17
+[16-Apr-2014 23:39:38 Europe/Helsinki] PHP Stack trace:
+[16-Apr-2014 23:39:38 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[16-Apr-2014 23:39:38 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[16-Apr-2014 23:39:38 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[16-Apr-2014 23:40:09 Europe/Helsinki] PHP Fatal error:  Call to undefined function redirect() in C:\UwAmp\www\application\controllers\expenses.php on line 17
+[16-Apr-2014 23:40:09 Europe/Helsinki] PHP Stack trace:
+[16-Apr-2014 23:40:09 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[16-Apr-2014 23:40:09 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[16-Apr-2014 23:40:09 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[16-Apr-2014 23:46:54 Europe/Helsinki] PHP Fatal error:  Call to a member function can_access() on a non-object in C:\UwAmp\www\application\controllers\expenses.php on line 17
+[16-Apr-2014 23:46:54 Europe/Helsinki] PHP Stack trace:
+[16-Apr-2014 23:46:54 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[16-Apr-2014 23:46:54 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[16-Apr-2014 23:46:54 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[16-Apr-2014 23:47:23 Europe/Helsinki] PHP Fatal error:  Call to a member function can_access() on a non-object in C:\UwAmp\www\application\controllers\expenses.php on line 17
+[16-Apr-2014 23:47:23 Europe/Helsinki] PHP Stack trace:
+[16-Apr-2014 23:47:23 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[16-Apr-2014 23:47:23 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[16-Apr-2014 23:47:23 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[16-Apr-2014 23:47:24 Europe/Helsinki] PHP Fatal error:  Call to a member function can_access() on a non-object in C:\UwAmp\www\application\controllers\expenses.php on line 17
+[16-Apr-2014 23:47:24 Europe/Helsinki] PHP Stack trace:
+[16-Apr-2014 23:47:24 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[16-Apr-2014 23:47:24 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[16-Apr-2014 23:47:24 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[16-Apr-2014 23:47:24 Europe/Helsinki] PHP Fatal error:  Call to a member function can_access() on a non-object in C:\UwAmp\www\application\controllers\expenses.php on line 17
+[16-Apr-2014 23:47:24 Europe/Helsinki] PHP Stack trace:
+[16-Apr-2014 23:47:24 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[16-Apr-2014 23:47:24 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[16-Apr-2014 23:47:24 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[16-Apr-2014 23:47:25 Europe/Helsinki] PHP Fatal error:  Call to a member function can_access() on a non-object in C:\UwAmp\www\application\controllers\expenses.php on line 17
+[16-Apr-2014 23:47:25 Europe/Helsinki] PHP Stack trace:
+[16-Apr-2014 23:47:25 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[16-Apr-2014 23:47:25 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[16-Apr-2014 23:47:25 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[16-Apr-2014 23:47:25 Europe/Helsinki] PHP Fatal error:  Call to a member function can_access() on a non-object in C:\UwAmp\www\application\controllers\expenses.php on line 17
+[16-Apr-2014 23:47:25 Europe/Helsinki] PHP Stack trace:
+[16-Apr-2014 23:47:25 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[16-Apr-2014 23:47:25 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[16-Apr-2014 23:47:25 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[16-Apr-2014 23:48:22 Europe/Helsinki] PHP Fatal error:  Call to a member function can_access() on a non-object in C:\UwAmp\www\application\controllers\expenses.php on line 17
+[16-Apr-2014 23:48:22 Europe/Helsinki] PHP Stack trace:
+[16-Apr-2014 23:48:22 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[16-Apr-2014 23:48:22 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[16-Apr-2014 23:48:22 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[16-Apr-2014 23:48:22 Europe/Helsinki] PHP Fatal error:  Call to a member function can_access() on a non-object in C:\UwAmp\www\application\controllers\expenses.php on line 17
+[16-Apr-2014 23:48:22 Europe/Helsinki] PHP Stack trace:
+[16-Apr-2014 23:48:22 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[16-Apr-2014 23:48:22 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[16-Apr-2014 23:48:23 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[16-Apr-2014 23:48:23 Europe/Helsinki] PHP Fatal error:  Call to a member function can_access() on a non-object in C:\UwAmp\www\application\controllers\expenses.php on line 17
+[16-Apr-2014 23:48:23 Europe/Helsinki] PHP Stack trace:
+[16-Apr-2014 23:48:23 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[16-Apr-2014 23:48:23 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[16-Apr-2014 23:48:23 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[16-Apr-2014 23:48:23 Europe/Helsinki] PHP Fatal error:  Call to a member function can_access() on a non-object in C:\UwAmp\www\application\controllers\expenses.php on line 17
+[16-Apr-2014 23:48:23 Europe/Helsinki] PHP Stack trace:
+[16-Apr-2014 23:48:23 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[16-Apr-2014 23:48:23 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[16-Apr-2014 23:48:23 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[16-Apr-2014 23:48:26 Europe/Helsinki] PHP Fatal error:  Call to a member function can_access() on a non-object in C:\UwAmp\www\application\controllers\expenses.php on line 17
+[16-Apr-2014 23:48:26 Europe/Helsinki] PHP Stack trace:
+[16-Apr-2014 23:48:26 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[16-Apr-2014 23:48:26 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[16-Apr-2014 23:48:26 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[16-Apr-2014 23:48:27 Europe/Helsinki] PHP Fatal error:  Call to a member function can_access() on a non-object in C:\UwAmp\www\application\controllers\expenses.php on line 17
+[16-Apr-2014 23:48:27 Europe/Helsinki] PHP Stack trace:
+[16-Apr-2014 23:48:27 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[16-Apr-2014 23:48:27 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[16-Apr-2014 23:48:27 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[16-Apr-2014 23:48:27 Europe/Helsinki] PHP Fatal error:  Call to a member function can_access() on a non-object in C:\UwAmp\www\application\controllers\expenses.php on line 17
+[16-Apr-2014 23:48:27 Europe/Helsinki] PHP Stack trace:
+[16-Apr-2014 23:48:27 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[16-Apr-2014 23:48:27 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[16-Apr-2014 23:48:27 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[16-Apr-2014 23:48:27 Europe/Helsinki] PHP Fatal error:  Call to a member function can_access() on a non-object in C:\UwAmp\www\application\controllers\expenses.php on line 17
+[16-Apr-2014 23:48:27 Europe/Helsinki] PHP Stack trace:
+[16-Apr-2014 23:48:27 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[16-Apr-2014 23:48:27 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[16-Apr-2014 23:48:27 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[16-Apr-2014 23:48:27 Europe/Helsinki] PHP Fatal error:  Call to a member function can_access() on a non-object in C:\UwAmp\www\application\controllers\expenses.php on line 17
+[16-Apr-2014 23:48:27 Europe/Helsinki] PHP Stack trace:
+[16-Apr-2014 23:48:27 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[16-Apr-2014 23:48:27 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[16-Apr-2014 23:48:27 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[16-Apr-2014 23:49:15 Europe/Helsinki] PHP Fatal error:  Call to undefined method Expenses::can_access() in C:\UwAmp\www\application\controllers\expenses.php on line 17
+[16-Apr-2014 23:49:15 Europe/Helsinki] PHP Stack trace:
+[16-Apr-2014 23:49:15 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[16-Apr-2014 23:49:15 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[16-Apr-2014 23:49:15 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[16-Apr-2014 23:49:45 Europe/Helsinki] PHP Fatal error:  Call to undefined function can_access() in C:\UwAmp\www\application\controllers\expenses.php on line 17
+[16-Apr-2014 23:49:45 Europe/Helsinki] PHP Stack trace:
+[16-Apr-2014 23:49:45 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[16-Apr-2014 23:49:45 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[16-Apr-2014 23:49:45 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[16-Apr-2014 23:49:46 Europe/Helsinki] PHP Fatal error:  Call to undefined function can_access() in C:\UwAmp\www\application\controllers\expenses.php on line 17
+[16-Apr-2014 23:49:46 Europe/Helsinki] PHP Stack trace:
+[16-Apr-2014 23:49:46 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[16-Apr-2014 23:49:46 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[16-Apr-2014 23:49:46 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[16-Apr-2014 23:49:47 Europe/Helsinki] PHP Fatal error:  Call to undefined function can_access() in C:\UwAmp\www\application\controllers\expenses.php on line 17
+[16-Apr-2014 23:49:47 Europe/Helsinki] PHP Stack trace:
+[16-Apr-2014 23:49:47 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[16-Apr-2014 23:49:47 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[16-Apr-2014 23:49:47 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[16-Apr-2014 23:49:47 Europe/Helsinki] PHP Fatal error:  Call to undefined function can_access() in C:\UwAmp\www\application\controllers\expenses.php on line 17
+[16-Apr-2014 23:49:47 Europe/Helsinki] PHP Stack trace:
+[16-Apr-2014 23:49:47 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[16-Apr-2014 23:49:47 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[16-Apr-2014 23:49:47 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[16-Apr-2014 23:49:47 Europe/Helsinki] PHP Fatal error:  Call to undefined function can_access() in C:\UwAmp\www\application\controllers\expenses.php on line 17
+[16-Apr-2014 23:49:47 Europe/Helsinki] PHP Stack trace:
+[16-Apr-2014 23:49:47 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[16-Apr-2014 23:49:47 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[16-Apr-2014 23:49:47 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[16-Apr-2014 23:50:51 Europe/Helsinki] PHP Fatal error:  Call to undefined function can_access() in C:\UwAmp\www\application\controllers\expenses.php on line 17
+[16-Apr-2014 23:50:51 Europe/Helsinki] PHP Stack trace:
+[16-Apr-2014 23:50:51 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[16-Apr-2014 23:50:51 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[16-Apr-2014 23:50:51 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[16-Apr-2014 23:50:52 Europe/Helsinki] PHP Fatal error:  Call to undefined function can_access() in C:\UwAmp\www\application\controllers\expenses.php on line 17
+[16-Apr-2014 23:50:52 Europe/Helsinki] PHP Stack trace:
+[16-Apr-2014 23:50:52 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[16-Apr-2014 23:50:52 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[16-Apr-2014 23:50:52 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[16-Apr-2014 23:50:52 Europe/Helsinki] PHP Fatal error:  Call to undefined function can_access() in C:\UwAmp\www\application\controllers\expenses.php on line 17
+[16-Apr-2014 23:50:52 Europe/Helsinki] PHP Stack trace:
+[16-Apr-2014 23:50:52 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[16-Apr-2014 23:50:52 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[16-Apr-2014 23:50:52 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[16-Apr-2014 23:50:53 Europe/Helsinki] PHP Fatal error:  Call to undefined function can_access() in C:\UwAmp\www\application\controllers\expenses.php on line 17
+[16-Apr-2014 23:50:53 Europe/Helsinki] PHP Stack trace:
+[16-Apr-2014 23:50:53 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[16-Apr-2014 23:50:53 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[16-Apr-2014 23:50:53 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[16-Apr-2014 23:50:53 Europe/Helsinki] PHP Fatal error:  Call to undefined function can_access() in C:\UwAmp\www\application\controllers\expenses.php on line 17
+[16-Apr-2014 23:50:53 Europe/Helsinki] PHP Stack trace:
+[16-Apr-2014 23:50:53 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[16-Apr-2014 23:50:53 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[16-Apr-2014 23:50:53 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[16-Apr-2014 23:50:53 Europe/Helsinki] PHP Fatal error:  Call to undefined function can_access() in C:\UwAmp\www\application\controllers\expenses.php on line 17
+[16-Apr-2014 23:50:53 Europe/Helsinki] PHP Stack trace:
+[16-Apr-2014 23:50:53 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[16-Apr-2014 23:50:53 Europe/Helsinki] PHP Fatal error:  Call to undefined function can_access() in C:\UwAmp\www\application\controllers\expenses.php on line 17
+[16-Apr-2014 23:50:53 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[16-Apr-2014 23:50:53 Europe/Helsinki] PHP Stack trace:
+[16-Apr-2014 23:50:53 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[16-Apr-2014 23:50:53 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[16-Apr-2014 23:50:53 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[16-Apr-2014 23:50:53 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[16-Apr-2014 23:51:11 Europe/Helsinki] PHP Fatal error:  Call to undefined function can_access() in C:\UwAmp\www\application\controllers\expenses.php on line 17
+[16-Apr-2014 23:51:11 Europe/Helsinki] PHP Stack trace:
+[16-Apr-2014 23:51:11 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[16-Apr-2014 23:51:11 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[16-Apr-2014 23:51:11 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[16-Apr-2014 23:51:11 Europe/Helsinki] PHP Fatal error:  Call to undefined function can_access() in C:\UwAmp\www\application\controllers\expenses.php on line 17
+[16-Apr-2014 23:51:11 Europe/Helsinki] PHP Stack trace:
+[16-Apr-2014 23:51:11 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[16-Apr-2014 23:51:11 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[16-Apr-2014 23:51:12 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[16-Apr-2014 23:51:12 Europe/Helsinki] PHP Fatal error:  Call to undefined function can_access() in C:\UwAmp\www\application\controllers\expenses.php on line 17
+[16-Apr-2014 23:51:12 Europe/Helsinki] PHP Stack trace:
+[16-Apr-2014 23:51:12 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[16-Apr-2014 23:51:12 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[16-Apr-2014 23:51:12 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[16-Apr-2014 23:51:13 Europe/Helsinki] PHP Fatal error:  Call to undefined function can_access() in C:\UwAmp\www\application\controllers\expenses.php on line 17
+[16-Apr-2014 23:51:13 Europe/Helsinki] PHP Stack trace:
+[16-Apr-2014 23:51:13 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[16-Apr-2014 23:51:13 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[16-Apr-2014 23:51:13 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[16-Apr-2014 23:51:13 Europe/Helsinki] PHP Fatal error:  Call to undefined function can_access() in C:\UwAmp\www\application\controllers\expenses.php on line 17
+[16-Apr-2014 23:51:13 Europe/Helsinki] PHP Stack trace:
+[16-Apr-2014 23:51:13 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[16-Apr-2014 23:51:13 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[16-Apr-2014 23:51:13 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[16-Apr-2014 23:51:13 Europe/Helsinki] PHP Fatal error:  Call to undefined function can_access() in C:\UwAmp\www\application\controllers\expenses.php on line 17
+[16-Apr-2014 23:51:13 Europe/Helsinki] PHP Stack trace:
+[16-Apr-2014 23:51:13 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[16-Apr-2014 23:51:13 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[16-Apr-2014 23:51:13 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[16-Apr-2014 23:51:34 Europe/Helsinki] PHP Fatal error:  Call to undefined function can_access() in C:\UwAmp\www\application\controllers\expenses.php on line 17
+[16-Apr-2014 23:51:34 Europe/Helsinki] PHP Stack trace:
+[16-Apr-2014 23:51:34 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[16-Apr-2014 23:51:35 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[16-Apr-2014 23:51:35 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[16-Apr-2014 23:51:35 Europe/Helsinki] PHP Fatal error:  Call to undefined function can_access() in C:\UwAmp\www\application\controllers\expenses.php on line 17
+[16-Apr-2014 23:51:35 Europe/Helsinki] PHP Stack trace:
+[16-Apr-2014 23:51:35 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[16-Apr-2014 23:51:35 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[16-Apr-2014 23:51:35 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[16-Apr-2014 23:51:35 Europe/Helsinki] PHP Fatal error:  Call to undefined function can_access() in C:\UwAmp\www\application\controllers\expenses.php on line 17
+[16-Apr-2014 23:51:35 Europe/Helsinki] PHP Stack trace:
+[16-Apr-2014 23:51:35 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[16-Apr-2014 23:51:35 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[16-Apr-2014 23:51:35 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[16-Apr-2014 23:51:35 Europe/Helsinki] PHP Fatal error:  Call to undefined function can_access() in C:\UwAmp\www\application\controllers\expenses.php on line 17
+[16-Apr-2014 23:51:35 Europe/Helsinki] PHP Stack trace:
+[16-Apr-2014 23:51:35 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[16-Apr-2014 23:51:35 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[16-Apr-2014 23:51:35 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[16-Apr-2014 23:51:48 Europe/Helsinki] PHP Fatal error:  Call to undefined function can_access() in C:\UwAmp\www\application\controllers\expenses.php on line 17
+[16-Apr-2014 23:51:48 Europe/Helsinki] PHP Stack trace:
+[16-Apr-2014 23:51:48 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[16-Apr-2014 23:51:48 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[16-Apr-2014 23:51:48 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[16-Apr-2014 23:51:49 Europe/Helsinki] PHP Fatal error:  Call to undefined function can_access() in C:\UwAmp\www\application\controllers\expenses.php on line 17
+[16-Apr-2014 23:51:49 Europe/Helsinki] PHP Stack trace:
+[16-Apr-2014 23:51:49 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[16-Apr-2014 23:51:49 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[16-Apr-2014 23:51:49 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[16-Apr-2014 23:51:50 Europe/Helsinki] PHP Fatal error:  Call to undefined function can_access() in C:\UwAmp\www\application\controllers\expenses.php on line 17
+[16-Apr-2014 23:51:50 Europe/Helsinki] PHP Stack trace:
+[16-Apr-2014 23:51:50 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[16-Apr-2014 23:51:50 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[16-Apr-2014 23:51:50 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[16-Apr-2014 23:51:50 Europe/Helsinki] PHP Fatal error:  Call to undefined function can_access() in C:\UwAmp\www\application\controllers\expenses.php on line 17
+[16-Apr-2014 23:51:50 Europe/Helsinki] PHP Stack trace:
+[16-Apr-2014 23:51:50 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[16-Apr-2014 23:51:50 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[16-Apr-2014 23:51:50 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[16-Apr-2014 23:51:50 Europe/Helsinki] PHP Fatal error:  Call to undefined function can_access() in C:\UwAmp\www\application\controllers\expenses.php on line 17
+[16-Apr-2014 23:51:50 Europe/Helsinki] PHP Stack trace:
+[16-Apr-2014 23:51:50 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[16-Apr-2014 23:51:50 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[16-Apr-2014 23:51:50 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[16-Apr-2014 23:51:50 Europe/Helsinki] PHP Fatal error:  Call to undefined function can_access() in C:\UwAmp\www\application\controllers\expenses.php on line 17
+[16-Apr-2014 23:51:50 Europe/Helsinki] PHP Stack trace:
+[16-Apr-2014 23:51:50 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[16-Apr-2014 23:51:50 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[16-Apr-2014 23:51:50 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[16-Apr-2014 23:53:10 Europe/Helsinki] PHP Fatal error:  Call to undefined function can_access() in C:\UwAmp\www\application\controllers\expenses.php on line 17
+[16-Apr-2014 23:53:10 Europe/Helsinki] PHP Stack trace:
+[16-Apr-2014 23:53:10 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[16-Apr-2014 23:53:10 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[16-Apr-2014 23:53:10 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[16-Apr-2014 23:53:40 Europe/Helsinki] PHP Fatal error:  Call to undefined function can_access() in C:\UwAmp\www\application\controllers\expenses.php on line 17
+[16-Apr-2014 23:53:40 Europe/Helsinki] PHP Stack trace:
+[16-Apr-2014 23:53:40 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[16-Apr-2014 23:53:40 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[16-Apr-2014 23:53:40 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[16-Apr-2014 23:53:41 Europe/Helsinki] PHP Fatal error:  Call to undefined function can_access() in C:\UwAmp\www\application\controllers\expenses.php on line 17
+[16-Apr-2014 23:53:41 Europe/Helsinki] PHP Stack trace:
+[16-Apr-2014 23:53:41 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[16-Apr-2014 23:53:41 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[16-Apr-2014 23:53:41 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[16-Apr-2014 23:53:47 Europe/Helsinki] PHP Fatal error:  Call to undefined function can_access() in C:\UwAmp\www\application\controllers\expenses.php on line 17
+[16-Apr-2014 23:53:47 Europe/Helsinki] PHP Stack trace:
+[16-Apr-2014 23:53:47 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[16-Apr-2014 23:53:47 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[16-Apr-2014 23:53:47 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[16-Apr-2014 23:53:59 Europe/Helsinki] PHP Fatal error:  Call to undefined function can_access() in C:\UwAmp\www\application\controllers\expenses.php on line 18
+[16-Apr-2014 23:53:59 Europe/Helsinki] PHP Stack trace:
+[16-Apr-2014 23:53:59 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[16-Apr-2014 23:53:59 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[16-Apr-2014 23:53:59 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[16-Apr-2014 23:54:24 Europe/Helsinki] PHP Fatal error:  Call to undefined function can_access() in C:\UwAmp\www\application\controllers\expenses.php on line 17
+[16-Apr-2014 23:54:24 Europe/Helsinki] PHP Stack trace:
+[16-Apr-2014 23:54:24 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[16-Apr-2014 23:54:24 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[16-Apr-2014 23:54:24 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[16-Apr-2014 23:54:25 Europe/Helsinki] PHP Fatal error:  Call to undefined function can_access() in C:\UwAmp\www\application\controllers\expenses.php on line 17
+[16-Apr-2014 23:54:25 Europe/Helsinki] PHP Stack trace:
+[16-Apr-2014 23:54:25 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[16-Apr-2014 23:54:25 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[16-Apr-2014 23:54:25 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[16-Apr-2014 23:54:25 Europe/Helsinki] PHP Fatal error:  Call to undefined function can_access() in C:\UwAmp\www\application\controllers\expenses.php on line 17
+[16-Apr-2014 23:54:25 Europe/Helsinki] PHP Stack trace:
+[16-Apr-2014 23:54:25 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[16-Apr-2014 23:54:25 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[16-Apr-2014 23:54:25 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[16-Apr-2014 23:54:25 Europe/Helsinki] PHP Fatal error:  Call to undefined function can_access() in C:\UwAmp\www\application\controllers\expenses.php on line 17
+[16-Apr-2014 23:54:25 Europe/Helsinki] PHP Stack trace:
+[16-Apr-2014 23:54:25 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[16-Apr-2014 23:54:25 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[16-Apr-2014 23:54:25 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[16-Apr-2014 23:54:25 Europe/Helsinki] PHP Fatal error:  Call to undefined function can_access() in C:\UwAmp\www\application\controllers\expenses.php on line 17
+[16-Apr-2014 23:54:25 Europe/Helsinki] PHP Stack trace:
+[16-Apr-2014 23:54:25 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[16-Apr-2014 23:54:25 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[16-Apr-2014 23:54:25 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[16-Apr-2014 23:54:26 Europe/Helsinki] PHP Fatal error:  Call to undefined function can_access() in C:\UwAmp\www\application\controllers\expenses.php on line 17
+[16-Apr-2014 23:54:26 Europe/Helsinki] PHP Stack trace:
+[16-Apr-2014 23:54:26 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[16-Apr-2014 23:54:26 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[16-Apr-2014 23:54:26 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[16-Apr-2014 23:54:26 Europe/Helsinki] PHP Fatal error:  Call to undefined function can_access() in C:\UwAmp\www\application\controllers\expenses.php on line 17
+[16-Apr-2014 23:54:26 Europe/Helsinki] PHP Stack trace:
+[16-Apr-2014 23:54:26 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[16-Apr-2014 23:54:26 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[16-Apr-2014 23:54:26 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[16-Apr-2014 23:55:34 Europe/Helsinki] PHP Parse error:  syntax error, unexpected T_PUBLIC in C:\UwAmp\www\application\helpers\auth_helper.php on line 10
+[16-Apr-2014 23:55:34 Europe/Helsinki] PHP Stack trace:
+[16-Apr-2014 23:55:34 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[16-Apr-2014 23:55:34 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[16-Apr-2014 23:55:34 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[16-Apr-2014 23:55:34 Europe/Helsinki] PHP   4. CI_Loader->helper() C:\UwAmp\www\application\controllers\expenses.php:15
+[16-Apr-2014 23:55:35 Europe/Helsinki] PHP Parse error:  syntax error, unexpected T_PUBLIC in C:\UwAmp\www\application\helpers\auth_helper.php on line 10
+[16-Apr-2014 23:55:35 Europe/Helsinki] PHP Stack trace:
+[16-Apr-2014 23:55:35 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[16-Apr-2014 23:55:35 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[16-Apr-2014 23:55:35 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[16-Apr-2014 23:55:35 Europe/Helsinki] PHP   4. CI_Loader->helper() C:\UwAmp\www\application\controllers\expenses.php:15
+[17-Apr-2014 00:00:25 Europe/Helsinki] PHP Fatal error:  Call to undefined method CI_Session::userdate() in C:\UwAmp\www\application\helpers\auth_helper.php on line 9
+[17-Apr-2014 00:00:25 Europe/Helsinki] PHP Stack trace:
+[17-Apr-2014 00:00:25 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[17-Apr-2014 00:00:25 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[17-Apr-2014 00:00:25 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[17-Apr-2014 00:00:25 Europe/Helsinki] PHP   4. can_access() C:\UwAmp\www\application\controllers\expenses.php:19
+[17-Apr-2014 00:00:55 Europe/Helsinki] PHP Parse error:  syntax error, unexpected ';' in C:\UwAmp\www\application\helpers\auth_helper.php on line 9
+[17-Apr-2014 00:00:55 Europe/Helsinki] PHP Stack trace:
+[17-Apr-2014 00:00:55 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[17-Apr-2014 00:00:55 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[17-Apr-2014 00:00:55 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[17-Apr-2014 00:00:55 Europe/Helsinki] PHP   4. CI_Loader->helper() C:\UwAmp\www\application\controllers\expenses.php:15
+[16-Apr-2014 23:01:58 Africa/Johannesburg] PHP Fatal error:  Call to undefined function form_open() in C:\UwAmp\www\application\views\header.php on line 20
+[16-Apr-2014 23:01:58 Africa/Johannesburg] PHP Stack trace:
+[16-Apr-2014 23:01:58 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[16-Apr-2014 23:01:58 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[16-Apr-2014 23:01:58 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[16-Apr-2014 23:01:58 Africa/Johannesburg] PHP   4. Home->dashboard() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[16-Apr-2014 23:01:58 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\home.php:27
+[16-Apr-2014 23:01:58 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[16-Apr-2014 23:01:58 Africa/Johannesburg] PHP   7. include() C:\UwAmp\www\system\core\Loader.php:833
+[17-Apr-2014 00:20:39 Europe/Helsinki] PHP Fatal error:  Can't use method return value in write context in C:\UwAmp\www\application\helpers\auth_helper.php on line 11
+[17-Apr-2014 00:20:39 Europe/Helsinki] PHP Stack trace:
+[17-Apr-2014 00:20:39 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[17-Apr-2014 00:20:39 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[17-Apr-2014 00:20:39 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[17-Apr-2014 00:20:39 Europe/Helsinki] PHP   4. CI_Loader->helper() C:\UwAmp\www\application\controllers\expenses.php:15
+[17-Apr-2014 00:20:48 Europe/Helsinki] PHP Fatal error:  Can't use method return value in write context in C:\UwAmp\www\application\helpers\auth_helper.php on line 11
+[17-Apr-2014 00:20:48 Europe/Helsinki] PHP Stack trace:
+[17-Apr-2014 00:20:48 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[17-Apr-2014 00:20:48 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[17-Apr-2014 00:20:48 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[17-Apr-2014 00:20:48 Europe/Helsinki] PHP   4. CI_Loader->helper() C:\UwAmp\www\application\controllers\expenses.php:15
+[17-Apr-2014 00:20:55 Europe/Helsinki] PHP Fatal error:  Can't use method return value in write context in C:\UwAmp\www\application\helpers\auth_helper.php on line 11
+[17-Apr-2014 00:20:55 Europe/Helsinki] PHP Stack trace:
+[17-Apr-2014 00:20:55 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[17-Apr-2014 00:20:55 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[17-Apr-2014 00:20:55 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[17-Apr-2014 00:20:55 Europe/Helsinki] PHP   4. CI_Loader->helper() C:\UwAmp\www\application\controllers\expenses.php:15
+[17-Apr-2014 00:21:00 Europe/Helsinki] PHP Fatal error:  Can't use method return value in write context in C:\UwAmp\www\application\helpers\auth_helper.php on line 11
+[17-Apr-2014 00:21:00 Europe/Helsinki] PHP Stack trace:
+[17-Apr-2014 00:21:00 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[17-Apr-2014 00:21:00 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[17-Apr-2014 00:21:00 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[17-Apr-2014 00:21:00 Europe/Helsinki] PHP   4. CI_Loader->helper() C:\UwAmp\www\application\controllers\expenses.php:15
+[17-Apr-2014 00:22:07 Europe/Helsinki] PHP Fatal error:  Can't use method return value in write context in C:\UwAmp\www\application\helpers\auth_helper.php on line 11
+[17-Apr-2014 00:22:07 Europe/Helsinki] PHP Stack trace:
+[17-Apr-2014 00:22:07 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[17-Apr-2014 00:22:07 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[17-Apr-2014 00:22:07 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[17-Apr-2014 00:22:07 Europe/Helsinki] PHP   4. CI_Loader->helper() C:\UwAmp\www\application\controllers\expenses.php:15
+[17-Apr-2014 00:22:07 Europe/Helsinki] PHP Fatal error:  Can't use method return value in write context in C:\UwAmp\www\application\helpers\auth_helper.php on line 11
+[17-Apr-2014 00:22:07 Europe/Helsinki] PHP Stack trace:
+[17-Apr-2014 00:22:07 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[17-Apr-2014 00:22:07 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[17-Apr-2014 00:22:07 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[17-Apr-2014 00:22:07 Europe/Helsinki] PHP   4. CI_Loader->helper() C:\UwAmp\www\application\controllers\expenses.php:15
+[17-Apr-2014 00:22:08 Europe/Helsinki] PHP Fatal error:  Can't use method return value in write context in C:\UwAmp\www\application\helpers\auth_helper.php on line 11
+[17-Apr-2014 00:22:08 Europe/Helsinki] PHP Stack trace:
+[17-Apr-2014 00:22:08 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[17-Apr-2014 00:22:08 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[17-Apr-2014 00:22:08 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[17-Apr-2014 00:22:08 Europe/Helsinki] PHP   4. CI_Loader->helper() C:\UwAmp\www\application\controllers\expenses.php:15
+[17-Apr-2014 00:22:08 Europe/Helsinki] PHP Fatal error:  Can't use method return value in write context in C:\UwAmp\www\application\helpers\auth_helper.php on line 11
+[17-Apr-2014 00:22:08 Europe/Helsinki] PHP Stack trace:
+[17-Apr-2014 00:22:08 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[17-Apr-2014 00:22:08 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[17-Apr-2014 00:22:08 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[17-Apr-2014 00:22:08 Europe/Helsinki] PHP   4. CI_Loader->helper() C:\UwAmp\www\application\controllers\expenses.php:15
+[17-Apr-2014 00:22:08 Europe/Helsinki] PHP Fatal error:  Can't use method return value in write context in C:\UwAmp\www\application\helpers\auth_helper.php on line 11
+[17-Apr-2014 00:22:08 Europe/Helsinki] PHP Stack trace:
+[17-Apr-2014 00:22:08 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[17-Apr-2014 00:22:08 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[17-Apr-2014 00:22:08 Europe/Helsinki] PHP Fatal error:  Can't use method return value in write context in C:\UwAmp\www\application\helpers\auth_helper.php on line 11
+[17-Apr-2014 00:22:08 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[17-Apr-2014 00:22:08 Europe/Helsinki] PHP Stack trace:
+[17-Apr-2014 00:22:08 Europe/Helsinki] PHP   4. CI_Loader->helper() C:\UwAmp\www\application\controllers\expenses.php:15
+[17-Apr-2014 00:22:08 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[17-Apr-2014 00:22:08 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[17-Apr-2014 00:22:08 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[17-Apr-2014 00:22:08 Europe/Helsinki] PHP   4. CI_Loader->helper() C:\UwAmp\www\application\controllers\expenses.php:15
+[17-Apr-2014 00:22:52 Europe/Helsinki] PHP Fatal error:  Can't use method return value in write context in C:\UwAmp\www\application\helpers\auth_helper.php on line 11
+[17-Apr-2014 00:22:52 Europe/Helsinki] PHP Stack trace:
+[17-Apr-2014 00:22:52 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[17-Apr-2014 00:22:52 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[17-Apr-2014 00:22:52 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[17-Apr-2014 00:22:52 Europe/Helsinki] PHP   4. CI_Loader->helper() C:\UwAmp\www\application\controllers\expenses.php:15
+[17-Apr-2014 00:22:53 Europe/Helsinki] PHP Fatal error:  Can't use method return value in write context in C:\UwAmp\www\application\helpers\auth_helper.php on line 11
+[17-Apr-2014 00:22:53 Europe/Helsinki] PHP Stack trace:
+[17-Apr-2014 00:22:53 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[17-Apr-2014 00:22:53 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[17-Apr-2014 00:22:53 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[17-Apr-2014 00:22:53 Europe/Helsinki] PHP   4. CI_Loader->helper() C:\UwAmp\www\application\controllers\expenses.php:15
+[17-Apr-2014 00:22:54 Europe/Helsinki] PHP Fatal error:  Can't use method return value in write context in C:\UwAmp\www\application\helpers\auth_helper.php on line 11
+[17-Apr-2014 00:22:54 Europe/Helsinki] PHP Stack trace:
+[17-Apr-2014 00:22:54 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[17-Apr-2014 00:22:54 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[17-Apr-2014 00:22:54 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[17-Apr-2014 00:22:54 Europe/Helsinki] PHP   4. CI_Loader->helper() C:\UwAmp\www\application\controllers\expenses.php:15
+[17-Apr-2014 00:22:54 Europe/Helsinki] PHP Fatal error:  Can't use method return value in write context in C:\UwAmp\www\application\helpers\auth_helper.php on line 11
+[17-Apr-2014 00:22:54 Europe/Helsinki] PHP Stack trace:
+[17-Apr-2014 00:22:54 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[17-Apr-2014 00:22:54 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[17-Apr-2014 00:22:54 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[17-Apr-2014 00:22:54 Europe/Helsinki] PHP   4. CI_Loader->helper() C:\UwAmp\www\application\controllers\expenses.php:15
