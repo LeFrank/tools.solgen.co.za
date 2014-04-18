@@ -9,6 +9,7 @@ class Expense_type_model extends CI_Model {
     }
 
     public function get_expense_types() {
+        $this->db->order_by("description", "asc");
         $query = $this->db->get($this->tn);
         return $query->result_array();
     }

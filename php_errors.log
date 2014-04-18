@@ -685,3 +685,74 @@
 [17-Apr-2014 00:22:54 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
 [17-Apr-2014 00:22:54 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
 [17-Apr-2014 00:22:54 Europe/Helsinki] PHP   4. CI_Loader->helper() C:\UwAmp\www\application\controllers\expenses.php:15
+[18-Apr-2014 02:13:18 Europe/Helsinki] PHP Fatal error:  Call to a member function post() on a non-object in C:\UwAmp\www\application\models\expense_model.php on line 42
+[18-Apr-2014 02:13:19 Europe/Helsinki] PHP Stack trace:
+[18-Apr-2014 02:13:19 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[18-Apr-2014 02:13:19 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[18-Apr-2014 02:13:19 Europe/Helsinki] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[18-Apr-2014 02:13:19 Europe/Helsinki] PHP   4. Expenses->capture() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[18-Apr-2014 02:13:19 Europe/Helsinki] PHP   5. expense_model->capture_expense() C:\UwAmp\www\application\controllers\expenses.php:48
+[18-Apr-2014 02:13:20 Europe/Helsinki] PHP Fatal error:  Call to a member function post() on a non-object in C:\UwAmp\www\application\models\expense_model.php on line 42
+[18-Apr-2014 02:13:20 Europe/Helsinki] PHP Stack trace:
+[18-Apr-2014 02:13:20 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[18-Apr-2014 02:13:20 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[18-Apr-2014 02:13:20 Europe/Helsinki] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[18-Apr-2014 02:13:20 Europe/Helsinki] PHP   4. Expenses->capture() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[18-Apr-2014 02:13:20 Europe/Helsinki] PHP   5. expense_model->capture_expense() C:\UwAmp\www\application\controllers\expenses.php:48
+[18-Apr-2014 02:15:35 Europe/Helsinki] PHP Fatal error:  Call to undefined function now() in C:\UwAmp\www\application\models\expense_model.php on line 44
+[18-Apr-2014 02:15:35 Europe/Helsinki] PHP Stack trace:
+[18-Apr-2014 02:15:35 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[18-Apr-2014 02:15:35 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[18-Apr-2014 02:15:35 Europe/Helsinki] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[18-Apr-2014 02:15:35 Europe/Helsinki] PHP   4. Expenses->capture() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[18-Apr-2014 02:15:35 Europe/Helsinki] PHP   5. expense_model->capture_expense() C:\UwAmp\www\application\controllers\expenses.php:48
+[18-Apr-2014 02:15:40 Europe/Helsinki] PHP Fatal error:  Call to undefined function now() in C:\UwAmp\www\application\models\expense_model.php on line 44
+[18-Apr-2014 02:15:40 Europe/Helsinki] PHP Stack trace:
+[18-Apr-2014 02:15:40 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[18-Apr-2014 02:15:40 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[18-Apr-2014 02:15:40 Europe/Helsinki] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[18-Apr-2014 02:15:40 Europe/Helsinki] PHP   4. Expenses->capture() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[18-Apr-2014 02:15:40 Europe/Helsinki] PHP   5. expense_model->capture_expense() C:\UwAmp\www\application\controllers\expenses.php:48
+[18-Apr-2014 01:16:00 Africa/Johannesburg] PHP Fatal error:  Call to undefined function now() in C:\UwAmp\www\application\models\expense_model.php on line 44
+[18-Apr-2014 01:16:00 Africa/Johannesburg] PHP Stack trace:
+[18-Apr-2014 01:16:00 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[18-Apr-2014 01:16:00 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[18-Apr-2014 01:16:00 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[18-Apr-2014 01:16:00 Africa/Johannesburg] PHP   4. Expenses->capture() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[18-Apr-2014 01:16:00 Africa/Johannesburg] PHP   5. expense_model->capture_expense() C:\UwAmp\www\application\controllers\expenses.php:48
+[18-Apr-2014 01:40:39 Africa/Johannesburg] PHP Parse error:  syntax error, unexpected '/' in C:\UwAmp\www\application\views\expenses\view.php on line 13
+[18-Apr-2014 01:40:39 Africa/Johannesburg] PHP Stack trace:
+[18-Apr-2014 01:40:39 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[18-Apr-2014 01:40:39 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[18-Apr-2014 01:40:39 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[18-Apr-2014 01:40:39 Africa/Johannesburg] PHP   4. Expenses->view() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[18-Apr-2014 01:40:39 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\expenses.php:32
+[18-Apr-2014 01:40:39 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[18-Apr-2014 02:09:53 Africa/Johannesburg] PHP Parse error:  syntax error, unexpected ':', expecting ',' or ';' in C:\UwAmp\www\application\views\expenses\view.php on line 12
+[18-Apr-2014 02:09:53 Africa/Johannesburg] PHP Stack trace:
+[18-Apr-2014 02:09:53 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[18-Apr-2014 02:09:53 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[18-Apr-2014 02:09:53 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[18-Apr-2014 02:09:53 Africa/Johannesburg] PHP   4. Expenses->capture() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[18-Apr-2014 02:09:53 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\expenses.php:51
+[18-Apr-2014 02:09:53 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[18-Apr-2014 02:13:04 Africa/Johannesburg] PHP Parse error:  syntax error, unexpected '}', expecting ',' or ';' in C:\UwAmp\www\application\views\expenses\view.php on line 43
+[18-Apr-2014 02:13:04 Africa/Johannesburg] PHP Stack trace:
+[18-Apr-2014 02:13:04 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[18-Apr-2014 02:13:04 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[18-Apr-2014 02:13:04 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[18-Apr-2014 02:13:04 Africa/Johannesburg] PHP   4. Expenses->capture() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[18-Apr-2014 02:13:04 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\expenses.php:51
+[18-Apr-2014 02:13:04 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[18-Apr-2014 03:45:01 Africa/Johannesburg] PHP Fatal error:  Call to undefined method Expenses::keyToId() in C:\UwAmp\www\application\controllers\expenses.php on line 30
+[18-Apr-2014 03:45:02 Africa/Johannesburg] PHP Stack trace:
+[18-Apr-2014 03:45:02 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[18-Apr-2014 03:45:02 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[18-Apr-2014 03:45:02 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[18-Apr-2014 03:45:02 Africa/Johannesburg] PHP   4. Expenses->view() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[18-Apr-2014 03:45:39 Africa/Johannesburg] PHP Fatal error:  Call to undefined method Expenses::mapKeyToId() in C:\UwAmp\www\application\controllers\expenses.php on line 30
+[18-Apr-2014 03:45:39 Africa/Johannesburg] PHP Stack trace:
+[18-Apr-2014 03:45:39 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[18-Apr-2014 03:45:39 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[18-Apr-2014 03:45:39 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[18-Apr-2014 03:45:39 Africa/Johannesburg] PHP   4. Expenses->view() C:\UwAmp\www\system\core\CodeIgniter.php:359

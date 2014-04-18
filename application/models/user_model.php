@@ -39,7 +39,7 @@ class User_model extends CI_Model {
             'email' => $this->input->post('email'),
             'password' => hash("sha256",trim($this->input->post('password'))),
             'user_type' => $this->input->post('user_type'),
-            'create_date' => now(),
+            'create_date' => $this->now(),
             'active' => TRUE
         );
 

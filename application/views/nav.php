@@ -15,7 +15,7 @@
         &nbsp;&nbsp;
         |
         &nbsp;&nbsp;
-        <a href="/schedule" >schedule</a>
+        <a href="/schedule" >Schedule</a>
         &nbsp;&nbsp;
         |
         &nbsp;&nbsp;

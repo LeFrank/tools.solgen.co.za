@@ -1,14 +1,15 @@
 <?php
 
-/* 
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-class Expenses extends CI_Controller
-{
+
+class Expenses extends CI_Controller {
+
     var $require_auth = true;
-    
+
     public function __construct() {
         parent::__construct();
         $this->load->library('session');
@@ -17,34 +18,52 @@ class Expenses extends CI_Controller
         $this->load->helper('email');
         $this->load->library('form_validation');
         can_access(
-                $this->require_auth, 
-                $this->session);
-        //$this->load->model('expense_model');
+                $this->require_auth, $this->session);
+        $this->load->model('expense_model');
         $this->load->model('expense_type_model');
         //$this->load->model('user_expense_type_model');
     }
-    
-    public function view(){
+
+    public function view() {
         $this->load->library('session');
-        $expenseTypes = $this->expense_type_model->get_expense_types();
-        $data["expenseTypes"] = $expenseTypes;
+        $this->load->helper("array_helper");
+        $data["expenseTypes"] = mapKeyToId($this->expense_type_model->get_expense_types());
+        $data["expense"] = $this->expense_model->getExpenses($this->session->userdata("user")->id, 5);
         $this->load->view('header');
-        $this->load->view('expenses/view' ,$data);
+        $this->load->view('expenses/expense_nav');
+        $this->load->view('expenses/view', $data);
         $this->load->view('footer');
     }
-    
-    public function capture(){
+
+    public function capture() {
         echo "capture";
+        $this->load->library('session');
+        $this->load->helper('form');
+        $this->load->helper('url');
+        $this->load->library('form_validation');
+
+        $data['title'] = 'Create a news item';
+
+        $this->form_validation->set_rules('amount', 'amount', 'required');
+        if ($this->form_validation->run() == FALSE) {
+            $this->view();
+        } else {
+            $data["expense"] = $this->expense_model->capture_expense();
+            redirect("/expenses/view","refresh");
+        }
+    }
+
+    public function delete() {
+        echo __FUNCTION__;
         exit;
     }
-    
-    public function delete(){
-        echo _FUNCTION_;
-        exit;
+
+    public function history() {
+        $data[""] = "";
+        $this->load->view('header');
+        $this->load->view('expenses/expense_nav');
+        $this->load->view('expenses/history', $data);
+        $this->load->view('footer');
     }
-    
-    public function history(){
-        echo _FUNCTION_;
-        exit;
-    }
+
 }

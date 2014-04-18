@@ -49,6 +49,8 @@ $route['user/logout'] = 'user/logout';
 $route['user/(:any)'] = 'user/$1';
 
 $route['expenses'] = 'expenses/view';
+$route['expenses/capture'] = 'expenses/capture';
+$route['expenses/history'] = 'expenses/history';
 
 $route['test'] = 'pages/test';
 

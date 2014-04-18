@@ -6,5 +6,7 @@
  */
 ?>
 
-
-Wassup
+<p>Tasters go here.</p><br/>
+<p>Or just general stats</p><br/>
+<p>Blurb about what I wish to accomplist with the site.</p><br/>
+<p>Maybe pull in some content from the main solgen site.</p><br/>

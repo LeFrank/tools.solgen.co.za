@@ -11,8 +11,8 @@
         <link rel="shortcut icon" href="/favicon.ico">
         <link rel="stylesheet" type="text/css" media="all" href="/css/black_and_yellow.css" />
         <link href='http://fonts.googleapis.com/css?family=Sarina' rel='stylesheet' type='text/css'>
-        <script src="/js/third_party/jquery-1.6.4.min.js"></script>
-        <script src="/js/third_party/jquery.masonry.min.js"></script>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+        <script src="/js/third_party/jquery.min-1.11.0.js"></script>
     </head>
     <body>
         <div class="login" id="login">
@@ -27,10 +27,10 @@
             <a href="/user/logout" >Logout</a> 
         <?php } ?>
     </div>
-    <div class="header"><a href="/">Solgen Sandbox</a></div>
+    <div class="header"><a href="/" >Solgen Sandbox</a></div>
     <div class="clear-float" />
     <div class="top-nav">
-        <?php $this->load->view("nav")?>
+        <?php $this->load->view("nav") ?>
     </div>
     <div id="contentMain" class="contentMain">
-        
+

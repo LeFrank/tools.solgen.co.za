@@ -227,3 +227,24 @@ Custom classes go here
 .contentMain{
     padding:0px 0px 0px 10px;
 }
+form > label{
+    display: inline-block; width: 150px;
+}
+
+.align-left{
+    text-align: left;
+}
+
+.align-right{
+    text-align: right;
+}
+
+.td-total{
+    font-weight: bolder;
+    border:none;
+}
+
+.expensesNav a{
+    font-size: smaller;
+    color:#c8c8c8;
+}
