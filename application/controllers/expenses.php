@@ -49,7 +49,7 @@ class Expenses extends CI_Controller {
             $this->view();
         } else {
             $data["expense"] = $this->expense_model->capture_expense();
-            redirect("/expenses/view","refresh");
+            redirect("/expenses/view", "refresh");
         }
     }
 
@@ -59,7 +59,12 @@ class Expenses extends CI_Controller {
     }
 
     public function history() {
-        $data[""] = "";
+        $this->load->helper("array_helper");
+        $this->load->helper("date_helper");
+        $this->load->library('session');
+        $data["expenseTypes"] = mapKeyToId($this->expense_type_model->get_expense_types());
+        $data["startAndEndDateOfWeek"] = getStartAndEndDate(date('W'), date('Y'));
+        $data["expensesForWeek"] = $this->expense_model->getExpensesbyDateRange($data["startAndEndDateOfWeek"][0], $data["startAndEndDateOfWeek"][1], $this->session->userdata("user")->id);
         $this->load->view('header');
         $this->load->view('expenses/expense_nav');
         $this->load->view('expenses/history', $data);

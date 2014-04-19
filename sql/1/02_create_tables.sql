@@ -3,9 +3,10 @@ CREATE TABLE `expense` (
   `user_id` int(11) DEFAULT NULL,
   `amount` float(11,2) DEFAULT NULL,
   `expense_type_id` int(11) DEFAULT NULL,
-  `description` varchar(255) DEFAULT NULL,
+  `description` varchar(500) DEFAULT NULL,
   `expense_date` timestamp DEFAULT NULL,
   `location` varchar(255) DEFAULT NULL,
+  `payment_method_id` int(3);
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
@@ -32,3 +33,10 @@ CREATE TABLE `solgen_user` (
   `active` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+CREATE TABLE `payment_method`(
+    `id` int(11) not null auto_increment,
+    `description` varchar(255) DEFAULT NULL,
+    `user_id` int(11) DEFAULT NULL,
+    PRIMARY KEY (`ID`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;

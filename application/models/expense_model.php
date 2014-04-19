@@ -5,12 +5,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-/**
- * Description of expense_model
- *
- * @author Sammy Guergachi <sguergachi at gmail.com>
- */
 class expense_model extends CI_Model {
 
     var $tn = "expense";
@@ -25,15 +19,28 @@ class expense_model extends CI_Model {
         if ($userId === null) {
             return null;
         }
+        $this->db->order_by("expense_date", "desc");
         if (null == $limit) {
             $query = $this->db->get_where($this->tn, array('user_id' => $userId));
         } else {
             $query = $this->db->get_where($this->tn, array('user_id' => $userId), $limit, $offset);
         }
-
         return $query->result_array();
     }
 
+    public function getExpensesbyDateRange($startDate, $endDate, $userId = null, $limit = null, $offset = 0) {
+        if ($userId === null) {
+            return null;
+        }
+        $this->db->order_by("expense_date", "desc");
+        if (null == $limit) {
+            $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'expense_date >='=> $startDate , 'expense_date <= ' => $endDate));
+        } else {
+            $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'expense_date >='=> $startDate , 'expense_date <= ' => $endDate), $limit, $offset);
+        }
+        return $query->result_array();
+    }
+    
     public function capture_expense() {
         $this->load->helper('date');
         $this->load->library("session");

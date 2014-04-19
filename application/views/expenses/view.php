@@ -5,7 +5,7 @@
 
     <div id="latestExpenses">
         <h3>Five Latest Expenses</h3>
-        <?php if (is_array($expense) && !empty($expense)) { 
+        <?php if (is_array($expense) && !empty($expense)) {
             ?>
             <table>
                 <thead>
@@ -37,7 +37,7 @@
                     ?>
                 </tbody>
             </table>
-        <?php
+            <?php
         } else {
             echo "No expenses captured.";
         }
@@ -48,7 +48,7 @@
         <h3>Capture Expense</h3>
         <?php echo validation_errors(); ?>
 
-<?php echo form_open('expenses/capture') ?>
+        <?php echo form_open('expenses/capture') ?>
 
         <label for="amount">Amount *</label>
         <input type="number" min="0.01" step="0.01" max="9999999999999" name="amount" /><br />

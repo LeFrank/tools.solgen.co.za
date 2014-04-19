@@ -756,3 +756,52 @@
 [18-Apr-2014 03:45:39 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
 [18-Apr-2014 03:45:39 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
 [18-Apr-2014 03:45:39 Africa/Johannesburg] PHP   4. Expenses->view() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[19-Apr-2014 00:57:21 Africa/Johannesburg] PHP Fatal error:  Call to undefined function mapKeyToId() in C:\UwAmp\www\application\controllers\expenses.php on line 62
+[19-Apr-2014 00:57:21 Africa/Johannesburg] PHP Stack trace:
+[19-Apr-2014 00:57:21 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[19-Apr-2014 00:57:21 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[19-Apr-2014 00:57:22 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[19-Apr-2014 00:57:22 Africa/Johannesburg] PHP   4. Expenses->history() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[19-Apr-2014 01:52:21 Africa/Johannesburg] PHP Fatal error:  Call to undefined function prin_r() in C:\UwAmp\www\application\controllers\expenses.php on line 66
+[19-Apr-2014 01:52:21 Africa/Johannesburg] PHP Stack trace:
+[19-Apr-2014 01:52:21 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[19-Apr-2014 01:52:21 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[19-Apr-2014 01:52:21 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[19-Apr-2014 01:52:21 Africa/Johannesburg] PHP   4. Expenses->history() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[19-Apr-2014 01:57:49 Africa/Johannesburg] PHP Fatal error:  Call to undefined function getStartAndEndDate() in C:\UwAmp\www\application\controllers\expenses.php on line 65
+[19-Apr-2014 01:57:49 Africa/Johannesburg] PHP Stack trace:
+[19-Apr-2014 01:57:49 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[19-Apr-2014 01:57:49 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[19-Apr-2014 01:57:49 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[19-Apr-2014 01:57:49 Africa/Johannesburg] PHP   4. Expenses->history() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[19-Apr-2014 01:58:20 Africa/Johannesburg] PHP Parse error:  syntax error, unexpected '[', expecting ',' or ';' in C:\UwAmp\www\application\views\expenses\history.php on line 14
+[19-Apr-2014 01:58:20 Africa/Johannesburg] PHP Stack trace:
+[19-Apr-2014 01:58:20 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[19-Apr-2014 01:58:20 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[19-Apr-2014 01:58:20 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[19-Apr-2014 01:58:20 Africa/Johannesburg] PHP   4. Expenses->history() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[19-Apr-2014 01:58:20 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\expenses.php:68
+[19-Apr-2014 01:58:20 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[19-Apr-2014 01:58:36 Africa/Johannesburg] PHP Parse error:  syntax error, unexpected '[', expecting ',' or ';' in C:\UwAmp\www\application\views\expenses\history.php on line 14
+[19-Apr-2014 01:58:36 Africa/Johannesburg] PHP Stack trace:
+[19-Apr-2014 01:58:36 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[19-Apr-2014 01:58:36 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[19-Apr-2014 01:58:36 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[19-Apr-2014 01:58:36 Africa/Johannesburg] PHP   4. Expenses->history() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[19-Apr-2014 01:58:36 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\expenses.php:68
+[19-Apr-2014 01:58:36 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[19-Apr-2014 01:59:10 Africa/Johannesburg] PHP Parse error:  syntax error, unexpected '[', expecting ',' or ';' in C:\UwAmp\www\application\views\expenses\history.php on line 14
+[19-Apr-2014 01:59:10 Africa/Johannesburg] PHP Stack trace:
+[19-Apr-2014 01:59:10 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[19-Apr-2014 01:59:10 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[19-Apr-2014 01:59:10 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[19-Apr-2014 01:59:10 Africa/Johannesburg] PHP   4. Expenses->history() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[19-Apr-2014 01:59:10 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\expenses.php:68
+[19-Apr-2014 01:59:10 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[19-Apr-2014 02:02:04 Africa/Johannesburg] PHP Parse error:  syntax error, unexpected '-', expecting ')' in C:\UwAmp\www\application\helpers\date_helper.php on line 2
+[19-Apr-2014 02:02:04 Africa/Johannesburg] PHP Stack trace:
+[19-Apr-2014 02:02:04 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[19-Apr-2014 02:02:04 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[19-Apr-2014 02:02:04 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[19-Apr-2014 02:02:04 Africa/Johannesburg] PHP   4. Expenses->history() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[19-Apr-2014 02:02:04 Africa/Johannesburg] PHP   5. CI_Loader->helper() C:\UwAmp\www\application\controllers\expenses.php:63
