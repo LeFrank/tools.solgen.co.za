@@ -5,6 +5,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 class expense_model extends CI_Model {
 
     var $tn = "expense";
@@ -15,6 +16,13 @@ class expense_model extends CI_Model {
         date_default_timezone_set('Africa/Johannesburg');
     }
 
+    /**
+     * Get expenses bases on certain criteria
+     * @param type $userId if present return this users expenses.
+     * @param type $limit if preset return a limited result set
+     * @param type $offset if present offset the result by this value else no offset
+     * @return null
+     */
     public function getExpenses($userId = null, $limit = null, $offset = 0) {
         if ($userId === null) {
             return null;
@@ -28,19 +36,60 @@ class expense_model extends CI_Model {
         return $query->result_array();
     }
 
+    /**
+     * Get expenses by date range. Can be filtered by user and delimited
+     * @param type $startDate
+     * @param type $endDate
+     * @param type $userId
+     * @param type $limit
+     * @param type $offset
+     * @return null
+     */
     public function getExpensesbyDateRange($startDate, $endDate, $userId = null, $limit = null, $offset = 0) {
         if ($userId === null) {
             return null;
         }
         $this->db->order_by("expense_date", "desc");
         if (null == $limit) {
-            $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'expense_date >='=> $startDate , 'expense_date <= ' => $endDate));
+            $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'expense_date >=' => $startDate, 'expense_date <= ' => $endDate));
         } else {
-            $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'expense_date >='=> $startDate , 'expense_date <= ' => $endDate), $limit, $offset);
+            $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'expense_date >=' => $startDate, 'expense_date <= ' => $endDate), $limit, $offset);
         }
         return $query->result_array();
     }
-    
+
+    public function getexpensesByCriteria($userId = null, $limit = null, $offset = 0) {
+        if (null != $userId) {
+            $this->db->order_by("expense_date", "desc");
+            if ($this->input->post("fromAmount") != $this->input->post("toAmount")) {
+                $this->db->where("amount >=", $this->input->post("fromAmount"));
+                $this->db->where("amount <=", $this->input->post("toAmount"));
+            }
+            if ($this->input->post("keyword") != "") {
+                $this->db->like("description", $this->input->post("keyword"));
+            }
+            $expenseTypeArr = $this->input->post("expenseType");
+            $paymentMethodArr = $this->input->post("paymentMethod");
+            if(!empty($expenseTypeArr) && $expenseTypeArr[0] != "all"){
+                $this->db->where_in("expense_type_id", array_map('intval', $this->input->post("expenseType")));
+            }
+            if(!empty($paymentMethodArr) &&  $paymentMethodArr[0] != "all"){
+                $this->db->where_in("payment_method_id",array_map('intval',$this->input->post("paymentMethod")));
+            }
+            if (null == $limit) {
+                $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'expense_date >=' => $this->input->post("fromDate"), 'expense_date <= ' => $this->input->post("toDate")));
+            } else {
+                $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'expense_date >=' => $this->input->post("fromDate"), 'expense_date <= ' => $this->input->post("toDate")), $limit, $offset);
+            }
+//            print "SQL Query: " . $this->db->last_query();
+            return $query->result_array();
+        }
+    }
+
+    /**
+     * Capture a users expense from a post request. 
+     * @return type
+     */
     public function capture_expense() {
         $this->load->helper('date');
         $this->load->library("session");
@@ -50,7 +99,8 @@ class expense_model extends CI_Model {
             'description' => $this->input->post('description'),
             'location' => $this->input->post('location'),
             'expense_date' => date('Y/m/d H:i', strtotime($this->input->post('expenseDate'))),
-            'user_id' => $this->session->userdata("user")->id
+            'user_id' => $this->session->userdata("user")->id,
+            'payment_method_id' => $this->input->post('paymentMethod')
         );
         return $this->db->insert($this->tn, $data);
     }

@@ -12,6 +12,7 @@
                 <th/>
                 <th>Date</th>
                 <th>Expense Type</th>
+                <th>Payment Method</th>
                 <th>Description</th>
                 <th>Location</th>
                 <th>Amount</th>
@@ -24,6 +25,7 @@
                         echo "<td>" . ++$k . "</td>";
                         echo "<td>" . $v["expense_date"] . "</td>";
                         echo "<td>" . $expenseTypes[$v["expense_type_id"]]["description"] . "</td>";
+                        echo "<td>" . $expensePaymentMethod[$v["payment_method_id"]]["description"] . "</td>";
                         echo "<td>" . $v["description"] . "</td>";
                         echo "<td>" . $v["location"] . "</td>";
                         echo "<td>" . $v["amount"] . "</td>";
@@ -32,7 +34,7 @@
                     }
                     echo "<tr class='td-total'>"
                     . "  <td class='align-left'>Latest Expenses Total</span></td>"
-                    . "  <td colspan='5' class='align-right'>" . number_format($total, 2, '.', ',') . "</td>"
+                    . "  <td colspan='6' class='align-right'>" . number_format($total, 2, '.', ',') . "</td>"
                     . "</tr>";
                     ?>
                 </tbody>
@@ -59,6 +61,17 @@
             <?php
             foreach ($expenseTypes as $k => $v) {
                 echo '<option value="' . $v["id"] . '">' . $v["description"] . '</option>';
+            }
+            ?>
+        </select><br />
+
+        <label for="paymentMethod">Payment Method</label>
+        <select name="paymentMethod">
+            <?php
+            foreach ($expensePaymentMethod as $k => $v) {
+                echo '<option value="' . $v["id"] . '"  '
+                . ((strtolower($v["description"]) == "cash") ? 'selected="selected"' : '')
+                . '>' . $v["description"] . '</option>';
             }
             ?>
         </select><br />

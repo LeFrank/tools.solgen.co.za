@@ -248,7 +248,7 @@ form > label{
     color:#c8c8c8;
 }
 
-.expenseHistoryFilter > div > label{
+.expenseHistoryFilter > form >  div > label{
     display: inline-block; width: 150px;
 }
 

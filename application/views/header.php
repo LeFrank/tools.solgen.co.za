@@ -28,7 +28,7 @@
         <?php } ?>
     </div>
     <div class="header"><a href="/" >Solgen Sandbox</a></div>
-    <div class="clear-float" />
+    <div class="clear-float" ></div>
     <div class="top-nav">
         <?php $this->load->view("nav") ?>
     </div>

@@ -51,6 +51,7 @@ $route['user/(:any)'] = 'user/$1';
 $route['expenses'] = 'expenses/view';
 $route['expenses/capture'] = 'expenses/capture';
 $route['expenses/history'] = 'expenses/history';
+$route['expenses/filter-search'] = 'expenses/filteredSearch';
 
 $route['test'] = 'pages/test';
 

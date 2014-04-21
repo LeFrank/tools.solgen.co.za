@@ -805,3 +805,155 @@
 [19-Apr-2014 02:02:04 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
 [19-Apr-2014 02:02:04 Africa/Johannesburg] PHP   4. Expenses->history() C:\UwAmp\www\system\core\CodeIgniter.php:359
 [19-Apr-2014 02:02:04 Africa/Johannesburg] PHP   5. CI_Loader->helper() C:\UwAmp\www\application\controllers\expenses.php:63
+[19-Apr-2014 14:24:31 Africa/Johannesburg] PHP Fatal error:  Call to protected method CI_DB_active_record::_compile_select() from context 'Expense_type_model' in C:\UwAmp\www\application\models\expense_type_model.php on line 18
+[19-Apr-2014 14:24:31 Africa/Johannesburg] PHP Stack trace:
+[19-Apr-2014 14:24:31 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[19-Apr-2014 14:24:31 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[19-Apr-2014 14:24:31 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[19-Apr-2014 14:24:31 Africa/Johannesburg] PHP   4. Expenses->view() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[19-Apr-2014 14:24:31 Africa/Johannesburg] PHP   5. Expense_type_model->get_user_expense_types() C:\UwAmp\www\application\controllers\expenses.php:30
+[19-Apr-2014 14:25:19 Africa/Johannesburg] PHP Fatal error:  Call to a member function result_array() on a non-object in C:\UwAmp\www\application\models\expense_type_model.php on line 24
+[19-Apr-2014 14:25:19 Africa/Johannesburg] PHP Stack trace:
+[19-Apr-2014 14:25:19 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[19-Apr-2014 14:25:19 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[19-Apr-2014 14:25:19 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[19-Apr-2014 14:25:19 Africa/Johannesburg] PHP   4. Expenses->view() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[19-Apr-2014 14:25:19 Africa/Johannesburg] PHP   5. Expense_type_model->get_user_expense_types() C:\UwAmp\www\application\controllers\expenses.php:30
+[19-Apr-2014 14:25:29 Africa/Johannesburg] PHP Fatal error:  Call to a member function result_array() on a non-object in C:\UwAmp\www\application\models\expense_type_model.php on line 24
+[19-Apr-2014 14:25:29 Africa/Johannesburg] PHP Stack trace:
+[19-Apr-2014 14:25:29 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[19-Apr-2014 14:25:29 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[19-Apr-2014 14:25:29 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[19-Apr-2014 14:25:29 Africa/Johannesburg] PHP   4. Expenses->view() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[19-Apr-2014 14:25:29 Africa/Johannesburg] PHP   5. Expense_type_model->get_user_expense_types() C:\UwAmp\www\application\controllers\expenses.php:30
+[19-Apr-2014 14:25:31 Africa/Johannesburg] PHP Fatal error:  Call to a member function result_array() on a non-object in C:\UwAmp\www\application\models\expense_type_model.php on line 24
+[19-Apr-2014 14:25:31 Africa/Johannesburg] PHP Stack trace:
+[19-Apr-2014 14:25:31 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[19-Apr-2014 14:25:31 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[19-Apr-2014 14:25:32 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[19-Apr-2014 14:25:32 Africa/Johannesburg] PHP   4. Expenses->view() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[19-Apr-2014 14:25:32 Africa/Johannesburg] PHP   5. Expense_type_model->get_user_expense_types() C:\UwAmp\www\application\controllers\expenses.php:30
+[19-Apr-2014 14:26:09 Africa/Johannesburg] PHP Fatal error:  Call to undefined method CI_DB_mysql_result::where() in C:\UwAmp\www\application\models\expense_type_model.php on line 20
+[19-Apr-2014 14:26:09 Africa/Johannesburg] PHP Stack trace:
+[19-Apr-2014 14:26:09 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[19-Apr-2014 14:26:09 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[19-Apr-2014 14:26:09 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[19-Apr-2014 14:26:09 Africa/Johannesburg] PHP   4. Expenses->view() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[19-Apr-2014 14:26:09 Africa/Johannesburg] PHP   5. Expense_type_model->get_user_expense_types() C:\UwAmp\www\application\controllers\expenses.php:30
+[19-Apr-2014 14:26:55 Africa/Johannesburg] PHP Parse error:  syntax error, unexpected T_CONSTANT_ENCAPSED_STRING, expecting ')' in C:\UwAmp\www\application\models\expense_type_model.php on line 20
+[19-Apr-2014 14:26:55 Africa/Johannesburg] PHP Stack trace:
+[19-Apr-2014 14:26:55 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[19-Apr-2014 14:26:55 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[19-Apr-2014 14:26:55 Africa/Johannesburg] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[19-Apr-2014 14:26:55 Africa/Johannesburg] PHP   4. CI_Loader->model() C:\UwAmp\www\application\controllers\expenses.php:23
+[19-Apr-2014 14:27:03 Africa/Johannesburg] PHP Parse error:  syntax error, unexpected T_CONSTANT_ENCAPSED_STRING, expecting ')' in C:\UwAmp\www\application\models\expense_type_model.php on line 20
+[19-Apr-2014 14:27:03 Africa/Johannesburg] PHP Stack trace:
+[19-Apr-2014 14:27:03 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[19-Apr-2014 14:27:03 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[19-Apr-2014 14:27:03 Africa/Johannesburg] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[19-Apr-2014 14:27:03 Africa/Johannesburg] PHP   4. CI_Loader->model() C:\UwAmp\www\application\controllers\expenses.php:23
+[19-Apr-2014 14:29:04 Africa/Johannesburg] PHP Fatal error:  Call to protected method CI_DB_active_record::_compile_select() from context 'Expense_type_model' in C:\UwAmp\www\application\models\expense_type_model.php on line 18
+[19-Apr-2014 14:29:04 Africa/Johannesburg] PHP Stack trace:
+[19-Apr-2014 14:29:04 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[19-Apr-2014 14:29:04 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[19-Apr-2014 14:29:04 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[19-Apr-2014 14:29:04 Africa/Johannesburg] PHP   4. Expenses->view() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[19-Apr-2014 14:29:04 Africa/Johannesburg] PHP   5. Expense_type_model->get_user_expense_types() C:\UwAmp\www\application\controllers\expenses.php:30
+[19-Apr-2014 17:25:48 Africa/Johannesburg] PHP Fatal error:  Call to a member function get_user_payment_method() on a non-object in C:\UwAmp\www\application\controllers\expenses.php on line 32
+[19-Apr-2014 17:25:48 Africa/Johannesburg] PHP Stack trace:
+[19-Apr-2014 17:25:48 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[19-Apr-2014 17:25:48 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[19-Apr-2014 17:25:48 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[19-Apr-2014 17:25:48 Africa/Johannesburg] PHP   4. Expenses->view() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[19-Apr-2014 17:38:03 Africa/Johannesburg] PHP Parse error:  syntax error, unexpected ';' in C:\UwAmp\www\application\views\expenses\view.php on line 70
+[19-Apr-2014 17:38:03 Africa/Johannesburg] PHP Stack trace:
+[19-Apr-2014 17:38:03 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[19-Apr-2014 17:38:03 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[19-Apr-2014 17:38:03 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[19-Apr-2014 17:38:03 Africa/Johannesburg] PHP   4. Expenses->view() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[19-Apr-2014 17:38:03 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\expenses.php:36
+[19-Apr-2014 17:38:03 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[19-Apr-2014 17:38:07 Africa/Johannesburg] PHP Parse error:  syntax error, unexpected '<' in C:\UwAmp\www\application\views\expenses\view.php on line 70
+[19-Apr-2014 17:38:07 Africa/Johannesburg] PHP Stack trace:
+[19-Apr-2014 17:38:07 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[19-Apr-2014 17:38:07 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[19-Apr-2014 17:38:07 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[19-Apr-2014 17:38:07 Africa/Johannesburg] PHP   4. Expenses->view() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[19-Apr-2014 17:38:07 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\expenses.php:36
+[19-Apr-2014 17:38:07 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[19-Apr-2014 17:38:10 Africa/Johannesburg] PHP Parse error:  syntax error, unexpected '<' in C:\UwAmp\www\application\views\expenses\view.php on line 70
+[19-Apr-2014 17:38:10 Africa/Johannesburg] PHP Stack trace:
+[19-Apr-2014 17:38:10 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[19-Apr-2014 17:38:10 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[19-Apr-2014 17:38:10 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[19-Apr-2014 17:38:10 Africa/Johannesburg] PHP   4. Expenses->view() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[19-Apr-2014 17:38:10 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\expenses.php:36
+[19-Apr-2014 17:38:10 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[19-Apr-2014 17:39:14 Africa/Johannesburg] PHP Parse error:  syntax error, unexpected ';' in C:\UwAmp\www\application\views\expenses\view.php on line 72
+[19-Apr-2014 17:39:14 Africa/Johannesburg] PHP Stack trace:
+[19-Apr-2014 17:39:14 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[19-Apr-2014 17:39:14 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[19-Apr-2014 17:39:14 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[19-Apr-2014 17:39:14 Africa/Johannesburg] PHP   4. Expenses->view() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[19-Apr-2014 17:39:14 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\expenses.php:36
+[19-Apr-2014 17:39:14 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[19-Apr-2014 22:46:53 Europe/Helsinki] PHP Parse error:  syntax error, unexpected '[' in C:\UwAmp\www\application\models\expense_model.php on line 78
+[19-Apr-2014 22:46:53 Europe/Helsinki] PHP Stack trace:
+[19-Apr-2014 22:46:53 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[19-Apr-2014 22:46:53 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[19-Apr-2014 22:46:53 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[19-Apr-2014 22:46:53 Europe/Helsinki] PHP   4. CI_Loader->model() C:\UwAmp\www\application\controllers\expenses.php:22
+[19-Apr-2014 22:46:56 Europe/Helsinki] PHP Parse error:  syntax error, unexpected '[' in C:\UwAmp\www\application\models\expense_model.php on line 78
+[19-Apr-2014 22:46:56 Europe/Helsinki] PHP Stack trace:
+[19-Apr-2014 22:46:56 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[19-Apr-2014 22:46:56 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[19-Apr-2014 22:46:56 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[19-Apr-2014 22:46:56 Europe/Helsinki] PHP   4. CI_Loader->model() C:\UwAmp\www\application\controllers\expenses.php:22
+[19-Apr-2014 23:00:43 Europe/Helsinki] PHP Parse error:  syntax error, unexpected '[' in C:\UwAmp\www\application\models\expense_model.php on line 78
+[19-Apr-2014 23:00:43 Europe/Helsinki] PHP Stack trace:
+[19-Apr-2014 23:00:43 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[19-Apr-2014 23:00:43 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[19-Apr-2014 23:00:43 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[19-Apr-2014 23:00:43 Europe/Helsinki] PHP   4. CI_Loader->model() C:\UwAmp\www\application\controllers\expenses.php:22
+[19-Apr-2014 23:00:53 Europe/Helsinki] PHP Parse error:  syntax error, unexpected '[' in C:\UwAmp\www\application\models\expense_model.php on line 78
+[19-Apr-2014 23:00:53 Europe/Helsinki] PHP Stack trace:
+[19-Apr-2014 23:00:53 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[19-Apr-2014 23:00:53 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[19-Apr-2014 23:00:53 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[19-Apr-2014 23:00:53 Europe/Helsinki] PHP   4. CI_Loader->model() C:\UwAmp\www\application\controllers\expenses.php:22
+[19-Apr-2014 23:00:55 Europe/Helsinki] PHP Parse error:  syntax error, unexpected '[' in C:\UwAmp\www\application\models\expense_model.php on line 78
+[19-Apr-2014 23:00:55 Europe/Helsinki] PHP Stack trace:
+[19-Apr-2014 23:00:55 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[19-Apr-2014 23:00:55 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[19-Apr-2014 23:00:55 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[19-Apr-2014 23:00:55 Europe/Helsinki] PHP   4. CI_Loader->model() C:\UwAmp\www\application\controllers\expenses.php:22
+[19-Apr-2014 23:00:56 Europe/Helsinki] PHP Parse error:  syntax error, unexpected '[' in C:\UwAmp\www\application\models\expense_model.php on line 78
+[19-Apr-2014 23:00:56 Europe/Helsinki] PHP Stack trace:
+[19-Apr-2014 23:00:56 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[19-Apr-2014 23:00:56 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[19-Apr-2014 23:00:56 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[19-Apr-2014 23:00:56 Europe/Helsinki] PHP   4. CI_Loader->model() C:\UwAmp\www\application\controllers\expenses.php:22
+[19-Apr-2014 23:01:15 Europe/Helsinki] PHP Parse error:  syntax error, unexpected T_LNUMBER, expecting T_STRING or T_VARIABLE or '{' or '$' in C:\UwAmp\www\application\models\expense_model.php on line 78
+[19-Apr-2014 23:01:15 Europe/Helsinki] PHP Stack trace:
+[19-Apr-2014 23:01:15 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[19-Apr-2014 23:01:15 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[19-Apr-2014 23:01:15 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[19-Apr-2014 23:01:15 Europe/Helsinki] PHP   4. CI_Loader->model() C:\UwAmp\www\application\controllers\expenses.php:22
+[19-Apr-2014 23:01:18 Europe/Helsinki] PHP Parse error:  syntax error, unexpected '[' in C:\UwAmp\www\application\models\expense_model.php on line 81
+[19-Apr-2014 23:01:18 Europe/Helsinki] PHP Stack trace:
+[19-Apr-2014 23:01:18 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[19-Apr-2014 23:01:18 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[19-Apr-2014 23:01:18 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[19-Apr-2014 23:01:18 Europe/Helsinki] PHP   4. CI_Loader->model() C:\UwAmp\www\application\controllers\expenses.php:22
+[19-Apr-2014 23:02:29 Europe/Helsinki] PHP Parse error:  syntax error, unexpected '[' in C:\UwAmp\www\application\models\expense_model.php on line 79
+[19-Apr-2014 23:02:29 Europe/Helsinki] PHP Stack trace:
+[19-Apr-2014 23:02:29 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[19-Apr-2014 23:02:29 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[19-Apr-2014 23:02:29 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[19-Apr-2014 23:02:29 Europe/Helsinki] PHP   4. CI_Loader->model() C:\UwAmp\www\application\controllers\expenses.php:22
+[19-Apr-2014 23:02:40 Europe/Helsinki] PHP Parse error:  syntax error, unexpected '[' in C:\UwAmp\www\application\models\expense_model.php on line 79
+[19-Apr-2014 23:02:40 Europe/Helsinki] PHP Stack trace:
+[19-Apr-2014 23:02:40 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[19-Apr-2014 23:02:40 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[19-Apr-2014 23:02:40 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[19-Apr-2014 23:02:40 Europe/Helsinki] PHP   4. CI_Loader->model() C:\UwAmp\www\application\controllers\expenses.php:22

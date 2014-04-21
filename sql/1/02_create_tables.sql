@@ -38,5 +38,7 @@ CREATE TABLE `payment_method`(
     `id` int(11) not null auto_increment,
     `description` varchar(255) DEFAULT NULL,
     `user_id` int(11) DEFAULT NULL,
+    `enabled` boolean DEFAULT FALSE,
+    `create_date` timestamp DEFAULT now(),
     PRIMARY KEY (`ID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
