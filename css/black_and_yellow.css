@@ -270,3 +270,20 @@ three-col{
     column-count: 3;
     column-gap: 1em;
 }
+.success{
+    border:1px green solid;
+    color:green;
+    font-weight: bolder;
+    padding:10px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.failure{
+    border:1px red solid;
+    color:red;
+    font-weight: bolder;
+    padding:10px;
+    border-radius: 5px;
+    text-align: center;
+}

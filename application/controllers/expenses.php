@@ -66,8 +66,9 @@ class Expenses extends CI_Controller {
         $this->load->library('session');
         $data["expenseTypes"] = mapKeyToId($this->expense_type_model->get_expense_types());
         $data["expensePaymentMethod"] = mapKeyToId($this->payment_method_model->get_user_payment_method($this->session->userdata("user")->id));
-        $data["startAndEndDateOfWeek"] = getStartAndEndDate(date('W'), date('Y'));
-        $data["expensesForWeek"] = $this->expense_model->getExpensesbyDateRange($data["startAndEndDateOfWeek"][0], $data["startAndEndDateOfWeek"][1], $this->session->userdata("user")->id);
+        //$data["startAndEndDateOfWeek"] = getStartAndEndDateforWeek(date('W'), date('Y'));
+        $data["startAndEndDateforMonth"] =getStartAndEndDateforMonth(date("m"),date('Y'));
+        $data["expensesForWeek"] = $this->expense_model->getExpensesbyDateRange($data["startAndEndDateforMonth"][0], $data["startAndEndDateforMonth"][1], $this->session->userdata("user")->id);
         $this->load->view('header');
         $this->load->view('expenses/expense_nav');
         $this->load->view('expenses/history', $data);

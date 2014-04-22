@@ -957,3 +957,214 @@
 [19-Apr-2014 23:02:40 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
 [19-Apr-2014 23:02:40 Europe/Helsinki] PHP   3. Expenses->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
 [19-Apr-2014 23:02:40 Europe/Helsinki] PHP   4. CI_Loader->model() C:\UwAmp\www\application\controllers\expenses.php:22
+[22-Apr-2014 19:51:36 Africa/Johannesburg] PHP Fatal error:  Call to undefined method User_model::now() in C:\UwAmp\www\application\models\user_model.php on line 42
+[22-Apr-2014 19:51:36 Africa/Johannesburg] PHP Stack trace:
+[22-Apr-2014 19:51:36 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[22-Apr-2014 19:51:36 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[22-Apr-2014 19:51:36 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[22-Apr-2014 19:51:36 Africa/Johannesburg] PHP   4. User->login() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[22-Apr-2014 19:51:36 Africa/Johannesburg] PHP   5. User_model->set_user() C:\UwAmp\www\application\controllers\user.php:57
+[22-Apr-2014 19:51:51 Africa/Johannesburg] PHP Fatal error:  Call to undefined method User_model::now() in C:\UwAmp\www\application\models\user_model.php on line 42
+[22-Apr-2014 19:51:51 Africa/Johannesburg] PHP Stack trace:
+[22-Apr-2014 19:51:51 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[22-Apr-2014 19:51:51 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[22-Apr-2014 19:51:51 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[22-Apr-2014 19:51:51 Africa/Johannesburg] PHP   4. User->login() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[22-Apr-2014 19:51:51 Africa/Johannesburg] PHP   5. User_model->set_user() C:\UwAmp\www\application\controllers\user.php:57
+[22-Apr-2014 19:52:36 Africa/Johannesburg] PHP Fatal error:  Call to undefined method User_model::now() in C:\UwAmp\www\application\models\user_model.php on line 42
+[22-Apr-2014 19:52:36 Africa/Johannesburg] PHP Stack trace:
+[22-Apr-2014 19:52:36 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[22-Apr-2014 19:52:36 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[22-Apr-2014 19:52:36 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[22-Apr-2014 19:52:36 Africa/Johannesburg] PHP   4. User->login() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[22-Apr-2014 19:52:36 Africa/Johannesburg] PHP   5. User_model->set_user() C:\UwAmp\www\application\controllers\user.php:57
+[22-Apr-2014 19:52:44 Africa/Johannesburg] PHP Fatal error:  Call to undefined method User_model::now() in C:\UwAmp\www\application\models\user_model.php on line 42
+[22-Apr-2014 19:52:44 Africa/Johannesburg] PHP Stack trace:
+[22-Apr-2014 19:52:44 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[22-Apr-2014 19:52:44 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[22-Apr-2014 19:52:44 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[22-Apr-2014 19:52:44 Africa/Johannesburg] PHP   4. User->login() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[22-Apr-2014 19:52:44 Africa/Johannesburg] PHP   5. User_model->set_user() C:\UwAmp\www\application\controllers\user.php:57
+[22-Apr-2014 19:55:09 Africa/Johannesburg] PHP Fatal error:  Call to undefined method User_model::now() in C:\UwAmp\www\application\models\user_model.php on line 42
+[22-Apr-2014 19:55:09 Africa/Johannesburg] PHP Stack trace:
+[22-Apr-2014 19:55:09 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[22-Apr-2014 19:55:09 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[22-Apr-2014 19:55:09 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[22-Apr-2014 19:55:09 Africa/Johannesburg] PHP   4. User->login() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[22-Apr-2014 19:55:09 Africa/Johannesburg] PHP   5. User_model->set_user() C:\UwAmp\www\application\controllers\user.php:57
+[22-Apr-2014 20:57:04 Europe/Helsinki] PHP Fatal error:  Can't use method return value in write context in C:\UwAmp\www\application\controllers\user.php on line 40
+[22-Apr-2014 20:57:04 Europe/Helsinki] PHP Stack trace:
+[22-Apr-2014 20:57:04 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[22-Apr-2014 20:57:04 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[22-Apr-2014 20:59:14 Europe/Helsinki] PHP Fatal error:  Can't use method return value in write context in C:\UwAmp\www\application\controllers\user.php on line 41
+[22-Apr-2014 20:59:14 Europe/Helsinki] PHP Stack trace:
+[22-Apr-2014 20:59:14 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[22-Apr-2014 20:59:14 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[22-Apr-2014 20:59:42 Europe/Helsinki] PHP Fatal error:  Can't use method return value in write context in C:\UwAmp\www\application\controllers\user.php on line 43
+[22-Apr-2014 20:59:42 Europe/Helsinki] PHP Stack trace:
+[22-Apr-2014 20:59:42 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[22-Apr-2014 20:59:42 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[22-Apr-2014 20:59:46 Europe/Helsinki] PHP Fatal error:  Can't use method return value in write context in C:\UwAmp\www\application\controllers\user.php on line 43
+[22-Apr-2014 20:59:46 Europe/Helsinki] PHP Stack trace:
+[22-Apr-2014 20:59:46 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[22-Apr-2014 20:59:46 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[22-Apr-2014 21:00:07 Europe/Helsinki] PHP Fatal error:  Can't use method return value in write context in C:\UwAmp\www\application\controllers\user.php on line 43
+[22-Apr-2014 21:00:07 Europe/Helsinki] PHP Stack trace:
+[22-Apr-2014 21:00:07 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[22-Apr-2014 21:00:07 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[22-Apr-2014 21:00:34 Europe/Helsinki] PHP Fatal error:  Can't use method return value in write context in C:\UwAmp\www\application\controllers\user.php on line 43
+[22-Apr-2014 21:00:34 Europe/Helsinki] PHP Stack trace:
+[22-Apr-2014 21:00:34 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[22-Apr-2014 21:00:34 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[22-Apr-2014 21:00:37 Europe/Helsinki] PHP Fatal error:  Can't use method return value in write context in C:\UwAmp\www\application\controllers\user.php on line 43
+[22-Apr-2014 21:00:37 Europe/Helsinki] PHP Stack trace:
+[22-Apr-2014 21:00:37 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[22-Apr-2014 21:00:37 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[22-Apr-2014 21:00:43 Europe/Helsinki] PHP Fatal error:  Can't use method return value in write context in C:\UwAmp\www\application\controllers\user.php on line 43
+[22-Apr-2014 21:00:43 Europe/Helsinki] PHP Stack trace:
+[22-Apr-2014 21:00:43 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[22-Apr-2014 21:00:43 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[22-Apr-2014 21:01:33 Europe/Helsinki] PHP Fatal error:  Can't use method return value in write context in C:\UwAmp\www\application\controllers\user.php on line 44
+[22-Apr-2014 21:01:33 Europe/Helsinki] PHP Stack trace:
+[22-Apr-2014 21:01:33 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[22-Apr-2014 21:01:33 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[22-Apr-2014 21:03:11 Europe/Helsinki] PHP Fatal error:  Can't use method return value in write context in C:\UwAmp\www\application\controllers\user.php on line 44
+[22-Apr-2014 21:03:11 Europe/Helsinki] PHP Stack trace:
+[22-Apr-2014 21:03:11 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[22-Apr-2014 21:03:11 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[22-Apr-2014 21:03:29 Europe/Helsinki] PHP Fatal error:  Can't use method return value in write context in C:\UwAmp\www\application\controllers\user.php on line 44
+[22-Apr-2014 21:03:29 Europe/Helsinki] PHP Stack trace:
+[22-Apr-2014 21:03:29 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[22-Apr-2014 21:03:29 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[22-Apr-2014 21:03:30 Europe/Helsinki] PHP Fatal error:  Can't use method return value in write context in C:\UwAmp\www\application\controllers\user.php on line 44
+[22-Apr-2014 21:03:30 Europe/Helsinki] PHP Stack trace:
+[22-Apr-2014 21:03:30 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[22-Apr-2014 21:03:30 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[22-Apr-2014 21:03:31 Europe/Helsinki] PHP Fatal error:  Can't use method return value in write context in C:\UwAmp\www\application\controllers\user.php on line 44
+[22-Apr-2014 21:03:31 Europe/Helsinki] PHP Stack trace:
+[22-Apr-2014 21:03:31 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[22-Apr-2014 21:03:31 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[22-Apr-2014 21:03:31 Europe/Helsinki] PHP Fatal error:  Can't use method return value in write context in C:\UwAmp\www\application\controllers\user.php on line 44
+[22-Apr-2014 21:03:31 Europe/Helsinki] PHP Stack trace:
+[22-Apr-2014 21:03:31 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[22-Apr-2014 21:03:31 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[22-Apr-2014 21:03:31 Europe/Helsinki] PHP Fatal error:  Can't use method return value in write context in C:\UwAmp\www\application\controllers\user.php on line 44
+[22-Apr-2014 21:03:31 Europe/Helsinki] PHP Stack trace:
+[22-Apr-2014 21:03:31 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[22-Apr-2014 21:03:31 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[22-Apr-2014 21:03:35 Europe/Helsinki] PHP Fatal error:  Can't use method return value in write context in C:\UwAmp\www\application\controllers\user.php on line 44
+[22-Apr-2014 21:03:35 Europe/Helsinki] PHP Stack trace:
+[22-Apr-2014 21:03:35 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[22-Apr-2014 21:03:35 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[22-Apr-2014 21:05:01 Europe/Helsinki] PHP Fatal error:  Can't use method return value in write context in C:\UwAmp\www\application\controllers\user.php on line 45
+[22-Apr-2014 21:05:01 Europe/Helsinki] PHP Stack trace:
+[22-Apr-2014 21:05:01 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[22-Apr-2014 21:05:01 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[22-Apr-2014 21:05:04 Europe/Helsinki] PHP Fatal error:  Can't use method return value in write context in C:\UwAmp\www\application\controllers\user.php on line 45
+[22-Apr-2014 21:05:04 Europe/Helsinki] PHP Stack trace:
+[22-Apr-2014 21:05:04 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[22-Apr-2014 21:05:04 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[22-Apr-2014 21:05:05 Europe/Helsinki] PHP Fatal error:  Can't use method return value in write context in C:\UwAmp\www\application\controllers\user.php on line 45
+[22-Apr-2014 21:05:05 Europe/Helsinki] PHP Stack trace:
+[22-Apr-2014 21:05:05 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[22-Apr-2014 21:05:05 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[22-Apr-2014 21:05:05 Europe/Helsinki] PHP Fatal error:  Can't use method return value in write context in C:\UwAmp\www\application\controllers\user.php on line 45
+[22-Apr-2014 21:05:05 Europe/Helsinki] PHP Stack trace:
+[22-Apr-2014 21:05:05 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[22-Apr-2014 21:05:05 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[22-Apr-2014 21:05:06 Europe/Helsinki] PHP Fatal error:  Can't use method return value in write context in C:\UwAmp\www\application\controllers\user.php on line 45
+[22-Apr-2014 21:05:06 Europe/Helsinki] PHP Stack trace:
+[22-Apr-2014 21:05:06 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[22-Apr-2014 21:05:06 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[22-Apr-2014 21:05:06 Europe/Helsinki] PHP Fatal error:  Can't use method return value in write context in C:\UwAmp\www\application\controllers\user.php on line 45
+[22-Apr-2014 21:05:06 Europe/Helsinki] PHP Stack trace:
+[22-Apr-2014 21:05:06 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[22-Apr-2014 21:05:06 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[22-Apr-2014 21:05:06 Europe/Helsinki] PHP Fatal error:  Can't use method return value in write context in C:\UwAmp\www\application\controllers\user.php on line 45
+[22-Apr-2014 21:05:06 Europe/Helsinki] PHP Stack trace:
+[22-Apr-2014 21:05:06 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[22-Apr-2014 21:05:06 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[22-Apr-2014 21:05:06 Europe/Helsinki] PHP Fatal error:  Can't use method return value in write context in C:\UwAmp\www\application\controllers\user.php on line 45
+[22-Apr-2014 21:05:06 Europe/Helsinki] PHP Stack trace:
+[22-Apr-2014 21:05:06 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[22-Apr-2014 21:05:06 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[22-Apr-2014 21:05:11 Europe/Helsinki] PHP Fatal error:  Can't use method return value in write context in C:\UwAmp\www\application\controllers\user.php on line 46
+[22-Apr-2014 21:05:11 Europe/Helsinki] PHP Stack trace:
+[22-Apr-2014 21:05:11 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[22-Apr-2014 21:05:11 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[22-Apr-2014 21:05:12 Europe/Helsinki] PHP Fatal error:  Can't use method return value in write context in C:\UwAmp\www\application\controllers\user.php on line 46
+[22-Apr-2014 21:05:12 Europe/Helsinki] PHP Stack trace:
+[22-Apr-2014 21:05:12 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[22-Apr-2014 21:05:12 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[22-Apr-2014 21:05:13 Europe/Helsinki] PHP Fatal error:  Can't use method return value in write context in C:\UwAmp\www\application\controllers\user.php on line 46
+[22-Apr-2014 21:05:13 Europe/Helsinki] PHP Stack trace:
+[22-Apr-2014 21:05:13 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[22-Apr-2014 21:05:13 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[22-Apr-2014 21:05:13 Europe/Helsinki] PHP Fatal error:  Can't use method return value in write context in C:\UwAmp\www\application\controllers\user.php on line 46
+[22-Apr-2014 21:05:13 Europe/Helsinki] PHP Stack trace:
+[22-Apr-2014 21:05:13 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[22-Apr-2014 21:05:13 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[22-Apr-2014 21:05:14 Europe/Helsinki] PHP Fatal error:  Can't use method return value in write context in C:\UwAmp\www\application\controllers\user.php on line 46
+[22-Apr-2014 21:05:14 Europe/Helsinki] PHP Stack trace:
+[22-Apr-2014 21:05:14 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[22-Apr-2014 21:05:14 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[22-Apr-2014 21:05:14 Europe/Helsinki] PHP Fatal error:  Can't use method return value in write context in C:\UwAmp\www\application\controllers\user.php on line 46
+[22-Apr-2014 21:05:14 Europe/Helsinki] PHP Stack trace:
+[22-Apr-2014 21:05:14 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[22-Apr-2014 21:05:14 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[22-Apr-2014 21:05:14 Europe/Helsinki] PHP Fatal error:  Can't use method return value in write context in C:\UwAmp\www\application\controllers\user.php on line 46
+[22-Apr-2014 21:05:14 Europe/Helsinki] PHP Stack trace:
+[22-Apr-2014 21:05:14 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[22-Apr-2014 21:05:14 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[22-Apr-2014 21:09:33 Europe/Helsinki] PHP Fatal error:  Can't use method return value in write context in C:\UwAmp\www\application\controllers\user.php on line 40
+[22-Apr-2014 21:09:33 Europe/Helsinki] PHP Stack trace:
+[22-Apr-2014 21:09:33 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[22-Apr-2014 21:09:33 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[22-Apr-2014 21:09:36 Europe/Helsinki] PHP Fatal error:  Can't use method return value in write context in C:\UwAmp\www\application\controllers\user.php on line 40
+[22-Apr-2014 21:09:36 Europe/Helsinki] PHP Stack trace:
+[22-Apr-2014 21:09:36 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[22-Apr-2014 21:09:36 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[22-Apr-2014 21:10:00 Europe/Helsinki] PHP Fatal error:  Can't use method return value in write context in C:\UwAmp\www\application\controllers\user.php on line 40
+[22-Apr-2014 21:10:00 Europe/Helsinki] PHP Stack trace:
+[22-Apr-2014 21:10:00 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[22-Apr-2014 21:10:00 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[22-Apr-2014 21:10:01 Europe/Helsinki] PHP Fatal error:  Can't use method return value in write context in C:\UwAmp\www\application\controllers\user.php on line 40
+[22-Apr-2014 21:10:01 Europe/Helsinki] PHP Stack trace:
+[22-Apr-2014 21:10:01 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[22-Apr-2014 21:10:01 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[22-Apr-2014 21:10:02 Europe/Helsinki] PHP Fatal error:  Can't use method return value in write context in C:\UwAmp\www\application\controllers\user.php on line 40
+[22-Apr-2014 21:10:02 Europe/Helsinki] PHP Stack trace:
+[22-Apr-2014 21:10:02 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[22-Apr-2014 21:10:02 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[22-Apr-2014 21:10:02 Europe/Helsinki] PHP Fatal error:  Can't use method return value in write context in C:\UwAmp\www\application\controllers\user.php on line 40
+[22-Apr-2014 21:10:02 Europe/Helsinki] PHP Stack trace:
+[22-Apr-2014 21:10:02 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[22-Apr-2014 21:10:02 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[22-Apr-2014 23:42:51 Africa/Johannesburg] PHP Fatal error:  Call to undefined function validation_errors() in C:\UwAmp\www\application\views\user\forgottenPasswordView.php on line 8
+[22-Apr-2014 23:42:51 Africa/Johannesburg] PHP Stack trace:
+[22-Apr-2014 23:42:51 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[22-Apr-2014 23:42:51 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[22-Apr-2014 23:42:51 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[22-Apr-2014 23:42:51 Africa/Johannesburg] PHP   4. User->forgottenPassword() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[22-Apr-2014 23:42:51 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\user.php:79
+[22-Apr-2014 23:42:51 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[22-Apr-2014 23:42:51 Africa/Johannesburg] PHP   7. include() C:\UwAmp\www\system\core\Loader.php:833
+[22-Apr-2014 23:43:03 Africa/Johannesburg] PHP Fatal error:  Call to undefined function validation_errors() in C:\UwAmp\www\application\views\user\forgottenPassword.php on line 8
+[22-Apr-2014 23:43:03 Africa/Johannesburg] PHP Stack trace:
+[22-Apr-2014 23:43:03 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[22-Apr-2014 23:43:03 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[22-Apr-2014 23:43:03 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[22-Apr-2014 23:43:03 Africa/Johannesburg] PHP   4. User->forgottenPassword() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[22-Apr-2014 23:43:03 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\user.php:79
+[22-Apr-2014 23:43:03 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[22-Apr-2014 23:43:03 Africa/Johannesburg] PHP   7. include() C:\UwAmp\www\system\core\Loader.php:833
+[23-Apr-2014 00:55:01 Africa/Johannesburg] PHP Fatal error:  Call to a member function set_rules() on a non-object in C:\UwAmp\www\application\controllers\user.php on line 92
+[23-Apr-2014 00:55:01 Africa/Johannesburg] PHP Stack trace:
+[23-Apr-2014 00:55:01 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[23-Apr-2014 00:55:01 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[23-Apr-2014 00:55:01 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[23-Apr-2014 00:55:01 Africa/Johannesburg] PHP   4. User->sendResetEmail() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[23-Apr-2014 01:56:00 Europe/Helsinki] PHP Parse error:  syntax error, unexpected T_OBJECT_OPERATOR in C:\UwAmp\www\application\controllers\user.php on line 96
+[23-Apr-2014 01:56:00 Europe/Helsinki] PHP Stack trace:
+[23-Apr-2014 01:56:00 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[23-Apr-2014 01:56:00 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202

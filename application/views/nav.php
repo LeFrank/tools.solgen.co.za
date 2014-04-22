@@ -8,7 +8,7 @@
 ?>
         &nbsp;&nbsp;
         <a href="/expenses" >Expenses</a>
-        &nbsp;&nbsp;
+        <!-- &nbsp;&nbsp;
         |
         &nbsp;&nbsp;
         <a href="/weather" >Weather</a>
@@ -27,4 +27,4 @@
         &nbsp;&nbsp;
         |
         &nbsp;&nbsp;
-        <a href="/Resources" >Resources</a>
+        <a href="/Resources" >Resources</a> -->

@@ -3,7 +3,7 @@
 <div id="expenseHistoryContent" class="expenseHistoryContent" >
     <h2>Expense History</h2>
     <div id="historyGraph">
-        Table of full data from <?php echo $startAndEndDateOfWeek[0]; ?> to <?php echo $startAndEndDateOfWeek[1]; ?><br/><br/>
+        Table of full data from <?php echo $startAndEndDateforMonth[0]; ?> to <?php echo $startAndEndDateforMonth[1]; ?><br/><br/>
         <?php if (is_array($expensesForWeek) && !empty($expensesForWeek)) {
             ?>
             <table>
@@ -84,9 +84,9 @@
         <div>
             <label>Date</label>
             From &nbsp;
-            <input type="text" name="fromDate" id="fromDate" value="<?php echo $startAndEndDateOfWeek[0]; ?>"/>
+            <input type="text" name="fromDate" id="fromDate" value="<?php echo $startAndEndDateforMonth[0]; ?>"/>
             &nbsp;&nbsp;
-            To&nbsp;<input type="text" name="toDate" id="toDate" value="<?php echo $startAndEndDateOfWeek[1]; ?>"/>
+            To&nbsp;<input type="text" name="toDate" id="toDate" value="<?php echo $startAndEndDateforMonth[1]; ?>"/>
         </div>
         <div>
             <label>Amount</label>

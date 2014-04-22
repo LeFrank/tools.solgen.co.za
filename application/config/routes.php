@@ -46,6 +46,9 @@ $route['404_override'] = '';
 $route['user/register'] = 'user/register';
 $route['user/login'] = 'user/login';
 $route['user/logout'] = 'user/logout';
+$route['user/settings'] = 'user/settings';
+$route['user/forgotten-password'] = 'user/forgottenPassword';
+$route['user/send-reset-password-email'] = 'user/sendResetEmail';
 $route['user/(:any)'] = 'user/$1';
 
 $route['expenses'] = 'expenses/view';

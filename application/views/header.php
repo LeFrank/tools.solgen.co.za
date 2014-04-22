@@ -24,7 +24,7 @@
                 <a href="/user/register">Register</a>
             </form>
         <?php } else { ?>
-            <a href="/user/logout" >Logout</a> 
+            <a href="/user/settings" >My Settings</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="/user/logout" >Logout</a> 
         <?php } ?>
     </div>
     <div class="header"><a href="/" >Solgen Sandbox</a></div>

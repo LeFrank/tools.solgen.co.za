@@ -1,5 +1,5 @@
 <?php
-function getStartAndEndDate($week, $year)
+function getStartAndEndDateforWeek($week, $year)
 {
 
     $time = strtotime("1 January $year", time());
@@ -8,5 +8,11 @@ function getStartAndEndDate($week, $year)
     $return[0] = date('Y/m/d H:i', $time);
     $time += 6*24*3600;
     $return[1] = date('Y/m/d H:i', $time);
+    return $return;
+}
+
+function getStartAndEndDateforMonth($month, $year){
+    $return[0] = date('Y/m/d H:i',mktime(0, 0, 0, $month, 1,   $year));
+    $return[1] = date('Y/m/d H:i',mktime(23, 59, 0, $month+1, 1-1,   $year));
     return $return;
 }

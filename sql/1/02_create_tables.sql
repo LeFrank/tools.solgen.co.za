@@ -6,7 +6,7 @@ CREATE TABLE `expense` (
   `description` varchar(500) DEFAULT NULL,
   `expense_date` timestamp DEFAULT NULL,
   `location` varchar(255) DEFAULT NULL,
-  `payment_method_id` int(3);
+  `payment_method_id` int(3),
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
