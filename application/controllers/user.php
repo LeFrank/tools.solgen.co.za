@@ -94,8 +94,24 @@ class User extends CI_Controller {
         if ($this->form_validation->run() == FALSE) {
             $this->form_validation->set_message('email', '<span class="failure">Invalid Email Address</span>');
             $this->forgottenPassword();
-        }else{
-            echo "Do something";
+        } else {
+            // create temporary reset token , where though ????
+            echo "here";
+            $this->load->library('email');
+
+            $this->email->from('system@solgen.co.za', 'System');
+            $this->email->to('campbellfd@gmail.com');
+            //$this->email->cc('another@another-example.com');
+            //$this->email->bcc('them@their-example.com');
+
+            $this->email->subject('Email Test');
+            $this->email->message('Testing the email class.');
+
+            $this->email->send();
+
+            echo $this->email->print_debugger();
+            // Create table
+            // send email with link to a page which A: accepts the token as a get variable and B shows a form to change the password.
         }
     }
 

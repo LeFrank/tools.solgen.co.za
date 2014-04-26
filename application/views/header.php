@@ -20,6 +20,7 @@
                 <?php echo form_open('user/login') ?>
                 <label class="login-label">Email</label><input id="email" name="email" value="" />&nbsp;&nbsp;&nbsp;
                 <label class="login-label">Password</label><input id="password" name="password" type="password" value="" />&nbsp;&nbsp;&nbsp;
+                <a href="/user/forgotten-password">Forgotten Password</a>
                 <input type="submit" name="submit" value="Login" />
                 <a href="/user/register">Register</a>
             </form>

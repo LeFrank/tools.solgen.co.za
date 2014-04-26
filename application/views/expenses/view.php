@@ -57,7 +57,6 @@
 
         <label for="expenseType">Expense Type</label>
         <select name="expenseType">
-            <option value="0">miscellaneous</option>
             <?php
             foreach ($expenseTypes as $k => $v) {
                 echo '<option value="' . $v["id"] . '">' . $v["description"] . '</option>';
