@@ -49,6 +49,9 @@ $route['user/logout'] = 'user/logout';
 $route['user/settings'] = 'user/settings';
 $route['user/forgotten-password'] = 'user/forgottenPassword';
 $route['user/send-reset-password-email'] = 'user/sendResetEmail';
+$route['user/reset-password/(:any)'] = 'user/resetPassword/$1';
+$route['user/reset-user-password'] = 'user/resetUserPassword';
+$route['user/delete-account'] = 'user/delete';
 $route['user/(:any)'] = 'user/$1';
 
 $route['expenses'] = 'expenses/view';

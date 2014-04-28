@@ -13,17 +13,19 @@ class User extends CI_Controller {
         $this->load->model('user_model');
         $this->load->library('session');
         $this->load->helper('url');
+        $this->load->database();
+        $this->load->helper("form");
+        $this->load->library("form_validation");
     }
 
     public function register() {
-        $this->load->helper('form');
         $this->load->helper('email');
-        $this->load->library('form_validation');
-
-
         $data['title'] = 'Register';
 
-        $this->form_validation->set_rules('email', 'email', 'required');
+        $this->form_validation->set_rules('email', 'email', 'required|is_unique[solgen_user.email]');
+        $this->form_validation->set_message('is_unique', 'You have already registered an account with that Email address.</br>' .
+                ' To retrieve rest your password please click on the "Forgotten Password" link,<br/' .
+                '> on the top right corner of this page.');
         $this->form_validation->set_rules('password', 'password', 'required');
 
         if ($this->form_validation->run() == FALSE) {
@@ -32,7 +34,9 @@ class User extends CI_Controller {
             $this->load->view('footer');
         } else {
             $this->user_model->set_user();
+            $this->load->view('header', $data);
             $this->load->view('user/registered');
+            $this->load->view('footer');
         }
     }
 
@@ -62,65 +66,141 @@ class User extends CI_Controller {
         redirect('/', 'refresh');
     }
 
-    public function delete() {
-        //delete all data
-        //TODO: figure out how to best do this! some sort of daemon, or just kick off another process.
-        //      I do not want the user controller to be to tightly bound.
-        $this->session->set_userdata("loggedIn", FALSE);
-        $this->session->unset_userdata("isAdmin");
-        $this->session->unset_userdata("user");
-        $this->session->sess_destroy();
-        redirect('/', 'refresh');
-    }
-
     public function forgottenPassword() {
-        $this->load->helper("form");
-        $this->load->library("form_validation");
-        //1 Show form asking for email address
         $this->load->view("header");
         $this->load->view("user/forgottenPassword");
         $this->load->view("footer");
-        //2 Verify email address. AAARRRggg, that means email needs to be unique
-        //3 Send a link to said email address. Link willhave a UID somewhere in it. 
-        //      Which will be tied to a timed window for a password reset say an hour.
-        //4 user clicks link and is shown a screen requesting a new password.
         //5 redirect to home page so they can log in.
     }
 
     public function sendResetEmail() {
-        $this->load->helper("form");
-        $this->load->library("form_validation");
+        $this->load->model('user_reset_model');
+        $data["status"] = "Unsuccessful";
+        $data["action_classes"] = "failure";
+        $data["action_description"] = "Reset Password";
+        $data["message_classes"] = "failure";
         $this->form_validation->set_rules('email', 'email', 'required|valid_email');
+        $this->form_validation->set_message('email', '<span class="failure">Invalid Email Address</span>');
         if ($this->form_validation->run() == FALSE) {
-            $this->form_validation->set_message('email', '<span class="failure">Invalid Email Address</span>');
             $this->forgottenPassword();
         } else {
-            // create temporary reset token , where though ????
-            echo "here";
-            $this->load->library('email');
+            // Verify email address.
+            $userId = $this->user_model->get_user_id_by_email($this->input->post("email"));
+            if (null == $userId) {
+                $data["message"] = "No matching user with that address.<br/>Please correct the email address or Register.";
+            } else {
+                // create temporary reset token , in the user_reset_model
+                $resetArray = $this->user_reset_model->get_user_reset(null, $userId->id, null);
+                if (empty($resetArray)) {
+                    $data["token"] = sha1(microtime(true) . mt_rand(10000, 90000));
+                    $userReset = $this->user_reset_model->create($userId->id, $data["token"]);
+                    $resetArray = $this->user_reset_model->get_user_reset($userReset, null, null);
+                    $message = $this->load->view('user/reset_email_template', $data, TRUE);
+                    $this->load->library('email');
+                    $this->email->from('system@solgen.co.za', 'System');
+                    $this->email->to($this->input->post('email'));
+                    $this->email->subject('Solgen : Account Password Reset');
+                    $this->email->message($message);
+                    $this->email->send();
+                    $data["status"] = "Success";
+                    $data["action_classes"] = "success";
+                    $data["message_classes"] = "success";
+                    $data["message"] = "Please check your email and follow the instructions to reset your password.";
+                } else {
+                    $data["message"] = "You have already tried to reset your password, please check your email for the reset instructions.";
+                }
+            }
+        }
+        $this->load->view("header");
+        $this->load->view("user/user_status", $data);
+        $this->load->view("user/forgottenPassword");
+        $this->load->view("footer");
+    }
 
-            $this->email->from('system@solgen.co.za', 'System');
-            $this->email->to('campbellfd@gmail.com');
-            //$this->email->cc('another@another-example.com');
-            //$this->email->bcc('them@their-example.com');
-
-            $this->email->subject('Email Test');
-            $this->email->message('Testing the email class.');
-
-            $this->email->send();
-
-            echo $this->email->print_debugger();
-            // Create table
-            // send email with link to a page which A: accepts the token as a get variable and B shows a form to change the password.
+    public function resetPassword($token = null) {
+        $this->load->model('user_reset_model');
+        $resetArray = $this->user_reset_model->get_user_reset(null, null, $token);
+        if (!empty($resetArray)) {
+            $data["token"] = $token;
+            $data["userReset"] = $resetArray;
+            $this->load->view('header');
+            $this->load->view('user/password-reset-form', $data);
+            $this->load->view('footer');
+        } else {
+            $data["status"] = "Invalid Token";
+            $data["action_classes"] = "failure";
+            $data["action_description"] = "Reset Password";
+            $data["message_classes"] = "failure";
+            $data["message"] = "Invalid token, the token has expired. <br/>Please try again.";
+            $this->load->view("header");
+            $this->load->view("user/user_status", $data);
+            $this->load->view("user/forgottenPassword");
+            $this->load->view("footer");
         }
     }
 
-    public function settings() {
+    public function resetUserPassword() {
+        $this->load->model('user_reset_model');
+        $this->form_validation->set_rules('password', 'Password', 'required|matches[password1]');
+        $this->form_validation->set_rules('password1', 'Password Confirmation', 'required');
+        if ($this->form_validation->run() == FALSE) {
+            $this->resetPassword($this->input->post("token"));
+        } else {
+            $resetArray = $this->user_reset_model->get_user_reset(null, null, $this->input->post("token"));
+            if (!empty($resetArray)) {
+                $status = $this->user_model->update_password($resetArray[0]["user_id"], $this->input->post("password"));
+                $this->user_reset_model->was_reset($resetArray[0]["id"], $status);
+                $data["status"] = "Password Reset";
+                $data["action_classes"] = "success";
+                $data["action_description"] = "Reset Password";
+                $data["message_classes"] = "success";
+                $data["message"] = "Your password has been reset!<br/>You can now log in.";
+
+                $this->load->view('header');
+                $this->load->view("user/user_status", $data);
+                $this->load->view('home/home');
+                $this->load->view('footer');
+            }
+        }
+    }
+
+    function settings() {
         $this->load->helper('auth_helper');
         can_access(TRUE, $this->session);
         $this->load->view('header');
         $this->load->view('user/settings');
         $this->load->view('footer');
+    }
+
+    public function delete() {
+        $this->load->model('expense_type_model');
+        $this->load->model('payment_method_model');
+        $this->load->model('expense_model');
+        $this->load->model('user_reset_model');
+        $userId = $this->session->userdata("user")->id;
+        //delete all data
+        //TODO: figure out how to best do this! some sort of daemon, or just kick off another process.
+        //      I do not want the user controller to be to tightly bound.
+        //destroy custom expense types 
+        $this->expense_type_model->deleteUserData($userId);
+        //destroy custom payment methods
+        $this->payment_method_model->deleteUserData($userId);
+        //destroy expenses
+        $this->expense_model->deleteUserData($userId);
+        //destroy user-reset requests
+        $this->user_reset_model->deleteUserData($userId);
+        //destory user
+        $this->user_model->delete($userId);
+        $this->session->set_userdata("loggedIn", FALSE);
+        $this->session->unset_userdata("isAdmin");
+        $this->session->unset_userdata("user");
+        $this->session->sess_destroy();
+        $data["status"] = "User Account Deleted";
+        $data["action_classes"] = "success";
+        $data["action_description"] = "Delete Account";
+        $data["message_classes"] = "success";
+        $data["message"] = "Your account and associated data has been deleted successfully.<br/>We are sorry to see you go, but wish you the best.<br/>";
+        echo $this->load->view('user/user_status', $data, TRUE);
     }
 
 }

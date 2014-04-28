@@ -1168,3 +1168,97 @@
 [23-Apr-2014 01:56:00 Europe/Helsinki] PHP Stack trace:
 [23-Apr-2014 01:56:00 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
 [23-Apr-2014 01:56:00 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[27-Apr-2014 13:42:54 Africa/Johannesburg] PHP Fatal error:  Call to undefined method User_reset_model::now() in C:\UwAmp\www\application\models\user_reset_model.php on line 20
+[27-Apr-2014 13:42:54 Africa/Johannesburg] PHP Stack trace:
+[27-Apr-2014 13:42:54 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[27-Apr-2014 13:42:54 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[27-Apr-2014 13:42:54 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[27-Apr-2014 13:42:54 Africa/Johannesburg] PHP   4. User->sendResetEmail() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[27-Apr-2014 13:42:54 Africa/Johannesburg] PHP   5. User_reset_model->create() C:\UwAmp\www\application\controllers\user.php:107
+[27-Apr-2014 13:43:35 Africa/Johannesburg] PHP Fatal error:  Call to undefined method User_reset_model::now() in C:\UwAmp\www\application\models\user_reset_model.php on line 24
+[27-Apr-2014 13:43:35 Africa/Johannesburg] PHP Stack trace:
+[27-Apr-2014 13:43:35 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[27-Apr-2014 13:43:35 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[27-Apr-2014 13:43:35 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[27-Apr-2014 13:43:35 Africa/Johannesburg] PHP   4. User->sendResetEmail() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[27-Apr-2014 13:43:35 Africa/Johannesburg] PHP   5. User_reset_model->create() C:\UwAmp\www\application\controllers\user.php:107
+[27-Apr-2014 13:44:01 Africa/Johannesburg] PHP Fatal error:  Call to undefined method User_reset_model::now() in C:\UwAmp\www\application\models\user_reset_model.php on line 23
+[27-Apr-2014 13:44:01 Africa/Johannesburg] PHP Stack trace:
+[27-Apr-2014 13:44:01 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[27-Apr-2014 13:44:01 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[27-Apr-2014 13:44:01 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[27-Apr-2014 13:44:01 Africa/Johannesburg] PHP   4. User->sendResetEmail() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[27-Apr-2014 13:44:01 Africa/Johannesburg] PHP   5. User_reset_model->create() C:\UwAmp\www\application\controllers\user.php:107
+[28-Apr-2014 14:12:12 Africa/Johannesburg] PHP Fatal error:  Call to a member function get_user_reset() on a non-object in C:\UwAmp\www\application\controllers\user.php on line 145
+[28-Apr-2014 14:12:12 Africa/Johannesburg] PHP Stack trace:
+[28-Apr-2014 14:12:12 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[28-Apr-2014 14:12:12 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[28-Apr-2014 14:12:12 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[28-Apr-2014 14:12:12 Africa/Johannesburg] PHP   4. User->resetPassword() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[28-Apr-2014 14:22:07 Africa/Johannesburg] PHP Fatal error:  Call to undefined function prnit_r() in C:\UwAmp\www\application\controllers\user.php on line 148
+[28-Apr-2014 14:22:07 Africa/Johannesburg] PHP Stack trace:
+[28-Apr-2014 14:22:07 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[28-Apr-2014 14:22:07 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[28-Apr-2014 14:22:07 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[28-Apr-2014 14:22:07 Africa/Johannesburg] PHP   4. User->resetPassword() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[28-Apr-2014 14:29:40 Africa/Johannesburg] PHP Fatal error:  Call to undefined function form_open() in C:\UwAmp\www\application\views\header.php on line 20
+[28-Apr-2014 14:29:40 Africa/Johannesburg] PHP Stack trace:
+[28-Apr-2014 14:29:40 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[28-Apr-2014 14:29:40 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[28-Apr-2014 14:29:40 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[28-Apr-2014 14:29:40 Africa/Johannesburg] PHP   4. User->resetPassword() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[28-Apr-2014 14:29:40 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\user.php:155
+[28-Apr-2014 14:29:40 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[28-Apr-2014 14:29:40 Africa/Johannesburg] PHP   7. include() C:\UwAmp\www\system\core\Loader.php:833
+[28-Apr-2014 15:04:56 Africa/Johannesburg] PHP Fatal error:  Call to a member function get_user_reset() on a non-object in C:\UwAmp\www\application\controllers\user.php on line 158
+[28-Apr-2014 15:04:56 Africa/Johannesburg] PHP Stack trace:
+[28-Apr-2014 15:04:56 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[28-Apr-2014 15:04:56 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[28-Apr-2014 15:04:56 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[28-Apr-2014 15:04:56 Africa/Johannesburg] PHP   4. User->resetUserPassword() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[28-Apr-2014 16:11:43 Europe/Helsinki] PHP Parse error:  syntax error, unexpected T_OBJECT_OPERATOR, expecting ']' in C:\UwAmp\www\application\controllers\user.php on line 161
+[28-Apr-2014 16:11:43 Europe/Helsinki] PHP Stack trace:
+[28-Apr-2014 16:11:43 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[28-Apr-2014 16:11:43 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[28-Apr-2014 16:13:28 Europe/Helsinki] PHP Parse error:  syntax error, unexpected T_ECHO, expecting T_STRING in C:\UwAmp\www\application\controllers\user.php on line 161
+[28-Apr-2014 16:13:28 Europe/Helsinki] PHP Stack trace:
+[28-Apr-2014 16:13:28 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[28-Apr-2014 16:13:28 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[28-Apr-2014 16:13:38 Europe/Helsinki] PHP Parse error:  syntax error, unexpected T_ECHO, expecting T_STRING in C:\UwAmp\www\application\controllers\user.php on line 161
+[28-Apr-2014 16:13:38 Europe/Helsinki] PHP Stack trace:
+[28-Apr-2014 16:13:38 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[28-Apr-2014 16:13:38 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[28-Apr-2014 16:13:47 Europe/Helsinki] PHP Parse error:  syntax error, unexpected T_ECHO, expecting T_STRING in C:\UwAmp\www\application\controllers\user.php on line 161
+[28-Apr-2014 16:13:47 Europe/Helsinki] PHP Stack trace:
+[28-Apr-2014 16:13:47 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[28-Apr-2014 16:13:47 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[28-Apr-2014 16:14:01 Europe/Helsinki] PHP Parse error:  syntax error, unexpected T_ECHO, expecting T_STRING in C:\UwAmp\www\application\controllers\user.php on line 161
+[28-Apr-2014 16:14:01 Europe/Helsinki] PHP Stack trace:
+[28-Apr-2014 16:14:01 Europe/Helsinki] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[28-Apr-2014 16:14:01 Europe/Helsinki] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[28-Apr-2014 16:54:24 Africa/Johannesburg] PHP Fatal error:  Call to a member function deleteUserData() on a non-object in C:\UwAmp\www\application\controllers\user.php on line 188
+[28-Apr-2014 16:54:24 Africa/Johannesburg] PHP Stack trace:
+[28-Apr-2014 16:54:24 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[28-Apr-2014 16:54:24 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[28-Apr-2014 16:54:24 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[28-Apr-2014 16:54:24 Africa/Johannesburg] PHP   4. User->delete() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[28-Apr-2014 16:57:12 Africa/Johannesburg] PHP Fatal error:  Call to a member function deleteUserData() on a non-object in C:\UwAmp\www\application\controllers\user.php on line 188
+[28-Apr-2014 16:57:12 Africa/Johannesburg] PHP Stack trace:
+[28-Apr-2014 16:57:12 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[28-Apr-2014 16:57:12 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[28-Apr-2014 16:57:12 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[28-Apr-2014 16:57:13 Africa/Johannesburg] PHP   4. User->delete() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[28-Apr-2014 16:59:56 Africa/Johannesburg] PHP Fatal error:  Call to undefined method User_model::now() in C:\UwAmp\www\application\models\user_model.php on line 47
+[28-Apr-2014 16:59:56 Africa/Johannesburg] PHP Stack trace:
+[28-Apr-2014 16:59:56 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[28-Apr-2014 16:59:56 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[28-Apr-2014 16:59:56 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[28-Apr-2014 16:59:56 Africa/Johannesburg] PHP   4. User->register() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[28-Apr-2014 16:59:56 Africa/Johannesburg] PHP   5. User_model->set_user() C:\UwAmp\www\application\controllers\user.php:36
+[28-Apr-2014 17:00:53 Africa/Johannesburg] PHP Fatal error:  Call to undefined function dat() in C:\UwAmp\www\application\models\user_model.php on line 47
+[28-Apr-2014 17:00:53 Africa/Johannesburg] PHP Stack trace:
+[28-Apr-2014 17:00:53 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[28-Apr-2014 17:00:53 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[28-Apr-2014 17:00:53 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[28-Apr-2014 17:00:53 Africa/Johannesburg] PHP   4. User->register() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[28-Apr-2014 17:00:53 Africa/Johannesburg] PHP   5. User_model->set_user() C:\UwAmp\www\application\controllers\user.php:36

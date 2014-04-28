@@ -70,11 +70,11 @@ class expense_model extends CI_Model {
             }
             $expenseTypeArr = $this->input->post("expenseType");
             $paymentMethodArr = $this->input->post("paymentMethod");
-            if(!empty($expenseTypeArr) && $expenseTypeArr[0] != "all"){
+            if (!empty($expenseTypeArr) && $expenseTypeArr[0] != "all") {
                 $this->db->where_in("expense_type_id", array_map('intval', $this->input->post("expenseType")));
             }
-            if(!empty($paymentMethodArr) &&  $paymentMethodArr[0] != "all"){
-                $this->db->where_in("payment_method_id",array_map('intval',$this->input->post("paymentMethod")));
+            if (!empty($paymentMethodArr) && $paymentMethodArr[0] != "all") {
+                $this->db->where_in("payment_method_id", array_map('intval', $this->input->post("paymentMethod")));
             }
             if (null == $limit) {
                 $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'expense_date >=' => $this->input->post("fromDate"), 'expense_date <= ' => $this->input->post("toDate")));
@@ -103,6 +103,11 @@ class expense_model extends CI_Model {
             'payment_method_id' => $this->input->post('paymentMethod')
         );
         return $this->db->insert($this->tn, $data);
+    }
+
+    public function deleteUserData($userId) {
+        $this->db->where("user_id", $userId);
+        $this->db->delete($this->tn);
     }
 
 }

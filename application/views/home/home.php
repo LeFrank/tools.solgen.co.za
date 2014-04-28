@@ -4,6 +4,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+ echo $_SERVER['HTTP_HOST'];
+    
 ?>
 
 <p>Tasters go here.</p><br/>

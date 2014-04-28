@@ -22,4 +22,9 @@ class Expense_type_model extends CI_Model {
         //print "SQL Query: ".$this->db->last_query(); 
         return $query->result_array();
     }
+    
+    public function deleteUserData($userId){
+        $this->db->where("user_id", $userId);
+        $this->db->delete($this->tn);
+    }
 }
