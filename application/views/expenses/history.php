@@ -1,20 +1,22 @@
 
-        <?php ?>
+<?php ?>
 <div id="expenseHistoryContent" class="expenseHistoryContent" >
     <h2>Expense History</h2>
     <div id="historyGraph">
         Table of full data from <?php echo $startAndEndDateforMonth[0]; ?> to <?php echo $startAndEndDateforMonth[1]; ?><br/><br/>
         <?php if (is_array($expensesForWeek) && !empty($expensesForWeek)) {
             ?>
-            <table>
+            <table id="expense_history" class="tablesorter">
                 <thead>
-                <th/>
-                <th>Date</th>
-                <th>Expense Type</th>
-                <th>Payment Method</th>
-                <th>Description</th>
-                <th>Location</th>
-                <th>Amount</th>
+                    <tr>
+                        <th>&nbsp;</th>
+                        <th>Date</th>
+                        <th>Expense Type</th>
+                        <th>Payment Method</th>
+                        <th>Description</th>
+                        <th>Location</th>
+                        <th>Amount</th>
+                    </tr>
                 </thead>
                 <tbody>
                     <?php
@@ -31,12 +33,16 @@
                         echo "</tr>";
                         $total += $v["amount"];
                     }
+                    ?>
+                </tbody>
+            </table>
+            <table style="width:100%;">
+                    <?php
                     echo "<tr class='td-total'>"
                     . "  <td class='align-left'>Period Expenses Total</td>"
                     . "  <td colspan='6' class='align-right'>" . number_format($total, 2, '.', ',') . "</td>"
                     . "</tr>";
                     ?>
-                </tbody>
             </table>
             <?php
         } else {
@@ -48,15 +54,17 @@
 </div>
 <!-- Handlebars test --> 
 <script id="some-template" type="text/x-handlebars-template">
-    <table>
+    <table id="expense_history" class="tablesorter">
     <thead>
-    <th/>
+    <tr>
+    <th></th>
     <th>Date</th>
     <th>Expense Type</th>
     <th>Payment Method</th>
     <th>Description</th>
     <th>Location</th>
     <th>Amount</th>
+    <tr/>
     </thead>
     <tbody>
     {{#expenses}}
@@ -70,11 +78,13 @@
     <td>{{amount}}</td>
     </tr>
     {{/expenses}}
-    <tr>
-        <td class='align-left'>Period Expenses Total</td>
-        <td colspan='6' class='align-right'>{{total}}</td>
-    </tr>
     </tbody>
+    </table>
+    <table style="width:100%;">
+        <tr class='td-total'>
+            <td class='align-left'>Period Expenses Total</td>
+            <td colspan='6' class='align-right'>{{total}}</td>
+        </tr>
     </table>
 </script>
 <div id="expenseHistoryFilter" class="expenseHistoryFilter">
@@ -123,16 +133,14 @@
         </div>
         <input type="button" name="filter" value="Filter" id="filter" />
     </form>
-
 </div>
-<script type="text/javascript">
-   
-</script>
-<link rel="stylesheet" type="text/css" href="/css/jquery.datetimepicker.css"/ >
+
+<link rel="stylesheet" type="text/css" href="/css/jquery.datetimepicker.css" />
 <script type="text/javascript" src="/js/jquery.datetimepicker.js" ></script>
 <script type="text/javascript" src="/js/third_party/handlebars-v1.3.0.js" ></script>
+<script type="text/javascript" src="/js/third_party/jquery.tablesorter.min.js"></script>
 <script type="text/javascript" src="/js/expenses/history.js" ></script>
 <script type="text/javascript">
-    var expense_types = <?php echo json_encode($expenseTypes);?>;
+    var expense_types = <?php echo json_encode($expenseTypes); ?>;
     var payment_methods = <?php echo json_encode($expensePaymentMethod); ?>;
 </script>

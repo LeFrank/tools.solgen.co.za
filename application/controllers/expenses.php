@@ -25,18 +25,6 @@ class Expenses extends CI_Controller {
         //$this->load->model('user_expense_type_model');
     }
 
-    public function view() {
-        $this->load->library('session');
-        $this->load->helper("array_helper");
-        $data["expenseTypes"] = mapKeyToId($this->expense_type_model->get_user_expense_types($this->session->userdata("user")->id));
-        $data["expensePaymentMethod"] = mapKeyToId($this->payment_method_model->get_user_payment_method($this->session->userdata("user")->id));
-        $data["expense"] = $this->expense_model->getExpenses($this->session->userdata("user")->id, 5);
-        $this->load->view('header');
-        $this->load->view('expenses/expense_nav');
-        $this->load->view('expenses/view', $data);
-        $this->load->view('footer');
-    }
-
     public function capture() {
         echo "capture";
         $this->load->library('session');
@@ -60,6 +48,14 @@ class Expenses extends CI_Controller {
         exit;
     }
 
+    public function filteredSearch() {
+        $this->load->helper('url');
+        $this->load->helper('form');
+        $this->output->set_content_type('application/json')
+                ->set_output(json_encode($this->expense_model->getexpensesByCriteria($this->session->userdata("user")->id)));
+        return $this->output->get_output();
+    }
+
     public function history() {
         $this->load->helper("array_helper");
         $this->load->helper("date_helper");
@@ -67,7 +63,7 @@ class Expenses extends CI_Controller {
         $data["expenseTypes"] = mapKeyToId($this->expense_type_model->get_expense_types());
         $data["expensePaymentMethod"] = mapKeyToId($this->payment_method_model->get_user_payment_method($this->session->userdata("user")->id));
         //$data["startAndEndDateOfWeek"] = getStartAndEndDateforWeek(date('W'), date('Y'));
-        $data["startAndEndDateforMonth"] =getStartAndEndDateforMonth(date("m"),date('Y'));
+        $data["startAndEndDateforMonth"] = getStartAndEndDateforMonth(date("m"), date('Y'));
         $data["expensesForWeek"] = $this->expense_model->getExpensesbyDateRange($data["startAndEndDateforMonth"][0], $data["startAndEndDateforMonth"][1], $this->session->userdata("user")->id);
         $this->load->view('header');
         $this->load->view('expenses/expense_nav');
@@ -75,11 +71,23 @@ class Expenses extends CI_Controller {
         $this->load->view('footer');
     }
 
-    public function filteredSearch() {
-        $this->load->helper('url');
-        $this->load->helper('form');
-        $this->output->set_content_type('application/json')
-            ->set_output(json_encode($this->expense_model->getexpensesByCriteria($this->session->userdata("user")->id)));
-        return $this->output->get_output();
+    public function options(){
+        $this->load->view('header');
+        $this->load->view('expenses/expense_nav');
+        $this->load->view('expenses/options');
+        $this->load->view('footer');
     }
+        
+    public function view() {
+        $this->load->library('session');
+        $this->load->helper("array_helper");
+        $data["expenseTypes"] = mapKeyToId($this->expense_type_model->get_user_expense_types($this->session->userdata("user")->id));
+        $data["expensePaymentMethod"] = mapKeyToId($this->payment_method_model->get_user_payment_method($this->session->userdata("user")->id));
+        $data["expense"] = $this->expense_model->getExpenses($this->session->userdata("user")->id, 5);
+        $this->load->view('header');
+        $this->load->view('expenses/expense_nav');
+        $this->load->view('expenses/view', $data);
+        $this->load->view('footer');
+    }
+
 }

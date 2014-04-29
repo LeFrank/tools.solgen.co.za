@@ -58,6 +58,7 @@ $route['expenses'] = 'expenses/view';
 $route['expenses/capture'] = 'expenses/capture';
 $route['expenses/history'] = 'expenses/history';
 $route['expenses/filter-search'] = 'expenses/filteredSearch';
+$route['expenses/options'] = 'expenses/options';
 
 $route['test'] = 'pages/test';
 

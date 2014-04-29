@@ -1,14 +1,5 @@
-<?php
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
- echo $_SERVER['HTTP_HOST'];
-    
-?>
-
-<p>Tasters go here.</p><br/>
-<p>Or just general stats</p><br/>
-<p>Blurb about what I wish to accomplist with the site.</p><br/>
-<p>Maybe pull in some content from the main solgen site.</p><br/>
+<h3>Welcome</h3>
+<p>Tasters go here.</p>
+<p>Or just general stats</p>
+<p>Blurb about what I wish to accomplist with the site.</p>
+<p>Maybe pull in some content from the main solgen site.</p>

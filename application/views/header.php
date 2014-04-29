@@ -10,7 +10,6 @@
         <meta name="author" content="">
         <link rel="shortcut icon" href="/favicon.ico">
         <link rel="stylesheet" type="text/css" media="all" href="/css/black_and_yellow.css" />
-        <link href='http://fonts.googleapis.com/css?family=Sarina' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
         <script src="/js/third_party/jquery.min-1.11.0.js"></script>
     </head>
@@ -28,7 +27,7 @@
             <a href="/user/settings" >My Settings</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="/user/logout" >Logout</a> 
         <?php } ?>
     </div>
-    <div class="header"><a href="/" >Solgen Sandbox</a></div>
+    <div class="page-header"><a href="/" >Solgen Sandbox</a></div>
     <div class="clear-float" ></div>
     <div class="top-nav">
         <?php $this->load->view("nav") ?>

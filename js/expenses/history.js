@@ -1,4 +1,6 @@
 $(document).ready(function() {
+    $('#expense_history').tablesorter();
+
     $(function() {
         $("#fromDate").datetimepicker();
         $("#toDate").datetimepicker();
@@ -21,7 +23,7 @@ $(document).ready(function() {
             var data = {expenses: resp,
                 total: total.toFixed(2)};
             $("#historyGraph").html(template(data));
+            $('#expense_history').tablesorter();
         });
     });
-
 });
