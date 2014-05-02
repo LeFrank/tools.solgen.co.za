@@ -14,6 +14,7 @@ class Expenses extends CI_Controller {
         parent::__construct();
         $this->load->library('session');
         $this->load->helper('auth_helper');
+        $this->load->helper("array_helper");
         $this->load->helper('url');
         $this->load->helper('email');
         $this->load->library('form_validation');
@@ -26,13 +27,12 @@ class Expenses extends CI_Controller {
     }
 
     public function capture() {
-        echo "capture";
         $this->load->library('session');
         $this->load->helper('form');
         $this->load->helper('url');
         $this->load->library('form_validation');
 
-        $data['title'] = 'Create a news item';
+        $data['title'] = 'Create an expense';
 
         $this->form_validation->set_rules('amount', 'amount', 'required');
         if ($this->form_validation->run() == FALSE) {
@@ -43,9 +43,62 @@ class Expenses extends CI_Controller {
         }
     }
 
-    public function delete() {
-        echo __FUNCTION__;
-        exit;
+    public function delete($id) {
+        $data["expenseTypes"] = mapKeyToId($this->expense_type_model->get_user_expense_types($this->session->userdata("user")->id));
+        $data["expensePaymentMethod"] = mapKeyToId($this->payment_method_model->get_user_payment_method($this->session->userdata("user")->id), false);
+        if ($this->expense_model->doesItBelongToMe($this->session->userdata("user")->id, $id)) {
+            $data["expense"] = $this->expense_model->delete($id);
+            $data["expense"] = $this->expense_model->getExpenses($this->session->userdata("user")->id, 5);
+            $data["status"] = "Delete Expense";
+            $data["action_classes"] = "success";
+            $data["action_description"] = "Delete an expense";
+            $data["message_classes"] = "success";
+            $data["message"] = "The expense was successfully deleted";
+            $this->load->view('header');
+            $this->load->view('expenses/expense_nav');
+            $this->load->view('user/user_status', $data);
+            $this->load->view('expenses/view', $data);
+            $this->load->view('footer');
+        } else {
+            $data["expense"] = $this->expense_model->getExpenses($this->session->userdata("user")->id, 5);
+            $data["status"] = "Delete Expense";
+            $data["action_classes"] = "failure";
+            $data["action_description"] = "Delete an expense";
+            $data["message_classes"] = "failure";
+            $data["message"] = "The expense you are attempting to delete does not exist or does not belong to you.";
+            $data["expense"] = $this->expense_model->getExpenses($this->session->userdata("user")->id, 5);
+            $this->load->view('header');
+            $this->load->view('expenses/expense_nav');
+            $this->load->view('user/user_status', $data);
+            $this->load->view('expenses/view', $data);
+            $this->load->view('footer');
+        }
+    }
+
+    public function edit($id) {
+        $this->load->library('session');
+        //is it mine?
+        $data["expenseTypes"] = mapKeyToId($this->expense_type_model->get_user_expense_types($this->session->userdata("user")->id));
+        $data["expensePaymentMethod"] = mapKeyToId($this->payment_method_model->get_user_payment_method($this->session->userdata("user")->id), false);
+        if ($this->expense_model->doesItBelongToMe($this->session->userdata("user")->id, $id)) {
+            $data["expense"] = $this->expense_model->getExpense($id);
+            $this->load->view('header');
+            $this->load->view('expenses/expense_nav');
+            $this->load->view('expenses/edit', $data);
+            $this->load->view('footer');
+        } else {
+            $data["expense"] = $this->expense_model->getExpenses($this->session->userdata("user")->id, 5);
+            $data["status"] = "Edit Expense";
+            $data["action_classes"] = "failure";
+            $data["action_description"] = "Edit an expense";
+            $data["message_classes"] = "failure";
+            $data["message"] = "The expense you are attempting to edit does not exist or does not belong to you.";
+            $this->load->view('header');
+            $this->load->view('expenses/expense_nav');
+            $this->load->view('user/user_status', $data);
+            $this->load->view('expenses/view', $data);
+            $this->load->view('footer');
+        }
     }
 
     public function filteredSearch() {
@@ -61,7 +114,7 @@ class Expenses extends CI_Controller {
         $this->load->helper("date_helper");
         $this->load->library('session');
         $data["expenseTypes"] = mapKeyToId($this->expense_type_model->get_expense_types());
-        $data["expensePaymentMethod"] = mapKeyToId($this->payment_method_model->get_user_payment_method($this->session->userdata("user")->id));
+        $data["expensePaymentMethod"] = mapKeyToId($this->payment_method_model->get_user_payment_method($this->session->userdata("user")->id), false);
         //$data["startAndEndDateOfWeek"] = getStartAndEndDateforWeek(date('W'), date('Y'));
         $data["startAndEndDateforMonth"] = getStartAndEndDateforMonth(date("m"), date('Y'));
         $data["expensesForWeek"] = $this->expense_model->getExpensesbyDateRange($data["startAndEndDateforMonth"][0], $data["startAndEndDateforMonth"][1], $this->session->userdata("user")->id);
@@ -71,23 +124,54 @@ class Expenses extends CI_Controller {
         $this->load->view('footer');
     }
 
-    public function options(){
+    public function options() {
         $this->load->view('header');
         $this->load->view('expenses/expense_nav');
         $this->load->view('expenses/options');
         $this->load->view('footer');
     }
-        
+
+    public function statistics(){
+        $this->load->view('header');
+        $this->load->view('expenses/expense_nav');
+        $this->load->view('expenses/statistics');
+        $this->load->view('footer');
+    }
+    
     public function view() {
         $this->load->library('session');
-        $this->load->helper("array_helper");
         $data["expenseTypes"] = mapKeyToId($this->expense_type_model->get_user_expense_types($this->session->userdata("user")->id));
-        $data["expensePaymentMethod"] = mapKeyToId($this->payment_method_model->get_user_payment_method($this->session->userdata("user")->id));
+        $data["expensePaymentMethod"] = mapKeyToId($this->payment_method_model->get_user_payment_method($this->session->userdata("user")->id), false);
         $data["expense"] = $this->expense_model->getExpenses($this->session->userdata("user")->id, 5);
         $this->load->view('header');
         $this->load->view('expenses/expense_nav');
         $this->load->view('expenses/view', $data);
         $this->load->view('footer');
+    }
+
+    public function update() {
+        $this->load->helper('form');
+        $this->load->helper('url');
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules('amount', 'amount', 'required');
+        if ($this->form_validation->run() == FALSE) {
+            $this->edit($this->input->post("id"));
+        } else {
+            $data["status"] = "Edit Expense";
+            $data["action_classes"] = "success";
+            $data["action_description"] = "Updated the Expense";
+            $data["message_classes"] = "success";
+            $data["message"] = "You have successfully updated the expense";
+            $this->expense_model->update($this->input->post('id'));
+            $data["expenseTypes"] = mapKeyToId($this->expense_type_model->get_user_expense_types($this->session->userdata("user")->id));
+            $data["expensePaymentMethod"] = mapKeyToId($this->payment_method_model->get_user_payment_method($this->session->userdata("user")->id), false);
+            $data["expense"] = $this->expense_model->getExpenses($this->session->userdata("user")->id, 5);
+            $this->load->view('header');
+            $this->load->view('expenses/expense_nav');
+            $this->load->view('user/user_status', $data);
+            $this->load->view('expenses/view', $data);
+            $this->load->view('footer');
+        }
     }
 
 }

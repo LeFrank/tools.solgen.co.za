@@ -43,22 +43,39 @@ $route['404_override'] = '';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
-$route['user/register'] = 'user/register';
+$route['user/(:any)'] = 'user/$1';
+$route['user/delete-account'] = 'user/delete';
+$route['user/forgotten-password'] = 'user/forgottenPassword';
 $route['user/login'] = 'user/login';
 $route['user/logout'] = 'user/logout';
-$route['user/settings'] = 'user/settings';
-$route['user/forgotten-password'] = 'user/forgottenPassword';
-$route['user/send-reset-password-email'] = 'user/sendResetEmail';
+$route['user/register'] = 'user/register';
 $route['user/reset-password/(:any)'] = 'user/resetPassword/$1';
 $route['user/reset-user-password'] = 'user/resetUserPassword';
-$route['user/delete-account'] = 'user/delete';
-$route['user/(:any)'] = 'user/$1';
+$route['user/send-reset-password-email'] = 'user/sendResetEmail';
+$route['user/settings'] = 'user/settings';
 
 $route['expenses'] = 'expenses/view';
 $route['expenses/capture'] = 'expenses/capture';
-$route['expenses/history'] = 'expenses/history';
+$route['expenses/delete/(:num)'] = 'expenses/delete/$1';
+$route['expenses/edit/(:num)'] = 'expenses/edit/$1';
 $route['expenses/filter-search'] = 'expenses/filteredSearch';
+$route['expenses/history'] = 'expenses/history';
 $route['expenses/options'] = 'expenses/options';
+$route['expenses/stats'] = 'expenses/statistics';
+
+
+
+$route['expense-types/manage'] = 'expenseTypes/manage';
+$route['expense-types/capture'] = 'expenseTypes/capture';
+$route['expense-types/edit/(:num)'] = 'expenseTypes/edit/$1';
+$route['expense-types/delete/(:num)'] = 'expenseTypes/delete/$1';
+$route['expense-types/update'] = 'expenseTypes/update';
+
+$route['payment-methods/manage'] = 'paymentMethods/manage';
+$route['payment-methods/capture'] = 'paymentMethods/capture';
+$route['payment-methods/edit/(:num)'] = 'paymentMethods/edit/$1';
+$route['payment-methods/delete/(:num)'] = 'paymentMethods/delete/$1';
+$route['payment-methods/update'] = 'paymentMethods/update';
 
 $route['test'] = 'pages/test';
 

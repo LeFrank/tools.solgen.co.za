@@ -16,6 +16,7 @@
                 <th>Description</th>
                 <th>Location</th>
                 <th>Amount</th>
+                <th>Actions</th>
                 </thead>
                 <tbody>
                     <?php
@@ -29,6 +30,7 @@
                         echo "<td>" . $v["description"] . "</td>";
                         echo "<td>" . $v["location"] . "</td>";
                         echo "<td>" . $v["amount"] . "</td>";
+                        echo "<td><a href='/expenses/edit/".$v["id"]."'>Edit</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href='/expenses/delete/".$v["id"]."'>Delete</a></td>";
                         echo "</tr>";
                         $total += $v["amount"];
                     }
@@ -53,7 +55,7 @@
         <?php echo form_open('expenses/capture') ?>
 
         <label for="amount">Amount *</label>
-        <input type="number" min="0.01" step="0.01" max="9999999999999" name="amount" /><br />
+        <input type="number" min="0.01" step="0.01" max="9999999999999" name="amount" placeholder="0.0"/><br />
 
         <label for="expenseType">Expense Type</label>
         <select name="expenseType">
@@ -76,13 +78,13 @@
         </select><br />
 
         <label for="description">Description</label>
-        <textarea name="description" cols="40" rows="5" ></textarea><br/><br/>
+        <textarea name="description" cols="40" rows="5" placeholder="What was special about it, or a description of the expense."></textarea><br/><br/>
 
         <label for="location">Location</label>
-        <input  type="text" name="location" /><br/><br/>
+        <input  type="text" name="location" placeholder="Where was the expense made?"/><br/><br/>
 
         <label for="expenseDate">Expense Date</label>
-        <input  type="text" id="expenseDate" name="expenseDate" /><br/><br/>
+        <input  type="text" id="expenseDate" name="expenseDate" placeholder="<?php echo date('Y/m/d H:i:s');?>" /><br/><br/>
 
         <span>* Required Field</span><br/><br/>
 

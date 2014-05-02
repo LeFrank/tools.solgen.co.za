@@ -16,6 +16,7 @@
                         <th>Description</th>
                         <th>Location</th>
                         <th>Amount</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -30,6 +31,7 @@
                         echo "<td>" . $v["description"] . "</td>";
                         echo "<td>" . $v["location"] . "</td>";
                         echo "<td>" . $v["amount"] . "</td>";
+                        echo "<td><a href='/expenses/edit/" . $v["id"] . "'>Edit</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href='/expenses/delete/" . $v["id"] . "'>Delete</a></td>";
                         echo "</tr>";
                         $total += $v["amount"];
                     }
@@ -37,12 +39,12 @@
                 </tbody>
             </table>
             <table style="width:100%;">
-                    <?php
-                    echo "<tr class='td-total'>"
-                    . "  <td class='align-left'>Period Expenses Total</td>"
-                    . "  <td colspan='6' class='align-right'>" . number_format($total, 2, '.', ',') . "</td>"
-                    . "</tr>";
-                    ?>
+                <?php
+                echo "<tr class='td-total'>"
+                . "  <td class='align-left'>Period Expenses Total</td>"
+                . "  <td colspan='6' class='align-right'>" . number_format($total, 2, '.', ',') . "</td>"
+                . "</tr>";
+                ?>
             </table>
             <?php
         } else {
@@ -64,6 +66,7 @@
     <th>Description</th>
     <th>Location</th>
     <th>Amount</th>
+    <th>Actions</th>
     <tr/>
     </thead>
     <tbody>
@@ -76,15 +79,16 @@
     <td>{{description}}</td>
     <td>{{location}}</td>
     <td>{{amount}}</td>
+    <td><a href="/expenses/edit/{{id}}">Edit</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="/expenses/delete/{{id}}">Delete</a></td>
     </tr>
     {{/expenses}}
     </tbody>
     </table>
     <table style="width:100%;">
-        <tr class='td-total'>
-            <td class='align-left'>Period Expenses Total</td>
-            <td colspan='6' class='align-right'>{{total}}</td>
-        </tr>
+    <tr class='td-total'>
+    <td class='align-left'>Period Expenses Total</td>
+    <td colspan='6' class='align-right'>{{total}}</td>
+    </tr>
     </table>
 </script>
 <div id="expenseHistoryFilter" class="expenseHistoryFilter">
@@ -112,10 +116,16 @@
         <div>
             <div class="inline-block div-label" style="vertical-align: top;padding-top: 10px;">Expense Types</label></div>
             <div class="inline-block three-col" style="vertical-align: top;padding-top: 10px;">
-                <input type="checkbox" checked="checked" value="all" name="expenseType[]" />all<br/>
+                <div class='checkbox-col'><input type="checkbox" checked="checked" value="all" name="expenseType[]" />all</div>
                 <?php
+                $count = 1;
+                $breakCount = 3;
                 foreach ($expenseTypes as $k => $v) {
-                    echo "<input type='checkbox' value='" . $v["id"] . "' name='expenseType[]' />" . $v["description"] . "<br/>";
+                    echo "<div class='checkbox-col'><input type='checkbox' value='" . $v["id"] . "' name='expenseType[]' />" . $v["description"] . "</div>";
+                    $count++;
+                    if ($count % $breakCount === 0) {
+                        echo "<br/>";
+                    }
                 }
                 ?>
             </div>
@@ -123,10 +133,16 @@
         <div>
             <div class="inline-block div-label" style="vertical-align: top;padding-top: 10px;">Payment Method</label></div>
             <div class="inline-block three-col" style="vertical-align: top;padding-top: 10px;">
-                <input type="checkbox" checked="checked" value="all" name="paymentMethod[]" />all<br/>
+                <div class='checkbox-col'><input type="checkbox" checked="checked" value="all" name="paymentMethod[]" />all</div>
                 <?php
+                $pmCount = 1;
+                $bpmBeakCount = 3;
                 foreach ($expensePaymentMethod as $k => $v) {
-                    echo "<input type='checkbox' value='" . $v["id"] . "' name='paymentMethod[]' />" . $v["description"] . "<br/>";
+                    echo "<div class='checkbox-col'><input type='checkbox' value='" . $v["id"] . "' name='paymentMethod[]' />" . $v["description"] . "</div>";
+                    $pmCount++;
+                    if ($pmCount % $bpmBeakCount === 0) {
+                        echo "<br/>";
+                    }
                 }
                 ?>
             </div>

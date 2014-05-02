@@ -120,8 +120,17 @@ td {
     /*vertical-align: top;*/
 }
 
-select, input, textarea {
+select, form input[type=text], form input[type=password] ,form input[type=number] , textarea {
     font-family: AurulentSans, Trebuchet, Tahoma, Verdana, Arial, sans-serif;
+/*    border: 1px solid #CCCCCC;*/
+    box-shadow: 0 1px 0 #EEEEEE inset, 0 1px 0 #FFFFFF;
+    background-color: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    border-radius: 3px;
+    display: inline-block;
+    margin: 0;
+    outline: 0 none;
+    padding: 4px;
 }
 
 pre, code, tt, dt {
@@ -182,7 +191,7 @@ Custom classes go here
     width:100%;
     font-family: AurulentSans, Trebuchet, Tahoma, Verdana, Arial, sans-serif;
     float:left;
-    width:500px;
+    width:45%;
 }
 .page-header a{
     text-decoration: none;
@@ -213,7 +222,7 @@ Custom classes go here
     float:left;
 }
 .login{
-    width:30%;
+    width:45%;
     font-size: small;
     float:right;
     text-align: right;
@@ -340,4 +349,9 @@ table.tablesorter thead tr .headerSortDown {
 table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
     background-color: gray;
     color:#f3f3f3;
+}
+.checkbox-col {
+  width: 250px; /* set to whatever width works for you */
+  float: left; /* put the columns next to each other */
+  margin-right: 10px; /* add some space between columns */
 }
