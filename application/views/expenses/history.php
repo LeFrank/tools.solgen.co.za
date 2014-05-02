@@ -4,7 +4,7 @@
     <h2>Expense History</h2>
     <div id="historyGraph">
         Table of full data from <?php echo $startAndEndDateforMonth[0]; ?> to <?php echo $startAndEndDateforMonth[1]; ?><br/><br/>
-        <?php if (is_array($expensesForWeek) && !empty($expensesForWeek)) {
+        <?php if (is_array($expensesForPeriod) && !empty($expensesForPeriod)) {
             ?>
             <table id="expense_history" class="tablesorter">
                 <thead>

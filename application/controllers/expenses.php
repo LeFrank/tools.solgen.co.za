@@ -117,7 +117,7 @@ class Expenses extends CI_Controller {
         $data["expensePaymentMethod"] = mapKeyToId($this->payment_method_model->get_user_payment_method($this->session->userdata("user")->id), false);
         //$data["startAndEndDateOfWeek"] = getStartAndEndDateforWeek(date('W'), date('Y'));
         $data["startAndEndDateforMonth"] = getStartAndEndDateforMonth(date("m"), date('Y'));
-        $data["expensesForWeek"] = $this->expense_model->getExpensesbyDateRange($data["startAndEndDateforMonth"][0], $data["startAndEndDateforMonth"][1], $this->session->userdata("user")->id);
+        $data["expensesForPeriod"] = $this->expense_model->getExpensesbyDateRange($data["startAndEndDateforMonth"][0], $data["startAndEndDateforMonth"][1], $this->session->userdata("user")->id);
         $this->load->view('header');
         $this->load->view('expenses/expense_nav');
         $this->load->view('expenses/history', $data);
@@ -131,13 +131,33 @@ class Expenses extends CI_Controller {
         $this->load->view('footer');
     }
 
-    public function statistics(){
+    public function statistics() {
+        //get the data ready
+        $this->load->helper("date_helper");
+        $this->load->helper("expense_statistics_helper");
+        $data["startAndEndDateforMonth"] = getStartAndEndDateforMonth(date("m")-1, date('Y'));
+        $expensesForPeriod = $this->expense_model->getExpensesbyDateRange(
+                $data["startAndEndDateforMonth"][0], 
+                $data["startAndEndDateforMonth"][1], 
+                $this->session->userdata("user")->id,
+                null,
+                null,
+                "amount",
+                "desc"
+        );
+        $data["expensesTotal"] = getExpensesTotal($expensesForPeriod);
+        $data["averageExpense"] = getAveragePerExpense($data["expensesTotal"], $expensesForPeriod);
+        $data["topFiveExpenses"] = array_slice($expensesForPeriod, 0, 5);
+        $data["topFiveExpenseTypes"] = array_slice(getArrayOfTypeAmount($expensesForPeriod),0,5,true);
+        $data["topFivePaymentMethods"] = array_slice(getArrayOfPaymentMethodAmount($expensesForPeriod),0,5,true);
+        $data["topFiveLocations"] = array_slice(getArrayOfLocationAmount($expensesForPeriod),0,5,true);
+        $data["expensesByDayOfWeek"] =getDayOfWeekForExpense($expensesForPeriod);
         $this->load->view('header');
         $this->load->view('expenses/expense_nav');
-        $this->load->view('expenses/statistics');
+        $this->load->view('expenses/statistics', $data);
         $this->load->view('footer');
     }
-    
+
     public function view() {
         $this->load->library('session');
         $data["expenseTypes"] = mapKeyToId($this->expense_type_model->get_user_expense_types($this->session->userdata("user")->id));

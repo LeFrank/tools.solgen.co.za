@@ -130,23 +130,31 @@ class expense_model extends CI_Model {
 
     /**
      * Get expenses by date range. Can be filtered by user and delimited
+     * 
      * @param type $startDate
      * @param type $endDate
      * @param type $userId
      * @param type $limit
      * @param type $offset
+     * @param type $orderBy
+     * @param type $direction
      * @return null
      */
-    public function getExpensesbyDateRange($startDate, $endDate, $userId = null, $limit = null, $offset = 0) {
+    public function getExpensesbyDateRange($startDate, $endDate, $userId = null, $limit = null, $offset = 0 , $orderBy=null, $direction = "asc") {
+        if(null != $orderBy){
+            $this->db->order_by($orderBy, $direction);
+        }else{
+            $this->db->order_by("expense_date", "desc");
+        }
         if ($userId === null) {
             return null;
         }
-        $this->db->order_by("expense_date", "desc");
         if (null == $limit) {
             $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'expense_date >=' => $startDate, 'expense_date <= ' => $endDate));
         } else {
             $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'expense_date >=' => $startDate, 'expense_date <= ' => $endDate), $limit, $offset);
         }
+//        echo $this->db->last_query();
         return $query->result_array();
     }
 

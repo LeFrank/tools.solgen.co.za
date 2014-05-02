@@ -1367,3 +1367,57 @@
 [01-May-2014 23:50:37 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
 [01-May-2014 23:50:37 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
 [01-May-2014 23:50:37 Africa/Johannesburg] PHP   4. Expenses->update() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[02-May-2014 22:34:52 Africa/Johannesburg] PHP Fatal error:  Call to undefined function getStartAndEndDateforMonth() in C:\UwAmp\www\application\controllers\expenses.php on line 137
+[02-May-2014 22:34:52 Africa/Johannesburg] PHP Stack trace:
+[02-May-2014 22:34:52 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[02-May-2014 22:34:52 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[02-May-2014 22:34:52 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[02-May-2014 22:34:52 Africa/Johannesburg] PHP   4. Expenses->statistics() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[02-May-2014 22:35:08 Africa/Johannesburg] PHP Fatal error:  Call to undefined function getStartAndEndDateforMonth() in C:\UwAmp\www\application\controllers\expenses.php on line 137
+[02-May-2014 22:35:08 Africa/Johannesburg] PHP Stack trace:
+[02-May-2014 22:35:08 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[02-May-2014 22:35:08 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[02-May-2014 22:35:08 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[02-May-2014 22:35:08 Africa/Johannesburg] PHP   4. Expenses->statistics() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[03-May-2014 00:15:22 Africa/Johannesburg] PHP Fatal error:  Unsupported operand types in C:\UwAmp\www\application\helpers\expense_statistics_helper.php on line 31
+[03-May-2014 00:15:22 Africa/Johannesburg] PHP Stack trace:
+[03-May-2014 00:15:22 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[03-May-2014 00:15:22 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[03-May-2014 00:15:22 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[03-May-2014 00:15:22 Africa/Johannesburg] PHP   4. Expenses->statistics() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[03-May-2014 00:15:22 Africa/Johannesburg] PHP   5. getArrayOfTypeAmount() C:\UwAmp\www\application\controllers\expenses.php:151
+[03-May-2014 00:15:59 Africa/Johannesburg] PHP Fatal error:  Unsupported operand types in C:\UwAmp\www\application\helpers\expense_statistics_helper.php on line 31
+[03-May-2014 00:15:59 Africa/Johannesburg] PHP Stack trace:
+[03-May-2014 00:15:59 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[03-May-2014 00:15:59 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[03-May-2014 00:15:59 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[03-May-2014 00:15:59 Africa/Johannesburg] PHP   4. Expenses->statistics() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[03-May-2014 00:15:59 Africa/Johannesburg] PHP   5. getArrayOfTypeAmount() C:\UwAmp\www\application\controllers\expenses.php:151
+[03-May-2014 00:19:01 Africa/Johannesburg] PHP Parse error:  syntax error, unexpected ';' in C:\UwAmp\www\application\helpers\expense_statistics_helper.php on line 32
+[03-May-2014 00:19:01 Africa/Johannesburg] PHP Stack trace:
+[03-May-2014 00:19:01 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[03-May-2014 00:19:01 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[03-May-2014 00:19:01 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[03-May-2014 00:19:01 Africa/Johannesburg] PHP   4. Expenses->statistics() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[03-May-2014 00:19:01 Africa/Johannesburg] PHP   5. CI_Loader->helper() C:\UwAmp\www\application\controllers\expenses.php:137
+[03-May-2014 00:22:36 Africa/Johannesburg] PHP Fatal error:  Call to undefined function exist() in C:\UwAmp\www\application\helpers\expense_statistics_helper.php on line 32
+[03-May-2014 00:22:36 Africa/Johannesburg] PHP Stack trace:
+[03-May-2014 00:22:36 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[03-May-2014 00:22:36 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[03-May-2014 00:22:36 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[03-May-2014 00:22:36 Africa/Johannesburg] PHP   4. Expenses->statistics() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[03-May-2014 00:22:36 Africa/Johannesburg] PHP   5. getArrayOfTypeAmount() C:\UwAmp\www\application\controllers\expenses.php:151
+[03-May-2014 01:10:59 Africa/Johannesburg] PHP Parse error:  syntax error, unexpected T_DOUBLE_ARROW in C:\UwAmp\www\application\helpers\expense_statistics_helper.php on line 39
+[03-May-2014 01:10:59 Africa/Johannesburg] PHP Stack trace:
+[03-May-2014 01:10:59 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[03-May-2014 01:10:59 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[03-May-2014 01:10:59 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[03-May-2014 01:10:59 Africa/Johannesburg] PHP   4. Expenses->statistics() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[03-May-2014 01:10:59 Africa/Johannesburg] PHP   5. CI_Loader->helper() C:\UwAmp\www\application\controllers\expenses.php:137
+[03-May-2014 01:12:31 Africa/Johannesburg] PHP Parse error:  syntax error, unexpected '=' in C:\UwAmp\www\application\helpers\expense_statistics_helper.php on line 62
+[03-May-2014 01:12:31 Africa/Johannesburg] PHP Stack trace:
+[03-May-2014 01:12:31 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[03-May-2014 01:12:31 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[03-May-2014 01:12:31 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[03-May-2014 01:12:31 Africa/Johannesburg] PHP   4. Expenses->statistics() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[03-May-2014 01:12:31 Africa/Johannesburg] PHP   5. CI_Loader->helper() C:\UwAmp\www\application\controllers\expenses.php:137
