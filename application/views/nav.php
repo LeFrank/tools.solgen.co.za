@@ -15,12 +15,10 @@
         &nbsp;&nbsp;
         |
         &nbsp;&nbsp;
-        <a href="/schedule" >Schedule</a>
-        &nbsp;&nbsp;
-        |
+        <a href="/schedule" >Schedule</a>-->
         &nbsp;&nbsp;
         <a href="/notes" >Notes</a>
-        &nbsp;&nbsp;
+        <!-- &nbsp;&nbsp;
         |
         &nbsp;&nbsp;
         <a href="/history" >History</a>
@@ -28,3 +26,5 @@
         |
         &nbsp;&nbsp;
         <a href="/Resources" >Resources</a> -->
+        &nbsp;&nbsp;    
+        <a href="/faq" >FAQ</a>

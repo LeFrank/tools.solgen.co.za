@@ -29,7 +29,7 @@
                         echo "<td>" . $expensePaymentMethod[$v["payment_method_id"]]["description"] . "</td>";
                         echo "<td>" . $v["description"] . "</td>";
                         echo "<td>" . $v["location"] . "</td>";
-                        echo "<td>" . $v["amount"] . "</td>";
+                        echo "<td class='align-right'>" . $v["amount"] . "</td>";
                         echo "<td><a href='/expenses/edit/".$v["id"]."'>Edit</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href='/expenses/delete/".$v["id"]."'>Delete</a></td>";
                         echo "</tr>";
                         $total += $v["amount"];

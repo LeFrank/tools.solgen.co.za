@@ -65,9 +65,9 @@ p {
 
 ul, ol {
     margin-left: 0;
-    list-style: none;
+    /*list-style: none;*/
     padding-left:10px;
-    text-transform:capitalize;
+    /*text-transform:capitalize;*/
 }
 ul li{
     color:#666666;
@@ -308,7 +308,10 @@ three-col{
     border-radius: 5px;
     text-align: center;
 }
-
+.fail-text{
+    color:red;
+    font-weight: bolder;
+}
 /* tables */
 table.tablesorter {
     font-family:AurulentSans;
@@ -355,3 +358,14 @@ table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSo
   float: left; /* put the columns next to each other */
   margin-right: 10px; /* add some space between columns */
 }
+.loading{
+    margin:20px;
+    height:13px;
+    width:208px;
+    background-image: url("/images/third_party/thickbox/loadingAnimation.gif");
+}
+
+.hidden{
+    display:none;
+}
+

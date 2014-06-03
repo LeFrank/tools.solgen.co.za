@@ -20,6 +20,7 @@ class PaymentMethods extends CI_Controller {
         $this->load->helper("array_helper");
         $data["paymentMethods"] = mapKeyToId($this->payment_method_model->get_only_user_payment_methods($this->session->userdata("user")->id), false);
         $this->load->view("header");
+        $this->load->view('expenses/expense_nav');
         $this->load->view("payment_methods/manage", $data);
         $this->load->view("footer");
     }

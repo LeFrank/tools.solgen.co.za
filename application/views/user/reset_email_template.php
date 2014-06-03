@@ -19,11 +19,11 @@
             <ol>
                 <li>
                     Click the link below.<br/>
-                    <a href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/user/reset-password/<?php echo $token; ?>" target="_blank" >Reset Password</a>
+                    <a href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/user/resetPassword/<?php echo $token; ?>" target="_blank" >Reset Password</a>
                 </li>
                 <li>
                     Copy the link and paste it into your browser.<br/>
-                    http://<?php echo $_SERVER['HTTP_HOST']; ?>/user/reset-password/<?php echo $token; ?>
+                    http://<?php echo $_SERVER['HTTP_HOST']; ?>/user/resetPassword/<?php echo $token; ?>
                 </li>
             </ol>
         </div>

@@ -16,6 +16,7 @@ class User extends CI_Controller {
         $this->load->database();
         $this->load->helper("form");
         $this->load->library("form_validation");
+        $this->load->helper('auth_helper');
     }
 
     public function register() {
@@ -33,9 +34,22 @@ class User extends CI_Controller {
             $this->load->view('user/register');
             $this->load->view('footer');
         } else {
-            $this->user_model->set_user();
+            $res = $this->user_model->set_user();
+            if ($res == 1) {
+                $message = $this->load->view('user/registered_confirmation_email_form.php', $data, TRUE);
+                $this->load->library('email');
+                $this->email->from('system@solgen.co.za', 'System');
+                $this->email->to($this->input->post('email'));
+                $this->email->subject('Solgen : Account Registered');
+                $this->email->message($message);
+                $this->email->send();
+                $data["status"] = "Success";
+                $data["action_classes"] = "success";
+                $data["message_classes"] = "success";
+                $data["message"] = "Your account has been registered, please login in to continue.";
+            }
             $this->load->view('header', $data);
-            $this->load->view('user/registered');
+            $this->load->view('user/registered', $data);
             $this->load->view('footer');
         }
     }
@@ -43,7 +57,10 @@ class User extends CI_Controller {
     public function login() {
         if ($this->input->post('email') != "" && $this->input->post('password') != "") {
             $user = $this->user_model->login($this->input->post('email'), $this->input->post('password'));
+            // if remember me checkbox is checked, create table entry and cookie
             if (!empty($user)) {
+//                $this->rememberMe($user);
+                $this->user_model->updateLastLogin($user->id);
                 unset($user->password);
                 $this->session->set_userdata("loggedIn", TRUE);
                 $this->session->set_userdata("isAdmin", ($user->user_type == "admin") ? TRUE : FALSE);
@@ -51,7 +68,12 @@ class User extends CI_Controller {
                 redirect('/home/dashboard', 'refresh');
             } else {
                 $this->session->set_userdata("loggedIn", FALSE);
-                redirect('/user/login', 'refresh');
+                $data["error_message"] = "Invlid login details provided.";
+                $this->load->helper('email');
+                $this->load->library('form_validation');
+                $this->load->view('header', $data);
+                $this->load->view('home/home');
+                $this->load->view('footer');
             }
         } else {
             $this->session->set_userdata("loggedIn", FALSE);
@@ -71,6 +93,16 @@ class User extends CI_Controller {
         $this->load->view("user/forgottenPassword");
         $this->load->view("footer");
         //5 redirect to home page so they can log in.
+    }
+
+    public function manageLocation() {
+        $this->load->library('session');
+        can_access(TRUE, $this->session);
+        $this->load->model("user_location_model");
+        $data["location"] = $this->user_location_model->getLocation($this->session->userdata("user")->id);
+        $this->load->view("header");
+        $this->load->view("user/manage/location", $data);
+        $this->load->view("footer");
     }
 
     public function sendResetEmail() {
@@ -93,6 +125,7 @@ class User extends CI_Controller {
                 $resetArray = $this->user_reset_model->get_user_reset(null, $userId->id, null);
                 if (empty($resetArray)) {
                     $data["token"] = sha1(microtime(true) . mt_rand(10000, 90000));
+                    $data["user"] = 
                     $userReset = $this->user_reset_model->create($userId->id, $data["token"]);
                     $resetArray = $this->user_reset_model->get_user_reset($userReset, null, null);
                     $message = $this->load->view('user/reset_email_template', $data, TRUE);
@@ -117,6 +150,20 @@ class User extends CI_Controller {
         $this->load->view("footer");
     }
 
+    private function rememberMe($user){
+//        $this->load->helper('cookie');
+//        if($this->input->post("rememberMe")){
+//            // load user_remember_me_model
+//            $this->load->model("user_remember_me_model");
+//            // insert record
+//            $rememberMeId = $this->user_remember_me_model->create($user);
+//            // get record
+//            $rememberMe = $this->user_remember_me_model->getRememberMe($rememberMeId);
+//            // create cookie
+//            $this->input->set_cookie("tools.remember", $rememberMe->hash, 3600 );
+//        }
+    }
+    
     public function resetPassword($token = null) {
         $this->load->model('user_reset_model');
         $resetArray = $this->user_reset_model->get_user_reset(null, null, $token);
@@ -167,8 +214,9 @@ class User extends CI_Controller {
     function settings() {
         $this->load->helper('auth_helper');
         can_access(TRUE, $this->session);
+        $data["user"] = $this->session->userdata("user");
         $this->load->view('header');
-        $this->load->view('user/settings');
+        $this->load->view('user/settings', $data);
         $this->load->view('footer');
     }
 
@@ -201,6 +249,58 @@ class User extends CI_Controller {
         $data["message_classes"] = "success";
         $data["message"] = "Your account and associated data has been deleted successfully.<br/>We are sorry to see you go, but wish you the best.<br/>";
         echo $this->load->view('user/user_status', $data, TRUE);
+    }
+
+    public function saveLocation() {
+        $this->load->library('session');
+        $this->load->model('user_location_model');
+        $locationId = $this->input->post("locationId");
+        $data["action_description"] = "Save Location";
+        if ($this->user_location_model->set_user_location($this->session->userdata("user")->id, $locationId)) {
+            $data["status"] = "Location Saved Successfully";
+            $data["action_classes"] = "success";
+            $data["message_classes"] = "success";
+            $data["message"] = "The location has been saved.";
+        } else {
+            $data["status"] = "Location Error Saving Location";
+            $data["action_classes"] = "failure";
+            $data["message_classes"] = "failure";
+            $data["message"] = "The location was not saved, please try again.";
+        }
+        echo $this->load->view('general/action_status', $data, TRUE);
+    }
+
+    public function unsubscribeEmail() {
+        $this->load->library("session");
+        $user = $this->user_model->get_user($this->input->post("user_id"));
+        $user->subscribed = ($this->input->post("subscribed") == "true") ? 1 : 0;
+        $subscribeMessage = ($this->input->post("subscribed") == "true") ? "Subscribed" : "Un-subscribed";
+        if ($this->session->userdata("user")->user_type == "admin" || $this->input->post("user_id") == $this->session->userdata("user")->id) {
+            //unsubscribe
+            if ($this->user_model->update($user)) {
+                echo $subscribeMessage;
+                if ($this->input->post("user_id") == $this->session->userdata("user")->id) {
+                    unset($user->password);
+                    $this->session->set_userdata("user", $user);
+                }
+            } else {
+                echo "Not updated";
+            }
+        } else {
+            //strongly worded warning to stop shananigans
+            $data["action_description"] = "Unsubscribe Email Address";
+            $data["status"] = "Unable to unsubscribe email address";
+            $data["action_classes"] = "failure";
+            $data["message_classes"] = "failure";
+            $data["message"] = "You do not have sufficient privileges to Un-subscribe this email address: " . $user->email . ".";
+            echo $this->load->view('general/action_status', $data, TRUE);
+        }
+    }
+
+    public function unsubscribeEmailWithEmail($email) {
+        $this->load->view("header");
+        $this->load->view("unsubscribe");
+        $this->load->view("footer");
     }
 
 }

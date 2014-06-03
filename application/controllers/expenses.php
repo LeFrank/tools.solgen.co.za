@@ -109,6 +109,21 @@ class Expenses extends CI_Controller {
         return $this->output->get_output();
     }
 
+    public function forecast(){
+        echo __CLASS__. " > ".__FUNCTION__;
+    }
+    
+    public function getExpenses($expenseIds){
+        $this->load->library("session");
+        $data["expenseTypes"] = mapKeyToId($this->expense_type_model->get_user_expense_types($this->session->userdata("user")->id));
+        $data["expensePaymentMethod"] = mapKeyToId($this->payment_method_model->get_user_payment_method($this->session->userdata("user")->id), false);
+        $data["expenses"] = $this->expense_model->getExpensesByIds($this->session->userdata("user")->id , array_filter(explode("-",$expenseIds)));
+        
+        $this->load->view("header_no_banner");
+        $this->load->view("expenses/expense_table", $data);
+        $this->load->view("footer");
+    }
+    
     public function history() {
         $this->load->helper("array_helper");
         $this->load->helper("date_helper");
@@ -132,10 +147,17 @@ class Expenses extends CI_Controller {
     }
 
     public function statistics() {
-        //get the data ready
         $this->load->helper("date_helper");
         $this->load->helper("expense_statistics_helper");
-        $data["startAndEndDateforMonth"] = getStartAndEndDateforMonth(date("m")-1, date('Y'));
+        //get the data ready
+        if(sizeOf($this->input->post()) == 1){
+            $data["startAndEndDateforMonth"] = getStartAndEndDateforMonth(date("m")-1, date('Y'));
+        }else{
+            $data["startAndEndDateforMonth"] = array($this->input->post("fromDate"), $this->input->post("toDate"));
+        }
+        $data["expenseTypes"] = mapKeyToId($this->expense_type_model->get_expense_types());
+        $data["expensePaymentMethod"] = mapKeyToId($this->payment_method_model->get_user_payment_method($this->session->userdata("user")->id), true);
+        
         $expensesForPeriod = $this->expense_model->getExpensesbyDateRange(
                 $data["startAndEndDateforMonth"][0], 
                 $data["startAndEndDateforMonth"][1], 
@@ -145,13 +167,29 @@ class Expenses extends CI_Controller {
                 "amount",
                 "desc"
         );
+        $expensesOverPeriod = $this->expense_model->getExpensesbyDateRange(
+                $data["startAndEndDateforMonth"][0], 
+                $data["startAndEndDateforMonth"][1], 
+                $this->session->userdata("user")->id,
+                null,
+                null,
+                "expense_date",
+                "asc"
+        );
+        $data["allExpenses"] = $expensesOverPeriod;
         $data["expensesTotal"] = getExpensesTotal($expensesForPeriod);
         $data["averageExpense"] = getAveragePerExpense($data["expensesTotal"], $expensesForPeriod);
         $data["topFiveExpenses"] = array_slice($expensesForPeriod, 0, 5);
         $data["topFiveExpenseTypes"] = array_slice(getArrayOfTypeAmount($expensesForPeriod),0,5,true);
+        $data["expenseTypesTotals"] = getArrayOfTypeAmount($expensesForPeriod);
         $data["topFivePaymentMethods"] = array_slice(getArrayOfPaymentMethodAmount($expensesForPeriod),0,5,true);
+        $data["paymentMethodsTotal"] = getArrayOfPaymentMethodAmount($expensesForPeriod);
         $data["topFiveLocations"] = array_slice(getArrayOfLocationAmount($expensesForPeriod),0,5,true);
-        $data["expensesByDayOfWeek"] =getDayOfWeekForExpense($expensesForPeriod);
+        $data["expensesOverPeriod"] = json_encode(getExpensesOverPeriodJson($expensesOverPeriod));
+        $data["expensesByDayOfWeek"] = getDayOfWeekForExpense($expensesForPeriod);
+        $data["expensesByHourOfDay"] = getExpensesForHourOfDay($expensesForPeriod);
+        $data["daysOfWeek"] = getDaysOfWeek();
+        
         $this->load->view('header');
         $this->load->view('expenses/expense_nav');
         $this->load->view('expenses/statistics', $data);

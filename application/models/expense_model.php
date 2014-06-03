@@ -94,6 +94,19 @@ class expense_model extends CI_Model {
         return $query->result_array();
     }
 
+    public function getExpensesByIds($userId , $expenseIds){
+        if ($userId == null) {
+            return null;
+        }
+        if($expenseIds == null){
+            return null;
+        }
+        $this->db->order_by("expense_date", "desc");
+        $this->db->where_in('id', $expenseIds);
+        $query = $this->db->get_where($this->tn, array('user_id' => $userId), 100);
+        return $query->result_array();
+    }
+    
     /**
      * 
      * @param type $userId

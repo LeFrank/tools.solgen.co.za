@@ -16,6 +16,11 @@ class Home extends CI_Controller{
     }
     
     function index(){
+        $this->load->helper('cookie');
+        if(null != $this->input->cookie("tools.remember")){
+            //login
+            print_r($this->input->cookie("tools.remember"));
+        }
         $this->load->helper('email');
         $this->load->library('form_validation');
         $this->load->view('header');

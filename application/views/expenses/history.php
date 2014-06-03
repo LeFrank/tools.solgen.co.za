@@ -22,7 +22,7 @@
                 <tbody>
                     <?php
                     $total = 0.0;
-                    foreach ($expensesForWeek as $k => $v) {
+                    foreach ($expensesForPeriod as $k => $v) {
                         echo "<tr>";
                         echo "<td>" . ++$k . "</td>";
                         echo "<td>" . $v["expense_date"] . "</td>";
@@ -30,7 +30,7 @@
                         echo "<td>" . $expensePaymentMethod[$v["payment_method_id"]]["description"] . "</td>";
                         echo "<td>" . $v["description"] . "</td>";
                         echo "<td>" . $v["location"] . "</td>";
-                        echo "<td>" . $v["amount"] . "</td>";
+                        echo "<td class='align-right'>" . $v["amount"] . "</td>";
                         echo "<td><a href='/expenses/edit/" . $v["id"] . "'>Edit</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href='/expenses/delete/" . $v["id"] . "'>Delete</a></td>";
                         echo "</tr>";
                         $total += $v["amount"];

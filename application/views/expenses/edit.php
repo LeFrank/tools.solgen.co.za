@@ -39,7 +39,7 @@
 
     <span>* Required Field</span><br/><br/>
 
-    <input type="submit" name="submit" value="Record" /> <a href="<?php echo $_SERVER['HTTP_REFERER'];?>" >Cancel</a>
+    <input type="submit" name="submit" value="Record" /> <a href="/expenses" >Cancel</a>
 </form>
 </div>
 <script type="text/javascript">

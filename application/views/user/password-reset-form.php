@@ -2,7 +2,7 @@
     echo validation_errors();
     echo form_open('user/reset-user-password');
 ?>
-<h3>Rest Password</h3>
+<h3>Reset Password</h3>
 <p>Enter your new password in the fields below.</p>
 <label >Password</label>&nbsp;&nbsp;
 <input id="password" name="password" type="password" value="" /><br/><br/>

@@ -4,24 +4,18 @@
 
 <?php echo form_open('user/register') ?>
 
-	<label for="firstname">Firstname</label>
+	<label for="firstname">First Name</label>
 	<input type="input" name="firstname" /><br />
 
-	<label for="lastname">Lastname</label>
+	<label for="lastname">Last Name</label>
 	<input name="lastname"></input><br />
         
-        <label for="email">email</label>
+        <label for="email">Email</label>
 	<input name="email"></input><br />
         
-        <label for="password">password</label>
+        <label for="password">Password</label>
 	<input type="password" name="password"></input><br />
-
-        <label for="type">Type</label>
-	<select name="user_type">
-            <option value="user">user</option>
-            <option value="admin">admin</option>
-        <select><br />
-        
+       
 	<input type="submit" name="submit" value="Done" />
 
 </form>

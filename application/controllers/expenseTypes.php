@@ -20,6 +20,7 @@ class ExpenseTypes extends CI_Controller {
         $this->load->helper("array_helper");
         $data["expenseTypes"] = mapKeyToId($this->expense_type_model->get_only_user_expense_types($this->session->userdata("user")->id), false);
         $this->load->view("header");
+        $this->load->view('expenses/expense_nav');
         $this->load->view("expense_types/manage", $data);
         $this->load->view("footer");
     }

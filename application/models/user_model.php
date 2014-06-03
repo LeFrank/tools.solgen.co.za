@@ -21,7 +21,7 @@ class User_model extends CI_Model {
             return $query->result_array();
         }
         $query = $this->db->get_where($this->tn, array('id' => $id));
-        return $query->row_array();
+        return $query->row();
     }
 
     public function get_user_id_by_email($email) {
@@ -43,11 +43,20 @@ class User_model extends CI_Model {
             'lastname' => $this->input->post('lastname'),
             'email' => $this->input->post('email'),
             'password' => hash("sha256", trim($this->input->post('password'))),
-            'user_type' => $this->input->post('user_type'),
+            'user_type' => 'user',
             'create_date' => date('Y/m/d H:i:s'),
             'active' => TRUE
         );
         return $this->db->insert($this->tn, $data);
+    }
+
+    public function updateLastLogin($id) {
+        $this->load->helper('date');
+        $data = array(
+            "last_login" => date('Y/m/d H:i:s')
+        );
+        $this->db->where('id', $id);
+        return $this->db->update($this->tn, $data);
     }
 
     public function update_password($id, $password) {
@@ -69,4 +78,8 @@ class User_model extends CI_Model {
         $this->db->delete($this->tn);
     }
 
+    public function update($user){
+        $this->db->where('id', $user->id);
+        return $this->db->update($this->tn, $user);
+    }
 }
