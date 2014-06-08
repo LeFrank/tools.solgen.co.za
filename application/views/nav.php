@@ -8,14 +8,14 @@
 ?>
         &nbsp;&nbsp;
         <a href="/expenses" >Expenses</a>
+        &nbsp;&nbsp;
+        <a href="/weather" >Weather</a>
         <!-- &nbsp;&nbsp;
         |
         &nbsp;&nbsp;
-        <a href="/weather" >Weather</a>
-        &nbsp;&nbsp;
-        |
-        &nbsp;&nbsp;
         <a href="/schedule" >Schedule</a>-->
+        &nbsp;&nbsp;
+        <a href="/locations" >Locations</a>
         &nbsp;&nbsp;
         <a href="/notes" >Notes</a>
         <!-- &nbsp;&nbsp;

@@ -369,3 +369,32 @@ table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSo
     display:none;
 }
 
+/*
+* Weather
+*/
+
+.weather-forecast{
+    width:100%;
+    line-height: 20px;
+    overflow:scroll;
+}
+.span-label{
+    width:50%;
+    display:inline-block;
+    text-align:right;
+    
+    margin: 0px 5px 0px 0px;
+}
+.weather-forecast thead th{
+    text-align:center;
+}
+.weather-forecast tbody tr td{ 
+    padding:0px 5px 0px 5px;
+}
+
+/*
+* Location
+*/
+.location_list_table{
+    width:100%;
+}

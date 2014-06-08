@@ -46,8 +46,7 @@ $route['404_override'] = '';
 $route['user/(:any)'] = 'user/$1';
 $route['user/delete-account'] = 'user/delete';
 $route['user/forgotten-password'] = 'user/forgottenPassword';
-$route['user/location/manage'] = 'user/manageLocation';
-$route['user/location/save'] = 'user/saveLocation';
+
 $route['user/login'] = 'user/login';
 $route['user/logout'] = 'user/logout';
 $route['user/register'] = 'user/register';
@@ -78,6 +77,12 @@ $route['expense-types/update'] = 'expenseTypes/update';
 
 
 $route['faq'] = 'faq/index';
+
+$route['locations'] = 'location/manage';
+$route['location/save'] = 'location/save';
+$route['location/edit/(:num)'] = 'location/edit/$1';
+$route['location/delete/(:num)'] = 'location/delete/$1';
+$route['location/view/(:num)'] = 'location/view/$1';
 
 $route['payment-methods/manage'] = 'paymentMethods/manage';
 $route['payment-methods/capture'] = 'paymentMethods/capture';

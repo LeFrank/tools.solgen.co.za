@@ -11,7 +11,7 @@ $(document).ready(function() {
 
 
     $("#saveCoordinates").click(function() {
-        var jqxhr = $.post("/user/location/save", $("#co-ordinate-form").serialize()
+        var jqxhr = $.post("location/save", $("#co-ordinate-form").serialize()
                 ).done(function(data) {
             $("#status-message").html(data).show();
         }).fail(function(err) {
@@ -41,7 +41,7 @@ function geoFindMe() {
         $("#loading").hide();
 
         $("#saveCoordinates").click(function() {
-            var jqxhr = $.post("/user/location/save", $("#co-ordinate-form").serialize()
+            var jqxhr = $.post("location/save", $("#co-ordinate-form").serialize()
                     ).done(function(data) {
                 $("#status-message").html(data).show();
             }).fail(function(err) {
@@ -74,7 +74,7 @@ function geoUpdate() {
         var longitude = position.coords.longitude;
         $("#latitude").val(latitude);
         $("#longitude").val(longitude);
-        $("#map").attr("src","http://maps.googleapis.com/maps/api/staticmap?center=" + latitude + "," + longitude + "&zoom=13&size=300x300&sensor=false");
+        $("#map").attr("src","http://maps.googleapis.com/maps/api/staticmap?center=" + latitude + "," + longitude + "&zoom=13&size=300x300&sensor=false").show();
         $("#loading").hide();
     };
 

@@ -61,8 +61,7 @@
                 <li>Allows for the creation,editing and deletion of expense types</li>
                 <li>Allows for the creation,editing and deletion of payment methods</li>
                 <li>Generates Statistics for the passed calendar month period</li>
-                <li>Generates Statistics for a 90 day roll up of expenses</li>
-                <li>Generates a 60 day forecast of expenses if it detects any patterns or behaviour</li>
+                <li>Generates Statistics for a user selected number of days</li>
             </ul>
             </p>
             </li>

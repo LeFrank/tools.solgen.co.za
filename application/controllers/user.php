@@ -95,16 +95,6 @@ class User extends CI_Controller {
         //5 redirect to home page so they can log in.
     }
 
-    public function manageLocation() {
-        $this->load->library('session');
-        can_access(TRUE, $this->session);
-        $this->load->model("user_location_model");
-        $data["location"] = $this->user_location_model->getLocation($this->session->userdata("user")->id);
-        $this->load->view("header");
-        $this->load->view("user/manage/location", $data);
-        $this->load->view("footer");
-    }
-
     public function sendResetEmail() {
         $this->load->model('user_reset_model');
         $data["status"] = "Unsuccessful";
@@ -249,25 +239,6 @@ class User extends CI_Controller {
         $data["message_classes"] = "success";
         $data["message"] = "Your account and associated data has been deleted successfully.<br/>We are sorry to see you go, but wish you the best.<br/>";
         echo $this->load->view('user/user_status', $data, TRUE);
-    }
-
-    public function saveLocation() {
-        $this->load->library('session');
-        $this->load->model('user_location_model');
-        $locationId = $this->input->post("locationId");
-        $data["action_description"] = "Save Location";
-        if ($this->user_location_model->set_user_location($this->session->userdata("user")->id, $locationId)) {
-            $data["status"] = "Location Saved Successfully";
-            $data["action_classes"] = "success";
-            $data["message_classes"] = "success";
-            $data["message"] = "The location has been saved.";
-        } else {
-            $data["status"] = "Location Error Saving Location";
-            $data["action_classes"] = "failure";
-            $data["message_classes"] = "failure";
-            $data["message"] = "The location was not saved, please try again.";
-        }
-        echo $this->load->view('general/action_status', $data, TRUE);
     }
 
     public function unsubscribeEmail() {

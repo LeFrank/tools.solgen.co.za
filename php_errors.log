@@ -1892,3 +1892,50 @@
 [04-Jun-2014 00:30:54 Africa/Johannesburg] PHP Stack trace:
 [04-Jun-2014 00:30:54 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
 [04-Jun-2014 00:30:54 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[07-Jun-2014 17:02:59 Africa/Johannesburg] PHP Parse error:  syntax error, unexpected '.' in C:\UwAmp\www\application\views\weather\index.php on line 22
+[07-Jun-2014 17:02:59 Africa/Johannesburg] PHP Stack trace:
+[07-Jun-2014 17:02:59 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[07-Jun-2014 17:02:59 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[07-Jun-2014 17:02:59 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[07-Jun-2014 17:02:59 Africa/Johannesburg] PHP   4. Weather->index() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[07-Jun-2014 17:02:59 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\weather.php:51
+[07-Jun-2014 17:02:59 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[07-Jun-2014 18:07:01 Africa/Johannesburg] PHP Parse error:  syntax error, unexpected ';' in C:\UwAmp\www\application\views\weather\index.php on line 36
+[07-Jun-2014 18:07:01 Africa/Johannesburg] PHP Stack trace:
+[07-Jun-2014 18:07:01 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[07-Jun-2014 18:07:01 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[07-Jun-2014 18:07:01 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[07-Jun-2014 18:07:01 Africa/Johannesburg] PHP   4. Weather->index() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[07-Jun-2014 18:07:01 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\weather.php:51
+[07-Jun-2014 18:07:01 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[08-Jun-2014 01:49:23 Africa/Johannesburg] PHP Parse error:  syntax error, unexpected $end in C:\UwAmp\www\application\views\weather\index.php on line 54
+[08-Jun-2014 01:49:24 Africa/Johannesburg] PHP Stack trace:
+[08-Jun-2014 01:49:24 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[08-Jun-2014 01:49:24 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[08-Jun-2014 01:49:24 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[08-Jun-2014 01:49:24 Africa/Johannesburg] PHP   4. Weather->index() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[08-Jun-2014 01:49:24 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\weather.php:51
+[08-Jun-2014 01:49:24 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[08-Jun-2014 01:49:33 Africa/Johannesburg] PHP Parse error:  syntax error, unexpected '}', expecting ',' or ';' in C:\UwAmp\www\application\views\weather\index.php on line 22
+[08-Jun-2014 01:49:33 Africa/Johannesburg] PHP Stack trace:
+[08-Jun-2014 01:49:33 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[08-Jun-2014 01:49:33 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[08-Jun-2014 01:49:33 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[08-Jun-2014 01:49:33 Africa/Johannesburg] PHP   4. Weather->index() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[08-Jun-2014 01:49:33 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\weather.php:51
+[08-Jun-2014 01:49:33 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[08-Jun-2014 01:49:59 Africa/Johannesburg] PHP Parse error:  syntax error, unexpected T_ECHO, expecting ',' or ';' in C:\UwAmp\www\application\views\weather\index.php on line 30
+[08-Jun-2014 01:49:59 Africa/Johannesburg] PHP Stack trace:
+[08-Jun-2014 01:49:59 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[08-Jun-2014 01:49:59 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[08-Jun-2014 01:49:59 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[08-Jun-2014 01:49:59 Africa/Johannesburg] PHP   4. Weather->index() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[08-Jun-2014 01:49:59 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\weather.php:51
+[08-Jun-2014 01:49:59 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[08-Jun-2014 14:21:13 Africa/Johannesburg] PHP Fatal error:  Call to undefined method CI_DB_mysql_result::result_rows() in C:\UwAmp\www\application\models\user_location_model.php on line 19
+[08-Jun-2014 14:21:13 Africa/Johannesburg] PHP Stack trace:
+[08-Jun-2014 14:21:13 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[08-Jun-2014 14:21:13 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[08-Jun-2014 14:21:13 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[08-Jun-2014 14:21:13 Africa/Johannesburg] PHP   4. User->manageLocations() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[08-Jun-2014 14:21:13 Africa/Johannesburg] PHP   5. User_location_model->getLocations() C:\UwAmp\www\application\controllers\user.php:102

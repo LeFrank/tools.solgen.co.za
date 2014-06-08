@@ -10,7 +10,7 @@
 <img src="/images/third_party/thickbox/loadingAnimation.gif" class="hidden" id="loading" />
 <h4><a href="/user/email/password" >Change Email Account</a></h4>
 <h4><a href="/user/email/password" >Change Password</a></h4>
-<h4><a href="/user/location/manage">User Location</a></h4>
+<h4><a href="/user/location/manage">User Locations</a></h4>
 <h4><a href="#"><span id="delete-account" >Delete account</span></a></h4>
 <h4>Email Subscription Status : 
     <input type="checkbox" value="1" name="unsubscribe" id="unsubscribe" <?php echo (($user->subscribed == 1)?"checked":"");?> />

@@ -21,9 +21,7 @@ class Weather extends CI_Controller {
         $callType = "forecast/daily";
         $user = $this->session->userdata("user");
         $userLocation = null;
-        echo "<pre>";
-        print_r($user);
-        print_r($this->weatherApiDetails);
+        $data["user"] = $user;
         if(!empty($user) && !empty($this->weatherApiDetails)){
             //get user location
             $this->load->model("user_location_model");
@@ -43,16 +41,15 @@ class Weather extends CI_Controller {
         $url .= "&lat=".$userLocation->latitude."&lon=".$userLocation->longitude."&units=metric&cnt=".$forecastDayCount;
         $url .= "&APPID=".$this->weatherApiDetails->api_key;
         //call api
-        $myWeather = json_decode(file_get_contents($url));
+        $data["myWeather"] = json_decode(file_get_contents($url));
         //parse through data
-        foreach ($myWeather->list as $k => $v) {
-            echo date("Y/m/d", $v->dt) . "<br/>";
-            print_r($v);
-        }
+        
         //store data for next 12 hours
         //apply data suggestions
         //display data
-        echo "</pre>";
+        $this->load->view("header");
+        $this->load->view("weather/index", $data);
+        $this->load->view("footer");
     }
 
 }
