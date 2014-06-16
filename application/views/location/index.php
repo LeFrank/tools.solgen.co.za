@@ -10,14 +10,6 @@ if (empty($locations)) {
         some of tools will be able to provide more accurate results.<br/>
         Tools : Weather
     </p>
-    <br/><br/>
-    Find location : <input type="button" value="Get Location From Browser" id="getBrowserLocation"/> 
-    <br/>
-    <br/>
-    <img src="/images/third_party/thickbox/loadingAnimation.gif" class="hidden" id="loading" />
-    <form action="/user/location/save" id="co-ordinate-form" name="co-ordinate-form" method="POST">
-        <div id="browser-location"></div>
-    </form>
 <?php } else { ?>
    
         <h3>Saved Locations</h3>
@@ -43,8 +35,10 @@ if (empty($locations)) {
                     echo    "<td>" . $location->address."</td>";
                     echo    "<td>" . $location->latitude . "°"."</td>";
                     echo    "<td>" . $location->longitude . "°"."</td>";
-                    echo    "<td>" . $location->priority."</td>";
-                    echo    "<td><a href='/location/view/".$location->id."'>View</a> | <a href='/location/edit/".$location->id."'>Edit</a> | <a href='/location/delete/".$location->id."'>Delete</a></td>";
+                    echo    "<td>" . (($location->priority == 1 )?"default":"")."</td>";
+                    echo    "<td><a href='#' onclick='viewLocation(".$location->id.",\"".$location->latitude."\",\"".$location->longitude."\");'>View</a> "
+                            . "| <a href='#' onclick='editLocation(".$location->id.");'>Edit</a> "
+                            . "| <a href='/location/delete/".$location->id."'>Delete</a></td>";
                     echo "</tr>";
                     $count++;
                 }?>

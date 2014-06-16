@@ -11,6 +11,14 @@
         <link rel="shortcut icon" href="/images/favicon.ico" />
         <link rel="stylesheet" type="text/css" media="all" href="/css/black_and_yellow.css" />
         <link rel="stylesheet" href="/css/third_party/jquery/1.10.4/themes/smoothness/jquery-ui.css">
+        <?php
+            if(!empty($css)){
+                echo $css;
+            }
+            if(!empty($js)){
+                echo $js;
+            }
+        ?>
         <script src="/js/third_party/jquery.min-1.11.0.js"></script>
     </head>
     <body>

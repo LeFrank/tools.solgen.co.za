@@ -1,0 +1,44 @@
+<h3>{{location.name}} : {{location.description}}</h3>
+<table class="weather-forecast" >
+    <thead>
+        {{#each weather.list}}
+            <th>
+                {{#date dt}}{{/date}}
+            </th>
+        {{/each}}
+    </thead>
+    <tbody>
+        <tr>
+
+            {{#each weather.list}}
+                <td>
+                    <div style='text-align:center;'>
+                        <span class="weather-description">{{weather.0.description}}</span>
+                        <br/>
+                        <img src='http://openweathermap.org/img/w/{{weather.0.icon}}.png'>
+                    </div>
+                    <span class='span-label'>{{temp.max}}°C |</span>{{temp.min}}°C
+                    <br/>
+                    <span class='span-label'>Morning :</span>{{temp.morn}}
+                    <br/>
+                    <span class='span-label'>Mid Day :</span>{{temp.day}}
+                    <br/>
+                    <span class='span-label'>Evening :</span>{{temp.eve}}
+                    <br/>
+                    <span class='span-label'>Pressure :</span>{{pressure}} hpa
+                    <br/>
+                    <span class='span-label'>Humidity :</span>{{humidity}} %
+                    <br/>
+                    <span class='span-label'>Wind Speed :</span>{{speed}} m/s 
+                    <br/>
+                    <span class='span-label'>Wind Direction :</span>{{deg}}°
+                    <br/>
+                    <span class='span-label'>Cloud Cover :</span>{{clouds}} %
+                    <br/>
+                    <span class='span-label'>Rain :</span>{{rain}} mm
+                    <br/>
+                </td>
+            {{/each}}
+        </tr>
+    </tbody>
+</table>

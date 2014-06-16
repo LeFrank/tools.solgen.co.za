@@ -1939,3 +1939,79 @@
 [08-Jun-2014 14:21:13 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
 [08-Jun-2014 14:21:13 Africa/Johannesburg] PHP   4. User->manageLocations() C:\UwAmp\www\system\core\CodeIgniter.php:359
 [08-Jun-2014 14:21:13 Africa/Johannesburg] PHP   5. User_location_model->getLocations() C:\UwAmp\www\application\controllers\user.php:102
+[13-Jun-2014 01:24:31 Africa/Johannesburg] PHP Fatal error:  Call to a member function getLocations() on a non-object in C:\UwAmp\www\application\controllers\weather.php on line 28
+[13-Jun-2014 01:24:31 Africa/Johannesburg] PHP Stack trace:
+[13-Jun-2014 01:24:31 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[13-Jun-2014 01:24:31 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[13-Jun-2014 01:24:31 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[13-Jun-2014 01:24:31 Africa/Johannesburg] PHP   4. Weather->index() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[13-Jun-2014 01:28:17 Africa/Johannesburg] PHP Parse error:  syntax error, unexpected T_VARIABLE, expecting ',' or ';' in C:\UwAmp\www\application\views\weather\index.php on line 33
+[13-Jun-2014 01:28:17 Africa/Johannesburg] PHP Stack trace:
+[13-Jun-2014 01:28:17 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[13-Jun-2014 01:28:17 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[13-Jun-2014 01:28:17 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[13-Jun-2014 01:28:17 Africa/Johannesburg] PHP   4. Weather->index() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[13-Jun-2014 01:28:17 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\weather.php:53
+[13-Jun-2014 01:28:17 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[13-Jun-2014 01:30:27 Africa/Johannesburg] PHP Parse error:  syntax error, unexpected T_ECHO in C:\UwAmp\www\application\views\weather\index.php on line 31
+[13-Jun-2014 01:30:27 Africa/Johannesburg] PHP Stack trace:
+[13-Jun-2014 01:30:27 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[13-Jun-2014 01:30:27 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[13-Jun-2014 01:30:27 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[13-Jun-2014 01:30:27 Africa/Johannesburg] PHP   4. Weather->index() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[13-Jun-2014 01:30:27 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\weather.php:53
+[13-Jun-2014 01:30:27 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[13-Jun-2014 01:39:40 Africa/Johannesburg] PHP Parse error:  syntax error, unexpected T_OBJECT_OPERATOR, expecting T_VARIABLE or '$' in C:\UwAmp\www\application\views\weather\index.php on line 33
+[13-Jun-2014 01:39:40 Africa/Johannesburg] PHP Stack trace:
+[13-Jun-2014 01:39:40 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[13-Jun-2014 01:39:40 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[13-Jun-2014 01:39:40 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[13-Jun-2014 01:39:40 Africa/Johannesburg] PHP   4. Weather->index() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[13-Jun-2014 01:39:40 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\weather.php:53
+[13-Jun-2014 01:39:40 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[13-Jun-2014 01:46:41 Africa/Johannesburg] PHP Fatal error:  Cannot use object of type stdClass as array in C:\UwAmp\www\application\views\weather\index.php on line 33
+[13-Jun-2014 01:46:41 Africa/Johannesburg] PHP Stack trace:
+[13-Jun-2014 01:46:41 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[13-Jun-2014 01:46:41 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[13-Jun-2014 01:46:41 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[13-Jun-2014 01:46:41 Africa/Johannesburg] PHP   4. Weather->index() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[13-Jun-2014 01:46:41 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\weather.php:54
+[13-Jun-2014 01:46:41 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[13-Jun-2014 01:46:41 Africa/Johannesburg] PHP   7. include() C:\UwAmp\www\system\core\Loader.php:833
+[13-Jun-2014 01:47:09 Africa/Johannesburg] PHP Fatal error:  Cannot use object of type stdClass as array in C:\UwAmp\www\application\views\weather\index.php on line 34
+[13-Jun-2014 01:47:09 Africa/Johannesburg] PHP Stack trace:
+[13-Jun-2014 01:47:09 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[13-Jun-2014 01:47:09 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[13-Jun-2014 01:47:09 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[13-Jun-2014 01:47:09 Africa/Johannesburg] PHP   4. Weather->index() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[13-Jun-2014 01:47:09 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\weather.php:54
+[13-Jun-2014 01:47:09 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[13-Jun-2014 01:47:09 Africa/Johannesburg] PHP   7. include() C:\UwAmp\www\system\core\Loader.php:833
+[13-Jun-2014 01:50:56 Africa/Johannesburg] PHP Fatal error:  Cannot use object of type stdClass as array in C:\UwAmp\www\application\controllers\weather.php on line 46
+[13-Jun-2014 01:50:56 Africa/Johannesburg] PHP Stack trace:
+[13-Jun-2014 01:50:56 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[13-Jun-2014 01:50:56 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[13-Jun-2014 01:50:56 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[13-Jun-2014 01:50:56 Africa/Johannesburg] PHP   4. Weather->index() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[14-Jun-2014 20:25:29 Africa/Johannesburg] PHP Parse error:  syntax error, unexpected T_DOUBLE_ARROW in C:\UwAmp\www\application\controllers\location.php on line 63
+[14-Jun-2014 20:25:29 Africa/Johannesburg] PHP Stack trace:
+[14-Jun-2014 20:25:29 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[14-Jun-2014 20:25:29 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[15-Jun-2014 19:21:59 Africa/Johannesburg] PHP Parse error:  syntax error, unexpected T_VARIABLE, expecting ',' or ';' in C:\UwAmp\www\application\controllers\weather.php on line 59
+[15-Jun-2014 19:21:59 Africa/Johannesburg] PHP Stack trace:
+[15-Jun-2014 19:21:59 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[15-Jun-2014 19:21:59 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[15-Jun-2014 19:23:36 Africa/Johannesburg] PHP Parse error:  syntax error, unexpected ')' in C:\UwAmp\www\application\models\weather_data_model.php on line 37
+[15-Jun-2014 19:23:36 Africa/Johannesburg] PHP Stack trace:
+[15-Jun-2014 19:23:36 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[15-Jun-2014 19:23:36 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[15-Jun-2014 19:23:36 Africa/Johannesburg] PHP   3. Weather->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[15-Jun-2014 19:23:36 Africa/Johannesburg] PHP   4. CI_Loader->model() C:\UwAmp\www\application\controllers\weather.php:15
+[16-Jun-2014 18:25:21 Africa/Johannesburg] PHP Parse error:  syntax error, unexpected T_ECHO in C:\UwAmp\www\application\views\location\index.php on line 38
+[16-Jun-2014 18:25:21 Africa/Johannesburg] PHP Stack trace:
+[16-Jun-2014 18:25:21 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[16-Jun-2014 18:25:21 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[16-Jun-2014 18:25:21 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[16-Jun-2014 18:25:21 Africa/Johannesburg] PHP   4. Location->manage() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[16-Jun-2014 18:25:21 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\location.php:64
+[16-Jun-2014 18:25:21 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419

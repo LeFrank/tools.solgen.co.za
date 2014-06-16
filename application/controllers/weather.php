@@ -1,55 +1,116 @@
 <?php
 
 class Weather extends CI_Controller {
+
     var $toolId = 2;
     var $toolName = "Weather";
+    var $sevenDay = 7;
+    var $current = 1;
     var $weatherApiDetails = "";
     var $require_auth = TRUE;
-    
+
     function __construct() {
         parent::__construct();
         $this->load->library('session');
         $this->load->helper('auth_helper');
         can_access($this->require_auth, $this->session);
+        $this->load->model("location_model");
         $this->load->model("webservice_details_model");
+        $this->load->model("weather_data_model");
         $this->weatherApiDetails = $this->webservice_details_model->getDetailsByToolId($this->toolId);
     }
 
     public function index() {
-        //forecast forecast/daily?&mode=json&lat=-33.924868&lon=18.424055&units=metric&cnt=7
         $forecastDayCount = 7;
         $callType = "forecast/daily";
         $user = $this->session->userdata("user");
         $userLocation = null;
+        $data["locations"] = $this->location_model->getLocations($user->id);
         $data["user"] = $user;
-        if(!empty($user) && !empty($this->weatherApiDetails)){
+        if (!empty($user) && !empty($this->weatherApiDetails)) {
             //get user location
-            $this->load->model("user_location_model");
-            $userLocation  = $this->user_location_model->getLocation($user->id);
-        }
-        if(null == $userLocation || empty($userLocation)){
-            //Display error with instructions for how the user should go about capturing location details. 
-            //Or display a form to get them
-            //Or get them
-            echo    "Display error with instructions for how the user should go about capturing location details. ".
-                    "Or display a form to get them".
-                    "Or get them";
-            exit;
+            $userLocations = $this->location_model->getLocations($user->id, null,1);
         }
         //build api URL
-        $url = $this->weatherApiDetails->url. "/".$callType. "?mode=json";
-        $url .= "&lat=".$userLocation->latitude."&lon=".$userLocation->longitude."&units=metric&cnt=".$forecastDayCount;
-        $url .= "&APPID=".$this->weatherApiDetails->api_key;
-        //call api
-        $data["myWeather"] = json_decode(file_get_contents($url));
-        //parse through data
-        
-        //store data for next 12 hours
+        foreach ($userLocations as $k => $v) {
+            // first check our stored/cached data
+            $weatherData = $this->weather_data_model->getWeatherData($user->id, $v->id, date('Y/m/d H:i'), $this->sevenDay);
+            if (null == $weatherData || empty($weatherData)) {
+                $url = $this->weatherApiDetails->url . "/" . $callType . "?mode=json";
+                $url .= "&lat=" . $v->latitude . "&lon=" . $v->longitude . "&units=metric&cnt=" . $forecastDayCount;
+                $url .= "&APPID=" . $this->weatherApiDetails->api_key;
+                //call api
+                $raw_data = file_get_contents($url);
+                //store data for next 12 hours
+                $this->weather_data_model->save($user->id, $v->id, $raw_data, $this->sevenDay);
+                $data["myWeather"][$k]["weather"] = json_decode($raw_data);
+                $data["myWeather"][$k]["location"] = $v;
+            } else {
+                $raw_data = $weatherData[0]->data;
+                $data["myWeather"][$k]["weather"] = json_decode($raw_data);
+                $data["myWeather"][$k]["location"] = $v;
+            }
+        }
         //apply data suggestions
         //display data
         $this->load->view("header");
+        $this->load->view("weather/weather_nav");
         $this->load->view("weather/index", $data);
+        $this->load->view("weather/locations", $data);
         $this->load->view("footer");
     }
 
+    public function getTodaysWeather() {
+        $this->load->library("input");
+        $callType = "weather";
+        $user = $this->session->userdata("user");
+        $data["location"] = $this->location_model->getLocation($user->id, $this->input->post("locationId"));
+        $data["user"] = $user;
+        // first check our stored/cached data
+        $weatherData = $this->weather_data_model->getWeatherData($user->id, $data["location"]->id, date('Y/m/d H:i'), $this->current);
+        if (null == $weatherData || empty($weatherData)) {
+            $url = $this->weatherApiDetails->url . "/" . $callType . "?";
+            $url .= "lat=" . $data["location"]->latitude . "&lon=" . $data["location"]->longitude . "&units=metric";
+            $url .= "&APPID=" . $this->weatherApiDetails->api_key;
+            //call api
+            $raw_data = file_get_contents($url);
+            //store data for next 12 hours
+            $this->weather_data_model->save($user->id, $data["location"]->id, $raw_data, $this->current);
+            $data["myWeather"]["weather"] = $raw_data;
+        } else {
+            $raw_data = $weatherData[0]->data;
+        }
+        $data["myWeather"]["weather"] = json_decode($raw_data);
+        $data["myWeather"]["location"] = $data["location"];
+        echo json_encode($data["myWeather"]);
+    }
+
+    public function getSevenDaysWeather() {
+        $this->load->library("input");
+        $forecastDayCount = 7;
+        $callType = "forecast/daily";
+        $user = $this->session->userdata("user");
+        $data["location"] = $this->location_model->getLocation($user->id, $this->input->post("locationId"));
+        $data["user"] = $user;
+        // first check our stored/cached data
+        $weatherData = $this->weather_data_model->getWeatherData($user->id, $data["location"]->id, date('Y/m/d H:i'), $this->sevenDay);
+        if (null == $weatherData || empty($weatherData)) {
+            $url = $this->weatherApiDetails->url . "/" . $callType . "?mode=json";
+            $url .= "&lat=" . $v->latitude . "&lon=" . $v->longitude . "&units=metric&cnt=" . $forecastDayCount;
+            $url .= "&APPID=" . $this->weatherApiDetails->api_key;
+            //call api
+            $raw_data = file_get_contents($url);
+            //store data for next 12 hours
+            $this->weather_data_model->save($user->id, $data["location"]->id, $raw_data, $this->sevenDay);
+        } else {
+            $raw_data = $weatherData[0]->data;
+        }
+        $data["myWeather"]["weather"] = json_decode($raw_data);
+        $data["myWeather"]["location"] = $data["location"];
+        echo json_encode($data["myWeather"]);
+    }
+
+    public function options(){
+        echo __CLASS__ ." > ".__FUNCTION__;
+    }
 }

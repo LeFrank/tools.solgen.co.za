@@ -1,0 +1,23 @@
+    <h3>{{location.name}} : {{location.description}}</h3>    
+    <span class="weather-description">{{weather.weather.0.description}}</span>
+    <br/>
+    <img src='http://openweathermap.org/img/w/{{weather.weather.0.icon}}.png'>
+    <br/>
+    <span class="weather-location-label">Temperature</span>:&nbsp;{{weather.main.temp_max}}°C |{{weather.main.temp_min}}°C
+    <br/>
+    <span class="weather-location-label">Sunrise </span>:&nbsp;{{#time weather.sys.sunrise}}{{/time}}
+    <br/>
+    <span class="weather-location-label">Sunset </span>:&nbsp;{{#time weather.sys.sunset}}{{/time}}
+    <br/>
+    <span class="weather-location-label">Pressure </span>:&nbsp;{{weather.main.pressure}} hpa
+    <br/>
+    <span class="weather-location-label">Humidity </span>:&nbsp;{{weather.main.humidity}} %
+    <br/>
+    <span class="weather-location-label">Wind Speed </span>:&nbsp;{{weather.wind.speed}} m/s 
+    <br/>
+    <span class="weather-location-label">Wind Direction </span>:&nbsp;{{weather.wind.deg}}°
+    <br/>
+    <span class="weather-location-label">Cloud Cover </span>:&nbsp;{{weather.cloud.all}} %
+    <br/>
+    <span class="weather-location-label">Rain </span>:&nbsp;{{weather.rain.3h}} mm
+    <br/>

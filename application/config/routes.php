@@ -82,6 +82,7 @@ $route['locations'] = 'location/manage';
 $route['location/save'] = 'location/save';
 $route['location/edit/(:num)'] = 'location/edit/$1';
 $route['location/delete/(:num)'] = 'location/delete/$1';
+$route['location/get/(:num)'] = 'location/getLocationData/$1';
 $route['location/view/(:num)'] = 'location/view/$1';
 
 $route['payment-methods/manage'] = 'paymentMethods/manage';
@@ -101,6 +102,9 @@ $route['news'] = 'news';
 $route['test'] = 'test/index';
 
 $route['weather'] = 'weather/index';
+$route['weather/today'] = 'weather/getTodaysWeather';
+$route['weather/forecast'] = 'weather/getSevenDaysWeather';
+$route['weather/options'] = 'weather/options';
 
 //$route['(:any)'] = 'pages/view/$1';
 //$route['default_controller'] = 'pages/view';
