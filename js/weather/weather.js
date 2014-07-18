@@ -4,7 +4,7 @@ $(document).ready(function() {
         return $.formatDateTime(formatDate, new Date(dateTime * 1000));
     });
     Handlebars.registerHelper('date', function(dateTime) {
-        var formatDate = "yy/mm/dd gg:ii";
+        var formatDate = "DD, d MM yy";
         return $.formatDateTime(formatDate, new Date(dateTime * 1000));
     });
     Handlebars.registerHelper('for', function(dateTime) {
@@ -12,7 +12,16 @@ $(document).ready(function() {
         var formatDate = "hh:ii";
         return $.formatDateTime(formatDate, new Date(dateTime * 1000));
     });
-
+    
+    Handlebars.registerHelper('getMeasurementVal',function(){
+        var resp = "";
+        if(weatherSetting.measurement == 'metric'){
+            resp = measure.metric; 
+        }else{
+            resp = measure.imperial; 
+        }
+        return resp;
+    });
 });
 
 

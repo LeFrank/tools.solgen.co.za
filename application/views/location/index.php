@@ -30,7 +30,7 @@ if (empty($locations)) {
                 foreach ($locations as $location) {
                     echo "<tr>";
                     echo    "<td>".$count."</td>";
-                    echo    "<td>" . $location->name."</td>";
+                    echo    "<td><a href='#' onclick='viewLocation(".$location->id.",\"".$location->latitude."\",\"".$location->longitude."\");'>" . $location->name."</a></td>";
                     echo    "<td>" . $location->description."</td>";
                     echo    "<td>" . $location->address."</td>";
                     echo    "<td>" . $location->latitude . "°"."</td>";

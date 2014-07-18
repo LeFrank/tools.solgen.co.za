@@ -17,7 +17,9 @@
         &nbsp;&nbsp;
         <a href="/weather" >Weather</a>
         &nbsp;&nbsp;
-        <a href="/notes" >Notes</a>
+        <a href="/timetable" >Timetable</a>
+        <!-- &nbsp;&nbsp;
+        <a href="/notes" >Notes</a> -->
         <!-- &nbsp;&nbsp;
         |
         &nbsp;&nbsp;

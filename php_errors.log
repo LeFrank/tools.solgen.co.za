@@ -2015,3 +2015,595 @@
 [16-Jun-2014 18:25:21 Africa/Johannesburg] PHP   4. Location->manage() C:\UwAmp\www\system\core\CodeIgniter.php:359
 [16-Jun-2014 18:25:21 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\location.php:64
 [16-Jun-2014 18:25:21 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[22-Jun-2014 22:02:42 Africa/Johannesburg] PHP Fatal error:  Call to undefined function getSetting() in C:\UwAmp\www\application\models\weather_settings_model.php on line 21
+[22-Jun-2014 22:02:42 Africa/Johannesburg] PHP Stack trace:
+[22-Jun-2014 22:02:42 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[22-Jun-2014 22:02:42 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[22-Jun-2014 22:02:42 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[22-Jun-2014 22:02:42 Africa/Johannesburg] PHP   4. Weather->saveMeasurement() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[22-Jun-2014 22:02:42 Africa/Johannesburg] PHP   5. weather_settings_model->setMeasurement() C:\UwAmp\www\application\controllers\weather.php:129
+[22-Jun-2014 22:02:57 Africa/Johannesburg] PHP Parse error:  syntax error, unexpected T_OBJECT_OPERATOR in C:\UwAmp\www\application\models\weather_settings_model.php on line 21
+[22-Jun-2014 22:02:57 Africa/Johannesburg] PHP Stack trace:
+[22-Jun-2014 22:02:57 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[22-Jun-2014 22:02:57 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[22-Jun-2014 22:02:57 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[22-Jun-2014 22:02:57 Africa/Johannesburg] PHP   4. Weather->options() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[22-Jun-2014 22:02:57 Africa/Johannesburg] PHP   5. CI_Loader->model() C:\UwAmp\www\application\controllers\weather.php:114
+[22-Jun-2014 22:03:01 Africa/Johannesburg] PHP Parse error:  syntax error, unexpected T_OBJECT_OPERATOR in C:\UwAmp\www\application\models\weather_settings_model.php on line 21
+[22-Jun-2014 22:03:01 Africa/Johannesburg] PHP Stack trace:
+[22-Jun-2014 22:03:01 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[22-Jun-2014 22:03:01 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[22-Jun-2014 22:03:01 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[22-Jun-2014 22:03:01 Africa/Johannesburg] PHP   4. Weather->options() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[22-Jun-2014 22:03:01 Africa/Johannesburg] PHP   5. CI_Loader->model() C:\UwAmp\www\application\controllers\weather.php:114
+[22-Jun-2014 22:03:21 Africa/Johannesburg] PHP Fatal error:  Call to undefined function getSetting() in C:\UwAmp\www\application\models\weather_settings_model.php on line 21
+[22-Jun-2014 22:03:21 Africa/Johannesburg] PHP Stack trace:
+[22-Jun-2014 22:03:21 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[22-Jun-2014 22:03:21 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[22-Jun-2014 22:03:21 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[22-Jun-2014 22:03:21 Africa/Johannesburg] PHP   4. Weather->saveMeasurement() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[22-Jun-2014 22:03:21 Africa/Johannesburg] PHP   5. weather_settings_model->setMeasurement() C:\UwAmp\www\application\controllers\weather.php:129
+[22-Jun-2014 22:55:42 Africa/Johannesburg] PHP Parse error:  syntax error, unexpected '=', expecting ')' in C:\UwAmp\www\application\controllers\weather.php on line 13
+[22-Jun-2014 22:55:42 Africa/Johannesburg] PHP Stack trace:
+[22-Jun-2014 22:55:42 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[22-Jun-2014 22:55:42 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[22-Jun-2014 23:00:54 Africa/Johannesburg] PHP Fatal error:  Call to a member function getSetting() on a non-object in C:\UwAmp\www\application\controllers\weather.php on line 59
+[22-Jun-2014 23:00:54 Africa/Johannesburg] PHP Stack trace:
+[22-Jun-2014 23:00:54 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[22-Jun-2014 23:00:54 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[22-Jun-2014 23:00:54 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[22-Jun-2014 23:00:54 Africa/Johannesburg] PHP   4. Weather->index() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[23-Jun-2014 00:57:30 Africa/Johannesburg] PHP Fatal error:  Call to a member function userdata() on a non-object in C:\UwAmp\www\application\views\header.php on line 26
+[23-Jun-2014 00:57:30 Africa/Johannesburg] PHP Fatal error:  Call to a member function userdata() on a non-object in C:\UwAmp\www\application\views\header.php on line 26
+[23-Jun-2014 00:57:31 Africa/Johannesburg] PHP Stack trace:
+[23-Jun-2014 00:57:31 Africa/Johannesburg] PHP Stack trace:
+[23-Jun-2014 00:57:31 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[23-Jun-2014 00:57:31 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[23-Jun-2014 00:57:31 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[23-Jun-2014 00:57:31 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[23-Jun-2014 00:57:31 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[23-Jun-2014 00:57:31 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[23-Jun-2014 00:57:31 Africa/Johannesburg] PHP   4. Timetable->index() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[23-Jun-2014 00:57:31 Africa/Johannesburg] PHP   4. Timetable->index() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[23-Jun-2014 00:57:31 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\Timetable.php:14
+[23-Jun-2014 00:57:31 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\Timetable.php:14
+[23-Jun-2014 00:57:31 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[23-Jun-2014 00:57:31 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[23-Jun-2014 00:57:31 Africa/Johannesburg] PHP   7. include() C:\UwAmp\www\system\core\Loader.php:833
+[23-Jun-2014 00:57:31 Africa/Johannesburg] PHP   7. include() C:\UwAmp\www\system\core\Loader.php:833
+[23-Jun-2014 01:05:17 Africa/Johannesburg] PHP Fatal error:  Call to a member function library() on a non-object in C:\UwAmp\www\application\controllers\Timetable.php on line 9
+[23-Jun-2014 01:05:17 Africa/Johannesburg] PHP Stack trace:
+[23-Jun-2014 01:05:17 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[23-Jun-2014 01:05:17 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[23-Jun-2014 01:05:17 Africa/Johannesburg] PHP   3. Timetable->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[29-Jun-2014 16:35:37 Africa/Johannesburg] PHP Fatal error:  Cannot redeclare timetable_category_model::get_timetable_category() in C:\UwAmp\www\application\models\timetable_category_model.php on line 33
+[29-Jun-2014 16:35:37 Africa/Johannesburg] PHP Stack trace:
+[29-Jun-2014 16:35:37 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[29-Jun-2014 16:35:37 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[29-Jun-2014 16:35:37 Africa/Johannesburg] PHP   3. Timetable->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[29-Jun-2014 16:35:37 Africa/Johannesburg] PHP   4. CI_Loader->model() C:\UwAmp\www\application\controllers\Timetable.php:14
+[29-Jun-2014 19:14:05 Africa/Johannesburg] PHP Fatal error:  Cannot use object of type stdClass as array in C:\UwAmp\www\application\views\timetable\index.php on line 36
+[29-Jun-2014 19:14:05 Africa/Johannesburg] PHP Stack trace:
+[29-Jun-2014 19:14:05 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[29-Jun-2014 19:14:05 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[29-Jun-2014 19:14:05 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:14:05 Africa/Johannesburg] PHP   4. Timetable->index() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:14:05 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\Timetable.php:30
+[29-Jun-2014 19:14:05 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[29-Jun-2014 19:14:05 Africa/Johannesburg] PHP   7. include() C:\UwAmp\www\system\core\Loader.php:833
+[29-Jun-2014 19:14:31 Africa/Johannesburg] PHP Fatal error:  Cannot use object of type stdClass as array in C:\UwAmp\www\application\views\timetable\index.php on line 36
+[29-Jun-2014 19:14:31 Africa/Johannesburg] PHP Stack trace:
+[29-Jun-2014 19:14:31 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[29-Jun-2014 19:14:31 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[29-Jun-2014 19:14:31 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:14:31 Africa/Johannesburg] PHP   4. Timetable->index() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:14:31 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\Timetable.php:30
+[29-Jun-2014 19:14:31 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[29-Jun-2014 19:14:31 Africa/Johannesburg] PHP   7. include() C:\UwAmp\www\system\core\Loader.php:833
+[29-Jun-2014 19:14:38 Africa/Johannesburg] PHP Fatal error:  Cannot use object of type stdClass as array in C:\UwAmp\www\application\views\timetable\index.php on line 34
+[29-Jun-2014 19:14:38 Africa/Johannesburg] PHP Stack trace:
+[29-Jun-2014 19:14:38 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[29-Jun-2014 19:14:38 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[29-Jun-2014 19:14:38 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:14:38 Africa/Johannesburg] PHP   4. Timetable->index() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:14:38 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\Timetable.php:30
+[29-Jun-2014 19:14:38 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[29-Jun-2014 19:14:38 Africa/Johannesburg] PHP   7. include() C:\UwAmp\www\system\core\Loader.php:833
+[29-Jun-2014 19:15:09 Africa/Johannesburg] PHP Fatal error:  Cannot use object of type stdClass as array in C:\UwAmp\www\application\views\timetable\index.php on line 34
+[29-Jun-2014 19:15:09 Africa/Johannesburg] PHP Stack trace:
+[29-Jun-2014 19:15:09 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[29-Jun-2014 19:15:09 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[29-Jun-2014 19:15:09 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:15:09 Africa/Johannesburg] PHP   4. Timetable->index() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:15:09 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\Timetable.php:30
+[29-Jun-2014 19:15:09 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[29-Jun-2014 19:15:09 Africa/Johannesburg] PHP   7. include() C:\UwAmp\www\system\core\Loader.php:833
+[29-Jun-2014 19:15:38 Africa/Johannesburg] PHP Fatal error:  Cannot use object of type stdClass as array in C:\UwAmp\www\application\views\timetable\index.php on line 31
+[29-Jun-2014 19:15:38 Africa/Johannesburg] PHP Stack trace:
+[29-Jun-2014 19:15:38 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[29-Jun-2014 19:15:38 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[29-Jun-2014 19:15:38 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:15:38 Africa/Johannesburg] PHP   4. Timetable->index() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:15:38 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\Timetable.php:30
+[29-Jun-2014 19:15:38 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[29-Jun-2014 19:15:38 Africa/Johannesburg] PHP   7. include() C:\UwAmp\www\system\core\Loader.php:833
+[29-Jun-2014 19:16:00 Africa/Johannesburg] PHP Fatal error:  Cannot use object of type stdClass as array in C:\UwAmp\www\application\views\timetable\index.php on line 31
+[29-Jun-2014 19:16:00 Africa/Johannesburg] PHP Stack trace:
+[29-Jun-2014 19:16:00 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[29-Jun-2014 19:16:00 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[29-Jun-2014 19:16:00 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:16:00 Africa/Johannesburg] PHP   4. Timetable->index() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:16:00 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\Timetable.php:30
+[29-Jun-2014 19:16:00 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[29-Jun-2014 19:16:00 Africa/Johannesburg] PHP   7. include() C:\UwAmp\www\system\core\Loader.php:833
+[29-Jun-2014 19:16:13 Africa/Johannesburg] PHP Fatal error:  Cannot use object of type stdClass as array in C:\UwAmp\www\application\views\timetable\index.php on line 31
+[29-Jun-2014 19:16:13 Africa/Johannesburg] PHP Stack trace:
+[29-Jun-2014 19:16:13 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[29-Jun-2014 19:16:13 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[29-Jun-2014 19:16:13 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:16:13 Africa/Johannesburg] PHP   4. Timetable->index() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:16:13 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\Timetable.php:30
+[29-Jun-2014 19:16:13 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[29-Jun-2014 19:16:13 Africa/Johannesburg] PHP   7. include() C:\UwAmp\www\system\core\Loader.php:833
+[29-Jun-2014 19:16:25 Africa/Johannesburg] PHP Fatal error:  Cannot use object of type stdClass as array in C:\UwAmp\www\application\views\timetable\index.php on line 31
+[29-Jun-2014 19:16:25 Africa/Johannesburg] PHP Stack trace:
+[29-Jun-2014 19:16:25 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[29-Jun-2014 19:16:25 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[29-Jun-2014 19:16:25 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:16:25 Africa/Johannesburg] PHP   4. Timetable->index() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:16:25 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\Timetable.php:30
+[29-Jun-2014 19:16:25 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[29-Jun-2014 19:16:25 Africa/Johannesburg] PHP   7. include() C:\UwAmp\www\system\core\Loader.php:833
+[29-Jun-2014 19:16:28 Africa/Johannesburg] PHP Fatal error:  Cannot use object of type stdClass as array in C:\UwAmp\www\application\views\timetable\index.php on line 31
+[29-Jun-2014 19:16:28 Africa/Johannesburg] PHP Stack trace:
+[29-Jun-2014 19:16:28 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[29-Jun-2014 19:16:28 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[29-Jun-2014 19:16:28 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:16:28 Africa/Johannesburg] PHP   4. Timetable->index() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:16:28 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\Timetable.php:30
+[29-Jun-2014 19:16:28 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[29-Jun-2014 19:16:28 Africa/Johannesburg] PHP   7. include() C:\UwAmp\www\system\core\Loader.php:833
+[29-Jun-2014 19:16:36 Africa/Johannesburg] PHP Fatal error:  Cannot use object of type stdClass as array in C:\UwAmp\www\application\views\timetable\index.php on line 31
+[29-Jun-2014 19:16:36 Africa/Johannesburg] PHP Stack trace:
+[29-Jun-2014 19:16:36 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[29-Jun-2014 19:16:36 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[29-Jun-2014 19:16:36 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:16:36 Africa/Johannesburg] PHP   4. Timetable->index() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:16:36 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\Timetable.php:30
+[29-Jun-2014 19:16:36 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[29-Jun-2014 19:16:36 Africa/Johannesburg] PHP   7. include() C:\UwAmp\www\system\core\Loader.php:833
+[29-Jun-2014 19:17:47 Africa/Johannesburg] PHP Fatal error:  Cannot use object of type stdClass as array in C:\UwAmp\www\application\views\timetable\index.php on line 31
+[29-Jun-2014 19:17:47 Africa/Johannesburg] PHP Stack trace:
+[29-Jun-2014 19:17:47 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[29-Jun-2014 19:17:48 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[29-Jun-2014 19:17:48 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:17:48 Africa/Johannesburg] PHP   4. Timetable->index() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:17:48 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\Timetable.php:30
+[29-Jun-2014 19:17:48 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[29-Jun-2014 19:17:48 Africa/Johannesburg] PHP   7. include() C:\UwAmp\www\system\core\Loader.php:833
+[29-Jun-2014 19:17:49 Africa/Johannesburg] PHP Fatal error:  Cannot use object of type stdClass as array in C:\UwAmp\www\application\views\timetable\index.php on line 31
+[29-Jun-2014 19:17:49 Africa/Johannesburg] PHP Stack trace:
+[29-Jun-2014 19:17:49 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[29-Jun-2014 19:17:49 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[29-Jun-2014 19:17:49 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:17:49 Africa/Johannesburg] PHP   4. Timetable->index() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:17:49 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\Timetable.php:30
+[29-Jun-2014 19:17:49 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[29-Jun-2014 19:17:49 Africa/Johannesburg] PHP   7. include() C:\UwAmp\www\system\core\Loader.php:833
+[29-Jun-2014 19:17:49 Africa/Johannesburg] PHP Fatal error:  Cannot use object of type stdClass as array in C:\UwAmp\www\application\views\timetable\index.php on line 31
+[29-Jun-2014 19:17:49 Africa/Johannesburg] PHP Stack trace:
+[29-Jun-2014 19:17:49 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[29-Jun-2014 19:17:49 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[29-Jun-2014 19:17:49 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:17:49 Africa/Johannesburg] PHP   4. Timetable->index() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:17:49 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\Timetable.php:30
+[29-Jun-2014 19:17:49 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[29-Jun-2014 19:17:49 Africa/Johannesburg] PHP   7. include() C:\UwAmp\www\system\core\Loader.php:833
+[29-Jun-2014 19:17:50 Africa/Johannesburg] PHP Fatal error:  Cannot use object of type stdClass as array in C:\UwAmp\www\application\views\timetable\index.php on line 31
+[29-Jun-2014 19:17:50 Africa/Johannesburg] PHP Stack trace:
+[29-Jun-2014 19:17:50 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[29-Jun-2014 19:17:50 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[29-Jun-2014 19:17:50 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:17:50 Africa/Johannesburg] PHP   4. Timetable->index() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:17:50 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\Timetable.php:30
+[29-Jun-2014 19:17:50 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[29-Jun-2014 19:17:50 Africa/Johannesburg] PHP   7. include() C:\UwAmp\www\system\core\Loader.php:833
+[29-Jun-2014 19:17:51 Africa/Johannesburg] PHP Fatal error:  Cannot use object of type stdClass as array in C:\UwAmp\www\application\views\timetable\index.php on line 31
+[29-Jun-2014 19:17:51 Africa/Johannesburg] PHP Stack trace:
+[29-Jun-2014 19:17:51 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[29-Jun-2014 19:17:51 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[29-Jun-2014 19:17:51 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:17:51 Africa/Johannesburg] PHP   4. Timetable->index() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:17:51 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\Timetable.php:30
+[29-Jun-2014 19:17:51 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[29-Jun-2014 19:17:51 Africa/Johannesburg] PHP   7. include() C:\UwAmp\www\system\core\Loader.php:833
+[29-Jun-2014 19:17:51 Africa/Johannesburg] PHP Fatal error:  Cannot use object of type stdClass as array in C:\UwAmp\www\application\views\timetable\index.php on line 31
+[29-Jun-2014 19:17:51 Africa/Johannesburg] PHP Stack trace:
+[29-Jun-2014 19:17:51 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[29-Jun-2014 19:17:51 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[29-Jun-2014 19:17:51 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:17:51 Africa/Johannesburg] PHP   4. Timetable->index() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:17:51 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\Timetable.php:30
+[29-Jun-2014 19:17:51 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[29-Jun-2014 19:17:51 Africa/Johannesburg] PHP   7. include() C:\UwAmp\www\system\core\Loader.php:833
+[29-Jun-2014 19:17:51 Africa/Johannesburg] PHP Fatal error:  Cannot use object of type stdClass as array in C:\UwAmp\www\application\views\timetable\index.php on line 31
+[29-Jun-2014 19:17:51 Africa/Johannesburg] PHP Stack trace:
+[29-Jun-2014 19:17:51 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[29-Jun-2014 19:17:51 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[29-Jun-2014 19:17:51 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:17:51 Africa/Johannesburg] PHP   4. Timetable->index() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:17:51 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\Timetable.php:30
+[29-Jun-2014 19:17:51 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[29-Jun-2014 19:17:51 Africa/Johannesburg] PHP   7. include() C:\UwAmp\www\system\core\Loader.php:833
+[29-Jun-2014 19:17:51 Africa/Johannesburg] PHP Fatal error:  Cannot use object of type stdClass as array in C:\UwAmp\www\application\views\timetable\index.php on line 31
+[29-Jun-2014 19:17:51 Africa/Johannesburg] PHP Stack trace:
+[29-Jun-2014 19:17:51 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[29-Jun-2014 19:17:51 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[29-Jun-2014 19:17:51 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:17:51 Africa/Johannesburg] PHP   4. Timetable->index() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:17:51 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\Timetable.php:30
+[29-Jun-2014 19:17:51 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[29-Jun-2014 19:17:51 Africa/Johannesburg] PHP   7. include() C:\UwAmp\www\system\core\Loader.php:833
+[29-Jun-2014 19:17:52 Africa/Johannesburg] PHP Fatal error:  Cannot use object of type stdClass as array in C:\UwAmp\www\application\views\timetable\index.php on line 31
+[29-Jun-2014 19:17:52 Africa/Johannesburg] PHP Stack trace:
+[29-Jun-2014 19:17:52 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[29-Jun-2014 19:17:52 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[29-Jun-2014 19:17:52 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:17:52 Africa/Johannesburg] PHP   4. Timetable->index() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:17:52 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\Timetable.php:30
+[29-Jun-2014 19:17:52 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[29-Jun-2014 19:17:52 Africa/Johannesburg] PHP   7. include() C:\UwAmp\www\system\core\Loader.php:833
+[29-Jun-2014 19:18:34 Africa/Johannesburg] PHP Fatal error:  Cannot use object of type stdClass as array in C:\UwAmp\www\application\views\timetable\index.php on line 31
+[29-Jun-2014 19:18:34 Africa/Johannesburg] PHP Stack trace:
+[29-Jun-2014 19:18:34 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[29-Jun-2014 19:18:34 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[29-Jun-2014 19:18:34 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:18:34 Africa/Johannesburg] PHP   4. Timetable->index() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:18:34 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\Timetable.php:29
+[29-Jun-2014 19:18:34 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[29-Jun-2014 19:18:34 Africa/Johannesburg] PHP   7. include() C:\UwAmp\www\system\core\Loader.php:833
+[29-Jun-2014 19:18:34 Africa/Johannesburg] PHP Fatal error:  Cannot use object of type stdClass as array in C:\UwAmp\www\application\views\timetable\index.php on line 31
+[29-Jun-2014 19:18:34 Africa/Johannesburg] PHP Stack trace:
+[29-Jun-2014 19:18:34 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[29-Jun-2014 19:18:34 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[29-Jun-2014 19:18:34 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:18:34 Africa/Johannesburg] PHP   4. Timetable->index() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:18:34 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\Timetable.php:29
+[29-Jun-2014 19:18:34 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[29-Jun-2014 19:18:34 Africa/Johannesburg] PHP   7. include() C:\UwAmp\www\system\core\Loader.php:833
+[29-Jun-2014 19:19:05 Africa/Johannesburg] PHP Fatal error:  Cannot use object of type stdClass as array in C:\UwAmp\www\application\views\timetable\index.php on line 31
+[29-Jun-2014 19:19:05 Africa/Johannesburg] PHP Stack trace:
+[29-Jun-2014 19:19:05 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[29-Jun-2014 19:19:05 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[29-Jun-2014 19:19:05 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:19:05 Africa/Johannesburg] PHP   4. Timetable->index() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:19:05 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\Timetable.php:29
+[29-Jun-2014 19:19:05 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[29-Jun-2014 19:19:05 Africa/Johannesburg] PHP   7. include() C:\UwAmp\www\system\core\Loader.php:833
+[29-Jun-2014 19:19:20 Africa/Johannesburg] PHP Fatal error:  Cannot use object of type stdClass as array in C:\UwAmp\www\application\views\timetable\index.php on line 31
+[29-Jun-2014 19:19:20 Africa/Johannesburg] PHP Stack trace:
+[29-Jun-2014 19:19:20 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[29-Jun-2014 19:19:20 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[29-Jun-2014 19:19:20 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:19:20 Africa/Johannesburg] PHP   4. Timetable->index() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:19:20 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\Timetable.php:29
+[29-Jun-2014 19:19:20 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[29-Jun-2014 19:19:20 Africa/Johannesburg] PHP   7. include() C:\UwAmp\www\system\core\Loader.php:833
+[29-Jun-2014 19:19:35 Africa/Johannesburg] PHP Fatal error:  Cannot use object of type stdClass as array in C:\UwAmp\www\application\views\timetable\index.php on line 31
+[29-Jun-2014 19:19:35 Africa/Johannesburg] PHP Stack trace:
+[29-Jun-2014 19:19:35 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[29-Jun-2014 19:19:35 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[29-Jun-2014 19:19:35 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:19:35 Africa/Johannesburg] PHP   4. Timetable->index() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:19:35 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\Timetable.php:29
+[29-Jun-2014 19:19:35 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[29-Jun-2014 19:19:35 Africa/Johannesburg] PHP   7. include() C:\UwAmp\www\system\core\Loader.php:833
+[29-Jun-2014 19:19:50 Africa/Johannesburg] PHP Fatal error:  Cannot use object of type stdClass as array in C:\UwAmp\www\application\views\timetable\index.php on line 32
+[29-Jun-2014 19:19:50 Africa/Johannesburg] PHP Stack trace:
+[29-Jun-2014 19:19:50 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[29-Jun-2014 19:19:50 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[29-Jun-2014 19:19:50 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:19:50 Africa/Johannesburg] PHP   4. Timetable->index() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:19:50 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\Timetable.php:29
+[29-Jun-2014 19:19:50 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[29-Jun-2014 19:19:50 Africa/Johannesburg] PHP   7. include() C:\UwAmp\www\system\core\Loader.php:833
+[29-Jun-2014 19:19:51 Africa/Johannesburg] PHP Fatal error:  Cannot use object of type stdClass as array in C:\UwAmp\www\application\views\timetable\index.php on line 32
+[29-Jun-2014 19:19:51 Africa/Johannesburg] PHP Stack trace:
+[29-Jun-2014 19:19:51 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[29-Jun-2014 19:19:51 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[29-Jun-2014 19:19:51 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:19:51 Africa/Johannesburg] PHP   4. Timetable->index() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:19:51 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\Timetable.php:29
+[29-Jun-2014 19:19:51 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[29-Jun-2014 19:19:51 Africa/Johannesburg] PHP   7. include() C:\UwAmp\www\system\core\Loader.php:833
+[29-Jun-2014 19:19:51 Africa/Johannesburg] PHP Fatal error:  Cannot use object of type stdClass as array in C:\UwAmp\www\application\views\timetable\index.php on line 32
+[29-Jun-2014 19:19:51 Africa/Johannesburg] PHP Stack trace:
+[29-Jun-2014 19:19:51 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[29-Jun-2014 19:19:51 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[29-Jun-2014 19:19:51 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:19:51 Africa/Johannesburg] PHP   4. Timetable->index() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:19:51 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\Timetable.php:29
+[29-Jun-2014 19:19:51 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[29-Jun-2014 19:19:51 Africa/Johannesburg] PHP   7. include() C:\UwAmp\www\system\core\Loader.php:833
+[29-Jun-2014 19:20:14 Africa/Johannesburg] PHP Fatal error:  Cannot use object of type stdClass as array in C:\UwAmp\www\application\views\timetable\index.php on line 32
+[29-Jun-2014 19:20:14 Africa/Johannesburg] PHP Stack trace:
+[29-Jun-2014 19:20:14 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[29-Jun-2014 19:20:14 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[29-Jun-2014 19:20:14 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:20:14 Africa/Johannesburg] PHP   4. Timetable->index() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:20:14 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\Timetable.php:29
+[29-Jun-2014 19:20:14 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[29-Jun-2014 19:20:14 Africa/Johannesburg] PHP   7. include() C:\UwAmp\www\system\core\Loader.php:833
+[29-Jun-2014 19:20:17 Africa/Johannesburg] PHP Fatal error:  Cannot use object of type stdClass as array in C:\UwAmp\www\application\views\timetable\index.php on line 32
+[29-Jun-2014 19:20:17 Africa/Johannesburg] PHP Stack trace:
+[29-Jun-2014 19:20:17 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[29-Jun-2014 19:20:17 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[29-Jun-2014 19:20:17 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:20:17 Africa/Johannesburg] PHP   4. Timetable->index() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:20:17 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\Timetable.php:29
+[29-Jun-2014 19:20:17 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[29-Jun-2014 19:20:17 Africa/Johannesburg] PHP   7. include() C:\UwAmp\www\system\core\Loader.php:833
+[29-Jun-2014 19:20:26 Africa/Johannesburg] PHP Fatal error:  Cannot use object of type stdClass as array in C:\UwAmp\www\application\views\timetable\index.php on line 32
+[29-Jun-2014 19:20:26 Africa/Johannesburg] PHP Stack trace:
+[29-Jun-2014 19:20:26 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[29-Jun-2014 19:20:26 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[29-Jun-2014 19:20:26 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:20:26 Africa/Johannesburg] PHP   4. Timetable->index() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:20:26 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\Timetable.php:29
+[29-Jun-2014 19:20:26 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[29-Jun-2014 19:20:26 Africa/Johannesburg] PHP   7. include() C:\UwAmp\www\system\core\Loader.php:833
+[29-Jun-2014 19:20:59 Africa/Johannesburg] PHP Fatal error:  Cannot use object of type stdClass as array in C:\UwAmp\www\application\views\timetable\index.php on line 32
+[29-Jun-2014 19:20:59 Africa/Johannesburg] PHP Stack trace:
+[29-Jun-2014 19:20:59 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[29-Jun-2014 19:20:59 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[29-Jun-2014 19:20:59 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:20:59 Africa/Johannesburg] PHP   4. Timetable->index() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:20:59 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\Timetable.php:29
+[29-Jun-2014 19:20:59 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[29-Jun-2014 19:20:59 Africa/Johannesburg] PHP   7. include() C:\UwAmp\www\system\core\Loader.php:833
+[29-Jun-2014 19:22:24 Africa/Johannesburg] PHP Fatal error:  Cannot use object of type stdClass as array in C:\UwAmp\www\application\views\timetable\index.php on line 32
+[29-Jun-2014 19:22:24 Africa/Johannesburg] PHP Stack trace:
+[29-Jun-2014 19:22:24 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[29-Jun-2014 19:22:24 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[29-Jun-2014 19:22:24 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:22:24 Africa/Johannesburg] PHP   4. Timetable->index() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:22:24 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\Timetable.php:29
+[29-Jun-2014 19:22:24 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[29-Jun-2014 19:22:24 Africa/Johannesburg] PHP   7. include() C:\UwAmp\www\system\core\Loader.php:833
+[29-Jun-2014 19:23:04 Africa/Johannesburg] PHP Fatal error:  Cannot use object of type stdClass as array in C:\UwAmp\www\application\views\timetable\index.php on line 32
+[29-Jun-2014 19:23:04 Africa/Johannesburg] PHP Stack trace:
+[29-Jun-2014 19:23:04 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[29-Jun-2014 19:23:04 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[29-Jun-2014 19:23:04 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:23:04 Africa/Johannesburg] PHP   4. Timetable->index() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:23:04 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\Timetable.php:29
+[29-Jun-2014 19:23:04 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[29-Jun-2014 19:23:04 Africa/Johannesburg] PHP   7. include() C:\UwAmp\www\system\core\Loader.php:833
+[29-Jun-2014 19:24:10 Africa/Johannesburg] PHP Fatal error:  Cannot use object of type stdClass as array in C:\UwAmp\www\application\views\timetable\index.php on line 32
+[29-Jun-2014 19:24:10 Africa/Johannesburg] PHP Stack trace:
+[29-Jun-2014 19:24:10 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[29-Jun-2014 19:24:10 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[29-Jun-2014 19:24:10 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:24:10 Africa/Johannesburg] PHP   4. Timetable->index() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:24:10 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\Timetable.php:29
+[29-Jun-2014 19:24:10 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[29-Jun-2014 19:24:10 Africa/Johannesburg] PHP   7. include() C:\UwAmp\www\system\core\Loader.php:833
+[29-Jun-2014 19:24:49 Africa/Johannesburg] PHP Fatal error:  Cannot use object of type stdClass as array in C:\UwAmp\www\application\views\timetable\index.php on line 32
+[29-Jun-2014 19:24:49 Africa/Johannesburg] PHP Stack trace:
+[29-Jun-2014 19:24:49 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[29-Jun-2014 19:24:49 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[29-Jun-2014 19:24:49 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:24:49 Africa/Johannesburg] PHP   4. Timetable->index() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:24:49 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\Timetable.php:29
+[29-Jun-2014 19:24:49 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[29-Jun-2014 19:24:49 Africa/Johannesburg] PHP   7. include() C:\UwAmp\www\system\core\Loader.php:833
+[29-Jun-2014 19:24:51 Africa/Johannesburg] PHP Fatal error:  Cannot use object of type stdClass as array in C:\UwAmp\www\application\views\timetable\index.php on line 32
+[29-Jun-2014 19:24:51 Africa/Johannesburg] PHP Stack trace:
+[29-Jun-2014 19:24:51 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[29-Jun-2014 19:24:51 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[29-Jun-2014 19:24:51 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:24:51 Africa/Johannesburg] PHP   4. Timetable->index() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:24:51 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\Timetable.php:29
+[29-Jun-2014 19:24:51 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[29-Jun-2014 19:24:51 Africa/Johannesburg] PHP   7. include() C:\UwAmp\www\system\core\Loader.php:833
+[29-Jun-2014 19:24:51 Africa/Johannesburg] PHP Fatal error:  Cannot use object of type stdClass as array in C:\UwAmp\www\application\views\timetable\index.php on line 32
+[29-Jun-2014 19:24:51 Africa/Johannesburg] PHP Stack trace:
+[29-Jun-2014 19:24:51 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[29-Jun-2014 19:24:51 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[29-Jun-2014 19:24:51 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:24:51 Africa/Johannesburg] PHP   4. Timetable->index() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:24:51 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\Timetable.php:29
+[29-Jun-2014 19:24:51 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[29-Jun-2014 19:24:51 Africa/Johannesburg] PHP   7. include() C:\UwAmp\www\system\core\Loader.php:833
+[29-Jun-2014 19:24:51 Africa/Johannesburg] PHP Fatal error:  Cannot use object of type stdClass as array in C:\UwAmp\www\application\views\timetable\index.php on line 32
+[29-Jun-2014 19:24:51 Africa/Johannesburg] PHP Stack trace:
+[29-Jun-2014 19:24:51 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[29-Jun-2014 19:24:51 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[29-Jun-2014 19:24:51 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:24:51 Africa/Johannesburg] PHP   4. Timetable->index() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:24:51 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\Timetable.php:29
+[29-Jun-2014 19:24:51 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[29-Jun-2014 19:24:51 Africa/Johannesburg] PHP   7. include() C:\UwAmp\www\system\core\Loader.php:833
+[29-Jun-2014 19:24:51 Africa/Johannesburg] PHP Fatal error:  Cannot use object of type stdClass as array in C:\UwAmp\www\application\views\timetable\index.php on line 32
+[29-Jun-2014 19:24:51 Africa/Johannesburg] PHP Stack trace:
+[29-Jun-2014 19:24:51 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[29-Jun-2014 19:24:51 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[29-Jun-2014 19:24:51 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:24:51 Africa/Johannesburg] PHP   4. Timetable->index() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:24:51 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\Timetable.php:29
+[29-Jun-2014 19:24:51 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[29-Jun-2014 19:24:51 Africa/Johannesburg] PHP   7. include() C:\UwAmp\www\system\core\Loader.php:833
+[29-Jun-2014 19:25:44 Africa/Johannesburg] PHP Fatal error:  Cannot use object of type stdClass as array in C:\UwAmp\www\application\views\timetable\index.php on line 32
+[29-Jun-2014 19:25:44 Africa/Johannesburg] PHP Stack trace:
+[29-Jun-2014 19:25:44 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[29-Jun-2014 19:25:44 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[29-Jun-2014 19:25:44 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:25:44 Africa/Johannesburg] PHP   4. Timetable->index() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:25:44 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\Timetable.php:29
+[29-Jun-2014 19:25:44 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[29-Jun-2014 19:25:44 Africa/Johannesburg] PHP   7. include() C:\UwAmp\www\system\core\Loader.php:833
+[29-Jun-2014 19:25:46 Africa/Johannesburg] PHP Fatal error:  Cannot use object of type stdClass as array in C:\UwAmp\www\application\views\timetable\index.php on line 32
+[29-Jun-2014 19:25:46 Africa/Johannesburg] PHP Stack trace:
+[29-Jun-2014 19:25:46 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[29-Jun-2014 19:25:46 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[29-Jun-2014 19:25:46 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:25:46 Africa/Johannesburg] PHP   4. Timetable->index() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:25:46 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\Timetable.php:29
+[29-Jun-2014 19:25:46 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[29-Jun-2014 19:25:46 Africa/Johannesburg] PHP   7. include() C:\UwAmp\www\system\core\Loader.php:833
+[29-Jun-2014 19:25:50 Africa/Johannesburg] PHP Fatal error:  Cannot use object of type stdClass as array in C:\UwAmp\www\application\views\timetable\index.php on line 32
+[29-Jun-2014 19:25:50 Africa/Johannesburg] PHP Stack trace:
+[29-Jun-2014 19:25:50 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[29-Jun-2014 19:25:50 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[29-Jun-2014 19:25:50 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:25:50 Africa/Johannesburg] PHP   4. Timetable->index() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:25:50 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\Timetable.php:29
+[29-Jun-2014 19:25:50 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[29-Jun-2014 19:25:50 Africa/Johannesburg] PHP   7. include() C:\UwAmp\www\system\core\Loader.php:833
+[29-Jun-2014 19:26:24 Africa/Johannesburg] PHP Fatal error:  Cannot use object of type stdClass as array in C:\UwAmp\www\application\views\timetable\index.php on line 32
+[29-Jun-2014 19:26:24 Africa/Johannesburg] PHP Stack trace:
+[29-Jun-2014 19:26:24 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[29-Jun-2014 19:26:24 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[29-Jun-2014 19:26:24 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:26:24 Africa/Johannesburg] PHP   4. Timetable->index() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:26:24 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\Timetable.php:29
+[29-Jun-2014 19:26:24 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[29-Jun-2014 19:26:24 Africa/Johannesburg] PHP   7. include() C:\UwAmp\www\system\core\Loader.php:833
+[29-Jun-2014 19:26:26 Africa/Johannesburg] PHP Fatal error:  Cannot use object of type stdClass as array in C:\UwAmp\www\application\views\timetable\index.php on line 32
+[29-Jun-2014 19:26:26 Africa/Johannesburg] PHP Stack trace:
+[29-Jun-2014 19:26:26 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[29-Jun-2014 19:26:26 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[29-Jun-2014 19:26:26 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:26:26 Africa/Johannesburg] PHP   4. Timetable->index() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:26:26 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\Timetable.php:29
+[29-Jun-2014 19:26:26 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[29-Jun-2014 19:26:26 Africa/Johannesburg] PHP   7. include() C:\UwAmp\www\system\core\Loader.php:833
+[29-Jun-2014 19:26:33 Africa/Johannesburg] PHP Fatal error:  Cannot use object of type stdClass as array in C:\UwAmp\www\application\views\timetable\test.php on line 32
+[29-Jun-2014 19:26:33 Africa/Johannesburg] PHP Stack trace:
+[29-Jun-2014 19:26:33 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[29-Jun-2014 19:26:33 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[29-Jun-2014 19:26:33 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:26:33 Africa/Johannesburg] PHP   4. Timetable->index() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:26:33 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\Timetable.php:29
+[29-Jun-2014 19:26:33 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[29-Jun-2014 19:26:33 Africa/Johannesburg] PHP   7. include() C:\UwAmp\www\system\core\Loader.php:833
+[29-Jun-2014 19:26:34 Africa/Johannesburg] PHP Fatal error:  Cannot use object of type stdClass as array in C:\UwAmp\www\application\views\timetable\test.php on line 32
+[29-Jun-2014 19:26:34 Africa/Johannesburg] PHP Stack trace:
+[29-Jun-2014 19:26:34 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[29-Jun-2014 19:26:34 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[29-Jun-2014 19:26:34 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:26:34 Africa/Johannesburg] PHP   4. Timetable->index() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:26:34 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\Timetable.php:29
+[29-Jun-2014 19:26:34 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[29-Jun-2014 19:26:34 Africa/Johannesburg] PHP   7. include() C:\UwAmp\www\system\core\Loader.php:833
+[29-Jun-2014 19:26:34 Africa/Johannesburg] PHP Fatal error:  Cannot use object of type stdClass as array in C:\UwAmp\www\application\views\timetable\test.php on line 32
+[29-Jun-2014 19:26:34 Africa/Johannesburg] PHP Stack trace:
+[29-Jun-2014 19:26:34 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[29-Jun-2014 19:26:34 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[29-Jun-2014 19:26:34 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:26:34 Africa/Johannesburg] PHP   4. Timetable->index() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:26:34 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\Timetable.php:29
+[29-Jun-2014 19:26:34 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[29-Jun-2014 19:26:34 Africa/Johannesburg] PHP   7. include() C:\UwAmp\www\system\core\Loader.php:833
+[29-Jun-2014 19:26:34 Africa/Johannesburg] PHP Fatal error:  Cannot use object of type stdClass as array in C:\UwAmp\www\application\views\timetable\test.php on line 32
+[29-Jun-2014 19:26:34 Africa/Johannesburg] PHP Stack trace:
+[29-Jun-2014 19:26:34 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[29-Jun-2014 19:26:34 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[29-Jun-2014 19:26:34 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:26:34 Africa/Johannesburg] PHP   4. Timetable->index() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:26:34 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\Timetable.php:29
+[29-Jun-2014 19:26:34 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[29-Jun-2014 19:26:34 Africa/Johannesburg] PHP   7. include() C:\UwAmp\www\system\core\Loader.php:833
+[29-Jun-2014 19:26:58 Africa/Johannesburg] PHP Fatal error:  Cannot use object of type stdClass as array in C:\UwAmp\www\application\views\timetable\test.php on line 32
+[29-Jun-2014 19:26:58 Africa/Johannesburg] PHP Stack trace:
+[29-Jun-2014 19:26:58 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[29-Jun-2014 19:26:58 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[29-Jun-2014 19:26:58 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:26:58 Africa/Johannesburg] PHP   4. Timetable->index() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:26:58 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\Timetable.php:29
+[29-Jun-2014 19:26:58 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[29-Jun-2014 19:26:58 Africa/Johannesburg] PHP   7. include() C:\UwAmp\www\system\core\Loader.php:833
+[29-Jun-2014 19:27:33 Africa/Johannesburg] PHP Fatal error:  Cannot use object of type stdClass as array in C:\UwAmp\www\application\views\timetable\index.php on line 32
+[29-Jun-2014 19:27:33 Africa/Johannesburg] PHP Stack trace:
+[29-Jun-2014 19:27:33 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[29-Jun-2014 19:27:33 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[29-Jun-2014 19:27:33 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:27:33 Africa/Johannesburg] PHP   4. Timetable->index() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:27:33 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\Timetable.php:29
+[29-Jun-2014 19:27:33 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[29-Jun-2014 19:27:33 Africa/Johannesburg] PHP   7. include() C:\UwAmp\www\system\core\Loader.php:833
+[29-Jun-2014 19:28:34 Africa/Johannesburg] PHP Fatal error:  Cannot use object of type stdClass as array in C:\UwAmp\www\application\views\timetable\index.php on line 32
+[29-Jun-2014 19:28:34 Africa/Johannesburg] PHP Stack trace:
+[29-Jun-2014 19:28:34 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[29-Jun-2014 19:28:34 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[29-Jun-2014 19:28:34 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:28:34 Africa/Johannesburg] PHP   4. Timetable->index() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:28:34 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\Timetable.php:29
+[29-Jun-2014 19:28:34 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[29-Jun-2014 19:28:34 Africa/Johannesburg] PHP   7. include() C:\UwAmp\www\system\core\Loader.php:833
+[29-Jun-2014 19:29:55 Africa/Johannesburg] PHP Fatal error:  Cannot use object of type stdClass as array in C:\UwAmp\www\application\views\timetable\index.php on line 32
+[29-Jun-2014 19:29:55 Africa/Johannesburg] PHP Stack trace:
+[29-Jun-2014 19:29:55 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[29-Jun-2014 19:29:55 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[29-Jun-2014 19:29:55 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:29:55 Africa/Johannesburg] PHP   4. Timetable->index() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 19:29:55 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\Timetable.php:29
+[29-Jun-2014 19:29:55 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[29-Jun-2014 19:29:55 Africa/Johannesburg] PHP   7. include() C:\UwAmp\www\system\core\Loader.php:833
+[29-Jun-2014 20:35:05 Africa/Johannesburg] PHP Fatal error:  Cannot access empty property in C:\UwAmp\www\application\controllers\Timetable.php on line 25
+[29-Jun-2014 20:35:05 Africa/Johannesburg] PHP Stack trace:
+[29-Jun-2014 20:35:05 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[29-Jun-2014 20:35:05 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[29-Jun-2014 20:35:05 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 20:35:05 Africa/Johannesburg] PHP   4. Timetable->index() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 21:22:15 Africa/Johannesburg] PHP Fatal error:  Call to undefined function eventify() in C:\UwAmp\www\application\controllers\Timetable.php on line 25
+[29-Jun-2014 21:22:15 Africa/Johannesburg] PHP Stack trace:
+[29-Jun-2014 21:22:15 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[29-Jun-2014 21:22:15 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[29-Jun-2014 21:22:15 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 21:22:15 Africa/Johannesburg] PHP   4. Timetable->index() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 22:15:33 Africa/Johannesburg] PHP Fatal error:  Call to undefined function index() in C:\UwAmp\www\application\controllers\Timetable.php on line 49
+[29-Jun-2014 22:15:33 Africa/Johannesburg] PHP Stack trace:
+[29-Jun-2014 22:15:33 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[29-Jun-2014 22:15:33 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[29-Jun-2014 22:15:33 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jun-2014 22:15:33 Africa/Johannesburg] PHP   4. Timetable->capture() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[05-Jul-2014 22:11:59 Africa/Johannesburg] PHP Fatal error:  Can't use method return value in write context in C:\UwAmp\www\application\models\timetable_model.php on line 27
+[05-Jul-2014 22:11:59 Africa/Johannesburg] PHP Stack trace:
+[05-Jul-2014 22:11:59 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[05-Jul-2014 22:11:59 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[05-Jul-2014 22:11:59 Africa/Johannesburg] PHP   3. Timetable->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[05-Jul-2014 22:11:59 Africa/Johannesburg] PHP   4. CI_Loader->model() C:\UwAmp\www\application\controllers\Timetable.php:15
+[12-Jul-2014 18:54:42 Africa/Johannesburg] PHP Fatal error:  Call to undefined function validation_errors() in C:\UwAmp\www\application\views\timetable\event_categories.php on line 43
+[12-Jul-2014 18:54:42 Africa/Johannesburg] PHP Stack trace:
+[12-Jul-2014 18:54:42 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[12-Jul-2014 18:54:42 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[12-Jul-2014 18:54:42 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[12-Jul-2014 18:54:42 Africa/Johannesburg] PHP   4. Timetable->eventCategories() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[12-Jul-2014 18:54:42 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\Timetable.php:77
+[12-Jul-2014 18:54:42 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[12-Jul-2014 18:54:42 Africa/Johannesburg] PHP   7. include() C:\UwAmp\www\system\core\Loader.php:833
+[12-Jul-2014 19:53:55 Africa/Johannesburg] PHP Fatal error:  Call to undefined method eventCategory::index() in C:\UwAmp\www\application\controllers\eventCategory.php on line 47
+[12-Jul-2014 19:53:55 Africa/Johannesburg] PHP Stack trace:
+[12-Jul-2014 19:53:55 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[12-Jul-2014 19:53:55 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[12-Jul-2014 19:53:55 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[12-Jul-2014 19:53:55 Africa/Johannesburg] PHP   4. eventCategory->capture() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[18-Jul-2014 01:57:47 Africa/Johannesburg] PHP Parse error:  syntax error, unexpected ';' in C:\UwAmp\www\application\models\timetable_model.php on line 31
+[18-Jul-2014 01:57:47 Africa/Johannesburg] PHP Stack trace:
+[18-Jul-2014 01:57:47 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[18-Jul-2014 01:57:47 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[18-Jul-2014 01:57:47 Africa/Johannesburg] PHP   3. Timetable->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[18-Jul-2014 01:57:47 Africa/Johannesburg] PHP   4. CI_Loader->model() C:\UwAmp\www\application\controllers\Timetable.php:16
+[18-Jul-2014 01:59:26 Africa/Johannesburg] PHP Parse error:  syntax error, unexpected ';' in C:\UwAmp\www\application\models\timetable_model.php on line 35
+[18-Jul-2014 01:59:26 Africa/Johannesburg] PHP Stack trace:
+[18-Jul-2014 01:59:26 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[18-Jul-2014 01:59:26 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[18-Jul-2014 01:59:26 Africa/Johannesburg] PHP   3. Timetable->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[18-Jul-2014 01:59:26 Africa/Johannesburg] PHP   4. CI_Loader->model() C:\UwAmp\www\application\controllers\Timetable.php:16
+[18-Jul-2014 02:03:16 Africa/Johannesburg] PHP Parse error:  syntax error, unexpected ';' in C:\UwAmp\www\application\models\timetable_model.php on line 35
+[18-Jul-2014 02:03:16 Africa/Johannesburg] PHP Stack trace:
+[18-Jul-2014 02:03:16 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[18-Jul-2014 02:03:16 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[18-Jul-2014 02:03:16 Africa/Johannesburg] PHP   3. Timetable->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[18-Jul-2014 02:03:16 Africa/Johannesburg] PHP   4. CI_Loader->model() C:\UwAmp\www\application\controllers\Timetable.php:16

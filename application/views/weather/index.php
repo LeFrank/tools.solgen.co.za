@@ -35,7 +35,7 @@ if (empty($myWeather)) {
                             echo ucwords($vv->weather[0]->description) . " <br/>";
                             echo "<img src='http://openweathermap.org/img/w/" . $vv->weather[0]->icon . ".png'>"
                             . "</div>";
-                            echo "<span class='span-label'>" . round($vv->temp->max) . "°C |</span>" . round($vv->temp->min) . "°C<br/>";
+                            echo "<span class='span-label'>" . round($vv->temp->max) . $measure[$weatherSettings->measurement]." |</span>" . round($vv->temp->min) . $measure[$weatherSettings->measurement]."<br/>";
                             echo "<span class='span-label'>Morning :</span>" . $vv->temp->morn . "<br/>";
                             echo "<span class='span-label'>Mid Day :</span>" . $vv->temp->day . "<br/>";
                             echo "<span class='span-label'>Evening :</span>" . $vv->temp->eve . "<br/>";

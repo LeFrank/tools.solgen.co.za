@@ -8,6 +8,11 @@ class Weather extends CI_Controller {
     var $current = 1;
     var $weatherApiDetails = "";
     var $require_auth = TRUE;
+    var $measure = array(
+        "imperial" => "°F",
+        "imperialWord" => "Fahrenheit",
+        "metric" => "°C",
+        "metricWord" => "Celsius");
 
     function __construct() {
         parent::__construct();
@@ -17,6 +22,7 @@ class Weather extends CI_Controller {
         $this->load->model("location_model");
         $this->load->model("webservice_details_model");
         $this->load->model("weather_data_model");
+        $this->load->model("weather_settings_model");
         $this->weatherApiDetails = $this->webservice_details_model->getDetailsByToolId($this->toolId);
     }
 
@@ -29,7 +35,7 @@ class Weather extends CI_Controller {
         $data["user"] = $user;
         if (!empty($user) && !empty($this->weatherApiDetails)) {
             //get user location
-            $userLocations = $this->location_model->getLocations($user->id, null,1);
+            $userLocations = $this->location_model->getLocations($user->id, null, 1);
         }
         //build api URL
         foreach ($userLocations as $k => $v) {
@@ -51,6 +57,11 @@ class Weather extends CI_Controller {
                 $data["myWeather"][$k]["location"] = $v;
             }
         }
+        $data["weatherSettings"] = $this->weather_settings_model->getSetting($this->session->userdata("user")->id);
+        $data["weatherSettings"] = $data["weatherSettings"][0];
+        unset($data["weatherSettings"]->id);
+        unset($data["weatherSettings"]->user_id);
+        $data["measure"] = $this->measure;
         //apply data suggestions
         //display data
         $this->load->view("header");
@@ -60,6 +71,11 @@ class Weather extends CI_Controller {
         $this->load->view("footer");
     }
 
+    /**
+     * Gets Todays weather for the posted data
+     * returns json data, rendered via javascript handlebars templates
+     * js templates found in /js/weather/template/ directory
+     */
     public function getTodaysWeather() {
         $this->load->library("input");
         $callType = "weather";
@@ -80,11 +96,18 @@ class Weather extends CI_Controller {
         } else {
             $raw_data = $weatherData[0]->data;
         }
+        $data["weatherSettings"] = $this->weather_settings_model->getSetting($this->session->userdata("user")->id);
+        $data["measure"] = $this->measure;
         $data["myWeather"]["weather"] = json_decode($raw_data);
         $data["myWeather"]["location"] = $data["location"];
         echo json_encode($data["myWeather"]);
     }
 
+    /**
+     * Gets seven days worth of weather for the posted data
+     * returns json data, rendered via javascript handlebars templates
+     * js templates found in /js/weather/template/ directory
+     */
     public function getSevenDaysWeather() {
         $this->load->library("input");
         $forecastDayCount = 7;
@@ -96,7 +119,7 @@ class Weather extends CI_Controller {
         $weatherData = $this->weather_data_model->getWeatherData($user->id, $data["location"]->id, date('Y/m/d H:i'), $this->sevenDay);
         if (null == $weatherData || empty($weatherData)) {
             $url = $this->weatherApiDetails->url . "/" . $callType . "?mode=json";
-            $url .= "&lat=" . $v->latitude . "&lon=" . $v->longitude . "&units=metric&cnt=" . $forecastDayCount;
+            $url .= "&lat=" . $data["location"]->latitude . "&lon=" . $data["location"]->longitude . "&units=metric&cnt=" . $forecastDayCount;
             $url .= "&APPID=" . $this->weatherApiDetails->api_key;
             //call api
             $raw_data = file_get_contents($url);
@@ -105,12 +128,31 @@ class Weather extends CI_Controller {
         } else {
             $raw_data = $weatherData[0]->data;
         }
+        $data["weatherSettings"] = $this->weather_settings_model->getSetting($this->session->userdata("user")->id);
+        $data["measure"] = $this->measure;
         $data["myWeather"]["weather"] = json_decode($raw_data);
         $data["myWeather"]["location"] = $data["location"];
         echo json_encode($data["myWeather"]);
     }
 
-    public function options(){
-        echo __CLASS__ ." > ".__FUNCTION__;
+    public function options() {
+        $weatherSettings = $this->weather_settings_model->getSetting($this->session->userdata("user")->id);
+        if (empty($weatherSettings)) {
+            $data["weatherSetting"]->measurement = "";
+        } else {
+            $data["weatherSetting"]->measurement = $weatherSettings[0]->measurement;
+        }
+        $data["measure"] = $this->measure;
+        $this->load->view("header");
+        $this->load->view("weather/weather_nav");
+        $this->load->view("weather/options", $data);
+        $this->load->view("footer");
     }
+
+    public function saveMeasurement() {
+        $this->load->library("input");
+        $this->load->model("weather_settings_model");
+        echo $this->weather_settings_model->setMeasurement($this->session->userdata("user")->id, $this->input->post("measurement"));
+    }
+
 }

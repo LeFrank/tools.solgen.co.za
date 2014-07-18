@@ -56,6 +56,9 @@ $route['user/send-reset-password-email'] = 'user/sendResetEmail';
 $route['user/settings'] = 'user/settings';
 $route['user/email/unsubscribe'] = 'user/unsubscribeEmail';
 
+$route['event-category/capture'] = 'eventCategory/capture';
+$route['event-category/edit/(:num)'] = 'eventCategory/edit/$1';
+
 $route['expenses'] = 'expenses/view';
 $route['expenses/capture'] = 'expenses/capture';
 $route['expenses/delete/(:num)'] = 'expenses/delete/$1';
@@ -101,10 +104,19 @@ $route['news'] = 'news';
 
 $route['test'] = 'test/index';
 
+$route['timetable'] = 'timetable/index';
+$route['timetable/capture'] = 'timetable/capture';
+$route['timetable/delete/(:num)'] = 'timetable/delete/$1';
+$route['timetable/view/(:num)'] = 'timetable/view/$1';
+$route['timetable/options'] = 'timetable/options';
+$route['timetable/event-categories'] = '/timetable/eventCategories';
+
 $route['weather'] = 'weather/index';
 $route['weather/today'] = 'weather/getTodaysWeather';
 $route['weather/forecast'] = 'weather/getSevenDaysWeather';
 $route['weather/options'] = 'weather/options';
+$route['weather/measurement'] = 'weather/saveMeasurement';
+
 
 //$route['(:any)'] = 'pages/view/$1';
 //$route['default_controller'] = 'pages/view';

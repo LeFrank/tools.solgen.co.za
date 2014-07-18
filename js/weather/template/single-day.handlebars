@@ -3,7 +3,7 @@
     <br/>
     <img src='http://openweathermap.org/img/w/{{weather.weather.0.icon}}.png'>
     <br/>
-    <span class="weather-location-label">Temperature</span>:&nbsp;{{weather.main.temp_max}}°C |{{weather.main.temp_min}}°C
+    <span class="weather-location-label">Temperature</span>:&nbsp;{{weather.main.temp_max}}{{#getMeasurementVal}}{{/getMeasurementVal}} |{{weather.main.temp_min}}{{#getMeasurementVal}}{{/getMeasurementVal}}
     <br/>
     <span class="weather-location-label">Sunrise </span>:&nbsp;{{#time weather.sys.sunrise}}{{/time}}
     <br/>

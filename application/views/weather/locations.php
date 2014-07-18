@@ -29,3 +29,7 @@ if (empty($myWeather)) {
 <script type="text/javascript" src="/js/third_party/handlebars-v1.3.0.js" ></script>
 <script type="text/javascript" src="/js/third_party/jquery.formatDateTime.min.js" ></script>
 <script type="text/javascript" src="/js/weather/weather.js" ></script>
+<script type="text/javascript">
+    var weatherSetting = <?php echo json_encode($weatherSettings);?>;
+    var measure = <?php echo json_encode($measure);?>;
+</script>

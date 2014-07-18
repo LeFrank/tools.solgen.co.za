@@ -17,7 +17,10 @@
                         <br/>
                         <img src='http://openweathermap.org/img/w/{{weather.0.icon}}.png'>
                     </div>
-                    <span class='span-label'>{{temp.max}}°C |</span>{{temp.min}}°C
+                    <span class='span-label'>{{temp.max}}
+                            {{#getMeasurementVal }}{{/getMeasurementVal}}
+                         |</span>{{temp.min}}
+                            {{#getMeasurementVal }}{{/getMeasurementVal}}
                     <br/>
                     <span class='span-label'>Morning :</span>{{temp.morn}}
                     <br/>

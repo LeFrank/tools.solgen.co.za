@@ -1,0 +1,23 @@
+<form name = "timetable-form" action = '/timetable/capture' method = "POST" >
+<h3 > Capture An Event < /h3>
+<label for = "name" > Name * < /label>
+< input id = "name" type = "text" value = "" name = "name" placeholder = "Party at John's/ Dentist appointment..." >
+< br >
+< label for = "description" > Description < /label>
+< textarea id = "description" name = "description" > < /textarea>
+< br >
+< label for = "timetableCategory" > Event Category * < /label>
+< br / >
+< label for = "startDate" > Start Date < /label>
+< input  type = "text" id = "startDate" name = "startDate" placeholder = "<?php echo date('Y/m/d H:i:s');?>" / >
+< br / >
+< label for = "endDate" > End Date < /label>
+< input  type = "text" id = "endDate" name = "endDate" placeholder = "<?php echo date('Y/m/d H:i:s');?>" / >
+< br / >
+< label for = "location" > Location < /label>
+< br / >
+< label for = "expenseType" > Expense Type < /label>
+< br / >
+< input type = 'submit' value = 'Submit' > < /input>
+
+< /form>
