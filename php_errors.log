@@ -2607,3 +2607,64 @@
 [18-Jul-2014 02:03:16 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
 [18-Jul-2014 02:03:16 Africa/Johannesburg] PHP   3. Timetable->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
 [18-Jul-2014 02:03:16 Africa/Johannesburg] PHP   4. CI_Loader->model() C:\UwAmp\www\application\controllers\Timetable.php:16
+[28-Jul-2014 23:31:49 Africa/Johannesburg] PHP Parse error:  syntax error, unexpected T_VAR, expecting ';' in C:\UwAmp\www\application\models\timetable_model.php on line 42
+[28-Jul-2014 23:31:50 Africa/Johannesburg] PHP Stack trace:
+[28-Jul-2014 23:31:50 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[28-Jul-2014 23:31:50 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[28-Jul-2014 23:31:50 Africa/Johannesburg] PHP   3. Timetable->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[28-Jul-2014 23:31:50 Africa/Johannesburg] PHP   4. CI_Loader->model() C:\UwAmp\www\application\controllers\timetable.php:16
+[28-Jul-2014 23:32:23 Africa/Johannesburg] PHP Parse error:  syntax error, unexpected T_VAR, expecting ';' in C:\UwAmp\www\application\models\timetable_model.php on line 42
+[28-Jul-2014 23:32:23 Africa/Johannesburg] PHP Stack trace:
+[28-Jul-2014 23:32:23 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[28-Jul-2014 23:32:23 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[28-Jul-2014 23:32:23 Africa/Johannesburg] PHP   3. Timetable->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[28-Jul-2014 23:32:23 Africa/Johannesburg] PHP   4. CI_Loader->model() C:\UwAmp\www\application\controllers\timetable.php:16
+[28-Jul-2014 23:32:37 Africa/Johannesburg] PHP Parse error:  syntax error, unexpected T_VAR, expecting ';' in C:\UwAmp\www\application\models\timetable_model.php on line 42
+[28-Jul-2014 23:32:37 Africa/Johannesburg] PHP Stack trace:
+[28-Jul-2014 23:32:37 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[28-Jul-2014 23:32:37 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[28-Jul-2014 23:32:37 Africa/Johannesburg] PHP   3. Timetable->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[28-Jul-2014 23:32:37 Africa/Johannesburg] PHP   4. CI_Loader->model() C:\UwAmp\www\application\controllers\timetable.php:16
+[28-Jul-2014 23:32:51 Africa/Johannesburg] PHP Parse error:  syntax error, unexpected T_VAR, expecting ';' in C:\UwAmp\www\application\models\timetable_model.php on line 42
+[28-Jul-2014 23:32:51 Africa/Johannesburg] PHP Stack trace:
+[28-Jul-2014 23:32:51 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[28-Jul-2014 23:32:51 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[28-Jul-2014 23:32:51 Africa/Johannesburg] PHP   3. Timetable->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[28-Jul-2014 23:32:51 Africa/Johannesburg] PHP   4. CI_Loader->model() C:\UwAmp\www\application\controllers\timetable.php:16
+[28-Jul-2014 23:33:02 Africa/Johannesburg] PHP Parse error:  syntax error, unexpected T_VAR, expecting ';' in C:\UwAmp\www\application\models\timetable_model.php on line 42
+[28-Jul-2014 23:33:02 Africa/Johannesburg] PHP Stack trace:
+[28-Jul-2014 23:33:02 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[28-Jul-2014 23:33:02 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[28-Jul-2014 23:33:02 Africa/Johannesburg] PHP   3. Timetable->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[28-Jul-2014 23:33:02 Africa/Johannesburg] PHP   4. CI_Loader->model() C:\UwAmp\www\application\controllers\timetable.php:16
+[28-Jul-2014 23:33:11 Africa/Johannesburg] PHP Parse error:  syntax error, unexpected ':', expecting ';' in C:\UwAmp\www\application\models\timetable_model.php on line 42
+[28-Jul-2014 23:33:11 Africa/Johannesburg] PHP Stack trace:
+[28-Jul-2014 23:33:11 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[28-Jul-2014 23:33:11 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[28-Jul-2014 23:33:11 Africa/Johannesburg] PHP   3. Timetable->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[28-Jul-2014 23:33:11 Africa/Johannesburg] PHP   4. CI_Loader->model() C:\UwAmp\www\application\controllers\timetable.php:16
+[29-Jul-2014 00:16:41 Africa/Johannesburg] PHP Fatal error:  Call to undefined function repeatData() in C:\UwAmp\www\application\models\timetable_model.php on line 40
+[29-Jul-2014 00:16:41 Africa/Johannesburg] PHP Stack trace:
+[29-Jul-2014 00:16:41 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[29-Jul-2014 00:16:41 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[29-Jul-2014 00:16:41 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jul-2014 00:16:41 Africa/Johannesburg] PHP   4. Timetable->capture() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[29-Jul-2014 00:16:41 Africa/Johannesburg] PHP   5. timetable_model->create_timetable() C:\UwAmp\www\application\controllers\timetable.php:28
+[29-Jul-2014 00:20:43 Africa/Johannesburg] PHP Parse error:  syntax error, unexpected $end, expecting T_FUNCTION in C:\UwAmp\www\application\models\timetable_model.php on line 113
+[29-Jul-2014 00:20:43 Africa/Johannesburg] PHP Stack trace:
+[29-Jul-2014 00:20:43 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[29-Jul-2014 00:20:43 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[29-Jul-2014 00:20:43 Africa/Johannesburg] PHP   3. Timetable->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[29-Jul-2014 00:20:43 Africa/Johannesburg] PHP   4. CI_Loader->model() C:\UwAmp\www\application\controllers\timetable.php:16
+[29-Jul-2014 00:25:00 Africa/Johannesburg] PHP Parse error:  syntax error, unexpected T_VARIABLE in C:\UwAmp\www\application\models\timetable_model.php on line 108
+[29-Jul-2014 00:25:00 Africa/Johannesburg] PHP Stack trace:
+[29-Jul-2014 00:25:00 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[29-Jul-2014 00:25:00 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[29-Jul-2014 00:25:00 Africa/Johannesburg] PHP   3. Timetable->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[29-Jul-2014 00:25:00 Africa/Johannesburg] PHP   4. CI_Loader->model() C:\UwAmp\www\application\controllers\timetable.php:16
+[29-Jul-2014 00:30:35 Africa/Johannesburg] PHP Parse error:  syntax error, unexpected T_LNUMBER, expecting T_VARIABLE or '$' in C:\UwAmp\www\application\models\timetable_model.php on line 148
+[29-Jul-2014 00:30:35 Africa/Johannesburg] PHP Stack trace:
+[29-Jul-2014 00:30:35 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[29-Jul-2014 00:30:35 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[29-Jul-2014 00:30:35 Africa/Johannesburg] PHP   3. Timetable->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[29-Jul-2014 00:30:35 Africa/Johannesburg] PHP   4. CI_Loader->model() C:\UwAmp\www\application\controllers\timetable.php:16

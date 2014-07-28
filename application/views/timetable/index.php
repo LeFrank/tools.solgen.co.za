@@ -30,9 +30,17 @@
         <label for="location">Repetition</label>
         <select name="timetableRepetition" id="timetableRepetition" >
             <option value="0">None</option>
-            
+            <?php
+                foreach ($eventRepetition as $k=>$v) {
+                    echo '<option value="' . $v->id . '">' . $v->name . '</option>';
+                }
+            ?>
         </select>
-                <br/>
+        <br/>
+        <label for="numberOfRepeats" id="numRepeatsLabel" >Amount of Repeats</label>
+        <input step="1" type="number" max="100" id="numberOfRepeats" name="numberOfRepeats" placeholder="0"  disabled></input>
+        &nbsp;<span id="repeatDescriptor"></span>
+        <br/>
         <label for="location">Location</label>
         <select name="timetableLocation" id="timetableLocation" >
             <option value="0">None</option>
