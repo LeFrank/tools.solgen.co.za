@@ -80,108 +80,148 @@ class timetable_model extends CI_Model {
         return $query->result();
     }
 
-
-//still to be done.
-
-    /*
-    <option value="8">Weekdays</option>
-            <option value="6">Mon/Wed/Fri</option>
-            <option value="7">Tues/Thurs</option>
-            <option value="9">Weekend</option>
-            */
     private function repeatData($numberOfRepeats , $timetableRepetition , $data){
         $this->load->model("timetable_repetition_model");
         $repData = $this->timetable_repetition_model->get_timetable_repitition( $timetableRepetition );
-        for($i=0 ; $i<= $numberOfRepeats ; $i++ ){
-            echo "1";
+        $offset = 0;
+        $dayRangeArr = explode(",",$repData[0]->val);
+        $startTime = strtotime($data["start_date"]);
+        $endTime = strtotime($data["end_date"]);
+        for($i=0 ; $i < $numberOfRepeats ; $i++ ){
+            $startDate = $this->input->post('startDate');
+            $endDate = $this->input->post('endDate');
             switch($repData[0]->id){
                 case "10":
                     $data["start_date"] = date('Y/m/d H:i:s', 
-                    mktime(date('H', strtotime($this->input->post('startDate'))),
-                        date('i', strtotime($this->input->post('startDate'))),
-                        date('s', strtotime($this->input->post('startDate'))),
-                        date('m', strtotime($this->input->post('startDate'))), 
-                        date('d', strtotime($this->input->post('startDate')))+ $i, 
-                        date('Y', strtotime($this->input->post('startDate')))));                       
-
+                    mktime(date('H', $startTime),
+                        date('i', $startTime),
+                        date('s', $startTime),
+                        date('m', $startTime), 
+                        date('d', $startTime)+ $i, 
+                        date('Y', $startTime)));                       
                     $data["end_date"] = date('Y/m/d H:i:s', 
-                    mktime(date('H', strtotime($this->input->post('endDate'))), 
-                        date('i', strtotime($this->input->post('endDate'))), 
-                        date('s', strtotime($this->input->post('endDate'))), 
-                        date('m', strtotime($this->input->post('endDate'))), 
-                        date('d', strtotime($this->input->post('endDate')))+ $i, 
-                        date('Y', strtotime($this->input->post('endDate')))));
+                    mktime(date('H', $endTime), 
+                        date('i', $endTime), 
+                        date('s', $endTime), 
+                        date('m', $endTime), 
+                        date('d', $endTime)+ $i, 
+                        date('Y', $endTime)));
+                    $this->repeatInsert($data);
                     break;
                 case "2" :
                     $data["start_date"] = date('Y/m/d H:i:s', 
-                    mktime(date('H', strtotime($this->input->post('startDate'))),
-                        date('i', strtotime($this->input->post('startDate'))),
-                        date('s', strtotime($this->input->post('startDate'))),
-                        date('m', strtotime($this->input->post('startDate'))), 
-                        date('d', strtotime($this->input->post('startDate')))+ ($i * 7 ), 
-                        date('Y', strtotime($this->input->post('startDate')))));                       
+                    mktime(date('H', $startTime),
+                        date('i', $startTime),
+                        date('s', $startTime),
+                        date('m', $startTime), 
+                        date('d', $startTime)+ ($i * 7 ), 
+                        date('Y', $startTime)));                       
 
                     $data["end_date"] = date('Y/m/d H:i:s', 
-                    mktime(date('H', strtotime($this->input->post('endDate'))), 
-                        date('i', strtotime($this->input->post('endDate'))), 
-                        date('s', strtotime($this->input->post('endDate'))), 
-                        date('m', strtotime($this->input->post('endDate'))), 
-                        date('d', strtotime($this->input->post('endDate')))+ ($i * 7 ), 
-                        date('Y', strtotime($this->input->post('endDate')))));
+                    mktime(date('H', $endTime), 
+                        date('i', $endTime), 
+                        date('s', $endTime), 
+                        date('m', $endTime), 
+                        date('d', $endTime)+ ($i * 7 ), 
+                        date('Y', $endTime)));
+                    $this->repeatInsert($data);
                     break;
                 case "3" :
                     $data["start_date"] = date('Y/m/d H:i:s', 
-                    mktime(date('H', strtotime($this->input->post('startDate'))),
-                        date('i', strtotime($this->input->post('startDate'))),
-                        date('s', strtotime($this->input->post('startDate'))),
-                        date('m', strtotime($this->input->post('startDate'))), 
-                        date('d', strtotime($this->input->post('startDate')))+ ($i * 14 ), 
-                        date('Y', strtotime($this->input->post('startDate')))));                       
+                    mktime(date('H', $startTime),
+                        date('i', $startTime),
+                        date('s', $startTime),
+                        date('m', $startTime), 
+                        date('d', $startTime)+ ($i * 14 ), 
+                        date('Y', $startTime)));                       
 
                     $data["end_date"] = date('Y/m/d H:i:s', 
-                    mktime(date('H', strtotime($this->input->post('endDate'))), 
-                        date('i', strtotime($this->input->post('endDate'))), 
-                        date('s', strtotime($this->input->post('endDate'))), 
-                        date('m', strtotime($this->input->post('endDate'))), 
-                        date('d', strtotime($this->input->post('endDate')))+ ($i * 14 ), 
-                        date('Y', strtotime($this->input->post('endDate')))));
+                    mktime(date('H', $endTime), 
+                        date('i', $endTime), 
+                        date('s', $endTime), 
+                        date('m', $endTime), 
+                        date('d', $endTime)+ ($i * 14 ), 
+                        date('Y', $endTime)));
+                    $this->repeatInsert($data);
                     break;
                 case "4" :
                     $data["start_date"] = date('Y/m/d H:i:s', 
-                    mktime(date('H', strtotime($this->input->post('startDate'))),
-                        date('i', strtotime($this->input->post('startDate'))),
-                        date('s', strtotime($this->input->post('startDate'))),
-                        date('m', strtotime($this->input->post('startDate'))), 
-                        date('d', strtotime($this->input->post('startDate'))), 
-                        date('Y', strtotime($this->input->post('startDate'))) +$i));                       
+                    mktime(date('H', $startTime),
+                        date('i', $startTime),
+                        date('s', $startTime),
+                        date('m', $startTime), 
+                        date('d', $startTime), 
+                        date('Y', $startTime) +$i));                       
 
                     $data["end_date"] = date('Y/m/d H:i:s', 
-                    mktime(date('H', strtotime($this->input->post('endDate'))), 
-                        date('i', strtotime($this->input->post('endDate'))), 
-                        date('s', strtotime($this->input->post('endDate'))), 
-                        date('m', strtotime($this->input->post('endDate'))), 
-                        date('d', strtotime($this->input->post('endDate'))), 
-                        date('Y', strtotime($this->input->post('endDate'))) +$i));
+                    mktime(date('H', $endTime), 
+                        date('i', $endTime), 
+                        date('s', $endTime), 
+                        date('m', $endTime), 
+                        date('d', $endTime), 
+                        date('Y', $endTime) +$i));
+                    $this->repeatInsert($data);
                     break;
                 case "5" :
                     $data["start_date"] = date('Y/m/d H:i:s', 
-                    mktime(date('H', strtotime($this->input->post('startDate'))),
-                        date('i', strtotime($this->input->post('startDate'))),
-                        date('s', strtotime($this->input->post('startDate'))),
-                        date('m', strtotime($this->input->post('startDate'))) + $i, 
-                        date('d', strtotime($this->input->post('startDate'))), 
-                        date('Y', strtotime($this->input->post('startDate')))));                       
+                    mktime(date('H', $startTime),
+                        date('i', $startTime),
+                        date('s', $startTime),
+                        date('m', $startTime) + $i, 
+                        date('d', $startTime), 
+                        date('Y', $startTime)));                       
 
                     $data["end_date"] = date('Y/m/d H:i:s', 
-                    mktime(date('H', strtotime($this->input->post('endDate'))), 
-                        date('i', strtotime($this->input->post('endDate'))), 
-                        date('s', strtotime($this->input->post('endDate'))), 
-                        date('m', strtotime($this->input->post('endDate'))) + $i, 
-                        date('d', strtotime($this->input->post('endDate'))), 
-                        date('Y', strtotime($this->input->post('endDate')))));
+                    mktime(date('H', $endTime), 
+                        date('i', $endTime), 
+                        date('s', $endTime), 
+                        date('m', $endTime) + $i, 
+                        date('d', $endTime), 
+                        date('Y', $endTime)));
+                    $this->repeatInsert($data);
+                    break;
+                case "6" :
+                case "7" :
+                case "8" :
+                case "9" :
+                    $startDate = date('Y/m/d H:i:s', 
+                    mktime(date('H', $startTime),
+                        date('i', $startTime),
+                        date('s', $startTime),
+                        date('m', $startTime), 
+                        date('d', $startTime)+ $i + $offset, 
+                        date('Y', $startTime)));                       
+                    // get all weekdays
+                    $dayOfWeek = date("N", $startTime);
+                    if(in_array($dayOfWeek,$dayRangeArr)){
+                    }else{
+                        $offset = $offset+ 1;
+                        $i = $i- 1;
+                        continue;
+                    }
+                    $startDate = $this->input->post('startDate');
+                    $data["start_date"] = date('Y/m/d H:i:s', 
+                    mktime(date('H', $startTime),
+                        date('i', $startTime),
+                        date('s', $startTime),
+                        date('m', $startTime), 
+                        date('d', $startTime)+ $i + $offset, 
+                        date('Y', $startTime)));                       
+
+                    $data["end_date"] = date('Y/m/d H:i:s', 
+                    mktime(date('H', $endTime), 
+                        date('i', $endTime), 
+                        date('s', $endTime), 
+                        date('m', $endTime), 
+                        date('d', $endTime)+ $i + $offset, 
+                        date('Y', $endTime)));
+                    $this->repeatInsert($data);
                     break;
             }
-            $this->db->insert($this->tn, $data);
         }
+    }
+
+    private function repeatInsert($data){
+        $this->db->insert($this->tn, $data);
     }
 }

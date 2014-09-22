@@ -109,6 +109,45 @@ class Expenses extends CI_Controller {
         return $this->output->get_output();
     }
 
+
+    // will support csv, json ???
+    public function filteredSearchExportTo($output="csv") {
+        $this->load->helper('url');
+        $this->load->helper('form');
+        $this->load->helper('data_export_helper');
+        $contentType = "application/vnd.ms-excel";
+        $data = $this->expense_model->getexpensesByCriteria($this->session->userdata("user")->id);
+        $expenseTypes = mapKeyToId($this->expense_type_model->get_user_expense_types($this->session->userdata("user")->id));
+        $paymentMethods = mapKeyToId($this->payment_method_model->get_user_payment_method($this->session->userdata("user")->id), false);
+        switch($output){
+            case "csv" :
+                $data = csvify($data, $expenseTypes, $paymentMethods);
+                $filename = "expenses.csv";
+                $temp = tmpfile();
+                foreach ($data as $k=>$line){
+                    fputcsv($temp,$line);
+                }
+                $meta_data = stream_get_meta_data($temp);
+                header('Content-Length: '.filesize($meta_data["uri"])); //<-- sends filesize header
+                header('Content-Type: '.$contentType); //<-- send mime-type header
+                header('Content-Disposition: inline; filename="'.$filename.'";'); //<-- sends filename header
+                readfile($meta_data["uri"]); //<--reads and outputs the file onto the output buffer
+                fclose($temp);  
+                die(); //<--cleanup
+                exit; //and exit  
+                break;
+            case "json" :
+                $contentType = "application/json";
+                $data = json_encode($data);
+                $this->output->set_content_type($contentType)->set_output($data);
+                return $this->output->get_output();
+                break;
+            default:
+                echo "Output type not supportted. Only .CSV & .JSON is presently supportted.";
+                break;
+        }
+    }
+
     public function forecast(){
         echo __CLASS__. " > ".__FUNCTION__;
     }

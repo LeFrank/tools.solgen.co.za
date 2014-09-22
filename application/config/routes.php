@@ -63,6 +63,7 @@ $route['expenses'] = 'expenses/view';
 $route['expenses/capture'] = 'expenses/capture';
 $route['expenses/delete/(:num)'] = 'expenses/delete/$1';
 $route['expenses/edit/(:num)'] = 'expenses/edit/$1';
+$route['expenses/export'] = 'expenses/filteredSearchExportTo';
 $route['expenses/filter-search'] = 'expenses/filteredSearch';
 $route['expenses/forecast'] = 'expenses/forecast';
 $route['expenses/getExpenses/(:any)'] = 'expenses/getExpenses/$1';

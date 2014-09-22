@@ -94,7 +94,7 @@
 <div id="expenseHistoryFilter" class="expenseHistoryFilter">
     <h3>Filter Expenses History</h3>
     <div id="validation_errors" ></div>
-    <form action="/" id="filterExpenseForm">
+    <form accept-charset="utf-8" method="post" action="/expenses/export" id="filterExpenseForm" >
         <div>
             <label>Date</label>
             From &nbsp;
@@ -148,6 +148,8 @@
             </div>
         </div>
         <input type="button" name="filter" value="Filter" id="filter" />
+        &nbsp;&nbsp;
+        <input type="submit" name="export" value="Export To CSV" id="export" />
     </form>
 </div>
 

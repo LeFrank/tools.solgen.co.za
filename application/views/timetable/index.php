@@ -85,6 +85,6 @@
 <script type="text/javascript" src="/js/third_party/jquery.formatDateTime.min.js" ></script>
 <script src="/js/third_party/jquery-ui.custom.min.js" type="text/javascript" ></script>
 <script src="/js/third_party/qtip/jquery.qtip.min.js"></script>
-<script src='/js/third_party/fullcalendar/moment.min.js' type='text/javascript'></script>
-<script src='/js/third_party/fullcalendar/fullcalendar.min.js' type='text/javascript'></script>
+<script src='/js/third_party/FullCalendar/moment.min.js' type='text/javascript'></script>
+<script src='/js/third_party/FullCalendar/fullcalendar.min.js' type='text/javascript'></script>
 <script src='/js/timetable/timetable.js' type='text/javascript'></script>
