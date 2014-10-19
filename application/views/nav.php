@@ -9,23 +9,17 @@
         &nbsp;&nbsp;
         <a href="/expenses" >Expenses</a>
         &nbsp;&nbsp;
-        <a href="/locations" >Locations</a>
-        <!-- &nbsp;&nbsp;
-        |
+        <a href="/notes" >Notes</a> 
         &nbsp;&nbsp;
-        <a href="/schedule" >Schedule</a>-->
+        <a href="/locations" >Locations</a>
         &nbsp;&nbsp;
         <a href="/weather" >Weather</a>
         &nbsp;&nbsp;
         <a href="/timetable" >Timetable</a>
         <!-- &nbsp;&nbsp;
-        <a href="/notes" >Notes</a> -->
-        <!-- &nbsp;&nbsp;
         |
         &nbsp;&nbsp;
         <a href="/history" >History</a>
-        &nbsp;&nbsp;
-        |
         &nbsp;&nbsp;
         <a href="/Resources" >Resources</a> -->
         &nbsp;&nbsp;    

@@ -2668,3 +2668,175 @@
 [29-Jul-2014 00:30:35 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
 [29-Jul-2014 00:30:35 Africa/Johannesburg] PHP   3. Timetable->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
 [29-Jul-2014 00:30:35 Africa/Johannesburg] PHP   4. CI_Loader->model() C:\UwAmp\www\application\controllers\timetable.php:16
+[30-Jul-2014 01:05:45 Africa/Johannesburg] PHP Parse error:  syntax error, unexpected ')' in C:\UwAmp\www\application\models\timetable_model.php on line 194
+[30-Jul-2014 01:05:46 Africa/Johannesburg] PHP Stack trace:
+[30-Jul-2014 01:05:46 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[30-Jul-2014 01:05:46 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[30-Jul-2014 01:05:46 Africa/Johannesburg] PHP   3. Timetable->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[30-Jul-2014 01:05:46 Africa/Johannesburg] PHP   4. CI_Loader->model() C:\UwAmp\www\application\controllers\timetable.php:16
+[30-Jul-2014 22:18:11 Africa/Johannesburg] PHP Parse error:  syntax error, unexpected T_BREAK in C:\UwAmp\www\application\models\timetable_model.php on line 117
+[30-Jul-2014 22:18:11 Africa/Johannesburg] PHP Stack trace:
+[30-Jul-2014 22:18:11 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[30-Jul-2014 22:18:11 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[30-Jul-2014 22:18:11 Africa/Johannesburg] PHP   3. Timetable->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[30-Jul-2014 22:18:11 Africa/Johannesburg] PHP   4. CI_Loader->model() C:\UwAmp\www\application\controllers\timetable.php:16
+[30-Jul-2014 22:18:45 Africa/Johannesburg] PHP Parse error:  syntax error, unexpected T_STRING, expecting T_VARIABLE in C:\UwAmp\www\application\models\timetable_model.php on line 230
+[30-Jul-2014 22:18:45 Africa/Johannesburg] PHP Stack trace:
+[30-Jul-2014 22:18:45 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[30-Jul-2014 22:18:45 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[30-Jul-2014 22:18:45 Africa/Johannesburg] PHP   3. Timetable->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[30-Jul-2014 22:18:45 Africa/Johannesburg] PHP   4. CI_Loader->model() C:\UwAmp\www\application\controllers\timetable.php:16
+[30-Jul-2014 22:19:24 Africa/Johannesburg] PHP Fatal error:  Call to undefined function repeatInsert() in C:\UwAmp\www\application\models\timetable_model.php on line 223
+[30-Jul-2014 22:19:24 Africa/Johannesburg] PHP Stack trace:
+[30-Jul-2014 22:19:24 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[30-Jul-2014 22:19:24 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[30-Jul-2014 22:19:24 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[30-Jul-2014 22:19:24 Africa/Johannesburg] PHP   4. Timetable->capture() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[30-Jul-2014 22:19:24 Africa/Johannesburg] PHP   5. timetable_model->create_timetable() C:\UwAmp\www\application\controllers\timetable.php:28
+[30-Jul-2014 22:19:24 Africa/Johannesburg] PHP   6. timetable_model->repeatData() C:\UwAmp\www\application\models\timetable_model.php:40
+[30-Jul-2014 22:45:26 Africa/Johannesburg] PHP Parse error:  syntax error, unexpected '{' in C:\UwAmp\www\application\models\timetable_model.php on line 200
+[30-Jul-2014 22:45:26 Africa/Johannesburg] PHP Stack trace:
+[30-Jul-2014 22:45:26 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[30-Jul-2014 22:45:26 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[30-Jul-2014 22:45:26 Africa/Johannesburg] PHP   3. Timetable->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[30-Jul-2014 22:45:26 Africa/Johannesburg] PHP   4. CI_Loader->model() C:\UwAmp\www\application\controllers\timetable.php:16
+[30-Jul-2014 22:58:10 Africa/Johannesburg] PHP Parse error:  syntax error, unexpected T_VARIABLE, expecting ',' or ';' in C:\UwAmp\www\application\models\timetable_model.php on line 205
+[30-Jul-2014 22:58:10 Africa/Johannesburg] PHP Stack trace:
+[30-Jul-2014 22:58:10 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[30-Jul-2014 22:58:10 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[30-Jul-2014 22:58:10 Africa/Johannesburg] PHP   3. Timetable->__construct() C:\UwAmp\www\system\core\CodeIgniter.php:308
+[30-Jul-2014 22:58:10 Africa/Johannesburg] PHP   4. CI_Loader->model() C:\UwAmp\www\application\controllers\timetable.php:16
+[04-Aug-2014 00:15:43 Africa/Johannesburg] PHP Parse error:  syntax error, unexpected ')' in C:\UwAmp\www\application\controllers\expenses.php on line 118
+[04-Aug-2014 00:15:43 Africa/Johannesburg] PHP Stack trace:
+[04-Aug-2014 00:15:43 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[04-Aug-2014 00:15:43 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[04-Aug-2014 00:15:44 Africa/Johannesburg] PHP Parse error:  syntax error, unexpected ')' in C:\UwAmp\www\application\controllers\expenses.php on line 118
+[04-Aug-2014 00:15:44 Africa/Johannesburg] PHP Stack trace:
+[04-Aug-2014 00:15:44 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[04-Aug-2014 00:15:44 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[04-Aug-2014 00:16:15 Africa/Johannesburg] PHP Parse error:  syntax error, unexpected T_BREAK, expecting ',' or ';' in C:\UwAmp\www\application\controllers\expenses.php on line 131
+[04-Aug-2014 00:16:15 Africa/Johannesburg] PHP Stack trace:
+[04-Aug-2014 00:16:15 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[04-Aug-2014 00:16:15 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[04-Aug-2014 00:16:27 Africa/Johannesburg] PHP Fatal error:  Call to undefined function csvify() in C:\UwAmp\www\application\controllers\expenses.php on line 123
+[04-Aug-2014 00:16:27 Africa/Johannesburg] PHP Stack trace:
+[04-Aug-2014 00:16:27 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[04-Aug-2014 00:16:27 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[04-Aug-2014 00:16:27 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[04-Aug-2014 00:16:27 Africa/Johannesburg] PHP   4. Expenses->filteredSearchExportTo() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[04-Aug-2014 00:16:33 Africa/Johannesburg] PHP Fatal error:  Call to undefined function csvify() in C:\UwAmp\www\application\controllers\expenses.php on line 123
+[04-Aug-2014 00:16:33 Africa/Johannesburg] PHP Stack trace:
+[04-Aug-2014 00:16:33 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[04-Aug-2014 00:16:33 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[04-Aug-2014 00:16:33 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[04-Aug-2014 00:16:33 Africa/Johannesburg] PHP   4. Expenses->filteredSearchExportTo() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[04-Aug-2014 00:18:57 Africa/Johannesburg] PHP Fatal error:  Call to undefined function csvify() in C:\UwAmp\www\application\controllers\expenses.php on line 123
+[04-Aug-2014 00:18:57 Africa/Johannesburg] PHP Stack trace:
+[04-Aug-2014 00:18:57 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[04-Aug-2014 00:18:57 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[04-Aug-2014 00:18:57 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[04-Aug-2014 00:18:57 Africa/Johannesburg] PHP   4. Expenses->filteredSearchExportTo() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[05-Aug-2014 22:55:08 Africa/Johannesburg] PHP Parse error:  syntax error, unexpected T_VARIABLE in C:\UwAmp\www\application\helpers\data_export_helper.php on line 7
+[05-Aug-2014 22:55:08 Africa/Johannesburg] PHP Stack trace:
+[05-Aug-2014 22:55:08 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[05-Aug-2014 22:55:08 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[05-Aug-2014 22:55:08 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[05-Aug-2014 22:55:08 Africa/Johannesburg] PHP   4. Expenses->filteredSearchExportTo() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[05-Aug-2014 22:55:08 Africa/Johannesburg] PHP   5. CI_Loader->helper() C:\UwAmp\www\application\controllers\expenses.php:117
+[05-Aug-2014 22:56:04 Africa/Johannesburg] PHP Parse error:  syntax error, unexpected T_DOUBLE_ARROW in C:\UwAmp\www\application\helpers\data_export_helper.php on line 10
+[05-Aug-2014 22:56:04 Africa/Johannesburg] PHP Stack trace:
+[05-Aug-2014 22:56:04 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[05-Aug-2014 22:56:04 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[05-Aug-2014 22:56:04 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[05-Aug-2014 22:56:04 Africa/Johannesburg] PHP   4. Expenses->filteredSearchExportTo() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[05-Aug-2014 22:56:04 Africa/Johannesburg] PHP   5. CI_Loader->helper() C:\UwAmp\www\application\controllers\expenses.php:117
+[06-Aug-2014 00:08:36 Africa/Johannesburg] PHP Parse error:  syntax error, unexpected ';' in C:\UwAmp\www\application\controllers\expenses.php on line 127
+[06-Aug-2014 00:08:36 Africa/Johannesburg] PHP Stack trace:
+[06-Aug-2014 00:08:36 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[06-Aug-2014 00:08:36 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[07-Oct-2014 00:24:18 Africa/Johannesburg] PHP Parse error:  syntax error, unexpected ')' in C:\UwAmp\www\application\controllers\notes.php on line 31
+[07-Oct-2014 00:24:18 Africa/Johannesburg] PHP Stack trace:
+[07-Oct-2014 00:24:18 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[07-Oct-2014 00:24:18 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[07-Oct-2014 00:24:32 Africa/Johannesburg] PHP Parse error:  syntax error, unexpected ')' in C:\UwAmp\www\application\controllers\notes.php on line 31
+[07-Oct-2014 00:24:32 Africa/Johannesburg] PHP Stack trace:
+[07-Oct-2014 00:24:32 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[07-Oct-2014 00:24:32 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[13-Oct-2014 23:59:12 Africa/Johannesburg] PHP Fatal error:  Call to undefined method Notes::view() in C:\UwAmp\www\application\controllers\notes.php on line 25
+[13-Oct-2014 23:59:12 Africa/Johannesburg] PHP Stack trace:
+[13-Oct-2014 23:59:12 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[13-Oct-2014 23:59:12 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[13-Oct-2014 23:59:12 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[13-Oct-2014 23:59:12 Africa/Johannesburg] PHP   4. Notes->capture() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[14-Oct-2014 00:02:01 Africa/Johannesburg] PHP Fatal error:  Call to undefined function validation_errors() in C:\UwAmp\www\application\views\notes\index.php on line 40
+[14-Oct-2014 00:02:01 Africa/Johannesburg] PHP Stack trace:
+[14-Oct-2014 00:02:01 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[14-Oct-2014 00:02:01 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[14-Oct-2014 00:02:01 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[14-Oct-2014 00:02:01 Africa/Johannesburg] PHP   4. Notes->index() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[14-Oct-2014 00:02:01 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\notes.php:45
+[14-Oct-2014 00:02:01 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[14-Oct-2014 00:02:01 Africa/Johannesburg] PHP   7. include() C:\UwAmp\www\system\core\Loader.php:833
+[14-Oct-2014 00:02:48 Africa/Johannesburg] PHP Fatal error:  Call to undefined function validation_errors() in C:\UwAmp\www\application\views\notes\index.php on line 40
+[14-Oct-2014 00:02:48 Africa/Johannesburg] PHP Stack trace:
+[14-Oct-2014 00:02:48 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[14-Oct-2014 00:02:48 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[14-Oct-2014 00:02:48 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[14-Oct-2014 00:02:48 Africa/Johannesburg] PHP   4. Notes->index() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[14-Oct-2014 00:02:48 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\notes.php:46
+[14-Oct-2014 00:02:48 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[14-Oct-2014 00:02:48 Africa/Johannesburg] PHP   7. include() C:\UwAmp\www\system\core\Loader.php:833
+[14-Oct-2014 00:03:07 Africa/Johannesburg] PHP Fatal error:  Call to undefined function validation_errors() in C:\UwAmp\www\application\views\notes\index.php on line 40
+[14-Oct-2014 00:03:07 Africa/Johannesburg] PHP Stack trace:
+[14-Oct-2014 00:03:07 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[14-Oct-2014 00:03:07 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[14-Oct-2014 00:03:07 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[14-Oct-2014 00:03:07 Africa/Johannesburg] PHP   4. Notes->index() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[14-Oct-2014 00:03:07 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\notes.php:46
+[14-Oct-2014 00:03:07 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[14-Oct-2014 00:03:07 Africa/Johannesburg] PHP   7. include() C:\UwAmp\www\system\core\Loader.php:833
+[14-Oct-2014 00:12:13 Africa/Johannesburg] PHP Fatal error:  Call to a member function capture_note() on a non-object in C:\UwAmp\www\application\controllers\notes.php on line 29
+[14-Oct-2014 00:12:13 Africa/Johannesburg] PHP Stack trace:
+[14-Oct-2014 00:12:13 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[14-Oct-2014 00:12:13 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[14-Oct-2014 00:12:13 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[14-Oct-2014 00:12:13 Africa/Johannesburg] PHP   4. Notes->capture() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[18-Oct-2014 23:50:53 Africa/Johannesburg] PHP Fatal error:  Call to undefined method Notes_model::get_note() in C:\UwAmp\www\application\controllers\notes.php on line 43
+[18-Oct-2014 23:50:53 Africa/Johannesburg] PHP Stack trace:
+[18-Oct-2014 23:50:53 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[18-Oct-2014 23:50:53 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[18-Oct-2014 23:50:53 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[18-Oct-2014 23:50:53 Africa/Johannesburg] PHP   4. Notes->edit() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[19-Oct-2014 00:22:40 Africa/Johannesburg] PHP Fatal error:  Cannot use object of type stdClass as array in C:\UwAmp\www\application\views\notes\capture_form.php on line 3
+[19-Oct-2014 00:22:40 Africa/Johannesburg] PHP Stack trace:
+[19-Oct-2014 00:22:40 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[19-Oct-2014 00:22:40 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[19-Oct-2014 00:22:40 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[19-Oct-2014 00:22:40 Africa/Johannesburg] PHP   4. Notes->edit() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[19-Oct-2014 00:22:40 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\notes.php:46
+[19-Oct-2014 00:22:40 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[19-Oct-2014 00:22:40 Africa/Johannesburg] PHP   7. include() C:\UwAmp\www\system\core\Loader.php:833
+[19-Oct-2014 00:22:44 Africa/Johannesburg] PHP Fatal error:  Cannot use object of type stdClass as array in C:\UwAmp\www\application\views\notes\capture_form.php on line 3
+[19-Oct-2014 00:22:44 Africa/Johannesburg] PHP Stack trace:
+[19-Oct-2014 00:22:44 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[19-Oct-2014 00:22:44 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[19-Oct-2014 00:22:44 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[19-Oct-2014 00:22:44 Africa/Johannesburg] PHP   4. Notes->edit() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[19-Oct-2014 00:22:44 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\notes.php:46
+[19-Oct-2014 00:22:44 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[19-Oct-2014 00:22:44 Africa/Johannesburg] PHP   7. include() C:\UwAmp\www\system\core\Loader.php:833
+[19-Oct-2014 00:23:17 Africa/Johannesburg] PHP Fatal error:  Cannot use object of type stdClass as array in C:\UwAmp\www\application\views\notes\capture_form.php on line 6
+[19-Oct-2014 00:23:17 Africa/Johannesburg] PHP Stack trace:
+[19-Oct-2014 00:23:17 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[19-Oct-2014 00:23:17 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[19-Oct-2014 00:23:17 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[19-Oct-2014 00:23:17 Africa/Johannesburg] PHP   4. Notes->edit() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[19-Oct-2014 00:23:17 Africa/Johannesburg] PHP   5. CI_Loader->view() C:\UwAmp\www\application\controllers\notes.php:46
+[19-Oct-2014 00:23:17 Africa/Johannesburg] PHP   6. CI_Loader->_ci_load() C:\UwAmp\www\system\core\Loader.php:419
+[19-Oct-2014 00:23:17 Africa/Johannesburg] PHP   7. include() C:\UwAmp\www\system\core\Loader.php:833
+[19-Oct-2014 00:43:49 Africa/Johannesburg] PHP Fatal error:  Call to undefined method Notes_model::update_note() in C:\UwAmp\www\application\controllers\notes.php on line 81
+[19-Oct-2014 00:43:49 Africa/Johannesburg] PHP Stack trace:
+[19-Oct-2014 00:43:49 Africa/Johannesburg] PHP   1. {main}() C:\UwAmp\www\index.php:0
+[19-Oct-2014 00:43:49 Africa/Johannesburg] PHP   2. require_once() C:\UwAmp\www\index.php:202
+[19-Oct-2014 00:43:49 Africa/Johannesburg] PHP   3. call_user_func_array() C:\UwAmp\www\system\core\CodeIgniter.php:359
+[19-Oct-2014 00:43:49 Africa/Johannesburg] PHP   4. Notes->update() C:\UwAmp\www\system\core\CodeIgniter.php:359

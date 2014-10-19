@@ -31,7 +31,11 @@ class Home extends CI_Controller{
     function dashboard(){
         $this->load->view('header');
         if($this->session->userdata("isAdmin")){
-            $this->load->view('home/admin-dashboard');
+            // get admin data
+            // what is admin data?
+            // admin data is # of registered users
+            $data = $this->user_model->get_admin_data();
+            $this->load->view('home/admin-dashboard', $data);
         }else{
             $this->load->view('home/user-dashboard');
         }

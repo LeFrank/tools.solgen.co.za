@@ -101,7 +101,6 @@ a {
 table {
     font-size: 1em;
     line-height:125%;
-    //border: 1px solid #c8c8c8;
 }
 
 th {
@@ -462,3 +461,9 @@ table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSo
     width:30px;
 }*/
 
+/*
+* notes
+*/
+.update_date{
+    font-size: smaller;
+}

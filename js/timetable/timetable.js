@@ -55,15 +55,6 @@ $(document).ready(function() {
                     $("#delete").show();
                 }
             });
-        },
-        dayClick: function(date, jsEvent, view) {
-            //do something
-        },
-        eventMouseover:function(event,jsEvent,view){
-            $(this).css('background-color', '');
-        },
-        eventMouseout:function(event,jsEvent,view){
-            $(this).css('background-color', '#666666');
         }
     });
 

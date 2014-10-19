@@ -15,6 +15,11 @@ class User_model extends CI_Model {
         date_default_timezone_set('Africa/Johannesburg');
     }
 
+    public function get_admin_data(){
+        $data["user_count"] = $this->db->count_all($this->tn);
+        return $data;
+    }
+    
     public function get_user($id = FALSE) {
         if ($id === FALSE) {
             $query = $this->db->get($this->tn);

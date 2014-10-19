@@ -7,4 +7,12 @@
  */
 
 ?>
-admin yeah
+<h1>
+    Admin Dashboard.
+</h1>
+<h3>
+    User Stats
+</h3>
+<label>User Count: </label>
+<?php echo $user_count;?>
+</br>
