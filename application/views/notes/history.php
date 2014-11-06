@@ -1,17 +1,9 @@
-<?php 
-	
-	
-?>
+<?php ?>
 
 <div id="notesContent" class="notesContent" >
-    <h2>Note Overview</h2>
-    <div id="captureNote" >
-        <h3>Capture Note</h3>
-        <?php echo $capture_form;?>
-    </div>
-    <br/><br/>
-    <div id="latestNotes">
-    	<h3>Five Latest Notes</h3>
+    <h2>History</h2>
+    <div id="Notes">
+    	<h3>Notes</h3>
         <?php if (is_array($notes) && !empty($notes)) {
             $curDate = null;
             $count = 0;
@@ -65,7 +57,7 @@
             }
             
         } else {
-            echo "No notes captured.";
+            echo "No notes.";
         }
         ?>
     </div>

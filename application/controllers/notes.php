@@ -1,8 +1,8 @@
 <?php
-class Notes extends CI_Controller
-{
 
-	var $require_auth = true;
+class Notes extends CI_Controller {
+
+    var $require_auth = true;
 
     public function __construct() {
         parent::__construct();
@@ -16,7 +16,6 @@ class Notes extends CI_Controller
         $this->load->model('notes_model');
     }
 
-    
     public function capture() {
         $data['title'] = 'Create a note';
         $this->form_validation->set_rules('body', 'body', 'required');
@@ -32,38 +31,51 @@ class Notes extends CI_Controller
         }
     }
 
-    public function delete($id=null){
-        echo __CLASS__." >> ".__FUNCTION__ . " >> " . $id;
+    public function delete($id = null) {
+        echo __CLASS__ . " >> " . __FUNCTION__ . " >> " . $id;
         exit;
     }
-    
-    public function edit($id=null){
+
+    public function edit($id = null) {
         $this->load->library('session');
         $user = $this->session->userdata("user");
         $data["note"] = $this->notes_model->getNote($id);
         $this->load->view('header');
         $this->load->view('notes/notes_nav', $data);
-        $this->load->view("notes/capture_form" ,$data);
+        $this->load->view("notes/capture_form", $data);
         $this->load->view('notes/notes_includes', $data);
         $this->load->view('footer');
     }
-    /**
-	*	Display and capture a note
-	*/
-    public function index(){
+
+    public function history(){
         $this->load->library('session');
         $user = $this->session->userdata("user");
         $data["notes"] = $this->notes_model->getNotes($user->id);
         $this->load->view('header');
         $this->load->view('notes/notes_nav', $data);
-        $data["capture_form"] = $this->load->view("notes/capture_form" ,$data, TRUE);
-        $this->load->view('notes/index', $data);
+        $data["capture_form"] = "";
+        $this->load->view('notes/history', $data);
         $this->load->view('notes/notes_includes', $data);
         $this->load->view('footer');
     }
     
-    public function update(){
-         $data['title'] = 'Update a note';
+    /**
+     * 	Display and capture a note
+     */
+    public function index() {
+        $this->load->library('session');
+        $user = $this->session->userdata("user");
+        $data["notes"] = $this->notes_model->getNotes($user->id, 5);
+        $this->load->view('header');
+        $this->load->view('notes/notes_nav', $data);
+        $data["capture_form"] = $this->load->view("notes/capture_form", $data, TRUE);
+        $this->load->view('notes/index', $data);
+        $this->load->view('notes/notes_includes', $data);
+        $this->load->view('footer');
+    }
+
+    public function update() {
+        $data['title'] = 'Update a note';
         $this->form_validation->set_rules('body', 'body', 'required');
         $data["status"] = "Update Note";
         $data["action_description"] = "Update a note";
@@ -82,4 +94,5 @@ class Notes extends CI_Controller
             redirect("/notes", "refresh");
         }
     }
+
 }

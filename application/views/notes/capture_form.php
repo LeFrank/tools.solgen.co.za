@@ -23,7 +23,7 @@
     <label for="date">Date</label>
     <input type="text" value="<?php echo (!empty($note->create_date) ? $note->create_date : date('Y/m/d H:i:s')); ?>" name="noteDate" id="noteDate"  />
     <br/>
-    <input type="submit" value="Capture" />&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value="Cancel" />
+    <input type="submit" value="<?php echo (!empty($note->id) ? "Update": "Capture" ); ?>" />&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value="Cancel" />
 </form>
 <script type="text/javascript">
     <?php if(!empty($note->tagg)){ ?>

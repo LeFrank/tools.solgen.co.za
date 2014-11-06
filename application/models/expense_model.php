@@ -23,12 +23,13 @@ class expense_model extends CI_Model {
     public function capture_expense() {
         $this->load->helper('date');
         $this->load->library("session");
+        $date = ($this->input->post('expenseDate') != "") ? date('Y/m/d H:i', strtotime($this->input->post('expenseDate'))): date('Y/m/d H:i');
         $data = array(
             'amount' => $this->input->post('amount'),
             'expense_type_id' => $this->input->post('expenseType'),
             'description' => $this->input->post('description'),
             'location' => $this->input->post('location'),
-            'expense_date' => date('Y/m/d H:i', strtotime($this->input->post('expenseDate'))),
+            'expense_date' => $date,
             'user_id' => $this->session->userdata("user")->id,
             'payment_method_id' => $this->input->post('paymentMethod')
         );

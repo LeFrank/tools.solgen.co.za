@@ -1,15 +1,13 @@
 <?php
-
-class Notes_model extends CI_Model
+class Notes_tag_model extends CI_Model
 {
     
-    var $tn = "notes";
+    var $tn = "notes_tags";
     
     public function __construct() {
         parent::__construct();
         $this->load->database();
     	$this->load->library("session");
-//        $this->load->model("note_tag_model");
         date_default_timezone_set('Africa/Johannesburg');
     }
 
@@ -17,21 +15,15 @@ class Notes_model extends CI_Model
      * Capture a users expense from a post request. 
      * @return type
      */
-    public function capture_note() {
+    public function capture_note_tag($noteId, $name, $date) {
         $this->load->helper('date');
         $this->load->library("session");
         $data = array(
-            'user_id' => $this->session->userdata("user")->id,
-            'heading' => $this->input->post('title'),
-            'body' => $this->input->post('body'),
-            'create_date' =>  date('Y/m/d H:i', strtotime($this->input->post('noteDate')))
+            'note_id'       => $noteId,
+            'user_id'       => $this->session->userdata("user")->id,
+            'name'       => $name,
+            'create_date'   =>  date('Y/m/d H:i', strtotime($date))
         );
-//        echo $id = $this->db->insert($this->tn, $data);
-//        $tags = explode(",", $this->input->post('tags'));
-//        foreach($tags as $k=>$v){
-//            echo $v;
-//            $
-//        }
         return $this->db->insert($this->tn, $data);
     }
 
@@ -66,10 +58,10 @@ class Notes_model extends CI_Model
 
     /**
      * 
-     * @param type $id
-     * @return type
+     * @param tag $id
+     * @return tag
      */
-    public function getNote($id) {
+    public function getNoteTag($id) {
         $query = $this->db->get_where($this->tn, array('id' => $id));
         return $query->row();
     }
@@ -81,20 +73,20 @@ class Notes_model extends CI_Model
      * @param type $offset if present offset the result by this value else no offset
      * @return null
      */
-    public function getNotes($userId = null, $limit = null, $offset = 0) {
+    public function getTags($userId = null,$note_id = null, $limit = null, $offset = 0) {
         if ($userId === null) {
             return null;
         }
         $this->db->order_by("create_date", "desc");
         if (null == $limit) {
-            $query = $this->db->get_where($this->tn, array('user_id' => $userId));
+            $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'note_id' => $note_id));
         } else {
-            $query = $this->db->get_where($this->tn, array('user_id' => $userId), $limit, $offset);
+            $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'note_id' => $note_id), $limit, $offset);
         }
         return $query->result_array();
     }
 
-    public function getNotesByIds($userId , $noteIds){
+    public function getNoteTagsByIds($userId , $noteIds){
         if ($userId == null) {
             return null;
         }
@@ -102,7 +94,7 @@ class Notes_model extends CI_Model
             return null;
         }
         $this->db->order_by("create_date", "desc");
-        $this->db->where_in('id', $noteIds);
+        $this->db->where_in('note_id', $noteIds);
         $query = $this->db->get_where($this->tn, array('user_id' => $userId), 100);
         return $query->result_array();
     }
@@ -111,16 +103,12 @@ class Notes_model extends CI_Model
      * 
      * @return type
      */
-    public function update() {
-        $updateCount = $this->getNote($this->input->post('id'))->update_count + 1;
-        echo $updateCount;
-        $data = array(
-            'user_id' => $this->session->userdata("user")->id,
-            'heading' => $this->input->post('title'),
-            'body' => $this->input->post('body'),
-            'create_date' =>  date('Y/m/d H:i', strtotime($this->input->post('noteDate'))),
-            'update_date' => date('Y/m/d H:i'),
-            'update_count' => $updateCount
+    public function update($id, $date) {
+          $data = array(
+            'note_id'       => $noteId,
+            'user_id'       => $this->session->userdata("user")->id,
+            'name'       => $name,
+            'update_date'   =>  date('Y/m/d H:i', strtotime($date))
         );
         $this->db->where('id', $this->input->post('id'));
         return $this->db->update($this->tn, $data);

@@ -465,5 +465,81 @@ table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSo
 * notes
 */
 .update_date{
-    font-size: smaller;
+    font-size: x-small;
+}
+
+.day_group_heading{
+    width:99%;
+}
+.time_grouping{
+    float:left;
+    width:100px; 
+    padding: 0px 0px 0px 10px ;
+    font-family: Calibri,AurulentSans,Trebuchet,Tahoma,Verdana,Arial,sans-serif;
+    font-size: large;
+}
+.note_date{
+    line-height: 1em;
+    padding: 10px 0px 10px 10px ;
+    background-color: #d8d8d8;
+    width:100%;
+}
+#note_content{
+    float:left;
+    padding:0 10px 0 10px;
+    width:93%;
+    min-height: 20px;
+}
+.note_title{
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    box-shadow: 0 1px 0 #eeeeee inset, 0 1px 0 #ffffff;
+    display: inline-block;
+    font-family: Calibri,AurulentSans,Trebuchet,Tahoma,Verdana,Arial,sans-serif;
+    margin: 0;
+    outline: 0 none;
+    padding: 4px;
+    width:100%;
+    line-height: 1em;
+}
+
+.note_body{
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    box-shadow: 0 1px 0 #eeeeee inset, 0 1px 0 #ffffff;
+    display: inline-block;
+    font-family: Calibri,AurulentSans,Trebuchet,Tahoma,Verdana,Arial,sans-serif;
+    margin: 0;
+    outline: 0 none;
+    padding: 4px;
+    width:100%;
+    min-height: 200px;
+}
+.note_tagg{
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    box-shadow: 0 1px 0 #eeeeee inset, 0 1px 0 #ffffff;
+    display: inline-block;
+    font-family: Calibri,AurulentSans,Trebuchet,Tahoma,Verdana,Arial,sans-serif;
+    margin: 0;
+    outline: 0 none;
+    padding: 4px;
+    width:100%;
+    line-height: 1em;
+}
+.note_action{
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    box-shadow: 0 1px 0 #eeeeee inset, 0 1px 0 #ffffff;
+    display: inline-block;
+    font-family: Calibri,AurulentSans,Trebuchet,Tahoma,Verdana,Arial,sans-serif;
+    margin: 0;
+    outline: 0 none;
+    padding: 4px;
+    width:100%;
+    line-height: 1em;
 }
