@@ -521,6 +521,10 @@ table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSo
 .note_body ul{
     margin-left:10px;
 }
+.note_body ol{
+    margin-left:10px;
+}
+
 .note_tagg{
     background-color: #ffffff;
     border: 1px solid #cccccc;
