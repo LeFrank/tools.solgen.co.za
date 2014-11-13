@@ -63,11 +63,11 @@
                 </div>
                 <?php $count++;
             }
-            
+            ?><br/><a href="/notes/history">See Notes>History</a>
+                <?php
         } else {
             echo "No notes captured.";
         }
         ?>
     </div>
 </div>
-<script type="text/javascript" src="/js/notes/index.js" ></script>

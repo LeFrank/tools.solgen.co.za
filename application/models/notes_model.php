@@ -24,6 +24,7 @@ class Notes_model extends CI_Model
             'user_id' => $this->session->userdata("user")->id,
             'heading' => $this->input->post('title'),
             'body' => $this->input->post('body'),
+            'tagg' => $this->input->post('tags'),
             'create_date' =>  date('Y/m/d H:i', strtotime($this->input->post('noteDate')))
         );
 //        echo $id = $this->db->insert($this->tn, $data);
@@ -81,7 +82,7 @@ class Notes_model extends CI_Model
      * @param type $offset if present offset the result by this value else no offset
      * @return null
      */
-    public function getNotes($userId = null, $limit = null, $offset = 0) {
+    public function getNotes($userId = null, $limit = null, $offset = 0, $count=false) {
         if ($userId === null) {
             return null;
         }
@@ -91,7 +92,12 @@ class Notes_model extends CI_Model
         } else {
             $query = $this->db->get_where($this->tn, array('user_id' => $userId), $limit, $offset);
         }
-        return $query->result_array();
+        //echo $this->db->last_query();
+        if($count){
+            return $query->num_rows();
+        }else{
+            return $query->result_array();
+        }
     }
 
     public function getNotesByIds($userId , $noteIds){
@@ -113,11 +119,11 @@ class Notes_model extends CI_Model
      */
     public function update() {
         $updateCount = $this->getNote($this->input->post('id'))->update_count + 1;
-        echo $updateCount;
         $data = array(
             'user_id' => $this->session->userdata("user")->id,
             'heading' => $this->input->post('title'),
             'body' => $this->input->post('body'),
+            'tagg' => $this->input->post('tags'),
             'create_date' =>  date('Y/m/d H:i', strtotime($this->input->post('noteDate'))),
             'update_date' => date('Y/m/d H:i'),
             'update_count' => $updateCount

@@ -4,6 +4,7 @@
     <h2>History</h2>
     <div id="Notes">
     	<h3>Notes</h3>
+        <?php echo $this->pagination->create_links(); ?>
         <?php if (is_array($notes) && !empty($notes)) {
             $curDate = null;
             $count = 0;
@@ -55,11 +56,11 @@
                 </div>
                 <?php $count++;
             }
-            
+            echo $this->pagination->create_links();
         } else {
             echo "No notes.";
         }
         ?>
     </div>
 </div>
-<script type="text/javascript" src="/js/notes/index.js" ></script>
+<script type="text/javascript" src="/js/notes/history.js" ></script>

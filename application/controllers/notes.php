@@ -14,6 +14,7 @@ class Notes extends CI_Controller {
         can_access(
                 $this->require_auth, $this->session);
         $this->load->model('notes_model');
+        $this->load->library('pagination');
     }
 
     public function capture() {
@@ -47,18 +48,33 @@ class Notes extends CI_Controller {
         $this->load->view('footer');
     }
 
-    public function history(){
+    public function history($page = null) {
+        
+        if ($page == null) {
+            $config['base_url'] = 'http://' . $_SERVER['SERVER_NAME'] . '/notes/history/page/';
+            $config['per_page'] = 20;
+            $config['total_rows'] = 20;
+            $this->pagination->initialize($config);
+        }else{
+            $this->pagination->uri_segment = 4;
+        }
+        $this->pagination->base_url = 'http://' . $_SERVER['SERVER_NAME'] . '/notes/history/page/';
+        $this->pagination->per_page = 20;
+        $this->pagination->use_page_numbers = TRUE;
+        $this->pagination->cur_page = $page;
         $this->load->library('session');
         $user = $this->session->userdata("user");
-        $data["notes"] = $this->notes_model->getNotes($user->id);
+        $data["notes"] = $this->notes_model->getNotes($user->id, (($page != null) ? ($page - 1 ) * $this->pagination->per_page : 0), (($page != null) ? ($page - 1 ) * $this->pagination->per_page : null));
+        $this->pagination->total_rows = $this->notes_model->getNotes($user->id, null, null, true);
         $this->load->view('header');
         $this->load->view('notes/notes_nav', $data);
         $data["capture_form"] = "";
         $this->load->view('notes/history', $data);
+        
         $this->load->view('notes/notes_includes', $data);
         $this->load->view('footer');
     }
-    
+
     /**
      * 	Display and capture a note
      */
