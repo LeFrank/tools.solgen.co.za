@@ -550,3 +550,21 @@ table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSo
     width:100%;
     line-height: 1em;
 }
+span#searchExpand img{
+    vertical-align:middle;
+    width:18px;
+}
+span#createNote img{
+    vertical-align:middle;
+    width:18px;
+}
+
+.notesHistoryHidden{
+    display:none;
+}
+.notesHistory{
+    margin-top:5px;
+    border:solid 2px #cccccc;
+    border-radius: 4px;
+    padding:10px 10px 10px 10px;
+}

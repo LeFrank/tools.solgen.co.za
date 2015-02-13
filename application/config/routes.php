@@ -97,16 +97,19 @@ $route['payment-methods/update'] = 'paymentMethods/update';
 
 $route['test'] = 'pages/test';
 
-$route['notes/index'] = 'notes/index';
+$route['notes/history/search'] = 'notes/searchHistory';
+$route['notes/history/search/page/(:any)'] = 'notes/searchHistory/$1';
+$route['notes/index'] = 'notes/history';
 $route['notes/capture'] = 'notes/capture';
 $route['notes/history'] = 'notes/history';
 $route['notes/history/page'] = 'notes/history';
 $route['notes/history/page/(:any)'] = 'notes/history/$1';
+$route['notes/tags'] = 'notes/tags';
 $route['notes/update'] = 'notes/update';
 $route['notes/edit/(:any)'] = 'notes/edit/$1';
 $route['notes/delete/(:any)'] = 'notes/delete/$1';
 $route['notes/(:any)'] = 'notes/view/$1';
-$route['notes'] = 'notes/index';
+$route['notes'] = 'notes/history';
 
 $route['news/create'] = 'news/create';
 $route['news/delete/(:any)'] = 'news/delete/$1';

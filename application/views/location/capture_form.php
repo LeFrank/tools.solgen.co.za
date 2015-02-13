@@ -35,6 +35,6 @@
     <div id="browser-location"></div>
     <div id="map"/>
 </div>
-<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBPoq04F3sXHoPDvGJsN2q24rJ3PFdLfo0&sensor=FALSE"></script>
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDCepEyRu0S_8FEXebz7uHttja8Wt6l8xc&sensor=FALSE"></script>
 
 <script type="text/javascript" src="/js/location/location.js" ></script>
