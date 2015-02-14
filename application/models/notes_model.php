@@ -118,6 +118,7 @@ class Notes_model extends CI_Model {
             return null;
         }
         $this->db->order_by("tagg", "desc");
+        $this->db->select('id, tagg');
         $query = $this->db->get_where($this->tn, array('user_id' => $userId));
         return $query->result_array();
     }

@@ -16,11 +16,18 @@ $(document).ready(function() {
 
     var myCalendar;
     myCalendar = $('#calendar').fullCalendar({
+        header: {
+				left: 'prev,next today',
+				center: 'title',
+				right: 'month,agendaWeek,agendaDay'
+			},
         defaultDate: $.formatDateTime(formatDate, new Date()),
         editable: true,
         events: eventsArray,
         eventColor: '#666666',
         eventTextColor: '#d8d8d8',
+        fixedWeekCount :false , 
+        weekNumbers: true,
         eventRender: function(event, element) {
             element.qtip({
                 content: event.description

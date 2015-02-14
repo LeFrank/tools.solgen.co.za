@@ -28,14 +28,13 @@ class Timetable extends CI_Controller {
             if ($this->timetable_model->create_timetable()) {
                 $data["action_classes"] = "success";
                 $data["message_classes"] = "success";
-                if($this->input->post("id")!= ""){
+                if ($this->input->post("id") != "") {
                     $data["action_description"] = "Updated an event";
                     $data["message"] = "The Timetable event was successfully updated";
-                }else{
+                } else {
                     $data["action_description"] = "Create an event";
                     $data["message"] = "The Timetable event was successfully created";
                 }
-                
             } else {
                 $data["action_classes"] = "failure";
                 $data["action_description"] = "Create an Event";
@@ -110,6 +109,19 @@ class Timetable extends CI_Controller {
         $this->load->view("header");
         $this->load->view("timetable/options");
         $this->load->view("footer");
+    }
+
+    public function search() {
+        $user = $this->session->userdata("user");
+        $data = null;
+        $this->load->view("header", $data);
+        $this->load->view("timetable/timetable_nav");
+        $this->load->view("timetable/search", $data);
+        $this->load->view("footer");
+    }
+    
+    public function timePeriod(){
+        echo __CLASS__ . " >> " .__FUNCTION__;
     }
 
     public function view($id) {

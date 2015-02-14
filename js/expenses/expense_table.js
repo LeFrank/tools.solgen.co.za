@@ -1,3 +1,3 @@
 $(document).ready(function() {
-    $('#expense_history').tablesorter();
+    $('#expenseSummary').tablesorter();
 });

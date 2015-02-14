@@ -22,7 +22,7 @@ html, body {
 
 
 body {
-    font: AurulentSans, Trebuchet, Tahoma, Verdana, Arial, sans-serif;
+    font-family: AurulentSans, Trebuchet, Tahoma, Verdana, Arial, sans-serif;
     background-color: #f3f3f3;
     padding: 0;
     color:#666666;
@@ -95,6 +95,9 @@ ul ul {
 }
 
 a {
+    color: #f1b836;
+}
+a:hover {
     color: #f1b836;
 }
 
@@ -171,7 +174,7 @@ Custom classes go here
 .main_desc{
     color:#f1b836;
     font-size:40px;
-    font-weight:1000;
+    font-weight:900;
     border: 1px solid #f1b836;
     padding:10px;
     width:490px;
@@ -220,13 +223,13 @@ Custom classes go here
     min-width:150px;
     float:left;
 }
-.login{
+/*.login{
     width:45%;
     font-size: small;
-    float:right;
-    text-align: right;
+    float:left;
+    text-align: left;
     margin-top:10px;
-}
+}*/
 .login-label{
     padding:0px 10px 0px 0px;
     font-size: smaller;
@@ -244,9 +247,7 @@ Custom classes go here
 .clear-float{
     clear:both;
 }
-.contentMain{
-    padding:0px 0px 0px 10px;
-}
+
 form > label{
     display: inline-block; width: 150px;
 }
@@ -287,8 +288,6 @@ three-col{
     -webkit-column-gap: 1em;
     -o-column-count: 3;
     -o-column-gap: 1em;
-    column-count: 3;
-    column-gap: 1em;
 }
 .success{
     border:1px green solid;
@@ -442,17 +441,17 @@ table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSo
 /*
 * Timetable
 */
-.calendar-full {
-    float:right;
+/*.calendar-full {
+   .calendar-full  float:right;
     width: 69%;
     height:60%;
-}
+}*/
 
 #agenda{
-    float:left;
-    min-width:20%;
-    margin:0px 20px 0px 0px;
-    min-height:400px;
+/*    float:left;*/
+    min-width:100%;
+    /*margin:0px 20px 0px 0px;*/
+    /*min-height:400px;*/
     padding: 0 10px 10px 10px;
     box-shadow:3px 3px 5px 6px #ccc;
 
@@ -567,4 +566,12 @@ span#createNote img{
     border:solid 2px #cccccc;
     border-radius: 4px;
     padding:10px 10px 10px 10px;
+}
+.row.full-width {
+  width: 100%;
+  max-width: 100%; 
+}
+.full-width {
+  width: 100%;
+  max-width: 100%; 
 }

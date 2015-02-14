@@ -115,15 +115,16 @@ $route['news/create'] = 'news/create';
 $route['news/delete/(:any)'] = 'news/delete/$1';
 $route['news/(:any)'] = 'news/view/$1';
 $route['news'] = 'news';
-
 $route['test'] = 'test/index';
-
+ 
 $route['timetable'] = 'timetable/index';
 $route['timetable/capture'] = 'timetable/capture';
 $route['timetable/delete/(:num)'] = 'timetable/delete/$1';
 $route['timetable/view/(:num)'] = 'timetable/view/$1';
 $route['timetable/options'] = 'timetable/options';
-$route['timetable/event-categories'] = '/timetable/eventCategories';
+$route['timetable/event-categories'] = 'timetable/eventCategories';
+$route['timetable/time-period/search'] = 'timetable/timePeriod';
+$route['timetable/search'] = 'timetable/search';
 
 $route['weather'] = 'weather/index';
 $route['weather/today'] = 'weather/getTodaysWeather';
