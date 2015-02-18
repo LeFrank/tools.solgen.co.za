@@ -48,7 +48,9 @@
         </div>
         <div id="Notes">
             <h3>Notes</h3>
+            <div class="pagination-centered">
             <?php echo $this->pagination->create_links(); ?>
+            </div>
 
             <?php
             if (is_array($notes) && !empty($notes)) {
@@ -106,7 +108,9 @@
                 <?php
                 $count++;
             }
+            echo '<div class="pagination-centered">';
             echo $this->pagination->create_links();
+            echo '</div>';
         } else {
             echo "No notes.";
         }

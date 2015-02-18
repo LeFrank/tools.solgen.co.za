@@ -1,4 +1,6 @@
 <?php ?>
+<div class="row ">
+    <div class="large-12 columns">
 <div id="expense-type-manage-feedback" class="hidden"></div>
 <h3>Manager Personalized Expense Types</h3>
 <div>
@@ -50,8 +52,9 @@
     <select name="enabled">
         <option value="true">True</option>
         <option value="false">False</option>';
-    </select><br />
-    <input type="submit" name="submit" value="Create Expense Type" />
+    </select><br /><br />
+    <input type="submit" name="submit" value="Create Expense Type" class="button"/>
 </form>
 </div>
-
+    </div>
+</div>

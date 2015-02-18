@@ -133,6 +133,14 @@ class Notes extends CI_Controller {
         $this->load->view('footer');
     }
 
+    /**
+     * Post
+     */
+    public function getTagContentByString(){
+        echo __CLASS__ . " >> " . __FUNCTION__ . " >> " . $this->input->post("tagVal");
+    }
+    
+    
     public function update() {
         $data['title'] = 'Update a note';
         $this->form_validation->set_rules('body', 'body', 'required');

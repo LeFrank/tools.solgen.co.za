@@ -13,6 +13,13 @@ $(function () {
             }
         });
     });
+    $("#cancel-new-note").click(function(){
+        $("#createNoteForm").slideToggle("slow",function(){
+            if($("#createNoteForm").is(":visible")){
+                $(this).addClass("notesHistory");
+            }
+        });
+    });
     $("#fromDate").datetimepicker();
     $("#toDate").datetimepicker();
 });

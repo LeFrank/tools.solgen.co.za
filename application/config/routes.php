@@ -105,6 +105,7 @@ $route['notes/history'] = 'notes/history';
 $route['notes/history/page'] = 'notes/history';
 $route['notes/history/page/(:any)'] = 'notes/history/$1';
 $route['notes/tags'] = 'notes/tags';
+$route['notes/tag/entries'] = 'notes/getTagContentByString';
 $route['notes/update'] = 'notes/update';
 $route['notes/edit/(:any)'] = 'notes/edit/$1';
 $route['notes/delete/(:any)'] = 'notes/delete/$1';

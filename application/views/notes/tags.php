@@ -52,7 +52,7 @@
                     <ol style="padding-left:20px;">
                         <?php
                         foreach ($tags as $k => $v) {
-                            echo '<li><a href="#" rel="' . $v . '" id="tag">' . $v . '</a></li>';
+                            echo '<li><a href="#" rel="' . $v . '" onclick="getNotesForTag(this);">' . $v . '</a></li>';
                         }
                         ?>
                     </ol>
@@ -63,6 +63,5 @@
             </div>
         </div>
     </div>
-</div>
 </div>
 <script type="text/javascript" src="/js/notes/tags.js" ></script>

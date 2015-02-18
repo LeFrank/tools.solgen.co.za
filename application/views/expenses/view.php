@@ -1,5 +1,5 @@
 <?php ?>
-<div class="row full-width">
+<div class="row">
     <div class="large-12 columns">
         <h2>Expense Overview</h2>
 
