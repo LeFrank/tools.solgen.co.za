@@ -1,6 +1,6 @@
 <?php ?>
 <div class="row">
-    <div class="large-4 columns">
+    <div class="large-3 columns">
         <div id="agenda" class="left">
             <form name="timetable-search-form" id="timetable-search-form" action='/timetable/search' method="POST">
                 <h3>Search For An Event</h3>
@@ -48,7 +48,7 @@
             </form>
         </div>
     </div>
-    <div class="large-8 columns panel" id="search-entries">
+    <div class="large-9 columns panel" id="search-entries">
         Search results go here
     </div>
 </div>
