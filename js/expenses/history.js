@@ -10,7 +10,7 @@ $(document).ready(function() {
         $.post(
                 "/expenses/filter-search",
                 $("#filterExpenseForm").serialize()
-                ).done(function(resp) {
+                ).done(function (resp) {
             var source = $("#some-template").html();
             var template = Handlebars.compile(source);
             var total = 0.0;

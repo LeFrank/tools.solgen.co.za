@@ -438,9 +438,9 @@ table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSo
 
 #map { height: 500px; }
 
-/*
+/**********************************************************
 * Timetable
-*/
+/**********************************************************/
 /*.calendar-full {
    .calendar-full  float:right;
     width: 69%;
@@ -459,10 +459,20 @@ table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSo
 /*#numberOfRepeats{
     width:30px;
 }*/
-
-/*
+.year-block{
+    border:solid grey 2px;
+    border-radius: 3px;
+    background-color: yellow;
+}
+.month-block{
+    background-color: greenyellow;
+}
+.day-block{
+    background-color: orange;
+}
+/**********************************************************
 * notes
-*/
+/**********************************************************/
 .update_date{
     font-size: x-small;
 }

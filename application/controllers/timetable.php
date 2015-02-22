@@ -114,10 +114,30 @@ class Timetable extends CI_Controller {
     public function search() {
         $user = $this->session->userdata("user");
         $data = null;
+        $data["timetableCategories"] = $this->timetable_category_model->get_user_timetable_Category($user->id);
+        $data["expenseTypes"] = mapKeyToId($this->expense_type_model->get_user_expense_types($user->id), true);
         $this->load->view("header", $data);
         $this->load->view("timetable/timetable_nav");
         $this->load->view("timetable/search", $data);
         $this->load->view("footer");
+    }
+    
+    public function filteredSearch(){
+        $user = $this->session->userdata("user");
+//        echo "<pre>";
+//        print_r($this->input->post());
+//        echo "</pre>";
+        $search["id"] = $this->input->post("id");
+        $search["name"] = $this->input->post("name");
+        $search["description"] = $this->input->post("description");
+        $search["timetableCategory"] = $this->input->post("timetableCategory");
+        $search["allDayEvent"] = $this->input->post("allDayEvent");
+        $search["startDate"] = $this->input->post("startDate");
+        $search["endDate"] = $this->input->post("endDate");
+        $search["location"] = $this->input->post("locationText");
+        $search["timetableExpenseType"] = $this->input->post("timetableExpenseType");
+        $data["entries"] = $this->timetable_model->getFilteredTimetableEvents($user->id, $search);
+        $this->load->view("/timetable/searchEntries", $data);
     }
     
     public function timePeriod(){
