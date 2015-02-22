@@ -47,21 +47,22 @@
                 </div>
             </div>
             <div class="row">
-                <div class="large-5 columns" id="tags">
-                    <h3>Tags (<?php echo sizeOf($tags); ?>)</h3>
+                <div class="large-4 columns" id="tags">
+                    <h3>Tags (<?php echo sizeOf($tags[0]); ?>)</h3>
                     <ol style="padding-left:20px;">
                         <?php
-                        foreach ($tags as $k => $v) {
-                            echo '<li><a href="#" rel="' . $v . '" onclick="getNotesForTag(this);">' . $v . '</a></li>';
+                        foreach ($tags[1] as $k => $v) {
+                            echo '<li><a href="#" rel="' . $v . '" onclick="getNotesForTag(this);">' . $v . '( '. $tags[0][$v]["count"] .' )</a></li>';
                         }
                         ?>
                     </ol>
-                    <div class="large-7 columns" id="tags">
-                        <!-- content goes here -->
-                    </div>
+                </div>
+                <div class="large-8 columns" id="tag-content">
+                    <!-- content goes here -->
                 </div>
             </div>
         </div>
     </div>
 </div>
 <script type="text/javascript" src="/js/notes/tags.js" ></script>
+<script type="text/javascript" src="/js/notes/history.js" ></script>

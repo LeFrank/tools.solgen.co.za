@@ -113,7 +113,7 @@ class Notes_model extends CI_Model {
         return $query->result_array();
     }
 
-    public function getTags($userId){
+    public function getTags($userId) {
         if ($userId == null) {
             return null;
         }
@@ -122,14 +122,18 @@ class Notes_model extends CI_Model {
         $query = $this->db->get_where($this->tn, array('user_id' => $userId));
         return $query->result_array();
     }
-    
+
+    public function getNotesByTag($userId, $tag) {
+        $this->db->order_by("create_date", "desc");
+        $this->db->where('tagg', $tag);
+        $query = $this->db->get_where($this->tn, array('user_id' => $userId), 100);
+        return $query->result_array();
+    }
+
     public function searchNotes($userId = null, $limit = null, $offset = 0, $count = false) {
         if ($userId == null) {
             return null;
         }
-//        echo "<pre>";
-//        print_r($this->input->post());
-//        echo "</pre>";
         $this->db->order_by("create_date", "desc");
         if ($this->input->post("searchText") != "") {
             $search = $this->input->post("searchText");

@@ -136,11 +136,15 @@ class Notes extends CI_Controller {
     /**
      * Post
      */
-    public function getTagContentByString(){
-        echo __CLASS__ . " >> " . __FUNCTION__ . " >> " . $this->input->post("tagVal");
+    public function getTagContentByString() {
+        $this->load->library('session');
+        $user = $this->session->userdata("user");
+//        echo __CLASS__ . " >> " . __FUNCTION__ . " >> " . $this->input->post("tagVal");
+        $data["notes"] = $this->notes_model->getNotesByTag($user->id, $this->input->post("tagVal"));
+//        print_r($data);
+        $this->load->view("notes/tag_notes", $data);
     }
-    
-    
+
     public function update() {
         $data['title'] = 'Update a note';
         $this->form_validation->set_rules('body', 'body', 'required');
