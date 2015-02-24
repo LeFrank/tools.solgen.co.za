@@ -49,14 +49,15 @@ class Expenses extends CI_Controller {
         if ($this->expense_model->doesItBelongToMe($this->session->userdata("user")->id, $id)) {
             $data["expense"] = $this->expense_model->delete($id);
             $data["expense"] = $this->expense_model->getExpenses($this->session->userdata("user")->id, 5);
-            $data["status"] = "Delete Expense";
+            $data["status"] = "Deleted Expense";
             $data["action_classes"] = "success";
-            $data["action_description"] = "Delete an expense";
+            $data["action_description"] = "Deleted an expense";
             $data["message_classes"] = "success";
             $data["message"] = "The expense was successfully deleted";
+            $data["reUrl"] = "/expenses";
             $this->load->view('header');
             $this->load->view('expenses/expense_nav');
-            $this->load->view('user/user_status', $data);
+            $this->load->view('general/action_status', $data);
             $this->load->view('expenses/view', $data);
             $this->load->view('footer');
         } else {
@@ -66,10 +67,11 @@ class Expenses extends CI_Controller {
             $data["action_description"] = "Delete an expense";
             $data["message_classes"] = "failure";
             $data["message"] = "The expense you are attempting to delete does not exist or does not belong to you.";
+            $data["reUrl"] = "/expenses";
             $data["expense"] = $this->expense_model->getExpenses($this->session->userdata("user")->id, 5);
             $this->load->view('header');
             $this->load->view('expenses/expense_nav');
-            $this->load->view('user/user_status', $data);
+            $this->load->view('general/action_status', $data);
             $this->load->view('expenses/view', $data);
             $this->load->view('footer');
         }

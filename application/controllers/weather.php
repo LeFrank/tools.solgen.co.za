@@ -137,9 +137,9 @@ class Weather extends CI_Controller {
 
     public function options() {
         $weatherSettings = $this->weather_settings_model->getSetting($this->session->userdata("user")->id);
-        if (empty($weatherSettings)) {
-            $data["weatherSetting"]->measurement = "";
-        } else {
+        $data["weatherSetting"] = new stdClass();
+        $data["weatherSetting"]->measurement = "";
+        if (!empty($weatherSettings)) {
             $data["weatherSetting"]->measurement = $weatherSettings[0]->measurement;
         }
         $data["measure"] = $this->measure;
