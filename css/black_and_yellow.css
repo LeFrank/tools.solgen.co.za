@@ -290,21 +290,25 @@ three-col{
     -o-column-gap: 1em;
 }
 .success{
-    border:1px green solid;
-    color:green;
-    font-weight: bolder;
-    padding:10px;
-    border-radius: 5px;
-    text-align: center;
+    /*    border:1px green solid;
+        color:green;
+        font-weight: bolder;
+        padding:10px;
+        border-radius: 5px;
+        text-align: center;*/
+    color:#fff;
 }
 
 .failure{
-    border:1px red solid;
-    color:red;
-    font-weight: bolder;
-    padding:10px;
-    border-radius: 5px;
-    text-align: center;
+    /*    border:1px red solid;
+        color:red;
+        font-weight: bolder;
+        padding:10px;
+        border-radius: 5px;
+        text-align: center;*/
+    background-color: #f04124;
+    border-color: #de2d0f;
+    color: #FFFFFF;
 }
 .fail-text{
     color:red;
@@ -436,7 +440,7 @@ table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSo
     width:100%;
 }
 
-#map { height: 500px; }
+#map { height: 650px; }
 
 /**********************************************************
 * Timetable
@@ -448,7 +452,7 @@ table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSo
 }*/
 
 #agenda{
-/*    float:left;*/
+    /*    float:left;*/
     min-width:100%;
     /*margin:0px 20px 0px 0px;*/
     /*min-height:400px;*/
@@ -578,10 +582,10 @@ span#createNote img{
     padding:10px 10px 10px 10px;
 }
 .row.full-width {
-  width: 100%;
-  max-width: 100%; 
+    width: 100%;
+    max-width: 100%; 
 }
 .full-width {
-  width: 100%;
-  max-width: 100%; 
+    width: 100%;
+    max-width: 100%; 
 }

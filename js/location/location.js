@@ -26,7 +26,8 @@ $(document).ready(function() {
         if ((lat < 90 && lat > -90) && (lng < 180 && lng > -180)) {
             var jqxhr = $.post("location/save", $("#co-ordinate-form").serialize()
                     ).done(function(data) {
-                $("#status-message").html(data).show();
+                $("#location-content").replaceWith(data);
+                $('html, body').animate({ scrollTop: 0 }, 0);
             }).fail(function(err) {
                 alert("error" + err);
                 console.log(err);
@@ -188,5 +189,5 @@ function placeMarker(Lat, Long) {
 
 
 function clearFields() {
-    $("input[type=text], textarea").val("");
+    $("input[type=text], input[type=hidden], textarea").val("");
 }
