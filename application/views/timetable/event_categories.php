@@ -54,7 +54,9 @@
     <select name="enabled">
         <option value="true">True</option>
         <option value="false">False</option>';
-    </select><br />
-    <input type="submit" name="submit" value="Create Event Category" />
+    </select>
+    <br/>
+    <br/>
+    <input type="submit" name="submit" value="Create Event Category" class="button"/>
 </form>
 </div>

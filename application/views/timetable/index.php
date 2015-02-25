@@ -68,12 +68,12 @@
                     }
                     ?>
                 </select>
-                <br/>
-                <input type='submit' value='Submit'></input>
+                <br/><br/>
+                <input type='submit' value='Submit' class="button"></input>
                 &nbsp;&nbsp;
-                <a href="#" id="clearForm" class="hidden">New</a>
+                <a href="#" id="clearForm" class="button secondary hidden">New</a>
                 &nbsp;&nbsp;
-                <a href="#" id="delete" class="hidden" >Delete</a>
+                <a href="#" id="delete" class="button secondary hidden" >Delete</a>
             </form>
         </div>
     </div>

@@ -41,6 +41,7 @@ class Timetable extends CI_Controller {
                 $data["message_classes"] = "failure";
                 $data["message"] = "The event was not saved, please try again";
             }
+            $data["reUrl"] = "/timetable";
             $this->session->set_flashdata('update_token', time());
             $this->index($data);
         } else {
@@ -72,6 +73,7 @@ class Timetable extends CI_Controller {
                 $data["message_classes"] = "failure";
                 $data["message"] = "No timetable event was provided, please provide a valid timetable event ID.";
             }
+            $data["reUrl"] = "/timetable";
             $this->session->set_flashdata('delete_token', time());
             $this->index($data);
         } else {

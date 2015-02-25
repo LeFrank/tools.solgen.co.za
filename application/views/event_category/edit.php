@@ -19,7 +19,9 @@
             <option value="true" <?php echo ($eventCategory->enabled == 1 ) ? "selected" : "" ?>>True</option>
             <option value="false" <?php echo ($eventCategory->enabled == 0 ) ? "selected" : "" ?> >False</option>';
         </select><br />
-        <input type="submit" name="submit" value="Create Event Category" /><a href="/timetable/event-categories" >Cancel</a>
+        <br />
+        <input type="submit" name="submit" value="Create Event Category" class="button" />
+        &nbsp;<a href="/timetable/event-categories" class="button secondary">Cancel</a>
         </form>
     </div>
 </div>
