@@ -127,6 +127,7 @@ $route['timetable/event-categories'] = 'timetable/eventCategories';
 $route['timetable/time-period/search'] = 'timetable/timePeriod';
 $route['timetable/search'] = 'timetable/search';
 $route['timetable/search/filtered'] = 'timetable/filteredSearch';
+$route['timetable/event/(:num)'] = 'timetable/getEvent/$1';
 
 $route['weather'] = 'weather/index';
 $route['weather/today'] = 'weather/getTodaysWeather';

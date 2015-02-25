@@ -49,6 +49,21 @@ class Timetable extends CI_Controller {
         }
     }
 
+    public function getEvent($eventId) {
+        $user = $this->session->userdata("user");
+        if ($this->timetable_model->doesItBelongToMe($this->session->userdata("user")->id, $eventId)) {
+            $data["event"] = $this->timetable_model->get_user_timetable_event($user->id, $eventId);
+            $this->load->view("/timetable/event", $data);
+        } else {
+            $data["status"] = "Timetable Error retrieving the Timetable event";
+            $data["action_classes"] = "failure";
+            $data["message_classes"] = "failure";
+            $data["message"] = "This timetable event does not belong to you. "
+                    . "<br/>Please refrain from attempting to view other peoples data!";
+            $this->load->view("general/action_status", $data);
+        }
+    }
+
     public function delete($id) {
         $this->load->library("input");
         if (!$this->session->flashdata('delete_token')) {
@@ -61,7 +76,7 @@ class Timetable extends CI_Controller {
                     $data["message_classes"] = "success";
                     $data["message"] = "The event has been deleted.";
                 } else {
-                    $data["status"] = "Location Error Deleting the Timetable event";
+                    $data["status"] = "Timetable Error Deleting the Timetable event";
                     $data["action_classes"] = "failure";
                     $data["message_classes"] = "failure";
                     $data["message"] = "This timetable event does not belong to you. "
@@ -123,8 +138,8 @@ class Timetable extends CI_Controller {
         $this->load->view("timetable/search", $data);
         $this->load->view("footer");
     }
-    
-    public function filteredSearch(){
+
+    public function filteredSearch() {
         $user = $this->session->userdata("user");
 //        echo "<pre>";
 //        print_r($this->input->post());
@@ -141,9 +156,9 @@ class Timetable extends CI_Controller {
         $data["entries"] = $this->timetable_model->getFilteredTimetableEvents($user->id, $search);
         $this->load->view("/timetable/searchEntries", $data);
     }
-    
-    public function timePeriod(){
-        echo __CLASS__ . " >> " .__FUNCTION__;
+
+    public function timePeriod() {
+        echo __CLASS__ . " >> " . __FUNCTION__;
     }
 
     public function view($id) {

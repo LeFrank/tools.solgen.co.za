@@ -467,15 +467,15 @@ table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSo
     width:30px;
 }*/
 .year-block{
-    border:solid grey 2px;
-    border-radius: 3px;
-    background-color: yellow;
+/*    border:solid grey 2px;
+    border-radius: 3px;*/
+    /*background-color: yellow;*/
 }
 .month-block{
-    background-color: greenyellow;
+    /*background-color: greenyellow;*/
 }
 .day-block{
-    background-color: orange;
+    /*background-color: orange;*/
 }
 /**********************************************************
 * notes

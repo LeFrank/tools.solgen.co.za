@@ -19,7 +19,17 @@ $(document).ready(function () {
                 "/timetable/search/filtered",
                 $("#timetable-search-form").serialize()
                 ).done(function (resp) {
-                    $("#search-entries").html(resp);
+            $("#search-entries").html(resp);
         });
     });
+
+
 });
+
+function getEvent(ele) {
+    var itemId = $(ele).attr('rel');
+    $.get("/timetable/event/" + itemId
+            ).done(function (resp) {
+        $("#entry-item").html(resp);
+    });
+}

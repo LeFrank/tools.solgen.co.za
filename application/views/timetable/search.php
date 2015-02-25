@@ -48,7 +48,7 @@
             </form>
         </div>
     </div>
-    <div class="large-9 columns panel" id="search-entries">
+    <div class="large-9 columns" id="search-entries">
         Search results go here
     </div>
 </div>
