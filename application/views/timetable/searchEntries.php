@@ -27,6 +27,7 @@
             if ($month != $date->format("m")) {
                 if ($newMonth) {
                     echo "</div>";
+                    echo "</br>";
                     $newMonth = false;
                 }
             }
@@ -35,6 +36,7 @@
                     echo "</div>";
                     echo "</div>";
                     echo "</div>";
+                    echo "</br>";
                     $newYear = false;
                 }
             }
@@ -61,8 +63,8 @@
                 $newDay = true;
                 echo '              <div id="entry-list-item-block" class="day-block">';
                 echo '                  <div class="row" >';
-                echo '                      <div class="large-3 columns text-left">';
-                echo '                          ' . $date->format("d") . ' - ' . $date->format("l") . '';
+                echo '                      <div class="large-3 columns text-left day-block-date">';
+                echo '                          ' . $date->format("jS") . ' - ' . $date->format("l") . '';
                 echo '                      </div>';
                 echo '                      <div class="large-9 columns text-left">';
                 echo '                          <div class="row">';
