@@ -53,6 +53,14 @@ class Timetable extends CI_Controller {
         $user = $this->session->userdata("user");
         if ($this->timetable_model->doesItBelongToMe($this->session->userdata("user")->id, $eventId)) {
             $data["event"] = $this->timetable_model->get_user_timetable_event($user->id, $eventId);
+//            print_r($data["event"]);
+            $data["timetableCategories"] = arrayMap($this->timetable_category_model->get_user_timetable_Category($user->id));
+            $data["eventRepetition"] = arrayObjMap($this->timetable_repetition_model->get_timetable_repeats($user->id));
+            $data["expenseTypes"] = mapKeyToId($this->expense_type_model->get_user_expense_types($user->id), true);
+            $data["locations"] = arrayObjMap($this->location_model->getLocations($user->id));
+//            echo "<pre>";
+//            print_r($data["locations"]);
+//            echo "</pre>";
             $this->load->view("/timetable/event", $data);
         } else {
             $data["status"] = "Timetable Error retrieving the Timetable event";

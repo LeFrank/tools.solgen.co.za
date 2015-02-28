@@ -503,6 +503,22 @@ table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSo
 .day-block-date{
 }
 
+.search-event{
+    border:solid 1px #d8d8d8;
+    border-radius: 4px;
+    padding-bottom:10px;
+}
+.search-event h3{
+    padding-left:10px;
+    background: #d8d8d8;
+    font-size: xx-large;
+    line-height: 3rem;
+    padding-left:10px;
+}
+.search-event div{
+    padding-left:10px;
+}
+
 /**********************************************************
 * notes
 /**********************************************************/

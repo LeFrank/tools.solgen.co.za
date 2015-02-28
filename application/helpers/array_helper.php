@@ -22,3 +22,19 @@ function mapKeyToId($doubleDimensionsArray, $includeMisc = true) {
 function getDaysOfWeek(){
     return $daysOfWeek = array("1" =>"Monday", "2" => "Tuesday", "3"=>"Wednesday" , "4" => "Thursday" , "5" => "Friday", "6" => "Saturday" , "7" => "Sunday");
 }
+
+function arrayMap($array){
+    $arr = array();
+    foreach($array as $k=>$v){
+        $arr[$v["id"]] = $v;
+    }
+    return $arr;
+}
+
+function arrayObjMap($array){
+    $arr = array();
+    foreach($array as $k=>$v){
+        $arr[$v->id] = $v;
+    }
+    return $arr;
+}
