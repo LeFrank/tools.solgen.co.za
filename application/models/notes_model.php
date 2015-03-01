@@ -130,9 +130,41 @@ class Notes_model extends CI_Model {
         return $query->result_array();
     }
 
+    public function getTotalNumberOfNotesForUser($userId, $dateFrom = null, $dateTo = null) {
+        if ($dateFrom != null) {
+            $this->db->where('create_date >=', $dateFrom);
+        }
+        if ($dateTo != null) {
+            $this->db->where('create_date <=', $dateTo);
+        }
+        $this->db->where('user_id', $userId);
+        $this->db->from($this->tn);
+        return $this->db->count_all_results();
+    }
+    
+    
+    public function getNotesForPeriod($userId = null, $dateFrom = null, $dateTo = null) {
+        if ($dateFrom != null) {
+            $this->db->where('create_date >=', $dateFrom);
+        }
+        if ($dateTo != null) {
+            $this->db->where('create_date <=', $dateTo);
+        }
+        $query = $this->db->get_where($this->tn, array('user_id' => $userId));
+        return $query->result_array();
+    }
+
     public function searchNotes($userId = null, $limit = null, $offset = 0, $count = false) {
         if ($userId == null) {
             return null;
+        }
+        if ($this->input->post("fromDate") != "") {
+            $fromDate = date('Y/m/d H:i', strtotime($this->input->post('fromDate')));
+            $this->db->where('create_date >= ', $fromDate);
+        }
+        if ($this->input->post("toDate") != "") {
+            $toDate = date('Y/m/d H:i', strtotime($this->input->post('toDate')));
+            $this->db->where('create_date <= ', $toDate);
         }
         $this->db->order_by("create_date", "desc");
         if ($this->input->post("searchText") != "") {

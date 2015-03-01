@@ -7,6 +7,8 @@ class Notes extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->helper('auth_helper');
+        $this->load->helper("date_helper");
+        $this->load->helper("notes_stats_helper");
         $this->load->library('session');
         $this->load->helper('form');
         $this->load->helper('url');
@@ -163,6 +165,33 @@ class Notes extends CI_Controller {
         } else {
             $data["note"] = $this->notes_model->update();
             redirect("/notes", "refresh");
+        }
+    }
+
+    public function viewStats() {
+        $this->load->library('session');
+        $user = $this->session->userdata("user");
+        $data["startAndEndDateforMonth"] = getStartAndEndDateforMonth(date("m"), date('Y'));
+        
+        if ($this->input->post('fromDate') == null) {
+            $data["totalNotes"] = $this->notes_model->getTotalNumberOfNotesForUser($user->id, date('Y/m/d H:i', strtotime($data["startAndEndDateforMonth"][0])), date('Y/m/d H:i', strtotime($data["startAndEndDateforMonth"][1])));
+            $data["notes"] = $this->notes_model->getNotesForPeriod($user->id, date('Y/m/d H:i', strtotime($data["startAndEndDateforMonth"][0])), date('Y/m/d H:i', strtotime($data["startAndEndDateforMonth"][1])));
+        } else {
+            $data["startAndEndDateforMonth"][0] = date('Y/m/d H:i', strtotime($this->input->post('fromDate')));
+            $data["startAndEndDateforMonth"][1] = date('Y/m/d H:i', strtotime($this->input->post('toDate')));
+            $data["totalNotes"] = $this->notes_model->getTotalNumberOfNotesForUser($user->id, date('Y/m/d H:i', strtotime($this->input->post('fromDate'))), date('Y/m/d H:i', strtotime($this->input->post('toDate'))));
+            $data["notes"] = $this->notes_model->getNotesForPeriod($user->id, date('Y/m/d H:i', strtotime($this->input->post('fromDate'))), date('Y/m/d H:i', strtotime($this->input->post('toDate'))));
+        }
+        $data["averageNotesPerPeriod"] = round( $data["totalNotes"] / ( floor((strtotime($data["startAndEndDateforMonth"][1]) - strtotime($data["startAndEndDateforMonth"][0])) / (60 * 60 * 24)) + 1 ) , 2);
+        $data["hourOfDay"] = getNotesForHourOfDay($data["notes"]);
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+            $this->load->view('header');
+            $this->load->view('notes/notes_nav', $data);
+            $this->load->view('notes/stats', $data);
+            $this->load->view('notes/notes_includes', $data);
+            $this->load->view('footer');
+        }else{
+            echo $this->load->view('notes/stats', $data, true);
         }
     }
 

@@ -111,6 +111,9 @@ $route['notes/edit/(:any)'] = 'notes/edit/$1';
 $route['notes/delete/(:any)'] = 'notes/delete/$1';
 $route['notes/(:any)'] = 'notes/view/$1';
 $route['notes'] = 'notes/history';
+$route['notes/stats'] = 'notes/viewStats';
+
+
 
 $route['news/create'] = 'news/create';
 $route['news/delete/(:any)'] = 'news/delete/$1';

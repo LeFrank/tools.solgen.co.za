@@ -1,55 +1,60 @@
 var formatDate = "yy-mm-dd";
-$(document).ready(function() {
-    $("#clearForm").click(function() {
+$(document).ready(function () {
+    $("#clearForm").click(function () {
         $("input[type=text], textarea").val("");
         $("#id").val("");
         $("input[type=checkbox]").attr("checked", false);
         $("#delete").hide();
         $("#clearForm").hide();
     });
-    $(function() {
+    $(function () {
         $("#startDate").datetimepicker();
     });
-    $(function() {
+    $(function () {
         $("#endDate").datetimepicker();
     });
 
     var myCalendar;
     myCalendar = $('#calendar').fullCalendar({
         header: {
-				left: 'prev,next today',
-				center: 'title',
-				right: 'month,agendaWeek,agendaDay'
-			},
+            left: 'prev,next today',
+            center: 'title',
+            right: 'month,agendaWeek,agendaDay'
+        },
         defaultDate: $.formatDateTime(formatDate, new Date()),
         editable: true,
         events: eventsArray,
         eventColor: '#666666',
         eventTextColor: '#d8d8d8',
-        fixedWeekCount :false , 
+        fixedWeekCount: false,
         weekNumbers: true,
-        eventRender: function(event, element) {
+        eventRender: function (event, element) {
             element.qtip({
-                content: event.description
+                content: event.description,
+                position: {
+                    my: 'top left', // Position my top left...
+                    at: 'bottom left', // at the bottom right of...
+                    target: $(element) // my target
+                }
             });
         },
-        eventClick: function(calEvent, jsEvent, view) {
+        eventClick: function (calEvent, jsEvent, view) {
             $.ajax({
                 type: "GET",
                 url: "/timetable/view/" + calEvent.id
-            }).done(function(resp) {
+            }).done(function (resp) {
                 if (resp != "[]") {
                     var obj = $.parseJSON(resp);
                     $("#id").val(obj[0].id);
                     $("#name").val(obj[0].name);
                     $("#description").html(obj[0].description);
 
-                    if(obj[0].all_day_event == 1){
+                    if (obj[0].all_day_event == 1) {
                         console.log("check");
-                        $("#allDayEvent").prop('checked',true);
-                    }else{
+                        $("#allDayEvent").prop('checked', true);
+                    } else {
                         console.log("uncheck");
-                        $("#allDayEvent").prop("checked",false);
+                        $("#allDayEvent").prop("checked", false);
                     }
                     $("#startDate").val(obj[0].start_date);
                     $("#endDate").val(obj[0].end_date);
@@ -65,23 +70,23 @@ $(document).ready(function() {
         }
     });
 
-    $("#delete").click(function() {
+    $("#delete").click(function () {
         $.ajax({
             type: "GET",
             url: "/timetable/delete/" + $("#id").val()
         });
     });
 
-    $("#timetableRepetition").change(function(){
+    $("#timetableRepetition").change(function () {
         var reps = $("#numberOfRepeats");
         var repsDesc = $("#repeatDescriptor");
-        if($(this).val() == "0"){
-            reps.prop("disabled" , true);
+        if ($(this).val() == "0") {
+            reps.prop("disabled", true);
             repsDesc.html("");
-        }else{
-            reps.prop("disabled" , false);
+        } else {
+            reps.prop("disabled", false);
         }
-        switch($(this).val()){
+        switch ($(this).val()) {
             case "0":
                 reps.val("0");
                 break;

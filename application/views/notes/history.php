@@ -22,12 +22,12 @@
                     <div class="row">
                         <div class="large-2 columns" >
                             <label>Date From  
-                                <input id="fromDate" type="text" value="<?php echo date('Y/m/d H:i:s', mktime(0, 0, 0, date("m") - 1, date("d"), date("Y"))); ?>" name="fromDate" />
+                                <input id="fromDate" type="text" placeholder="<?php echo date('Y/m/d H:i:s', mktime(0, 0, 0, date("m") - 1, date("d"), date("Y"))); ?>" name="fromDate" />
                             </label>
                         </div>
                         <div class="large-2 columns">
                             <label>To 
-                                <input id="toDate" type="text" value="<?php echo date('Y/m/d H:i:s'); ?>" name="toDate" />
+                                <input id="toDate" type="text" placeholder="<?php echo date('Y/m/d H:i:s'); ?>" name="toDate" />
                             </label>
                         </div>
                         <div class="large-8 columns" ></div>
