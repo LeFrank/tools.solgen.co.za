@@ -71,6 +71,10 @@ $route['expenses/history'] = 'expenses/history';
 $route['expenses/options'] = 'expenses/options';
 $route['expenses/stats'] = 'expenses/statistics';
 
+$route['expense-periods/manage'] = 'expensePeriods/manage';
+$route['expense-periods/capture'] = 'expensePeriods/capture';
+$route['expense-periods/edit/(:num)'] = 'expensePeriods/edit/$1';
+$route['expense-periods/delete/(:num)'] = 'expensePeriods/delete/$1';
 
 
 $route['expense-types/manage'] = 'expenseTypes/manage';

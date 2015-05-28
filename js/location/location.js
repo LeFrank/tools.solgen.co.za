@@ -61,8 +61,8 @@ function codeAddress() {
                     lng = results[0].geometry.location.A;
                     $("#longitude").val(results[0].geometry.location.A);
                 }else{
-                    lng = results[0].geometry.location.B;
-                    $("#longitude").val(results[0].geometry.location.B);
+                    lng = results[0].geometry.location.D;
+                    $("#longitude").val(results[0].geometry.location.D);
                 }
                 placeMarker(lat, lng);
             } else {

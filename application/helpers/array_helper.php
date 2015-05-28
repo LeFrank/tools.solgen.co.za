@@ -8,32 +8,34 @@
 
 function mapKeyToId($doubleDimensionsArray, $includeMisc = true) {
     $returnArray = null;
-    if ($includeMisc) {
-        $returnArray["0"] = array("id" => 0, "description" => "miscellaneous", "enabled" => 1, "create_date" => "2014-04-17 23:06:04", "user_id" => null);
-    }
-    if (null != $doubleDimensionsArray && !empty($doubleDimensionsArray)) {
-        foreach ($doubleDimensionsArray as $k => $v) {
-            $returnArray[$v["id"]] = $v;
+    if (!empty($doubleDimensionsArray)) {
+        if ($includeMisc) {
+            $returnArray["0"] = array("id" => 0, "description" => "miscellaneous", "enabled" => 1, "create_date" => "2014-04-17 23:06:04", "user_id" => null);
+        }
+        if (null != $doubleDimensionsArray && !empty($doubleDimensionsArray)) {
+            foreach ($doubleDimensionsArray as $k => $v) {
+                $returnArray[$v["id"]] = $v;
+            }
         }
     }
     return $returnArray;
 }
 
-function getDaysOfWeek(){
-    return $daysOfWeek = array("1" =>"Monday", "2" => "Tuesday", "3"=>"Wednesday" , "4" => "Thursday" , "5" => "Friday", "6" => "Saturday" , "7" => "Sunday");
+function getDaysOfWeek() {
+    return $daysOfWeek = array("1" => "Monday", "2" => "Tuesday", "3" => "Wednesday", "4" => "Thursday", "5" => "Friday", "6" => "Saturday", "7" => "Sunday");
 }
 
-function arrayMap($array){
+function arrayMap($array) {
     $arr = array();
-    foreach($array as $k=>$v){
+    foreach ($array as $k => $v) {
         $arr[$v["id"]] = $v;
     }
     return $arr;
 }
 
-function arrayObjMap($array){
+function arrayObjMap($array) {
     $arr = array();
-    foreach($array as $k=>$v){
+    foreach ($array as $k => $v) {
         $arr[$v->id] = $v;
     }
     return $arr;

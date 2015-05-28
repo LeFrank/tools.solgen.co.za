@@ -23,6 +23,7 @@ class Expenses extends CI_Controller {
         $this->load->model('expense_model');
         $this->load->model('expense_type_model');
         $this->load->model('payment_method_model');
+        $this->load->model('expense_period_model');
         //$this->load->model('user_expense_type_model');
     }
 
@@ -171,6 +172,7 @@ class Expenses extends CI_Controller {
         $this->load->library('session');
         $data["expenseTypes"] = mapKeyToId($this->expense_type_model->get_expense_types());
         $data["expensePaymentMethod"] = mapKeyToId($this->payment_method_model->get_user_payment_method($this->session->userdata("user")->id), false);
+        $data["expensePeriods"] = $this->expense_period_model->getExpensePeriods($this->session->userdata("user")->id, 5, null);
         //$data["startAndEndDateOfWeek"] = getStartAndEndDateforWeek(date('W'), date('Y'));
         $data["startAndEndDateforMonth"] = getStartAndEndDateforMonth(date("m"), date('Y'));
         $data["expensesForPeriod"] = $this->expense_model->getExpensesbyDateRange($data["startAndEndDateforMonth"][0], $data["startAndEndDateforMonth"][1], $this->session->userdata("user")->id);
