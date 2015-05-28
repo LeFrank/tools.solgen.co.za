@@ -1,5 +1,5 @@
 CREATE TABLE `expense_period` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `description` varchar(500) DEFAULT NULL,
   `user_id` int(11) NOT NULL,
@@ -8,3 +8,4 @@ CREATE TABLE `expense_period` (
   `create_date` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+

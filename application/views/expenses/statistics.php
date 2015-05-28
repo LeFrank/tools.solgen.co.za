@@ -6,12 +6,24 @@
     </div>
 </div>
 <div class="row">
-    <div class="large-6 columns" >
+    <div class="large-4 columns" >
+        <label> Filter by Period
+            <select id="expensePeriod" name="expensePeriod">
+                <option value="0">Current Month</option>
+                <?php
+                foreach ($expensePeriods as $k => $v) {
+                    echo "<option value='" . $v["id"] . "'>" . $v["name"] . "</option>";
+                }
+                ?>
+            </select>
+        </label>
+    </div>
+    <div class="large-4 columns" >
         <label>
             from<input type="text" name="fromDate" id="fromDate" value="<?php echo $startAndEndDateforMonth[0]; ?>"/>
         </label>
     </div>
-    <div class="large-6 columns" >
+    <div class="large-4 columns" >
         <label>
             To<input type="text" name="toDate" id="toDate" value="<?php echo $startAndEndDateforMonth[1]; ?>"/> 
         </label>
@@ -307,7 +319,9 @@
     }
     ?>
         ];
-
+        var expense_period = <?php echo json_encode($expensePeriods); ?>;
+        var default_start_date = "<?php echo $startAndEndDateforMonth[0]; ?>";
+        var default_end_date = "<?php echo $startAndEndDateforMonth[1]; ?>";
     </script>
     <link rel="stylesheet" type="text/css" href="/css/jquery.datetimepicker.css" />
     <link rel="stylesheet" href="/css/third_party/thickbox/thickbox.css" type="text/css" media="screen" />

@@ -223,7 +223,6 @@
     var expense_types = <?php echo json_encode($expenseTypes); ?>;
     var payment_methods = <?php echo json_encode($expensePaymentMethod); ?>;
     var expense_period = <?php echo json_encode($expensePeriods);?>;
-    console.log(expense_period);
     var default_start_date = "<?php echo $startAndEndDateforMonth[0]; ?>";
     var default_end_date = "<?php echo $startAndEndDateforMonth[1]; ?>";
 </script>

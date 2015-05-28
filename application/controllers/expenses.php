@@ -200,7 +200,7 @@ class Expenses extends CI_Controller {
         }
         $data["expenseTypes"] = mapKeyToId($this->expense_type_model->get_expense_types());
         $data["expensePaymentMethod"] = mapKeyToId($this->payment_method_model->get_user_payment_method($this->session->userdata("user")->id), true);
-        
+        $data["expensePeriods"] = $this->expense_period_model->getExpensePeriods($this->session->userdata("user")->id, 5, null);
         $expensesForPeriod = $this->expense_model->getExpensesbyDateRange(
                 $data["startAndEndDateforMonth"][0], 
                 $data["startAndEndDateforMonth"][1], 

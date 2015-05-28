@@ -198,6 +198,30 @@ $.jqplot.config.enablePlugins = true;
 
         ]
     });
+    
+    $("#expensePeriod").change(function () {
+        if ($("#expensePeriod").val() == "0") {
+            $("#fromDate").val(default_start_date);
+            $("#toDate").val(default_end_date);
+        }else{
+            var selectedObj = getObjects(expense_period, "id", $("#expensePeriod").val());
+            $("#fromDate").val(selectedObj[0]["start_date"]);
+            $("#toDate").val(selectedObj[0]["end_date"]);
+            
+        }
+    });
 });
-
+function getObjects(obj, key, val) {
+    var objects = [];
+    for (var i in obj) {
+        if (!obj.hasOwnProperty(i))
+            continue;
+        if (typeof obj[i] == 'object') {
+            objects = objects.concat(getObjects(obj[i], key, val));
+        } else if (i == key && obj[key] == val) {
+            objects.push(obj);
+        }
+    }
+    return objects;
+}
 
