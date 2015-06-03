@@ -30,7 +30,8 @@ class expense_period_model extends CI_Model {
             'start_date' => date('Y/m/d H:i', strtotime($this->input->post('startDate'))),
             'end_date' => date('Y/m/d H:i', strtotime($this->input->post('endDate'))),
             'create_date' => date('Y/m/d H:i'),
-            'user_id' => $this->session->userdata("user")->id
+            'user_id' => $this->session->userdata("user")->id,
+            'active' => $this->input->post('active')
         );
         echo "<pre>";
         print_r($data);
@@ -78,6 +79,7 @@ class expense_period_model extends CI_Model {
      * @return type
      */
     public function getExpensePeriod($id) {
+        echo __CLASS__ . " >> " . __FUNCTION__;
         $query = $this->db->get_where($this->tn, array('id' => $id));
         return $query->row();
     }
@@ -151,13 +153,21 @@ class expense_period_model extends CI_Model {
      * @return type
      */
     public function update() {
+        $this->load->helper('date');
+        if($this->input->post('active') == 1){
+            //update all other periods for this user to active = 0 (false)
+            $data = array("user_id" => $this->session->userdata("user")->id,
+                "active" => 0 );
+            $this->db->where('user_id', $this->session->userdata("user")->id);
+            $this->db->update($this->tn, $data);
+        }
         $data = array(
             'name' => $this->input->post('name'),
             'description' => $this->input->post('description'),
             'start_date' => date('Y/m/d H:i', strtotime($this->input->post('startDate'))),
             'end_date' => date('Y/m/d H:i', strtotime($this->input->post('endDate'))),
-            'create_date' => date('Y/m/d H:i', strtotime($this->input->post('createDate'))),
-            'user_id' => $this->session->userdata("user")->id
+            'user_id' => $this->session->userdata("user")->id,
+            'active' => $this->input->post('active')
         );
         $this->db->where('id', $this->input->post('id'));
         return $this->db->update($this->tn, $data);

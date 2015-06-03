@@ -87,9 +87,11 @@ class ExpensePeriods extends CI_Controller {
     public function edit($id) {
         $mySession = $this->session->userdata("user")->id;
         $data["status"] = "Edit Expense Period";
+        echo "got here";
+        print_r($mySession);
         //check if this expense type belongs to you?
         if ($this->expense_period_model->doesItBelongToMe($mySession, $id)) {
-            $data['expensePeriod'] = $this->expense_period_model->get_expense_period($id);
+            $data['expensePeriod'] = $this->expense_period_model->getExpensePeriod($id);
             //show new page
             $this->load->view("header");
             $this->load->view("expense_periods/edit", $data);
@@ -122,7 +124,7 @@ class ExpensePeriods extends CI_Controller {
             $data["message_classes"] = "success";
             $data["message"] = "You have successfully updated the expense period";
             $this->expense_period_model->update($this->input->post('id'));
-            $data["expensePeriods"] = mapKeyToId($this->expense_period_model->get_only_user_expense_periods($this->session->userdata("user")->id), false);
+            $data["expensePeriods"] = mapKeyToId($this->expense_period_model->getExpensePeriods($this->session->userdata("user")->id), false);
             $this->load->view("header");
             $this->load->view("user/user_status", $data);
             $this->load->view("expense_periods/manage", $data);

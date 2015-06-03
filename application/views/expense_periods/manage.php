@@ -15,6 +15,7 @@
                     <th>Start Date</th>
                     <th>End Date</th>
                     <th>Create Date</th>
+                    <th>Active</th>
                     <th>Actions</th>
                     </thead>
                     <tbody>
@@ -25,6 +26,7 @@
                                 <td><?php echo $v["start_date"]; ?></td>
                                 <td><?php echo $v["end_date"]; ?></td>
                                 <td><?php echo $v["create_date"]; ?></td>
+                                <td><?php echo (($v["active"] == 1) ?"True": "False" ); ?></td>
                                 <td>
                                     <a href="/expense-periods/edit/<?php echo $v["id"]; ?>">edit</a>&nbsp;&nbsp;|&nbsp;&nbsp;
                                     <a href="/expense-periods/delete/<?php echo $v["id"]; ?>">delete</a></td>
@@ -62,6 +64,16 @@
                     </label>
                 </div>
             </div>
+            <div class="row">
+                <div class="large-2 columns">
+                    <label>Active
+                        <select name="active" id="active-period">
+                            <option value="1">True</option>
+                            <option value="0" selected>False</option>
+                        </select>
+                    </label>
+                </div>
+            </div>            
             <div class="row">
                 <div class="large-12 columns">
                     <br/>

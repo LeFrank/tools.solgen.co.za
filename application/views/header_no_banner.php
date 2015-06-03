@@ -9,9 +9,23 @@
         <meta name="description" content="">
         <meta name="author" content="">
         <link rel="shortcut icon" href="/images/favicon.ico" />
-        <link rel="stylesheet" type="text/css" media="all" href="http://<?php echo$_SERVER['SERVER_NAME'] ?>/css/black_and_yellow.css" />
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
-        <script src="http://<?php echo $_SERVER['SERVER_NAME']; ?>/js/third_party/jquery.min-1.11.0.js"></script>
+        <link rel='stylesheet' id='googafont-css'  href='http://fonts.googleapis.com/css?family=Marvel%7CRoboto%3A300%2C500%2C400italic&#038;ver=3.9.1' type='text/css' media='all' />
+        <link rel="stylesheet" href="/css/third_party/jquery/1.10.4/themes/smoothness/jquery-ui.css">
+        <link rel="stylesheet" href="/css/third_party/foundation/normalize.css">
+        <link rel="stylesheet" href="/css/third_party/foundation/foundation.min.css">
+        <link rel="stylesheet" type="text/css" media="all" href="/css/black_and_yellow.css" />
+        <?php
+        if (!empty($css)) {
+            echo $css;
+        }
+        if (!empty($js)) {
+            echo $js;
+        }
+        ?>
+        <script src="/js/third_party/jquery.min-1.11.0.js"></script>
+        <script src="/js/third_party/foundation/vendor/modernizr.js"></script>
+        <script src="/js/third_party/foundation/foundation.min.js"></script>
+        <script src="/js/default.js"></script>
     </head>
     <body>
         <div id="contentMain" class="contentMain">

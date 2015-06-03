@@ -9,3 +9,7 @@ CREATE TABLE `expense_period` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+ALTER TABLE `solgen`.`expense_period` 
+ADD COLUMN `active` VARCHAR(45) NULL DEFAULT 0 AFTER `create_date`;
+
+

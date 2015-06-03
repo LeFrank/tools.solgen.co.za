@@ -11,10 +11,15 @@
         <label for="description">Description *</label>
         <input type="text" name="description" value="<?php echo $expensePeriod->description; ?>" /><br />
         <label for="startDate">Start Date *</label>
-        <input  type="text" id="startDate" name="startDate" value="<?php echo $expense->start_date; ?>" /><br/><br/>
+        <input  type="text" id="startDate" name="startDate" value="<?php echo $expensePeriod->start_date; ?>" /><br/><br/>
         <label for="endDate">End Date *</label>
-        <input  type="text" id="endDate" name="endDate" value="<?php echo $expense->end_date; ?>" /><br/><br/>
-        <input type="submit" name="submit" value="Create Expense Period" class="button" /><a href="/expense-periods/manage" >Cancel</a>
+        <input  type="text" id="endDate" name="endDate" value="<?php echo $expensePeriod->end_date; ?>" /><br/><br/>
+        <label>Active</label>
+        <select name="active" id="active-period">
+            <option value="1" <?php echo (($expensePeriod->active == 1) ? "selected" : "") ; ?> >True</option>
+            <option value="0" <?php echo (($expensePeriod->active == 0) ? "selected" : "") ; ?> >False</option>
+        </select><br/><br/>
+        <input type="submit" name="submit" value="Create Expense Period" class="button" /> <a href="/expense-periods/manage" class="button secondary">Cancel</a>
         </form>
     </div>
 </div>

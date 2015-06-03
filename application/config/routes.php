@@ -71,11 +71,19 @@ $route['expenses/history'] = 'expenses/history';
 $route['expenses/options'] = 'expenses/options';
 $route['expenses/stats'] = 'expenses/statistics';
 
+
+$route['expense-budget/manage'] = 'expenseBudget/manage';
+$route['expense-budget/capture'] = 'expenseBudget/capture';
+$route['expense-budget/edit/(:num)'] = 'expenseBudget/edit/$1';
+$route['expense-budget/delete/(:num)'] = 'expenseBudget/delete/$1';
+    
 $route['expense-periods/manage'] = 'expensePeriods/manage';
-$route['expense-periods/capture'] = 'expensePeriods/capture';
+$route['expense-periods/update'] = 'expensePeriods/update';
 $route['expense-periods/edit/(:num)'] = 'expensePeriods/edit/$1';
 $route['expense-periods/delete/(:num)'] = 'expensePeriods/delete/$1';
 
+$route['expense-budget-items/items/(:num)'] = 'expenseBudgetItems/manage/$1';
+$route['expense-budget-items/get-period-expense/(:num)/(:num)'] = 'expenseBudgetItems/getExpensesPerTypeFromPeriod/$1/$2';
 
 $route['expense-types/manage'] = 'expenseTypes/manage';
 $route['expense-types/capture'] = 'expenseTypes/capture';
