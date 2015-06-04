@@ -26,7 +26,10 @@ class ExpenseBudgetItems extends CI_Controller {
         $this->load->helper('form');
         $this->load->helper('url');
         $this->load->library('form_validation');
-        $data['title'] = 'Create an expense';
+        echo "<pre>";
+        print_r($this->input->post());
+        echo "</pre>";
+        /*$data['title'] = 'Create an expense';
         $this->form_validation->set_rules('name', 'name', 'required');
         if ($this->form_validation->run() == FALSE) {
             $data["expenseBudgets"] = $this->expense_budget_model->getExpenseBudgets();
@@ -38,7 +41,7 @@ class ExpenseBudgetItems extends CI_Controller {
         } else {
             $data["expenseBudgets"] = $this->expense_budget_model->capture_expense_budget();
             redirect("/expensesBudget/manage", "refresh");
-        }
+        }*/
     }
 
     public function delete($id) {
@@ -80,6 +83,8 @@ class ExpenseBudgetItems extends CI_Controller {
         );
         $data["expenseTypesTotals"] = getArrayOfTypeAmount($expensesForPeriod);
         $data["expensesTotal"] = getExpensesTotal($expensesForPeriod);
+        $data["budgetId"] = $budgetId;
+        $data["periodId"] = $periodId;
         $html = $this->load->view('header_no_banner', null, TRUE);
         $html .= $this->load->view("expense_budget_item/previous_expense_limits", $data, TRUE);
         echo $html;

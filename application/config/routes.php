@@ -84,6 +84,7 @@ $route['expense-periods/delete/(:num)'] = 'expensePeriods/delete/$1';
 
 $route['expense-budget-items/items/(:num)'] = 'expenseBudgetItems/manage/$1';
 $route['expense-budget-items/get-period-expense/(:num)/(:num)'] = 'expenseBudgetItems/getExpensesPerTypeFromPeriod/$1/$2';
+$route['expense-budget-items/capture'] = 'expenseBudgetItems/capture';
 
 $route['expense-types/manage'] = 'expenseTypes/manage';
 $route['expense-types/capture'] = 'expenseTypes/capture';
