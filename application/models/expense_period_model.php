@@ -79,7 +79,6 @@ class expense_period_model extends CI_Model {
      * @return type
      */
     public function getExpensePeriod($id) {
-        echo __CLASS__ . " >> " . __FUNCTION__;
         $query = $this->db->get_where($this->tn, array('id' => $id));
         return $query->row();
     }

@@ -1,71 +1,115 @@
 <?php echo form_open('expense-budget-items/capture'); ?>
-<input type="hidden" name="budget-id" value="<?php echo $budgetId?>" />
-<input type="hidden" name="expense-period-id" value="<?php echo $periodId?>" />
+<input type="hidden" name="budget-id" id="budget-id" value="<?php echo $budgetId ?>" />
+<input type="hidden" name="expense-period-id" value="<?php echo $periodId ?>" />
 <div class="row ">
-    <div class="large-4 columns">
-        <h4>Expense Type</h4>
-    </div>
-    <div class="large-4 columns">
-        <h4>Previous Spend</h4>
-    </div>
-    <div class="large-4 columns">
-        <h4>Budgetted Amount</h4>
-    </div>
-</div>
-<br/>
-<?php
-if (!empty($expenseTypesTotals)) {
-    $count =1;
-    foreach ($expenseTypesTotals as $k => $v) {
-        ?>
+    <div class="large-12 columns">
+        <table id="expense_history" class="tablesorter">
+            <thead>
+                <tr>
+                    <th>&nbsp;</th>
+                    <th>Description</th>
+                    <th>Previous Spend</th>
+                    <th>Budgetted Amount</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                $ttypes = array();
+                if (!empty($expenseTypesTotals)) {
+                    $count = 1;
+                    foreach ($expenseTypesTotals as $k => $v) {
+                        $ttypes[$k] = true;
+                        ?>
+                        <tr>
+                            <td>
+                                <?php echo $count; ?>
+                            </td>
+                            <td>
+                                <?php echo $expenseTypes[$k]["description"]; ?>
+                            </td>
+                            <td>
+                                <?php echo number_format($v["value"], 2, ".", ""); ?>
+                            </td>
+                            <td>
+                                <input type="hidden" name="expenseType[]" value="<?php echo $expenseTypes[$k]["id"]; ?>" />
+                                <input type="number"  step="1.00" max="99999999999.99" name="amount[]" placeholder="0.00" value="<?php echo round($v["value"]); ?>"
+                                       name="epenseType[]" id="epenseType['<?php echo $k; ?>']" class="align-right"/>
+                            </td>
+                        </tr>
+                        <?php
+                        $count += 1;
+                    }
+                    foreach ($expenseTypes as $k => $v) {
+                        if (!array_key_exists($k, $ttypes)) {
+                            ?>
+                            <tr>
+                                <td>
+                                    <?php echo $count; ?>
+                                </td>
+                                <td>
+                                    <?php echo $expenseTypes[$k]["description"]; ?>
+                                </td>
+                                <td>
+                                    0.00
+                                </td>
+                                <td>
+                                    <input type="hidden" name="expenseType[]" value="<?php echo $v["id"]; ?>" />
+                                    <input type="number"  step="1.00" max="99999999999.99" name="amount[]" placeholder="0.00" value="0.00"
+                                           name="epenseType[]" id="epenseType['<?php echo $k; ?>']" class="align-right"/>
+                                </td>
+                            </tr>
+                            <?php
+                            $count += 1;
+                        }
+                    }
+                }
+                ?>
+                <tr>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                        <span id="assignmenTxt">Unassigned Funds: </span><span id="unassigned" ><?php echo number_format($expenseBudget->total_limit - $expensesTotal, 2, ".", ","); ?></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h4>Totals</h4>
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                        <h4>Previous: <?php
+                            echo number_format($expensesTotal, 2, ".", ",");
+                            ?></h4>
+                    </td>
+                    <td>
+                        <h4>Budget Limit: <?php echo number_format($expenseBudget->total_limit, 2, ".", ","); ?></h4><input type="hidden" id="currentBudgetCeiling" value="<?php echo number_format($expenseBudget->total_limit, 2, ".", ","); ?>" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <br/>
         <div class="row ">
             <div class="large-4 columns">
-                <?php echo $count." ".$expenseTypes[$k]["description"]; ?>
-            </div>
-            <div class="large-4 columns">
-                <?php echo number_format($v["value"],2,".",""); ?>
-            </div>
-            <div class="large-4 columns">
-                <input type="hidden" name="expenseType[]" value="<?php echo $expenseTypes[$k]["id"]; ?>" />
-                <input type="number"  step="1.00" max="99999999999.99" name="amount[]" placeholder="0.00" value="<?php echo round($v["value"]); ?>"
-                       name="epenseType[]" id="epenseType['<?php echo $k; ?>']" class="align-right"/>
+                <input type="submit" name="submit" value="Create Budget Items" class="button"/>
             </div>
         </div>
-        <?php
-        $count += 1;
-    }
-}
-?>
-<div class="row ">
-    <div class="large-4 columns">
-
-    </div>
-    <div class="large-4 columns">
-
-    </div>
-    <div class="large-4 columns">
-        <span id="assignmenTxt">Unassigned Funds: </span><span id="unassigned" ><?php echo number_format($expenseBudget->total_limit - $expensesTotal, 2, ".", ","); ?></span>
+        </form>
     </div>
 </div>
-<div class="row ">
-    <div class="large-4 columns">
-        <h4>Totals</h4>
-    </div>
-    <div class="large-4 columns">
-        <h4>Previous: <?php
-            echo number_format($expensesTotal, 2, ".", ",");
-            ?></h4>
-    </div>
-    <div class="large-4 columns">
-        <h4>Budget Limit: <?php echo number_format($expenseBudget->total_limit, 2, ".", ","); ?></h4><input type="hidden" id="currentBudgetCeiling" value="<?php echo number_format($expenseBudget->total_limit, 2, ".", ","); ?>" />
-    </div>
-</div>
-<br/><br/>
-<div class="row ">
-    <div class="large-4 columns">
-        <input type="submit" name="submit" value="Create Budget Items" class="button"/>
-    </div>
-</div>
-</form>
-<br/>
 <script type="text/javascript" src="/js/expense_budget_items/previous_period.js" ></script>

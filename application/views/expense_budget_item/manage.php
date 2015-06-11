@@ -35,7 +35,8 @@
                                class="button secondary" name="typesBtn" id="typesBtn"/>
                     </div>
                 </div>
-                <div id="baselineItems" class="hidden">asd sdas
+                <div id="baselineItems" class="hidden">
+
                 </div>
                 <?php
             } else {
@@ -45,4 +46,8 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    var budgetId = <?php echo $expenseBudget->id;?>;
+    var periodId = <?php echo $expenseBudget->expense_period_id;?>;
+</script>
 <script type="text/javascript" src="/js/expense_budget_items/manage.js" ></script>

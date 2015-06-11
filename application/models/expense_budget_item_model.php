@@ -34,6 +34,29 @@ class expense_budget_item_model extends CI_Model {
         return $this->db->insert($this->tn, $data);
     }
 
+        /**
+     * Capture a users budget from a post request. 
+     * @return type
+     */
+    public function capture_expense_budget_items() {
+        $this->load->helper('date');
+        $this->load->library("session");
+        $amountArr = $this->input->post("amount");
+        $types = $this->input->post("expenseType");
+        $returnData = array();
+        foreach($amountArr as $k => $v){
+            $data = array(
+                'budget_id' => $this->input->post('budget-id'),
+                'expense_type_id' => $types[$k],
+                'limit_amount' => $v,
+                'create_date' => date('Y/m/d H:i'),
+                'user_id' => $this->session->userdata("user")->id
+            );
+            $returnData[] = $this->db->insert($this->tn, $data);
+        }
+        return $returnData;
+    }
+    
     /**
      * 
      * @param type $id

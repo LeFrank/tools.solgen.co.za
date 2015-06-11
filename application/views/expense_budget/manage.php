@@ -81,3 +81,4 @@
     </div>
 </div>
 <script type="text/javascript" src="/js/third_party/jquery.tablesorter.min.js"></script>
+<script type="text/javascript" src="/js/expense_budget_items/manage.js"></script>
