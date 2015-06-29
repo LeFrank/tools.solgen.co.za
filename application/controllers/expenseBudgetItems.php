@@ -44,12 +44,22 @@ class ExpenseBudgetItems extends CI_Controller {
     }
 
     public function manage($budgetId = null) {
+        $this->load->helper("date_helper");
+        $this->load->helper("expense_statistics_helper");
         if ($budgetId != null) {
             $data["expenseBudget"] = $this->expense_budget_model->getExpenseBudget($budgetId);
+            $data["expenseBudgetItems"] = $this->expense_budget_item_model->getExpenseBudgetItems($budgetId);
+            $data["expensePeriod"] = $this->expense_period_model->getExpensePeriod($data["expenseBudget"]->expense_period_id);
+            $data["expenseTypes"] = mapKeyToId($this->expense_type_model->get_expense_types());
+            $expensesForPeriod = $this->expense_model->getExpensesbyDateRange(
+                    date('Y/m/d H:i', strtotime($data["expensePeriod"]->start_date)), date('Y/m/d H:i', strtotime($data["expensePeriod"]->end_date)), $this->session->userdata("user")->id, null, null, "amount", "desc"
+            );
+            $data["expenseTypesTotals"] = getArrayOfTypeAmount($expensesForPeriod);
         }
         $this->load->view('header');
         $this->load->view('expenses/expense_nav');
         $this->load->view('expense_budget_item/manage', $data);
+        $this->load->view('expense_budget_item/budget_items_assigned', $data);
         $this->load->view('footer');
     }
 
@@ -57,7 +67,7 @@ class ExpenseBudgetItems extends CI_Controller {
         $this->load->helper("date_helper");
         $this->load->helper("expense_statistics_helper");
         $data["expenseBudget"] = $this->expense_budget_model->getExpenseBudget($budgetId);
-        $data["expensePeriod"] = $this->expense_period_model->getExpensePeriod($data["expenseBudget"]->expense_period_id );
+        $data["expensePeriod"] = $this->expense_period_model->getExpensePeriod($data["expenseBudget"]->expense_period_id - 1);
         $data["expenseTypes"] = mapKeyToId($this->expense_type_model->get_expense_types());
         $expensesForPeriod = $this->expense_model->getExpensesbyDateRange(
                 date('Y/m/d H:i', strtotime($data["expensePeriod"]->start_date)), date('Y/m/d H:i', strtotime($data["expensePeriod"]->end_date)), $this->session->userdata("user")->id, null, null, "amount", "desc"
@@ -65,7 +75,7 @@ class ExpenseBudgetItems extends CI_Controller {
         $data["expenseTypesTotals"] = getArrayOfTypeAmount($expensesForPeriod);
         $data["expensesTotal"] = getExpensesTotal($expensesForPeriod);
         $data["budgetId"] = $budgetId;
-        $data["periodId"] = $data["expenseBudget"]->expense_period_id ;
+        $data["periodId"] = $data["expenseBudget"]->expense_period_id;
         $html = $this->load->view('header_no_banner', null, TRUE);
         $html .= $this->load->view("expense_budget_item/previous_expense_limits", $data, TRUE);
         echo $html;

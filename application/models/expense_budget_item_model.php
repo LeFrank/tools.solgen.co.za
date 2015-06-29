@@ -96,9 +96,9 @@ class expense_budget_item_model extends CI_Model {
      * @param type $id
      * @return type
      */
-    public function getExpenseBudget($id) {
-        $query = $this->db->get_where($this->tn, array('id' => $id));
-        return $query->row();
+    public function getExpenseBudgetItems($budget_id) {
+        $query = $this->db->get_where($this->tn, array('budget_id' => $budget_id));
+        return $query->result_array();
     }
 
     /**

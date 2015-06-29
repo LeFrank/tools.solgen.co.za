@@ -18,7 +18,7 @@
         <div>
             <p>Expense Type Limits</p>
             <?php
-            if (empty($budgetItems)) {
+            if (empty($expenseBudgetItems)) {
                 echo "Create Items<br/>";
                 ?>
                 <div class="row ">
