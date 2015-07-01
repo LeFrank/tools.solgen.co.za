@@ -269,6 +269,11 @@ form > label{
     color:#666666;
 }
 
+table.tablesorter tbody td.budget-item-busted{
+    background-color: red;
+    color: #ccc;
+}
+
 .expenseHistoryFilter > form >  div > label{
     display: inline-block; width: 150px;
 }
