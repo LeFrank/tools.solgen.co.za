@@ -23,11 +23,6 @@
         </form>
     </div>
 </div>
-<?php
-
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
+<link rel="stylesheet" type="text/css" href="/css/jquery.datetimepicker.css" />
+<script type="text/javascript" src="/js/jquery.datetimepicker.js" ></script>
+<script type="text/javascript" src="/js/expense_periods/edit.js" ></script>

@@ -34,6 +34,7 @@ class ExpensePeriods extends CI_Controller {
         $this->form_validation->set_rules('description', 'description', 'required');
         if ($this->form_validation->run() == FALSE) {
             $this->load->view("header");
+            $this->load->view('expenses/expense_nav');
             $this->load->view("expense_periods/manage");
             $this->load->view("footer");
         } else {
@@ -49,6 +50,7 @@ class ExpensePeriods extends CI_Controller {
             $data["expensePeriods"] = mapKeyToId($this->expense_period_model->get_only_user_expense_periods($this->session->userdata("user")->id), false);
             unset($_POST);
             $this->load->view("header");
+            $this->load->view('expenses/expense_nav');
             $this->load->view("user/user_status", $data);
             $this->load->view("expense_periods/manage", $data);
             $this->load->view("footer");
@@ -59,36 +61,31 @@ class ExpensePeriods extends CI_Controller {
         $mySession = $this->session->userdata("user")->id;
         $data["status"] = "Delete Expense Period";
         //check if this expense period belongs to you?
+        $this->load->view("header");
+        $this->load->view('expenses/expense_nav');
         if ($this->expense_period_model->doesItBelongToMe($mySession, $id)) {
             $data["action_classes"] = "success";
             $data["action_description"] = "Delete Expense Period";
             $data["message_classes"] = "success";
             $data["message"] = "You have successfully deleted the expense period";
             $this->expense_period_model->delete($id);
-            $data["expensePeriods"] = mapKeyToId($this->expense_period_model->get_only_user_expense_periods($this->session->userdata("user")->id), false);
-            $this->load->view("header");
-            $this->load->view("user/user_status", $data);
-            $this->load->view("expense_periods/manage", $data);
-            $this->load->view("footer");
+            $data["expensePeriods"] = mapKeyToId($this->expense_period_model->getExpensePeriods($this->session->userdata("user")->id), false);
+            $this->load->view("general/action_status", $data);
         } else {
             $data["action_classes"] = "failure";
             $data["action_description"] = "Delete Expense Period";
             $data["message_classes"] = "failure";
             $data["message"] = "The expense period does not exist or it does not belong to you.";
-
-            $data["expensePeriods"] = mapKeyToId($this->expense_period_model->get_only_user_expense_periods($this->session->userdata("user")->id), false);
-            $this->load->view("header");
-            $this->load->view("user/user_status", $data);
-            $this->load->view("expense_periods/manage", $data);
-            $this->load->view("footer");
+            $data["expensePeriods"] = mapKeyToId($this->expense_period_model->getExpensePeriods($this->session->userdata("user")->id), false);
         }
+        $this->load->view("user/user_status", $data);
+        $this->load->view("expense_periods/manage", $data);
+        $this->load->view("footer");
     }
 
     public function edit($id) {
         $mySession = $this->session->userdata("user")->id;
         $data["status"] = "Edit Expense Period";
-        echo "got here";
-        print_r($mySession);
         //check if this expense type belongs to you?
         if ($this->expense_period_model->doesItBelongToMe($mySession, $id)) {
             $data['expensePeriod'] = $this->expense_period_model->getExpensePeriod($id);

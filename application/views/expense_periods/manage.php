@@ -19,7 +19,9 @@
                     <th>Actions</th>
                     </thead>
                     <tbody>
-                        <?php foreach ($expensePeriods as $k => $v) { ?>
+                        <?php 
+                            
+                            foreach ($expensePeriods as $k => $v) { ?>
                             <tr>    
                                 <td><?php echo $v["name"]; ?></td>
                                 <td><?php echo $v["description"]; ?></td>
