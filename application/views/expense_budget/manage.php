@@ -30,8 +30,8 @@
                             echo "<td>" . $v["total_limit"] . "</td>";
                             echo "<td>" . $v["create_date"] . "</td>";
                             echo "<td><a href='/expense-budget-items/items/" . $v["id"] . "'>Budget Limits     </a>"
-                            . "<a href='/expenses/edit/" . $v["id"] . "'>Edit</a>&nbsp;&nbsp;|"
-                            . "&nbsp;&nbsp;<a href='/expenses/delete/" . $v["id"] . "'>Delete</a></td>";
+                            . "<a href='/expense-budget/edit/" . $v["id"] . "'>Edit</a>&nbsp;&nbsp;|"
+                            . "&nbsp;&nbsp;<a href='/expense-budget/delete/" . $v["id"] . "'>Delete</a></td>";
                             echo "</tr>";
                         }
                         ?>
@@ -47,12 +47,12 @@
         </div>
 
         <div id="manage-budget-form">
-            <h3>Capture Expense</h3>
+            <h3>Capture Budget</h3>
             <?php echo validation_errors(); ?>
 
             <?php echo form_open('expense-budget/capture') ?>
             <div class="row">
-                <div class="large-8 columns">
+                <div class="large-4 columns">
                     <label> Filter by Period *
                     </label>
                     <select id="expensePeriod" name="expensePeriod">
@@ -67,6 +67,10 @@
                 <div class="large-4 columns">
                     <label for="name">Name *</label>
                     <input  type="text" name="name" placeholder="Major goals for this period."/><br/><br/>
+                </div>
+                <div class="large-4 columns">
+                    <label for="total limit">Total Limit *</label>
+                    <input  type="text" name="total_limit" placeholder="1000000.00"/><br/><br/>                    
                 </div>
             </div>
             <div class="row">

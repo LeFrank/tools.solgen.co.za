@@ -76,6 +76,7 @@ $route['expense-budget/manage'] = 'expenseBudget/manage';
 $route['expense-budget/capture'] = 'expenseBudget/capture';
 $route['expense-budget/edit/(:num)'] = 'expenseBudget/edit/$1';
 $route['expense-budget/delete/(:num)'] = 'expenseBudget/delete/$1';
+$route['expense-budget/update'] = 'expenseBudget/update/$1';
 
 $route['expense-periods/capture'] = 'expensePeriods/capture';
 $route['expense-periods/manage'] = 'expensePeriods/manage';

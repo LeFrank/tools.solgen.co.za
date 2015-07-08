@@ -21,14 +21,15 @@ class expense_budget_model extends CI_Model {
      * @return type
      */
     public function capture_expense_budget() {
-        echo __CLASS__ . " >> ". __FUNCTION__ . " >> ". __LINE__;
+        echo __CLASS__ . " >> " . __FUNCTION__ . " >> " . __LINE__;
         $this->load->helper('date');
         $this->load->library("session");
         $data = array(
             'name' => $this->input->post('name'),
             'description' => $this->input->post('description'),
             'user_id' => $this->session->userdata("user")->id,
-            'expense_period_id' =>  $this->input->post('expensePeriod'),
+            'expense_period_id' => $this->input->post('expensePeriod'),
+            'total_limit' => $this->input->post('total_limit'),
             'create_date' => date('Y/m/d H:i')
         );
         return $this->db->insert($this->tn, $data);
@@ -62,12 +63,12 @@ class expense_budget_model extends CI_Model {
         $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'id' => $id));
         return $query->num_rows();
     }
-    
+
     public function doesItExist($userId, $description) {
         $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'description' => $description));
         return $query->num_rows();
     }
-    
+
     /**
      * 
      * @param type $id
@@ -108,7 +109,8 @@ class expense_budget_model extends CI_Model {
             'name' => $this->input->post('name'),
             'description' => $this->input->post('description'),
             'user_id' => $this->session->userdata("user")->id,
-            'expense_period_id' =>  $this->input->post('expensePeriod'),
+            'expense_period_id' => $this->input->post('expensePeriod'),
+            'total_limit' => $this->input->post('total_limit'),
             'update_date' => date('Y/m/d H:i')
         );
         $this->db->where('id', $this->input->post('id'));
