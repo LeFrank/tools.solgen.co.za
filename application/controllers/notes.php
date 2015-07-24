@@ -94,6 +94,7 @@ class Notes extends CI_Controller {
 //    }
 
     public function searchHistory($page = null) {
+        $this->load->model('notes_search_model');
         if ($page == null) {
             $config['base_url'] = 'http://' . $_SERVER['SERVER_NAME'] . '/notes/history/page/';
             $config['per_page'] = 20;
@@ -108,6 +109,7 @@ class Notes extends CI_Controller {
         $this->pagination->cur_page = $page;
         $this->load->library('session');
         $user = $this->session->userdata("user");
+        $this->notes_search_model->capture_note_search();
         $data["notes"] = $this->notes_model->searchNotes($user->id);
         $this->pagination->total_rows = $this->notes_model->searchNotes($user->id, null, null, true);
         $this->load->view('header');
