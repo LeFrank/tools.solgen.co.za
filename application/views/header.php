@@ -31,7 +31,7 @@
         <div class="row full-width">
             <div class="large-12 columns">
                 <div class="large-8 columns">
-                    <div class="page-header"><a href="/" >Solgen Toolbox</a></div>
+                    <div class="page-header"><a href="/" >Solgen Toolbox <span class="beta">beta</span></a></div>
                 </div>
                 <div class="large-4 columns">
                     <?php if (!$this->session->userdata("loggedIn")) { ?>

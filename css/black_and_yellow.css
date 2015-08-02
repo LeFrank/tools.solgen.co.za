@@ -159,9 +159,20 @@ code{
     border:solid 1px #666666;
     color:#666666;
 }
-/*
+
+button, .button {
+    -moz-appearance: none;
+    background-color: #f1b836;
+    border-color: #666666;
+}
+
+button:hover, button:focus, .button:hover, .button:focus {
+    background-color: #666666;
+    border-color: #f1b836;
+}
+/*******************************************************
 Custom classes go here
-*/
+*********************************************************/
 .output_div{
     float:left;width:69%;
     min-height:300px;
@@ -190,13 +201,16 @@ Custom classes go here
     color:#f1b836;
     font-size:45px;
     padding:10px;
-    width:100%;
+    /*width:100%;*/
     font-family: Calibri , AurulentSans, Trebuchet, Tahoma, Verdana, Arial, sans-serif;
     float:left;
-    width:45%;
+    /*width:45%;*/
 }
 .page-header a{
     text-decoration: none;
+}
+.beta{
+    font-size: small;
 }
 .footer{
     width:100%;

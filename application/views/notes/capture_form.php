@@ -8,7 +8,7 @@
             <input type="text" value="<?php echo (!empty($note->heading) ? $note->heading : "" ); ?>" name="title" id="title" placeholder="I wonder if ..."  />
             <br/>
             <label for="note_content">Note *</label>
-            <textarea name="body" cols="40" rows="5" placeholder="Check into the thing ..."><?php echo (!empty($note->body) ? $note->body : "" ); ?></textarea>
+            <textarea name="body" cols="40" rows="15" placeholder="Check into the thing ..."><?php echo (!empty($note->body) ? $note->body : "" ); ?></textarea>
             <br/>
             <label for="taggs">Tags</label>
             <ul id="noteTaggs" name="tags">

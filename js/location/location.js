@@ -54,16 +54,10 @@ function codeAddress() {
                 var lat ="";
                 var lng = "";
                 $("#address").val(results[0].formatted_address);
-                $("#latitude").val(results[0].geometry.location.k);
-                lat = results[0].geometry.location.k;
-                console.log(results[0].geometry.location.A);
-                if(undefined != results[0].geometry.location.A){
-                    lng = results[0].geometry.location.A;
-                    $("#longitude").val(results[0].geometry.location.A);
-                }else{
-                    lng = results[0].geometry.location.D;
-                    $("#longitude").val(results[0].geometry.location.D);
-                }
+                lat = results[0].geometry.location.lat();
+                lng = results[0].geometry.location.lng();
+                $("#latitude").val(lat);
+                $("#longitude").val(lng);
                 placeMarker(lat, lng);
             } else {
                 alert('Geocode was not successful for the following reason: ' + status);
