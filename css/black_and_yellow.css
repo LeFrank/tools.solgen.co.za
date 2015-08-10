@@ -597,7 +597,39 @@ table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSo
     outline: 0 none;
     padding: 5px;
     width:100%;
+    
+    
 }
+
+.show-content{
+/*    width: 60px;
+    height: 50px;
+    right: 0;
+    position: relative;
+    float:right;
+    zoom: 1;
+    opacity: 1;
+    top: 0;
+    filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0);
+    padding: 0;
+    margin-right: 0;
+    cursor: pointer;
+    min-width: 33px;
+    font-size: xx-large;
+    font-weight: bolder;
+    display: inline;
+    margin-top: -27px;*/
+    /*border:solid 13px red;*/
+}
+
+.notes_body_clamp{
+    max-height: 15em;
+    min-height:1em;
+    /*line-height: 15em;*/
+    overflow: hidden;
+    position: relative;
+}
+
 .note_body ul{
     margin-left:10px;
 }

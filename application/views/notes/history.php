@@ -147,9 +147,10 @@
                         <div id="title_content" class="note_title">
                             <?php echo $v["heading"] ?>
                         </div>
-                        <div id="body_content" class="note_body">
+                        <div id="body_content_<?php echo $v["id"] ?>" class="note_body notes_body_clamp">
                             <?php echo $v["body"] ?>
                         </div>
+                        <div id="showMoreDiv" class="show-content button tiny secondary" data-note-id="<?php echo $v["id"]?>">Show More</div>
                         <div id="tags_content" class="note_tagg">
                             <?php echo $v["tagg"] ?>
                         </div>
