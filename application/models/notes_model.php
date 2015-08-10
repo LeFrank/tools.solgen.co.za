@@ -174,12 +174,41 @@ class Notes_model extends CI_Model {
             $this->db->or_like('tagg', $search);
         }
         $query = $this->db->get_where($this->tn, array('user_id' => $userId), 100);
-//        echo $this->db->last_query();
         if ($count) {
             return $query->num_rows();
         } else {
             return $query->result_array();
         }
+    }
+    
+    public function searchNotesCriteria($userId = null, $limit = null, $offset = 0, $count = false , $text= null, $start_date = null, $end_date = null){
+       if ($userId == null) {
+            return null;
+        }
+        if ($start_date != null) {
+            $fromDate = date('Y/m/d H:i', strtotime($start_date));
+            $this->db->where('create_date >= ', $fromDate);
+        }
+        if ($end_date != null) {
+            $toDate = date('Y/m/d H:i', strtotime($end_date));
+            $this->db->where('create_date <= ', $toDate);
+        }
+        $this->db->order_by("create_date", "desc");
+        if ($text != null) {
+            $this->db->or_like('heading', $text);
+            $this->db->or_like('body', $text);
+            $this->db->or_like('tagg', $text);
+        }
+        if (null == $limit) {
+            $query = $this->db->get_where($this->tn, array('user_id' => $userId));
+        } else {
+            $query = $this->db->get_where($this->tn, array('user_id' => $userId), $limit, $offset);
+        }
+        if ($count) {
+            return $query->num_rows();
+        } else {
+            return $query->result_array();
+        } 
     }
 
     /**

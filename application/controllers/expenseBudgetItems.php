@@ -47,6 +47,7 @@ class ExpenseBudgetItems extends CI_Controller {
         $this->load->helper("date_helper");
         $this->load->helper("expense_statistics_helper");
         if ($budgetId != null) {
+            $data["budgetId"] = $budgetId;
             $data["expenseBudget"] = $this->expense_budget_model->getExpenseBudget($budgetId);
             $data["expenseBudgetItems"] = $this->expense_budget_item_model->getExpenseBudgetItems($budgetId);
             $data["expensePeriod"] = $this->expense_period_model->getExpensePeriod($data["expenseBudget"]->expense_period_id);

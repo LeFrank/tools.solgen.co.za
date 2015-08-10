@@ -16,6 +16,7 @@ class Notes extends CI_Controller {
         can_access(
                 $this->require_auth, $this->session);
         $this->load->model('notes_model');
+        $this->load->model('notes_search_model');
         $this->load->library('pagination');
     }
 
@@ -35,8 +36,23 @@ class Notes extends CI_Controller {
     }
 
     public function delete($id = null) {
-        echo __CLASS__ . " >> " . __FUNCTION__ . " >> " . $id;
-        exit;
+        $this->load->library('session');
+        $user = $this->session->userdata("user");
+        $data['title'] = 'Delete a note';
+        $data["action_description"] = "Delete a note";
+        if($this->notes_model->doesItBelongToMe($user->id , $id)){
+            $this->notes_model->delete($id);
+            $data["status"] = "Deleted Note";
+            $data["action_classes"] = "success";
+            $data["message_classes"] = "success";
+            $data["message"] = "The note was deleted";
+        }else{
+            $data["status"] = "Note does not belong to you.";
+            $data["action_classes"] = "faliure";
+            $data["message_classes"] = "failure";
+            $data["message"] = "The note was not deleted";
+        }
+        redirect("/notes", "refresh");
     }
 
     public function edit($id = null) {
@@ -69,6 +85,7 @@ class Notes extends CI_Controller {
         $data["notes"] = $this->notes_model->getNotes(
                 $user->id, (($page != null) ? ($page - 1 ) * $this->pagination->per_page : $this->pagination->per_page), (($page != null) ? ($page - 1 ) * $this->pagination->per_page : null));
         $this->pagination->total_rows = $this->notes_model->getNotes($user->id, null, null, true);
+        $data["searches"] = $this->notes_search_model->getSearches($user->id, 10, null, false);
         $this->load->view('header');
         $this->load->view('notes/notes_nav', $data);
         $data["capture_form"] = $this->load->view("notes/capture_form", $data, TRUE);
@@ -93,25 +110,37 @@ class Notes extends CI_Controller {
 //        $this->load->view('footer');
 //    }
 
-    public function searchHistory($page = null) {
+    public function searchHistory($searchId = null, $page = null) {
         $this->load->model('notes_search_model');
         if ($page == null) {
-            $config['base_url'] = 'http://' . $_SERVER['SERVER_NAME'] . '/notes/history/page/';
-            $config['per_page'] = 20;
-            $config['total_rows'] = 20;
+            $config['base_url'] = 'http://' . $_SERVER['SERVER_NAME'] . '/notes/history/search/'.$searchId.'/page/';
+            $config['per_page'] = 10;
+            $config['total_rows'] = 10;
             $this->pagination->initialize($config);
+            $this->notes_search_model->updateReSearchCount($searchId);
         } else {
-            $this->pagination->uri_segment = 4;
+            $this->pagination->uri_segment = 6;
         }
-        $this->pagination->base_url = 'http://' . $_SERVER['SERVER_NAME'] . '/notes/history/page/';
-        $this->pagination->per_page = 20;
+        $this->pagination->base_url = 'http://' . $_SERVER['SERVER_NAME'] . '/notes/history/search/'.$searchId.'/page/';
+        $this->pagination->per_page = 10;
         $this->pagination->use_page_numbers = TRUE;
         $this->pagination->cur_page = $page;
         $this->load->library('session');
         $user = $this->session->userdata("user");
-        $this->notes_search_model->capture_note_search();
-        $data["notes"] = $this->notes_model->searchNotes($user->id);
-        $this->pagination->total_rows = $this->notes_model->searchNotes($user->id, null, null, true);
+        $data["search"] = $this->notes_search_model->getSearchById($user->id, $searchId);
+        $data["searches"] = $this->notes_search_model->getSearches($user->id, 10, null, false);
+        $data["notes"] = $this->notes_model->searchNotesCriteria(
+                $user->id, 
+                (($page != null) ? ( $page -1 ) * $this->pagination->per_page : $this->pagination->per_page), 
+                (($page != null) ? ( $page -1 ) * $this->pagination->per_page : null), 
+                false,
+                $data["search"][0]["text"], $data["search"][0]["start_date"], $data["search"][0]["end_date"]);
+        $this->pagination->total_rows = $this->notes_model->searchNotesCriteria(
+                $user->id, 
+                null, 
+                null, 
+                true, 
+                $data["search"][0]["text"], $data["search"][0]["start_date"], $data["search"][0]["end_date"]);
         $this->load->view('header');
         $this->load->view('notes/notes_nav', $data);
         $data["capture_form"] = "";
@@ -120,6 +149,13 @@ class Notes extends CI_Controller {
 
         $this->load->view('notes/notes_includes', $data);
         $this->load->view('footer');
+    }
+    
+    public function searchHistorySave() {
+        $this->load->model('notes_search_model');
+        $this->load->library('session');
+        $searchId = $this->notes_search_model->capture_note_search();
+        redirect("/notes/history/search/".$searchId );
     }
 
     public function tags($page = null) {

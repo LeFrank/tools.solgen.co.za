@@ -112,10 +112,12 @@ $route['payment-methods/update'] = 'paymentMethods/update';
 
 $route['test'] = 'pages/test';
 
-$route['notes/history/search'] = 'notes/searchHistory';
-$route['notes/history/search/page/(:any)'] = 'notes/searchHistory/$1';
+$route['notes/history/search'] = 'notes/searchHistorySave';
+$route['notes/history/search/(:num)'] = 'notes/searchHistory/$1';
+$route['notes/history/search/(:num)/page/(:any)'] = 'notes/searchHistory/$1/$2';
 $route['notes/index'] = 'notes/history';
 $route['notes/capture'] = 'notes/capture';
+$route['notes/delete/(:num)'] = 'notes/delete/$1';
 $route['notes/history'] = 'notes/history';
 $route['notes/history/page'] = 'notes/history';
 $route['notes/history/page/(:any)'] = 'notes/history/$1';

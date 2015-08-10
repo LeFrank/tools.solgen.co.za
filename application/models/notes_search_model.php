@@ -25,7 +25,8 @@ class Notes_search_model extends CI_Model {
             'end_date' => date('Y/m/d H:i', strtotime($this->input->post('toDate'))),
             'create_date' => date('Y/m/d H:i')
         );
-        return $this->db->insert($this->tn, $data);
+        $this->db->insert($this->tn, $data);
+        return $this->db->insert_id();
     }
 
     /**
@@ -56,4 +57,49 @@ class Notes_search_model extends CI_Model {
         $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'id' => $id));
         return $query->num_rows();
     }
+
+    /**
+     * Get notes bases on certain criteria
+     * @param type $userId if present return this users notes.
+     * @param type $limit if preset return a limited result set
+     * @param type $offset if present offset the result by this value else no offset
+     * @return null
+     */
+    public function getSearches($userId = null, $limit = null, $offset = 0, $count = false) {
+        if ($userId === null) {
+            return null;
+        }
+        $this->db->order_by("re_search_count", "desc");
+        $this->db->order_by("create_date", "desc");
+        if (null == $limit) {
+            $query = $this->db->get_where($this->tn, array('user_id' => $userId));
+        } else {
+            $query = $this->db->get_where($this->tn, array('user_id' => $userId), $limit, $offset);
+        }
+        if ($count) {
+            return $query->num_rows();
+        } else {
+            return $query->result_array();
+        }
+    }
+
+    public function getSearchById($user_id, $searchId) {
+        if ($user_id == null) {
+            return null;
+        }
+        if ($searchId == null) {
+            return null;
+        }
+        $this->db->order_by("create_date", "desc");
+        $this->db->where_in('id', $searchId);
+        $query = $this->db->get_where($this->tn, array('user_id' => $user_id), 100);
+        return $query->result_array();
+    }
+    
+    public function updateReSearchCount($searchId){
+        $this->db->where('id',$searchId);
+        $this->db->set('re_search_count', 're_search_count+1', FALSE);
+        $this->db->update($this->tn);
+    }
+
 }

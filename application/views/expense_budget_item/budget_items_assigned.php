@@ -1,6 +1,7 @@
 <div class="row ">
     <div class="large-12 columns">
         <table id="budget_expense_items" class="tablesorter hover-highlight focus-highlight widget-zebra">
+            <input type="hidden" id="period-id" value="<?php echo $budgetId; ?>" />
             <thead>
                 <tr>
                     <th>&nbsp;</th>
@@ -27,19 +28,22 @@
                             <td>
                                 <?php echo $count; ?>
                             </td>
-                            <td>
+                            <td >
                                 <?php echo $expenseTypes[$v["expense_type_id"]]["description"]; ?>
                             </td>
-                            <td >
+                            <td id="budget-amount" >
                                 <?php echo number_format($v["limit_amount"], 2, ".", ""); ?>
                             </td>
-                            <td >
-                                <?php
-                                echo ((array_key_exists($v["expense_type_id"], $expenseTypesTotals)) ? number_format($expenseTypesTotals[$v["expense_type_id"]]["value"], 2, ".", "") : "0.00" );
-                                $totalSpent = $totalSpent + ((array_key_exists($v["expense_type_id"], $expenseTypesTotals)) ? $expenseTypesTotals[$v["expense_type_id"]]["value"] : 0 );
-                                ?>
+                            <td id="spent-to-date" data-category="<?php echo $v["expense_type_id"]; ?>" 
+                                data-expense-count="<?php echo ((array_key_exists($v["expense_type_id"], $expenseTypesTotals)) ? $expenseTypesTotals[$v["expense_type_id"]]["expenseCount"] : "0"); ?>"  
+                                data-expense-ids="<?php echo ((array_key_exists($v["expense_type_id"], $expenseTypesTotals)) ? $expenseTypesTotals[$v["expense_type_id"]]["expenseIds"] : "0"); ?>"
+                                >
+                                    <?php
+                                    echo ((array_key_exists($v["expense_type_id"], $expenseTypesTotals)) ? number_format($expenseTypesTotals[$v["expense_type_id"]]["value"], 2, ".", "") : "0.00" );
+                                    $totalSpent = $totalSpent + ((array_key_exists($v["expense_type_id"], $expenseTypesTotals)) ? $expenseTypesTotals[$v["expense_type_id"]]["value"] : 0 );
+                                    ?>&nbsp;&nbsp;(<?php echo ((array_key_exists($v["expense_type_id"], $expenseTypesTotals)) ? $expenseTypesTotals[$v["expense_type_id"]]["expenseCount"] : "0"); ?>)
                             </td>
-                            <td class="<?php echo ($valRemaining < 0 ) ? "budget-item-busted" : ""; ?> ">
+                            <td id="remaining-for-period" data-category="<?php echo $v["expense_type_id"]; ?>" class="<?php echo ($valRemaining < 0 ) ? "budget-item-busted" : ""; ?> ">
                                 <?php
                                 if ($valRemaining < 0) {
                                     $projected += abs($valRemaining);
@@ -89,7 +93,7 @@
                 <?php
                 if ($overrage < 0) {
                     ?>
-                
+
                     <h4>
                         <?php
                         if ($overrage < 0) {
@@ -103,5 +107,8 @@
         <br/>
     </div>
 </div>
+<link rel="stylesheet" href="/css/third_party/thickbox/thickbox.css" type="text/css" media="screen" />
+<script src="/js/third_party/jquery-ui.custom.min.js" type="text/javascript" ></script>
+<script type="text/javascript" src="/js/third_party/thickbox-compressed.js"></script>
 <script type="text/javascript" src="/js/third_party/jquery.tablesorter.min.js"></script>
 <script type="text/javascript" src="/js/expense_budget_items/items.js" ></script>

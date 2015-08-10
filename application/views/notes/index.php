@@ -56,7 +56,7 @@
                         <div id="action_content" class="note_action">
                             <a href="/notes/edit/<?php echo $v["id"]; ?>">edit</a>
                             &nbsp;&nbsp;|&nbsp;&nbsp;
-                            <a href="/notes/delete/<?php echo $v["id"]; ?>" >delete</a>                            
+                            <a href="/notes/delete/<?php echo $v["id"]; ?>" onclick="return confirm_delete()" >delete</a>                            
                         </div>
                     </div>
                     <div style="clear:both;" />

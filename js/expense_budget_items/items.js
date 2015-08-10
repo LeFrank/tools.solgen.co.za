@@ -1,14 +1,34 @@
 $(document).ready(function () {
     $('#budget_expense_items').tablesorter();
-    
+
     // Make table cell focusable
-  // http://css-tricks.com/simple-css-row-column-highlighting/
-  if ( $('.focus-highlight').length ) {
-    $('.focus-highlight').find('td, th')
-      .attr('tabindex', '1')
-      // add touch device support
-      .on('touchstart', function() {
-        $(this).focus();
-      });
-  }
+    // http://css-tricks.com/simple-css-row-column-highlighting/
+    if ($('.focus-highlight').length) {
+        $('.focus-highlight').find('td, th')
+                .attr('tabindex', '1')
+                // add touch device support
+                .on('touchstart', function () {
+                    $(this).focus();
+                });
+    }
+
+    $("td").click(function () {
+        if ($(this).attr("id") === "spent-to-date") {
+            if ($(this).attr("data-expense-count") > 0) {
+                var url = "http://" + window.location.host + "/expenses/getExpenses/" + replaceAll($(this).attr("data-expense-ids"), ",", "-") + "?keepThis=true&TB_iframe=true&width=850&height=500";
+                tb_show("Expenses", url);
+            }
+        }
+    });
+    $("#remaining-for-period").click(function () {
+        console.log("period-id: " + $("#period-id").val());
+        console.log("category-id: " + $(this).attr("data-category"));
+    });
 });
+function replaceAll(string, find, replace) {
+    return string.replace(new RegExp(escapeRegExp(find), 'g'), replace);
+}
+
+function escapeRegExp(string) {
+    return string.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
+}
