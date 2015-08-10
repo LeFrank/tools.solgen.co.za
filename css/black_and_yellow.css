@@ -658,12 +658,14 @@ span#createNote img{
     max-width: 100%; 
 }
 
+.search-criteria{
+    font-weight: bolder;
+    font-style: italic;
+}
 
-
-/**
+/*****************************************************
 table sort
-
-*/
+*****************************************************/
 
 /* TABLE BACKGROUND color (match the original theme) */
 table.hover-highlight td:before,

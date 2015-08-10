@@ -112,6 +112,7 @@ $route['payment-methods/update'] = 'paymentMethods/update';
 
 $route['test'] = 'pages/test';
 
+$route['notes/view-note/(:num)'] = 'notes/viewNote/$1';
 $route['notes/history/search'] = 'notes/searchHistorySave';
 $route['notes/history/search/(:num)'] = 'notes/searchHistory/$1';
 $route['notes/history/search/(:num)/page/(:any)'] = 'notes/searchHistory/$1/$2';
