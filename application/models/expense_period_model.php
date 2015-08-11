@@ -23,7 +23,13 @@ class expense_period_model extends CI_Model {
     public function capture_expense_period() {
         $this->load->helper('date');
         $this->load->library("session");
-//        $date = ($this->input->post('expenseDate') != "") ? date('Y/m/d H:i', strtotime($this->input->post('expenseDate'))): date('Y/m/d H:i');
+        if($this->input->post('active') == 1){
+            //update all other periods for this user to active = 0 (false)
+            $data = array("user_id" => $this->session->userdata("user")->id,
+                "active" => 0 );
+            $this->db->where('user_id', $this->session->userdata("user")->id);
+            $this->db->update($this->tn, $data);
+        }
         $data = array(
             'name' => $this->input->post('name'),
             'description' => $this->input->post('description'),
@@ -33,9 +39,6 @@ class expense_period_model extends CI_Model {
             'user_id' => $this->session->userdata("user")->id,
             'active' => $this->input->post('active')
         );
-        echo "<pre>";
-        print_r($data);
-        echo "</pre>";
         return $this->db->insert($this->tn, $data);
     }
 

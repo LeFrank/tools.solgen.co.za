@@ -29,6 +29,7 @@ class ExpensePeriods extends CI_Controller {
         $this->load->library('session');
         $this->load->helper('form');
         $this->load->helper('url');
+        $this->load->helper("array_helper");
         $this->load->library('form_validation');
 
         $this->form_validation->set_rules('description', 'description', 'required');
@@ -46,8 +47,7 @@ class ExpensePeriods extends CI_Controller {
             $data["action_description"] = "Create expense period";
             $data["message_classes"] = "success";
             $data["message"] = "You have successfully created an expense period";
-
-            $data["expensePeriods"] = mapKeyToId($this->expense_period_model->get_only_user_expense_periods($this->session->userdata("user")->id), false);
+            $data["expensePeriods"] = mapKeyToId($this->expense_period_model->getExpensePeriods($this->session->userdata("user")->id), false);
             unset($_POST);
             $this->load->view("header");
             $this->load->view('expenses/expense_nav');

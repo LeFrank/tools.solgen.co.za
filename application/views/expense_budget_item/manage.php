@@ -9,6 +9,8 @@
     <div class="large-12 columns">
         <div id="expense-period-manage-feedback" class="hidden"></div>
         <h3>Budget Limits For Period: <?php echo $expenseBudget->name; ?></h3>
+        <p>Start Date: <?php echo $expensePeriod->start_date; ?></p>
+        <p>End Date: <?php echo $expensePeriod->end_date; ?></p>
         <p>Description: <?php echo $expenseBudget->description; ?></p>
 
     </div>

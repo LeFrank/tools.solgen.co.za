@@ -100,7 +100,9 @@ a {
 a:hover {
     color: #f1b836;
 }
-
+a:hover,a:focus{
+    color: #f1b836;
+}
 table {
     font-size: 1em;
     line-height:125%;
