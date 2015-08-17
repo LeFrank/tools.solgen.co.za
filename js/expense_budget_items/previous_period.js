@@ -17,6 +17,15 @@ $(function () {
         $("#unassigned").html(parseFloat(unassigned).toFixed(2));
         console.log(parseFloat($("#currentBudgetCeiling").val()).toFixed(2) - parseFloat(total).toFixed(2));
     });
+    
+    $("td").click(function () {
+        if ($(this).attr("id") === "previous-period-type") {
+            if ($(this).attr("data-expense-count") > 0) {
+                var url = "http://" + window.location.host + "/expenses/getExpenses/" + replaceAll($(this).attr("data-expense-ids"), ",", "-") + "?keepThis=true&TB_iframe=true&width=850&height=500";
+                tb_show("Expenses", url);
+            }
+        }
+    });
 });
 
 function isNumber(n) {

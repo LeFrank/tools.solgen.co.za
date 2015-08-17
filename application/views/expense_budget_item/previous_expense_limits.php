@@ -28,8 +28,12 @@
                             <td>
                                 <?php echo $expenseTypes[$k]["description"]; ?>
                             </td>
-                            <td>
+                            <td id="previous-period-type" data-category="<?php echo $expenseTypes[$k]["id"]; ?>" 
+                                data-expense-count="<?php echo ((array_key_exists($expenseTypes[$k]["id"], $expenseTypesTotals)) ? $expenseTypesTotals[$expenseTypes[$k]["id"]]["expenseCount"] : "0"); ?>"  
+                                data-expense-ids="<?php echo ((array_key_exists($expenseTypes[$k]["id"], $expenseTypesTotals)) ? $expenseTypesTotals[$expenseTypes[$k]["id"]]["expenseIds"] : "0"); ?>"
+                                >
                                 <?php echo number_format($v["value"], 2, ".", ""); ?>
+                                &nbsp;&nbsp;(<?php echo ((array_key_exists($expenseTypes[$k]["id"], $expenseTypesTotals)) ? $expenseTypesTotals[$expenseTypes[$k]["id"]]["expenseCount"] : "0"); ?>)
                             </td>
                             <td>
                                 <input type="hidden" name="expenseType[]" value="<?php echo $expenseTypes[$k]["id"]; ?>" />
@@ -112,4 +116,8 @@
         </form>
     </div>
 </div>
+<link rel="stylesheet" href="/css/third_party/thickbox/thickbox.css" type="text/css" media="screen" />
+<script src="/js/third_party/jquery-ui.custom.min.js" type="text/javascript" ></script>
+<script type="text/javascript" src="/js/third_party/thickbox-compressed.js"></script>
+<script type="text/javascript" src="/js/third_party/jquery.tablesorter.min.js"></script>
 <script type="text/javascript" src="/js/expense_budget_items/previous_period.js" ></script>
