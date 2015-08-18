@@ -289,6 +289,43 @@ table.tablesorter tbody td.budget-item-busted{
     background-color: red;
     color: #ccc;
 }
+.budget-item-busted{
+    background-color: red;
+    color: #ccc;
+}
+table.tablesorter tbody td.budget-item-complete{
+    background-color: black;
+    color: #ccc;
+}
+.budget-item-complete{
+    background-color: black;
+    color: #ccc;
+}
+table.tablesorter tbody td.budget-item-underspend{
+    background-color: green;
+    color: #ccc;
+}
+.budget-item-underspend{
+    background-color: green;
+    color: #ccc;
+}
+table.tablesorter tbody td.budget-item-halfway{
+    background-color: blue;
+    color: #ccc;
+}
+.budget-item-halfway{
+    background-color: blue;
+    color: #ccc;
+}
+table.tablesorter tbody td.budget-item-danger{
+    background-color: #FFA500;
+    color: #fff;
+}
+.budget-item-danger{
+    background-color: #FFA500;
+    color: #fff;
+}
+
 .budget-busted{
     background-color: red;
     color: #ccc;  

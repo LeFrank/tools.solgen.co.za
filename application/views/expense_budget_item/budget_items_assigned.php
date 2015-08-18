@@ -43,14 +43,32 @@
                                     $totalSpent = $totalSpent + ((array_key_exists($v["expense_type_id"], $expenseTypesTotals)) ? $expenseTypesTotals[$v["expense_type_id"]]["value"] : 0 );
                                     ?>&nbsp;&nbsp;(<?php echo ((array_key_exists($v["expense_type_id"], $expenseTypesTotals)) ? $expenseTypesTotals[$v["expense_type_id"]]["expenseCount"] : "0"); ?>)
                             </td>
-                            <td id="remaining-for-period" data-category="<?php echo $v["expense_type_id"]; ?>" class="<?php echo ($valRemaining < 0 ) ? "budget-item-busted" : ""; ?> ">
-                                <?php
-                                if ($valRemaining < 0) {
-                                    $projected += abs($valRemaining);
-                                    $overrage += $valRemaining;
+                            <td id="remaining-for-period" data-category="<?php echo $v["expense_type_id"]; ?>" class="<?php
+                            $percentage = 00;
+                            if ($valRemaining == 0) {
+                                echo "budget-item-complete";
+                            } else if ($v["limit_amount"] != 0) {
+                                $percentage = number_format(($valRemaining / $v["limit_amount"] * 100), 2 , ".", "");
+                                if ($percentage > 0 && $percentage <= 20) {
+                                    echo "budget-item-danger";
+                                } else if ($percentage > 20 && $percentage <= 50) {
+                                    echo "budget-item-halfway";
+                                } else if ($percentage > 50 && $percentage <= 100) {
+                                    echo "budget-item-underspend";
+                                } else if ($percentage < 0) {
+                                    echo "budget-item-busted";
                                 }
-                                echo number_format($valRemaining, 2, ".", "");
-                                ?>
+                            } else {
+                                echo ($valRemaining < 0 ) ? "budget-item-busted" : "";
+                            }
+                            ?> ">
+                                    <?php
+                                    if ($valRemaining < 0) {
+                                        $projected += abs($valRemaining);
+                                        $overrage += $valRemaining;
+                                    }
+                                    echo number_format($valRemaining, 2, ".", "") . " (".$percentage."%)";
+                                    ?>
                             </td>
                         </tr>
                         <?php
@@ -105,6 +123,16 @@
             </div>
         </div>
         <br/>
+    </div>
+</div>
+<div class="row ">
+    <div class="large-12 columns">
+        <label>Legend</label>
+        <span class="budget-item-complete">Black = Budget item spend completed</span><br/>
+        <span class="budget-item-busted">Red = Over Budget</span><br/>
+        <span class="budget-item-underspend">Green = Less than half spent</span><br/>
+        <span class="budget-item-halfway">Blue = Less than 80% spent</span><br/>
+        <span class="budget-item-danger">Orange = Final 20% of spend, nearing full spend</span>
     </div>
 </div>
 <link rel="stylesheet" href="/css/third_party/thickbox/thickbox.css" type="text/css" media="screen" />
