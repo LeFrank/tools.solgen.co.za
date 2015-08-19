@@ -15,8 +15,8 @@
                 Search text: <span class="search-criteria"><?php echo $search[0]["text"]; ?></span>
                 from date: <span class="search-criteria"><?php echo strtotime($search[0]["start_date"]) . " | " . (strtotime($search[0]["start_date"]) == 0) ? "None" : $search[0]["start_date"]; ?> </span>
                 to date: <span class="search-criteria"><?php echo strtotime($search[0]["end_date"]) . " | " . (strtotime($search[0]["end_date"]) == 0) ? "None" : $search[0]["end_date"]; ?> </span>
-
             </h3>
+            Total Results: <span class="search-criteria"><?php echo $total_returned; ?></span>
             <?php
         }
         ?>

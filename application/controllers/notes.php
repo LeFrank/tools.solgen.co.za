@@ -123,7 +123,7 @@ class Notes extends CI_Controller {
         $data["search"] = $this->notes_search_model->getSearchById($user->id, $searchId);
         $data["searches"] = $this->notes_search_model->getSearches($user->id, 10, null, false);
         $data["notes"] = $this->notes_model->searchNotesCriteria($user->id, (($page != null) ? ( $page - 1 ) * $this->pagination->per_page : $this->pagination->per_page), (($page != null) ? ( $page - 1 ) * $this->pagination->per_page : null), false, $data["search"][0]["text"], $data["search"][0]["start_date"], $data["search"][0]["end_date"]);
-        $this->pagination->total_rows = $this->notes_model->searchNotesCriteria($user->id, null, null, true, $data["search"][0]["text"], $data["search"][0]["start_date"], $data["search"][0]["end_date"]);
+        $this->pagination->total_rows = $data["total_returned"] = $this->notes_model->searchNotesCriteria($user->id, null, null, true, $data["search"][0]["text"], $data["search"][0]["start_date"], $data["search"][0]["end_date"]);
         $this->load->view('header');
         $this->load->view('notes/notes_nav', $data);
         $data["capture_form"] = $this->load->view("notes/capture_form", $data, TRUE);

@@ -286,36 +286,36 @@ form > label{
 }
 
 table.tablesorter tbody td.budget-item-busted{
-    background-color: red;
-    color: #ccc;
+    background-color: #ed6363;
+    color: #fff;
 }
 .budget-item-busted{
-    background-color: red;
-    color: #ccc;
+    background-color: #ed6363;
+    color: #fff;
 }
 table.tablesorter tbody td.budget-item-complete{
-    background-color: black;
-    color: #ccc;
+    background-color: #5e5e5e;
+    color: #fff;
 }
 .budget-item-complete{
-    background-color: black;
-    color: #ccc;
+    background-color: #5e5e5e;
+    color: #fff;
 }
 table.tablesorter tbody td.budget-item-underspend{
-    background-color: green;
-    color: #ccc;
+    background-color: #469d37;
+    color: #fff;
 }
 .budget-item-underspend{
-    background-color: green;
-    color: #ccc;
+    background-color: #469d37;
+    color: #fff;
 }
 table.tablesorter tbody td.budget-item-halfway{
-    background-color: blue;
-    color: #ccc;
+    background-color: #6ca5e5;
+    color: #fff;
 }
 .budget-item-halfway{
-    background-color: blue;
-    color: #ccc;
+    background-color: #6ca5e5;
+    color: #fff;
 }
 table.tablesorter tbody td.budget-item-danger{
     background-color: #FFA500;
@@ -327,8 +327,8 @@ table.tablesorter tbody td.budget-item-danger{
 }
 
 .budget-busted{
-    background-color: red;
-    color: #ccc;  
+    background-color: #ed6363;
+    color: #fff;  
 }
 
 .expenseHistoryFilter > form >  div > label{
@@ -776,6 +776,7 @@ table.hover-highlight tbody > tr:hover > td, /* override tablesorter theme row h
 table.hover-highlight tbody > tr.odd:hover > td,
 table.hover-highlight tbody > tr.even:hover > td {
   background-color: #ffa;
+  color:#3D3D3D;
 }
 /* HOVER COLUMN highlight colors */
 .hover-highlight tbody tr td:hover::after,
