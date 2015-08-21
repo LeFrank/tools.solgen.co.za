@@ -178,7 +178,7 @@ class Notes extends CI_Controller {
             $this->load->view('footer');
         } else {
             $data["note"] = $this->notes_model->update();
-            redirect("/notes", "refresh");
+            redirect("/notes/view-note/".$this->input->post('id') , "refresh");
         }
     }
 
