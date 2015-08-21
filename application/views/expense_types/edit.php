@@ -8,7 +8,8 @@
         <input type="hidden" name="id" value="<?php echo $expenseType->id; ?>" />
         <label for="description">Description *</label>
         <input type="text" name="description" value="<?php echo $expenseType->description; ?>" /><br />
-
+        <label for="examples">Examples</label>
+        <input type="text" name="examples" value="<?php echo $expenseType->examples; ?>" /><br />
         <label for="enabled">Enabled</label>
         <select name="enabled">
             <option value="true" <?php echo ($expenseType->enabled == 1 ) ? "selected" : "" ?>>True</option>

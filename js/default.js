@@ -15,3 +15,11 @@ function getObjects(obj, key, val) {
     }
     return objects;
 }
+
+function showLoadingNotification(){
+        
+}
+
+function hideLoadingNotification(){
+    
+}

@@ -433,6 +433,62 @@ table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSo
     display:none;
 }
 
+.global-notice {
+    position: fixed;
+    width:20%;
+    height:10%;
+    z-index: 10000;
+    background-color: darkgray;
+    margin: 0 20px 20px 0;
+    right: 0;
+    bottom: 0;    
+    border-radius: 5px;
+    display:none;
+        .no-rgba & {
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#E66e65b2,endColorstr=#E66e65b2);        
+    }       
+    .overlaywrap {
+        position: absolute;
+        left: 50%;
+    }    
+    .message {
+        z-index: 2000;
+        padding: 10px 10px 10px 40px;
+        -moz-box-shadow: 0px 0px 10px #000; /* FF3.5+ */
+        -webkit-box-shadow: 0px 0px 10px #000; /* Saf3.0+, Chrome */
+        box-shadow: 0px 0px 10px #000; /* Opera 10.5, IE 9.0 */
+        border-radius: 5px;
+        background-color: darkgray;
+        background-position: 10px 50%;
+        height: auto;
+        width: auto;
+        color: #f1b836;  
+        font-size: 20px;            
+        top: 300px;
+        /*left:-50%;*/
+        max-width: 500px;
+        overflow: hidden;        
+        .loading { float: left; }
+        p { 
+            margin-bottom: 0!important; 
+            margin-top: 3px;
+            padding-left: 10px;
+            float: right;
+            .ie7 & {
+                float: left;
+            }
+        }
+        .no-boxshadow & {
+            border: 2px solid #444;    
+        }        
+    }
+} 
+
+
+/*******************************************************************************
+* Tools
+*******************************************************************************/
+
 /*
 * Weather
 */
