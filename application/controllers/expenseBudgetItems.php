@@ -25,6 +25,7 @@ class ExpenseBudgetItems extends CI_Controller {
         $this->load->library('session');
         $this->load->helper('form');
         $this->expense_budget_item_model->capture_expense_budget_items();
+        redirect("/expense-budget-items/items/". $this->input->post('budget-id'), "refresh");
     }
 
     public function delete($id) {

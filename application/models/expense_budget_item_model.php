@@ -41,6 +41,7 @@ class expense_budget_item_model extends CI_Model {
         $this->load->helper('date');
         $this->load->library("session");
         $amountArr = $this->input->post("amount");
+        $descriptionArr = $this->input->post("description");
         $types = $this->input->post("expenseType");
         $returnData = array();
         foreach($amountArr as $k => $v){
@@ -48,6 +49,7 @@ class expense_budget_item_model extends CI_Model {
                 'budget_id' => $this->input->post('budget-id'),
                 'expense_type_id' => $types[$k],
                 'limit_amount' => $v,
+                'description' => $descriptionArr[$k],
                 'create_date' => date('Y/m/d H:i'),
                 'user_id' => $this->session->userdata("user")->id
             );

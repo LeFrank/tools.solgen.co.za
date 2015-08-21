@@ -10,7 +10,7 @@
                     <th>Description</th>
                     <th>Previous Spend</th>
                     <th>Budgetted Amount</th>
-
+                    <th>Description</th>
                 </tr>
             </thead>
             <tbody>
@@ -32,13 +32,17 @@
                                 data-expense-count="<?php echo ((array_key_exists($expenseTypes[$k]["id"], $expenseTypesTotals)) ? $expenseTypesTotals[$expenseTypes[$k]["id"]]["expenseCount"] : "0"); ?>"  
                                 data-expense-ids="<?php echo ((array_key_exists($expenseTypes[$k]["id"], $expenseTypesTotals)) ? $expenseTypesTotals[$expenseTypes[$k]["id"]]["expenseIds"] : "0"); ?>"
                                 >
-                                <?php echo number_format($v["value"], 2, ".", ""); ?>
+                                    <?php echo number_format($v["value"], 2, ".", ""); ?>
                                 &nbsp;&nbsp;(<?php echo ((array_key_exists($expenseTypes[$k]["id"], $expenseTypesTotals)) ? $expenseTypesTotals[$expenseTypes[$k]["id"]]["expenseCount"] : "0"); ?>)
                             </td>
                             <td>
                                 <input type="hidden" name="expenseType[]" value="<?php echo $expenseTypes[$k]["id"]; ?>" />
                                 <input type="number"  step="1.00" max="99999999999.99" name="amount[]" placeholder="0.00" value="<?php echo round($v["value"]); ?>"
                                        name="epenseType[]" id="epenseType['<?php echo $k; ?>']" class="align-right"/>
+                            </td>
+                            <td>
+                                <input type="text"  name="description[]" placeholder="list the expenses you forsee" value=""
+                                       name="description[]" id="description['<?php echo $k; ?>']" />
                             </td>
                         </tr>
                         <?php
@@ -62,6 +66,11 @@
                                     <input type="number"  step="1.00" max="99999999999.99" name="amount[]" placeholder="0.00" value="0.00"
                                            name="epenseType[]" id="epenseType['<?php echo $k; ?>']" class="align-right"/>
                                 </td>
+                                <td>
+                                    <input type="text"  name="description[]" placeholder="list the expenses you forsee" value=""
+                                           name="description[]" id="description['<?php echo $k; ?>']" />
+                                </td>
+
                             </tr>
                             <?php
                             $count += 1;

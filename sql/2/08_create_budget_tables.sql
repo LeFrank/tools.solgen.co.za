@@ -20,3 +20,6 @@ CREATE TABLE `solgen`.`expense_budget_items` (
   `update_date` TIMESTAMP NULL,
   `user_id` INT NOT NULL,
   PRIMARY KEY (`id`));
+
+ALTER TABLE `expense_budget_items` 
+ADD COLUMN `description` VARCHAR(255) NULL AFTER `limit_amount`;

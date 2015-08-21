@@ -14,3 +14,6 @@ CREATE TABLE `timetable` (
   `location_id` INT NULL,
   `location_text` VARCHAR(500) NULL,
   PRIMARY KEY (`id`));
+
+ALTER TABLE `timetable` 
+CHANGE COLUMN `description` `description` VARCHAR(2000) NULL DEFAULT NULL ;

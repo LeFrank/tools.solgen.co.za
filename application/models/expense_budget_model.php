@@ -21,7 +21,6 @@ class expense_budget_model extends CI_Model {
      * @return type
      */
     public function capture_expense_budget() {
-        echo __CLASS__ . " >> " . __FUNCTION__ . " >> " . __LINE__;
         $this->load->helper('date');
         $this->load->library("session");
         $data = array(

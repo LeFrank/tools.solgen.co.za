@@ -5,6 +5,7 @@
             <thead>
                 <tr>
                     <th>&nbsp;</th>
+                    <th>Category</th>
                     <th>Description</th>
                     <th>Budgetted Amount</th>
                     <th>Spent So Far</th>
@@ -31,6 +32,9 @@
                             <td >
                                 <?php echo $expenseTypes[$v["expense_type_id"]]["description"]; ?>
                             </td>
+                            <td >
+                                <?php echo $v["description"]; ?>
+                            </td>
                             <td id="budget-amount" >
                                 <?php echo number_format($v["limit_amount"], 2, ".", ""); ?>
                             </td>
@@ -48,7 +52,7 @@
                             if ($valRemaining == 0) {
                                 echo "budget-item-complete";
                             } else if ($v["limit_amount"] != 0) {
-                                $percentage = number_format(($valRemaining / $v["limit_amount"] * 100), 2 , ".", "");
+                                $percentage = number_format(($valRemaining / $v["limit_amount"] * 100), 2, ".", "");
                                 if ($percentage > 0 && $percentage <= 20) {
                                     echo "budget-item-danger";
                                 } else if ($percentage > 20 && $percentage <= 50) {
@@ -67,7 +71,7 @@
                                         $projected += abs($valRemaining);
                                         $overrage += $valRemaining;
                                     }
-                                    echo number_format($valRemaining, 2, ".", "") . " (".$percentage."%)";
+                                    echo number_format($valRemaining, 2, ".", "") . " (" . $percentage . "%)";
                                     ?>
                             </td>
                         </tr>
@@ -79,6 +83,9 @@
             </tbody>
             <tfoot>
                 <tr>
+                    <td>
+                        &nbsp;
+                    </td>
                     <td>
                         &nbsp;
                     </td>
