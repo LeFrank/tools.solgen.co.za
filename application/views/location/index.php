@@ -15,6 +15,11 @@
         <?php } else { ?>
 
             <h3>Saved Locations</h3>
+            <div class="pagination-centered">
+                <?php
+                echo $this->pagination->create_links();
+                ?>
+            </div>
             <table class="location_list_table">
                 <thead>
                 <th>#</th>
@@ -29,9 +34,10 @@
                 <tbody>
                     <?php
                     $count = 1;
+
                     foreach ($locations as $location) {
                         echo "<tr>";
-                        echo "<td>" . $count . "</td>";
+                        echo "<td>" . (($per_page * $cur_page ) - 10 + $count) . "</td>";
                         echo "<td><a href='#capture-form' onclick='viewLocation(" . $location->id . ",\"" . $location->latitude . "\",\"" . $location->longitude . "\");'>" . $location->name . "</a></td>";
                         echo "<td>" . $location->description . "</td>";
                         echo "<td>" . $location->address . "</td>";
@@ -47,6 +53,11 @@
                     ?>
                 </tbody>
             </table>
+            <div class="pagination-centered">
+                <?php
+                echo $this->pagination->create_links();
+                ?>
+            </div>
         <?php } ?>
     </div>
 </div>

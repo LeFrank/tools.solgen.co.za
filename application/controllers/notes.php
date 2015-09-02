@@ -1,7 +1,9 @@
 <?php
 
 class Notes extends CI_Controller {
-
+    var $toolId = 7;
+    var $toolName = "Notes";
+    var $geoIdApiDetails = "";
     var $require_auth = true;
 
     public function __construct() {
@@ -78,7 +80,9 @@ class Notes extends CI_Controller {
         $this->pagination->cur_page = $page;
         $user = $this->session->userdata("user");
         $data["notes"] = $this->notes_model->getNotes(
-                $user->id, (($page != null) ? ($page - 1 ) * $this->pagination->per_page : $this->pagination->per_page), (($page != null) ? ($page - 1 ) * $this->pagination->per_page : null));
+                $user->id, 
+                $this->pagination->per_page, 
+                (($page != null) ? ($page) * $this->pagination->per_page : null));
         $this->pagination->total_rows = $this->notes_model->getNotes($user->id, null, null, true);
         $data["searches"] = $this->notes_search_model->getSearches($user->id, 10, null, false);
         $this->load->view('header');
@@ -112,6 +116,7 @@ class Notes extends CI_Controller {
             $config['per_page'] = $config['total_rows'] = 10;
             $this->pagination->initialize($config);
             $this->notes_search_model->updateReSearchCount($searchId);
+            $page = 1;
         } else {
             $this->pagination->uri_segment = 6;
         }

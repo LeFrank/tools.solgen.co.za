@@ -16,6 +16,7 @@ class Location extends CI_Controller {
         $this->load->helper("form");
         $this->load->library("form_validation");
         $this->load->helper('auth_helper');
+        $this->load->library('pagination');
     }
 
     /**
@@ -57,12 +58,36 @@ class Location extends CI_Controller {
         $this->load->view("footer");
     }
 
-    public function manage() {
+    public function manage($page = null) {
+        $data["cur_page"] = 0;
+        if ($page == null) {
+            $config['base_url'] = 'http://' . $_SERVER['SERVER_NAME'] . '/locations/page/';
+            $config['per_page'] = 10;
+            $config['total_rows'] = 10;
+            $this->pagination->initialize($config);
+        } else {
+            $this->pagination->uri_segment = 4;
+            $data["cur_page"] = $page;
+        }
+        $this->pagination->base_url = 'http://' . $_SERVER['SERVER_NAME'] . '/locations/page/';
+        $this->pagination->per_page = 10;
+        $data["per_page"] = $this->pagination->per_page;
+        $this->pagination->use_page_numbers = TRUE;
+        $this->pagination->cur_page = $page;
         $this->load->library('session');
         $data["css"] = '<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />';
         $data["js"] = '<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>';
         can_access(TRUE, $this->session);
-        $data["locations"] = $this->location_model->getLocations($this->session->userdata("user")->id);
+        $userId = $this->session->userdata("user")->id;
+        //$data["locations"] = $this->location_model->getLocations($this->session->userdata("user")->id);
+        $data["locations"] = $this->location_model->getLocations(
+                $userId, 
+                $this->pagination->per_page, 
+                (($page != null) ? ($page) * $this->pagination->per_page : null), null,null);
+        $this->pagination->total_rows = $this->location_model->getLocations(
+                $userId, 
+                null, 
+                null, true,null);
         $this->load->view("header", $data);
         $this->load->view("location/index", $data);
         $this->load->view("location/capture_form", $data);
@@ -99,6 +124,14 @@ class Location extends CI_Controller {
         $data["locations"] = $this->location_model->getLocations($this->session->userdata("user")->id);
         $this->load->view('general/action_status', $data);
         $this->load->view("location/index", $data);
+    }
+
+    public function search($locationNameStr = "") {
+        $this->load->helper('form');
+//        echo __CLASS__ ." > ". __METHOD__ . " > ". $locationNameStr;
+//        print_r(Array($this->input->post(),$this->input->get()));
+        echo json_encode($this->location_model->search(
+                        $this->input->get("q"), $this->session->userdata("user")->id), 15);
     }
 
     public function getLocationData($locationId) {

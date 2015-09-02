@@ -30,17 +30,23 @@ class location_model extends CI_Model {
         return $query->row();
     }
 
-    public function getLocations($userId , $limit = null, $default = null) {
-        $whereArray = array('user_id' => $userId);
-        if(null != $default){
-            $whereArray["priority"] = 1;
+    public function getLocations($userId , $limit = null, $offset = 0, $count = false, $default=null) {
+//        $whereArray = array('user_id' => $userId);
+//        if(null != $default){
+//            $whereArray["priority"] = 1;
+//        }
+        $this->db->order_by("create_date", "ASC");
+        if (null == $limit) {
+            $query = $this->db->get_where($this->tn, array('user_id' => $userId));
+        } else {
+            $query = $this->db->get_where($this->tn, array('user_id' => $userId), $limit, $offset);
         }
-        if (null != $limit) {
-            $query = $this->db->get_where($this->tn, $whereArray, $limit);
-        }else{
-            $query = $this->db->get_where($this->tn, $whereArray);
+//        echo $this->db->last_query();
+        if ($count) {
+            return $query->num_rows();
+        } else {
+            return $query->result();
         }
-        return $query->result();
     }
 
     public function set_user_location($userId, $id = null) {
@@ -74,4 +80,22 @@ class location_model extends CI_Model {
         return $this->db->update($this->tn, array("priority"=> 0));
     }
 
+    public function search($name=null,$userId = null, $limit = null, $offset = 0, $count = false){
+        if(null == $name){
+            return null;
+        }
+        if ($userId == null) {
+            return null;
+        }
+        $this->db->order_by("create_date", "desc");
+        $this->db->or_like('name', $name);
+        $this->db->or_like('description', $name);
+        $this->db->or_like('address', $name);
+        $query = $this->db->get_where($this->tn, array('user_id' => $userId), $limit);
+        if ($count) {
+            return $query->num_rows();
+        } else {
+            return $query->result_array();
+        }
+    }
 }

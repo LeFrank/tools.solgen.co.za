@@ -98,11 +98,14 @@ $route['expense-types/update'] = 'expenseTypes/update';
 $route['faq'] = 'faq/index';
 
 $route['locations'] = 'location/manage';
+$route['locations/page'] = 'location/manage';
+$route['locations/page/(:any)'] = 'location/manage/$1';
 $route['location/save'] = 'location/save';
 $route['location/edit/(:num)'] = 'location/edit/$1';
 $route['location/delete/(:num)'] = 'location/delete/$1';
 $route['location/get/(:num)'] = 'location/getLocationData/$1';
 $route['location/view/(:num)'] = 'location/view/$1';
+$route['location/search/(:any)'] = 'location/search/$1';
 
 $route['payment-methods/manage'] = 'paymentMethods/manage';
 $route['payment-methods/capture'] = 'paymentMethods/capture';
@@ -115,6 +118,7 @@ $route['test'] = 'pages/test';
 $route['notes/view-note/(:num)'] = 'notes/viewNote/$1';
 $route['notes/history/search'] = 'notes/searchHistorySave';
 $route['notes/history/search/(:num)'] = 'notes/searchHistory/$1';
+$route['notes/history/search/(:num)/page'] = 'notes/searchHistory/$1';
 $route['notes/history/search/(:num)/page/(:any)'] = 'notes/searchHistory/$1/$2';
 $route['notes/index'] = 'notes/history';
 $route['notes/capture'] = 'notes/capture';
