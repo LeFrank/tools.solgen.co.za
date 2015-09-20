@@ -32,9 +32,9 @@ class location_model extends CI_Model {
 
     public function getLocations($userId , $limit = null, $offset = 0, $count = false, $default=null) {
 //        $whereArray = array('user_id' => $userId);
-//        if(null != $default){
-//            $whereArray["priority"] = 1;
-//        }
+        if(null != $default){
+            $this->db->where("priority",1);
+        }
         $this->db->order_by("create_date", "ASC");
         if (null == $limit) {
             $query = $this->db->get_where($this->tn, array('user_id' => $userId));

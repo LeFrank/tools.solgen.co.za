@@ -135,11 +135,11 @@
 <div class="row ">
     <div class="large-12 columns">
         <label>Legend</label>
-        <span class="budget-item-complete">Black = Budget item spend completed</span><br/>
-        <span class="budget-item-busted">Red = Over Budget</span><br/>
         <span class="budget-item-underspend">Green = Less than half spent</span><br/>
         <span class="budget-item-halfway">Blue = Less than 80% spent</span><br/>
-        <span class="budget-item-danger">Orange = Final 20% of spend, nearing full spend</span>
+        <span class="budget-item-danger">Orange = Final 20% of spend, nearing full spend</span><br/>
+        <span class="budget-item-complete">Black = Budget item spend completed</span><br/>
+        <span class="budget-item-busted">Red = Over Budget</span><br/>
     </div>
 </div>
 <link rel="stylesheet" href="/css/third_party/thickbox/thickbox.css" type="text/css" media="screen" />

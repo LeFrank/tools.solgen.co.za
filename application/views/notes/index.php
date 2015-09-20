@@ -47,7 +47,7 @@
                         <div id="title_content" class="note_title">
                             <?php echo $v["heading"]?>
                         </div>
-                        <div id="body_content" class="note_body notes_body_clamp">
+                        <div id="body_content" contenteditable="true" class="note_body notes_body_clamp">
                             <?php echo $v["body"]?>
                         </div>
                         <div id="tags_content" class="note_tagg">

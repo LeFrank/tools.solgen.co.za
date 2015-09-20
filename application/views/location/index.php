@@ -37,7 +37,7 @@
 
                     foreach ($locations as $location) {
                         echo "<tr>";
-                        echo "<td>" . (($per_page * $cur_page ) - 10 + $count) . "</td>";
+                        echo "<td>" . (($per_page * $cur_page ) + $count) . "</td>";
                         echo "<td><a href='#capture-form' onclick='viewLocation(" . $location->id . ",\"" . $location->latitude . "\",\"" . $location->longitude . "\");'>" . $location->name . "</a></td>";
                         echo "<td>" . $location->description . "</td>";
                         echo "<td>" . $location->address . "</td>";

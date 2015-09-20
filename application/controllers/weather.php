@@ -35,7 +35,7 @@ class Weather extends CI_Controller {
         $data["user"] = $user;
         if (!empty($user) && !empty($this->weatherApiDetails)) {
             //get user location
-            $userLocations = $this->location_model->getLocations($user->id, null, 1);
+            $userLocations = $this->location_model->getLocations($user->id, null, null,null, 1);
         }
         //build api URL
         foreach ($userLocations as $k => $v) {
