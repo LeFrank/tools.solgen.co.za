@@ -12,26 +12,19 @@
     User Stats
 </h3>
 <label>User Count:
-<?php echo $registered_users;?> </label>
-<ul>
-    <li>
-        Show the next 7 days calendar events, starting with the current days events. est. 3 hours
-        <?php 
-            echo $eventsView;
-        ?>
-        <br/>
-    </li>
-    <li>
-        Show the weather for each days events. If the event is linked to a location get the weather for the location for the day. est 6 hours
-    </li>
-    <li>
-        Show notes marked as top of mind in a revolving note gallery. est. 1 hour
-    </li>
-    <li>
-        Current budget position est. 2 hours
-        <?php 
-            echo $eventsBudgetItems;
-        ?>
-    </li>
-</ul>
+    <?php echo $registered_users["user_count"]; ?> </label>
+<br/>
+<h3>
+    Next 7 days calendar events, starting with the current days events. est. 3 hours
+</h3>
+<?php
+echo $eventsView;
+?>
+<br/>
+<h3>
+    Current budget position
+</h3>
+<?php
+echo $eventsBudgetItems;
+?>
 

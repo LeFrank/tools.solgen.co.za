@@ -68,7 +68,7 @@ class Home extends CI_Controller {
             //$this->expenseBudgetItems->manage(7);
             // get admin data
             // what is admin data?
-            $data["registered_users"] = $this->user_model->get_admin_data()["user_count"];
+            $data["registered_users"] = $this->user_model->get_admin_data();
             $this->load->view('home/admin-dashboard', $data);
         } else {
             $this->load->view('home/user-dashboard');
