@@ -12,10 +12,14 @@
     User Stats
 </h3>
 <label>User Count:
-<?php echo $user_count;?> </label>
+<?php echo $registered_users;?> </label>
 <ul>
     <li>
         Show the next 7 days calendar events, starting with the current days events. est. 3 hours
+        <?php 
+            echo $eventsView;
+        ?>
+        <br/>
     </li>
     <li>
         Show the weather for each days events. If the event is linked to a location get the weather for the location for the day. est 6 hours
@@ -25,6 +29,9 @@
     </li>
     <li>
         Current budget position est. 2 hours
+        <?php 
+            echo $eventsBudgetItems;
+        ?>
     </li>
 </ul>
 

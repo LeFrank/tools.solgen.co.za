@@ -78,6 +78,11 @@ class expense_budget_model extends CI_Model {
         return $query->row();
     }
 
+    public function getExpenseBudgetByPeriodId($periodId) {
+        $query = $this->db->get_where($this->tn, array('expense_period_id' => $periodId));
+        return $query->row();
+    }
+    
     /**
      * Get budgets bases on certain criteria
      * @param type $userId if present return this users expenses.

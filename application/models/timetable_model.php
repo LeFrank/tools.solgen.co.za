@@ -79,16 +79,16 @@ class timetable_model extends CI_Model {
     public function getFilteredTimetableEvents($userId, $search) {
         $this->db->order_by("start_date", "asc");
         $this->db->or_where("user_id =", $userId);
-        if ($search["name"] != null) {
+        if (isset($search["name"]) && $search["name"] != null) {
             $this->db->like("name", $search["name"]);
         }
-        if ($search["description"] != null && $search["description"] != "") {
+        if (isset($search["description"]) && $search["description"] != null && $search["description"] != "") {
             $this->db->like("description", $search["description"]);
         }
-        if ($search["timetableCategory"] != null && $search["timetableCategory"] != "") {
+        if (isset($search["tt_category_id"]) && $search["timetableCategory"] != null && $search["timetableCategory"] != "") {
             $this->db->where("tt_category_id", $search["timetableCategory"]);
         }
-        if ($search["allDayEvent"] != null && $search["allDayEvent"] != "") {
+        if (isset($search["allDayEvent"]) && $search["allDayEvent"] != null && $search["allDayEvent"] != "") {
             if ($search["startDate"] != null && $search["startDate"] != "" &&
                     $search["endDate"] != null && $search["endDate"] != "") {
                 $this->db->where("start_date >=", date('Y/m/d', strtotime($search["startDate"])));
@@ -102,12 +102,12 @@ class timetable_model extends CI_Model {
 //        if ($search["endDate"] != null && $search["endDate"] != "") {
 //            $this->db->where("end_date <=", date('Y/m/d', strtotime($search["endDate"])));
 //        }
-        if ($search["location"] != null && $search["location"] != "") {
+        if (isset($search["location"]) && $search["location"] != null && $search["location"] != "") {
             $this->db->or_like("location_text", $search["location"]);
         }
         
         //$this->db->or_where("location_id", $search["location"]);
-        if ($search["timetableExpenseType"] != null && $search["timetableExpenseType"] != "" && $search["timetableExpenseType"] != 0 ) {
+        if (isset($search["timetableExpenseType"]) && $search["timetableExpenseType"] != null && $search["timetableExpenseType"] != "" && $search["timetableExpenseType"] != 0 ) {
             $this->db->where("expense_type_id", $search["timetableExpenseType"]);
         }
         $query = $this->db->get_where($this->tn);
