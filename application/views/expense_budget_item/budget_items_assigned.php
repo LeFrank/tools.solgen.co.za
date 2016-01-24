@@ -9,13 +9,16 @@
                     <th>Description</th>
                     <th>Budgetted Amount</th>
                     <th>Spent So Far</th>
-                    <th>Remaining This Period</th>
+                    <th>Expenses</th>
+                    <th>Remaining Amounts</th>
+                    <th>Remaining %</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
                 $ttypes = array();
                 $totalSpent = 0;
+                $totalExpenses = 0;
                 $totalRemaining = 0;
                 $projected = 0;
                 $overrage = 0;
@@ -45,7 +48,16 @@
                                     <?php
                                     echo ((array_key_exists($v["expense_type_id"], $expenseTypesTotals)) ? number_format($expenseTypesTotals[$v["expense_type_id"]]["value"], 2, ".", "") : "0.00" );
                                     $totalSpent = $totalSpent + ((array_key_exists($v["expense_type_id"], $expenseTypesTotals)) ? $expenseTypesTotals[$v["expense_type_id"]]["value"] : 0 );
-                                    ?>&nbsp;&nbsp;(<?php echo ((array_key_exists($v["expense_type_id"], $expenseTypesTotals)) ? $expenseTypesTotals[$v["expense_type_id"]]["expenseCount"] : "0"); ?>)
+                                    ?>
+                            </td>
+                            <td id="spent-to-date" data-category="<?php echo $v["expense_type_id"]; ?>" 
+                                data-expense-count="<?php echo ((array_key_exists($v["expense_type_id"], $expenseTypesTotals)) ? $expenseTypesTotals[$v["expense_type_id"]]["expenseCount"] : "0"); ?>"  
+                                data-expense-ids="<?php echo ((array_key_exists($v["expense_type_id"], $expenseTypesTotals)) ? $expenseTypesTotals[$v["expense_type_id"]]["expenseIds"] : "0"); ?>"
+                                >
+                                <?php 
+                                    $totalExpenses += ((array_key_exists($v["expense_type_id"], $expenseTypesTotals)) ? $expenseTypesTotals[$v["expense_type_id"]]["expenseCount"] : "0");
+                                    echo ((array_key_exists($v["expense_type_id"], $expenseTypesTotals)) ? $expenseTypesTotals[$v["expense_type_id"]]["expenseCount"] : "0"); 
+                                ?>
                             </td>
                             <td id="remaining-for-period" data-category="<?php echo $v["expense_type_id"]; ?>" class="<?php
                             $percentage = 00;
@@ -71,8 +83,13 @@
                                         $projected += abs($valRemaining);
                                         $overrage += $valRemaining;
                                     }
-                                    echo number_format($valRemaining, 2, ".", "") . " (" . $percentage . "%)";
+                                    echo number_format($valRemaining, 2, ".", "");
                                     ?>
+                            </td>
+                            <td>
+                                <?php 
+                                    echo $percentage;
+                                ?>
                             </td>
                         </tr>
                         <?php
@@ -97,6 +114,9 @@
                     </td>
                     <td>
                         <h4>Total Spent: <?php echo number_format($totalSpent, 2, ".", ","); ?></h4>
+                    </td>
+                    <td>
+                        <h4>Total Expenses: <?php echo number_format($totalExpenses, 0); ?></h4>
                     </td>
                     <td>
                         <h4>Current Status: <?php echo number_format($expenseBudget->total_limit - $totalSpent, 2, ".", ""); ?></h4>
