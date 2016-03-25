@@ -36,7 +36,7 @@
                 <div class="large-4 columns">
                     <?php if (!$this->session->userdata("loggedIn")) { ?>
                         <?php echo form_open('user/login') ?>
-                        <input type="text" id="email" name="email" value="" placeholder="Email" autocomplete="on"/>&nbsp;&nbsp;&nbsp;
+                        <input type="text" id="email" name="email" value="" placeholder="Email" autocomplete="on" autofocus />&nbsp;&nbsp;&nbsp;
                         <input id="password" name="password" placeholder="Password"  type="password" value="" />&nbsp;&nbsp;&nbsp;
                         <input type="submit" name="submit" value="Login" class="button tiny" />
                         <br/>

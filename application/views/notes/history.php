@@ -12,9 +12,9 @@
         <?php if (!empty($search)) {
             ?>
             <h3 id="SearchCriteria">
-                Search text: <span class="search-criteria"><?php echo (($search[0]["text"] == "")?"None":$search[0]["text"]  ); ?></span>
-                from date: <span class="search-criteria"><?php echo (($search[0]["start_date"] == "0000-00-00 00:00:00")?"None":$search[0]["start_date"]); ?> </span>
-                to date: <span class="search-criteria"><?php echo (($search[0]["end_date"] == "0000-00-00 00:00:00")?"None":$search[0]["end_date"]); ?> </span>
+                Search text: <span class="search-criteria"><?php echo $search[0]["text"]; ?></span>
+                from date: <span class="search-criteria"><?php echo strtotime($search[0]["start_date"]) . " | " . (strtotime($search[0]["start_date"]) == 0) ? "None" : $search[0]["start_date"]; ?> </span>
+                to date: <span class="search-criteria"><?php echo strtotime($search[0]["end_date"]) . " | " . (strtotime($search[0]["end_date"]) == 0) ? "None" : $search[0]["end_date"]; ?> </span>
             </h3>
             Total Results: <span class="search-criteria"><?php echo $total_returned; ?></span>
             <?php
@@ -28,7 +28,7 @@
                             <div class="row">
                                 <div class="large-6 columns" >
                                     <label for="title">Text
-                                        <input type="text" name="searchText" placeholder="Topic, subject, content or tag text you wish to search for" value="" />
+                                        <input type="text" name="searchText" id="searchText"  autofocus  placeholder="Topic, subject, content or tag text you wish to search for" value="" />
                                     </label>
                                     <div class="row">
                                         <div class="large-2 columns" >
@@ -77,7 +77,7 @@
                                             ?>
                                             <div class="row">
                                                 <div class='large-4 columns' >
-                                                    <a href='/notes/history/search/<?php echo $vv["id"]; ?>' ><?php echo (($vv["text"] == "" )?"&nbsp;":$vv["text"]); ?></a>
+                                                    <a href='/notes/history/search/<?php echo $vv["id"]; ?>' ><?php echo $vv["text"]; ?></a>
                                                 </div>
                                                 <div class='large-4 columns' >
                                                     <a href='/notes/history/search/<?php echo $vv["id"]; ?>' ><?php echo (($vv["start_date"] == "0000-00-00 00:00:00") ? "None" : $vv["start_date"]); ?></a>
@@ -147,7 +147,7 @@
                         <div id="title_content" class="note_title">
                             <?php echo $v["heading"] ?>
                         </div>
-                        <div id="body_content_<?php echo $v["id"] ?>" class="note_body notes_body_clamp" contenteditable="true">
+                        <div id="body_content_<?php echo $v["id"] ?>" class="note_body notes_body_clamp">
                             <?php echo $v["body"] ?>
                         </div>
                         <div id="showMoreDiv" class="show-content button tiny secondary" data-note-id="<?php echo $v["id"]?>">Show More</div>

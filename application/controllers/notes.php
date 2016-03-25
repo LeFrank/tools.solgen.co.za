@@ -1,9 +1,7 @@
 <?php
 
 class Notes extends CI_Controller {
-    var $toolId = 7;
-    var $toolName = "Notes";
-    var $geoIdApiDetails = "";
+
     var $require_auth = true;
 
     public function __construct() {

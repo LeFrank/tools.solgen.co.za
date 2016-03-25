@@ -173,7 +173,7 @@ class Notes_model extends CI_Model {
             $this->db->or_like('body', $search);
             $this->db->or_like('tagg', $search);
         }
-        $query = $this->db->get_where($this->tn, array('user_id' => $userId), $limit);
+        $query = $this->db->get_where($this->tn, array('user_id' => $userId), 100);
         if ($count) {
             return $query->num_rows();
         } else {

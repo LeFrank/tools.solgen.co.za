@@ -4,9 +4,9 @@
             <h3>Location Details    </h3><a name="capture-form" />
             <input type="button" class="button secondary tiny" value="New" id="newLocation" onclick="clearFields()"/> 
             <br/>
-            <input type = "hidden" id="locationId" name="locationId" value = ""/>
+            <input type = "hidden" id="locationId" name="locationId" value = ""  />
             <label for = "name">Name *</label>
-            <input type = "text" placeholder="Home, John's place" id="name" name="name" value = "" />
+            <input type = "text" placeholder="Home, John's place" id="name" name="name" value = "" autofocus/>
             <br/>
             <label for = "description">Description</label>
             <textarea placeholder="Description" id="description" name = "description" ></textarea>

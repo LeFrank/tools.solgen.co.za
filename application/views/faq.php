@@ -12,14 +12,9 @@
             <h3>What does this site do?</h3>
             <p>
                 The intention is to build tools that help me :) and be useful to others as well.<br/>
-                The available tools are:
-            <ol>
-                <li>Expense</li>
-                <li>Notes</li>
-                <li>Locations</li>
-                <li>Weather</li>
-                <li>Timetable</li>
-            </ol>
+                At the moment there is only one tools available. The expenses tool.<br/>
+                You input and track your expenses over a calendar month.<br/>
+                It then generates interesting statistics and graphs of this data.
             </p>
         </li>
         <li>
@@ -54,31 +49,11 @@
             <h3>What does the expense tool do?</h3>
             <p>
                 The tool is still in progress, it provides a place to record expenses.<br/>
-                Once recorded it provides a few ways to analyse the data.<br>
+                Once recorded it provides a few ways to analyse the data.<br/>
                 The history page allows for the filtering of data based on the captured criterion.<br/>
                 The statistics page allows for a high level view of expenses over a time period,<br/>
-                it also breaks down expenses per criterion. There is the option to drill down<br.>
-            further, as well as change the time period.<br/>
-
-            <ul>
-                <li>Capture an expense</li>
-                <li>Display the history of expenses</li>
-                <li>Allows for the creation,editing and deletion of expense types</li>
-                <li>Allows for the creation,editing and deletion of payment methods</li>
-                <li>Generates Statistics for the passed calendar month period</li>
-                <li>Generates Statistics for a user selected number of days</li>
-            </ul>
-            </p>
-        </li>
-        <li>
-            <h3>What does the expense tool do?</h3>
-            <p>
-                The tool is still in progress, it provides a place to record expenses.<br/>
-                Once recorded it provides a few ways to analyse the data.<br>
-                The history page allows for the filtering of data based on the captured criterion.<br/>
-                The statistics page allows for a high level view of expenses over a time period,<br/>
-                it also breaks down expenses per criterion. There is the option to drill down<br.>
-            further, as well as change the time period.<br/>
+                it also breaks down expenses per criterion. There is the option to drill down<br>
+                further, as well as change the time period.<br/>
 
             <ul>
                 <li>Capture an expense</li>

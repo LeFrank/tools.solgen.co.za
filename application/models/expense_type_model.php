@@ -11,7 +11,6 @@ class Expense_type_model extends CI_Model {
     public function create_expense_type() {
         $data = array(
             'description' => $this->input->post('description'),
-            'examples' => $this->input->post('examples'),
             'enabled' => ($this->input->post('enabled')) ? 1 : 0,
             'create_date' => date('Y/m/d H:i:s'),
             'user_id' => $this->session->userdata("user")->id
@@ -68,7 +67,6 @@ class Expense_type_model extends CI_Model {
     public function update() {
         $data = array(
             "description" => $this->input->post('description'),
-            "examples" => $this->input->post('examples'),
             "enabled" => ($this->input->post('enabled')) ? 1 : 0,
             "update_date" => date('Y/m/d H:i:s')
         );

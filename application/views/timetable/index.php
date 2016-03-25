@@ -6,7 +6,7 @@
                 <h3>Capture An Event</h3>
                 <input type="hidden" id="id" name="id" value="" />
                 <label for="name">Name *</label>
-                <input id="name" type="text" value="" name="name" placeholder="Party at John's/ Dentist appointment...">
+                <input id="name" type="text" value="" name="name" placeholder="Party at John's/ Dentist appointment..." autofocus />
                 <br>
                 <label for="description">Description</label>
                 <textarea id="description" name="description" cols="20" rows="8"></textarea>

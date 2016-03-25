@@ -60,7 +60,7 @@
             <div class="row">
                 <div class="large-4 columns">
                     <label for="amount">Amount *</label>
-                    <input type="number" min="0.01" step="0.01" max="9999999999999" name="amount" placeholder="0.00"/><br />
+                    <input type="number" min="0.01" step="0.01" max="9999999999999" name="amount" placeholder="0.00"autofocus /><br />
                 </div>
                 <div class="large-4 columns">
                     <label for="expenseType">Expense Type</label>

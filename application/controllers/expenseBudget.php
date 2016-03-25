@@ -18,14 +18,6 @@ class ExpenseBudget extends CI_Controller {
         $this->load->model('expense_period_model');
     }
 
-    public function analyse($budgetId=false){
-        echo __CLASS__ . " >> " . __FUNCTION__;
-        //get budget period
-        //get all expsenses for the period
-        //compare budget item goals
-        //compare 
-    }
-    
     public function capture() {
         $this->load->helper('form');
         $this->load->helper('url');

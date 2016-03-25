@@ -45,7 +45,7 @@
     <?php echo form_open('event-category/capture') ?>
 
     <label for="name">Name *</label>
-    <input type="text" name="name" /><br />
+    <input type="text" name="name" autofocus /><br />
     
     <label for="description">Description *</label>
     <textarea name="description" id="description" cols="20" rows="8" ></textarea><br />

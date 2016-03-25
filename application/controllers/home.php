@@ -45,7 +45,7 @@ class Home extends CI_Controller {
                             <link href='/css/third_party/fullcalendar/fullcalendar.print.css' rel='stylesheet' media='print' />";
             $user = $this->session->userdata("user");
             //get calendar data
-            $data["startAndEndDateOfWeek"] = getStartAndEndDateforWeek(date('W'), date('Y'));
+            $data["startAndEndDateOfWeek"] = getNextSevenDays(date('N'), date('Y'));
             $search["startDate"] = $data["startAndEndDateOfWeek"][0];
             $search["endDate"] = $data["startAndEndDateOfWeek"][1];
             $data["entries"] = $this->timetable_model->getFilteredTimetableEvents($user->id, $search);

@@ -29,9 +29,8 @@
                             echo "<td>" . $v["description"] . "</td>";
                             echo "<td>" . $v["total_limit"] . "</td>";
                             echo "<td>" . $v["create_date"] . "</td>";
-                            echo "<td><a href='/expense-budget-items/items/" . $v["id"] . "'>Budget Limits     </a>&nbsp;&nbsp;|"
-                                 ."&nbsp;&nbsp;<a href='/expense-budget/analyse/" . $v["id"] . "'>Analyse Budget</a>&nbsp;&nbsp;|"   
-                            . "&nbsp;&nbsp;<a href='/expense-budget/edit/" . $v["id"] . "'>Edit</a>&nbsp;&nbsp;|"
+                            echo "<td><a href='/expense-budget-items/items/" . $v["id"] . "'>Budget Limits     </a>"
+                            . "<a href='/expense-budget/edit/" . $v["id"] . "'>Edit</a>&nbsp;&nbsp;|"
                             . "&nbsp;&nbsp;<a href='/expense-budget/delete/" . $v["id"] . "'>Delete</a></td>";
                             echo "</tr>";
                         }
