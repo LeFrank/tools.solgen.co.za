@@ -7,8 +7,9 @@
  */
 
 class Expenses extends CI_Controller {
-
-    var $require_auth = true;
+    var $toolId = 1;
+    var $toolName = "Expenses";
+    var $require_auth = TRUE;
 
     public function __construct() {
         parent::__construct();
@@ -25,6 +26,7 @@ class Expenses extends CI_Controller {
         $this->load->model('payment_method_model');
         $this->load->model('expense_period_model');
         //$this->load->model('user_expense_type_model');
+        $data["globalTitle"] = $this->toolName;
     }
 
     public function capture() {
@@ -56,7 +58,7 @@ class Expenses extends CI_Controller {
             $data["message_classes"] = "success";
             $data["message"] = "The expense was successfully deleted";
             $data["reUrl"] = "/expenses";
-            $this->load->view('header');
+            $this->load->view('header', $data);
             $this->load->view('expenses/expense_nav');
             $this->load->view('general/action_status', $data);
             $this->load->view('expenses/view', $data);
@@ -70,7 +72,7 @@ class Expenses extends CI_Controller {
             $data["message"] = "The expense you are attempting to delete does not exist or does not belong to you.";
             $data["reUrl"] = "/expenses";
             $data["expense"] = $this->expense_model->getExpenses($this->session->userdata("user")->id, 5);
-            $this->load->view('header');
+            $this->load->view('header', $data);
             $this->load->view('expenses/expense_nav');
             $this->load->view('general/action_status', $data);
             $this->load->view('expenses/view', $data);
@@ -80,12 +82,11 @@ class Expenses extends CI_Controller {
 
     public function edit($id) {
         $this->load->library('session');
-        //is it mine?
         $data["expenseTypes"] = mapKeyToId($this->expense_type_model->get_user_expense_types($this->session->userdata("user")->id));
         $data["expensePaymentMethod"] = mapKeyToId($this->payment_method_model->get_user_payment_method($this->session->userdata("user")->id), false);
         if ($this->expense_model->doesItBelongToMe($this->session->userdata("user")->id, $id)) {
             $data["expense"] = $this->expense_model->getExpense($id);
-            $this->load->view('header');
+            $this->load->view('header', $data);
             $this->load->view('expenses/expense_nav');
             $this->load->view('expenses/edit', $data);
             $this->load->view('footer');
@@ -96,7 +97,7 @@ class Expenses extends CI_Controller {
             $data["action_description"] = "Edit an expense";
             $data["message_classes"] = "failure";
             $data["message"] = "The expense you are attempting to edit does not exist or does not belong to you.";
-            $this->load->view('header');
+            $this->load->view('header', $data);
             $this->load->view('expenses/expense_nav');
             $this->load->view('user/user_status', $data);
             $this->load->view('expenses/view', $data);
@@ -176,14 +177,14 @@ class Expenses extends CI_Controller {
         //$data["startAndEndDateOfWeek"] = getStartAndEndDateforWeek(date('W'), date('Y'));
         $data["startAndEndDateforMonth"] = getStartAndEndDateforMonth(date("m"), date('Y'));
         $data["expensesForPeriod"] = $this->expense_model->getExpensesbyDateRange($data["startAndEndDateforMonth"][0], $data["startAndEndDateforMonth"][1], $this->session->userdata("user")->id);
-        $this->load->view('header');
+        $this->load->view('header', $data);
         $this->load->view('expenses/expense_nav');
         $this->load->view('expenses/history', $data);
         $this->load->view('footer');
     }
 
     public function options() {
-        $this->load->view('header');
+        $this->load->view('header', $data);
         $this->load->view('expenses/expense_nav');
         $this->load->view('expenses/options');
         $this->load->view('footer');
@@ -233,7 +234,7 @@ class Expenses extends CI_Controller {
         $data["expensesByHourOfDay"] = getExpensesForHourOfDay($expensesForPeriod);
         $data["daysOfWeek"] = getDaysOfWeek();
         
-        $this->load->view('header');
+        $this->load->view('header', $data);
         $this->load->view('expenses/expense_nav');
         $this->load->view('expenses/statistics', $data);
         $this->load->view('footer');
@@ -244,7 +245,7 @@ class Expenses extends CI_Controller {
         $data["expenseTypes"] = mapKeyToId($this->expense_type_model->get_user_expense_types($this->session->userdata("user")->id));
         $data["expensePaymentMethod"] = mapKeyToId($this->payment_method_model->get_user_payment_method($this->session->userdata("user")->id), false);
         $data["expense"] = $this->expense_model->getExpenses($this->session->userdata("user")->id, 5);
-        $this->load->view('header');
+        $this->load->view('header', $data);
         $this->load->view('expenses/expense_nav');
         $this->load->view('expenses/view', $data);
         $this->load->view('footer');
@@ -267,7 +268,7 @@ class Expenses extends CI_Controller {
             $data["expenseTypes"] = mapKeyToId($this->expense_type_model->get_user_expense_types($this->session->userdata("user")->id));
             $data["expensePaymentMethod"] = mapKeyToId($this->payment_method_model->get_user_payment_method($this->session->userdata("user")->id), false);
             $data["expense"] = $this->expense_model->getExpenses($this->session->userdata("user")->id, 5);
-            $this->load->view('header');
+            $this->load->view('header', $data);
             $this->load->view('expenses/expense_nav');
             $this->load->view('user/user_status', $data);
             $this->load->view('expenses/view', $data);

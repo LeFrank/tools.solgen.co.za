@@ -51,7 +51,7 @@
 
             <?php echo form_open('expense-periods/capture') ?>
             <label for="name">Name *</label>
-            <input type="text" name="name" placeholder="June - July"/><br />
+            <input type="text" name="name" autofocus placeholder="June - July" /><br />
             <label for="description">Description *</label>
             <input type="text" name="description" placeholder="Trip to spain is this period"/><br />
             <div class="row">

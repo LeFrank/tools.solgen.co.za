@@ -1,8 +1,9 @@
 <?php
 
 class Notes extends CI_Controller {
-
-    var $require_auth = true;
+    var $toolId = 7;
+    var $toolName = "Notes";
+    var $require_auth = TRUE;
 
     public function __construct() {
         parent::__construct();
@@ -18,6 +19,7 @@ class Notes extends CI_Controller {
         $this->load->model('notes_model');
         $this->load->model('notes_search_model');
         $this->load->library('pagination');
+        $data["globalTitle"] = $this->toolName;
     }
 
     public function capture() {
@@ -56,7 +58,8 @@ class Notes extends CI_Controller {
 
     public function edit($id = null) {
         $data["note"] = $this->notes_model->getNote($id);
-        $this->load->view('header');
+        $data["globalTitle"] = $this->toolName . " > Editing: ". $data["note"]->heading;
+        $this->load->view('header', $data);
         $this->load->view('notes/notes_nav', $data);
         $this->load->view("notes/capture_form", $data);
         $this->load->view('notes/notes_includes', $data);
@@ -83,7 +86,7 @@ class Notes extends CI_Controller {
                 (($page != null) ? ($page) * $this->pagination->per_page : null));
         $this->pagination->total_rows = $this->notes_model->getNotes($user->id, null, null, true);
         $data["searches"] = $this->notes_search_model->getSearches($user->id, 10, null, false);
-        $this->load->view('header');
+        $this->load->view('header', $data);
         $this->load->view('notes/notes_nav', $data);
         $data["capture_form"] = $this->load->view("notes/capture_form", $data, TRUE);
         $this->load->view('notes/history', $data);
@@ -216,7 +219,8 @@ class Notes extends CI_Controller {
         $user = $this->session->userdata("user");
         $data["note"] = $this->notes_model->getNote($id);
         $data["searches"] = $this->notes_search_model->getSearches($user->id, 10, null, false);
-        $this->load->view('header');
+        $data["globalTitle"] = $this->toolName . ": ". $data["note"]->heading;
+        $this->load->view('header', $data);
         $this->load->view('notes/notes_nav', $data);
         $data["capture_form"] = $this->load->view("notes/capture_form", $data, TRUE);
         $this->load->view("notes/view_note", $data);

@@ -7,7 +7,7 @@
 
         <input type="hidden" name="id" value="<?php echo $expensePeriod->id; ?>" />
         <label for="name">Name *</label>
-        <input type="text" name="name" value="<?php echo $expensePeriod->name; ?>" /><br />
+        <input type="text" name="name" value="<?php echo $expensePeriod->name; ?>"  autofocus /><br />
         <label for="description">Description *</label>
         <input type="text" name="description" value="<?php echo $expensePeriod->description; ?>" /><br />
         <label for="startDate">Start Date *</label>
