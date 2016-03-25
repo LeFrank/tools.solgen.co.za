@@ -13,6 +13,7 @@ class Timetable extends CI_Controller {
         $this->load->helper('auth_helper');
         $this->load->helper('json_helper');
         $this->load->helper('array_helper');
+        $this->load->helper('usability_helper');
         $this->load->model("timetable_model");
         $this->load->model("timetable_category_model");
         $this->load->model("timetable_repetition_model");
@@ -121,7 +122,7 @@ class Timetable extends CI_Controller {
         $data["eventRepetition"] = $this->timetable_repetition_model->get_timetable_repeats($user->id);
         $data["expenseTypes"] = mapKeyToId($this->expense_type_model->get_user_expense_types($user->id), true);
         $data["locations"] = $this->location_model->getLocations($user->id);
-        $this->load->view("header", $data);
+        $this->load->view('header', getPageTitle($data, $this->toolName,"Overview",""));
         $this->load->view("timetable/timetable_nav");
         if (!empty($data["status"])) {
             $this->load->view("general/action_status", $data);

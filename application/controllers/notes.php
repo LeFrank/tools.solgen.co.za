@@ -1,6 +1,7 @@
 <?php
 
 class Notes extends CI_Controller {
+
     var $toolId = 7;
     var $toolName = "Notes";
     var $require_auth = TRUE;
@@ -10,6 +11,7 @@ class Notes extends CI_Controller {
         $this->load->helper('auth_helper');
         $this->load->helper("date_helper");
         $this->load->helper("notes_stats_helper");
+        $this->load->helper('usability_helper');
         $this->load->library('session');
         $this->load->helper('form');
         $this->load->helper('url');
@@ -58,8 +60,8 @@ class Notes extends CI_Controller {
 
     public function edit($id = null) {
         $data["note"] = $this->notes_model->getNote($id);
-        $data["globalTitle"] = $this->toolName . " > Editing: ". $data["note"]->heading;
-        $this->load->view('header', $data);
+        $data["globalTitle"] = $this->toolName . " > Editing: " . $data["note"]->heading;
+        $this->load->view('header', getPageTitle($data, $this->toolName, "Overview", ""));
         $this->load->view('notes/notes_nav', $data);
         $this->load->view("notes/capture_form", $data);
         $this->load->view('notes/notes_includes', $data);
@@ -81,9 +83,7 @@ class Notes extends CI_Controller {
         $this->pagination->cur_page = $page;
         $user = $this->session->userdata("user");
         $data["notes"] = $this->notes_model->getNotes(
-                $user->id, 
-                $this->pagination->per_page, 
-                (($page != null) ? ($page) * $this->pagination->per_page : null));
+                $user->id, $this->pagination->per_page, (($page != null) ? ($page) * $this->pagination->per_page : null));
         $this->pagination->total_rows = $this->notes_model->getNotes($user->id, null, null, true);
         $data["searches"] = $this->notes_search_model->getSearches($user->id, 10, null, false);
         $this->load->view('header', $data);
@@ -184,7 +184,7 @@ class Notes extends CI_Controller {
             $this->load->view('footer');
         } else {
             $data["note"] = $this->notes_model->update();
-            redirect("/notes/view-note/".$this->input->post('id') , "refresh");
+            redirect("/notes/view-note/" . $this->input->post('id'), "refresh");
         }
     }
 
@@ -219,8 +219,7 @@ class Notes extends CI_Controller {
         $user = $this->session->userdata("user");
         $data["note"] = $this->notes_model->getNote($id);
         $data["searches"] = $this->notes_search_model->getSearches($user->id, 10, null, false);
-        $data["globalTitle"] = $this->toolName . ": ". $data["note"]->heading;
-        $this->load->view('header', $data);
+        $this->load->view('header', getPageTitle($data, $this->toolName, "Overview", ""));
         $this->load->view('notes/notes_nav', $data);
         $data["capture_form"] = $this->load->view("notes/capture_form", $data, TRUE);
         $this->load->view("notes/view_note", $data);

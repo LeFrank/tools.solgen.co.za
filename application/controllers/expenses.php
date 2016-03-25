@@ -16,6 +16,7 @@ class Expenses extends CI_Controller {
         $this->load->library('session');
         $this->load->helper('auth_helper');
         $this->load->helper("array_helper");
+        $this->load->helper('usability_helper');
         $this->load->helper('url');
         $this->load->helper('email');
         $this->load->library('form_validation');
@@ -26,7 +27,6 @@ class Expenses extends CI_Controller {
         $this->load->model('payment_method_model');
         $this->load->model('expense_period_model');
         //$this->load->model('user_expense_type_model');
-        $data["globalTitle"] = $this->toolName;
     }
 
     public function capture() {
@@ -245,7 +245,7 @@ class Expenses extends CI_Controller {
         $data["expenseTypes"] = mapKeyToId($this->expense_type_model->get_user_expense_types($this->session->userdata("user")->id));
         $data["expensePaymentMethod"] = mapKeyToId($this->payment_method_model->get_user_payment_method($this->session->userdata("user")->id), false);
         $data["expense"] = $this->expense_model->getExpenses($this->session->userdata("user")->id, 5);
-        $this->load->view('header', $data);
+        $this->load->view('header', getPageTitle($data, $this->toolName,"Overview",""));
         $this->load->view('expenses/expense_nav');
         $this->load->view('expenses/view', $data);
         $this->load->view('footer');
