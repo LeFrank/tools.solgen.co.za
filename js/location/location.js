@@ -143,6 +143,7 @@ function editLocation(locationId) {
                 map.setZoom(13);
                 marker.bindPopup("<b>" + obj.location.name +
                         "</b><br>Address :" + obj.location.address).openPopup();
+                $("#name").focus();
                 break;
         }
     });

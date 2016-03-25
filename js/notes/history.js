@@ -3,6 +3,7 @@ $(function () {
         $("#searchForm").slideToggle("slow", function () {
             if ($("#searchForm").is(":visible")) {
                 $(this).addClass("notesHistory");
+                $("#searchText").focus();
             }
         });
     });
@@ -10,6 +11,7 @@ $(function () {
         $("#createNoteForm").slideToggle("slow", function () {
             if ($("#createNoteForm").is(":visible")) {
                 $(this).addClass("notesHistory");
+                $("#title").focus();
             }
         });
     });
