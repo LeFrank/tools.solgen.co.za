@@ -6,7 +6,7 @@ function getPageTitle($data, $toolName="", $functionName="" , $message=""){
         $data["globalTitle"] = $data["globalTitle"] . " > ".$functionName;
     }
     if(!empty($message)){
-        $data["globalTitle"] = $data["globalTitle"] . ":  ".$message;
+        $data["globalTitle"] = $message . " - " . $data["globalTitle"];
     }
     return $data;
 }

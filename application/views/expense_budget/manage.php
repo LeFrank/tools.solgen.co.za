@@ -25,13 +25,19 @@
                         foreach ($expenseBudgets as $k => $v) {
                             echo "<tr>";
                             echo "<td>" . $v["name"] . "</td>";
-                            echo "<td>" . $v["expense_period_id"] . "</td>";
+                            echo "<td>" . $expensePeriods[$v["expense_period_id"]]["name"] . "</td>";
                             echo "<td>" . $v["description"] . "</td>";
                             echo "<td>" . $v["total_limit"] . "</td>";
                             echo "<td>" . $v["create_date"] . "</td>";
                             echo "<td><a href='/expense-budget-items/items/" . $v["id"] . "'>Budget Limits     </a>"
-                            . "<a href='/expense-budget/edit/" . $v["id"] . "'>Edit</a>&nbsp;&nbsp;|"
-                            . "&nbsp;&nbsp;<a href='/expense-budget/delete/" . $v["id"] . "'>Delete</a></td>";
+                            . "<a href='/expense-budget/edit/" . $v["id"] . "'>Edit</a>"
+                            . "&nbsp;&nbsp;|&nbsp;&nbsp;"
+                            . "<a href='/expense-budget/delete/" . $v["id"] . "'>Delete</a>";
+                            if(!$expensePeriods[$v["expense_period_id"]]["active"]){
+                                echo "<br/>";
+                                echo "<a href='/expense-budget/post-analysis/" . $v["id"] . "'>Post Analysis</a>";
+                            }
+                            echo "</td>";
                             echo "</tr>";
                         }
                         ?>

@@ -27,13 +27,13 @@ class expense_budget_item_model extends CI_Model {
             'name' => $this->input->post('name'),
             'description' => $this->input->post('description'),
             'user_id' => $this->session->userdata("user")->id,
-            'expense_period_id' =>  $this->input->post('expensePeriod'),
+            'expense_period_id' => $this->input->post('expensePeriod'),
             'create_date' => date('Y/m/d H:i')
         );
         return $this->db->insert($this->tn, $data);
     }
 
-        /**
+    /**
      * Capture a users budget from a post request. 
      * @return type
      */
@@ -44,7 +44,7 @@ class expense_budget_item_model extends CI_Model {
         $descriptionArr = $this->input->post("description");
         $types = $this->input->post("expenseType");
         $returnData = array();
-        foreach($amountArr as $k => $v){
+        foreach ($amountArr as $k => $v) {
             $data = array(
                 'budget_id' => $this->input->post('budget-id'),
                 'expense_type_id' => $types[$k],
@@ -57,7 +57,7 @@ class expense_budget_item_model extends CI_Model {
         }
         return $returnData;
     }
-    
+
     /**
      * 
      * @param type $id
@@ -86,10 +86,20 @@ class expense_budget_item_model extends CI_Model {
         $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'id' => $id));
         return $query->num_rows();
     }
-    
+
     public function doesItExist($userId, $description) {
         $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'description' => $description));
         return $query->num_rows();
+    }
+
+    /**
+     * When given an ID return the row as an object
+     * @param type $id
+     * @return type
+     */
+    public function getItemById($id){
+        $query = $this->db->get_where($this->tn, array("id" => $id));
+        return $query->row();
     }
     
     /**
@@ -132,11 +142,47 @@ class expense_budget_item_model extends CI_Model {
             'name' => $this->input->post('name'),
             'description' => $this->input->post('description'),
             'user_id' => $this->session->userdata("user")->id,
-            'expense_period_id' =>  $this->input->post('expensePeriod'),
+            'expense_period_id' => $this->input->post('expensePeriod'),
             'update_date' => date('Y/m/d H:i')
         );
         $this->db->where('id', $this->input->post('id'));
         return $this->db->update($this->tn, $data);
+    }
+    
+        /**
+     * 
+     * @return type
+     */
+    public function updateByItem($item) {
+        $this->load->helper('date');
+        $data = array(
+            'description' => $item->description,
+            'user_id' => $this->session->userdata("user")->id,
+            'limit_amount' =>  $item->limit_amount,
+            'period_outcome_amount' => $item->period_outcome_amount,
+            'amount_sign' => $item->amount_sign,
+            'update_date' => date('Y/m/d H:i'),
+            'comment' => $item->comment
+        );
+        $this->db->where('id', $item->id);
+        return $this->db->update($this->tn, $data);
+    }
+
+    /**
+     * Update the budget Items when given an array of items. 
+     * @return type
+     */
+    public function update_expense_budget_items($originalItems, $processedItems) {
+        $this->load->helper('date');
+        $returnData = array();
+        foreach ($originalItems as $k => $v) {
+            if($v["period_outcome_amount"] == null || $v["period_outcome_amount"] != $processedItems[$k]["period_outcome_amount"] ){
+                $v["update_date"] = date('Y/m/d H:i');
+                $this->db->where('id', $processedItems[$k]["id"]);
+                $returnData[$v["id"]][] = $this->db->update($this->tn, $processedItems[$k]);
+            }
+        }
+        return $returnData;
     }
 
 }

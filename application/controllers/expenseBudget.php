@@ -3,12 +3,14 @@
 class ExpenseBudget extends CI_Controller {
 
     var $require_auth = true;
+    var $toolName = "Expenses Budget";
 
     public function __construct() {
         parent::__construct();
         $this->load->library('session');
         $this->load->helper('auth_helper');
         $this->load->helper("array_helper");
+        $this->load->helper('usability_helper');
         $this->load->helper('url');
         $this->load->helper('email');
         $this->load->library('form_validation');
@@ -66,9 +68,57 @@ class ExpenseBudget extends CI_Controller {
     public function manage() {
         $data["expenseBudgets"] = $this->expense_budget_model->getExpenseBudgets($this->session->userdata("user")->id, 12, false);
         $data["expensePeriods"] = mapKeyToId($this->expense_period_model->getExpensePeriods($this->session->userdata("user")->id), false);
-        $this->load->view('header');
+        $this->load->view('header' , getPageTitle($data, $this->toolName,"Budget Management",""));
         $this->load->view('expenses/expense_nav');
         $this->load->view('expense_budget/manage', $data);
+        $this->load->view('footer');
+    }
+    
+    public function postAnalysis($budgetPeriodId=null){
+        $this->load->model('expense_budget_item_model');
+        $this->load->model('expense_type_model');
+        $this->load->model('expense_model');
+        $this->load->helper("array_helper");
+        $this->load->helper("expense_statistics_helper");
+        $this->load->helper("expense_budget_post_analysis_helper");
+        $data["expensePeriod"] = $this->expense_period_model->getExpensePeriod($budgetPeriodId);
+        // Get budget
+        $budget = $this->expense_budget_model->getExpenseBudgetByPeriodId($budgetPeriodId);
+        // save the end state of the expense budget items
+        $data["budgetId"] = $budget->id;
+        $data["expenseBudget"] = $budget;
+        $data["expenseBudgetItems"] = $this->expense_budget_item_model->getExpenseBudgetItems($budget->id);
+        $data["expensePeriod"] = $this->expense_period_model->getExpensePeriod($data["expenseBudget"]->expense_period_id);
+        $data["expenseTypes"] = mapKeyToId($this->expense_type_model->get_expense_types());
+        $expensesForPeriod = $this->expense_model->getExpensesbyDateRange(
+            date('Y/m/d H:i', strtotime($data["expensePeriod"]->start_date)), 
+            date('Y/m/d H:i', strtotime($data["expensePeriod"]->end_date)), 
+            $this->session->userdata("user")->id, null, null, "amount", "desc"
+        );
+        $data["expenseTypesTotals"] = getArrayOfTypeAmount($expensesForPeriod);
+        // process the data
+        $postStateBudgetItems = analyseBudgetItemsEndState( $data["expenseBudgetItems"], $data["expenseTypesTotals"]);
+        $this->expense_budget_item_model->update_expense_budget_items($data["expenseBudgetItems"], $postStateBudgetItems);
+        $data["expenseBudgetItems"] =  $postStateBudgetItems;
+        $data["totalSpent"] = totalSpent($data["expenseTypesTotals"]);
+        $data["overSpentCategories"] = overSpentCategories($postStateBudgetItems);
+        $data["underSpentCategories"] = underSpentCategories($postStateBudgetItems);
+        // give answers to why I went over on those budget items also 
+        // see a list of expenses for categories where I went over.
+        // Show the overall state of the budget for that period.
+        // Overall give an honest account of what went right and what went wrong in this period
+        // What do I want to know after a month
+        // What did I spend?
+        // Where did I go wrong?
+        // Where did I go right?
+        // what was the category that I spent the most on, and can I shrink it next month?
+        // If I had unexpected expenses. What was it, could I have foreseen this expense and planned for it
+        //      if yes then add it to the time table and use it for forecasting
+        //      if no, make a note of it for retrospective analysis over the year period.
+        // 
+        $this->load->view('header' , getPageTitle($data, $this->toolName,"Budget Management","Post Analysis: ". $data["expensePeriod"]->name ));
+        $this->load->view('expenses/expense_nav');
+        $this->load->view('expense_budget/post_analysis', $data);
         $this->load->view('footer');
     }
 

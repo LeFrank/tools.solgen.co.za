@@ -26,7 +26,7 @@
                     $count = 1;
                     foreach ($expenseBudgetItems as $k => $v) {
                         $ttypes[$k] = true;
-                        $valRemaining = ((array_key_exists($v["expense_type_id"], $expenseTypesTotals)) ? round($v["limit_amount"] - $expenseTypesTotals[$v["expense_type_id"]]["value"]) : round($v["limit_amount"]) );
+                        $valRemaining = ((array_key_exists($v["expense_type_id"], $expenseTypesTotals)) ? (round($v["limit_amount"],2) - round($expenseTypesTotals[$v["expense_type_id"]]["value"],2)) : round($v["limit_amount"],2) );
                         ?>
                         <tr>
                             <td>

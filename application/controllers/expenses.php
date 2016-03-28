@@ -184,7 +184,7 @@ class Expenses extends CI_Controller {
     }
 
     public function options() {
-        $this->load->view('header', $data);
+        $this->load->view('header');
         $this->load->view('expenses/expense_nav');
         $this->load->view('expenses/options');
         $this->load->view('footer');

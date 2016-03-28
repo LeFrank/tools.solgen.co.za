@@ -23,3 +23,12 @@ CREATE TABLE `solgen`.`expense_budget_items` (
 
 ALTER TABLE `expense_budget_items` 
 ADD COLUMN `description` VARCHAR(255) NULL AFTER `limit_amount`;
+
+ALTER TABLE `expense_budget_items` 
+CHANGE COLUMN `limit_amount` `limit_amount` FLOAT(11,2) NOT NULL ,
+CHANGE COLUMN `period_outcome_amount` `period_outcome_amount` FLOAT(11,2) NULL DEFAULT NULL ;
+
+ALTER TABLE `solgen`.`expense_budget_items` 
+ADD COLUMN `commnet` VARCHAR(500) NULL AFTER `user_id`;
+ALTER TABLE `solgen`.`expense_budget_items` 
+CHANGE COLUMN `commnet` `comment` VARCHAR(500) NULL DEFAULT NULL ;

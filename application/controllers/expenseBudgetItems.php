@@ -28,6 +28,17 @@ class ExpenseBudgetItems extends CI_Controller {
         redirect("/expense-budget-items/items/". $this->input->post('budget-id'), "refresh");
     }
 
+    public function comment($itemId){
+        $this->load->library('session');
+        if(empty($this->input->post("comment"))){
+            echo "Invalid Data";
+            return "Invalid Data";
+        }
+        $item = $this->expense_budget_item_model->getItemById($itemId);
+        $item->comment = $this->input->post("comment");
+        echo $this->expense_budget_item_model->updateByItem($item);
+    }
+    
     public function delete($id) {
         
     }

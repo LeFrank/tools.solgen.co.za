@@ -18,6 +18,7 @@ class Weather extends CI_Controller {
         parent::__construct();
         $this->load->library('session');
         $this->load->helper('auth_helper');
+        $this->load->helper('usability_helper');
         can_access($this->require_auth, $this->session);
         $this->load->model("location_model");
         $this->load->model("webservice_details_model");
@@ -64,7 +65,7 @@ class Weather extends CI_Controller {
         $data["measure"] = $this->measure;
         //apply data suggestions
         //display data
-        $this->load->view("header");
+        $this->load->view('header', getPageTitle($data, $this->toolName));
         $this->load->view("weather/weather_nav");
         $this->load->view("weather/index", $data);
         $this->load->view("weather/locations", $data);
@@ -143,7 +144,7 @@ class Weather extends CI_Controller {
             $data["weatherSetting"]->measurement = $weatherSettings[0]->measurement;
         }
         $data["measure"] = $this->measure;
-        $this->load->view("header");
+        $this->load->view('header', getPageTitle($data, $this->toolName, "Options"));
         $this->load->view("weather/weather_nav");
         $this->load->view("weather/options", $data);
         $this->load->view("footer");
