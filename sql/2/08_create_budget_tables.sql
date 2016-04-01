@@ -32,3 +32,8 @@ ALTER TABLE `solgen`.`expense_budget_items`
 ADD COLUMN `commnet` VARCHAR(500) NULL AFTER `user_id`;
 ALTER TABLE `solgen`.`expense_budget_items` 
 CHANGE COLUMN `commnet` `comment` VARCHAR(500) NULL DEFAULT NULL ;
+
+ALTER TABLE `solgen`.`expense_budget` 
+ADD COLUMN `over_spend_comment` TEXT NULL AFTER `update_date`,
+ADD COLUMN `under_spend_comment` TEXT NULL AFTER `over_spend_comment`,
+ADD COLUMN `overall_comment` TEXT NULL AFTER `under_spend_comment`;

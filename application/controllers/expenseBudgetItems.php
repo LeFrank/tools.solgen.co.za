@@ -30,7 +30,9 @@ class ExpenseBudgetItems extends CI_Controller {
 
     public function comment($itemId){
         $this->load->library('session');
-        if(empty($this->input->post("comment"))){
+        $this->load->helper('form');
+        $comment = $this->input->post("comment");
+        if(empty($comment)){
             echo "Invalid Data";
             return "Invalid Data";
         }

@@ -6,8 +6,11 @@ $overSpent = (($finalOutcome >= 0 ) ? TRUE : FALSE);
     <div class="large-12 columns">
         <input type="hidden" name="budgetId" id="budgetId" value="<?php echo $budgetId; ?>" />
         <h2>
-            Period Name and budget description go here.
+            <?php echo "Period: ". $expensePeriod->name;?>
         </h2>
+        <h3>
+            Goal: <?php echo $expenseBudget->description; ?>
+        </h3>
         <p>
             How much did I spend in total?: <?php echo number_format($totalSpent, 2, ".", ","); ?>
         </p>
@@ -15,7 +18,10 @@ $overSpent = (($finalOutcome >= 0 ) ? TRUE : FALSE);
             What was the limit of the period?: <?php echo number_format($expenseBudget->total_limit, 2, ".", ","); ?>
         </p>
         <p>
-            How many days in this period?: <?php echo floor((strtotime($expensePeriod->end_date) - strtotime($expensePeriod->start_date)) / (60 * 60 * 24) + 1); ?> days
+            How many days in this period?: <?php echo floor((strtotime($expensePeriod->end_date) - 
+                    strtotime($expensePeriod->start_date)) / (60 * 60 * 24) + 1); ?> days 
+                    ( <?php echo date('Y/m/d H:i',strtotime($expensePeriod->start_date)) . 
+                            " to ". date('Y/m/d H:i', strtotime($expensePeriod->end_date)); ?> )
         </p>
         <p>
             Do I go over the total budget?: <?php echo (($overSpent) ? "Yes" : "No") ?>
@@ -125,7 +131,10 @@ $overSpent = (($finalOutcome >= 0 ) ? TRUE : FALSE);
                                 </td>
                                 <td>
                                     <input type="hidden" name="id" id="id" value="<?php echo $v["id"]; ?>" />
-                                    <input type="text" name="comment_<?php echo $v["id"]; ?>" id="comment_<?php echo $v["id"]; ?>" value="<?php echo (!empty($v["comment"]))?$v["comment"]:"";?>" onkeyup="saveContent(this);"/>
+                                    <input type="text" name="comment_<?php echo $v["id"]; ?>" 
+                                        id="comment_<?php echo $v["id"]; ?>" 
+                                        value="<?php echo (!empty($v["comment"]))?$v["comment"]:"";?>" 
+                                        onkeyup="saveContent(this);"/>
                                 </td>
                             </tr>
                             <?php
@@ -163,10 +172,12 @@ $overSpent = (($finalOutcome >= 0 ) ? TRUE : FALSE);
         </table>
         <p>
             Where there overarching events or reasons for the overspends?
-
-            <textarea name="overspend_comment" cols="40" rows="7" placeholder="Where did it go wrong :( ..."></textarea>
-        
+            <textarea name="overspend_comment" cols="40" rows="7" placeholder="Where did it go wrong :( ..." onkeyup="saveBudgetOverSpendComment(this);"
+                      ><?php if(!empty($expenseBudget->over_spend_comment) && $expenseBudget->over_spend_comment != null){
+                    echo $expenseBudget->over_spend_comment;
+                }?></textarea>
         </p>
+        <hr/>
         <p>
             Categories under spent: <?php echo $underSpentCategories["count"]; ?>
         </p>
@@ -267,6 +278,13 @@ $overSpent = (($finalOutcome >= 0 ) ? TRUE : FALSE);
                                     echo abs($percentage);
                                     ?>
                                 </td>
+                                <td>
+                                    <input type="hidden" name="id" id="id" value="<?php echo $v["id"]; ?>" />
+                                    <input type="text" name="comment_<?php echo $v["id"]; ?>" 
+                                        id="comment_<?php echo $v["id"]; ?>" 
+                                        value="<?php echo (!empty($v["comment"]))?$v["comment"]:"";?>" 
+                                        onkeyup="saveContent(this);"/>
+                                </td>
                             </tr>
                             <?php
                             $count += 1;
@@ -304,14 +322,21 @@ $overSpent = (($finalOutcome >= 0 ) ? TRUE : FALSE);
                 </p>
         <p>
             Why did we not spend the allocated amounts?
-            <textarea name="underspend_comment" cols="40" rows="7" placeholder="Because x happened that meant the y :| ..."></textarea>
+            <textarea name="underspend_comment" cols="40" rows="7" placeholder="Because x happened that meant the y :| ..." onkeyup="saveBudgetUnderSpendComment(this);" 
+                ><?php if(!empty($expenseBudget->uner_spend_comment) && $expenseBudget->under_spend_comment != null){
+                    echo $expenseBudget->under_spend_comment;
+                }?></textarea>
         </p>
         <h3>
             Closing thoughts on this period?
         </h3>
         <p>What went wrong? What went right? Anything significant happen that may make a difference in the future?
             <textarea name="post_budget_comment" cols="40" rows="7" 
-                      placeholder="Let it out..."></textarea>
+                placeholder="Let it out..."
+                onkeyup="saveBudgetOverallComment(this);" 
+                ><?php if(!empty($expenseBudget->overall_comment) && $expenseBudget->overall_comment != null){
+                    echo $expenseBudget->overall_comment;
+                }?></textarea>
         </p>
         <!--    // Show the overall state of the budget for that period.<br/>
         // Overall give an honest account of what went right and what went wrong in this period<br/>

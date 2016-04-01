@@ -120,5 +120,22 @@ class expense_budget_model extends CI_Model {
         $this->db->where('id', $this->input->post('id'));
         return $this->db->update($this->tn, $data);
     }
+    
+    public function updateBudget($budget){
+        $this->load->helper('date');
+        $data = array(
+            'name' => $budget->name,
+            'description' => $budget->description,
+            'user_id' => $this->session->userdata("user")->id,
+            'expense_period_id' => $budget->expense_period_id,
+            'total_limit' => $budget->total_limit,
+            'update_date' => date('Y/m/d H:i'),
+            'over_spend_comment' => $budget->over_spend_comment,
+            'under_spend_comment' => $budget->under_spend_comment,
+            'overall_comment' => $budget->overall_comment
+        );
+        $this->db->where('id', $budget->id);
+        return $this->db->update($this->tn, $data);
+    }
 
 }

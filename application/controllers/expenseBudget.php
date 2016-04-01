@@ -38,6 +38,29 @@ class ExpenseBudget extends CI_Controller {
             redirect("/expense-budget/manage", "refresh");
         }
     }
+    
+    public function comment($budgetId){
+        $this->load->library('session');
+        $this->load->helper('form');
+        $overSpendComment = $this->input->post("over_spend_comment");
+        $underSpendComment = $this->input->post("under_spend_comment");
+        $overallComment = $this->input->post("overall_comment");
+        if(empty($overSpendComment) && empty($underSpendComment) && empty($overallComment)){
+            echo "Invalid Data";
+            return "Invalid Data";
+        }
+        $budget = $this->expense_budget_model->getExpenseBudget($budgetId);
+        if(!empty($overSpendComment)){
+            $budget->over_spend_comment = $overSpendComment;
+        }
+        if(!empty($underSpendComment)){
+            $budget->under_spend_comment = $underSpendComment;
+        }
+        if(!empty($overallComment)){
+            $budget->overall_comment = $overallComment;
+        }
+        echo $this->expense_budget_model->updateBudget($budget);
+    }
 
     public function delete($id) {
         $data["expenseBudgets"] = $this->expense_budget_model->delete($id);
@@ -74,18 +97,18 @@ class ExpenseBudget extends CI_Controller {
         $this->load->view('footer');
     }
     
-    public function postAnalysis($budgetPeriodId=null){
+    public function postAnalysis($budgetId=null){
         $this->load->model('expense_budget_item_model');
         $this->load->model('expense_type_model');
         $this->load->model('expense_model');
         $this->load->helper("array_helper");
         $this->load->helper("expense_statistics_helper");
         $this->load->helper("expense_budget_post_analysis_helper");
-        $data["expensePeriod"] = $this->expense_period_model->getExpensePeriod($budgetPeriodId);
         // Get budget
-        $budget = $this->expense_budget_model->getExpenseBudgetByPeriodId($budgetPeriodId);
+        $budget = $this->expense_budget_model->getExpenseBudget($budgetId);
         // save the end state of the expense budget items
         $data["budgetId"] = $budget->id;
+        $data["expensePeriod"] = $this->expense_period_model->getExpensePeriod($budget->expense_period_id);
         $data["expenseBudget"] = $budget;
         $data["expenseBudgetItems"] = $this->expense_budget_item_model->getExpenseBudgetItems($budget->id);
         $data["expensePeriod"] = $this->expense_period_model->getExpensePeriod($data["expenseBudget"]->expense_period_id);

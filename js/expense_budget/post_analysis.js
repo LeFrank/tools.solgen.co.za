@@ -53,3 +53,39 @@ function saveContent(ele) {
         });
     }, 5000);
 }
+
+function saveBudgetOverSpendComment(ele) {
+    delay(function () {
+        $.ajax({
+            method: "POST",
+            url: "/expense-budget/comment/" + $("#budgetId").val(),
+            data: {over_spend_comment : $(ele).val()}
+        }).done(function (msg) {
+            alert("Data Saved: " + msg);
+        });
+    }, 5000);
+}
+
+function saveBudgetUnderSpendComment(ele) {
+    delay(function () {
+        $.ajax({
+            method: "POST",
+            url: "/expense-budget/comment/" + $("#budgetId").val(),
+            data: {under_spend_comment : $(ele).val()}
+        }).done(function (msg) {
+            alert("Data Saved: " + msg);
+        });
+    }, 5000);
+}
+
+function saveBudgetOverallComment(ele) {
+    delay(function () {
+        $.ajax({
+            method: "POST",
+            url: "/expense-budget/comment/" + $("#budgetId").val(),
+            data: {overall_comment : $(ele).val()}
+        }).done(function (msg) {
+            alert("Data Saved: " + msg);
+        });
+    }, 5000);
+}
