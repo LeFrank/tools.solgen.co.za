@@ -3,7 +3,7 @@
 class PaymentMethods extends CI_Controller {
 
     var $require_auth = true;
-    var $displayName = "Payment Methods";
+    var $toolName = "Payment Methods";
 
     public function __construct() {
         parent::__construct();
@@ -11,6 +11,7 @@ class PaymentMethods extends CI_Controller {
         $this->load->helper('auth_helper');
         $this->load->helper("array_helper");
         $this->load->library('form_validation');
+        $this->load->helper("usability_helper");
         can_access(
                 $this->require_auth, $this->session);
         $this->load->model('payment_method_model');
@@ -19,7 +20,7 @@ class PaymentMethods extends CI_Controller {
     public function manage() {
         $this->load->helper("array_helper");
         $data["paymentMethods"] = mapKeyToId($this->payment_method_model->get_only_user_payment_methods($this->session->userdata("user")->id), false);
-        $this->load->view("header");
+        $this->load->view('header', getPageTitle($data, $this->toolName, "Manage Payment Methods"));
         $this->load->view('expenses/expense_nav');
         $this->load->view("payment_methods/manage", $data);
         $this->load->view("footer");

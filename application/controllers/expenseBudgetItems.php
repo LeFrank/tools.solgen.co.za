@@ -3,6 +3,7 @@
 class ExpenseBudgetItems extends CI_Controller {
 
     var $require_auth = true;
+    var $toolName = "Expenses Budget Items";
 
     public function __construct() {
         parent::__construct();
@@ -60,6 +61,7 @@ class ExpenseBudgetItems extends CI_Controller {
     public function manage($budgetId = null) {
         $this->load->helper("date_helper");
         $this->load->helper("expense_statistics_helper");
+        $this->load->helper("usability_helper");
         if ($budgetId != null) {
             $data["budgetId"] = $budgetId;
             $data["expenseBudget"] = $this->expense_budget_model->getExpenseBudget($budgetId);
@@ -71,7 +73,7 @@ class ExpenseBudgetItems extends CI_Controller {
             );
             $data["expenseTypesTotals"] = getArrayOfTypeAmount($expensesForPeriod);
         }
-        $this->load->view('header');
+        $this->load->view('header', getPageTitle($data, $this->toolName, "Budget Item limits"));
         $this->load->view('expenses/expense_nav');
         $this->load->view('expense_budget_item/manage', $data);
         $this->load->view('expense_budget_item/budget_items_assigned', $data);

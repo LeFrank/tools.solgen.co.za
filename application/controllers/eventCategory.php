@@ -1,19 +1,10 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- * Description of eventCategory
- *
- * @author Sammy Guergachi <sguergachi at gmail.com>
- */
 class eventCategory extends CI_Controller {
 
     var $require_auth = TRUE;
+    var $toolName = "Event Category";
+    
 
     public function __construct() {
         parent::__construct();
@@ -22,6 +13,7 @@ class eventCategory extends CI_Controller {
         $this->load->helper("array_helper");
         $this->load->helper('url');
         $this->load->helper('email');
+        $this->load->helper("usability_helper");
         $this->load->library('form_validation');
         can_access(
                 $this->require_auth, $this->session);

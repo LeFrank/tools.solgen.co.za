@@ -16,6 +16,7 @@ class Location extends CI_Controller {
         $this->load->helper("form");
         $this->load->library("form_validation");
         $this->load->helper('auth_helper');
+        $this->load->helper("usability_helper");
         $this->load->library('pagination');
     }
 
@@ -88,7 +89,7 @@ class Location extends CI_Controller {
                 $userId, 
                 null, 
                 null, true,null);
-        $this->load->view("header", $data);
+        $this->load->view('header', getPageTitle($data, $this->toolName, "Manage Locations"));
         $this->load->view("location/index", $data);
         $this->load->view("location/capture_form", $data);
         $this->load->view("footer");

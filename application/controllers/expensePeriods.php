@@ -3,7 +3,7 @@
 class ExpensePeriods extends CI_Controller {
 
     var $require_auth = true;
-    var $displayName = "Expense Periods";
+    var $toolName = "Expense Periods";
 
     public function __construct() {
         parent::__construct();
@@ -11,6 +11,7 @@ class ExpensePeriods extends CI_Controller {
         $this->load->helper('auth_helper');
         $this->load->helper("array_helper");
         $this->load->library('form_validation');
+        $this->load->helper("usability_helper");
         can_access(
                 $this->require_auth, $this->session);
         $this->load->model('expense_period_model');
@@ -19,7 +20,7 @@ class ExpensePeriods extends CI_Controller {
     public function manage() {
         $this->load->helper("array_helper");
         $data["expensePeriods"] = mapKeyToId($this->expense_period_model->getExpensePeriods($this->session->userdata("user")->id), false);
-        $this->load->view("header");
+        $this->load->view('header', getPageTitle($data, $this->toolName, "Manage Expense Periods"));
         $this->load->view('expenses/expense_nav');
         $this->load->view("expense_periods/manage", $data);
         $this->load->view("footer");

@@ -3,7 +3,7 @@
 class ExpenseTypes extends CI_Controller {
 
     var $require_auth = true;
-    var $displayName = "Expense Type";
+    var $toolName = "Expense Types";
 
     public function __construct() {
         parent::__construct();
@@ -11,6 +11,7 @@ class ExpenseTypes extends CI_Controller {
         $this->load->helper('auth_helper');
         $this->load->helper("array_helper");
         $this->load->library('form_validation');
+        $this->load->helper("usability_helper");
         can_access(
                 $this->require_auth, $this->session);
         $this->load->model('expense_type_model');
@@ -19,7 +20,7 @@ class ExpenseTypes extends CI_Controller {
     public function manage() {
         $this->load->helper("array_helper");
         $data["expenseTypes"] = mapKeyToId($this->expense_type_model->get_only_user_expense_types($this->session->userdata("user")->id), false);
-        $this->load->view("header");
+        $this->load->view('header', getPageTitle($data, $this->toolName, "Manage Expense Types"));
         $this->load->view('expenses/expense_nav');
         $this->load->view("expense_types/manage", $data);
         $this->load->view("footer");

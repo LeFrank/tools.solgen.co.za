@@ -14,8 +14,7 @@ class ExpenseBudget extends CI_Controller {
         $this->load->helper('url');
         $this->load->helper('email');
         $this->load->library('form_validation');
-        can_access(
-                $this->require_auth, $this->session);
+        can_access($this->require_auth, $this->session);
         $this->load->model('expense_budget_model');
         $this->load->model('expense_period_model');
     }

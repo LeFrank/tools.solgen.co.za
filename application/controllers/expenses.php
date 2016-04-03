@@ -170,6 +170,7 @@ class Expenses extends CI_Controller {
     public function history() {
         $this->load->helper("array_helper");
         $this->load->helper("date_helper");
+        $this->load->helper("usability_helper");
         $this->load->library('session');
         $data["expenseTypes"] = mapKeyToId($this->expense_type_model->get_expense_types());
         $data["expensePaymentMethod"] = mapKeyToId($this->payment_method_model->get_user_payment_method($this->session->userdata("user")->id), false);
@@ -177,14 +178,16 @@ class Expenses extends CI_Controller {
         //$data["startAndEndDateOfWeek"] = getStartAndEndDateforWeek(date('W'), date('Y'));
         $data["startAndEndDateforMonth"] = getStartAndEndDateforMonth(date("m"), date('Y'));
         $data["expensesForPeriod"] = $this->expense_model->getExpensesbyDateRange($data["startAndEndDateforMonth"][0], $data["startAndEndDateforMonth"][1], $this->session->userdata("user")->id);
-        $this->load->view('header', $data);
+        $this->load->view('header', getPageTitle($data, $this->toolName, "History"));
         $this->load->view('expenses/expense_nav');
         $this->load->view('expenses/history', $data);
         $this->load->view('footer');
     }
 
     public function options() {
-        $this->load->view('header');
+        $this->load->helper("usability_helper");
+        $data[] = array();
+        $this->load->view('header', getPageTitle($data, $this->toolName, "Options"));
         $this->load->view('expenses/expense_nav');
         $this->load->view('expenses/options');
         $this->load->view('footer');
@@ -193,6 +196,7 @@ class Expenses extends CI_Controller {
     public function statistics() {
         $this->load->helper("date_helper");
         $this->load->helper("expense_statistics_helper");
+        $this->load->helper("usability_helper");
         //get the data ready
         if(sizeOf($this->input->post()) == 1){
             $data["startAndEndDateforMonth"] = getStartAndEndDateforMonth(date("m")-1, date('Y'));
@@ -234,7 +238,7 @@ class Expenses extends CI_Controller {
         $data["expensesByHourOfDay"] = getExpensesForHourOfDay($expensesForPeriod);
         $data["daysOfWeek"] = getDaysOfWeek();
         
-        $this->load->view('header', $data);
+        $this->load->view('header', getPageTitle($data, $this->toolName, "Stats"));
         $this->load->view('expenses/expense_nav');
         $this->load->view('expenses/statistics', $data);
         $this->load->view('footer');
