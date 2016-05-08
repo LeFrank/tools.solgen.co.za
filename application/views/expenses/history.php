@@ -174,7 +174,7 @@
         </div>
     </div>
 </div>
-
+<button onclick="notifyMe()">Notify me!</button>
 <!-- Handlebars test --> 
 <script id="some-template" type="text/x-handlebars-template">
     <table id="expense_history" class="tablesorter">

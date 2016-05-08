@@ -21,6 +21,18 @@ function mapKeyToId($doubleDimensionsArray, $includeMisc = true) {
     return $returnArray;
 }
 
+function mapKeyTo($doubleDimensionsArray, $keyName) {
+    $returnArray = null;
+    if (!empty($doubleDimensionsArray)) {
+        if (null != $doubleDimensionsArray && !empty($doubleDimensionsArray)) {
+            foreach ($doubleDimensionsArray as $k => $v) {
+                $returnArray[$v[$keyName]] = $v;
+            }
+        }
+    }
+    return $returnArray;
+}
+
 function getDaysOfWeek() {
     return $daysOfWeek = array("1" => "Monday", "2" => "Tuesday", "3" => "Wednesday", "4" => "Thursday", "5" => "Friday", "6" => "Saturday", "7" => "Sunday");
 }

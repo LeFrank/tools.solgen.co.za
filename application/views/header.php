@@ -25,6 +25,7 @@
         <script src="/js/third_party/jquery.min-1.11.0.js"></script>
         <script src="/js/third_party/foundation/vendor/modernizr.js"></script>
         <script src="/js/third_party/foundation/foundation.min.js"></script>
+        <script type="text/javascript" src="/js/third_party/moment/moment.min.js"></script>
         <script src="/js/default.js"></script>
     </head>
     <body>

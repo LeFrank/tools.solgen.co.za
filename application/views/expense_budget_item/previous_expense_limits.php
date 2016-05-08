@@ -8,6 +8,7 @@
                 <tr>
                     <th>&nbsp;</th>
                     <th>Description</th>
+                    <th>Previous Budgetted Amount</th>
                     <th>Previous Spend</th>
                     <th>Budgetted Amount</th>
                     <th>Description</th>
@@ -27,6 +28,9 @@
                             </td>
                             <td>
                                 <?php echo $expenseTypes[$k]["description"]; ?>
+                            </td>
+                            <td>
+                                <?php echo number_format($previousExpenseBudgetItems[$expenseTypes[$k]["id"]]["limit_amount"], 2, ".", ""); ?>
                             </td>
                             <td id="previous-period-type" data-category="<?php echo $expenseTypes[$k]["id"]; ?>" 
                                 data-expense-count="<?php echo ((array_key_exists($expenseTypes[$k]["id"], $expenseTypesTotals)) ? $expenseTypesTotals[$expenseTypes[$k]["id"]]["expenseCount"] : "0"); ?>"  

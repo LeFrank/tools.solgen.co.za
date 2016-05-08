@@ -131,10 +131,12 @@ $overSpent = (($finalOutcome >= 0 ) ? TRUE : FALSE);
                                 </td>
                                 <td>
                                     <input type="hidden" name="id" id="id" value="<?php echo $v["id"]; ?>" />
-                                    <input type="text" name="comment_<?php echo $v["id"]; ?>" 
+                                    <textarea name="comment_<?php echo $v["id"]; ?>" 
                                         id="comment_<?php echo $v["id"]; ?>" 
-                                        value="<?php echo (!empty($v["comment"]))?$v["comment"]:"";?>" 
-                                        onkeyup="saveContent(this);"/>
+                                        onkeyup="saveContent(this);"
+                                        rows="3"
+                                        cols="40"
+                                        ><?php echo (!empty($v["comment"]))?$v["comment"]:"";?></textarea>
                                 </td>
                             </tr>
                             <?php
@@ -171,7 +173,7 @@ $overSpent = (($finalOutcome >= 0 ) ? TRUE : FALSE);
             </tfoot>
         </table>
         <p>
-            Where there overarching events or reasons for the overspends?
+            Were there overarching events or reasons for the overspends?
             <textarea name="overspend_comment" cols="40" rows="7" placeholder="Where did it go wrong :( ..." onkeyup="saveBudgetOverSpendComment(this);"
                       ><?php if(!empty($expenseBudget->over_spend_comment) && $expenseBudget->over_spend_comment != null){
                     echo $expenseBudget->over_spend_comment;
@@ -280,10 +282,11 @@ $overSpent = (($finalOutcome >= 0 ) ? TRUE : FALSE);
                                 </td>
                                 <td>
                                     <input type="hidden" name="id" id="id" value="<?php echo $v["id"]; ?>" />
-                                    <input type="text" name="comment_<?php echo $v["id"]; ?>" 
+                                    <textarea name="comment_<?php echo $v["id"]; ?>" 
                                         id="comment_<?php echo $v["id"]; ?>" 
-                                        value="<?php echo (!empty($v["comment"]))?$v["comment"]:"";?>" 
-                                        onkeyup="saveContent(this);"/>
+                                        onkeyup="saveContent(this);"
+                                        rows="3"
+                                        cols="40"><?php echo (!empty($v["comment"]))?$v["comment"]:"";?></textarea>
                                 </td>
                             </tr>
                             <?php
