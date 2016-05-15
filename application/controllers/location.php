@@ -61,9 +61,10 @@ class Location extends CI_Controller {
 
     public function manage($page = null) {
         $data["cur_page"] = 0;
+        $data['per_page'] = 10;
+        $config['per_page'] = 10;
         if ($page == null) {
             $config['base_url'] = 'http://' . $_SERVER['SERVER_NAME'] . '/locations/page/';
-            $config['per_page'] = 10;
             $config['total_rows'] = 10;
             $this->pagination->initialize($config);
         } else {

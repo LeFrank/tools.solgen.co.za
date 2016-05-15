@@ -60,7 +60,13 @@ class location_model extends CI_Model {
             'address' => $this->input->post('address'),
             'ktoi' => 0,
             'priority' => intval($this->input->post('priority')),
-            'create_date' => date('Y/m/d H:i:s')
+            'create_date' => date('Y/m/d H:i:s'),
+            'telephone' => $this->input->post('telephone'),
+            'mobile' => $this->input->post('mobile'),
+            'fax' => $this->input->post('fax'),
+            'email' => $this->input->post('email'),
+            'operating_hours' => $this->input->post('operating_hours'),
+            'website' => $this->input->post('website')
         );
         if($data["priority"] == 1){
             $this->unDefaultOtherLocations($userId);

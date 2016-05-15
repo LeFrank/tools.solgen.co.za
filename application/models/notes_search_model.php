@@ -18,6 +18,7 @@ class Notes_search_model extends CI_Model {
     public function capture_note_search() {
         $this->load->helper('date');
         $this->load->library("session");
+        print_r(($this->input->post('fromDate') == "") ? "is Empty" :"Has Value");
         $query = $this->db->get_where($this->tn, 
             array(
                 'user_id' => $this->session->userdata("user")->id, 
@@ -33,8 +34,8 @@ class Notes_search_model extends CI_Model {
             $data = array(
                 'user_id' => $this->session->userdata("user")->id,
                 'text' => $this->input->post("searchText"),
-                'start_date' => date('Y/m/d H:i', strtotime($this->input->post('fromDate'))),
-                'end_date' => date('Y/m/d H:i', strtotime($this->input->post('toDate'))),
+                'start_date' => (($this->input->post('fromDate') == "") ? "0000-00-00 00:00:00" : date('Y/m/d H:i', strtotime($this->input->post('fromDate')))),
+                'end_date' => (($this->input->post('toDate') == "") ? "0000-00-00 00:00:00" : date('Y/m/d H:i', strtotime($this->input->post('toDate')))),
                 'create_date' => date('Y/m/d H:i')
             );
             $this->db->insert($this->tn, $data);

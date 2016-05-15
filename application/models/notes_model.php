@@ -195,15 +195,18 @@ class Notes_model extends CI_Model {
         }
         $this->db->order_by("create_date", "desc");
         if ($text != null) {
-            $this->db->or_like('heading', $text);
-            $this->db->or_like('body', $text);
-            $this->db->or_like('tagg', $text);
+            $where = "(heading like '%".$text."%' or body like '%".$text."%' or tagg like '%".$text."%')";
+//            $this->db->or_like('heading', $text);
+//            $this->db->or_like('body', $text);
+//            $this->db->or_like('tagg', $text);
+              $this->db->where($where);
         }
         if (null == $limit) {
             $query = $this->db->get_where($this->tn, array('user_id' => $userId));
         } else {
             $query = $this->db->get_where($this->tn, array('user_id' => $userId), $limit, $offset);
         }
+//        echo $this->db->last_query();
         if ($count) {
             return $query->num_rows();
         } else {

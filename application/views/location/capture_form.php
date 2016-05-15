@@ -25,6 +25,23 @@
             <label for="longitude">Longitude *</label>
             <input type="text" id="longitude" name="longitude" value=""/>°
             <br/>
+            <label for="telephone">Telephone</label>
+            <input type="text" id="telephone" name="telephone" value=""/>°
+            <br/>
+            <label for="mobile">Mobile</label>
+            <input type="text" id="mobile" name="mobile" value=""/>°
+            <br/>
+            <label for="fax">Fax</label>
+            <input type="text" id="fax" name="fax" value=""/>°
+            <br/>
+            <label for="email">Email</label>
+            <input type="text" id="email" name="email" value=""/>°
+            <br/>
+            <label for="operating_hours">Operating Hours</label>
+            <textarea placeholder="Mon - Fri: 09:00 to 20:00" id="operating_hours" name="operating_hours" value=""></textarea>
+            <br/>
+            <label for="website">Website</label>
+            <textarea placeholder="Http://tools.solgen.co.za" id="website" name="website" value=""></textarea>
             <br/>
             <br/>
             <input type='button' class="button" value='Save' id='saveCoordinates'></input>
