@@ -24,7 +24,7 @@ $(document).ready(function() {
         var lat = parseFloat($("#latitude").val());
         var lng = parseFloat($("#longitude").val());
         if ((lat < 90 && lat > -90) && (lng < 180 && lng > -180)) {
-            var jqxhr = $.post("location/save", $("#co-ordinate-form").serialize()
+            var jqxhr = $.post("/location/save", $("#co-ordinate-form").serialize()
                     ).done(function(data) {
                 $("#location-content").replaceWith(data);
                 $('html, body').animate({ scrollTop: 0 }, 0);
@@ -139,6 +139,12 @@ function editLocation(locationId) {
                 }
                 $("#latitude").val(obj.location.latitude);
                 $("#longitude").val(obj.location.longitude);
+                $("#telephone").val(obj.location.telephone);
+                $("#mobile").val(obj.location.mobile);
+                $("#fax").val(obj.location.fax);
+                $("#email").val(obj.location.email);
+                $("#operating_hours").val(obj.location.operating_hours);
+                $("#website").val(obj.location.website);
                 var marker = L.marker([obj.location.latitude, obj.location.longitude]).addTo(map);
                 map.setZoom(13);
                 marker.bindPopup("<b>" + obj.location.name +
@@ -163,6 +169,12 @@ function viewLocation(locationId, latitude, longitude) {
                 $("#address").val(obj.location.address);
                 $("#latitude").val(obj.location.latitude);
                 $("#longitude").val(obj.location.longitude);
+                $("#telephone").val(obj.location.telephone);
+                $("#mobile").val(obj.location.mobile);
+                $("#fax").val(obj.location.fax);
+                $("#email").val(obj.location.email);
+                $("#operating_hours").val(obj.location.operating_hours);
+                $("#website").val(obj.location.website);
                 var marker = L.marker([latitude, longitude]).addTo(map);
                 map.setZoom(13);
                 marker.bindPopup("<b>" + obj.location.name +
