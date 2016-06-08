@@ -172,6 +172,22 @@ class expense_model extends CI_Model {
         return $query->result_array();
     }
 
+     /**
+      * Get expenses by date range, userId and expenseTypeId
+      * @param type $startDate
+      * @param type $endDate
+      * @param type $userId
+      * @param type $expenseTypeId
+      * @return type
+      */
+    public function getbyDateRangeExpenseType($userId, $startDate, $endDate, $expenseTypeId) {
+        if ($userId === null) {
+            return null;
+        }
+        $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'expense_date >=' => $startDate, 'expense_date <= ' => $endDate, 'expense_type_id' => $expenseTypeId ));
+        return $query->result_array();
+    }
+    
     /**
      * 
      * @return type

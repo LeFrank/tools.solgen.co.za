@@ -66,3 +66,7 @@ function underSpentCategories($postStateBudgetItems){
     }
     return $underSpentCat;
 }
+
+function getRemainingBudgetForCategory($budgetItemAmount, $previouslySpent, $spentAmount){
+    return $budgetItemAmount - $previouslySpent - $spentAmount;    
+}

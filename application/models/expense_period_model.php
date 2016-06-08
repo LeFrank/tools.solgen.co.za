@@ -158,7 +158,19 @@ class expense_period_model extends CI_Model {
 //        echo $this->db->last_query();
         return $query->result_array();
     }
-
+    
+    /**
+     * get a budget period when given a date.
+     * use the date to find a period in which this date is between the start and end dates
+     * @param type $userId
+     * @param type $date
+     * @return type
+     */
+    public function getPeriodDateBetween($userId, $date){
+        $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'start_date <=' => $date, 'end_date >= ' => $date));
+        return $query->row();
+    }
+    
     /**
      * 
      * @return type

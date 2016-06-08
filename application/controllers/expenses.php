@@ -42,6 +42,16 @@ class Expenses extends CI_Controller {
             $this->view();
         } else {
             $data["expense"] = $this->expense_model->capture_expense();
+            $data["remaining_budget"] = $this->getRemainingBudget(
+                $this->session->userdata("user")->id, 
+                $this->input->post('expenseType'), 
+                ($this->input->post('expenseDate') != "") ? date('Y-m-d H:i', strtotime($this->input->post('expenseDate'))): date('Y-m-d H:i'));
+            $data["status"] = "Expense Captured";
+            $data["action_classes"] = "success";
+            $data["message_classes"] = "success";
+            $data["action_description"] = "Capture an expense";
+            $data["message"] = "The expense was captured. ".$data["remaining_budget"];
+            $this->session->set_flashdata("success", $this->load->view('general/action_status', $data,true));
             redirect("/expenses/view", "refresh");
         }
     }
@@ -165,6 +175,29 @@ class Expenses extends CI_Controller {
         $this->load->view("header_no_banner");
         $this->load->view("expenses/expense_table", $data);
         $this->load->view("footer");
+    }
+    
+    public function getRemainingBudget($userId , $expenseTypeId, $date){
+        $data["period"] = $this->getExpensePeriodByDate($userId , $date);
+
+        if(!empty($data["period"])){
+            // Get budget using the periodId
+            $this->load->model('expense_budget_model');
+            $data["budget"] = $this->expense_budget_model->getExpenseBudgetByPeriodId($data["period"]->id);
+            //get budget item given budgetId and categoryId
+            $this->load->model('expense_budget_item_model');
+            $data["budgetItem"] = $this->expense_budget_item_model->getByBudgetIdAndCategoryId($userId, $data["budget"]->id, $expenseTypeId);
+            //get expenses for this type between this perid start and end date
+            $data["expensesByType"] = $this->expense_model->getbyDateRangeExpenseType($userId, $data["period"]->start_date, $data["period"]->end_date, $expenseTypeId);
+            $this->load->helper("expense_statistics_helper");
+            $data["totalExpense"] = getExpensesTotal($data["expensesByType"]);
+            $remaing =  $data["budgetItem"]->limit_amount - $data["totalExpense"];
+            return "Remaining: ".number_format($remaing, 2, '.', ',');
+        }
+    }
+    
+    public function getExpensePeriodByDate($userId , $date){
+        return  $this->expense_period_model->getPeriodDateBetween($userId, $date);
     }
     
     public function history() {

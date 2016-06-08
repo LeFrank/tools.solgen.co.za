@@ -131,6 +131,15 @@ class expense_budget_item_model extends CI_Model {
         }
         return $query->result_array();
     }
+    
+    public function getByBudgetIdAndCategoryId($userId = null, $budgetId = null, $expenseTypeId = null ) {
+        if ($userId === null) {
+            return null;
+        }
+        $query = $this->db->get_where($this->tn, array("user_id" => $userId, "budget_id" => $budgetId, "expense_type_id" => $expenseTypeId));
+        //echo $this->db->last_query();
+        return $query->row();
+    }
 
     /**
      * 

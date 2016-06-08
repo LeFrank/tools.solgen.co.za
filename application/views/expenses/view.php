@@ -1,4 +1,10 @@
-<?php ?>
+<?php 
+if($this->session->flashdata("success") !== FALSE)
+{
+    echo $this->session->flashdata("success");
+}
+
+?>
 <div class="row">
     <div class="large-12 columns">
         <h2>Expense Overview</h2>
@@ -60,11 +66,11 @@
             <div class="row">
                 <div class="large-4 columns">
                     <label for="amount">Amount *</label>
-                    <input type="number" min="0.01" step="0.01" max="9999999999999" name="amount" placeholder="0.00"autofocus /><br />
+                    <input type="number" min="0.01" step="0.01" max="9999999999999" name="amount" id="amount" placeholder="0.00"autofocus /><br />
                 </div>
                 <div class="large-4 columns">
                     <label for="expenseType">Expense Type</label>
-                    <select name="expenseType">
+                    <select name="expenseType" id="expenseType"> 
                         <?php
                         foreach ($expenseTypes as $k => $v) {
                             echo '<option value="' . $v["id"] . '">' . $v["description"] . '</option>';
@@ -117,5 +123,6 @@
 <script src="/js/jquery.datetimepicker.js"></script>
 <script type="text/javascript" src="/js/third_party/jquery.tablesorter.min.js"></script>
 <script type="text/javascript" src="/js/expenses/expense_table.js" ></script>
+<script type="text/javascript" src="/js/expenses/expense_capture.js" ></script>
 
 
