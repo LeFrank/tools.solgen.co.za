@@ -31,7 +31,7 @@
             </select><br />
 
             <label for="description">Description</label>
-            <textarea name="description" cols="40" rows="5" ><?php echo $expense->description; ?></textarea><br/><br/>
+            <textarea name="description" id="description" cols="40" rows="5" ><?php echo $expense->description; ?></textarea><br/><br/>
 
             <label for="location">Location</label>
             <input  type="text" name="location" value="<?php echo $expense->location; ?>"/><br/><br/>
@@ -46,10 +46,12 @@
         </div>
     </div>
 </div>
+<script src="/js/third_party/ckeditor/ckeditor.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/jquery.datetimepicker.css"/ >
+<script src="/js/jquery.datetimepicker.js"></script>
 <script type="text/javascript">
     $(function() {
         $("#expenseDate").datetimepicker();
+        CKEDITOR.replace('description');
     });
 </script>
-<link rel="stylesheet" type="text/css" href="/css/jquery.datetimepicker.css"/ >
-<script src="/js/jquery.datetimepicker.js"></script>

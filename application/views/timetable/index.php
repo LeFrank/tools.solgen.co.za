@@ -92,4 +92,5 @@
     <script src="/js/third_party/qtip/jquery.qtip.min.js"></script>
     <script src='/js/third_party/FullCalendar/moment.min.js' type='text/javascript'></script>
     <script src='/js/third_party/FullCalendar/fullcalendar.min.js' type='text/javascript'></script>
+    <script src="/js/third_party/ckeditor/ckeditor.js"></script>
     <script src='/js/timetable/timetable.js' type='text/javascript'></script>

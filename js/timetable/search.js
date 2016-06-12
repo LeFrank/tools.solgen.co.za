@@ -23,7 +23,7 @@ $(document).ready(function () {
         });
     });
 
-
+    CKEDITOR.replace('description');
 });
 
 function getEvent(ele) {

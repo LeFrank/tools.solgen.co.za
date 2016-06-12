@@ -58,4 +58,5 @@
 <link rel="stylesheet" type="text/css" href="/css/jquery.datetimepicker.css" />
 <script src="/js/jquery.datetimepicker.js"></script>
 <script type="text/javascript" src="/js/third_party/jquery.formatDateTime.min.js" ></script>
+<script src="/js/third_party/ckeditor/ckeditor.js"></script>
 <script src='/js/timetable/search.js' type='text/javascript'></script>

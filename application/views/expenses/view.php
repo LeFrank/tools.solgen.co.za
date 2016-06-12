@@ -94,7 +94,7 @@ if($this->session->flashdata("success") !== FALSE)
             <div class="row">
                 <div class="large-12 columns">
                     <label for="description">Description</label>
-                    <textarea name="description" cols="40" rows="5" placeholder="What was special about it, or a description of the expense."></textarea><br/><br/>
+                    <textarea name="description" id="description" cols="40" rows="5" placeholder="What was special about it, or a description of the expense."></textarea><br/><br/>
                 </div>
             </div>
             <div class="row">
@@ -114,15 +114,15 @@ if($this->session->flashdata("success") !== FALSE)
         </div>
     </div>
 </div>
-<script type="text/javascript">
-    $(function () {
-        $("#expenseDate").datetimepicker();
-    });
-</script>
+<script src="/js/third_party/ckeditor/ckeditor.js"></script>
 <link rel="stylesheet" type="text/css" href="/css/jquery.datetimepicker.css" />
 <script src="/js/jquery.datetimepicker.js"></script>
 <script type="text/javascript" src="/js/third_party/jquery.tablesorter.min.js"></script>
 <script type="text/javascript" src="/js/expenses/expense_table.js" ></script>
 <script type="text/javascript" src="/js/expenses/expense_capture.js" ></script>
-
-
+<script type="text/javascript">
+    $(function () {
+        $("#expenseDate").datetimepicker();
+        CKEDITOR.replace('description');
+    });
+</script>

@@ -47,8 +47,8 @@ $(document).ready(function () {
                     var obj = $.parseJSON(resp);
                     $("#id").val(obj[0].id);
                     $("#name").val(obj[0].name);
-                    $("#description").html(obj[0].description);
-
+                    //$("#description").html(obj[0].description);
+                    CKEDITOR.instances['description'].setData(obj[0].description);
                     if (obj[0].all_day_event == 1) {
                         console.log("check");
                         $("#allDayEvent").prop('checked', true);
@@ -132,4 +132,5 @@ $(document).ready(function () {
                 break;
         }
     });
+    CKEDITOR.replace('description');
 });
