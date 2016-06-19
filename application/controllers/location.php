@@ -18,6 +18,8 @@ class Location extends CI_Controller {
         $this->load->helper('auth_helper');
         $this->load->helper("usability_helper");
         $this->load->library('pagination');
+
+
     }
 
     /**
@@ -60,36 +62,28 @@ class Location extends CI_Controller {
     }
 
     public function manage($page = null) {
-        $data["cur_page"] = 0;
-        $data['per_page'] = 10;
-        $config['per_page'] = 10;
+        $data["css"] = '<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />';
+        $data["js"] = '<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>';
         if ($page == null) {
+            $page = 1;
             $config['base_url'] = 'http://' . $_SERVER['SERVER_NAME'] . '/locations/page/';
+            $config['per_page'] = 10;
             $config['total_rows'] = 10;
+            $config['cur_page'] = 1;
             $this->pagination->initialize($config);
         } else {
-            $this->pagination->uri_segment = 4;
-            $data["cur_page"] = $page;
+            $this->pagination->uri_segment = 3;
         }
         $this->pagination->base_url = 'http://' . $_SERVER['SERVER_NAME'] . '/locations/page/';
         $this->pagination->per_page = 10;
-        $data["per_page"] = $this->pagination->per_page;
         $this->pagination->use_page_numbers = TRUE;
         $this->pagination->cur_page = $page;
-        $this->load->library('session');
-        $data["css"] = '<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />';
-        $data["js"] = '<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>';
-        can_access(TRUE, $this->session);
-        $userId = $this->session->userdata("user")->id;
-        //$data["locations"] = $this->location_model->getLocations($this->session->userdata("user")->id);
+        $data["cur_page"] = $page;
+        $data["per_page"] = 10;
+        $user = $this->session->userdata("user");
         $data["locations"] = $this->location_model->getLocations(
-                $userId, 
-                $this->pagination->per_page, 
-                (($page != null) ? ($page) * $this->pagination->per_page : null), null,null);
-        $this->pagination->total_rows = $this->location_model->getLocations(
-                $userId, 
-                null, 
-                null, true,null);
+                $user->id, $this->pagination->per_page, (($page == null || $page== 1 ) ? null : $page * $this->pagination->per_page -10));
+        $this->pagination->total_rows = $this->location_model->getLocations($user->id, null, null, true);
         $this->load->view('header', getPageTitle($data, $this->toolName, "Manage Locations"));
         $this->load->view("location/index", $data);
         $this->load->view("location/capture_form", $data);
@@ -103,6 +97,7 @@ class Location extends CI_Controller {
         $this->form_validation->set_rules('name', 'name', 'required');
         $this->form_validation->set_rules('latitude', 'latitude', 'required');
         $this->form_validation->set_rules('longitude', 'longitude', 'required');
+        $this->form_validation->set_rules('email', 'email');
         if ($this->form_validation->run() == TRUE) {
             $locationId = $this->input->post("locationId");
             $data["action_description"] = "Save Location";
@@ -123,9 +118,31 @@ class Location extends CI_Controller {
             $data["message_classes"] = "failure";
             $data["message"] = "Please complete the form fields";
         }
+        $data["cur_page"] = 1;
+        $data['per_page'] = 10;
+        $config['per_page'] = 10;
+        if(!empty($this->session->userdata($this->toolName."CurPage"))){
+            $data["cur_page"] = $this->session->userdata($this->toolName."CurPage");
+            $config['base_url'] = 'http://' . $_SERVER['SERVER_NAME'] . '/locations/page/';
+            $config['total_rows'] = 10;
+            $this->pagination->initialize($config);
+        }
+        $this->pagination->base_url = 'http://' . $_SERVER['SERVER_NAME'] . '/locations/page/';
+        $this->pagination->per_page = 10;
+        $this->pagination->use_page_numbers = TRUE;
+        $data["locations"] = $this->location_model->getLocations(
+                $this->session->userdata("user")->id, 
+                $this->pagination->per_page, 
+                (($data["cur_page"] != null) ? ($data["cur_page"]) * $this->pagination->per_page : null), null,null);
+        $this->pagination->total_rows = $this->location_model->getLocations(
+                $this->session->userdata("user")->id, 
+                null, 
+                null, true,null);
+        $this->session->set_userdata($this->toolName."CurPage", $data["cur_page"]);
         $data["locations"] = $this->location_model->getLocations($this->session->userdata("user")->id);
         $this->load->view('general/action_status', $data);
         $this->load->view("location/index", $data);
+        $this->load->view("footer");
     }
 
     public function search($locationNameStr = "") {

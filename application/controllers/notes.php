@@ -89,7 +89,6 @@ class Notes extends CI_Controller {
         $this->load->view('notes/notes_nav', $data);
         $data["capture_form"] = $this->load->view("notes/capture_form", $data, TRUE);
         $this->load->view('notes/history', $data);
-
         $this->load->view('notes/notes_includes', $data);
         $this->load->view('footer');
     }
