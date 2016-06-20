@@ -13,8 +13,24 @@
                 Tools : Weather
             </p>
         <?php } else { ?>
-
-            <h3>Saved Locations</h3>
+        <div class="large-12 columns">
+            <div class="large-9 columns">
+                <h3>Saved Locations</h3>
+            </div>
+            <div class="large-3 columns">
+                <form>
+                    <div class="row collapse">
+                        <div class="large-9 columns">
+                            <input type="search" name="search" id="search" placeholder="search">
+                        </div>
+                        <div class="large-3 columns">
+                            <span class="postfix" id="searchBtn"><i class="fi-magnifying-glass"></i></span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div id="result_table">
             <div class="pagination-centered">
                 <?php
                 echo $this->pagination->create_links();
@@ -34,7 +50,6 @@
                 <tbody>
                     <?php
                     $count = 1;
-
                     foreach ($locations as $location) {
                         echo "<tr>";
                         echo "<td>" . (($per_page * $cur_page ) - 10  + $count) . "</td>";
@@ -52,12 +67,13 @@
                     }
                     ?>
                 </tbody>
-            </table>
-            <div class="pagination-centered">
-                <?php
-                echo $this->pagination->create_links();
-                ?>
-            </div>
-        <?php } ?>
+                </table>
+                <div class="pagination-centered">
+                    <?php
+                    echo $this->pagination->create_links();
+                    ?>
+                </div>
+            <?php } ?>
+        </div>
     </div>
 </div>

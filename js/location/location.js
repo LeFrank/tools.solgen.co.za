@@ -42,6 +42,14 @@ $(document).ready(function() {
     var geocoder;
     var map;
 
+    $("#searchBtn").click(function(){
+        $.get(
+            "location/search/" + $("#search").val()
+        ).done(function(resp) {
+           $("#result_table").replaceWith(resp);
+        });
+    });
+
 });
 // Geocode stuff start
 var geocoder = new google.maps.Geocoder();

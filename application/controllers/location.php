@@ -18,8 +18,7 @@ class Location extends CI_Controller {
         $this->load->helper('auth_helper');
         $this->load->helper("usability_helper");
         $this->load->library('pagination');
-
-
+        can_access($this->require_auth, $this->session);
     }
 
     /**
@@ -133,7 +132,7 @@ class Location extends CI_Controller {
         $data["locations"] = $this->location_model->getLocations(
                 $this->session->userdata("user")->id, 
                 $this->pagination->per_page, 
-                (($data["cur_page"] != null) ? ($data["cur_page"]) * $this->pagination->per_page : null), null,null);
+                (($data["cur_page"] == null || $data["cur_page"]== 1 ) ? null : $data["cur_page"] * $this->pagination->per_page -10), null,null);
         $this->pagination->total_rows = $this->location_model->getLocations(
                 $this->session->userdata("user")->id, 
                 null, 
@@ -145,12 +144,39 @@ class Location extends CI_Controller {
         $this->load->view("footer");
     }
 
-    public function search($locationNameStr = "") {
+    public function search($locationNameStr = "",$json=false) {
         $this->load->helper('form');
-//        echo __CLASS__ ." > ". __METHOD__ . " > ". $locationNameStr;
+        //echo __CLASS__ ." > ". __METHOD__ . " > ". $locationNameStr;
 //        print_r(Array($this->input->post(),$this->input->get()));
-        echo json_encode($this->location_model->search(
-                        $this->input->get("q"), $this->session->userdata("user")->id), 15);
+        if($json){
+            echo json_encode($this->location_model->search($locationNameStr, $this->session->userdata("user")->id), 15);
+        }else{
+            $page = 1;
+            $config['base_url'] = 'http://' . $_SERVER['SERVER_NAME'] . '/locations/page/';
+            $config['per_page'] = 10;
+            $config['total_rows'] = 10;
+            $config['cur_page'] = 1;
+            $this->pagination->initialize($config);
+            $this->pagination->base_url = 'http://' . $_SERVER['SERVER_NAME'] . '/locations/page/';
+            $this->pagination->per_page = 10;
+            $this->pagination->use_page_numbers = TRUE;
+            $this->pagination->cur_page = $page;
+            $data["cur_page"] = $page;
+            $data["per_page"] = 10;
+            $user = $this->session->userdata("user");
+            if(!empty($locationNameStr)){
+                $data["locations"] = $this->location_model->search($locationNameStr,
+                    $user->id, $this->pagination->per_page, (($page == null || $page== 1 ) ? null : $page * $this->pagination->per_page -10));
+                $this->pagination->total_rows = $this->location_model->search($locationNameStr,$user->id, null, null, true);
+            }else{
+                $data["locations"] = $this->location_model->getLocations($user->id, $this->pagination->per_page, 
+                    (($data["cur_page"] == null || $data["cur_page"]== 1 ) ? null : $data["cur_page"] * $this->pagination->per_page -10), null,null);
+                $this->pagination->total_rows = $this->location_model->getLocations($user->id, null, null, true, null);
+            }
+            $output =  $this->load->view("location/result_table", $data, TRUE);
+            echo $output;
+        }
+        
     }
 
     public function getLocationData($locationId) {

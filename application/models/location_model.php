@@ -30,10 +30,10 @@ class location_model extends CI_Model {
         return $query->row();
     }
 
-    public function getLocations($userId , $limit = null, $offset = 0, $count = false, $default=null) {
+    public function getLocations($userId, $limit = null, $offset = 0, $count = false, $default = null) {
 //        $whereArray = array('user_id' => $userId);
-        if(null != $default){
-            $this->db->where("priority",1);
+        if (null != $default) {
+            $this->db->where("priority", 1);
         }
         $this->db->order_by("create_date", "ASC");
         if (null == $limit) {
@@ -68,7 +68,7 @@ class location_model extends CI_Model {
             'operating_hours' => $this->input->post('operating_hours'),
             'website' => $this->input->post('website')
         );
-        if($data["priority"] == 1){
+        if ($data["priority"] == 1) {
             $this->unDefaultOtherLocations($userId);
         }
         if (null != $id) {
@@ -80,14 +80,14 @@ class location_model extends CI_Model {
             return $this->db->insert($this->tn, $data);
         }
     }
-    
-    private function unDefaultOtherLocations($userId){
+
+    private function unDefaultOtherLocations($userId) {
         $this->db->where('user_id', $userId);
-        return $this->db->update($this->tn, array("priority"=> 0));
+        return $this->db->update($this->tn, array("priority" => 0));
     }
 
-    public function search($name=null,$userId = null, $limit = null, $offset = 0, $count = false){
-        if(null == $name){
+    public function search($name = null, $userId = null, $limit = null, $offset = 0, $count = false) {
+        if (null == $name) {
             return null;
         }
         if ($userId == null) {
@@ -101,7 +101,8 @@ class location_model extends CI_Model {
         if ($count) {
             return $query->num_rows();
         } else {
-            return $query->result_array();
+            return $query->result();
         }
     }
+
 }
