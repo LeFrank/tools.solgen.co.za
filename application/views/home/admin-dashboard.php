@@ -15,7 +15,7 @@
     <?php echo $registered_users["user_count"]; ?> </label>
 <br/>
 <h3>
-    Next 7 days calendar events, starting with the current days events. est. 3 hours
+    Next 7 days calendar events, starting with the current days events.
 </h3>
 <?php
 echo $eventsView;

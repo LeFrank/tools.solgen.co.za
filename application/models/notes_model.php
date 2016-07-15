@@ -69,8 +69,8 @@ class Notes_model extends CI_Model {
      * @param type $id
      * @return type
      */
-    public function getNote($id) {
-        $query = $this->db->get_where($this->tn, array('id' => $id));
+    public function getNote($user_id, $id) {
+        $query = $this->db->get_where($this->tn, array('user_id' => $user_id,'id' => $id));
         return $query->row();
     }
 

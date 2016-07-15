@@ -59,7 +59,8 @@ class Notes extends CI_Controller {
     }
 
     public function edit($id = null) {
-        $data["note"] = $this->notes_model->getNote($id);
+        $user = $this->session->userdata("user");
+        $data["note"] = $this->notes_model->getNote($user->id, $id);
         $this->load->view('header', getPageTitle($data, $this->toolName, "Edit", $data["note"]->heading));
         $this->load->view('notes/notes_nav', $data);
         $this->load->view("notes/capture_form", $data);
@@ -215,14 +216,16 @@ class Notes extends CI_Controller {
     public function viewNote($id) {
         $this->load->library('session');
         $user = $this->session->userdata("user");
-        $data["note"] = $this->notes_model->getNote($id);
-        $data["searches"] = $this->notes_search_model->getSearches($user->id, 10, null, false);
-        $this->load->view('header', getPageTitle($data, $this->toolName, "View", $data["note"]->heading));
-        $this->load->view('notes/notes_nav', $data);
-        $data["capture_form"] = $this->load->view("notes/capture_form", $data, TRUE);
-        $this->load->view("notes/view_note", $data);
-        $this->load->view('notes/notes_includes', $data);
-        $this->load->view('footer');
+        if ($this->notes_model->doesItBelongToMe($this->session->userdata("user")->id, $id)) {
+            $data["note"] = $this->notes_model->getNote($user->id,$id);
+            $data["searches"] = $this->notes_search_model->getSearches($user->id, 10, null, false);
+            $this->load->view('header', getPageTitle($data, $this->toolName, "View", $data["note"]->heading));
+            $this->load->view('notes/notes_nav', $data);
+            $data["capture_form"] = $this->load->view("notes/capture_form", $data, TRUE);
+            $this->load->view("notes/view_note", $data);
+            $this->load->view('notes/notes_includes', $data);
+            $this->load->view('footer');
+        }
 //        $data["note"] = $this->notes_model->getNote($id);
 //        $this->load->view('header');
 //        $this->load->view('notes/notes_nav', $data);
