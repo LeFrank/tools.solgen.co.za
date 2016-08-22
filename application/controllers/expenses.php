@@ -181,6 +181,8 @@ class Expenses extends CI_Controller {
         $data["period"] = $this->getExpensePeriodByDate($userId , $date);
 
         if(!empty($data["period"])){
+            $this->load->model('expense_type_model');
+            $data["expenseType"] = $this->expense_type_model->get_expense_type($expenseTypeId);
             // Get budget using the periodId
             $this->load->model('expense_budget_model');
             $data["budget"] = $this->expense_budget_model->getExpenseBudgetByPeriodId($data["period"]->id);
@@ -192,7 +194,7 @@ class Expenses extends CI_Controller {
             $this->load->helper("expense_statistics_helper");
             $data["totalExpense"] = getExpensesTotal($data["expensesByType"]);
             $remaing =  $data["budgetItem"]->limit_amount - $data["totalExpense"];
-            return "Remaining: ".number_format($remaing, 2, '.', ',');
+            return "<br/>Remaining in ".$data["expenseType"]->description." budget: ".number_format($remaing, 2, '.', ',');
         }
     }
     
