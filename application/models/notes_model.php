@@ -215,11 +215,12 @@ class Notes_model extends CI_Model {
     }
 
     /**
-     * 
+     * Update the note, expects post and session data to be present.
      * @return type
      */
     public function update() {
-        $updateCount = $this->getNote($this->input->post('id'))->update_count + 1;
+        $note = $this->getNote($this->session->userdata("user")->id, $this->input->post('id'));
+        $updateCount = $note->update_count + 1;
         $data = array(
             'user_id' => $this->session->userdata("user")->id,
             'heading' => $this->input->post('title'),
@@ -232,5 +233,4 @@ class Notes_model extends CI_Model {
         $this->db->where('id', $this->input->post('id'));
         return $this->db->update($this->tn, $data);
     }
-
 }
