@@ -5,6 +5,7 @@
             <form name="timetable-form" action='/timetable/capture' method="POST">
                 <h3>Capture An Event</h3>
                 <input type="hidden" id="id" name="id" value="" />
+                <input type="hidden" id="fcViewState" name="fcViewState" value="<?php echo (!empty($fcViewState))?$fcViewState:''; ?>" />
                 <label for="name">Name *</label>
                 <input id="name" type="text" value="" name="name" placeholder="Party at John's/ Dentist appointment..." autofocus />
                 <br>
@@ -83,6 +84,9 @@
     <script type='text/javascript'>
         var expenseTypes = <?php echo json_encode($expenseTypes); ?>;
         var eventsArray = <?php echo $events; ?>;
+        <?php if(!empty($currentEvent)){
+            echo "var currentEvent = " . $currentEvent .";";
+        } ?>
     </script>
     <link rel="stylesheet" type="text/css" href="/css/jquery.datetimepicker.css" />
     <link rel="stylesheet" href="/css/third_party/qtip/jquery.qtip.min.css">

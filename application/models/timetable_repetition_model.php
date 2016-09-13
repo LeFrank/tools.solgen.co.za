@@ -10,7 +10,7 @@ class timetable_repetition_model extends CI_Model {
         date_default_timezone_set('Africa/Johannesburg');
     }
 
-    public function create_timetable() {
+    public function create_timetable_event() {
 		$data = array(
 			"name"			=> $this->input->post("name"),
 			"val" 			=> $this->input->post("val"),

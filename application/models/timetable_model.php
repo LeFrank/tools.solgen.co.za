@@ -40,9 +40,11 @@ class timetable_model extends CI_Model {
             if ($this->input->post('id') != "") {
                 $data["update_date"] = date('Y/m/d H:i:s');
                 $this->db->where('id', $this->input->post('id'));
-                return $this->db->update($this->tn, $data);
+                $this->db->update($this->tn, $data);
+                return $this->input->post('id');
             } else {
-                return $this->db->insert($this->tn, $data);
+                $this->db->insert($this->tn, $data);
+                return $this->db->insert_id();
             }
         }
     }

@@ -24,18 +24,27 @@ class Timetable extends CI_Controller {
 
     public function capture() {
         $this->load->library("input");
+        $user = $this->session->userdata("user");
         if (!$this->session->flashdata('update_token') || $this->input->post("id") == "") {
             $data["status"] = "Create An Event";
-            if ($this->timetable_model->create_timetable()) {
+            $eventId = $this->timetable_model->create_timetable();
+            if ($eventId) {
                 $data["action_classes"] = "success";
                 $data["message_classes"] = "success";
-                if ($this->input->post("id") != "") {
-                    $data["action_description"] = "Updated an event";
-                    $data["message"] = "The Timetable event was successfully updated";
-                } else {
-                    $data["action_description"] = "Create an event";
-                    $data["message"] = "The Timetable event was successfully created";
+                $data["fcViewState"] = $this->input->post("fcViewState");
+                if ($this->timetable_model->doesItBelongToMe($user->id, $eventId)) {
+                    $event = $this->timetable_model->get_user_timetable_event($user->id, $eventId);
+                    $data["currentEvent"] = eventifyArray($event);
+                    $data["message"] = "The Timetable event: \"".$event[0]->name ."\" was successfully ";
+                    if ($this->input->post("id") != "") {
+                        $data["action_description"] = "Updated an event";
+                        $data["message"] = $data["message"] . "updated";
+                    } else {
+                        $data["action_description"] = "Create an event";
+                        $data["message"] = $data["message"] . "created";
+                    }
                 }
+                
             } else {
                 $data["action_classes"] = "failure";
                 $data["action_description"] = "Create an Event";

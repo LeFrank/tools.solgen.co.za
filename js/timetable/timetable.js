@@ -8,12 +8,24 @@ $(document).ready(function () {
         $("#clearForm").hide();
     });
     $(function () {
-        $("#startDate").datetimepicker();
+        $("#startDate").datetimepicker({
+            onClose: function () {
+                updateEndDate($("#startDate").val());
+            }});
     });
     $(function () {
         $("#endDate").datetimepicker();
     });
 
+    function updateEndDate(date) {
+        if ($("#endDate").val() == "") {
+            $("#endDate").attr("placeholder", date);
+            $("#endDate").datetimepicker({
+                startDate: date
+            });
+        }
+
+    }
     var myCalendar;
     myCalendar = $('#calendar').fullCalendar({
         header: {
@@ -50,10 +62,8 @@ $(document).ready(function () {
                     //$("#description").html(obj[0].description);
                     CKEDITOR.instances['description'].setData(obj[0].description);
                     if (obj[0].all_day_event == 1) {
-                        console.log("check");
                         $("#allDayEvent").prop('checked', true);
                     } else {
-                        console.log("uncheck");
                         $("#allDayEvent").prop("checked", false);
                     }
                     $("#startDate").val(obj[0].start_date);
@@ -67,8 +77,32 @@ $(document).ready(function () {
                     $("#delete").show();
                 }
             });
+        },
+        dayClick: function (date, jsEvent, view) {
+            // change the day's background color just for fun
+            // add some cool functionality;
+            if ($(this).css('background-color') != 'rgb(221, 221, 221)') {
+                $(this).css('background-color', '#ddd');
+            } else {
+                $(this).css('background-color', '#f8f8f8');
+            }
         }
+    }).on('click', '.fc-month-button', function(){
+        $("#fcViewState").val("month");
+    }).on('click', '.fc-agendaWeek-button', function(){
+        $("#fcViewState").val("agendaWeek");
+    }).on('click', '.fc-agendaDay-button', function(){
+        $("#fcViewState").val("agendaDay");
     });
+    
+    if (typeof currentEvent !== 'undefined') {
+        myCalendar.fullCalendar('gotoDate', currentEvent[0].start)
+    }
+    
+    if($("#fcViewState").val() != ""){
+        console.log($("#fcViewState").val());
+        myCalendar.fullCalendar('changeView', $("#fcViewState").val());
+    }
 
     $("#delete").click(function () {
         $.ajax({
@@ -76,7 +110,6 @@ $(document).ready(function () {
             url: "/timetable/delete/" + $("#id").val()
         });
     });
-
     $("#timetableRepetition").change(function () {
         var reps = $("#numberOfRepeats");
         var repsDesc = $("#repeatDescriptor");
