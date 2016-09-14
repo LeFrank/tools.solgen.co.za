@@ -54,6 +54,18 @@ class timetable_category_model extends CI_Model {
         $query = $this->db->get_where($this->tn, array('enabled' => 1));
         return $query->result_array();
     }
+    
+    public function get_filtered_timetable_categories($search) {
+//        print_r($search);
+        $this->db->order_by("name", "asc");
+        if(isset($search["showOnDashboard"]) || $search["showOnDashboard"] != NULL || $search["showOnDashboard"]!= ""){
+            $query = $this->db->get_where($this->tn, array('appear_on_dashboard' => 1, 'enabled' => 1));
+        }else{
+            $query = $this->db->get_where($this->tn, array('enabled' => 1));
+        }
+//        print "SQL Query: ".$this->db->last_query();
+        return $query->result_array();
+    }
 
     public function get_user_timetable_category($userId) {
         $this->db->order_by("name", "asc");

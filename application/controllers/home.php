@@ -36,6 +36,7 @@ class Home extends CI_Controller {
         $this->load->view('header');
         if ($this->session->userdata("isAdmin")) {
             $this->load->model("timetable_model");
+            $this->load->model("timetable_category_model");
             $this->load->model("expense_period_model");
             $this->load->model("expense_budget_model");
             $this->load->model("expense_model");
@@ -48,6 +49,8 @@ class Home extends CI_Controller {
             $data["startAndEndDateOfWeek"] = getNextSevenDays(date('N'), date('Y'));
             $search["startDate"] = $data["startAndEndDateOfWeek"][0];
             $search["endDate"] = $data["startAndEndDateOfWeek"][1];
+            $search["showOnDashboard"] = 1;
+            $search["dashboardCategories"] = $this->timetable_category_model->get_filtered_timetable_categories($search);
             $data["entries"] = $this->timetable_model->getFilteredTimetableEvents($user->id, $search);
             $data["eventsView"] = $this->load->view("/timetable/searchEntries", $data, true);
             // get budget data

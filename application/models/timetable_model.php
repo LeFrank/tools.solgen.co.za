@@ -112,8 +112,13 @@ class timetable_model extends CI_Model {
         if (isset($search["timetableExpenseType"]) && $search["timetableExpenseType"] != null && $search["timetableExpenseType"] != "" && $search["timetableExpenseType"] != 0 ) {
             $this->db->where("expense_type_id", $search["timetableExpenseType"]);
         }
+        
+        if(isset($search["dashboardCategories"]) && sizeof($search["dashboardCategories"]) > 0){
+            $this->db->where_in("tt_category_id" ,$this->array_column_old( $search["dashboardCategories"], "id"));
+        }
+        
         $query = $this->db->get_where($this->tn);
-        //echo $this->db->last_query();
+//        echo $this->db->last_query();
         return $query->result();
     }
 
@@ -185,4 +190,28 @@ class timetable_model extends CI_Model {
         $this->db->insert($this->tn, $data);
     }
 
+    function array_column_old(array $input, $columnKey, $indexKey = null) {
+        $array = array();
+        foreach ($input as $value) {
+            if ( ! isset($value[$columnKey])) {
+                trigger_error("Key \"$columnKey\" does not exist in array");
+                return false;
+            }
+            if (is_null($indexKey)) {
+                $array[] = $value[$columnKey];
+            }
+            else {
+                if ( ! isset($value[$indexKey])) {
+                    trigger_error("Key \"$indexKey\" does not exist in array");
+                    return false;
+                }
+                if ( ! is_scalar($value[$indexKey])) {
+                    trigger_error("Key \"$indexKey\" does not contain scalar value");
+                    return false;
+                }
+                $array[$value[$indexKey]] = $value[$columnKey];
+            }
+        }
+        return $array;
+    }
 }
