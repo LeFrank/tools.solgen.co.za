@@ -11,6 +11,8 @@
             <th>Description</th>
             <th>Create Date</th>
             <th>Last Updated</th>
+            <th>Show On Dashboard</th>
+            <th>Send Reminder</th>
             <th>Enabled</th>
             <th>Actions</th>
             </thead>
@@ -21,6 +23,8 @@
                         <td><?php echo $v["description"]; ?></td>
                         <td><?php echo $v["create_date"]; ?></td>
                         <td><?php echo $v["update_date"]; ?></td>
+                        <td><?php echo ($v["appear_on_dashboard"] == null || $v["appear_on_dashboard"] == 0) ?"No":"Yes" ; ?></td>
+                        <td><?php echo ($v["reminder"]== null || $v["reminder"] == 0) ?"No":"Yes" ;?></td>
                         <td><?php echo $v["enabled"]; ?></td>
                         <td>
                             <a href="/event-category/edit/<?php echo $v["id"];?>">edit</a>&nbsp;&nbsp;|&nbsp;&nbsp;
@@ -50,6 +54,18 @@
     <label for="description">Description *</label>
     <textarea name="description" id="description" cols="20" rows="8" ></textarea><br />
 
+    <label for="showOnDashboard">Show On Dashboard</label>
+    <select name="showOnDashboard">
+        <option value="true">True</option>
+        <option value="false">False</option>';
+    </select>
+    <br/>
+    <label for="reminder">Reminder</label>
+    <select name="reminder">
+        <option value="true">True</option>
+        <option value="false">False</option>';
+    </select>
+    <br/>
     <label for="enabled">Enabled</label>
     <select name="enabled">
         <option value="true">True</option>

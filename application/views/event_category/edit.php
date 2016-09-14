@@ -13,11 +13,22 @@
 
         <label for="description">Description *</label>
         <textarea name="description" id="description"><?php echo $eventCategory->description; ?></textarea><br />
-
+        <label for="showOnDashboard">Show On Dashboard</label>
+        <select name="showOnDashboard">
+            <option value="1" <?php echo ($eventCategory->appear_on_dashboard == 1 ) ? "selected" : "" ?>>Yes</option>
+            <option value="0" <?php echo ($eventCategory->appear_on_dashboard == null || $eventCategory->appear_on_dashboard == 0 ) ? "selected" : "" ?> >No</option>';
+        </select>
+        <br/>
+        <label for="reminder">Reminder</label>
+        <select name="reminder">
+            <option value="1" <?php echo ($eventCategory->reminder == 1 ) ? "selected" : "" ?>>Yes</option>
+            <option value="0" <?php echo ($eventCategory->reminder == 0 ) ? "selected" : "" ?> >No</option>';
+        </select>
+        <br/>
         <label for="enabled">Enabled</label>
         <select name="enabled">
-            <option value="true" <?php echo ($eventCategory->enabled == 1 ) ? "selected" : "" ?>>True</option>
-            <option value="false" <?php echo ($eventCategory->enabled == 0 ) ? "selected" : "" ?> >False</option>';
+            <option value="1" <?php echo ($eventCategory->enabled == 1 ) ? "selected" : "" ?>>Yes</option>
+            <option value="0" <?php echo ($eventCategory->enabled == 0 ) ? "selected" : "" ?> >No</option>';
         </select><br />
         <br />
         <input type="submit" name="submit" value="Create Event Category" class="button" />
