@@ -32,14 +32,17 @@ class ExpenseBudgetItems extends CI_Controller {
     public function comment($itemId){
         $this->load->library('session');
         $this->load->helper('form');
-        $comment = $this->input->post("comment");
+        $comment = $this->input->post("value");
         if(empty($comment)){
             echo "Invalid Data";
             return "Invalid Data";
         }
         $item = $this->expense_budget_item_model->getItemById($itemId);
-        $item->comment = $this->input->post("comment");
-        echo $this->expense_budget_item_model->updateByItem($item);
+        //$item->comment = $this->input->post("comment");
+         $item->comment = $this->input->post("value");
+        //echo $this->expense_budget_item_model->updateByItem($item);
+        $this->expense_budget_item_model->updateByItem($item);
+        echo $this->expense_budget_item_model->getItemById($itemId)->comment;
     }
     
     public function delete($id) {

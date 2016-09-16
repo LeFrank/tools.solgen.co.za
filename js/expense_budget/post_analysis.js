@@ -25,6 +25,8 @@ $(document).ready(function () {
         console.log("period-id: " + $("#period-id").val());
         console.log("category-id: " + $(this).attr("data-category"));
     });
+
+    $('.editable').jinplace();
 });
 var delay = (function () {
     var timer = 0;
@@ -55,37 +57,40 @@ function saveContent(ele) {
 }
 
 function saveBudgetOverSpendComment(ele) {
-    delay(function () {
-        $.ajax({
-            method: "POST",
-            url: "/expense-budget/comment/" + $("#budgetId").val(),
-            data: {over_spend_comment : $(ele).val()}
-        }).done(function (msg) {
-            alert("Data Saved: " + msg);
-        });
-    }, 5000);
+    $.ajax({
+        method: "POST",
+        url: "/expense-budget/comment/" + $("#budgetId").val(),
+        data: {over_spend_comment: $("#"+ele).val()}
+    }).done(function (msg) {
+        $("#overspend_comment_status").html("Data Saved");
+        delay(function(){
+            $("#overspend_comment_status").html("");
+        },5000);
+    });
 }
 
 function saveBudgetUnderSpendComment(ele) {
-    delay(function () {
-        $.ajax({
-            method: "POST",
-            url: "/expense-budget/comment/" + $("#budgetId").val(),
-            data: {under_spend_comment : $(ele).val()}
-        }).done(function (msg) {
-            alert("Data Saved: " + msg);
-        });
-    }, 5000);
+    $.ajax({
+        method: "POST",
+        url: "/expense-budget/comment/" + $("#budgetId").val(),
+        data: {under_spend_comment: $("#"+ele).val()}
+    }).done(function (msg) {
+        $("#underspend_comment_status").html("Data Saved");
+        delay(function(){
+            $("#underspend_comment_status").html("");
+        },5000);
+    });
 }
 
 function saveBudgetOverallComment(ele) {
-    delay(function () {
-        $.ajax({
-            method: "POST",
-            url: "/expense-budget/comment/" + $("#budgetId").val(),
-            data: {overall_comment : $(ele).val()}
-        }).done(function (msg) {
-            alert("Data Saved: " + msg);
-        });
-    }, 5000);
+    $.ajax({
+        method: "POST",
+        url: "/expense-budget/comment/" + $("#budgetId").val(),
+        data: {overall_comment: $("#"+ele).val()}
+    }).done(function (msg) {
+        $("#post_budget_comment_status").html("Data Saved");
+        delay(function(){
+            $("#post_budget_comment_status").html("");
+        },5000);
+    });
 }

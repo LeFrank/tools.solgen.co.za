@@ -1,6 +1,7 @@
 <?php
 $finalOutcome = number_format($totalSpent - $expenseBudget->total_limit, 2, ".", ",");
 $overSpent = (($finalOutcome >= 0 ) ? TRUE : FALSE);
+$editableItems = array();
 ?>
 <div class="row ">
     <div class="large-12 columns">
@@ -62,6 +63,7 @@ $overSpent = (($finalOutcome >= 0 ) ? TRUE : FALSE);
                 if (!empty($expenseBudgetItems)) {
                     $count = 1;
                     foreach ($expenseBudgetItems as $k => $v) {
+                        $editableItems[] = $v["id"];
                         if ($v["amount_sign"] == "-") {
                             $ttypes[$k] = true;
                             $valRemaining = ((array_key_exists($v["expense_type_id"], $expenseTypesTotals)) ? round($v["limit_amount"] - $expenseTypesTotals[$v["expense_type_id"]]["value"]) : round($v["limit_amount"]) );
@@ -130,13 +132,14 @@ $overSpent = (($finalOutcome >= 0 ) ? TRUE : FALSE);
                                     ?>
                                 </td>
                                 <td>
-                                    <input type="hidden" name="id" id="id" value="<?php echo $v["id"]; ?>" />
-                                    <textarea name="comment_<?php echo $v["id"]; ?>" 
-                                        id="comment_<?php echo $v["id"]; ?>" 
-                                        onkeyup="saveContent(this);"
-                                        rows="3"
-                                        cols="40"
-                                        ><?php echo (!empty($v["comment"]))?$v["comment"]:"";?></textarea>
+                                    <span 
+                                        class="editable"
+                                        data-url="/expense-budget-item/comment/<?php echo $v["id"]; ?>"
+                                        data-type="textarea"
+                                        data-ok-button="OK"
+                                        data-cancel-button="Cancel" >
+                                            <?php echo (!empty($v["comment"]))?$v["comment"]:"";?>
+                                    </span>
                                 </td>
                             </tr>
                             <?php
@@ -174,10 +177,12 @@ $overSpent = (($finalOutcome >= 0 ) ? TRUE : FALSE);
         </table>
         <p>
             Were there overarching events or reasons for the overspends?
-            <textarea name="overspend_comment" cols="40" rows="7" placeholder="Where did it go wrong :( ..." onkeyup="saveBudgetOverSpendComment(this);"
+            <textarea id="overspend_comment" name="overspend_comment" cols="40" rows="7" placeholder="Where did it go wrong :( ..." 
                       ><?php if(!empty($expenseBudget->over_spend_comment) && $expenseBudget->over_spend_comment != null){
                     echo $expenseBudget->over_spend_comment;
-                }?></textarea>
+                }?>
+            </textarea>
+            <input type="button" class="button" value="Save" onClick="saveBudgetOverSpendComment('overspend_comment');"/>&nbsp;&nbsp;<span id="overspend_comment_status"></span>
         </p>
         <hr/>
         <p>
@@ -281,12 +286,20 @@ $overSpent = (($finalOutcome >= 0 ) ? TRUE : FALSE);
                                     ?>
                                 </td>
                                 <td>
-                                    <input type="hidden" name="id" id="id" value="<?php echo $v["id"]; ?>" />
+<!--                                    <input type="hidden" name="id" id="id" value="<?php echo $v["id"]; ?>" />
                                     <textarea name="comment_<?php echo $v["id"]; ?>" 
                                         id="comment_<?php echo $v["id"]; ?>" 
                                         onkeyup="saveContent(this);"
                                         rows="3"
-                                        cols="40"><?php echo (!empty($v["comment"]))?$v["comment"]:"";?></textarea>
+                                        cols="40"><?php echo (!empty($v["comment"]))?$v["comment"]:"";?></textarea>-->
+                                    <span 
+                                        class="editable"
+                                        data-url="/expense-budget-item/comment/<?php echo $v["id"]; ?>"
+                                        data-type="textarea"
+                                        data-ok-button="OK"
+                                        data-cancel-button="Cancel" >
+                                            <?php echo (!empty($v["comment"]))?$v["comment"]:"";?>
+                                    </span>
                                 </td>
                             </tr>
                             <?php
@@ -325,21 +338,24 @@ $overSpent = (($finalOutcome >= 0 ) ? TRUE : FALSE);
                 </p>
         <p>
             Why did we not spend the allocated amounts?
-            <textarea name="underspend_comment" cols="40" rows="7" placeholder="Because x happened that meant the y :| ..." onkeyup="saveBudgetUnderSpendComment(this);" 
-                ><?php if(!empty($expenseBudget->uner_spend_comment) && $expenseBudget->under_spend_comment != null){
+            <textarea id="underspend_comment" name="underspend_comment" cols="40" rows="7" placeholder="Because x happened that meant the y :| ..." 
+                ><?php if(!empty($expenseBudget->under_spend_comment) && $expenseBudget->under_spend_comment != null){
                     echo $expenseBudget->under_spend_comment;
-                }?></textarea>
+                }?>
+            </textarea>
+            <input type="button" class="button" value="Save" onClick="saveBudgetUnderSpendComment('underspend_comment');"/>&nbsp;&nbsp;<span id="underspend_comment_status"></span>
         </p>
         <h3>
             Closing thoughts on this period?
         </h3>
         <p>What went wrong? What went right? Anything significant happen that may make a difference in the future?
-            <textarea name="post_budget_comment" cols="40" rows="7" 
+            <textarea id="post_budget_comment" name="post_budget_comment" cols="40" rows="7" 
                 placeholder="Let it out..."
-                onkeyup="saveBudgetOverallComment(this);" 
                 ><?php if(!empty($expenseBudget->overall_comment) && $expenseBudget->overall_comment != null){
                     echo $expenseBudget->overall_comment;
-                }?></textarea>
+                }?>
+            </textarea>
+            <input type="button" class="button" value="Save" onClick="saveBudgetOverallComment('post_budget_comment');"/>&nbsp;&nbsp;<span id="post_budget_comment_status"></span>
         </p>
         <!--    // Show the overall state of the budget for that period.<br/>
         // Overall give an honest account of what went right and what went wrong in this period<br/>
@@ -354,8 +370,12 @@ $overSpent = (($finalOutcome >= 0 ) ? TRUE : FALSE);
         -->
     </div>
 </div>
+<script type="text/javascript" >
+    var editableItemsIds = <?php echo json_encode($editableItems); ?>;
+</script>
 <link rel="stylesheet" href="/css/third_party/thickbox/thickbox.css" type="text/css" media="screen" />
 <script src="/js/third_party/jquery-ui.custom.min.js" type="text/javascript" ></script>
 <script type="text/javascript" src="/js/third_party/thickbox-compressed.js"></script>
+<script type="text/javascript" src="/js/third_party/jinplace-1.2.1.min.js"></script>
 <script type="text/javascript" src="/js/third_party/jquery.tablesorter.min.js"></script>
 <script type="text/javascript" src="/js/expense_budget/post_analysis.js" ></script>

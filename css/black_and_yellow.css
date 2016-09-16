@@ -488,10 +488,18 @@ table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSo
     }
 } 
 
-
 /*******************************************************************************
 * Tools
 *******************************************************************************/
+
+/************
+* Budget
+************/
+
+/*span.editable form textarea{
+    resize: vertical; 
+    border-color:red;
+}*/
 
 /*
 * Weather
