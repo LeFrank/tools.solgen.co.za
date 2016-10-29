@@ -11,11 +11,13 @@
         &nbsp;&nbsp;
         <a href="/notes" >Notes</a> 
         &nbsp;&nbsp;
+        <a href="/timetable" >Timetable</a>
+        &nbsp;&nbsp;
         <a href="/locations" >Locations</a>
         &nbsp;&nbsp;
         <a href="/weather" >Weather</a>
         &nbsp;&nbsp;
-        <a href="/timetable" >Timetable</a>
+        <a href="/wishlist" >Wishlist</a>
         <!-- &nbsp;&nbsp;
         |
         &nbsp;&nbsp;

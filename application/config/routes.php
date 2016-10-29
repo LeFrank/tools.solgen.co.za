@@ -164,7 +164,11 @@ $route['weather/forecast'] = 'weather/getSevenDaysWeather';
 $route['weather/options'] = 'weather/options';
 $route['weather/measurement'] = 'weather/saveMeasurement';
 
-
+$route['wishlist'] = 'wishlist/index';
+$route['wishlist/capture'] = 'wishlist/create';
+$route['wishlist/(:num)'] = 'wishlist/item/$1';
+$route['wishlist/update/(:num)'] = 'wishlist/update/$1';
+$route['wishlist/delete/(:num)'] = 'wishlist/delete/$1';
 //$route['(:any)'] = 'pages/view/$1';
 //$route['default_controller'] = 'pages/view';
 $route['default_controller'] = 'home/index';

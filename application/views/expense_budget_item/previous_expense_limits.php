@@ -30,7 +30,11 @@
                                 <?php echo $expenseTypes[$k]["description"]; ?>
                             </td>
                             <td>
-                                <?php echo number_format($previousExpenseBudgetItems[$expenseTypes[$k]["id"]]["limit_amount"], 2, ".", ""); ?>
+                                <?php if(isset($previousExpenseBudgetItems[$expenseTypes[$k]["id"]]["limit_amount"])){
+                                    echo number_format($previousExpenseBudgetItems[$expenseTypes[$k]["id"]]["limit_amount"], 2, ".", "");
+                                }else{
+                                    echo "0.00";
+                                } ?>
                             </td>
                             <td id="previous-period-type" data-category="<?php echo $expenseTypes[$k]["id"]; ?>" 
                                 data-expense-count="<?php echo ((array_key_exists($expenseTypes[$k]["id"], $expenseTypesTotals)) ? $expenseTypesTotals[$expenseTypes[$k]["id"]]["expenseCount"] : "0"); ?>"  

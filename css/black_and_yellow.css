@@ -16,7 +16,7 @@ html, body {
     height: auto !important;
     height: 100%;
     font-size: 1em;
-    line-height:1.5em;
+    line-height:1.5;
     font-family: AurulentSans, Trebuchet, Tahoma, Verdana, Arial, sans-serif;
 }
 
@@ -27,12 +27,12 @@ body {
     padding: 0;
     color:#666666;
     font-size: 1em;
-    line-height:1em;
+    line-height:1;
     text-align:left;
 }
 
 body * {
-    line-height:1.22em;
+    line-height:1.22;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -386,14 +386,14 @@ table.tablesorter {
     background-color: #f3f3f3;
     margin:10px 0pt 15px;
     font-size: 1em;
-    line-height:1.5em;
+    line-height:1.5;
     width: 100%;
     text-align: left;
 }
 table.tablesorter thead tr th, table.tablesorter tfoot tr th {
     border: 1px solid #FFF;
     font-size: 1em;
-    line-height:1.5em;
+    line-height:1.5;
     padding: 4px;
 }
 table.tablesorter thead tr .header {
@@ -507,7 +507,7 @@ table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSo
 
 .weather-forecast{
     width:100%;
-    line-height: 20px;
+    line-height: 1;
     overflow:scroll;
 }
 .span-label{
@@ -626,7 +626,7 @@ table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSo
 }
 .day-block{
     /*background-color: orange;*/
-    line-height: 3rem;
+    line-height: 3;
     padding-left:10px;
     padding-top:2px;
 }
@@ -642,7 +642,7 @@ table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSo
     padding-left:10px;
     background: #d8d8d8;
     font-size: xx-large;
-    line-height: 3rem;
+    line-height: 3;
     padding-left:10px;
 }
 .search-event div{
@@ -667,7 +667,7 @@ table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSo
     font-size: large;
 }
 .note_date{
-    line-height: 1em;
+    line-height: 1;
     padding: 10px 0px 10px 10px ;
     background-color: #d8d8d8;
     width:100%;
@@ -689,7 +689,7 @@ table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSo
     outline: 0 none;
     padding: 4px;
     width:100%;
-    line-height: 1em;
+    line-height: 1;
 }
 
 .note_body{
@@ -755,7 +755,7 @@ table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSo
     outline: 0 none;
     padding: 4px;
     width:100%;
-    line-height: 1em;
+    line-height: 1;
 }
 .note_action{
     background-color: #ffffff;
@@ -768,7 +768,7 @@ table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSo
     outline: 0 none;
     padding: 4px;
     width:100%;
-    line-height: 1em;
+    line-height: 1;
 }
 span#searchExpand img{
     vertical-align:middle;
