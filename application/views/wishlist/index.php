@@ -5,54 +5,98 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 ?>
+<div class="row">
+    <div class="large-12 columns">
+        <h2>Recent Wishlist Items</h2>
+        <div id="latestItems">
+            <h3>Five Latest Items</h3>
+            <?php if (is_array($wishlistItems) && !empty($wishlistItems)) {
+                ?>
+                <table id="wishlistItemSummary" class="tablesorter full-width">
+                    <thead>
+                    <th/>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Reason</th>
+                    <th>priority</th>
+                    <th>Target Date</th>
+                    <th>Status</th>
+                    <th>Amount</th>
+                    <th>Actions</th>
+                    </thead>
+                    <tbody>
+                        <?php
+                        $total = 0.0;
+                        foreach ($wishlistItems as $k => $v) {
+                            echo "<tr>";
+                            echo "<td>" . ++$k . "</td>";
+                            echo "<td>" . $v["name"] . "</td>";
+                            echo "<td>" . $v["description"] . "</td>";
+                            echo "<td>" . $v["reason"] . "</td>";
+                            echo "<td>" . $priorities[$v["priority"]] . "</td>";
+                            echo "<td>" . $v["target_date"] . "</td>";
+                            echo "<td>" . $statuses[$v["status"]] . "</td>";
+                            echo "<td class='align-right'>" . $v["cost"] . "</td>";
+                            echo "<td><a href='/expense-wishlist/edit/" . $v["id"] . "'>Edit</a>&nbsp;&nbsp;|&nbsp;&nbsp;"
+                                    . "<a href='/expense-wishlist/delete/" . $v["id"] . "' onclick='return confirm_delete()' >Delete</a></td>";
+                            echo "</tr>";
+                            $total += $v["cost"];
+                        }
+                        echo "<tr class='td-total'>"
+                        . "  <td class='align-left'>Latest Wishlist Items Total</span></td>"
+                        . "  <td colspan='7' class='align-right'>" . number_format($total, 2, '.', ',') . "</td>"
+                        . "  <td >&nbsp;</td>"
+                        . "</tr>";
+                        ?>
+                    </tbody>
+                </table>
+                <?php
+            } else {
+                echo "No wishlist items captured.";
+            }
+            ?>
+        </div>
+        <br/>
+    </div>
+</div>
 <div class="row">
     <div class="large-12 columns">
         <div id="captureExpenses">
             <h3>Capture Wishlist Item</h3>
             <?php echo validation_errors(); ?>
 
-            <?php echo form_open('wishlist/capture') ?>
+            <?php echo form_open('expense-wishlist/capture') ?>
             <div class="row">
                 <div class="large-4 columns">
                     <label for="name">Name *</label>
                     <input type="text" name="name" id="name" placeholder="Awesome new thing" autofocus /><br />
                 </div>
-                <div class="large-2 columns">
+                <div class="large-1 columns">
                     <label for="priority">Priority</label>
                     <select name="priority" id="priority"> 
-                        <option value="0">None</option>
-                        <option value="1">Low</option>
-                        <option value="2">Low/Medium</option>
-                        <option value="3">Medium</option>
-                        <option value="4">Medium/High</option>
-                        <option value="5">High</option>
-                        <option value="6">High/Summit</option>
-                        <option value="7">Summit</option>
+                        <?php foreach($priorities as $k=> $v){   ?>
+                            <option value="<?php echo $k; ?>"><?php echo $v; ?></option>
+                        <?php } ?>  
                     </select>
                 </div>
-                <div class="large-2 columns">
+                <div class="large-1 columns">
                     <label for="cost">Estimated Cost</label>
                     <input type="number" min="0.01" step="0.01" max="9999999999999" name="cost" id="cost" placeholder="0.00" /><br />
                 </div>
-                <div class="large-2 columns">
+                <div class="large-1 columns">
                     <label for="targetDate">Target Date</label>
                     <input  type="text" id="targetDate" name="targetDate" placeholder="<?php echo date('Y/m/d H:i:s'); ?>" />
                 </div>
-                <div class="large-2 columns">
+                <div class="large-1 columns">
                     <label for="status">Status</label>
                     <select name="status" id="status"> 
-                        <option value="0">None</option>
-                        <option value="1">Some Day</option>
-                        <option value="2">Awaiting Action</option>
-                        <option value="3">In Progress</option>
-                        <option value="4">Stopped, needs rethink</option>
-                        <option value="5">Completed/Acquired/Done</option>
-                        <option value="6">High</option>
-                        <option value="7">High/Summit</option>
-                        <option value="8">Summit</option>
+                        <?php foreach($statuses as $k=> $v){   ?>
+                            <option value="<?php echo $k; ?>"><?php echo $v; ?></option>
+                        <?php } ?>    
                     </select>
+                </div>
+                <div class="large-5 columns">
                 </div>
             </div>
             <div class="row"><div class="large-12 columns">&nbsp;</div></div>
@@ -80,8 +124,7 @@
 <link rel="stylesheet" type="text/css" href="/css/jquery.datetimepicker.css" />
 <script src="/js/jquery.datetimepicker.js"></script>
 <script type="text/javascript" src="/js/third_party/jquery.tablesorter.min.js"></script>
-<script type="text/javascript" src="/js/expenses/expense_table.js" ></script>
-<script type="text/javascript" src="/js/expenses/expense_capture.js" ></script>
+<script type="text/javascript" src="/js/wishlist/history.js" ></script>
 <script type="text/javascript">
     $(function () {
         $("#targetDate").datetimepicker();

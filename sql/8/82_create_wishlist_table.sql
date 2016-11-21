@@ -20,3 +20,5 @@ CREATE TABLE `solgen`.`wishlist` (
 
 ALTER TABLE `solgen`.`wishlist` 
 ADD COLUMN `user_id` INT(11) NOT NULL AFTER `id`;
+
+ALTER TABLE `wishlist` CHANGE COLUMN `status` `status` TINYINT(4) NULL DEFAULT 0 ;

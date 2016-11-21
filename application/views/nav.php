@@ -17,7 +17,7 @@
         &nbsp;&nbsp;
         <a href="/weather" >Weather</a>
         &nbsp;&nbsp;
-        <a href="/wishlist" >Wishlist</a>
+        <a href="/expense-wishlist" >Wishlist</a>
         <!-- &nbsp;&nbsp;
         |
         &nbsp;&nbsp;

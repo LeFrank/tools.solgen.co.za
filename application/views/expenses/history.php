@@ -193,7 +193,7 @@
     <tbody>
     {{#expenses}}
     <tr>
-    <td> {{@index}}</td>
+    <td>{{@index}}</td>
     <td>{{expense_date}}</td>
     <td>{{expense_type_id}}</td>
     <td>{{payment_method_id}}</td>

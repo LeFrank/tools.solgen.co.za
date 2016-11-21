@@ -22,8 +22,9 @@ $(document).ready(function () {
             $("#search-entries").html(resp);
         });
     });
-
-    CKEDITOR.replace('description');
+    if($( "#description" ).length){
+        CKEDITOR.replace('description');
+    }
 });
 
 function getEvent(ele) {

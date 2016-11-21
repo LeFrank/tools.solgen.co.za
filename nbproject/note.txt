@@ -1,0 +1,12 @@
+Columns:
+id	int(11) AI PK
+user_id	int(11)
+name	varchar(255)
+description	text
+reason	text
+priority	tinyint(4)
+cost	float(11,2)
+target_date	timestamp
+status	tinyint(4)
+creation_date	timestamp
+update_date	timestamp
