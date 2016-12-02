@@ -180,8 +180,7 @@ $editableItems = array();
             <textarea id="overspend_comment" name="overspend_comment" cols="40" rows="7" placeholder="Where did it go wrong :( ..." 
                       ><?php if(!empty($expenseBudget->over_spend_comment) && $expenseBudget->over_spend_comment != null){
                     echo $expenseBudget->over_spend_comment;
-                }?>
-            </textarea>
+                }?></textarea>
             <input type="button" class="button" value="Save" onClick="saveBudgetOverSpendComment('overspend_comment');"/>&nbsp;&nbsp;<span id="overspend_comment_status"></span>
         </p>
         <hr/>
@@ -341,8 +340,7 @@ $editableItems = array();
             <textarea id="underspend_comment" name="underspend_comment" cols="40" rows="7" placeholder="Because x happened that meant the y :| ..." 
                 ><?php if(!empty($expenseBudget->under_spend_comment) && $expenseBudget->under_spend_comment != null){
                     echo $expenseBudget->under_spend_comment;
-                }?>
-            </textarea>
+                }?></textarea>
             <input type="button" class="button" value="Save" onClick="saveBudgetUnderSpendComment('underspend_comment');"/>&nbsp;&nbsp;<span id="underspend_comment_status"></span>
         </p>
         <h3>
@@ -353,8 +351,7 @@ $editableItems = array();
                 placeholder="Let it out..."
                 ><?php if(!empty($expenseBudget->overall_comment) && $expenseBudget->overall_comment != null){
                     echo $expenseBudget->overall_comment;
-                }?>
-            </textarea>
+                }?></textarea>
             <input type="button" class="button" value="Save" onClick="saveBudgetOverallComment('post_budget_comment');"/>&nbsp;&nbsp;<span id="post_budget_comment_status"></span>
         </p>
         <!--    // Show the overall state of the budget for that period.<br/>

@@ -5,7 +5,7 @@
             <h3>Edit Item</h3>
             <?php echo validation_errors(); ?>
 
-            <?php echo form_open('expense-wishlist/update') ?>
+            <?php echo form_open('expense-wishlist/update/'.$wishlistItem->id) ?>
             <div class="row">
                 <div class="large-4 columns">
                     <label for="name">Name *</label>
@@ -65,7 +65,7 @@
 <script type="text/javascript">
     $(function() {
         $('form').attr('autocomplete', 'off');
-        $("#expenseDate").datetimepicker();
+        $("#targetDate").datetimepicker();
         CKEDITOR.replace('description');
         CKEDITOR.replace('reason');
     });

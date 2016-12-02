@@ -50,7 +50,7 @@ $route['expense-wishlist/(:num)'] = 'wishlist/item/$1';
 $route['expense-wishlist/edit/(:num)'] = 'wishlist/edit/$1';
 $route['expense-wishlist/update/(:num)'] = 'wishlist/update/$1';
 $route['expense-wishlist/delete/(:num)'] = 'wishlist/delete/$1';
-
+$route['expense-wishlist/filter-search'] = 'wishlist/filteredSearch';
 
 
 $route['user/(:any)'] = 'user/$1';

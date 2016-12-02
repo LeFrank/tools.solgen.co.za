@@ -1,0 +1,48 @@
+<?php if (is_array($wishlistItemsForPeriod) && !empty($wishlistItemsForPeriod)) {
+    ?>
+    <table id="wishlistItems" class="tablesorter full-width hover stack">
+        <thead>
+        <th/>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Reason</th>
+        <th>priority</th>
+        <th>Target Date</th>
+        <th>Status</th>
+        <th>Amount</th>
+        <th>Actions</th>
+    </thead>
+    <tbody>
+        <?php
+        $total = 0.0;
+        foreach ($wishlistItemsForPeriod as $k => $v) {
+            echo "<tr>";
+            echo "<td>" . ++$k . "</td>";
+            echo "<td>" . $v["name"] . "</td>";
+            echo "<td>" . $v["description"] . "</td>";
+            echo "<td>" . $v["reason"] . "</td>";
+            echo "<td>" . $v["priority"] . " - " . $priorities[$v["priority"]] . "</td>";
+            echo "<td>" . $v["target_date"] . "</td>";
+            echo "<td>" . $v["status"] . " - " . $statuses[$v["status"]] . "</td>";
+            echo "<td class='align-right'>" . $v["cost"] . "</td>";
+            echo "<td><a href='/wishlist/edit/" . $v["id"] . "'>Edit</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href='/expense-wishlist/delete/" . $v["id"] . "'>Delete</a></td>";
+            echo "</tr>";
+            $total += $v["cost"];
+        }
+        ?>
+    </tbody>
+    </table>
+    <table style="width:100%;">
+        <?php
+        echo "<tr class='td-total'>"
+        . "  <td class='align-left'>Latest Wishlist Items Total</span></td>"
+        . "  <td colspan='7' class='align-right'>" . number_format($total, 2, '.', ',') . "</td>"
+        . "  <td >&nbsp;</td>"
+        . "</tr>";
+        ?>   
+    </table>
+    <?php
+} else {
+    echo "No wishlist items captured.";
+}
+?>

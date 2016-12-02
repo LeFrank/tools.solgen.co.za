@@ -95,6 +95,8 @@ class wishlist_model extends CI_Model {
             return null;
         }
         $this->db->order_by("creation_date", "desc");
+        $this->db->order_by("priority", "desc");
+        $this->db->order_by("status", "desc");
         if (null == $limit) {
             $query = $this->db->get_where($this->tn, array('user_id' => $userId));
         } else {
@@ -142,8 +144,57 @@ class wishlist_model extends CI_Model {
         } else {
             $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'creation_date >=' => $startDate, 'creation_date <= ' => $endDate), $limit, $offset);
         }
-//        echo $this->db->last_query();
+        // echo $this->db->last_query();
         return $query->result_array();
     }
 
+    
+    public function getItemsByCriteria($userId = null, $limit = null, $offset = 0) {
+        if (null != $userId) {
+            $this->db->order_by("priority", "desc");
+            $this->db->order_by("status", "desc");
+            if ($this->input->post("fromAmount") != $this->input->post("toAmount")) {
+                $this->db->where("cost >=", $this->input->post("fromAmount"));
+                $this->db->where("cost <=", $this->input->post("toAmount"));
+            }
+            if ($this->input->post("keyword") != "") {
+                $this->db->like("description", $this->input->post("keyword"));
+                $this->db->like("reason", $this->input->post("keyword"));
+            }
+            $statusArr = $this->input->post("statuses");
+            $priorityArr = $this->input->post("priorities");
+            if (!empty($statusArr) && $statusArr[0] != "all") {
+                $this->db->where_in("status", array_map('intval', $statusArr));
+            }
+            if (!empty($priorityArr) && $priorityArr[0] != "all") {
+                $this->db->where_in("priority", array_map('intval', $priorityArr));
+            }
+            if (null == $limit) {
+                $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'target_date >=' => $this->input->post("fromDate"), 'target_date <= ' => $this->input->post("toDate")));
+            } else {
+                $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'target_date >=' => $this->input->post("fromDate"), 'target_date <= ' => $this->input->post("toDate")), $limit, $offset);
+            }
+            return $query->result_array();
+        }
+    }
+    
+    /**
+     * 
+     * @return type
+     */
+    public function update($id=null) {
+        $data = array(
+            'name' => $this->input->post('name'),
+            'cost' => $this->input->post('cost'),
+            'description' => $this->input->post('description'),
+            'reason' => $this->input->post('reason'),
+            'priority' => $this->input->post('priority'),
+            'target_date' => date('Y/m/d H:i', strtotime($this->input->post('targetDate'))),
+            'status' => $this->input->post('status'),
+            'user_id' => $this->session->userdata("user")->id,
+            'update_date' => date('Y/m/d H:i')
+        );
+        $this->db->where('id', $id);
+        return $this->db->update($this->tn, $data);
+    }
 }
