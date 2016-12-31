@@ -80,8 +80,8 @@ class expense_period_model extends CI_Model {
      * Get the current live expense period
      * @return type
      */
-    public function getCurrentExpensePeriod(){
-        $query = $this->db->get_where($this->tn, array("active" => 1));
+    public function getCurrentExpensePeriod($userId){
+        $query = $this->db->get_where($this->tn, array('user_id' => $userId,"active" => 1));
         return $query->row();
     }
     

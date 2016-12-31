@@ -18,8 +18,8 @@ function getStartAndEndDateforMonth($month, $year){
 }
 
 function getStartAndEndDateforYear($year){
-    $return[0] = date('Y/m/d H:i',mktime(0, 0, 0, 0, 1,   $year));
-    $return[1] = date('Y/m/d H:i',mktime(23, 59, 0, 11, 1-1,   $year));
+    $return[0] = date('Y/m/d H:i',mktime(0, 0, 0, 01, 01, $year));
+    $return[1] = date('Y/m/d H:i',mktime(23, 59, 0, 12+1, 0, $year));
     return $return;
 }
 

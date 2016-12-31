@@ -54,7 +54,8 @@ class Home extends CI_Controller {
             $data["entries"] = $this->timetable_model->getFilteredTimetableEvents($user->id, $search);
             $data["eventsView"] = $this->load->view("/timetable/searchEntries", $data, true);
             // get budget data
-            $data["currentExpensePeriod"] = $this->expense_period_model->getCurrentExpensePeriod();
+            $data["currentExpensePeriod"] = $this->expense_period_model->getCurrentExpensePeriod($user->id);
+            
             $data["currentExpenseBudget"] = $this->expense_budget_model->getExpenseBudgetByPeriodId($data["currentExpensePeriod"]->id);
             
             $data["budgetId"] = $data["currentExpenseBudget"]->id;

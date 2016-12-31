@@ -86,9 +86,11 @@ class ExpenseBudgetItems extends CI_Controller {
     public function getExpensesPerTypeFromPeriod($budgetId) {
         $this->load->helper("date_helper");
         $this->load->helper("expense_statistics_helper");
+        $userId = $this->session->userdata("user")->id;
         $data["expenseBudget"] = $this->expense_budget_model->getExpenseBudget($budgetId);
-        $data["expensePeriod"] = $this->expense_period_model->getExpensePeriod($data["expenseBudget"]->expense_period_id - 1);
-        $data["previousExpenseBudgetItems"] = mapKeyTo($this->expense_budget_item_model->getExpenseBudgetItems($budgetId - 1 ) , "expense_type_id" );
+        $data['previousBudget'] = $this->expense_budget_model->getPreviousBudget($userId, $budgetId);
+        $data["expensePeriod"] = $this->expense_period_model->getExpensePeriod($data['previousBudget']->expense_period_id);
+        $data["previousExpenseBudgetItems"] = mapKeyTo($this->expense_budget_item_model->getExpenseBudgetItems($data['previousBudget']->id) , "expense_type_id" );
 //        echo "<pre>";
 //        print_r($data["previousExpenseBudgetItems"]);
 //        echo "</pre>";

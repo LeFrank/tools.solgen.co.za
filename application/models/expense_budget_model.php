@@ -83,6 +83,14 @@ class expense_budget_model extends CI_Model {
         return $query->row();
     }
     
+    public function getPreviousBudget($userId, $budgetId){
+        $this->db->order_by("id", "desc");
+        $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'id < ' => $budgetId), 1);
+        //$query = $this->db->get_where($this->tn, array('user_id' => $userId, 'expense_date >=' => $this->input->post("fromDate"), 'expense_date <= ' => $this->input->post("toDate")));
+//        echo $this->db->last_query();
+        return $query->row();
+    }
+    
     /**
      * Get budgets bases on certain criteria
      * @param type $userId if present return this users expenses.
