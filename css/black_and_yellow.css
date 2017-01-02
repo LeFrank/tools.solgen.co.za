@@ -11,6 +11,11 @@
     src:url("/fonts/AurulentSans-Italic.otf");
 }
 
+html * {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 html, body {
     min-height: 100%;
     height: auto !important;
@@ -705,7 +710,10 @@ table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSo
     padding: 5px;
     width:100%;
     
-    
+    -webkit-transition: all 5s ease;
+    -moz-transition: all 5s ease;
+    -o-transition: all 5s ease;
+    transition: all 5s ease;
 }
 
 .show-content{
@@ -735,6 +743,12 @@ table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSo
     /*line-height: 15em;*/
     overflow: hidden;
     position: relative;
+    
+    -webkit-transition: all 5s ease;
+    -moz-transition: all 5s ease;
+    -o-transition: all 5s ease;
+    transition: all 5s ease;
+
 }
 
 .note_body ul{

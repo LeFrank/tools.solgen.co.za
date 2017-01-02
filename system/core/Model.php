@@ -50,6 +50,10 @@ class CI_Model {
 		$CI =& get_instance();
 		return $CI->$key;
 	}
+        
+        function getDefaultDateFormat(){
+            return "Y/m/d H:i";
+        }
 }
 // END Model Class
 

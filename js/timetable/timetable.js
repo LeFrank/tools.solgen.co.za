@@ -86,13 +86,26 @@ $(document).ready(function () {
             } else {
                 $(this).css('background-color', '#f8f8f8');
             }
-        }
+        }        
     }).on('click', '.fc-month-button', function(){
         $("#fcViewState").val("month");
     }).on('click', '.fc-agendaWeek-button', function(){
         $("#fcViewState").val("agendaWeek");
     }).on('click', '.fc-agendaDay-button', function(){
         $("#fcViewState").val("agendaDay");
+    }).on('click', '.fc-next-button', function (date, jsEvent, view){
+        console.log("Next");
+        console.log($("#fcViewState").val());
+        console.log(date);
+        var currentView = $("#fcViewState").val();
+        if(currentView =="" || currentView == "month"){
+            console.log("Get next months data");
+        }else if(currentView =="agendaWeek"){
+            console.log("Get next weeks data");
+        }else if(currentView =="agendaDay"){
+            console.log("Get next days data");
+        }
+        
     });
     
     if (typeof currentEvent !== 'undefined') {

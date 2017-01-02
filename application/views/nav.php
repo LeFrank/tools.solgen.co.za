@@ -25,4 +25,6 @@
         &nbsp;&nbsp;
         <a href="/Resources" >Resources</a> -->
         &nbsp;&nbsp;    
+        <a href="/timeline" >Timeline</a>
+        &nbsp;&nbsp;    
         <a href="/faq" >FAQ</a>

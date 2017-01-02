@@ -150,7 +150,9 @@ class Notes_model extends CI_Model {
         if ($dateTo != null) {
             $this->db->where('create_date <=', $dateTo);
         }
+        $this->db->order_by("create_date", "desc");
         $query = $this->db->get_where($this->tn, array('user_id' => $userId));
+//        echo $this->db->last_query();
         return $query->result_array();
     }
 

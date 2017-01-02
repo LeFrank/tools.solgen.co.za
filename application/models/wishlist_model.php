@@ -140,11 +140,11 @@ class wishlist_model extends CI_Model {
             return null;
         }
         if (null == $limit) {
-            $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'creation_date >=' => $startDate, 'creation_date <= ' => $endDate));
+            $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'target_date >=' => $startDate, 'target_date <= ' => $endDate));
         } else {
-            $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'creation_date >=' => $startDate, 'creation_date <= ' => $endDate), $limit, $offset);
+            $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'target_date >=' => $startDate, 'target_date <= ' => $endDate), $limit, $offset);
         }
-        // echo $this->db->last_query();
+        //echo $this->db->last_query();
         return $query->result_array();
     }
 

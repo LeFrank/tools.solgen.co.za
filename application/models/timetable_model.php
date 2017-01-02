@@ -65,9 +65,13 @@ class timetable_model extends CI_Model {
         return $query->num_rows();
     }
 
-    public function get_user_timetable_events($userId) {
+    public function get_user_timetable_events($userId, $startDate=null, $endDate=null) {
         $this->db->order_by("start_date", "asc");
         $this->db->or_where("user_id =", $userId);
+        if ($startDate != null && $startDate != "" && $endDate != null && $endDate != "") {
+            $this->db->where("start_date >=", date('Y/m/d', strtotime($startDate)));
+            $this->db->where("end_date <=", date('Y/m/d H:i:s', mktime(23, 59, 0, date('m', strtotime($endDate)), date('d', strtotime($endDate)), date('Y', strtotime($endDate)))));
+        }
         $query = $this->db->get_where($this->tn);
         return $query->result();
     }
