@@ -59,7 +59,7 @@ function timelineTimetableFormat($events, $timelineEvents, $timetableCategories)
         $event->id = $v->id;
         $event->title = $v->name . " - " . $timetableCategories[$v->tt_category_id]["name"];
         $event->body = $v->description;
-        $event->url = "expenses/edit/". $v->id;
+        $event->url = "timetable/edit/". $v->id;
         $timelineEvents[] = $event;
     }
     return $timelineEvents;

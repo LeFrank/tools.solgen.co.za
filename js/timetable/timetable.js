@@ -57,23 +57,23 @@ $(document).ready(function () {
             }).done(function (resp) {
                 if (resp != "[]") {
                     var obj = $.parseJSON(resp);
-                    $("#id").val(obj[0].id);
-                    $("#name").val(obj[0].name);
+                    $("#id").val(obj.id);
+                    $("#name").val(obj.name);
                     //$("#description").html(obj[0].description);
-                    CKEDITOR.instances['description'].setData(obj[0].description);
-                    if (obj[0].all_day_event == 1) {
+                    CKEDITOR.instances['description'].setData(obj.description);
+                    if (obj.all_day_event == 1) {
                         $("#allDayEvent").prop('checked', true);
                     } else {
                         $("#allDayEvent").prop("checked", false);
                     }
-                    $("#startDate").val(obj[0].start_date);
-                    $("#endDate").val(obj[0].end_date);
-                    $("#timetableCategory").val(obj[0].tt_category_id).prop('selected', true);
-                    $("#timetableExpenseType").val(obj[0].expense_type_id).prop('selected', true);
-                    $("#timetableLocation").val(obj[0].location_id).prop('selected', true);
-                    $("#locationText").val(obj[0].location_text);
+                    $("#startDate").val(obj.start_date);
+                    $("#endDate").val(obj.end_date);
+                    $("#timetableCategory").val(obj.tt_category_id).prop('selected', true);
+                    $("#timetableExpenseType").val(obj.expense_type_id).prop('selected', true);
+                    $("#timetableLocation").val(obj.location_id).prop('selected', true);
+                    $("#locationText").val(obj.location_text);
                     $("#clearForm").show();
-                    $("#delete").attr("href", "/timetable/delete/" + obj[0].id);
+                    $("#delete").attr("href", "/timetable/delete/" + obj.id);
                     $("#delete").show();
                 }
             });
@@ -94,9 +94,6 @@ $(document).ready(function () {
     }).on('click', '.fc-agendaDay-button', function(){
         $("#fcViewState").val("agendaDay");
     }).on('click', '.fc-next-button', function (date, jsEvent, view){
-        console.log("Next");
-        console.log($("#fcViewState").val());
-        console.log(date);
         var currentView = $("#fcViewState").val();
         if(currentView =="" || currentView == "month"){
             console.log("Get next months data");

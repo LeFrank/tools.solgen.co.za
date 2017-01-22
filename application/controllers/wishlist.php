@@ -83,12 +83,11 @@ class Wishlist extends CI_Controller {
     }
 
     public function edit($id = null) {
-        echo $_SERVER['HTTP_REFERER'];
-        $this->load->library('user_agent');
-        if ($this->agent->is_referral())
-        {
-            echo "<br/>".$this->agent->referrer();
-        }
+//        $this->load->library('user_agent');
+//        if ($this->agent->is_referral())
+//        {
+//            echo "<br/>".$this->agent->referrer();
+//        }
         $this->load->library('session');
         $this->load->helper('form');
         $this->load->helper('url');

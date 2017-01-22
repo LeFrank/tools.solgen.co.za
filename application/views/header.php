@@ -30,7 +30,7 @@
         <script src="/js/default.js"></script>
     </head>
     <body>
-        <div class="row full-width">
+        <div id="elder-container" class="row full-width">
             <div class="large-12 columns">
                 <div class="large-8 columns">
                     <div class="page-header"><a href="/" >Solgen Toolbox <span class="beta">alpha</span></a></div>
@@ -60,7 +60,7 @@
         </div>
         <div class="row full-width">
             <div class="large-12 columns">
-                <div class="top-nav">
+                <div id="top-nav" class="top-nav">
                     <?php $this->load->view("nav") ?>
                 </div>
             </div>

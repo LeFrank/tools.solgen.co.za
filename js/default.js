@@ -1,6 +1,12 @@
 
 $(document).ready(function() {
-
+    $(window).bind('scroll', function () {
+    if ($(window).scrollTop() > 50) {
+        $('.top-nav').addClass('fixed');
+    } else {
+        $('.top-nav').removeClass('fixed');
+    }
+});
 });
 function getObjects(obj, key, val) {
     var objects = [];

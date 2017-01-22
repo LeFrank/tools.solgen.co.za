@@ -79,7 +79,7 @@ class timetable_model extends CI_Model {
     public function get_user_timetable_event($userId, $id) {
         $this->db->or_where("user_id =", $userId);
         $query = $this->db->get_where($this->tn, array("id" => $id));
-        return $query->result();
+        return $query->row();
     }
 
     public function getFilteredTimetableEvents($userId, $search) {
@@ -92,6 +92,9 @@ class timetable_model extends CI_Model {
             $this->db->like("description", $search["description"]);
         }
         if (isset($search["tt_category_id"]) && $search["timetableCategory"] != null && $search["timetableCategory"] != "") {
+            $this->db->where("tt_category_id", $search["timetableCategory"]);
+        }
+        if(isset($search["timetableCategory"]) && $search["timetableCategory"] != null && $search["timetableCategory"] != "") {
             $this->db->where("tt_category_id", $search["timetableCategory"]);
         }
         if (isset($search["allDayEvent"]) && $search["allDayEvent"] != null && $search["allDayEvent"] != "") {

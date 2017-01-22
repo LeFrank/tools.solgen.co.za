@@ -84,7 +84,7 @@
     <script type='text/javascript'>
         var expenseTypes = <?php echo json_encode($expenseTypes); ?>;
         var eventsArray = <?php echo $events; ?>;
-        <?php if(!empty($currentEvent)){
+        <?php if(isset($currentEvent)){
             echo "var currentEvent = " . $currentEvent .";";
         } ?>
     </script>

@@ -34,8 +34,8 @@ class Timetable extends CI_Controller {
                 $data["fcViewState"] = $this->input->post("fcViewState");
                 if ($this->timetable_model->doesItBelongToMe($user->id, $eventId)) {
                     $event = $this->timetable_model->get_user_timetable_event($user->id, $eventId);
-                    $data["currentEvent"] = eventifyArray($event);
-                    $data["message"] = "The Timetable event: \"".$event[0]->name ."\" was successfully ";
+                    $data["currentEvent"] = eventify($event);
+                    $data["message"] = "The Timetable event: \"".$event->name ."\" was successfully ";
                     if ($this->input->post("id") != "") {
                         $data["action_description"] = "Updated an event";
                         $data["message"] = $data["message"] . "updated";
@@ -44,7 +44,7 @@ class Timetable extends CI_Controller {
                         $data["message"] = $data["message"] . "created";
                     }
                 }
-                
+                $data["events"] = eventifyArray($this->timetable_model->get_user_timetable_events($user->id));
             } else {
                 $data["action_classes"] = "failure";
                 $data["action_description"] = "Create an Event";
@@ -57,6 +57,19 @@ class Timetable extends CI_Controller {
         } else {
             redirect('/timetable/index', 'refresh');
         }
+    }
+    
+    public function edit($eventId){
+        $user = $this->session->userdata("user");
+        $data["event"] = $this->timetable_model->get_user_timetable_event($user->id, $eventId);
+        $data["timetableCategories"] = $this->timetable_category_model->get_user_timetable_Category($user->id);
+        $data["eventRepetition"] = $this->timetable_repetition_model->get_timetable_repeats($user->id);
+        $data["expenseTypes"] = mapKeyToId($this->expense_type_model->get_user_expense_types($user->id), true);
+        $data["locations"] = $this->location_model->getLocations($user->id);
+        $this->load->view('header', getPageTitle($data, $this->toolName,"Edit",""));
+        $this->load->view("timetable/timetable_nav");
+        $this->load->view("timetable/edit");
+        $this->load->view("footer");
     }
 
     public function getEvent($eventId) {

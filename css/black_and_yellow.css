@@ -260,7 +260,7 @@ Custom classes go here
     font-size: smaller;
 }
 .top-nav {
-    margin:10px 0px 10px 0px;
+    margin:0px 0px 10px 0px;
     padding:10px 0px 10px 0px;
     background-color: #666666;
 }
