@@ -1,7 +1,7 @@
 <div class="row">
     <div class="large-3 columns" >
         <div class="row">
-            <div class="large-12 columns" >
+            <div class="large-12 columns wishlist-history-filter" id="wishlist-history-filter" >
                 <div id="WishlistFilter" class="WishlistFilter">
                     <h3>Filter Wishlist</h3>
                     <div id="validation_errors" ></div>

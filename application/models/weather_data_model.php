@@ -29,7 +29,7 @@ class Weather_data_model extends CI_Model {
             $whereArray["data_type"] =  $data_type;
         }
         $query = $this->db->get_where($this->tn, $whereArray);
-        return $query->result();
+        return $query->row();
     }
     
     public function save($userId , $locationId, $data, $data_type){

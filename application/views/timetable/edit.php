@@ -21,7 +21,7 @@
             </select>
             <br/>
             <label for="allDayEvent">All Day Event?</label>
-            <input  type="checkbox" id="allDayEvent" name="allDayEvent" value="<?php echo $event->all_day_event; ?>" />
+            <input  type="checkbox" id="allDayEvent" name="allDayEvent" value="1" <?php echo ($event->all_day_event == 1)?"checked": "" ; ?>/>
             <br/>
             <label for="startDate">Start Date</label>
             <input  type="text" id="startDate" name="startDate" placeholder="<?php echo date('Y/m/d H:i:s'); ?>" value="<?php echo $event->start_date; ?>"/>

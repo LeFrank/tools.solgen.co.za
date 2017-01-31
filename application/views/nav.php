@@ -7,7 +7,7 @@
  */
 ?>
         &nbsp;&nbsp;
-        <a href="/expenses" >Expenses</a>
+        <a href="/expenses" >Finances</a>
         &nbsp;&nbsp;
         <a href="/notes" >Notes</a> 
         &nbsp;&nbsp;
@@ -18,12 +18,6 @@
         <a href="/weather" >Weather</a>
         &nbsp;&nbsp;
         <a href="/expense-wishlist" >Wishlist</a>
-        <!-- &nbsp;&nbsp;
-        |
-        &nbsp;&nbsp;
-        <a href="/history" >History</a>
-        &nbsp;&nbsp;
-        <a href="/Resources" >Resources</a> -->
         &nbsp;&nbsp;    
         <a href="/timeline" >Timeline</a>
         &nbsp;&nbsp;    

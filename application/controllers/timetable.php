@@ -35,7 +35,7 @@ class Timetable extends CI_Controller {
                 if ($this->timetable_model->doesItBelongToMe($user->id, $eventId)) {
                     $event = $this->timetable_model->get_user_timetable_event($user->id, $eventId);
                     $data["currentEvent"] = eventify($event);
-                    $data["message"] = "The Timetable event: \"".$event->name ."\" was successfully ";
+                    $data["message"] = "The Timetable event: <a href=\"#\" onClick=\"setEventEdit(". $event->id. ");\" >\"".$event->name ."\"</a> was successfully ";
                     if ($this->input->post("id") != "") {
                         $data["action_description"] = "Updated an event";
                         $data["message"] = $data["message"] . "updated";

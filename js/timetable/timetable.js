@@ -26,6 +26,9 @@ $(document).ready(function () {
         }
 
     }
+    
+    
+    
     var myCalendar;
     myCalendar = $('#calendar').fullCalendar({
         header: {
@@ -51,32 +54,8 @@ $(document).ready(function () {
             });
         },
         eventClick: function (calEvent, jsEvent, view) {
-            $.ajax({
-                type: "GET",
-                url: "/timetable/view/" + calEvent.id
-            }).done(function (resp) {
-                if (resp != "[]") {
-                    var obj = $.parseJSON(resp);
-                    $("#id").val(obj.id);
-                    $("#name").val(obj.name);
-                    //$("#description").html(obj[0].description);
-                    CKEDITOR.instances['description'].setData(obj.description);
-                    if (obj.all_day_event == 1) {
-                        $("#allDayEvent").prop('checked', true);
-                    } else {
-                        $("#allDayEvent").prop("checked", false);
-                    }
-                    $("#startDate").val(obj.start_date);
-                    $("#endDate").val(obj.end_date);
-                    $("#timetableCategory").val(obj.tt_category_id).prop('selected', true);
-                    $("#timetableExpenseType").val(obj.expense_type_id).prop('selected', true);
-                    $("#timetableLocation").val(obj.location_id).prop('selected', true);
-                    $("#locationText").val(obj.location_text);
-                    $("#clearForm").show();
-                    $("#delete").attr("href", "/timetable/delete/" + obj.id);
-                    $("#delete").show();
-                }
-            });
+            //TODO: use seperate function for this!
+            setEventEdit(calEvent.id);
         },
         dayClick: function (date, jsEvent, view) {
             // change the day's background color just for fun
@@ -106,7 +85,7 @@ $(document).ready(function () {
     });
     
     if (typeof currentEvent !== 'undefined') {
-        myCalendar.fullCalendar('gotoDate', currentEvent[0].start)
+        myCalendar.fullCalendar('gotoDate', currentEvent[0].start);
     }
     
     if($("#fcViewState").val() != ""){
@@ -177,3 +156,32 @@ $(document).ready(function () {
     });
     CKEDITOR.replace('description');
 });
+
+function setEventEdit(eventId) {
+        $.ajax({
+            type: "GET",
+            url: "/timetable/view/" + eventId
+        }).done(function (resp) {
+            if (resp != "[]") {
+                var obj = $.parseJSON(resp);
+                $("#id").val(obj.id);
+                $("#name").val(obj.name);
+                $("#description").html(obj.description);
+                CKEDITOR.instances['description'].setData(obj.description);
+                if (obj.all_day_event == 1) {
+                    $("#allDayEvent").prop('checked', true);
+                } else {
+                    $("#allDayEvent").prop("checked", false);
+                }
+                $("#startDate").val(obj.start_date);
+                $("#endDate").val(obj.end_date);
+                $("#timetableCategory").val(obj.tt_category_id).prop('selected', true);
+                $("#timetableExpenseType").val(obj.expense_type_id).prop('selected', true);
+                $("#timetableLocation").val(obj.location_id).prop('selected', true);
+                $("#locationText").val(obj.location_text);
+                $("#clearForm").show();
+                $("#delete").attr("href", "/timetable/delete/" + obj.id);
+                $("#delete").show();
+            }
+        });
+    }

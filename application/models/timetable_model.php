@@ -84,7 +84,7 @@ class timetable_model extends CI_Model {
 
     public function getFilteredTimetableEvents($userId, $search) {
         $this->db->order_by("start_date", "asc");
-        $this->db->or_where("user_id =", $userId);
+        $this->db->where("user_id =", $userId);
         if (isset($search["name"]) && $search["name"] != null) {
             $this->db->like("name", $search["name"]);
         }

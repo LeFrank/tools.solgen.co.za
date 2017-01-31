@@ -162,8 +162,8 @@ td pre {
 }
 
 code{
-    background-color:#444444;
-    border:solid 1px #666666;
+    /*background-color:#444444;*/
+    /*border:solid 1px #666666;*/
     color:#666666;
 }
 
@@ -922,4 +922,21 @@ table.focus-highlight td:before {
   left: 0;
   top: 0;
   z-index: -3;
+}
+
+/* ======================================================*
+ * Wishlist                                              *
+ * ======================================================*/
+.wishlist-history-filter{
+    resize: horizontal;
+    overflow: auto;
+}
+
+#split-bar {
+    background-color:black;
+    height:100%;
+    min-height:100%;
+    float: right;
+    width: 6px;
+    cursor: col-resize;
 }

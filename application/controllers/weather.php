@@ -53,13 +53,17 @@ class Weather extends CI_Controller {
                 $data["myWeather"][$k]["weather"] = json_decode($raw_data);
                 $data["myWeather"][$k]["location"] = $v;
             } else {
-                $raw_data = $weatherData[0]->data;
+                $raw_data = $weatherData->data;
                 $data["myWeather"][$k]["weather"] = json_decode($raw_data);
                 $data["myWeather"][$k]["location"] = $v;
             }
         }
         $data["weatherSettings"] = $this->weather_settings_model->getSetting($this->session->userdata("user")->id);
-        $data["weatherSettings"] = $data["weatherSettings"][0];
+        // if no option has been made, make the default metric
+        if(empty($data["weatherSettings"])){
+            $data["weatherSettings"]["measurement"]  =  "metric";
+        }
+        $data["weatherSettings"] = $data["weatherSettings"];
         unset($data["weatherSettings"]->id);
         unset($data["weatherSettings"]->user_id);
         $data["measure"] = $this->measure;
@@ -95,7 +99,7 @@ class Weather extends CI_Controller {
             $this->weather_data_model->save($user->id, $data["location"]->id, $raw_data, $this->current);
             $data["myWeather"]["weather"] = $raw_data;
         } else {
-            $raw_data = $weatherData[0]->data;
+            $raw_data = $weatherData->data;
         }
         $data["weatherSettings"] = $this->weather_settings_model->getSetting($this->session->userdata("user")->id);
         $data["measure"] = $this->measure;
@@ -127,7 +131,7 @@ class Weather extends CI_Controller {
             //store data for next 12 hours
             $this->weather_data_model->save($user->id, $data["location"]->id, $raw_data, $this->sevenDay);
         } else {
-            $raw_data = $weatherData[0]->data;
+            $raw_data = $weatherData->data;
         }
         $data["weatherSettings"] = $this->weather_settings_model->getSetting($this->session->userdata("user")->id);
         $data["measure"] = $this->measure;
@@ -141,7 +145,7 @@ class Weather extends CI_Controller {
         $data["weatherSetting"] = new stdClass();
         $data["weatherSetting"]->measurement = "";
         if (!empty($weatherSettings)) {
-            $data["weatherSetting"]->measurement = $weatherSettings[0]->measurement;
+            $data["weatherSetting"]->measurement = $weatherSettings->measurement;
         }
         $data["measure"] = $this->measure;
         $this->load->view('header', getPageTitle($data, $this->toolName, "Options"));

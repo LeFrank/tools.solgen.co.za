@@ -13,7 +13,7 @@ class weather_settings_model extends CI_Model{
     
     public function getSetting($userId){
         $query = $this->db->get_where($this->tn, array("user_id" =>$userId));
-        return $query->result();
+        return $query->row();
     } 
     
     public function setMeasurement($userId , $measurement){
