@@ -1,4 +1,4 @@
-<div id="noteContent" class="row" >
+<div id="noteContent" class="row expanded" >
     <div class="large-12 columns" >
         <h2>
             Note 

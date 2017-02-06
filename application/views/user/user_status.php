@@ -9,5 +9,5 @@
 <div>
     <h3>User Status : <?php echo $status; ?></h3>
     <span class="user-action inline-block<?php echo $action_classes; ?>" ><?php echo $action_description;?></span>
-    <p class="user-message <?php echo $message_classes; ?>" ><?php echo $message;?></span>
+    <p class="user-message <?php echo $message_classes; ?>" ><?php echo $message;?></p>
 </div>

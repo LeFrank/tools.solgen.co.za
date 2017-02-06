@@ -1,4 +1,4 @@
-<div class="row ">
+<div class="row expanded">
     <div class="large-12 columns">
         <h3>Edit Expense Type</h3>
         <?php echo validation_errors(); ?>

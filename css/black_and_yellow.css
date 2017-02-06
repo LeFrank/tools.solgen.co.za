@@ -32,7 +32,7 @@ body {
     padding: 0;
     color:#666666;
     font-size: 1em;
-    line-height:1;
+    line-height:1.5;
     text-align:left;
 }
 
@@ -111,6 +111,10 @@ a:hover,a:focus{
 table {
     font-size: 1em;
     line-height:125%;
+    word-break: break-all;
+    -webkit-hyphens: auto;
+   -moz-hyphens: auto;
+        hyphens: auto;
 }
 
 th {
@@ -212,7 +216,6 @@ Custom classes go here
     color:#f1b836;
     font-size:45px;
     padding:10px;
-    /*width:100%;*/
     font-family: Calibri , AurulentSans, Trebuchet, Tahoma, Verdana, Arial, sans-serif;
     float:left;
     /*width:45%;*/
@@ -392,7 +395,6 @@ table.tablesorter {
     margin:10px 0pt 15px;
     font-size: 1em;
     line-height:1.5;
-    width: 100%;
     text-align: left;
 }
 table.tablesorter thead tr th, table.tablesorter tfoot tr th {
@@ -802,14 +804,14 @@ span#createNote img{
     border-radius: 4px;
     padding:10px 10px 10px 10px;
 }
-.row.full-width {
+/*.row.full-width {
     width: 100%;
     max-width: 100%; 
-}
-.full-width {
+}*/
+/*.full-width {
     width: 100%;
     max-width: 100%; 
-}
+}*/
 
 .search-criteria{
     font-weight: bolder;
@@ -924,19 +926,7 @@ table.focus-highlight td:before {
   z-index: -3;
 }
 
-/* ======================================================*
- * Wishlist                                              *
- * ======================================================*/
-.wishlist-history-filter{
-    resize: horizontal;
-    overflow: auto;
-}
 
-#split-bar {
-    background-color:black;
-    height:100%;
-    min-height:100%;
-    float: right;
-    width: 6px;
-    cursor: col-resize;
+#wishlistItems{
+    word-wrap: break-word;
 }

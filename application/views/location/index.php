@@ -1,4 +1,4 @@
-<div class="row" id="location-content">
+<div class="row expanded" id="location-content">
     <div class="large-12 columns">
         <div id="status-message" class="hidden"></div>
         <?php

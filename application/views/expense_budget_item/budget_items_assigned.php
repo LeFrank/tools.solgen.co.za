@@ -1,4 +1,4 @@
-<div class="row ">
+<div class="row expanded">
     <div class="large-12 columns">
         <table id="budget_expense_items" class="tablesorter hover-highlight focus-highlight widget-zebra">
             <input type="hidden" id="period-id" value="<?php echo $budgetId; ?>" />

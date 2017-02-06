@@ -1,8 +1,8 @@
 <?php ?>
-<div class="row" id="notes-stats-content">
+<div class="row expanded" id="notes-stats-content">
     <div class="large-12 columns">
         <h3>Notes Statistics for the period ( <?php echo floor((strtotime($startAndEndDateforMonth[1]) - strtotime($startAndEndDateforMonth[0])) / (60 * 60 * 24)) + 1; ?> days ) &nbsp;</h3>
-        <div class="row">
+        <div class="row expanded">
             <div class="large-6 columns">
                 <label> Date From
                     <input type="text" name="fromDate" id="fromDate" value="<?php echo $startAndEndDateforMonth[0]; ?>"/>
@@ -14,13 +14,13 @@
                 </label>
             </div>
         </div>
-        <div class="row">
+        <div class="row expanded">
             <div class="large-12 columns" >
                 <input type="submit" name="filter" value="Filter" id="filter"  class="button"/>
             </div>
         </div>
         <br/>
-        <div class="row">
+        <div class="row expanded">
             <div class="large-12 columns" id="statsContent" >
                 <label>Total Notes:</label>
                 <?php echo $totalNotes; ?>

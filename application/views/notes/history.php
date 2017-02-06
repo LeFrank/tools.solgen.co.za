@@ -1,6 +1,6 @@
 <?php ?>
 
-<div id="notesContent" class="row" >
+<div id="notesContent" class="row expanded" >
     <div class="large-12 columns" >
         <h2>
             History 
@@ -23,14 +23,14 @@
         <div id="searchNotesHistory" >
             <div id="searchForm" class="notesHistoryHidden notesHistory">
                 <form action="/notes/history/search" method="post" accept-charset="utf-8" id="SearchNoteForm">
-                    <div class="row">
+                    <div class="row expanded">
                         <div class="large-12 columns" >
-                            <div class="row">
+                            <div class="row expanded">
                                 <div class="large-6 columns" >
                                     <label for="title">Text
                                         <input type="text" name="searchText" id="searchText"  autofocus  placeholder="Topic, subject, content or tag text you wish to search for" value="" />
                                     </label>
-                                    <div class="row">
+                                    <div class="row expanded">
                                         <div class="large-2 columns" >
                                             <label>Date From  
                                                 <input id="fromDate" type="text" placeholder="<?php echo date('Y/m/d H:i:s', mktime(0, 0, 0, date("m") - 1, date("d"), date("Y"))); ?>" name="fromDate" />
@@ -43,7 +43,7 @@
                                         </div>
                                         <div class="large-8 columns" ></div>
                                     </div>
-                                    <div class="row">
+                                    <div class="row expanded">
                                         <div class="large-12 columns" >
                                             <br/>
                                             <input type="submit" value="Search" text="Search" class="button" />
@@ -56,12 +56,12 @@
                                         echo "<h3>No Prior searches.</h3>";
                                     } else {
                                         ?>
-                                        <div class="row">
+                                        <div class="row expanded">
                                             <div class="large-12 columns" >
                                                 <h3>Past searches</h3>
                                             </div>
                                         </div>
-                                        <div class="row">
+                                        <div class="row expanded">
                                            <div class='large-4 columns' >
                                                Text
                                             </div>
@@ -75,7 +75,7 @@
                                         <?php    
                                         foreach ($searches as $kk => $vv) {
                                             ?>
-                                            <div class="row">
+                                            <div class="row expanded">
                                                 <div class='large-4 columns' >
                                                     <a href='/notes/history/search/<?php echo $vv["id"]; ?>' ><?php echo $vv["text"]; ?></a>
                                                 </div>

@@ -1,7 +1,7 @@
 <?php echo form_open('expense-budget-items/capture'); ?>
 <input type="hidden" name="budget-id" id="budget-id" value="<?php echo $budgetId ?>" />
 <input type="hidden" name="expense-period-id" value="<?php echo $periodId ?>" />
-<div class="row ">
+<div class="row expanded">
     <div class="large-12 columns">
         <table id="expense_history" class="tablesorter">
             <thead>

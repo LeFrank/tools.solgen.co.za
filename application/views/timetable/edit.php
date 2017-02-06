@@ -5,7 +5,7 @@
             <h3>Update An Event</h3>
         </div>
     </div>
-    <div class="row">
+    <div class="row expanded">
         <div class="large-4 columns">
             <input type="hidden" id="id" name="id" value="<?php echo $event->id; ?>" />
             <label for="name">Name *</label>

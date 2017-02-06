@@ -1,5 +1,5 @@
 <?php ?>
-<div class="row ">
+<div class="row expanded">
     <div class="large-12 columns">
         <div id="expensesNav" class="expensesNav">
             <a href="/expenses">Overview</a>

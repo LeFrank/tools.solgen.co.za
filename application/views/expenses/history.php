@@ -1,8 +1,8 @@
 
 <?php ?>
-<div class="row">
+<div class="row expanded">
     <div class="large-3 columns" >
-        <div class="row">
+        <div class="row expanded">
             <div class="large-12 columns" >
                 <div id="expenseHistoryFilter" class="expenseHistoryFilter">
                     <h3>Filter Expenses History</h3>
@@ -114,7 +114,7 @@
         </div>
     </div>
     <div class="large-9 columns" >
-        <div class="row">
+        <div class="row expanded">
             <div class="large-12 columns" >
                 <div id="expenseHistoryContent" class="expenseHistoryContent" >
                     <h2>Expense History</h2>
@@ -122,7 +122,7 @@
                         Table of full data from <?php echo $startAndEndDateforMonth[0]; ?> to <?php echo $startAndEndDateforMonth[1]; ?><br/><br/>
                         <?php if (is_array($expensesForPeriod) && !empty($expensesForPeriod)) {
                             ?>
-                            <table id="expense_history" class="tablesorter">
+                            <table id="expense_history" class="tablesorter responsive">
                                 <thead>
                                     <tr>
                                         <th>&nbsp;</th>

@@ -12,9 +12,10 @@
         <link rel='stylesheet' id='googafont-css'  href='http://fonts.googleapis.com/css?family=Marvel%7CRoboto%3A300%2C500%2C400italic&#038;ver=3.9.1' type='text/css' media='all' />
         <link rel="stylesheet" href="/css/third_party/jquery/1.10.4/themes/smoothness/jquery-ui.css">
         <link rel="stylesheet" href="/css/third_party/foundation/normalize.css">
-        <link rel="stylesheet" href="/css/third_party/foundation/foundation.min.css">
-        <link rel="stylesheet" type="text/css" media="all" href="/css/black_and_yellow.css" />
+        <link rel="stylesheet" href="/css/third_party/foundation/6.3.0/foundation.min.css">
         <link rel="stylesheet" type="text/css" media="all" href="/css/third_party/foundation/3.0.0/foundation-icons.css" />
+        <link rel="stylesheet" type="text/css" media="all" href="/css/black_and_yellow.css" />
+        <link rel="stylesheet" href="/css/third_party/foundation/6.3.0/responsive-tables.css">
         <?php
         if (!empty($css)) {
             echo $css;
@@ -25,12 +26,14 @@
         ?>
         <script src="/js/third_party/jquery.min-1.11.0.js"></script>
         <script src="/js/third_party/foundation/vendor/modernizr.js"></script>
-        <script src="/js/third_party/foundation/foundation.min.js"></script>
+        <script src="/js/third_party/foundation/6.3.0/foundation.min.js"></script>
+        <script src="/js/third_party/foundation/6.3.0/what-input.js"></script>
+        <script src="/js/third_party/foundation/6.3.0/responsive-tables.js"></script>
         <script type="text/javascript" src="/js/third_party/moment/moment.min.js"></script>
         <script src="/js/default.js"></script>
     </head>
     <body>
-        <div id="elder-container" class="row full-width">
+        <div id="elder-container" class="row expanded">
             <div class="large-12 columns">
                 <div class="large-8 columns">
                     <div class="page-header"><a href="/" >Solgen Toolbox <span class="beta">alpha</span></a></div>
@@ -53,19 +56,19 @@
                         <a href="/user/register">Register</a>
                         </form>
                     <?php } else { ?>
-                        <a href="/user/settings" >My Settings</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="/user/logout" >Logout</a> 
+                        <a href="/home/dashboard" >Home</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="/user/settings" >My Settings</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="/user/logout" >Logout</a> 
                     <?php } ?>
                 </div>
             </div>
         </div>
-        <div class="row full-width">
-            <div class="large-12 columns">
+        <div class="row expanded" data-sticky-container>
+            <div class="large-12 columns sticky" data-sticky data-options="marginTop: 0">
                 <div id="top-nav" class="top-nav">
                     <?php $this->load->view("nav") ?>
                 </div>
             </div>
         </div>
-        <div class="row full-width">
+        <div class="row expanded">
             <div class="large-12 columns">
                 <div id="contentMain" class="contentMain">
                 

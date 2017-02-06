@@ -61,6 +61,7 @@ class Notes extends CI_Controller {
     public function edit($id = null) {
         $user = $this->session->userdata("user");
         $data["note"] = $this->notes_model->getNote($user->id, $id);
+        $data["exitCheck"] = true;
         $this->load->view('header', getPageTitle($data, $this->toolName, "Edit", $data["note"]->heading));
         $this->load->view('notes/notes_nav', $data);
         $this->load->view("notes/capture_form", $data);

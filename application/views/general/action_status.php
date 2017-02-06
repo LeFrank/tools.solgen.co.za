@@ -5,7 +5,7 @@
  * and open the template in the editor.
  */
 ?>
-<div class="row">
+<div class="row expanded">
     <div class="large-12 columns">
         <div data-alert="" class="alert-box radius <?php echo $action_classes; ?>">
             <h3>Status : <?php echo $status; ?></h3>

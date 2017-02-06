@@ -5,7 +5,7 @@ if($this->session->flashdata("success") !== FALSE)
 }
 
 ?>
-<div class="row">
+<div class="row expanded">
     <div class="large-12 columns">
         <h2>Expense Overview</h2>
 
@@ -13,7 +13,7 @@ if($this->session->flashdata("success") !== FALSE)
             <h3>Five Latest Expenses</h3>
             <?php if (is_array($expense) && !empty($expense)) {
                 ?>
-                <table id="expenseSummary" class="tablesorter full-width">
+                <table id="expenseSummary" class="tablesorter responsive expanded widget-zebra">
                     <thead>
                     <th/>
                     <th>Date</th>
@@ -56,62 +56,59 @@ if($this->session->flashdata("success") !== FALSE)
         <br/>
     </div>
 </div>
-<div class="row">
+<div class="row expanded">
     <div class="large-12 columns">
-        <div id="captureExpenses">
-            <h3>Capture Expense</h3>
-            <?php echo validation_errors(); ?>
-
-            <?php echo form_open('expenses/capture') ?>
-            <div class="row">
-                <div class="large-4 columns">
-                    <label for="amount">Amount *</label>
-                    <input type="number" min="0.01" step="0.01" max="9999999999999" name="amount" id="amount" placeholder="0.00"autofocus /><br />
-                </div>
-                <div class="large-4 columns">
-                    <label for="expenseType">Expense Type</label>
-                    <select name="expenseType" id="expenseType"> 
-                        <?php
-                        foreach ($expenseTypes as $k => $v) {
-                            echo '<option value="' . $v["id"] . '">' . $v["description"] . '</option>';
-                        }
-                        ?>
-                    </select>
-                </div>
-                <div class="large-4 columns">
-                    <label for="paymentMethod">Payment Method</label>
-                    <select name="paymentMethod">
-                        <?php
-                        foreach ($expensePaymentMethod as $k => $v) {
-                            echo '<option value="' . $v["id"] . '"  '
-                            . ((strtolower($v["description"]) == "cash") ? 'selected="selected"' : '')
-                            . '>' . $v["description"] . '</option>';
-                        }
-                        ?>
-                    </select>
-                </div>
+        <h3>Capture Expense</h3>
+        <?php echo validation_errors(); ?>
+        <?php echo form_open('expenses/capture') ?>
+        <div class="row expanded">
+            <div class="large-4 columns">
+                <label for="amount">Amount *</label>
+                <input type="number" min="0.01" step="0.01" max="9999999999999" name="amount" id="amount" placeholder="0.00"autofocus /><br />
             </div>
-            <div class="row">
-                <div class="large-12 columns">
-                    <label for="description">Description</label>
-                    <textarea name="description" id="description" cols="40" rows="5" placeholder="What was special about it, or a description of the expense."></textarea><br/><br/>
-                </div>
+            <div class="large-4 columns">
+                <label for="expenseType">Expense Type</label>
+                <select name="expenseType" id="expenseType"> 
+                    <?php
+                    foreach ($expenseTypes as $k => $v) {
+                        echo '<option value="' . $v["id"] . '">' . $v["description"] . '</option>';
+                    }
+                    ?>
+                </select>
             </div>
-            <div class="row">
-                <div class="large-6 columns">
-                    <label for="location">Location</label>
-                    <input  type="text" name="location" placeholder="Where was the expense made?"/><br/><br/>
-                </div>
-                <div class="large-6 columns">
-                    <label for="expenseDate">Expense Date</label>
-                    <input  type="text" id="expenseDate" name="expenseDate" placeholder="<?php echo date('Y/m/d H:i:s'); ?>" /><br/><br/>
-                </div>
+            <div class="large-4 columns">
+                <label for="paymentMethod">Payment Method</label>
+                <select name="paymentMethod">
+                    <?php
+                    foreach ($expensePaymentMethod as $k => $v) {
+                        echo '<option value="' . $v["id"] . '"  '
+                        . ((strtolower($v["description"]) == "cash") ? 'selected="selected"' : '')
+                        . '>' . $v["description"] . '</option>';
+                    }
+                    ?>
+                </select>
             </div>
-            <span>* Required Field</span><br/><br/>
-
-            <input type="submit" name="submit" value="Record" class="button"/>
-            </form>
         </div>
+        <div class="row expanded">
+            <div class="large-12 columns">
+                <label for="description">Description</label>
+                <textarea name="description" id="description" cols="40" rows="5" placeholder="What was special about it, or a description of the expense."></textarea><br/><br/>
+            </div>
+        </div>
+        <div class="row expanded">
+            <div class="large-6 columns">
+                <label for="location">Location</label>
+                <input  type="text" name="location" placeholder="Where was the expense made?"/><br/><br/>
+            </div>
+            <div class="large-6 columns">
+                <label for="expenseDate">Expense Date</label>
+                <input  type="text" id="expenseDate" name="expenseDate" placeholder="<?php echo date('Y/m/d H:i:s'); ?>" /><br/><br/>
+            </div>
+        </div>
+        <span>* Required Field</span><br/><br/>
+
+        <input type="submit" name="submit" value="Record" class="button"/>
+        </form>
     </div>
 </div>
 <script src="/js/third_party/ckeditor/ckeditor.js"></script>

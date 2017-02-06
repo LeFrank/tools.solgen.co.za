@@ -1,5 +1,5 @@
 <?php ?>
-<div class="row ">
+<div class="row expanded">
     <div class="large-12 columns">
         <h3>Manager Personalized Payment Methods</h3>
         <div>

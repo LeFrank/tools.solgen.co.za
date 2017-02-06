@@ -1,6 +1,6 @@
 <?php if (is_array($wishlistItemsForPeriod) && !empty($wishlistItemsForPeriod)) {
     ?>
-    <table id="wishlistItems" class="tablesorter full-width hover stack">
+    <table id="wishlistItems" class="tablesorter responsive">
         <thead>
         <th/>
         <th>Name</th>
@@ -25,14 +25,17 @@
             echo "<td>" . $v["target_date"] . "</td>";
             echo "<td>" . $v["status"] . " - " . $statuses[$v["status"]] . "</td>";
             echo "<td class='align-right'>" . $v["cost"] . "</td>";
-            echo "<td><a href='/wishlist/edit/" . $v["id"] . "'>Edit</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href='/expense-wishlist/delete/" . $v["id"] . "'>Delete</a></td>";
+            echo "<td><a href='/wishlist/edit/" . $v["id"] . "'>Edit</a>";
+            echo " | ";
+            echo "      <a href='/expense-wishlist/delete/" . $v["id"] . "' >Delete</a>";
+            echo "</td>";
             echo "</tr>";
             $total += $v["cost"];
         }
         ?>
     </tbody>
     </table>
-    <table style="width:100%;">
+    <table class="tablesorter responsive">
         <?php
         echo "<tr class='td-total'>"
         . "  <td class='align-left'>Latest Wishlist Items Total</span></td>"

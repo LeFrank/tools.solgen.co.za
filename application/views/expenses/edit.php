@@ -1,5 +1,5 @@
 <?php ?>
-<div class="row ">
+<div class="row expanded">
     <div class="large-12 columns">
         <div id="captureExpenses">
             <h3>Capture Expense</h3>

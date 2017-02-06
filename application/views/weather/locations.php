@@ -3,10 +3,10 @@ if (empty($myWeather)) {
     
 } else {
     ?>    
-    <div class="row">
+    <div class="row expanded">
         <div class="large-12 columns">
             <div>
-                <div class="row">
+                <div class="row expanded">
                     <div class="large-3 columns">
                         <div id="weather-locations" style="">
                             <h3>View weather for my locations.</h3>

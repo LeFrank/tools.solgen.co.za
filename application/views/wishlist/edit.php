@@ -1,12 +1,12 @@
 <?php ?>
-<div class="row ">
+<div class="row expanded">
     <div class="large-12 columns">
         <div id="editWishlistItem">
             <h3>Edit Item</h3>
             <?php echo validation_errors(); ?>
 
             <?php echo form_open('expense-wishlist/update/'.$wishlistItem->id) ?>
-            <div class="row">
+            <div class="row expanded">
                 <div class="large-4 columns">
                     <label for="name">Name *</label>
                     <input type="text" name="name" id="name" placeholder="Awesome new thing" autofocus value="<?php echo $wishlistItem->name; ?>"/><br />
@@ -38,8 +38,10 @@
                 <div class="large-5 columns">
                 </div>
             </div>
-            <div class="row"><div class="large-12 columns">&nbsp;</div></div>
-            <div class="row">
+            <div class="row expanded">
+                <div class="large-12 columns">&nbsp;</div>
+            </div>
+            <div class="row expanded">
                 <div class="large-6 columns">
                     <label for="description">Item Description</label>
                     <textarea name="description" id="description" cols="20" rows="4" placeholder="What was special about it, or a description of the expense."><?php echo $wishlistItem->description; ?></textarea>
@@ -49,7 +51,7 @@
                     <textarea name="reason" id="reason" cols="20" rows="4" placeholder="What was special about it, or a description of the expense."><?php echo $wishlistItem->reason; ?></textarea>
                 </div>
             </div>
-            <div class="row">
+            <div class="row expanded">
                 <div class="large-12 columns">
                     <span>* Required Field</span><br/><br/>
                 </div>

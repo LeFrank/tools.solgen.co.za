@@ -1,7 +1,7 @@
 <?php
 if (empty($myWeather)) {
     ?>
-    <div class="row">
+    <div class="row expanded">
         <div class="large-12 columns">
             <div id="forecast-section">
                 <h3>No Locations To View Weather For</h3>
@@ -15,7 +15,7 @@ if (empty($myWeather)) {
     <?php
 } else {
     ?>
-    <div class="row">
+    <div class="row expanded">
         <div class="large-12 columns">
             <div id="forecast-section">
                 <h3>Default Location : <?php echo $myWeather[0]["location"]->name . " - " . $myWeather[0]["location"]->description; ?> </h3>

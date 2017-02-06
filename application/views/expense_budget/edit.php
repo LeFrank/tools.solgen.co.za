@@ -1,5 +1,5 @@
 <?php ?>
-<div class="row ">
+<div class="row expanded">
     <div class="large-12 columns">
         <div id="expense-period-manage-feedback" class="hidden"></div>
         <h3>Manage Budget For Period</h3>
@@ -10,7 +10,7 @@
 
                 <?php echo form_open('expense-budget/update') ?>
                 <input type="hidden" name="id" value="<?php echo $expenseBudget->id; ?>" />
-                <div class="row">
+                <div class="row expanded">
                     <div class="large-4 columns">
                         <label> Filter by Period *
                         </label>
@@ -32,7 +32,7 @@
                         <input  type="text" name="total_limit" value="<?php echo $expenseBudget->total_limit; ?>" /><br/><br/>                    
                     </div>
                 </div>
-                <div class="row">
+                <div class="row expanded">
                     <div class="large-12 columns">
                         <label for="description">Description</label>
                         <textarea name="description" cols="40" rows="5" ><?php echo $expenseBudget->description; ?></textarea><br/><br/>

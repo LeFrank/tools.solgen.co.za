@@ -1,5 +1,5 @@
 <?php ?>
-<div class="row">
+<div class="row expanded">
     <div class="large-12 columns">
         <form action="/notes/<?php echo (!empty($note->id) ? "update" : "capture" ); ?>" method="post" accept-charset="utf-8" id="captureNoteForm">
             <input type="hidden" id="id" name="id" value="<?php echo (!empty($note->id) ? $note->id : "" ); ?>" />
@@ -31,7 +31,15 @@
     </div>
 </div>
 <script type="text/javascript">
-<?php if (!empty($note->tagg)) { ?>
+    
+<?php 
+    if(isset($exitCheck) && $exitCheck == true){
+        ?>
+        window.onbeforeunload = confirmOnPageExit;
+        console.log("Check before exiting!");
+        <?php 
+    }
+    if (!empty($note->tagg)) { ?>
         var tagsVar = "[<?php echo $note->tagg; ?>]";
 <?php } else { ?>
         var tagsVar = "";

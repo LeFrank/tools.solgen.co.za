@@ -1,4 +1,4 @@
-<div class="row ">
+<div class="row expanded">
     <div class="large-12 columns">
         <div id="Expenses">
             <h3>Expenses</h3>

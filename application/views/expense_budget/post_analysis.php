@@ -3,7 +3,7 @@ $finalOutcome = number_format($totalSpent - $expenseBudget->total_limit, 2, ".",
 $overSpent = (($finalOutcome >= 0 ) ? TRUE : FALSE);
 $editableItems = array();
 ?>
-<div class="row ">
+<div class="row expanded">
     <div class="large-12 columns">
         <input type="hidden" name="budgetId" id="budgetId" value="<?php echo $budgetId; ?>" />
         <h2>

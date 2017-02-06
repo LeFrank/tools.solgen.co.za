@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row expanded">
     <div class="large-4 columns" >
         <form action="location/save" id="co-ordinate-form" name="co-ordinate-form" method="POST" >
             <h3>Location Details    </h3><a name="capture-form" />

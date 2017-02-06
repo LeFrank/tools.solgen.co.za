@@ -1,11 +1,11 @@
-<div class="row">
+<div class="row expanded">
     <div class="large-12 columns" >
         <?php echo form_open('expenses/statistics') ?>
 
         <h2>Statistics for the period ( <?php echo floor((strtotime($startAndEndDateforMonth[1]) - strtotime($startAndEndDateforMonth[0])) / (60 * 60 * 24)) + 1; ?> days ) &nbsp;</h2>
     </div>
 </div>
-<div class="row">
+<div class="row expanded">
     <div class="large-4 columns" >
         <label> Filter by Period
             <select id="expensePeriod" name="expensePeriod">
@@ -29,12 +29,12 @@
         </label>
     </div>
 </div>
-<div class="row">
+<div class="row expanded">
     <div class="large-12 columns" >
         <input type="submit" name="filter" value="Filter" id="filter"  class="button"/>
     </div>
 </div>
-<div class="row">
+<div class="row expanded">
     <div class="large-12 columns" >
         <?php if (!empty($expensesTotal)) { ?>
             <h3>Total Spent This Period </h3>
@@ -51,7 +51,7 @@
             </br>
             <h3>Top 5 Individual Expenses </h3>
             <div id="top-five-expense-types" >
-                <table class="full-width">
+                <table class="full-width responsive">
                     <thead>
                     <th>Position</th>
                     <th>Expense Type</th>
@@ -81,7 +81,7 @@
             </br>
             <h3>Top 5 Expense Types</h3>
             <div id="top-five-expense-types" >
-                <table class="full-width">
+                <table class="full-width responsive">
                     <thead>
                     <th>Position</th>
                     <th>Expense Type</th>
@@ -114,7 +114,7 @@
             <h3>Top 5 Payment Methods</h3>
             <?php if (!empty($topFivePaymentMethods) && !array_key_exists("0", $topFivePaymentMethods)) { ?>
                 <div id="top-five-payment-methods" >
-                    <table class="full-width">
+                    <table class="full-width responsive">
                         <thead>
                         <th>Position</th>
                         <th>Payment Method</th>
@@ -148,7 +148,7 @@
             </br>
             <h3>Top 5 Locations</h3>
             <div id="top-five-locations" >
-                <table class="full-width">
+                <table class="full-width responsive">
                     <thead>
                     <th>Position</th>
                     <th>Location</th>

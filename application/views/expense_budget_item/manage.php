@@ -5,7 +5,7 @@
 // <br/><br/><strong>OR</strong><br/><br/>
 // Create items individually
 ?>
-<div class="row ">
+<div class="row expanded">
     <div class="large-12 columns">
         <div id="expense-period-manage-feedback" class="hidden"></div>
         <h3>Budget Limits For Period: <?php echo $expenseBudget->name; ?></h3>
@@ -18,11 +18,11 @@
 <div class="row ">
     <div class="large-12 columns">
         <div>
-            <p>Expense Type Limits</p>
             <?php
             if (empty($expenseBudgetItems)) {
                 echo "Create Items<br/>";
                 ?>
+                <p>Expense Type Limits</p>
                 <div class="row ">
                     <div class="large-4 columns">
                         <input type="button" value="Use Expenses from Previous Period" 
@@ -41,8 +41,6 @@
 
                 </div>
                 <?php
-            } else {
-                echo "Show items";
             }
             ?>
         </div>

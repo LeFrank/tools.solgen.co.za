@@ -1,5 +1,5 @@
 <?php ?>
-<div class="row">
+<div class="row expanded">
     <div class="large-3 columns">
         <div id="agenda" class="left">
             <form name="timetable-search-form" id="timetable-search-form" action='/timetable/search' method="POST">

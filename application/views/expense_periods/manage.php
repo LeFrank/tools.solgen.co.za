@@ -1,5 +1,5 @@
 <?php ?>
-<div class="row ">
+<div class="row expanded">
     <div class="large-12 columns">
         <div id="expense-period-manage-feedback" class="hidden"></div>
         <h3>Manage Expense Periods</h3>

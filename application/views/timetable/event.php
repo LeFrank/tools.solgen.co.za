@@ -1,4 +1,4 @@
-<div class="row" id="event-container">
+<div class="row expanded" id="event-container">
     <div class="large-12 columns">
         <?php
             $startDate = new DateTime($event->start_date);

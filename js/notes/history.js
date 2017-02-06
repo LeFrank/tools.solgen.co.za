@@ -10,8 +10,11 @@ $(function () {
     $("#createNote").click(function () {
         $("#createNoteForm").slideToggle("slow", function () {
             if ($("#createNoteForm").is(":visible")) {
+                window.onbeforeunload = confirmOnPageExit;
                 $(this).addClass("notesHistory");
                 $("#title").focus();
+            }else{
+                window.onbeforeunload = null;
             }
         });
     });
@@ -36,3 +39,4 @@ $(function () {
         }
     });
 });
+
