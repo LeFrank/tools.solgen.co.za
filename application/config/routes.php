@@ -119,6 +119,7 @@ $route['location/edit/(:num)'] = 'location/edit/$1';
 $route['location/delete/(:num)'] = 'location/delete/$1';
 $route['location/get/(:num)'] = 'location/getLocationData/$1';
 $route['location/view/(:num)'] = 'location/view/$1';
+$route['location/search/json/(:any)'] = 'location/searchJson/$1';
 $route['location/search/(:any)'] = 'location/search/$1';
 
 $route['payment-methods/manage'] = 'paymentMethods/manage';

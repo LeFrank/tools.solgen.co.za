@@ -1,5 +1,5 @@
 
-$(document).ready(function() {
+$(document).ready(function () {
 //    $(window).bind('scroll', function () {
 //    if ($(window).scrollTop() > 50) {
 //        $('.top-nav').addClass('fixed');
@@ -7,7 +7,7 @@ $(document).ready(function() {
 //        $('.top-nav').removeClass('fixed');
 //    }
 //});
-$(document).foundation();
+    $(document).foundation();
 });
 function getObjects(obj, key, val) {
     var objects = [];
@@ -23,15 +23,15 @@ function getObjects(obj, key, val) {
     return objects;
 }
 
-function showLoadingNotification(){
-        
+function showLoadingNotification() {
+
 }
 
-function hideLoadingNotification(){
-    
+function hideLoadingNotification() {
+
 }
 
-var confirmOnPageExit = function (e) 
+var confirmOnPageExit = function (e)
 {
     // If we haven't been passed the event get the window.event
     e = e || window.event;
@@ -39,7 +39,7 @@ var confirmOnPageExit = function (e)
     var message = 'There is unsaved work present, are you sure you wish to leave this page?';
 
     // For IE6-8 and Firefox prior to version 4
-    if (e) 
+    if (e)
     {
         e.returnValue = message;
     }
@@ -47,3 +47,5 @@ var confirmOnPageExit = function (e)
     // For Chrome, Safari, IE8+ and Opera 12+
     return message;
 };
+
+

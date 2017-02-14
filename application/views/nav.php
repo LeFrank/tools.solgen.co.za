@@ -16,8 +16,7 @@
         <a href="/locations" >Locations</a>
         &nbsp;&nbsp;
         <a href="/weather" >Weather</a>
-        &nbsp;&nbsp;
-        <a href="/expense-wishlist" >Wishlist</a>
+        
         &nbsp;&nbsp;    
         <a href="/timeline" >Timeline</a>
         &nbsp;&nbsp;    

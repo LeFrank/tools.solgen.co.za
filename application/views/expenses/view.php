@@ -98,7 +98,8 @@ if($this->session->flashdata("success") !== FALSE)
         <div class="row expanded">
             <div class="large-6 columns">
                 <label for="location">Location</label>
-                <input  type="text" name="location" placeholder="Where was the expense made?"/><br/><br/>
+                <input  type="text" id="location" name="location"name="location" placeholder="Where was the expense made?"/>
+                <input  type="hidden" id="locationId" name="locationId" value="0"/><br/><br/>
             </div>
             <div class="large-6 columns">
                 <label for="expenseDate">Expense Date</label>
@@ -106,7 +107,6 @@ if($this->session->flashdata("success") !== FALSE)
             </div>
         </div>
         <span>* Required Field</span><br/><br/>
-
         <input type="submit" name="submit" value="Record" class="button"/>
         </form>
     </div>
@@ -117,6 +117,8 @@ if($this->session->flashdata("success") !== FALSE)
 <script type="text/javascript" src="/js/third_party/jquery.tablesorter.min.js"></script>
 <script type="text/javascript" src="/js/expenses/expense_table.js" ></script>
 <script type="text/javascript" src="/js/expenses/expense_capture.js" ></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>'
+<script src="/js/location/autocomplete.js"></script>
 <script type="text/javascript">
     $(function () {
         $("#expenseDate").datetimepicker();

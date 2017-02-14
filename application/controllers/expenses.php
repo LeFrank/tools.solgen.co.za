@@ -118,9 +118,14 @@ class Expenses extends CI_Controller {
     public function filteredSearch() {
         $this->load->helper('url');
         $this->load->helper('form');
-        $this->output->set_content_type('application/json')
-                ->set_output(json_encode($this->expense_model->getexpensesByCriteria($this->session->userdata("user")->id)));
-        return $this->output->get_output();
+        $data["expenseTypes"] = mapKeyToId($this->expense_type_model->get_expense_types());
+        $data["expensePaymentMethod"] = mapKeyToId($this->payment_method_model->get_user_payment_method($this->session->userdata("user")->id), false);
+        $data["startAndEndDateforMonth"] = array($this->input->post("fromDate"), $this->input->post("toDate"));
+        $data['expensesForPeriod'] = $this->expense_model->getexpensesByCriteria($this->session->userdata("user")->id);
+//        $this->output->set_content_type('application/json')
+//                ->set_output(json_encode($this->expense_model->getexpensesByCriteria($this->session->userdata("user")->id)));
+//        return $this->output->get_output();
+        echo $this->load->view('expenses/history_table', $data, true);
     }
 
 
@@ -213,6 +218,7 @@ class Expenses extends CI_Controller {
         //$data["startAndEndDateOfWeek"] = getStartAndEndDateforWeek(date('W'), date('Y'));
         $data["startAndEndDateforMonth"] = getStartAndEndDateforMonth(date("m"), date('Y'));
         $data["expensesForPeriod"] = $this->expense_model->getExpensesbyDateRange($data["startAndEndDateforMonth"][0], $data["startAndEndDateforMonth"][1], $this->session->userdata("user")->id);
+        $data["history_table"] = $this->load->view('expenses/history_table', $data, true);
         $this->load->view('header', getPageTitle($data, $this->toolName, "History"));
         $this->load->view('expenses/expense_nav');
         $this->load->view('expenses/history', $data);
@@ -284,6 +290,8 @@ class Expenses extends CI_Controller {
         $data["expenseTypes"] = mapKeyToId($this->expense_type_model->get_user_expense_types($this->session->userdata("user")->id));
         $data["expensePaymentMethod"] = mapKeyToId($this->payment_method_model->get_user_payment_method($this->session->userdata("user")->id), false);
         $data["expense"] = $this->expense_model->getExpenses($this->session->userdata("user")->id, 5);
+        $data["css"] = '<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">';
+        $data["js"] = '';
         $this->load->view('header', getPageTitle($data, $this->toolName,"Overview",""));
         $this->load->view('expenses/expense_nav');
         $this->load->view('expenses/view', $data);

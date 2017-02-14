@@ -34,7 +34,8 @@
             <textarea name="description" id="description" cols="40" rows="5" ><?php echo $expense->description; ?></textarea><br/><br/>
 
             <label for="location">Location</label>
-            <input  type="text" name="location" value="<?php echo $expense->location; ?>"/><br/><br/>
+            <input  type="text" id="location" name="location" value="<?php echo $expense->location; ?>"/><br/><br/>
+            <input  type="hidden" id="locationId" name="locationId" value="<?php echo (null == $expense->location_id )? 0 : $expense->location_id ; ?>"/><br/><br/>
 
             <label for="expenseDate">Expense Date</label>
             <input  type="text" id="expenseDate" name="expenseDate" value="<?php echo $expense->expense_date; ?>" /><br/><br/>
@@ -49,6 +50,8 @@
 <script src="/js/third_party/ckeditor/ckeditor.js"></script>
 <link rel="stylesheet" type="text/css" href="/css/jquery.datetimepicker.css"/ >
 <script src="/js/jquery.datetimepicker.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>'
+<script src="/js/location/autocomplete.js"></script>
 <script type="text/javascript">
     $(function() {
         $("#expenseDate").datetimepicker();

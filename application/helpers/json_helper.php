@@ -41,3 +41,14 @@ function eventify($event){
         "allDay" =>($event->all_day_event == 1)? true:false);
     return json_encode($data);
 }
+
+function locationAutocompletify($locations){
+    foreach($locations as $k=>$v){
+        $data[] = array(
+            "id"   => $v->id, 
+            "label" => $v->name . " - ". $v->address, 
+            "value" => $v->address
+        );
+    }
+    return json_encode($data);
+}

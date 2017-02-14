@@ -176,8 +176,14 @@ class Location extends CI_Controller {
             $output =  $this->load->view("location/result_table", $data, TRUE);
             echo $output;
         }
-        
     }
+    
+    public function searchJson($locationNameStr = "" ){
+        $this->load->helper('form');
+        $this->load->helper('json_helper');
+        echo locationAutocompletify($this->location_model->search($locationNameStr, $this->session->userdata("user")->id), 15);
+    }
+    
 
     public function getLocationData($locationId) {
         if ($this->location_model->doesItBelongToMe($this->session->userdata("user")->id, $locationId)) {

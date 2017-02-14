@@ -29,6 +29,7 @@ class expense_model extends CI_Model {
             'expense_type_id' => $this->input->post('expenseType'),
             'description' => $this->input->post('description'),
             'location' => $this->input->post('location'),
+            'location_id' => $this->input->post('locationId'),
             'expense_date' => $date,
             'user_id' => $this->session->userdata("user")->id,
             'payment_method_id' => $this->input->post('paymentMethod')
@@ -198,6 +199,7 @@ class expense_model extends CI_Model {
             'expense_type_id' => $this->input->post('expenseType'),
             'description' => $this->input->post('description'),
             'location' => $this->input->post('location'),
+            'location_id' => $this->input->post('locationId'),
             'expense_date' => date('Y/m/d H:i', strtotime($this->input->post('expenseDate'))),
             'user_id' => $this->session->userdata("user")->id,
             'payment_method_id' => $this->input->post('paymentMethod')
