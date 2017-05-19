@@ -15,7 +15,6 @@
 |
 */
 $config['base_url']	= '';
-
 /*
 |--------------------------------------------------------------------------
 | Index File
@@ -26,7 +25,7 @@ $config['base_url']	= '';
 | variable so that it is blank.
 |
 */
-$config['index_page'] = '';
+$config['index_page'] = 'index.php';
 
 /*
 |--------------------------------------------------------------------------
@@ -44,8 +43,8 @@ $config['index_page'] = '';
 | 'ORIG_PATH_INFO'	Uses the ORIG_PATH_INFO
 |
 */
-$config['uri_protocol']	= 'REQUEST_URI';
-
+//$config['uri_protocol']	= 'REQUEST_URI';
+$config['uri_protocol'] = 'PATH_INFO';
 /*
 |--------------------------------------------------------------------------
 | URL suffix
