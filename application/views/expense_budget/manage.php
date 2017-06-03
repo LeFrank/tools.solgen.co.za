@@ -32,7 +32,7 @@
                             echo "<td><a href='/expense-budget-items/items/" . $v["id"] . "'>Budget Limits     </a>"
                             . "<a href='/expense-budget/edit/" . $v["id"] . "'>Edit</a>"
                             . "&nbsp;&nbsp;|&nbsp;&nbsp;"
-                            . "<a href='/expense-budget/delete/" . $v["id"] . "'>Delete</a>";
+                            . "<a href='/expense-budget/delete/" . $v["id"] . "' onclick=\"return confirm_delete()\">Delete</a>";
                             if(!$expensePeriods[$v["expense_period_id"]]["active"]){
                                 echo "<br/>";
                                 echo "<a href='/expense-budget/post-analysis/" . $v["id"] . "'>Post Analysis</a>";

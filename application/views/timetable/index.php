@@ -74,7 +74,7 @@
                 &nbsp;&nbsp;
                 <a href="#" id="clearForm" class="button secondary hidden">New</a>
                 &nbsp;&nbsp;
-                <a href="#" id="delete" class="button secondary hidden" >Delete</a>
+                <a href="#" id="delete" class="button secondary hidden" onclick="return confirm_delete()" >Delete</a>
             </form>
         </div>
     </div>

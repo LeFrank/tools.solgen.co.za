@@ -38,7 +38,7 @@
 <?php
     echo '      <a href="/timetable/edit/'.$event->id.'" target="_blank" class="button">Edit</a>';
     echo '      &nbsp;&nbsp;';
-    echo '      <a href="/timetable/delete/'.$event->id.'" id="delete" class="button secondary" >Delete</a>';
+    echo '      <a href="/timetable/delete/'.$event->id.'" id="delete" class="button secondary" onclick="return confirm_delete()">Delete</a>';
 ?>
     </div>
 </div>

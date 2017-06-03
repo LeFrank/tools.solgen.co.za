@@ -25,13 +25,15 @@
             <label for="date">Date</label>
             <input type="text" value="<?php echo (!empty($note->create_date) ? $note->create_date : date('Y/m/d H:i:s')); ?>" name="noteDate" id="noteDate"/>
             <br/><br/>
-            <input type="submit" value="<?php echo (!empty($note->id) ? "Update" : "Capture" ); ?>"  class="button"  />&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="submit" id="submit-note" value="<?php echo (!empty($note->id) ? "Update" : "Capture" ); ?>"  class="button"  />&nbsp;&nbsp;&nbsp;&nbsp;
             <input id="cancel-new-note" type="button" value="Cancel" class="button secondary"/>
         </form>
     </div>
 </div>
 <script type="text/javascript">
-    
+    $("#submit-note").click(function(){
+        window.onbeforeunload = null;
+    });
 <?php 
     if(isset($exitCheck) && $exitCheck == true){
         ?>

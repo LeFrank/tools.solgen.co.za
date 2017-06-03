@@ -24,7 +24,7 @@
                                 <td><?php echo $v["update_date"]; ?></td>
                                 <td>
                                     <a href="/payment-methods/edit/<?php echo $v["id"]; ?>">edit</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-                                    <a href="/payment-methods/delete/<?php echo $v["id"]; ?>">delete</a></td>
+                                    <a href="/payment-methods/delete/<?php echo $v["id"]; ?>" onclick="return confirm_delete()">delete</a></td>
                             </tr>
                             <?php
                         }

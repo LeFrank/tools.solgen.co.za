@@ -5,7 +5,3 @@ $(document).ready(function () {
         }
     });
 });
-
-function confirm_delete() {
-    return confirm('This will delete the note, are you sure?');
-}

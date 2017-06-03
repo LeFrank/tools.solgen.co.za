@@ -31,7 +31,7 @@
                                 <td><?php echo (($v["active"] == 1) ?"True": "False" ); ?></td>
                                 <td>
                                     <a href="/expense-periods/edit/<?php echo $v["id"]; ?>">edit</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-                                    <a href="/expense-periods/delete/<?php echo $v["id"]; ?>">delete</a></td>
+                                    <a href="/expense-periods/delete/<?php echo $v["id"]; ?>" onclick="return confirm_delete()">delete</a></td>
                             </tr>
                             <?php
                         }

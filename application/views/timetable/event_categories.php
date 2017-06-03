@@ -28,7 +28,7 @@
                         <td><?php echo $v["enabled"]; ?></td>
                         <td>
                             <a href="/event-category/edit/<?php echo $v["id"];?>">edit</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-                            <a href="/event-category/delete/<?php echo $v["id"];?>">delete</a></td>
+                            <a href="/event-category/delete/<?php echo $v["id"];?>"  onclick="return confirm_delete()">delete</a></td>
                     </tr>
                     <?php
                 }

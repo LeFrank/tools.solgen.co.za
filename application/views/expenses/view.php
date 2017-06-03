@@ -36,7 +36,7 @@ if($this->session->flashdata("success") !== FALSE)
                             echo "<td>" . $v["description"] . "</td>";
                             echo "<td>" . $v["location"] . "</td>";
                             echo "<td class='align-right'>" . $v["amount"] . "</td>";
-                            echo "<td><a href='/expenses/edit/" . $v["id"] . "'>Edit</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href='/expenses/delete/" . $v["id"] . "'>Delete</a></td>";
+                            echo "<td><a href='/expenses/edit/" . $v["id"] . "'>Edit</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href='/expenses/delete/" . $v["id"] . "' onclick='return confirm_delete()'>Delete</a></td>";
                             echo "</tr>";
                             $total += $v["amount"];
                         }

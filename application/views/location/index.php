@@ -61,7 +61,7 @@
                         echo "<td>" . (($location->priority == 1 ) ? "default" : "") . "</td>";
                         echo "<td><a href='#capture-form' onclick='viewLocation(" . $location->id . ",\"" . $location->latitude . "\",\"" . $location->longitude . "\");'>View</a> "
                         . "| <a href='#capture-form' onclick='editLocation(" . $location->id . ");'>Edit</a> "
-                        . "| <a href='/location/delete/" . $location->id . "'>Delete</a></td>";
+                        . "| <a href='/location/delete/" . $location->id . "' onclick='return confirm_delete()'>Delete</a></td>";
                         echo "</tr>";
                         $count++;
                     }
