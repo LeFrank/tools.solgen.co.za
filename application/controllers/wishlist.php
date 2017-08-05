@@ -32,22 +32,26 @@ class Wishlist extends CI_Controller {
         parent::__construct();
         $this->load->library('session');
         $this->load->helper('auth_helper');
+        $this->load->helper("array_helper");
         $this->load->helper('usability_helper');
         $this->load->helper('url');
         can_access($this->require_auth, $this->session);
         $this->load->model('wishlist_model');
+        $this->load->model('expense_period_model');
+        $this->load->model('expense_type_model');
     }
 
     public function index($id = null) {
         $this->load->library('session');
         $this->load->helper('form');
         $this->load->helper('url');
+        $this->load->helper("array_helper");
         $this->load->library('form_validation');
         $data[] = array();
         $data["statuses"] = $this->statuses;
         $data["priorities"] = $this->priorities;
         $userId = $this->session->userdata("user")->id;
-
+        $data["expenseTypes"] = mapKeyToId($this->expense_type_model->get_user_expense_types($userId));
         $data["wishlistItems"] = $this->wishlist_model->getItems($userId, 5, null);
         $this->load->view('header', getPageTitle($data, $this->toolName, "Overview", ""));
         $this->load->view('expenses/expense_nav');
@@ -77,7 +81,7 @@ class Wishlist extends CI_Controller {
             $data["action_classes"] = "success";
             $data["message_classes"] = "success";
             $data["action_description"] = "Captured A Wishlist Item.";
-            $data["message"] = "The item was captured: " . $item->Name;
+            $data["message"] = "The item was captured: " . $item->name;
             $this->session->set_flashdata("success", $this->load->view('general/action_status', $data, true));
             redirect("/expense-wishlist/", "refresh");
         }
@@ -97,6 +101,8 @@ class Wishlist extends CI_Controller {
         $data["statuses"] = $this->statuses;
         $data["priorities"] = $this->priorities;
         $userId = $this->session->userdata("user")->id;
+        $this->load->helper("array_helper");        
+        $data["expenseTypes"] = mapKeyToId($this->expense_type_model->get_user_expense_types($userId));
         $data["wishlistItem"] = $this->wishlist_model->getItem($userId, $id);
         $this->load->view('header', getPageTitle($data, $this->toolName, "Overview", ""));
         $this->load->view('expenses/expense_nav');
@@ -112,6 +118,8 @@ class Wishlist extends CI_Controller {
         $data["priorities"] = $this->priorities;
         $data["wishlistItemsForPeriod"] = $this->wishlist_model->getItemsByCriteria($this->session->userdata("user")->id);
         //print_r($data["wishlistItemsForPeriod"] );
+        $userId = $this->session->userdata("user")->id;
+        $data["expenseTypes"] = mapKeyToId($this->expense_type_model->get_user_expense_types($userId));
         $data["itemsTable"] = $this->load->view('wishlist/itemTable', $data, true);
         echo $data["itemsTable"];
     }
@@ -121,10 +129,13 @@ class Wishlist extends CI_Controller {
         $this->load->helper("date_helper");
         $this->load->helper("usability_helper");
         $this->load->library('session');
+        $userId = $this->session->userdata("user")->id;
+        $data["expenseTypes"] = mapKeyToId($this->expense_type_model->get_user_expense_types($userId));
         $data["statuses"] = $this->statuses;
         $data["priorities"] = $this->priorities;
         $data["startAndEndDateforYear"] = getStartAndEndDateforYear(date('Y'));
         $data["wishlistItemsForPeriod"] = $this->wishlist_model->getItemsbyDateRange($data["startAndEndDateforYear"][0], $data["startAndEndDateforYear"][1], $this->session->userdata("user")->id);
+        $data["expensePeriods"] = $this->expense_period_model->getExpensePeriods($this->session->userdata("user")->id, 5, null);
         $data["itemsTable"] = $this->load->view('wishlist/itemTable', $data, true);
         $this->load->view('header', getPageTitle($data, $this->toolName, "History"));
         $this->load->view('expenses/expense_nav');
@@ -141,6 +152,8 @@ class Wishlist extends CI_Controller {
         $data["statuses"] = $this->statuses;
         $data["priorities"] = $this->priorities;
         $userId = $this->session->userdata("user")->id;
+        $this->load->helper("array_helper");        
+        $data["expenseTypes"] = mapKeyToId($this->expense_type_model->get_user_expense_types($userId));
         if ($this->wishlist_model->doesItBelongToMe($userId, $id)) {
             $data["wishlistItem"] = $this->wishlist_model->delete($id);
             $data["status"] = "Deleted Wishlist Item";
@@ -177,6 +190,9 @@ class Wishlist extends CI_Controller {
         $this->form_validation->set_rules('cost', 'cost', 'required');
         $this->form_validation->set_rules('description', 'description', 'required');
         $this->form_validation->set_rules('reason', 'reason', 'required');
+        $this->load->helper("array_helper");        
+        $userId = $this->session->userdata("user")->id;
+        $data["expenseTypes"] = mapKeyToId($this->expense_type_model->get_user_expense_types($userId));
         if ($this->form_validation->run() == FALSE) {
             $this->edit($this->input->post("id"));
         } else {
@@ -188,7 +204,6 @@ class Wishlist extends CI_Controller {
             $this->wishlist_model->update($id);
             $data["statuses"] = $this->statuses;
             $data["priorities"] = $this->priorities;
-            $userId = $this->session->userdata("user")->id;
             $data["wishlistItems"] = $this->wishlist_model->getItems($userId, 5, null);
             $this->load->view('header', getPageTitle($data, $this->toolName, "Overview", ""));
             $this->load->view('wishlist/wishlist_nav');

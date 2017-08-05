@@ -117,3 +117,6 @@
 <script type="text/javascript" src="/js/jquery.datetimepicker.js" ></script>
 <script type="text/javascript" src="/js/third_party/jquery.tablesorter.min.js"></script>
 <script type="text/javascript" src="/js/wishlist/history.js" ></script>
+<script type="text/javascript">
+    var expense_period = <?php echo json_encode($expensePeriods); ?>;
+</script>

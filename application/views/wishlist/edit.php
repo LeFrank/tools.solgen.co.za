@@ -5,33 +5,43 @@
             <h3>Edit Item</h3>
             <?php echo validation_errors(); ?>
 
-            <?php echo form_open('expense-wishlist/update/'.$wishlistItem->id) ?>
+            <?php echo form_open('expense-wishlist/update/' . $wishlistItem->id) ?>
             <div class="row expanded">
-                <div class="large-4 columns">
+                <div class="large-2 columns">
                     <label for="name">Name *</label>
                     <input type="text" name="name" id="name" placeholder="Awesome new thing" autofocus value="<?php echo $wishlistItem->name; ?>"/><br />
                 </div>
-                <div class="large-1 columns">
+                <div class="large-2 columns">
                     <label for="priority">Priority</label>
                     <select name="priority" id="priority"> 
-                        <?php foreach($priorities as $k=> $v){   ?>
-                            <option value="<?php echo $k; ?>" <?php echo (($wishlistItem->priority == $k)? "selected='selected'":""); ?>><?php echo $v; ?></option>
+                        <?php foreach ($priorities as $k => $v) { ?>
+                            <option value="<?php echo $k; ?>" <?php echo (($wishlistItem->priority == $k) ? "selected='selected'" : ""); ?>><?php echo $v; ?></option>
                         <?php } ?>  
                     </select>
                 </div>
-                <div class="large-1 columns">
+                <div class="large-2 columns">
                     <label for="cost">Estimated Cost</label>
                     <input type="number" min="0.01" step="0.01" max="9999999999999" name="cost" id="cost" placeholder="0.00" value="<?php echo $wishlistItem->cost; ?>" /><br />
                 </div>
-                <div class="large-1 columns">
+                <div class="large-2 columns">
+                    <label for="expenseType">Expense Type</label>
+                    <select name="expenseType" id="expenseType"> 
+                        <?php
+                        foreach ($expenseTypes as $k => $v) {
+                            echo '<option value="' . $v["id"] . '"'. (($wishlistItem->expense_type_id == $v["id"]) ? "selected='selected'" : "") .'>' . $v["description"] . '</option>';
+                        }
+                        ?>
+                    </select>
+                </div>
+                <div class="large-2 columns">
                     <label for="targetDate">Target Date</label>
                     <input  type="text" id="targetDate" name="targetDate" placeholder="<?php echo date('Y/m/d H:i:s'); ?>" value="<?php echo $wishlistItem->target_date; ?>"/>
                 </div>
-                <div class="large-1 columns">
+                <div class="large-2 columns">
                     <label for="status">Status</label>
                     <select name="status" id="status"> 
-                        <?php foreach($statuses as $k=> $v){   ?>
-                            <option value="<?php echo $k; ?>" <?php echo (($wishlistItem->status == $k)? "selected='selected'":""); ?>><?php echo $v; ?></option>
+                        <?php foreach ($statuses as $k => $v) { ?>
+                            <option value="<?php echo $k; ?>" <?php echo (($wishlistItem->status == $k) ? "selected='selected'" : ""); ?>><?php echo $v; ?></option>
                         <?php } ?>    
                     </select>
                 </div>
@@ -65,7 +75,7 @@
 <link rel="stylesheet" type="text/css" href="/css/jquery.datetimepicker.css"/ >
 <script src="/js/jquery.datetimepicker.js"></script>
 <script type="text/javascript">
-    $(function() {
+    $(function () {
         $('form').attr('autocomplete', 'off');
         $("#targetDate").datetimepicker();
         CKEDITOR.replace('description');

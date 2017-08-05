@@ -35,7 +35,8 @@ class wishlist_model extends CI_Model {
             'target_date' => $date,
             'status' => $this->input->post('status'),
             'user_id' => $this->session->userdata("user")->id,
-            'creation_date' => date('Y/m/d H:i')
+            'creation_date' => date('Y/m/d H:i'),
+            'expense_type_id' => $this->input->post('expenseType')
         );
         $this->db->insert($this->tn, $data);
         return $this->db->insert_id();
@@ -192,7 +193,8 @@ class wishlist_model extends CI_Model {
             'target_date' => date('Y/m/d H:i', strtotime($this->input->post('targetDate'))),
             'status' => $this->input->post('status'),
             'user_id' => $this->session->userdata("user")->id,
-            'update_date' => date('Y/m/d H:i')
+            'update_date' => date('Y/m/d H:i'),
+            'expense_type_id' => $this->input->post('expenseType')
         );
         $this->db->where('id', $id);
         return $this->db->update($this->tn, $data);

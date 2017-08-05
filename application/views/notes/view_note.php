@@ -2,8 +2,8 @@
     <div class="large-12 columns" >
         <h2>
             Note 
-            <span id="searchExpand"><img src="/images/third_party/icons/Search_icon.png" />
-            <span id="createNote"><img src="/images/third_party/icons/Add_icon.png" />
+            <span id="searchExpand"><img src="/images/third_party/icons/Search_icon.png" /></span>
+            <span id="createNote"><img src="/images/third_party/icons/Add_icon.png" /></span>
         </h2>
         <?php if (!empty($search)) {
             ?>

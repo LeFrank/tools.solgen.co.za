@@ -1,6 +1,5 @@
 <?php
-
-/* 
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -20,6 +19,7 @@
                     <th>Description</th>
                     <th>Reason</th>
                     <th>priority</th>
+                    <th>Expense Type</th>
                     <th>Target Date</th>
                     <th>Status</th>
                     <th>Amount</th>
@@ -35,11 +35,12 @@
                             echo "<td>" . $v["description"] . "</td>";
                             echo "<td>" . $v["reason"] . "</td>";
                             echo "<td>" . $priorities[$v["priority"]] . "</td>";
+                            echo "<td>" . $expenseTypes[$v["expense_type_id"]]["description"] . "</td>";
                             echo "<td>" . $v["target_date"] . "</td>";
                             echo "<td>" . $statuses[$v["status"]] . "</td>";
                             echo "<td class='align-right'>" . $v["cost"] . "</td>";
                             echo "<td><a href='/expense-wishlist/edit/" . $v["id"] . "'>Edit</a>&nbsp;&nbsp;|&nbsp;&nbsp;"
-                                    . "<a href='/expense-wishlist/delete/" . $v["id"] . "' onclick='return confirm_delete()' >Delete</a></td>";
+                            . "<a href='/expense-wishlist/delete/" . $v["id"] . "' onclick='return confirm_delete()' >Delete</a></td>";
                             echo "</tr>";
                             $total += $v["cost"];
                         }
@@ -68,30 +69,40 @@
 
             <?php echo form_open('expense-wishlist/capture') ?>
             <div class="row expanded">
-                <div class="large-4 columns">
+                <div class="large-2 columns">
                     <label for="name">Name *</label>
                     <input type="text" name="name" id="name" placeholder="Awesome new thing" autofocus /><br />
                 </div>
-                <div class="large-1 columns">
+                <div class="large-2 columns">
                     <label for="priority">Priority</label>
                     <select name="priority" id="priority"> 
-                        <?php foreach($priorities as $k=> $v){   ?>
+                        <?php foreach ($priorities as $k => $v) { ?>
                             <option value="<?php echo $k; ?>"><?php echo $v; ?></option>
                         <?php } ?>  
                     </select>
                 </div>
-                <div class="large-1 columns">
+                <div class="large-2 columns">
+                    <label for="expenseType">Expense Type</label>
+                    <select name="expenseType" id="expenseType"> 
+                        <?php
+                        foreach ($expenseTypes as $k => $v) {
+                            echo '<option value="' . $v["id"] . '">' . $v["description"] . '</option>';
+                        }
+                        ?>
+                    </select>
+                </div>
+                <div class="large-2 columns">
                     <label for="cost">Estimated Cost</label>
                     <input type="number" min="0.01" step="0.01" max="9999999999999" name="cost" id="cost" placeholder="0.00" /><br />
                 </div>
-                <div class="large-1 columns">
+                <div class="large-2 columns">
                     <label for="targetDate">Target Date</label>
                     <input  type="text" id="targetDate" name="targetDate" placeholder="<?php echo date('Y/m/d H:i:s'); ?>" />
                 </div>
-                <div class="large-1 columns">
+                <div class="large-2 columns">
                     <label for="status">Status</label>
                     <select name="status" id="status"> 
-                        <?php foreach($statuses as $k=> $v){   ?>
+                        <?php foreach ($statuses as $k => $v) { ?>
                             <option value="<?php echo $k; ?>"><?php echo $v; ?></option>
                         <?php } ?>    
                     </select>

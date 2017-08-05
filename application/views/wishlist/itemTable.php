@@ -7,6 +7,7 @@
         <th>Description</th>
         <th>Reason</th>
         <th>priority</th>
+        <th>Expense Type</th>
         <th>Target Date</th>
         <th>Status</th>
         <th>Amount</th>
@@ -22,6 +23,7 @@
             echo "<td>" . $v["description"] . "</td>";
             echo "<td>" . $v["reason"] . "</td>";
             echo "<td>" . $v["priority"] . " - " . $priorities[$v["priority"]] . "</td>";
+            echo "<td>" . $expenseTypes[$v["expense_type_id"]]["description"] . "</td>";
             echo "<td>" . $v["target_date"] . "</td>";
             echo "<td>" . $v["status"] . " - " . $statuses[$v["status"]] . "</td>";
             echo "<td class='align-right'>" . $v["cost"] . "</td>";
