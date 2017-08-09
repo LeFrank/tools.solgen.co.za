@@ -117,7 +117,7 @@ if($this->session->flashdata("success") !== FALSE)
 <script type="text/javascript" src="/js/third_party/jquery.tablesorter.min.js"></script>
 <script type="text/javascript" src="/js/expenses/expense_table.js" ></script>
 <script type="text/javascript" src="/js/expenses/expense_capture.js" ></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>'
+<script src="/js/third_party/jquery/ui/1.12.1/jquery-ui.js"></script>
 <script src="/js/location/autocomplete.js"></script>
 <script type="text/javascript">
     $(function () {

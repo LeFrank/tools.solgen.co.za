@@ -59,5 +59,5 @@
 <script type="text/javascript" src="/js/third_party/jquery.formatDateTime.min.js" ></script>
 <script src="/js/third_party/ckeditor/ckeditor.js"></script>
 <script src='/js/timetable/search.js' type='text/javascript'></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>'
+<script src="/js/third_party/jquery/ui/1.12.1/jquery-ui.js"></script>
 <script src="/js/location/autocomplete.js"></script>
