@@ -30,9 +30,9 @@
                 <label for="endDate">End Date</label>
                 <input  type="text" id="endDate" name="endDate" placeholder="<?php echo date('Y/m/d H:i:s'); ?>" />
                 <br/>
-                <label for="location">Location TODO: make autocomplete</label>
-                <label for="locationText"></label>
-                <input type="text" name="locationText" id="locationText" value="" placeholder="55 John way, Goodwood, Cape Town, South Africa">
+                <label for="location">Location</label>
+                <input  type="text" id="location" name="location" placeholder="Where was the expense made?"/>
+                <input  type="hidden" id="locationId" name="locationId" value="0"/>
                 <br/>
                 <label for="expenseType">Expense Type</label>
                 <select name="timetableExpenseType" id="timetableExpenseType">
@@ -40,8 +40,7 @@
                     <?php
                     foreach ($expenseTypes as $k => $v) {
                         echo '<option value="' . $v["id"] . '">' . $v["description"] . '</option>';
-                    }
-                    ?>
+                    }?>
                 </select>
                 <br/><br/>
                 <input type='button' value='Search' class="button" id="search-timetable"></input>
@@ -60,3 +59,5 @@
 <script type="text/javascript" src="/js/third_party/jquery.formatDateTime.min.js" ></script>
 <script src="/js/third_party/ckeditor/ckeditor.js"></script>
 <script src='/js/timetable/search.js' type='text/javascript'></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>'
+<script src="/js/location/autocomplete.js"></script>

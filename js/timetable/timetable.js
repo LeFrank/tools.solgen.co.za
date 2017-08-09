@@ -177,8 +177,8 @@ function setEventEdit(eventId) {
                 $("#endDate").val(obj.end_date);
                 $("#timetableCategory").val(obj.tt_category_id).prop('selected', true);
                 $("#timetableExpenseType").val(obj.expense_type_id).prop('selected', true);
-                $("#timetableLocation").val(obj.location_id).prop('selected', true);
-                $("#locationText").val(obj.location_text);
+                $("#locationId").val(obj.location_id).prop('selected', true);
+                $("#location").val(obj.location_text);
                 $("#clearForm").show();
                 $("#delete").attr("href", "/timetable/delete/" + obj.id);
                 $("#delete").show();

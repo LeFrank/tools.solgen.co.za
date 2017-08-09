@@ -9,6 +9,11 @@ $(function () {
                 },
                 done: function(){
                     $("#locationId").val("0");
+                },
+                complete: function(responseObj, textStatus){
+                    if(responseObj.responseJSON == "" || textStatus == "error"){
+                        $("#locationId").val("");
+                    }
                 }
             });
         },
@@ -16,7 +21,6 @@ $(function () {
         select: function (event, ui) {
             if(ui !== undefined){
                 $("#locationId").val(ui.item.id);
-                console.log(ui.item.label);
                 $("#location").val(""+ui.item.label);
             }else{
                 $("#locationId").val("");

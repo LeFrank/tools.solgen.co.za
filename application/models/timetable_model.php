@@ -23,8 +23,8 @@ class timetable_model extends CI_Model {
             'end_date' => $this->input->post('endDate'),
             'repition_id' => $this->input->post('timetableRepetition'),
             'expense_type_id' => $this->input->post('timetableExpenseType'),
-            'location_id' => $this->input->post('timetableLocation'),
-            'location_text' => $this->input->post('locationText')
+            'location_id' => $this->input->post('locationId'),
+            'location_text' => $this->input->post('location')
         );
         if ($this->input->post('allDayEvent')) {
             $data["start_date"] = date('Y/m/d', strtotime($this->input->post('startDate')));
@@ -49,8 +49,8 @@ class timetable_model extends CI_Model {
         }
     }
 
-    public function delete($locationId) {
-        $this->db->where("id", $locationId);
+    public function delete($eventId) {
+        $this->db->where("id", $eventId);
         $this->db->delete($this->tn);
     }
 
@@ -111,7 +111,9 @@ class timetable_model extends CI_Model {
 //        if ($search["endDate"] != null && $search["endDate"] != "") {
 //            $this->db->where("end_date <=", date('Y/m/d', strtotime($search["endDate"])));
 //        }
-        if (isset($search["location"]) && $search["location"] != null && $search["location"] != "") {
+        if (isset($search["locationId"]) && $search["locationId"] != null && $search["locationId"] != "") {
+            $this->db->where("location_id", $search["locationId"]);
+        }else if (isset($search["location"]) && $search["location"] != null && $search["location"] != "") {
             $this->db->or_like("location_text", $search["location"]);
         }
         

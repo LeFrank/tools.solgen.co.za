@@ -43,6 +43,10 @@ function eventify($event){
 }
 
 function locationAutocompletify($locations){
+    if(sizeof($locations) == 0 ){
+//        log_message( 'error',  "something funky");
+        return json_encode("");
+    }
     foreach($locations as $k=>$v){
         $data[] = array(
             "id"   => $v->id, 

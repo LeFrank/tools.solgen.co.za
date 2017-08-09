@@ -44,22 +44,25 @@
                 <input step="1" type="number" max="100" id="numberOfRepeats" name="numberOfRepeats" placeholder="0"  disabled></input>
                 &nbsp;<span id="repeatDescriptor"></span>
                 <br/>
-                <label for="location">Location</label>
+<!--                <label for="location">Location</label>
                 <select name="timetableLocation" id="timetableLocation" >
                     <option value="0">None</option>
                     <?php
-                    foreach ($locations as $k => $v) {
-                        echo '<option value="' . $v->id . '">' . $v->name . '</option>';
-                    }
+//                    foreach ($locations as $k => $v) {
+//                        echo '<option value="' . $v->id . '">' . $v->name . '</option>';
+//                    }
                     ?>
-                </select>
+                </select>-->
+                <label for="location">Location</label>
+                <input  type="text" id="location" name="location" placeholder="Where was the expense made?"/>
+                <input  type="hidden" id="locationId" name="locationId" value="0"/><br/><br/>
                 <br/>
-                <label for="or"></label>
+<!--                <label for="or"></label>
                 <strong>or</strong>
                 <br/>
                 <label for="locationText"></label>
                 <input type="text" name="locationText" id="locationText" value="" placeholder="55 John way, Goodwood, Cape Town, South Africa">
-                <br/>
+                <br/>-->
                 <label for="expenseType">Expense Type</label>
                 <select name="timetableExpenseType" id="timetableExpenseType">
                     <option value="0">none</option>
@@ -98,3 +101,5 @@
     <script src='/js/third_party/FullCalendar/fullcalendar.min.js' type='text/javascript'></script>
     <script src="/js/third_party/ckeditor/ckeditor.js"></script>
     <script src='/js/timetable/timetable.js' type='text/javascript'></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>'
+    <script src="/js/location/autocomplete.js"></script>

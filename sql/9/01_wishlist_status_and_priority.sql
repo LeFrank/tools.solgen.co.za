@@ -54,3 +54,5 @@ INSERT INTO `solgen`.`wishlist_status` (`name`, `ordr`, `create_date`) VALUES ('
 INSERT INTO `solgen`.`wishlist_status` (`name`, `ordr`, `create_date`) VALUES ('In Progress', '3', now());
 
 INSERT INTO `solgen`.`wishlist_status` (`name`, `ordr`, `create_date`) VALUES ('Done', '4', now());
+
+ALTER TABLE `solgen`.`wishlist` ADD COLUMN `expense_type_id` INT(11) NULL AFTER `update_date`;

@@ -98,7 +98,7 @@ if($this->session->flashdata("success") !== FALSE)
         <div class="row expanded">
             <div class="large-6 columns">
                 <label for="location">Location</label>
-                <input  type="text" id="location" name="location"name="location" placeholder="Where was the expense made?"/>
+                <input  type="text" id="location" name="location" placeholder="Where was the expense made?"/>
                 <input  type="hidden" id="locationId" name="locationId" value="0"/><br/><br/>
             </div>
             <div class="large-6 columns">

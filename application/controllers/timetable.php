@@ -182,7 +182,8 @@ class Timetable extends CI_Controller {
         $search["allDayEvent"] = $this->input->post("allDayEvent");
         $search["startDate"] = $this->input->post("startDate");
         $search["endDate"] = $this->input->post("endDate");
-        $search["location"] = $this->input->post("locationText");
+        $search["locationId"] = $this->input->post("locationId");
+        $search["location"] = $this->input->post("location");
         $search["timetableExpenseType"] = $this->input->post("timetableExpenseType");
         $data["entries"] = $this->timetable_model->getFilteredTimetableEvents($user->id, $search);
         $this->load->view("/timetable/searchEntries", $data);
