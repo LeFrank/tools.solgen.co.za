@@ -104,7 +104,7 @@
                         </div>
                         <div class="row">
                             <div class="large-12 columns">
-                                <input type="submit" name="filter" value="Filter" id="filter" class="button" />
+                                <input type="button" name="filter" value="Filter" id="filter" class="button" />
                                 <input type="button" name="export" value="Export To CSV" id="export" class="button secondary" onClick="submit()"/>
                             </div>
                         </div>

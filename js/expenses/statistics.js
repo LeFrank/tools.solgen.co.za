@@ -36,7 +36,7 @@ $(document).ready(function() {
         },
         highlighter: {
             renderer: $.jqplot.CategoryAxisRenderer,
-            show: false},
+            show: true}
     });
 
 $.jqplot.config.enablePlugins = true;
@@ -70,7 +70,7 @@ $.jqplot.config.enablePlugins = true;
         },
         highlighter: {
             renderer: $.jqplot.CategoryAxisRenderer,
-            show: false},
+            show: true}
     });
 
     $('#chart1').bind('jqplotDataClick',
@@ -211,3 +211,24 @@ $.jqplot.config.enablePlugins = true;
         }
     });
 });
+
+
+    var plot4 = jQuery.jqplot('payment-method-totals-pie', [expenseValueByMethodOfPayment],
+            {
+                title: 'Expense Payment Method Totals',
+                seriesDefaults: {
+                    renderer: jQuery.jqplot.PieRenderer,
+                    rendererOptions: {
+                        // Turn off filling of slices.
+                        fill: false,
+                        showDataLabels: true,
+                        //dataLabels: dayExpenseslabels,
+                        // Add a margin to seperate the slices.
+                        sliceMargin: 4,
+                        // stroke the slices with a little thicker line.
+                        lineWidth: 3
+                    }
+                },
+                legend: {show: true, location: 'e'}
+            }
+    );

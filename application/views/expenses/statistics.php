@@ -78,7 +78,7 @@
                     </tbody>
                 </table>
             </div>
-            </br>
+            <br>
             <h3>Top 5 Expense Types</h3>
             <div id="top-five-expense-types" >
                 <table class="full-width responsive">
@@ -144,6 +144,9 @@
             <h3>Payment Method Totals</h3>
             <div id="payment-method-totals">    
             </div>
+            <br/>
+            <div id="payment-method-totals-pie">    
+            </div>
             </br>
             </br>
             <h3>Top 5 Locations</h3>
@@ -186,7 +189,22 @@
             </br>
         </div>
     </div>
+<?php
+    $expenseValueByMethodofPayment = [];
+    foreach($paymentMethodsTotal as $k=>$v){
+        if($k != 0 ){
+            $expenseValueByMethodofPayment[$expensePaymentMethod[$k]["description"]] = $v["value"];
+        }
+    }
+?>
     <script type="text/javascript">
+        var expenseValueByMethodOfPayment = [ 
+            <?php 
+            $countmts = 1;    
+            foreach($expenseValueByMethodofPayment as $k=> $v){
+                echo '["' . $k .' - R'.number_format($v, 2, ".", ",") .'",  ' . $v . ']'. ((sizeOf($expenseValueByMethodofPayment) != $countmts) ? ',' : '');
+            }
+        ?> ];
 
         /**
          * Expense Type Total Graph data start
