@@ -34,6 +34,7 @@ class Home extends CI_Controller {
 
     function dashboard() {
         $this->load->view('header');
+        $this->load->helper('url');
         if (empty($this->session->userdata["loggedIn"])) {
                 redirect('/', 'refresh');
         }else if(!$this->session->userdata["loggedIn"]){
