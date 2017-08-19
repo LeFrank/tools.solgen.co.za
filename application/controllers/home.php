@@ -34,14 +34,19 @@ class Home extends CI_Controller {
 
     function dashboard() {
         $this->load->view('header');
+        if (empty($this->session->userdata["loggedIn"])) {
+                redirect('/', 'refresh');
+        }else if(!$this->session->userdata["loggedIn"]){
+            redirect('/', 'refresh');
+        }
+        $this->load->model("timetable_model");
+        $this->load->model("timetable_category_model");
+        $this->load->model("expense_period_model");
+        $this->load->model("expense_budget_model");
+        $this->load->model("expense_model");
+        $this->load->model("expense_type_model");
+        $this->load->model("expense_budget_item_model");
         if ($this->session->userdata("isAdmin")) {
-            $this->load->model("timetable_model");
-            $this->load->model("timetable_category_model");
-            $this->load->model("expense_period_model");
-            $this->load->model("expense_budget_model");
-            $this->load->model("expense_model");
-            $this->load->model("expense_type_model");
-            $this->load->model("expense_budget_item_model");
             $data["css"] = "<link href='/css/third_party/fullcalendar/fullcalendar.css' rel='stylesheet' />
                             <link href='/css/third_party/fullcalendar/fullcalendar.print.css' rel='stylesheet' media='print' />";
             $user = $this->session->userdata("user");
@@ -75,13 +80,7 @@ class Home extends CI_Controller {
             $data["registered_users"] = $this->user_model->get_admin_data();
             $this->load->view('home/admin-dashboard', $data);
         } else {
-            $this->load->model("timetable_model");
-            $this->load->model("timetable_category_model");
-            $this->load->model("expense_period_model");
-            $this->load->model("expense_budget_model");
-            $this->load->model("expense_model");
-            $this->load->model("expense_type_model");
-            $this->load->model("expense_budget_item_model");
+
             $data["css"] = "<link href='/css/third_party/fullcalendar/fullcalendar.css' rel='stylesheet' />
                             <link href='/css/third_party/fullcalendar/fullcalendar.print.css' rel='stylesheet' media='print' />";
             $user = $this->session->userdata("user");
