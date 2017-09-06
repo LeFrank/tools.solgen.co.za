@@ -177,6 +177,7 @@ $route['timetable/search/filtered'] = 'timetable/filteredSearch';
 $route['timetable/event/(:num)'] = 'timetable/getEvent/$1';
 
 $route['timeline'] = 'timeline/index';
+$route['timeline/start-date/(:any)/end-date/(:any)'] = 'timeline/index/$1/$2';
 
 $route['weather'] = 'weather/index';
 $route['weather/today'] = 'weather/getTodaysWeather';

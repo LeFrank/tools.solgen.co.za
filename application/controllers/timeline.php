@@ -37,13 +37,21 @@ class timeline extends CI_Controller {
         $this->load->model("timetable_category_model");
     }
     
-    public function index(){
+    public function index($startDate = null, $endDate = null){
         $data["css"] = "<link href='/css/third_party/codyhouse/vertical-timeline/style.css' rel='stylesheet' />";
         $user = $this->session->userdata("user");
         //default date period. One month ago
-        $startDate = date('Y/m/d H:i', strtotime('-1 month'));
-//        echo $startDate;
-        $endDate = date('Y/m/d H:i', strtotime("now"));
+        if($startDate == null){
+            $startDate = date('Y/m/d H:i', strtotime('-1 month'));
+        }else{
+            $startDate = date('Y/m/d H:i', strtotime($startDate));
+        }
+        echo $startDate;
+        if($endDate== null ){
+            $endDate = date('Y/m/d H:i', strtotime("now"));
+        }else{
+            $endDate = date('Y/m/d H:i', strtotime($endDate));
+        }
 //        echo "<br/>".$endDate;
         $search["startDate"] = $startDate;
         $search["endDate"] = $endDate;

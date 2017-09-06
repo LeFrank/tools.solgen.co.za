@@ -22,18 +22,19 @@ html, body {
     height: 100%;
     font-size: 1em;
     line-height:1.5;
-    font-family: AurulentSans, Trebuchet, Tahoma, Verdana, Arial, sans-serif;
+    font-family: "Effra",  sans-serif;
 }
 
 
 body {
-    font-family: AurulentSans, Trebuchet, Tahoma, Verdana, Arial, sans-serif;
+    font-family: "Effra",  sans-serif;
     background-color: #f3f3f3;
     padding: 0;
     color:#666666;
     font-size: 1em;
     line-height:1.5;
     text-align:left;
+    -webkit-font-smoothing: antialiased;
 }
 
 body * {
@@ -41,7 +42,7 @@ body * {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: Calibri , AurulentSans, Trebuchet, Tahoma, Verdana, Arial, sans-serif;
+    font-family: "Effra",  sans-serif;
     color:#666666;
     clear: both;
 }
@@ -112,6 +113,7 @@ table {
     font-size: 1em;
     line-height:125%;
     word-break: break-all;
+    width:100%;
     -webkit-hyphens: auto;
    -moz-hyphens: auto;
         hyphens: auto;
@@ -134,7 +136,7 @@ td {
 }
 
 select, form input[type=text], form input[type=password] ,form input[type=number] , textarea {
-    font-family: Calibri , AurulentSans, Trebuchet, Tahoma, Verdana, Arial, sans-serif;
+    font-family: "Effra",  sans-serif;
     /*    border: 1px solid #CCCCCC;*/
     box-shadow: 0 1px 0 #EEEEEE inset, 0 1px 0 #FFFFFF;
     background-color: #FFFFFF;
@@ -206,7 +208,7 @@ Custom classes go here
     width:490px;
     margin-bottom:20px;
     border-radius:5px;
-    font-family: Calibri , AurulentSans, Trebuchet, Tahoma, Verdana, Arial, sans-serif;
+    font-family: "Effra",  sans-serif;
     font-style:italic;
 }
 .main_desc a{
@@ -216,7 +218,7 @@ Custom classes go here
     color:#f1b836;
     font-size:45px;
     padding:10px;
-    font-family: Calibri , AurulentSans, Trebuchet, Tahoma, Verdana, Arial, sans-serif;
+    font-family: "Effra",  sans-serif;
     float:left;
     /*width:45%;*/
 }
@@ -300,6 +302,9 @@ form > label{
 table.tablesorter tbody td.budget-item-busted{
     background-color: #ed6363;
     color: #fff;
+}
+#budget_expense_items{
+    width:100%;
 }
 .budget-item-busted{
     background-color: #ed6363;
@@ -390,7 +395,7 @@ three-col{
 }
 /* tables */
 table.tablesorter {
-    font-family:Calibri , AurulentSans;
+    font-family: "Effra",  sans-serif;
     background-color: #f3f3f3;
     margin:10px 0pt 15px;
     font-size: 1em;
@@ -670,7 +675,7 @@ table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSo
     float:left;
     width:100px; 
     padding: 0px 0px 0px 10px ;
-    font-family: Calibri,AurulentSans,Trebuchet,Tahoma,Verdana,Arial,sans-serif;
+    font-family: "Effra",  sans-serif;
     font-size: large;
 }
 .note_date{
@@ -691,7 +696,7 @@ table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSo
     border-radius: 5px;
     box-shadow: 0 1px 0 #eeeeee inset, 0 1px 0 #ffffff;
     display: inline-block;
-    font-family: Calibri,AurulentSans,Trebuchet,Tahoma,Verdana,Arial,sans-serif;
+    font-family: "Effra",  sans-serif;
     margin: 0;
     outline: 0 none;
     padding: 4px;
@@ -705,7 +710,7 @@ table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSo
     border-radius: 5px;
     box-shadow: 0 1px 0 #eeeeee inset, 0 1px 0 #ffffff;
     display: inline-block;
-    font-family: Calibri,AurulentSans,Trebuchet,Tahoma,Verdana,Arial,sans-serif;
+    font-family: "Effra",  sans-serif;
 
     margin: 0;
     outline: 0 none;
@@ -766,7 +771,7 @@ table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSo
     border-radius: 5px;
     box-shadow: 0 1px 0 #eeeeee inset, 0 1px 0 #ffffff;
     display: inline-block;
-    font-family: Calibri,AurulentSans,Trebuchet,Tahoma,Verdana,Arial,sans-serif;
+    font-family: "Effra",  sans-serif;
     margin: 0;
     outline: 0 none;
     padding: 4px;
@@ -779,7 +784,7 @@ table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSo
     border-radius: 5px;
     box-shadow: 0 1px 0 #eeeeee inset, 0 1px 0 #ffffff;
     display: inline-block;
-    font-family: Calibri,AurulentSans,Trebuchet,Tahoma,Verdana,Arial,sans-serif;
+    font-family: "Effra",  sans-serif;
     margin: 0;
     outline: 0 none;
     padding: 4px;

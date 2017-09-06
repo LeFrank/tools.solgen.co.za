@@ -30,6 +30,11 @@
         <script src="/js/third_party/foundation/6.3.0/what-input.js"></script>
         <script src="/js/third_party/foundation/6.3.0/responsive-tables.js"></script>
         <script type="text/javascript" src="/js/third_party/moment/moment.min.js"></script>
+        <script src="/js/third_party/typekit/bkt6ydm.js"></script>
+         <script>try {
+                Typekit.load({async: true});
+            } catch (e) {
+            }</script>
         <script src="/js/default.js"></script>
     </head>
     <body>
