@@ -28,6 +28,7 @@ class timeline extends CI_Controller {
         $this->load->helper('url');
         $this->load->helper('email');
         $this->load->helper('timeline_helper');
+        $this->load->library("input");
         $this->load->library('form_validation');
         can_access($this->require_auth, $this->session);
         $this->load->model('notes_model');
@@ -41,12 +42,18 @@ class timeline extends CI_Controller {
         $data["css"] = "<link href='/css/third_party/codyhouse/vertical-timeline/style.css' rel='stylesheet' />";
         $user = $this->session->userdata("user");
         //default date period. One month ago
+        if(null != $this->input->post("fromDate")){
+            $startDate = $this->input->post("fromDate");
+        }
+        if(null != $this->input->post("toDate")){
+            $endDate = $this->input->post("toDate");
+        }
         if($startDate == null){
             $startDate = date('Y/m/d H:i', strtotime('-1 month'));
         }else{
             $startDate = date('Y/m/d H:i', strtotime($startDate));
         }
-        echo $startDate;
+//        echo $startDate;
         if($endDate== null ){
             $endDate = date('Y/m/d H:i', strtotime("now"));
         }else{
@@ -55,6 +62,8 @@ class timeline extends CI_Controller {
 //        echo "<br/>".$endDate;
         $search["startDate"] = $startDate;
         $search["endDate"] = $endDate;
+        $data["startDate"] = $startDate;
+        $data["endDate"] = $endDate;
         $data["events"] = timelineNoteFormat($this->notes_model->getNotesForPeriod($user->id, $startDate, $endDate), null);
         $data["expenseTypes"] = mapKeyToId($this->expense_type_model->get_expense_types());
         $data["events"] = timelineExpenseFormat($this->expense_model->getExpensesbyDateRange( $startDate, $endDate, $user->id), $data["events"], $data["expenseTypes"]);
