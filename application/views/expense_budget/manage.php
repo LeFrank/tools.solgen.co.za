@@ -5,7 +5,9 @@
         <h3>Manage Budget For Period</h3>
         <div>
             <p>My Budgets</p>
-
+            <div class="pagination-centered">
+                <?php echo $this->pagination->create_links(); ?>
+            </div>
             <?php
             if (!empty($expenseBudgets)) {
                 ?>
@@ -30,11 +32,12 @@
                             echo "<td>" . $v["total_limit"] . "</td>";
                             echo "<td>" . $v["create_date"] . "</td>";
                             echo "<td><a href='/expense-budget-items/items/" . $v["id"] . "'>Budget Limits     </a>"
+                            . "&nbsp;&nbsp;|&nbsp;&nbsp;"
                             . "<a href='/expense-budget/edit/" . $v["id"] . "'>Edit</a>"
                             . "&nbsp;&nbsp;|&nbsp;&nbsp;"
                             . "<a href='/expense-budget/delete/" . $v["id"] . "' onclick=\"return confirm_delete()\">Delete</a>";
-                            if(!$expensePeriods[$v["expense_period_id"]]["active"]){
-                                echo "<br/>";
+                            if (!$expensePeriods[$v["expense_period_id"]]["active"]) {
+                                echo "&nbsp;&nbsp;|&nbsp;&nbsp;";
                                 echo "<a href='/expense-budget/post-analysis/" . $v["id"] . "'>Post Analysis</a>";
                             }
                             echo "</td>";
@@ -50,6 +53,9 @@
                 <?php
             }
             ?>
+            <div class="pagination-centered">
+                <?php echo $this->pagination->create_links(); ?>
+            </div>
         </div>
 
         <div id="manage-budget-form">

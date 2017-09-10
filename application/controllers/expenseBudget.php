@@ -14,6 +14,7 @@ class ExpenseBudget extends CI_Controller {
         $this->load->helper('url');
         $this->load->helper('email');
         $this->load->library('form_validation');
+        $this->load->library('pagination');
         can_access($this->require_auth, $this->session);
         $this->load->model('expense_budget_model');
         $this->load->model('expense_period_model');
@@ -37,25 +38,25 @@ class ExpenseBudget extends CI_Controller {
             redirect("/expense-budget/manage", "refresh");
         }
     }
-    
-    public function comment($budgetId){
+
+    public function comment($budgetId) {
         $this->load->library('session');
         $this->load->helper('form');
         $overSpendComment = $this->input->post("over_spend_comment");
         $underSpendComment = $this->input->post("under_spend_comment");
         $overallComment = $this->input->post("overall_comment");
-        if(empty($overSpendComment) && empty($underSpendComment) && empty($overallComment)){
+        if (empty($overSpendComment) && empty($underSpendComment) && empty($overallComment)) {
             echo "Invalid Data";
             return "Invalid Data";
         }
         $budget = $this->expense_budget_model->getExpenseBudget($budgetId);
-        if(!empty($overSpendComment)){
+        if (!empty($overSpendComment)) {
             $budget->over_spend_comment = $overSpendComment;
         }
-        if(!empty($underSpendComment)){
+        if (!empty($underSpendComment)) {
             $budget->under_spend_comment = $underSpendComment;
         }
-        if(!empty($overallComment)){
+        if (!empty($overallComment)) {
             $budget->overall_comment = $overallComment;
         }
         echo $this->expense_budget_model->updateBudget($budget);
@@ -87,16 +88,30 @@ class ExpenseBudget extends CI_Controller {
         
     }
 
-    public function manage() {
-        $data["expenseBudgets"] = $this->expense_budget_model->getExpenseBudgets($this->session->userdata("user")->id, 12, false);
-        $data["expensePeriods"] = mapKeyToId($this->expense_period_model->getExpensePeriods($this->session->userdata("user")->id), false);
-        $this->load->view('header' , getPageTitle($data, $this->toolName,"Budget Management",""));
+    public function manage($page = null) {
+        if ($page == null) {
+            $config['base_url'] = 'http://' . $_SERVER['SERVER_NAME'] . '/expense-budget/manage/page/';
+            $config['per_page'] = 10;
+            $config['total_rows'] = 10;
+            $this->pagination->initialize($config);
+        } else {
+            $this->pagination->uri_segment = 4;
+        }
+        $this->pagination->base_url = 'http://' . $_SERVER['SERVER_NAME'] . '/expense-budget/manage/page/';
+        $this->pagination->per_page = 10;
+        $this->pagination->use_page_numbers = TRUE;
+        $this->pagination->cur_page = $page;
+        $user = $this->session->userdata("user");
+        $data["expenseBudgets"] = $this->expense_budget_model->getExpenseBudgets($user->id, $this->pagination->per_page, (($page != null) ? ($page) * $this->pagination->per_page : null));
+        $this->pagination->total_rows = $this->expense_budget_model->getExpenseBudgets($user->id, null, null, true);
+        $data["expensePeriods"] = mapKeyToId($this->expense_period_model->getExpensePeriods($user->id), false);
+        $this->load->view('header', getPageTitle($data, $this->toolName, "Budget Management", ""));
         $this->load->view('expenses/expense_nav');
         $this->load->view('expense_budget/manage', $data);
         $this->load->view('footer');
     }
-    
-    public function postAnalysis($budgetId=null){
+
+    public function postAnalysis($budgetId = null) {
         $this->load->model('expense_budget_item_model');
         $this->load->model('expense_type_model');
         $this->load->model('expense_model');
@@ -113,15 +128,13 @@ class ExpenseBudget extends CI_Controller {
         $data["expensePeriod"] = $this->expense_period_model->getExpensePeriod($data["expenseBudget"]->expense_period_id);
         $data["expenseTypes"] = mapKeyToId($this->expense_type_model->get_expense_types());
         $expensesForPeriod = $this->expense_model->getExpensesbyDateRange(
-            date('Y/m/d H:i', strtotime($data["expensePeriod"]->start_date)), 
-            date('Y/m/d H:i', strtotime($data["expensePeriod"]->end_date)), 
-            $this->session->userdata("user")->id, null, null, "amount", "desc"
+                date('Y/m/d H:i', strtotime($data["expensePeriod"]->start_date)), date('Y/m/d H:i', strtotime($data["expensePeriod"]->end_date)), $this->session->userdata("user")->id, null, null, "amount", "desc"
         );
         $data["expenseTypesTotals"] = getArrayOfTypeAmount($expensesForPeriod);
         // process the data
-        $postStateBudgetItems = analyseBudgetItemsEndState( $data["expenseBudgetItems"], $data["expenseTypesTotals"]);
+        $postStateBudgetItems = analyseBudgetItemsEndState($data["expenseBudgetItems"], $data["expenseTypesTotals"]);
         $this->expense_budget_item_model->update_expense_budget_items($data["expenseBudgetItems"], $postStateBudgetItems);
-        $data["expenseBudgetItems"] =  $postStateBudgetItems;
+        $data["expenseBudgetItems"] = $postStateBudgetItems;
         $data["totalSpent"] = totalSpent($data["expenseTypesTotals"]);
         $data["overSpentCategories"] = overSpentCategories($postStateBudgetItems);
         $data["underSpentCategories"] = underSpentCategories($postStateBudgetItems);
@@ -138,7 +151,7 @@ class ExpenseBudget extends CI_Controller {
         //      if yes then add it to the time table and use it for forecasting
         //      if no, make a note of it for retrospective analysis over the year period.
         // 
-        $this->load->view('header' , getPageTitle($data, $this->toolName,"Budget Management","Post Analysis: ". $data["expensePeriod"]->name ));
+        $this->load->view('header', getPageTitle($data, $this->toolName, "Budget Management", "Post Analysis: " . $data["expensePeriod"]->name));
         $this->load->view('expenses/expense_nav');
         $this->load->view('expense_budget/post_analysis', $data);
         $this->load->view('footer');

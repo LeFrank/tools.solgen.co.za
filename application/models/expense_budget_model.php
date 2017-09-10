@@ -98,7 +98,7 @@ class expense_budget_model extends CI_Model {
      * @param type $offset if present offset the result by this value else no offset
      * @return null
      */
-    public function getExpenseBudgets($userId = null, $limit = null, $offset = 0) {
+    public function getExpenseBudgets($userId = null, $limit = null, $offset = 0, $count = false) {
         if ($userId === null) {
             return null;
         }
@@ -108,7 +108,11 @@ class expense_budget_model extends CI_Model {
         } else {
             $query = $this->db->get_where($this->tn, array('user_id' => $userId), $limit, $offset);
         }
-        return $query->result_array();
+        if ($count) {
+            return $query->num_rows();
+        } else {
+            return $query->result_array();
+        }
     }
 
     /**

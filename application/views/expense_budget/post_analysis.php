@@ -10,32 +10,60 @@ $editableItems = array();
             <?php echo "Period: ". $expensePeriod->name;?>
         </h2>
         <h3>
-            Goal: <?php echo $expenseBudget->description; ?>
+            Goal:
         </h3>
+        <p><strong><?php echo $expenseBudget->description; ?></strong></p>
         <p>
-            How much did I spend in total?: <?php echo number_format($totalSpent, 2, ".", ","); ?>
+            How much did I spend in total?:
+            <br/>
+            <strong><?php echo number_format($totalSpent, 2, ".", ","); ?></strong>
         </p>
         <p>
-            What was the limit of the period?: <?php echo number_format($expenseBudget->total_limit, 2, ".", ","); ?>
+            What was the limit of the period?:
+            <br/>
+            <strong>
+                <?php echo number_format($expenseBudget->total_limit, 2, ".", ","); ?>
+            </strong>
         </p>
         <p>
-            How many days in this period?: <?php echo floor((strtotime($expensePeriod->end_date) - 
+            How many days in this period?:
+            <br/>
+            <strong>
+                <?php echo floor((strtotime($expensePeriod->end_date) - 
                     strtotime($expensePeriod->start_date)) / (60 * 60 * 24) + 1); ?> days 
                     ( <?php echo date('Y/m/d H:i',strtotime($expensePeriod->start_date)) . 
                             " to ". date('Y/m/d H:i', strtotime($expensePeriod->end_date)); ?> )
+            </strong>
         </p>
         <p>
-            Do I go over the total budget?: <?php echo (($overSpent) ? "Yes" : "No") ?>
+            Did I go over the total budget?:
+            <br/>
+            <strong>
+                <?php echo (($overSpent) ? "Yes" : "No") ?>
+            </strong>
         </p>
         <p>
-            I was <strong><?php echo (($overSpent) ? "OVER" : "UNDER") ?></strong> by: <?php echo $finalOutcome; ?>
+            I was <strong><?php echo (($overSpent) ? "OVER" : "UNDER") ?></strong> by:
+            <br/>
+            <strong>
+                <?php echo $finalOutcome; ?>
+            </strong>
         </p>
         <p>
-            Categories over spent: <?php echo $overSpentCategories["count"]; ?>
+            Categories over spent:
+            <br/>
+            <strong>
+                <?php echo $overSpentCategories["count"]; ?>
+            </strong>
         </p>
         <p>
-            Over spent total: <?php echo number_format($overSpentCategories["limitTotal"] - $overSpentCategories["amount"], 2, ".", ",");?> 
-            on a limit of <?php echo number_format($overSpentCategories["limitTotal"], 2, ".", ","); ?> <br/>
+            Over spent total:
+            <br/>
+            <strong>       
+                <?php echo number_format($overSpentCategories["limitTotal"] - $overSpentCategories["amount"], 2, ".", ",");?> 
+                on a limit of <?php echo number_format($overSpentCategories["limitTotal"], 2, ".", ","); ?> 
+            </strong>
+            <br/>
         </p>
         <table id="budget_expense_items_over" class="tablesorter hover-highlight focus-highlight widget-zebra">
             <input type="hidden" id="period-id" value="<?php echo $budgetId; ?>" />
