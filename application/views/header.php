@@ -43,7 +43,7 @@
                 <div class="large-8 columns">
                     <div class="page-header"><a href="/" >Solgen Toolbox <span class="beta">alpha</span></a></div>
                 </div>
-                <div class="large-4 columns">
+                <div class="large-4 columns text-right">
                     <?php if (!$this->session->userdata("loggedIn")) { ?>
                         <?php echo form_open('user/login') ?>
                         <input type="text" id="email" name="email" value="" placeholder="Email" autocomplete="on" autofocus />&nbsp;&nbsp;&nbsp;
