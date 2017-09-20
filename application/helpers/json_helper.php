@@ -54,6 +54,7 @@ function eventifyArrayWithCat($events, $timetableCategories){
             "start"=>$v->start_date,
             "end"=>$v->end_date,
             "color"=> $color,
+            "textColor"=> $color,
             "backgroundColor"=> $bc,
             "allDay" =>($v->all_day_event == 1)? true:false);
         $count = $count+1;
