@@ -112,7 +112,7 @@ a:hover,a:focus{
 table {
     font-size: 1em;
     line-height:125%;
-    word-break: break-all;
+    word-break: initial;
     width:100%;
     -webkit-hyphens: auto;
    -moz-hyphens: auto;
@@ -123,7 +123,7 @@ th {
     background: #d8d8d8;
     text-align: left;
     padding: 5px;
-    white-space: nowrap;
+    /*white-space: pre;*/
 }
 
 td {
@@ -131,6 +131,7 @@ td {
     text-align: left;
     font-size: 1em;
     line-height:125%;
+    /*white-space: pre;*/
     /*padding: 5px;*/
     /*vertical-align: top;*/
 }
