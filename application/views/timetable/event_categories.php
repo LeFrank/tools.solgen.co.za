@@ -14,6 +14,7 @@
             <th>Show On Dashboard</th>
             <th>Send Reminder</th>
             <th>Enabled</th>
+            <th>Colour</th>
             <th>Actions</th>
             </thead>
             <tbody>
@@ -26,6 +27,12 @@
                         <td><?php echo ($v["appear_on_dashboard"] == null || $v["appear_on_dashboard"] == 0) ?"No":"Yes" ; ?></td>
                         <td><?php echo ($v["reminder"]== null || $v["reminder"] == 0) ?"No":"Yes" ;?></td>
                         <td><?php echo $v["enabled"]; ?></td>
+                        <td>
+                            <div style="display:inline-block;color:<?php echo $v["text_colour"]; ?>;border: 1px solid;border-radius: 3px;background-color:<?php echo $v["background_colour"]; ?>">
+                                Text: <?php echo (empty($v["text_colour"])? "None" : $v["text_colour"]); ?>
+                                <br/>Background: <?php echo (empty($v["background_colour"])? "None" : $v["background_colour"]); ?>
+                            </div>
+                        </td>
                         <td>
                             <a href="/event-category/edit/<?php echo $v["id"];?>">edit</a>&nbsp;&nbsp;|&nbsp;&nbsp;
                             <a href="/event-category/delete/<?php echo $v["id"];?>"  onclick="return confirm_delete()">delete</a></td>
