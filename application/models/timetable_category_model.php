@@ -18,7 +18,9 @@ class timetable_category_model extends CI_Model {
             'create_date' => date('Y/m/d H:i:s'),
             'appear_on_dashboard' => ($this->input->post('showOnDashboard')) ? 1 : 0,
             'reminder' => ($this->input->post('reminder')) ? 1 : 0,
-            'enabled' => ($this->input->post('enabled')) ? 1 : 0
+            'enabled' => ($this->input->post('enabled')) ? 1 : 0,
+            'text_colour' => $this->input->post('textColour'),
+            'background_colour' => $this->input->post('backgroundColour')
         );
         if ($this->input->post('id') != "") {
             $data["update_date"] = date('Y/m/d H:i:s');
@@ -93,6 +95,8 @@ class timetable_category_model extends CI_Model {
             "enabled" => ($this->input->post('enabled')) ? 1 : 0,
             "appear_on_dashboard" => ($this->input->post('showOnDashboard')) ? 1 : 0,
             "reminder" => ($this->input->post('reminder')) ? 1 : 0,
+            'text_colour' => $this->input->post('textColour'),
+            'background_colour' => $this->input->post('backgroundColour'),
             "update_date" => date('Y/m/d H:i:s')
         );
         $this->db->where('id', $this->input->post('id'));

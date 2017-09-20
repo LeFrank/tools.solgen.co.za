@@ -86,6 +86,8 @@
     </div>
     <script type='text/javascript'>
         var expenseTypes = <?php echo json_encode($expenseTypes); ?>;
+        var timetableCategories = <?php echo json_encode($timetableCategories);?>;
+        console.log(timetableCategories);
         var eventsArray = <?php echo $events; ?>;
         <?php if(isset($currentEvent)){
             echo "var currentEvent = " . $currentEvent .";";

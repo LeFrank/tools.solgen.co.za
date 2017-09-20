@@ -21,11 +21,46 @@ function eventifyArray($events){
             "description" => $v->description,
             "start"=>$v->start_date,
             "end"=>$v->end_date,
+            "color"=> null,
+            "backgroundColor"=> null,
             "allDay" =>($v->all_day_event == 1)? true:false);
         $count = $count+1;
     }
     return json_encode($data);
 }
+
+function eventifyArrayWithCat($events, $timetableCategories){
+//    title: 'Long Event',
+//    start: '2014-06-07',
+//    end: '2014-06-10'
+    $count = 0;
+
+    foreach($events as $k=>$v)
+    {
+        $color = null;
+        $bc = null;
+        if(key_exists($v->tt_category_id, $timetableCategories) &&
+            $timetableCategories[$v->tt_category_id]["text_colour"] != null ){
+            $color = $timetableCategories[$v->tt_category_id]["text_colour"];
+        }
+        if(key_exists($v->tt_category_id, $timetableCategories) 
+            && $timetableCategories[$v->tt_category_id]["background_colour"] != null ){
+            $bc = $timetableCategories[$v->tt_category_id]["background_colour"];
+        }
+        $data[$count] = array(
+            "id" => $v->id,
+            "title"=>$v->name,
+            "description" => $v->description,
+            "start"=>$v->start_date,
+            "end"=>$v->end_date,
+            "color"=> $color,
+            "backgroundColor"=> $bc,
+            "allDay" =>($v->all_day_event == 1)? true:false);
+        $count = $count+1;
+    }
+    return json_encode($data);
+}
+
 
 function eventify($event){
 //    title: 'Long Event',
