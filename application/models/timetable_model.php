@@ -11,6 +11,8 @@ class timetable_model extends CI_Model {
     }
 
     public function create_timetable() {
+        $startdate = ($this->input->post('startDate') != "") ? $this->input->post('startDate'): date('Y/m/d H:i');
+        $enddate = ($this->input->post('endDate') != "") ? $this->input->post('endDate'): date('Y/m/d H:i');
         $data = array(
             'user_id' => $this->session->userdata("user")->id,
             'description' => $this->input->post('description'),
@@ -19,8 +21,8 @@ class timetable_model extends CI_Model {
             'create_date' => date('Y/m/d H:i:s'),
             'all_day_event' => ($this->input->post("allDayEvent") == "1") ? 1 : 0,
             'duration' => date($this->input->post('endDate')) - date($this->input->post('startDate')),
-            'start_date' => $this->input->post('startDate'),
-            'end_date' => $this->input->post('endDate'),
+            'start_date' => $startdate,
+            'end_date' => $enddate,
             'repition_id' => $this->input->post('timetableRepetition'),
             'expense_type_id' => $this->input->post('timetableExpenseType'),
             'location_id' => $this->input->post('locationId'),

@@ -40,11 +40,11 @@ function eventifyArrayWithCat($events, $timetableCategories){
         $color = null;
         $bc = null;
         if(key_exists($v->tt_category_id, $timetableCategories) &&
-            $timetableCategories[$v->tt_category_id]["text_colour"] != null ){
+            isset($timetableCategories[$v->tt_category_id]["text_colour"])){
             $color = $timetableCategories[$v->tt_category_id]["text_colour"];
         }
         if(key_exists($v->tt_category_id, $timetableCategories) 
-            && $timetableCategories[$v->tt_category_id]["background_colour"] != null ){
+            && isset( $timetableCategories[$v->tt_category_id]["background_colour"] ) ){
             $bc = $timetableCategories[$v->tt_category_id]["background_colour"];
         }
         $data[$count] = array(
