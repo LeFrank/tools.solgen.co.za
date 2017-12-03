@@ -54,7 +54,6 @@ class Wishlist extends CI_Controller {
         $data["expenseTypes"] = mapKeyToId($this->expense_type_model->get_user_expense_types($userId));
         $data["wishlistItems"] = $this->wishlist_model->getItems($userId, 5, null);
         $this->load->view('header', getPageTitle($data, $this->toolName, "Overview", ""));
-        $this->load->view('expenses/expense_nav');
         $this->load->view('wishlist/wishlist_nav');
         $this->load->view('wishlist/index', $data);
         $this->load->view('footer');
@@ -105,7 +104,6 @@ class Wishlist extends CI_Controller {
         $data["expenseTypes"] = mapKeyToId($this->expense_type_model->get_user_expense_types($userId));
         $data["wishlistItem"] = $this->wishlist_model->getItem($userId, $id);
         $this->load->view('header', getPageTitle($data, $this->toolName, "Overview", ""));
-        $this->load->view('expenses/expense_nav');
         $this->load->view('wishlist/wishlist_nav');
         $this->load->view('wishlist/edit', $data);
         $this->load->view('footer');
@@ -138,7 +136,6 @@ class Wishlist extends CI_Controller {
         $data["expensePeriods"] = $this->expense_period_model->getExpensePeriods($this->session->userdata("user")->id, 5, null);
         $data["itemsTable"] = $this->load->view('wishlist/itemTable', $data, true);
         $this->load->view('header', getPageTitle($data, $this->toolName, "History"));
-        $this->load->view('expenses/expense_nav');
         $this->load->view('wishlist/wishlist_nav');
         $this->load->view('wishlist/history', $data);
         $this->load->view('footer');

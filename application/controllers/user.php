@@ -1,5 +1,6 @@
 <?php
-
+require_once APPPATH . '/libraries/JWT.php';
+use \Firebase\JWT\JWT;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -80,6 +81,41 @@ class User extends CI_Controller {
             redirect('/');
         }
     }
+    
+    public function login_post() {
+        $contentType = "application/json";
+//        $email = $this->input->post('email');
+//        $password = $this->input->post('password');
+        $email = 'francois@opencollab.co.za';
+        $password = 'Openpleas3';
+        $invalidLogin = ['invalid' => $email];
+        if(!$email || !$password) {
+            //$this->response($invalidLogin, REST_Controller::HTTP_NOT_FOUND);
+            $data = json_encode("NOT FOUND");
+            $this->output->set_content_type($contentType)->set_output($data);
+            return $this->output->get_output();
+        }
+        $user = $this->user_model->login($email, $password);
+        if($user) {
+            $id = $user->id;
+            $token['id'] = $id;
+            $token['email'] = $email;
+            $date = new DateTime();
+            $token['iat'] = $date->getTimestamp();
+            $token['exp'] = $date->getTimestamp() + 60*60*5;
+            $output['id_token'] = JWT::encode($token, "my Secret key!");
+
+            $data = json_encode($output);
+            $this->output->set_content_type($contentType)->set_output($data);
+            return $this->output->get_output();
+        }
+        else {
+            $data = json_encode("Incorrect Details");
+            $this->output->set_content_type($contentType)->set_output($data);
+            return $this->output->get_output();
+        }
+    }
+    
 
     public function logout() {
         $this->session->set_userdata("loggedIn", FALSE);

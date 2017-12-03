@@ -15,7 +15,7 @@ class timeline extends CI_Controller {
     // Get all the things
     // normalize it for display
     // Create a standard object
-        var $toolId = 6;
+    var $toolId = 6;
     var $toolName = "Timeline";
     var $require_auth = TRUE;
 

@@ -67,10 +67,8 @@
             </div>
         </div>
         <div class="row expanded" data-sticky-container>
-            <div class="large-12 columns sticky" data-sticky data-options="marginTop: 0">
-                <div id="top-nav" class="top-nav">
-                    <?php $this->load->view("nav") ?>
-                </div>
+            <div id="top-nav" class="large-12 columns sticky top-nav" data-sticky data-options="marginTop: 0">
+               <?php $this->load->view("nav") ?>
             </div>
         </div>
         <div class="row expanded">

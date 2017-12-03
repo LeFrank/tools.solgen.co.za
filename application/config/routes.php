@@ -43,14 +43,14 @@ $route['404_override'] = '';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
-$route['expense-wishlist'] = 'wishlist/index';
-$route['expense-wishlist/history'] = 'wishlist/history';
-$route['expense-wishlist/capture'] = 'wishlist/create';
-$route['expense-wishlist/(:num)'] = 'wishlist/item/$1';
-$route['expense-wishlist/edit/(:num)'] = 'wishlist/edit/$1';
-$route['expense-wishlist/update/(:num)'] = 'wishlist/update/$1';
-$route['expense-wishlist/delete/(:num)'] = 'wishlist/delete/$1';
-$route['expense-wishlist/filter-search'] = 'wishlist/filteredSearch';
+$route['wishlist'] = 'wishlist/index';
+$route['wishlist/capture'] = 'wishlist/create';
+$route['wishlist/(:num)'] = 'wishlist/item/$1';
+$route['wishlist/update/(:num)'] = 'wishlist/update/$1';
+$route['wishlist/delete/(:num)'] = 'wishlist/delete/$1';
+$route['wishlist/history'] = 'wishlist/history';
+$route['wishlist/edit/(:num)'] = 'wishlist/edit/$1';
+$route['wishlist/filter-search'] = 'wishlist/filteredSearch';
 
 
 $route['user/(:any)'] = 'user/$1';
@@ -153,11 +153,7 @@ $route['notes'] = 'notes/history';
 $route['notes/stats'] = 'notes/viewStats';
 $route['notes/options'] = 'notes/history';
 
-$route['wishlist'] = 'Wishlist/index';
-$route['wishlist/capture'] = 'Wishlist/create';
-$route['wishlist/(:num)'] = 'Wishlist/item/$1';
-$route['wishlist/update/(:num)'] = 'Wishlist/update/$1';
-$route['wishlist/delete/(:num)'] = 'Wishlist/delete/$1';
+
 
 $route['news/create'] = 'news/create';
 $route['news/delete/(:any)'] = 'news/delete/$1';
@@ -187,6 +183,7 @@ $route['weather/forecast'] = 'weather/getSevenDaysWeather';
 $route['weather/options'] = 'weather/options';
 $route['weather/measurement'] = 'weather/saveMeasurement';
 
+$route['rest/user/login'] = 'user/login_post';
 
 //$route['(:any)'] = 'pages/view/$1';
 //$route['default_controller'] = 'pages/view';

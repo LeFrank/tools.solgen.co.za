@@ -57,7 +57,8 @@ function timelineTimetableFormat($events, $timelineEvents, $timetableCategories)
         $event->toolId = 3;
         $event->toolName = "timetable";
         $event->id = $v->id;
-        $event->title = $v->name . " - " . $timetableCategories[$v->tt_category_id]["name"];
+        $cat = (isset($timetableCategories[$v->tt_category_id]))? $timetableCategories[$v->tt_category_id]["name"] : " None";
+        $event->title = $v->name . " - " . $cat;
         $event->body = $v->description;
         $event->url = "timetable/edit/". $v->id;
         $timelineEvents[] = $event;
