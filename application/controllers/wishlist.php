@@ -9,6 +9,7 @@
 class Wishlist extends CI_Controller {
 
     var $toolName = "Wishlist";
+    var $toolId = 7;
     var $require_auth = TRUE;
     var $priorities = array(
         0 => "None",

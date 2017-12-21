@@ -5,7 +5,7 @@ $(document).ready(function () {
     
     $("#filter").click(function () {
         $.post(
-                "/expense-wishlist/filter-search",
+                "/wishlist/filter-search",
                 $("#filterWishlistForm").serialize()
                 ).done(function (resp) {
                     $("#latestItems").html(resp);

@@ -2,7 +2,7 @@
 
 class Timetable extends CI_Controller {
 
-    var $toolId = 3;
+    var $toolId = 4;
     var $toolName = "Timetable";
     var $require_auth = TRUE;
 

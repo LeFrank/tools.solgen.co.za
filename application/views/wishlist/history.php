@@ -2,7 +2,7 @@
     <div class="large-3 columns" >
         <h3>Filter Wishlist</h3>
         <div id="validation_errors" ></div>
-        <form accept-charset="utf-8" method="post" action="/expense-wishlist/export" id="filterWishlistForm" >
+        <form accept-charset="utf-8" method="post" action="/wishlist/export" id="filterWishlistForm" >
             <div class="row expanded">
                 <div class="large-6 columns">
                     <label> Filter by Period

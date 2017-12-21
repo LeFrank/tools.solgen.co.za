@@ -29,7 +29,7 @@
             echo "<td class='align-right'>" . $v["cost"] . "</td>";
             echo "<td><a href='/wishlist/edit/" . $v["id"] . "'>Edit</a>";
             echo " | ";
-            echo "      <a href='/expense-wishlist/delete/" . $v["id"] . "' onclick='return confirm_delete()'>Delete</a>";
+            echo "      <a href='/wishlist/delete/" . $v["id"] . "' onclick='return confirm_delete()'>Delete</a>";
             echo "</td>";
             echo "</tr>";
             $total += $v["cost"];

@@ -5,7 +5,7 @@
             <h3>Edit Item</h3>
             <?php echo validation_errors(); ?>
 
-            <?php echo form_open('expense-wishlist/update/' . $wishlistItem->id) ?>
+            <?php echo form_open('wishlist/update/' . $wishlistItem->id) ?>
             <div class="row expanded">
                 <div class="large-2 columns">
                     <label for="name">Name *</label>

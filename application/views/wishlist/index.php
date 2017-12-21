@@ -67,7 +67,7 @@
             <h3>Capture Wishlist Item</h3>
             <?php echo validation_errors(); ?>
 
-            <?php echo form_open('expense-wishlist/capture') ?>
+            <?php echo form_open('wishlist/capture') ?>
             <div class="row expanded">
                 <div class="large-2 columns">
                     <label for="name">Name *</label>

@@ -12,7 +12,7 @@
  * @author francois
  */
 class health extends CI_Controller {
-    var $toolId = 1;
+    var $toolId = 8;
     var $toolName = "Health";
     var $require_auth = TRUE;
     //put your code here

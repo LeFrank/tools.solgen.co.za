@@ -43,6 +43,10 @@ $route['404_override'] = '';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
+
+$route['resources'] = 'resource/index';
+$route['resources/do_upload'] = 'resource/do_upload';
+
 $route['wishlist'] = 'wishlist/index';
 $route['wishlist/capture'] = 'wishlist/create';
 $route['wishlist/(:num)'] = 'wishlist/item/$1';

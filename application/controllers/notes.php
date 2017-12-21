@@ -2,7 +2,7 @@
 
 class Notes extends CI_Controller {
 
-    var $toolId = 7;
+    var $toolId = 4;
     var $toolName = "Notes";
     var $require_auth = TRUE;
 
