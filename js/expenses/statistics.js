@@ -210,6 +210,9 @@ $.jqplot.config.enablePlugins = true;
             
         }
     });
+    
+    
+    $('#expenses_rollup').tablesorter();
 });
 
 

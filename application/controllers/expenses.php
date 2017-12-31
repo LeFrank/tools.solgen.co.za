@@ -279,6 +279,10 @@ class Expenses extends CI_Controller {
         $data["expensesByHourOfDay"] = getExpensesForHourOfDay($expensesForPeriod);
         $data["daysOfWeek"] = getDaysOfWeek();
         
+        $data["expenseTypes"] = mapKeyToId($this->expense_type_model->get_expense_types());
+        $data["eventsBudget"] = $this->load->view('expense_budget_item/manage', $data, true);
+        $data["eventsBudgetItems"] = $this->load->view('expense_budget_item/budget_items_assigned', $data, true);
+        
         $this->load->view('header', getPageTitle($data, $this->toolName, "Stats"));
         $this->load->view('expenses/expense_nav');
         $this->load->view('expenses/statistics', $data);

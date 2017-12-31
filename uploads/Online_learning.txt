@@ -1,0 +1,115 @@
+Online learning
+
+Key assumptions:
+	Case 1. Traditional institutions, e.g. usual structures, administration >  faculties > academics > students
+	Case 2. Private: Training/educating company ( CompA ) > instructor > company recieving trainning ( CompB ) > management ( CompB management enrolling and managing CompB emps/students ) > employees/student ( CompB staff recieving training. )
+	Case 3. Company to student: Institution > trainer/lecturer > student
+	Case 4. Lectuerer 2 Student ( Master, Apprentice pattern ): Person seeks methods of create content to train student. 
+
+OCs situation:
+	- case 1. We are very knowledgable and capable
+	- case 2. one client is catered for, but new business requests we are not able to support because of a conflict/ mismatch of the clients funds and requirements
+	- case 3. no tools/services or tools
+	- case 4. no tools/services or tools
+
+
+	Strategy:
+		To porovide the modern students with the tools and services they need to succeed.
+		To provide academics with tools and services to manage their:
+			- their classes
+				- who
+				- where
+				- when
+			- their time
+				- mmmm - stretch
+			- their content
+				- that belongs to them
+				- CREATE & UPDATE content 
+					- should be able to re-use
+				- easily migratable
+				- store/ warehouse/ archive
+				- sharable
+				- 
+			- their statistics
+			- their students
+			- their communication with 
+				- students
+				- peers
+				- administrators
+				- public
+		To provide administrators with the tools and services to be able to
+			- enrollment
+				- process student applications
+					- storing all relevant information
+						- identifying info
+						- location info
+							- address
+						- banking info
+						- next of kin
+					- successful
+					- unsucessful
+						- retaining this information
+
+				- process student registration
+					- financials information
+					- what will they be studying
+					- what access and permissions do they require
+					- relationship parameters
+						- how long will the relationship be for?
+						- communication methods
+						- ...
+
+			- fullfillment 
+				- track student progress
+				- track student participation
+				- track outputs, e.g. pass rate, faculty representations, demographics, success/ failure conditions
+				- provide students access to fascilities and materials
+				- communicate with students
+				- issue grades
+				- issue certificates
+				- store grades and transcript information securely
+				- provide assessment tools and services
+				- provide proof / validation of study outcomes
+				- accept and respond to requests from faculty, students and academics
+
+		Termination of the relationship
+			- cancellation but with retention of student history with institution
+			- graduation, migration of relationship to alumni
+			- persisting/ publishing outputs such as research papers or pratical outputs , engineering
+			- keeping contact information updated.
+
+
+
+
+So the major pillars of Online eduction consist of:
+	0. Getting lecturers into the system ( no tool in OC )
+	1. Creating curriculum/courses/ short courses data ( VSS )
+	1.1. Creating CM in a concrete way, in an LMS
+	2. Creating content - HUGE DEMAND AND VARIATION  ( Xerte, LMS - Sakai/Moodle/ etc )
+	3. Enrolling students ( VSS )
+	4. Getting payment ( no tool in OC )
+	5. Getting the students into the system ( Integrations )
+	6. Linking staff to courses ( LMS + Integrations + LDAP etc)
+		- with correct permissions ( LDAP/AD/LMS )
+	7. Linking students to courses ( LMS + Integrations / Manual )
+		- with correct permissions ( LDAP/AD/LMS )
+	8. Student and lecturer journey begins and proceeds till completion.
+		see fullfillment above ( LMS )
+
+
+Specific to Online / Gaps we need to fill.
+	- self registration  [ no tool in OC ]
+	- online payment/refunds  [ no tool in OC ]
+	- reminders and interventions [ no tool in OC ]
+	- tracking and deep stats ( access to system, did access material, completed assessments, validation of course material ) [ no tool in OC , partial in LMS ]
+	- selecting courses ( single subject 1 week  to 6 months ) [ no tool in OC ]
+	- digital content distribution [ no tool in OC ]
+	- digital certification [ no tool in OC ]
+	- storage of submissions and output [ no tool in OC ]
+	- creating online content consumable by mobile and fixed devices ( laptops, desktops, other ) [ partially provided by LMS ]
+	- overview of process for all roleplayers.
+		- student, how are they doing submissions on time and of good quality.
+			- ultimately of grades [ partially provided by LMS ]
+		- academics, who is the class, how are they progressing, 
+			are they consuming the content, are they understanding content and instructions, are students keeping up, which students need help/ guidance, communicating with students [ partially provided by LMS ]
+	Offline capability [ Synthesis / Moodle ] limited interest.

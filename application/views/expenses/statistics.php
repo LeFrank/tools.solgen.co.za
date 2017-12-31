@@ -187,6 +187,75 @@
             <h3>Hour of the day when expenses occurred over the selected period</h3>
             <div id="expenses-per-hour-over-period" ></div>
             </br>
+            <h3>Rolled Up Expenses for Period by Category</h3>
+            <div class="row expanded">
+                <div class="large-12 columns">
+                    <table id="expenses_rollup" class="tablesorter hover-highlight focus-highlight widget-zebra">
+                        <thead>
+                            <tr>
+                                <th>&nbsp;</th>
+                                <th>Category</th>
+                                <th>Spent Amount</th>
+                                <th># of Expenses</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $ttypes = array();
+                            $totalSpent = 0;
+                            $totalExpenses = 0;
+                            if (!empty($expenseTypesTotals)) {
+                                $count = 1;
+                                foreach ($expenseTypesTotals as $k => $v) {
+                                    $ttypes[$k] = true;
+                                    ?>
+                                    <tr>
+                                        <td>
+                                            <?php echo $count; ?>
+                                        </td>
+                                        <td >
+                                            <?php echo $expenseTypes[$k]["description"]; ?>
+                                        </td>
+                                        <td id="spent-to-date" data-category="<?php echo $k; ?>" >
+                                                <?php
+                                                echo number_format($v["value"], 2, ".", "");
+                                                $totalSpent = $totalSpent + $v["value"];
+                                                ?>
+                                        </td>
+                                        <td id="spent-to-date" data-category="<?php echo $k; ?>" >
+                                            <?php 
+                                                $totalExpenses += $v["expenseCount"];
+                                                echo $v["expenseCount"]; 
+                                            ?>
+                                        </td>
+                                    </tr>
+                                    <?php
+                                    $count += 1;
+                                }
+                            }
+                            ?>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td>
+                                    &nbsp;
+                                </td>
+                                <td>
+                                    &nbsp;
+                                </td>
+                                <td>
+                                    <h4>Total Spent: <?php echo number_format($totalSpent, 2, ".", ","); ?></h4>
+                                </td>
+                                <td>
+                                    <h4>Total Expenses: <?php echo number_format($totalExpenses, 0); ?></h4>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                    <br/>
+                </div>
+            </div>
+            </br>
         </div>
     </div>
 <?php
@@ -355,6 +424,7 @@
     <script type="text/javascript" src="/js/third_party/jqplot/plugins/jqplot.dateAxisRenderer.min.js"></script>
     <link rel="stylesheet" type="text/css" href="/css/third_party/jqplot/jquery.jqplot.min.css" />
     <script type="text/javascript" src="/js/third_party/thickbox-compressed.js"></script>
+    <script type="text/javascript" src="/js/third_party/jquery.tablesorter.min.js"></script>
     <script type="text/javascript" src="/js/expenses/statistics.js"></script>
     <?php
 } else {

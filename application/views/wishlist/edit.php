@@ -66,7 +66,7 @@
                     <span>* Required Field</span><br/><br/>
                 </div>
             </div>
-            <input type="submit" name="submit" value="Update" class="button"/>  <a href="/expense-wishlist" class="button secondary">Cancel</a>
+            <input type="submit" name="submit" value="Update" class="button"/>  <a href="/wishlist" class="button secondary">Cancel</a>
             </form>
         </div>
     </div>

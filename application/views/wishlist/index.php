@@ -39,8 +39,8 @@
                             echo "<td>" . $v["target_date"] . "</td>";
                             echo "<td>" . $statuses[$v["status"]] . "</td>";
                             echo "<td class='align-right'>" . $v["cost"] . "</td>";
-                            echo "<td><a href='/expense-wishlist/edit/" . $v["id"] . "'>Edit</a>&nbsp;&nbsp;|&nbsp;&nbsp;"
-                            . "<a href='/expense-wishlist/delete/" . $v["id"] . "' onclick='return confirm_delete()' >Delete</a></td>";
+                            echo "<td><a href='/wishlist/edit/" . $v["id"] . "'>Edit</a>&nbsp;&nbsp;|&nbsp;&nbsp;"
+                            . "<a href='/wishlist/delete/" . $v["id"] . "' onclick='return confirm_delete()' >Delete</a></td>";
                             echo "</tr>";
                             $total += $v["cost"];
                         }
