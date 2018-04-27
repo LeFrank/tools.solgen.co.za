@@ -348,9 +348,9 @@ class Expenses extends CI_Controller {
         $descriptions = $this->input->post("description");
         $locations = $this->input->post("location");
         $amounts = $this->input->post("amount");
-        echo "<pre>";
-        print_r(array($createDates, $expenseTypes, $paymentMethods, $descriptions, $locations, $amounts));
-        echo "</pre>";
+//        echo "<pre>";
+//        print_r(array($createDates, $expenseTypes, $paymentMethods, $descriptions, $locations, $amounts));
+//        echo "</pre>";
         
         foreach($createDates as $k=>$v){
             $expense["amount"] = abs($amounts[$k]);
@@ -366,9 +366,9 @@ class Expenses extends CI_Controller {
             $expenses[] = $expense;
         }
         $expenses = $this->expense_model->capture_expenses($expenses);
-        echo "<pre>";
-        print_r($expenses);
-        echo "</pre>";
+//        echo "<pre>";
+//        print_r($expenses);
+//        echo "</pre>";
         $this->session->set_flashdata('expenses', $expenses);
         redirect("/expenses/import/captured", "refresh");
         
