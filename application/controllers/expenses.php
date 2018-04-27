@@ -375,6 +375,7 @@ class Expenses extends CI_Controller {
     }
     
     public function importCaptured(){
+        $this->load->library('session');
         $data["expenses"] = $this->session->flashdata('expenses');
         $data["expenseTypes"] = mapKeyToId($this->expense_type_model->get_expense_types());
         $data["expensePaymentMethod"] = mapKeyToId($this->payment_method_model->get_user_payment_method($this->session->userdata("user")->id), false);
