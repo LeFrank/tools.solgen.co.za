@@ -524,6 +524,18 @@ table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSo
 /*******************************************************************************
 * Tools
 *******************************************************************************/
+/************
+* Expense
+************/
+input .flatinput{
+    border: none;
+  display: inline;
+  font-family: inherit;
+  font-size: inherit;
+  padding: none;
+  width: auto;
+}
+
 
 /************
 * Budget

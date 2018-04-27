@@ -21,7 +21,7 @@
         foreach ($events as $k => $v) {
             echo '<div class="cd-timeline-block">';
             echo '  <div class="cd-timeline-img ' . $v->toolName . '">';
-            echo '      <img src="images/third_party/codyhouse/vertical-timeline/cd-icon-picture.svg" alt="Picture">';
+            echo '      <img src="/images/third_party/codyhouse/vertical-timeline/cd-icon-picture.svg" alt="Picture">';
             echo '  </div>';
             echo '  <div class="cd-timeline-content">';
             echo '      <h2>' . $v->title . '</h2>';

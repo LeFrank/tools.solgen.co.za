@@ -84,6 +84,10 @@ $route['expenses/getExpenses/(:any)'] = 'expenses/getExpenses/$1';
 $route['expenses/history'] = 'expenses/history';
 $route['expenses/options'] = 'expenses/options';
 $route['expenses/stats'] = 'expenses/statistics';
+$route['expenses/import'] = 'expenses/import';
+$route['expenses/import/do_upload'] = 'expenses/importUpload';
+$route['expenses/import/capture'] = 'expenses/importCapture';
+$route['expenses/import/captured'] = 'expenses/importCaptured';
 
 
 $route['expense-budget/manage'] = 'expenseBudget/manage';

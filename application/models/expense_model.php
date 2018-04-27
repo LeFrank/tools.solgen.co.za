@@ -36,6 +36,44 @@ class expense_model extends CI_Model {
         );
         return $this->db->insert($this->tn, $data);
     }
+    
+    /**
+     * Capture a users expense from a post request. 
+     * @return type
+     */
+    public function capture_expenses($expenses) {
+        $this->load->helper('date');
+        $this->load->library("session");
+        foreach($expenses as $k=>$expense){
+            $date = date('Y/m/d H:i', strtotime($expense["expense_date"]));
+            $data = array(
+                'amount' => $expense["amount"],
+                'expense_type_id' => $expense["expense_type_id"],
+                'description' => $expense["description"],
+                'location' => $expense["location"],
+                'location_id' => $expense["location_id"],
+                'expense_date' => $date,
+                'user_id' => $expense["user_id"],
+                'payment_method_id' => $expense["payment_method_id"]
+            );
+            // check to see if there is not already a matching entry before trying to create a new one.
+            if($this->isDuplicate($expense)){
+                if($this->db->insert($this->tn, $data)){
+                    $expense["id"] = $this->db->insert_id();
+                    $expense["status"] = "Success";
+                    $expense["statusMessage"] = "Expense Created Successfully.";
+                }else{
+                    $expense["status"] = "Failure";
+                    $expense["statusMessage"] = "Expense was not created: ". $this->db->error();
+                }
+            }else{
+                $expense["status"] = "Failure";
+                $expense["statusMessage"] = "Is a duplicate, no action taken";
+            }
+            $expenses[$k] = $expense;
+        }
+        return $expenses;
+    }
 
     /**
      * 
@@ -187,6 +225,17 @@ class expense_model extends CI_Model {
         }
         $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'expense_date >=' => $startDate, 'expense_date <= ' => $endDate, 'expense_type_id' => $expenseTypeId ));
         return $query->result_array();
+    }
+    
+    /* check if this is potentially a duplicate record.
+     * It is a duplicate if has the following attributes:
+     * belongs to the user
+     * has the same date
+     * is of the same amount.
+     */
+    private function isDuplicate($expense){
+        $query = $this->db->get_where($this->tn, array('user_id' => $expense["user_id"], 'expense_date' => $expense["expense_date"], 'amount' => $expense["amount"]));
+        $query->num_rows();
     }
     
     /**
