@@ -57,8 +57,9 @@ class expense_model extends CI_Model {
                 'payment_method_id' => $expense["payment_method_id"]
             );
             // check to see if there is not already a matching entry before trying to create a new one.
-//            echo "isDuplicate: ". empty($this->isDuplicate($expense))?"true":"false";
-            if(empty($this->isDuplicate($expense))){
+//            echo "<br/>isDuplicate: ". $this->isDuplicate($expense);
+//            echo "<br/>isDuplicate: ". empty($this->isDuplicate($expense))?"true":"false";
+            if($this->isDuplicate($expense) == 0){
                 if($this->db->insert($this->tn, $data)){
                     $expense["id"] = $this->db->insert_id();
                     $expense["status"] = "Success";
@@ -236,7 +237,8 @@ class expense_model extends CI_Model {
      */
     private function isDuplicate($expense){
         $query = $this->db->get_where($this->tn, array('user_id' => $expense["user_id"], 'expense_date' => $expense["expense_date"], 'amount' => $expense["amount"]));
-        $query->num_rows();
+//        echo $this->db->last_query();
+        return $query->num_rows();
     }
     
     /**
