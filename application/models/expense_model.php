@@ -73,7 +73,6 @@ class expense_model extends CI_Model {
             }
             $expenses[$k] = $expense;
         }
-        exit;
         return $expenses;
     }
 
