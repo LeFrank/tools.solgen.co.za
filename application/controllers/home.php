@@ -19,6 +19,12 @@ class Home extends CI_Controller {
         $this->load->helper('expense_statistics_helper');
     }
 
+    public function attributions(){
+        $this->load->view('header');
+        $this->load->view('copyright_and_attributions');
+        $this->load->view('footer');
+    }
+    
     function index() {
         $this->load->helper('cookie');
         if (null != $this->input->cookie("tools.remember")) {
@@ -112,6 +118,12 @@ class Home extends CI_Controller {
             //$this->expenseBudgetItems->manage(7);
             $this->load->view('home/user-dashboard');
         }
+        $this->load->view('footer');
+    }
+    
+    public function termsAndConditions(){
+        $this->load->view('header');
+        $this->load->view('terms_and_conditions');
         $this->load->view('footer');
     }
 

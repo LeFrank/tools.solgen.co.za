@@ -191,6 +191,14 @@ button:hover, button:focus, .button:hover, .button:focus {
 /*******************************************************
 Custom classes go here
 *********************************************************/
+#contentMain{
+    min-height:820px;
+}
+
+.contentMain{
+    min-height:95%;
+}
+
 .alert-box{
     border:solid 0.5px;
     border-radius: 5px;

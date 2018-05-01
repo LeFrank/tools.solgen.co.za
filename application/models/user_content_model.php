@@ -55,9 +55,30 @@ class user_content_model extends CI_Model {
      * 
      * @param type $id
      */
-    public function delete($id) {
-        $this->db->where("id", $id);
-        $this->db->delete($this->tn);
+    public function deleteItem($userId, $id) {
+        if($this->doesItBelongToMe($userId, $id) > 0 ){
+            $item = $this->getUserContentitem($userId, $id);
+            $this->db->where("id", $id);
+            $this->db->where("user_id", $userId);
+            if($this->db->delete($this->tn)){
+                $data["status"] = "Success";
+                $data["message"] = "This resource has been deleted.";
+                $data["description"] =  $item->original_name . " has been deleted.";
+                $data["affectedRows"] = $this->db->affected_rows();
+            }else{
+                $data["status"] = "Failure";
+                $data["message"] = "Unable to delete the resource: " .$this->db->_error_message();
+                $data["description"] =  $item->original_name . " has not been deleted.";
+                $data["affectedRows"] = $this->db->affected_rows();
+            }
+            
+        }else{
+            $data["status"] = "Failure";
+            $data["message"] = "This resource does not belong to you!";
+            $data["description"] =  "Do not attempt to delete data which does not belong to you. Repeated attempts to cause malicious damage will result in your account being deleted.";
+            $data["affectedRows"] = 0;
+        }
+        return $data;
     }
 
     /**
@@ -85,7 +106,7 @@ class user_content_model extends CI_Model {
      * @param type $id
      * @return type
      */
-    public function getUserContentitem($id) {
+    public function getUserContentitem($userId, $id) {
         $query = $this->db->get_where($this->tn, array('id' => $id));
         return $query->row();
     }
@@ -190,5 +211,9 @@ class user_content_model extends CI_Model {
         }
         $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'created_on >=' => $startDate, 'created_on <= ' => $endDate, 'file_extension' => $userContentType ));
         return $query->result_array();
+    }
+    
+    public function uploadContent(){
+        
     }
 }
