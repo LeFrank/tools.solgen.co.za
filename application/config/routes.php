@@ -49,6 +49,7 @@ $route['terms-and-conditions'] = 'home/termsAndConditions';
 $route['resources'] = 'resource/index';
 $route['resources/do_upload'] = 'resource/do_upload';
 $route['resources/delete/resource/(:num)'] = 'resource/delete/$1';
+$route['resources/view/resource/(:num)/(:any)'] = 'resource/view/$1/$2';
 
 $route['wishlist'] = 'wishlist/index';
 $route['wishlist/capture'] = 'wishlist/create';

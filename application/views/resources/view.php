@@ -56,7 +56,7 @@
                 if ($v["filezise"] < 1024) {
                     echo $v["filezise"] . " KB";
                 } elseif ($v["filezise"] > 1024 && $v["filezise"] < ( 1024 * 1024 )) {
-                    echo $v["filezise"] / 1024 . " MB";
+                    echo round($v["filezise"] / 1024, 2) . " MB";
                 }
                 ?>
             </div>
@@ -66,7 +66,7 @@
             <div class="large-4 columns">
                 <a href="resources/delete/resource/<?php echo $v["id"];?>">Delete</a>
                 &nbsp;&nbsp;|&nbsp;&nbsp;
-                <a href="resources/view/resource/<?php echo $v["id"];?>">View</a>
+                <a target="_blank" href="resources/view/resource/<?php echo $v["id"];?>/<?php echo $v["filename"];?>">View</a>
                 &nbsp;&nbsp;|&nbsp;&nbsp;
                 <a href="#/<?php echo $v["id"];?>">Re-Process</a>
 

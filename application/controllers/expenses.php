@@ -240,59 +240,23 @@ class Expenses extends CI_Controller {
         $this->load->library('session');
         $this->load->model('user_content_model');
         $userId = $this->session->userdata("user")->id;
-        $config['upload_path'] = './user_content/' . $this->session->userdata("user")->id . '/' . date('Y') . '/' . date('m') . '/' . date('d');
-        if (!file_exists($config['upload_path'])) {
-            if (mkdir($config['upload_path'], 0755, true)) {
-                echo "Folder created successfully";
-            } else {
-                echo "Folder unable to be created";
-            }
-        }
-        $config['allowed_types'] = 'csv|txt';
-        $config['max_size'] = 100000000;
-//        $config['max_width'] = 1024;
-//        $config['max_height'] = 768;
-
-        $this->load->library('upload', $config);
-        if (!$this->upload->do_upload('userfile')) {
-            $error = array('error' => $this->upload->display_errors());
-            $this->load->view('expenses/import/upload', $error);
-        } else {
-            $data = array('upload_data' => $this->upload->data());
-            //Write to db
-            $this->load->helper('date');
-            $date = date('Y/m/d H:i');
-            $userContent["tool_id"] = $this->toolId;
-            $userContent["user_id"] = $userId;
-            $userContent["tool_entity_id"] = 0;
-            $userContent["filename"] = $data['upload_data']["file_name"];
-            $userContent["filezise"] = $data['upload_data']["file_size"];
-            $userContent["file_type"] = $data['upload_data']["file_type"];
-            $userContent["file_path"] = $data['upload_data']["file_path"];
-            $userContent["full_path"] = $data['upload_data']["full_path"];
-            $userContent["raw_name"] = $data['upload_data']["raw_name"];
-            $userContent["original_name"] = $data['upload_data']["orig_name"];
-            $userContent["client_name"] = $data['upload_data']["client_name"];
-            $userContent["file_extension"] = $data['upload_data']["file_ext"];
-            $userContent["is_image"] = (empty($data['upload_data']["is_image"])) ? 0 : 1;
-            $userContent["image_widgth"] = (empty($data['upload_data']["image_width"])) ? 0 : 1;
-            $userContent["image_height"] = (empty($data['upload_data']["image_height"])) ? 0 : 1;
-            $userContent["image_type"] = $data['upload_data']["image_type"];
-            $userContent["image_size_string"] = $data['upload_data']["image_size_str"];
-            $userContent["created_by"] = $userId;
-            $userContent["created_on"] = $date;
-            $userContent["private"] = 0;
-            $userContent["password_protect"] = 0;
-            $userContent["mdf5_hash"] = md5_file($userContent["full_path"]);
-            $userContent["id"] = $this->user_content_model->capture_user_content($userContent);
-            $data["user_content"] = $userContent;
-
+        $data["user_content"] = 
+            $this->user_content_model->uploadContent(
+                    $userId, 
+                    'csv|txt',
+                    $this->toolId,
+                    100000000, 
+                    $private=0, 
+                    $passwordProtect=0);
+        if(key_exists("error",$data["user_content"])){
+            $this->load->view('expenses/import/upload', $data["user_content"]["error"]);
+        }else{
             $row = 1;
             $keys["date_column"] = 0;
             $keys["description_column"] = 0;
             $keys["amount_column"] = 0;
             $expenses = array();
-            if (($handle = fopen($userContent["full_path"], "r")) !== FALSE) {
+            if (($handle = fopen($data["user_content"]["full_path"], "r")) !== FALSE) {
                 while (($rowData = fgetcsv($handle, 1000, ",")) !== FALSE) {
                     if ($row == 1) {
                         foreach ($rowData as $k => $v) {
