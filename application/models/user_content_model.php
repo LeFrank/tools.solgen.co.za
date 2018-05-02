@@ -231,6 +231,7 @@ class user_content_model extends CI_Model {
         if (!$this->upload->do_upload('userfile')) {
             return array('error' => $this->upload->display_errors());
         } else {
+            
             $data = array('upload_data' => $this->upload->data());
             //Write to db
             $this->load->helper('date');
@@ -258,6 +259,7 @@ class user_content_model extends CI_Model {
             $userContent["password_protect"] = $passwordProtect;
             $userContent["mdf5_hash"] = md5_file($userContent["full_path"]);
             $userContent["id"] = $this->capture_user_content($userContent);
+            chmod($userContent["full_path"], 0755 );
             return $userContent;
         }
     }

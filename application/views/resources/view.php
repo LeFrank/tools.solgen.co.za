@@ -64,9 +64,11 @@
                 <?php echo $tools[$v["tool_id"]]["name"]; ?>
             </div>
             <div class="large-4 columns">
-                <a href="resources/delete/resource/<?php echo $v["id"];?>">Delete</a>
+                <a href="/resources/delete/resource/<?php echo $v["id"];?>">Delete</a>
                 &nbsp;&nbsp;|&nbsp;&nbsp;
-                <a target="_blank" href="resources/view/resource/<?php echo $v["id"];?>/<?php echo $v["filename"];?>">View</a>
+                <a target="_blank" href="/resources/view/resource/<?php echo $v["id"];?>/<?php echo $v["filename"];?>">View</a>
+                &nbsp;&nbsp;|&nbsp;&nbsp;
+                <a href="/resources/download/resource/<?php echo $v["id"];?>/<?php echo $v["filename"];?>">Download</a>
                 &nbsp;&nbsp;|&nbsp;&nbsp;
                 <a href="#/<?php echo $v["id"];?>">Re-Process</a>
 

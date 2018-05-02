@@ -126,4 +126,27 @@ class resource extends CI_Controller {
             exit;
         }
     }
+    
+        public function download($id, $filename) {
+        $userId = $this->session->userdata("user")->id;
+        $item = $this->user_content_model->getUserContentitem($userId, $id);
+      
+        if (file_exists($item->full_path)) {
+            $fp = fopen($item->full_path, 'rb');
+            header('Content-Description: File Transfer');
+            header('Content-Type: application/octet-stream');
+            header('Content-Disposition: attachment; filename="' . $item->filename . '"');
+            header('Expires: 0');
+            header('Cache-Control: must-revalidate');
+            header('Pragma: public');
+//            header('Content-Length: ' . $item->filezise);
+            header('Content-Type: '.$item->file_type);
+            header('Content-Length: ' . filesize($item->full_path));
+            readfile($item->full_path);
+//            readfile($item->full_path);
+//            exit;   
+//            fpassthru($fp);
+            exit;
+        }
+    }
 }
