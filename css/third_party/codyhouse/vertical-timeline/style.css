@@ -128,6 +128,7 @@ header h1 {
   top: 50%;
   margin-left: -12px;
   margin-top: -12px;
+  filter: invert(1);
 }
 .cd-timeline-img.expenses {
   background: #75ce66;
@@ -137,6 +138,9 @@ header h1 {
 }
 .cd-timeline-img.notes {
   background: #f0ca45;
+}
+.cd-timeline-img.resources {
+  background: #0066cc;
 }
 @media only screen and (min-width: 1170px) {
   .cd-timeline-img {

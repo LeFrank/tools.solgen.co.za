@@ -20,8 +20,8 @@
         <?php
         foreach ($events as $k => $v) {
             echo '<div class="cd-timeline-block">';
-            echo '  <div class="cd-timeline-img ' . $v->toolName . '">';
-            echo '      <img src="/images/third_party/codyhouse/vertical-timeline/cd-icon-picture.svg" alt="Picture">';
+            echo '  <div class="cd-timeline-img ' . strtolower($v->toolName) . '">';
+            echo '      <img src="/images/third_party/icons/'. strtolower($v->toolName). '.svg" alt="Picture">';
             echo '  </div>';
             echo '  <div class="cd-timeline-content">';
             echo '      <h2>' . $v->title . '</h2>';
@@ -31,9 +31,9 @@
 //                echo '      <div>'. $v->body. '</div>';
 //            }
             echo '      <br/><br/><a href="' . $v->url . '" target="_blank" class="cd-read-more thickbox">Read more</a>';
-//            if($v->toolId == "7"){
+            if($v->toolId == "7" || $v->toolId == "1" || $v->toolId == "5" ){
             echo '      &nbsp;&nbsp;<div id="showMoreDiv" class="show-content button tiny secondary" data-note-id="' . $v->toolId . $v->id . '">Show More</div>';
-//            }
+            }
             echo '      <span class="cd-date">' . $v->date . '</span>';
             echo '  </div>';
             echo '</div>';

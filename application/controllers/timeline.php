@@ -36,6 +36,9 @@ class timeline extends CI_Controller {
         $this->load->model("expense_type_model");
         $this->load->model("timetable_model");
         $this->load->model("timetable_category_model");
+        $this->load->helper('tool_info_helper');
+        $this->load->model("user_content_model");
+        
     }
     
     public function index($startDate = null, $endDate = null){
@@ -64,12 +67,17 @@ class timeline extends CI_Controller {
         $search["endDate"] = $endDate;
         $data["startDate"] = $startDate;
         $data["endDate"] = $endDate;
+        $data["tools"] = getAllToolsInfo();
         $data["events"] = timelineNoteFormat($this->notes_model->getNotesForPeriod($user->id, $startDate, $endDate), null);
         $data["expenseTypes"] = mapKeyToId($this->expense_type_model->get_expense_types());
         $data["events"] = timelineExpenseFormat($this->expense_model->getExpensesbyDateRange( $startDate, $endDate, $user->id), $data["events"], $data["expenseTypes"]);
         $data["timetableCategories"] = mapKeyToId($this->timetable_category_model->get_user_timetable_category($user->id), false);
         $search["allDayEvent"] = 1;
         $data["events"] = timelineTimetableFormat($this->timetable_model->getFilteredTimetableEvents($user->id, $search), $data["events"], $data["timetableCategories"] );
+        // Resources
+        $data["tools"] = getAllToolsInfo();
+        $data["resources"] = $this->user_content_model->getUserContentDateRange($startDate, $endDate, $user->id);
+        $data["events"] = timelineResourceFormat($data["resources"], $data["events"], $data["tools"]);
         $data["events"] = orderTimeline($data["events"]);
         
 //        echo "<br/>".count($data["events"]) . "<pre>";

@@ -140,7 +140,7 @@ class resource extends CI_Controller {
             header('Cache-Control: must-revalidate');
             header('Pragma: public');
 //            header('Content-Length: ' . $item->filezise);
-            header('Content-Type: '.$item->file_type);
+            //header('Content-Type: '.$item->file_type);
             header('Content-Length: ' . filesize($item->full_path));
             readfile($item->full_path);
 //            readfile($item->full_path);
