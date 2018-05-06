@@ -39,7 +39,7 @@ function timelineNoteFormat($notes, $timelineEvents){
     foreach($notes as $k=> $v){
         $event = getEvent();
         $event->date = $v["create_date"];
-        $event->toolId = 7;
+        $event->toolId = 5;
         $event->toolName = "notes";
         $event->id = $v["id"];
         $event->title = $v["heading"];
@@ -54,7 +54,7 @@ function timelineTimetableFormat($events, $timelineEvents, $timetableCategories)
     foreach($events as $k=> $v){
         $event = getEvent();
         $event->date = $v->start_date;
-        $event->toolId = 3;
+        $event->toolId = 4;
         $event->toolName = "timetable";
         $event->id = $v->id;
         $cat = (isset($timetableCategories[$v->tt_category_id]))? $timetableCategories[$v->tt_category_id]["name"] : " None";

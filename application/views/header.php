@@ -61,7 +61,7 @@
                         <a href="/user/register">Register</a>
                         </form>
                     <?php } else { ?>
-                        <a href="/home/dashboard" >Home</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="/user/settings" >My Settings</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="/user/logout" >Logout</a> 
+                        <a href="/home/dashboard" ><img src="/images/third_party/icons/home.svg" class="nav-icon-long" alt="Home"> Home</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="/user/settings" >My Settings</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="/user/logout" >Logout</a> 
                     <?php } ?>
                 </div>
             </div>

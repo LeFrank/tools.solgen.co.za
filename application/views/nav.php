@@ -7,21 +7,21 @@
  */
 ?>
         &nbsp;&nbsp;
-        <a href="/expenses" >Finances</a>
+        <a href="/expenses" ><img src="/images/third_party/icons/expenses.svg" class="nav-icon-wide svg-invert" alt="Picture"> Finances</a>
         &nbsp;&nbsp;
-        <a href="/wishlist" >Wishlist</a>
+        <a href="/wishlist" ><img src="/images/third_party/icons/wishlist.svg" class="nav-icon-long svg-invert" alt="Picture"> Wishlist</a>
         &nbsp;&nbsp;
-        <a href="/notes" >Notes</a> 
+        <a href="/notes" ><img src="/images/third_party/icons/notes.svg" class="nav-icon-long svg-invert" alt="Picture"> Notes</a> 
         &nbsp;&nbsp;
-        <a href="/timetable" >Timetable</a>
+        <a href="/timetable" ><img src="/images/third_party/icons/timetable.svg" class="nav-icon-wide svg-invert" alt="Picture"> Timetable</a>
         &nbsp;&nbsp;
-        <a href="/locations" >Locations</a>
+        <a href="/locations" ><img src="/images/third_party/icons/locations.svg" class="nav-icon-long svg-invert" alt="Picture"> Locations</a>
         &nbsp;&nbsp;
-        <a href="/weather" >Weather</a>
+        <a href="/weather" ><img src="/images/third_party/icons/weather.svg" class="nav-icon-wide svg-invert" alt="Picture"> Weather</a>
         
         &nbsp;&nbsp;    
-        <a href="/timeline" >Timeline</a>
+        <a href="/timeline" ><img src="/images/third_party/icons/timeline.svg" class="nav-icon-long svg-invert" alt="Picture"> Timeline</a>
         &nbsp;&nbsp;    
-        <a href="/resources" >Resources</a>
+        <a href="/resources" ><img src="/images/third_party/icons/resources.svg"  class="nav-icon-long svg-invert" alt="Picture"> Resources</a>
         &nbsp;&nbsp;   
         <a href="/faq" >FAQ</a>

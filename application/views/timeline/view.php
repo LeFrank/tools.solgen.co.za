@@ -31,7 +31,7 @@
 //                echo '      <div>'. $v->body. '</div>';
 //            }
             echo '      <br/><br/><a href="' . $v->url . '" target="_blank" class="cd-read-more thickbox">Read more</a>';
-            if($v->toolId == "7" || $v->toolId == "1" || $v->toolId == "5" ){
+            if($v->toolId == "4" || $v->toolId == "1" || $v->toolId == "5" ){
             echo '      &nbsp;&nbsp;<div id="showMoreDiv" class="show-content button tiny secondary" data-note-id="' . $v->toolId . $v->id . '">Show More</div>';
             }
             echo '      <span class="cd-date">' . $v->date . '</span>';

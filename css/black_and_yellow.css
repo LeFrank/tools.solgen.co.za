@@ -191,6 +191,18 @@ button:hover, button:focus, .button:hover, .button:focus {
 /*******************************************************
 Custom classes go here
 *********************************************************/
+.nav-icon-wide{
+    width:27px;
+}
+
+.nav-icon-long{
+    height:20px;
+}
+
+.svg-invert{
+    filter: invert(1);
+}
+
 #contentMain{
     min-height:820px;
 }
