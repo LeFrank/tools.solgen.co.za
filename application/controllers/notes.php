@@ -71,7 +71,7 @@ class Notes extends CI_Controller {
 
     public function history($page = null) {
         if ($page == null) {
-            $config['base_url'] = 'http://' . $_SERVER['SERVER_NAME'] . '/notes/history/page/';
+            $config['base_url'] = 'http://' . $_SERVER['SERVER_NAME'] . '/notes/history/page/1';
             $config['per_page'] = 10;
             $config['total_rows'] = 10;
             $this->pagination->initialize($config);
@@ -84,8 +84,8 @@ class Notes extends CI_Controller {
         $this->pagination->cur_page = $page;
         $user = $this->session->userdata("user");
         $data["notes"] = $this->notes_model->getNotes(
-                $user->id, $this->pagination->per_page, (($page != null) ? ($page) * $this->pagination->per_page : null));
-        $this->pagination->total_rows = $this->notes_model->getNotes($user->id, null, null, true);
+                $user->id, $this->pagination->per_page, (($page != null) ? ($page-1) * $this->pagination->per_page : null));
+        $data["totalNotes"] = $this->pagination->total_rows = $this->notes_model->getNotes($user->id, null, null, true);
         $data["searches"] = $this->notes_search_model->getSearches($user->id, 10, null, false);
         $this->load->view('header', getPageTitle($data, $this->toolName, "History"));
         $this->load->view('notes/notes_nav', $data);
@@ -128,6 +128,7 @@ class Notes extends CI_Controller {
         $user = $this->session->userdata("user");
         $data["search"] = $this->notes_search_model->getSearchById($user->id, $searchId);
         $data["searches"] = $this->notes_search_model->getSearches($user->id, 10, null, false);
+        echo (($page != null) ? ( $page - 1 ) * $this->pagination->per_page : $this->pagination->per_page);
         $data["notes"] = $this->notes_model->searchNotesCriteria($user->id, (($page != null) ? ( $page - 1 ) * $this->pagination->per_page : $this->pagination->per_page), (($page != null) ? ( $page - 1 ) * $this->pagination->per_page : null), false, $data["search"][0]["text"], $data["search"][0]["start_date"], $data["search"][0]["end_date"]);
         $this->pagination->total_rows = $data["total_returned"] = $this->notes_model->searchNotesCriteria($user->id, null, null, true, $data["search"][0]["text"], $data["search"][0]["start_date"], $data["search"][0]["end_date"]);
         $this->load->view('header', getPageTitle($data, $this->toolName, "Search", $data["search"][0]["text"] . " (". $data["total_returned"] .")"));

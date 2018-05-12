@@ -15,9 +15,9 @@
             <li>
                 <h4><a href="/expense-wishlist/priorities">Wishlist Priorities</a></h4>
             </li>
-            <li>
+<!--            <li>
                 <h4><a href="/expense-wishlist/statuses">Wishlist Statuses</a></h4>
-            </li>
+            </li>-->
             <li>
                 <h4><a href="/expenses/import">Import Expenses</a></h4>
             </li>

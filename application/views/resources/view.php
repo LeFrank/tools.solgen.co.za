@@ -1,31 +1,47 @@
 <?php echo $error; ?>
+<h3>Upload Resource</h3>
 <?php echo form_open_multipart('resources/do_upload'); ?>
+<label for="note_content">File *</label>
 <input type="file" name="userfile" size="20" />
-<br /><br />
-<input type="submit" value="upload" />
+<br />
+<label for="resource_description">Note *</label>
+<textarea name="description" id="description" cols="40" rows="15" placeholder="This file is important because ..."></textarea>
+<br/><br/>
+<input type="submit" class="button" value="Upload" />
 </form>
 <br/>
-<?php if(!empty($resources)){?>
+<div class="row expanded">
+    <div class="large-12 columns">
+        <h3>Resources ( <?php echo $totalResources; ?> )</h3>
+    </div>
+</div>
+<div class="pagination-centered">
+    <?php echo $this->pagination->create_links(); ?>
+</div>
+<?php if (!empty($resources)) { ?>
     <div class="row expanded">
         <div class="large-12 columns">
             <div class="row expanded">
                 <div class="large-1 columns">
                     &nbsp;
                 </div>
+                <div class="large-2 columns ">
+                    <strong>Name</strong>
+                </div>
                 <div class="large-3 columns">
-                    Name
+                    <strong>Description</strong>
                 </div>
                 <div class="large-2 columns">
-                    Date
+                    <strong>Date</strong>
                 </div>
                 <div class="large-1 columns">
-                    File Size
+                    <strong>File Size</strong>
                 </div>
                 <div class="large-1 columns">
-                    File Origin
+                    <strong>File Origin</strong>
                 </div>
-                <div class="large-4 columns">
-                    Actions
+                <div class="large-2 columns">
+                    <strong>Actions</strong>
                 </div>
             </div>
         </div>
@@ -45,8 +61,11 @@
             <div class="large-1 columns">
                 <img style="width:30px;margin-top:5px;" src="../../../images/third_party/icons/110942-file-formats-icons/svg/<?php echo ltrim($v["file_extension"], "."); ?>-file-format-symbol.svg">
             </div>
-            <div class="large-3 columns">
+            <div class="large-2 columns">
                 <strong><?php echo $v["original_name"]; ?></strong>
+            </div>
+            <div class="large-3 columns">
+                <?php echo (empty($v["description"])) ? "&nbsp;" : $v["description"]; ?>
             </div>
             <div class="large-2 columns">
                 <?php echo $v["created_on"]; ?>
@@ -63,30 +82,35 @@
             <div class="large-1 columns">
                 <?php echo $tools[$v["tool_id"]]["name"]; ?>
             </div>
-            <div class="large-4 columns">
-                <a href="/resources/delete/resource/<?php echo $v["id"];?>">Delete</a>
+            <div class="large-2 columns">
+                <a href="/resources/delete/resource/<?php echo $v["id"]; ?>">Delete</a>
                 &nbsp;&nbsp;|&nbsp;&nbsp;
-                <a target="_blank" href="/resources/view/resource/<?php echo $v["id"];?>/<?php echo $v["filename"];?>">View</a>
+                <a target="_blank" href="/resources/view/resource/<?php echo $v["id"]; ?>/<?php echo $v["filename"]; ?>">View</a>
                 &nbsp;&nbsp;|&nbsp;&nbsp;
-                <a href="/resources/download/resource/<?php echo $v["id"];?>/<?php echo $v["filename"];?>">Download</a>
+                <a href="/resources/download/resource/<?php echo $v["id"]; ?>/<?php echo $v["filename"]; ?>">Download</a>
                 &nbsp;&nbsp;|&nbsp;&nbsp;
-                <a href="#/<?php echo $v["id"];?>">Re-Process</a>
+                <a href="#/<?php echo $v["id"]; ?>">Re-Process</a>
 
             </div>
         </div>
 
         <hr>
-    <?php
+        <?php
     }
-}else{
+} else {
     ?>
     <div class="row expanded">
         <div class="large-12 columns">
             No resources have been uploaded yet.
         </div>
     </div>
-<?php        
+    <?php
 }
 ?>
 </div>
 </div>
+<div class="pagination-centered">
+    <?php echo $this->pagination->create_links(); ?>
+</div>
+<script src="/js/third_party/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="/js/resources/index.js" ></script>

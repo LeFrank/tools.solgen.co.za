@@ -26,6 +26,7 @@ class user_content_model extends CI_Model {
             'user_id' => $userContent["user_id"],
             'tool_entity_id' => $userContent["tool_entity_id"],
             'filename' => $userContent["filename"],
+            'description' => $userContent["description"],
             'file_type' => $userContent["file_type"],
             'file_path' => $userContent["file_path"],
             'full_path' => $userContent["full_path"],
@@ -118,7 +119,7 @@ class user_content_model extends CI_Model {
      * @param type $offset if present offset the result by this value else no offset
      * @return null
      */
-    public function getUserContentItems($userId = null, $limit = null, $offset = 0) {
+    public function getUserContentItems($userId = null, $limit = null, $offset = 0, $count = false) {
         if ($userId === null) {
             return null;
         }
@@ -128,7 +129,12 @@ class user_content_model extends CI_Model {
         } else {
             $query = $this->db->get_where($this->tn, array('user_id' => $userId), $limit, $offset);
         }
-        return $query->result_array();
+//        return $query->result_array();
+        if ($count) {
+            return $query->num_rows();
+        } else {
+            return $query->result_array();
+        }
     }
 
     public function getUserContentByIds($userId , $userContentIds){
@@ -213,7 +219,7 @@ class user_content_model extends CI_Model {
         return $query->result_array();
     }
     
-    public function uploadContent($userId, $allowedFileTypes, $toolId=0, $maxSize=100000000, $private=1, $passwordProtect=1){
+    public function uploadContent($userId, $allowedFileTypes, $toolId=0, $maxSize=100000000, $private=1, $passwordProtect=1, $description=""){
         $config['upload_path'] = './user_content/' . $userId . '/' . date('Y') . '/' . date('m') . '/' . date('d');
         if (!file_exists($config['upload_path'])) {
             if (mkdir($config['upload_path'], 0755, true)) {
@@ -231,8 +237,8 @@ class user_content_model extends CI_Model {
         if (!$this->upload->do_upload('userfile')) {
             return array('error' => $this->upload->display_errors());
         } else {
-            
             $data = array('upload_data' => $this->upload->data());
+//            print_r($data['upload_data']);
             //Write to db
             $this->load->helper('date');
             $date = date('Y/m/d H:i');
@@ -240,6 +246,7 @@ class user_content_model extends CI_Model {
             $userContent["user_id"] = $userId;
             $userContent["tool_entity_id"] = 0;
             $userContent["filename"] = $data['upload_data']["file_name"];
+            $userContent["description"] = $description;
             $userContent["filezise"] = $data['upload_data']["file_size"];
             $userContent["file_type"] = $data['upload_data']["file_type"];
             $userContent["file_path"] = $data['upload_data']["file_path"];

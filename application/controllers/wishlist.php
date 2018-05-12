@@ -83,7 +83,7 @@ class Wishlist extends CI_Controller {
             $data["action_description"] = "Captured A Wishlist Item.";
             $data["message"] = "The item was captured: " . $item->name;
             $this->session->set_flashdata("success", $this->load->view('general/action_status', $data, true));
-            redirect("/expense-wishlist/", "refresh");
+            redirect("/wishlist/", "refresh");
         }
     }
 

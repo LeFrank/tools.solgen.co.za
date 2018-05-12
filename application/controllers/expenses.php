@@ -364,7 +364,7 @@ class Expenses extends CI_Controller {
         $this->load->helper("expense_statistics_helper");
         $this->load->helper("usability_helper");
         //get the data ready
-        if (sizeOf($this->input->post()) == 1) {
+        if ( null == $this->input->post()) {
             $data["startAndEndDateforMonth"] = getStartAndEndDateforMonth(date("m") - 1, date('Y'));
         } else {
             $data["startAndEndDateforMonth"] = array($this->input->post("fromDate"), $this->input->post("toDate"));

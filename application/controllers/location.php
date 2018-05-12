@@ -65,7 +65,7 @@ class Location extends CI_Controller {
         $data["js"] = '<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>';
         if ($page == null) {
             $page = 1;
-            $config['base_url'] = 'http://' . $_SERVER['SERVER_NAME'] . '/locations/page/';
+            $config['base_url'] = 'http://' . $_SERVER['SERVER_NAME'] . '/locations/page/1';
             $config['per_page'] = 10;
             $config['total_rows'] = 10;
             $config['cur_page'] = 1;
@@ -81,7 +81,10 @@ class Location extends CI_Controller {
         $data["per_page"] = 10;
         $user = $this->session->userdata("user");
         $data["locations"] = $this->location_model->getLocations(
-                $user->id, $this->pagination->per_page, (($page == null || $page== 1 ) ? null : $page * $this->pagination->per_page -10));
+            $user->id, 
+            $this->pagination->per_page, 
+            (($page == null || $page== 1 ) ? null : $page * $this->pagination->per_page -10)
+        );
         $this->pagination->total_rows = $this->location_model->getLocations($user->id, null, null, true);
         $this->load->view('header', getPageTitle($data, $this->toolName, "Manage Locations"));
         $this->load->view("location/index", $data);

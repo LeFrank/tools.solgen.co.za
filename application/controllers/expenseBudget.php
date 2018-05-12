@@ -90,7 +90,7 @@ class ExpenseBudget extends CI_Controller {
 
     public function manage($page = null) {
         if ($page == null) {
-            $config['base_url'] = 'http://' . $_SERVER['SERVER_NAME'] . '/expense-budget/manage/page/';
+            $config['base_url'] = 'http://' . $_SERVER['SERVER_NAME'] . '/expense-budget/manage/page/1';
             $config['per_page'] = 10;
             $config['total_rows'] = 10;
             $this->pagination->initialize($config);
@@ -102,7 +102,11 @@ class ExpenseBudget extends CI_Controller {
         $this->pagination->use_page_numbers = TRUE;
         $this->pagination->cur_page = $page;
         $user = $this->session->userdata("user");
-        $data["expenseBudgets"] = $this->expense_budget_model->getExpenseBudgets($user->id, $this->pagination->per_page, (($page != null) ? ($page) * $this->pagination->per_page : null));
+        $data["expenseBudgets"] = $this->expense_budget_model->getExpenseBudgets(
+            $user->id, 
+            $this->pagination->per_page, 
+            (($page != null) ? ($page -1) * $this->pagination->per_page : null)
+        );
         $this->pagination->total_rows = $this->expense_budget_model->getExpenseBudgets($user->id, null, null, true);
         $data["expensePeriods"] = mapKeyToId($this->expense_period_model->getExpensePeriods($user->id), false);
         $this->load->view('header', getPageTitle($data, $this->toolName, "Budget Management", ""));
