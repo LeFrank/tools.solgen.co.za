@@ -15,11 +15,27 @@ class ExpensePeriods extends CI_Controller {
         can_access(
                 $this->require_auth, $this->session);
         $this->load->model('expense_period_model');
+        $this->load->library('pagination');
     }
 
-    public function manage() {
+    public function manage($page=null) {
         $this->load->helper("array_helper");
-        $data["expensePeriods"] = mapKeyToId($this->expense_period_model->getExpensePeriods($this->session->userdata("user")->id), false);
+        if ($page == null) {
+            $config['base_url'] = 'http://' . $_SERVER['SERVER_NAME'] . '/expense-periods/manage/page/1';
+            $config['per_page'] = 10;
+            $config['total_rows'] = 10;
+            $this->pagination->initialize($config);
+        } else {
+            $this->pagination->uri_segment = 4;
+        }
+        $this->pagination->base_url = 'http://' . $_SERVER['SERVER_NAME'] . '/expense-periods/manage/page/';
+        $this->pagination->per_page = 10;
+        $this->pagination->use_page_numbers = TRUE;
+        $this->pagination->cur_page = $page;
+        $user = $this->session->userdata("user");
+        $data["expensePeriods"] = mapKeyToId(
+            $this->expense_period_model->getExpensePeriods($user->id,$this->pagination->per_page, (($page != null) ? ($page-1) * $this->pagination->per_page : null)), false);
+        $data["totalExpensePeriods"] = $this->pagination->total_rows = $this->expense_period_model->getExpensePeriods($user->id, null, null, true);
         $this->load->view('header', getPageTitle($data, $this->toolName, "Manage Expense Periods"));
         $this->load->view('expenses/expense_nav');
         $this->load->view("expense_periods/manage", $data);

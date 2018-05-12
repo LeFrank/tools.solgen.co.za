@@ -5,6 +5,10 @@
         <h3>Manage Expense Periods</h3>
         <div>
             <p>My Expense Periods</p>
+            <h3>Expense Periods ( <?php echo $totalExpensePeriods; ?> )</h3>
+            <div class="pagination-centered">
+                <?php echo $this->pagination->create_links(); ?>
+            </div>
             <?php
             if (!empty($expensePeriods)) {
                 ?>
@@ -44,7 +48,9 @@
             }
             ?>
         </div>
-
+        <div class="pagination-centered">
+            <?php echo $this->pagination->create_links(); ?>
+        </div>
         <div id="manage-expense-period-form">
             <h3>Create Expense Period</h3>
             <?php echo validation_errors(); ?>

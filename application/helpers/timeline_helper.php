@@ -87,9 +87,10 @@ function timelineResourceFormat($events, $timelineEvents, $toolInfo){
         }
         $event->body = 
                 "File Origin: ".$toolInfo[$v["tool_id"]]["name"] .
-                "<br/>File Name: <strong>". $v["original_name"]. "</strong>
-                <br/>Created On: ". $v["created_on"] . "
-                <br/>File Size: ". $filesize;
+                "<br/>File Name: <strong>". $v["original_name"]. "</strong>" .
+                "<br/>Created On: ". $v["created_on"] . 
+                "<br/>File Size: ". $filesize . 
+                "<br/>Description: ". $v["description"];
         $event->url = "resources/view/resource/". $v["id"]."/".$v["filename"];
         $timelineEvents[] = $event;
     }

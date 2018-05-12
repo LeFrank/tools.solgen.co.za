@@ -102,7 +102,7 @@ class expense_period_model extends CI_Model {
      * @param type $offset if present offset the result by this value else no offset
      * @return null
      */
-    public function getExpensePeriods($userId = null, $limit = null, $offset = 0) {
+    public function getExpensePeriods($userId = null, $limit = null, $offset = 0, $count = false) {
         if ($userId === null) {
             return null;
         }
@@ -111,6 +111,11 @@ class expense_period_model extends CI_Model {
             $query = $this->db->get_where($this->tn, array('user_id' => $userId));
         } else {
             $query = $this->db->get_where($this->tn, array('user_id' => $userId), $limit, $offset);
+        }
+        if ($count) {
+            return $query->num_rows();
+        } else {
+            return $query->result_array();
         }
         return $query->result_array();
     }
