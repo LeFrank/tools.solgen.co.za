@@ -83,7 +83,7 @@
                 <?php echo $tools[$v["tool_id"]]["name"]; ?>
             </div>
             <div class="large-2 columns">
-                <a href="/resources/delete/resource/<?php echo $v["id"]; ?>">Delete</a>
+                <a href="/resources/delete/resource/<?php echo $v["id"]; ?>" onclick="return confirm_delete()">Delete</a>
                 &nbsp;&nbsp;|&nbsp;&nbsp;
                 <a target="_blank" href="/resources/view/resource/<?php echo $v["id"]; ?>/<?php echo $v["filename"]; ?>">View</a>
                 &nbsp;&nbsp;|&nbsp;&nbsp;

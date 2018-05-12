@@ -118,6 +118,24 @@ class resource extends CI_Controller {
         $this->session->set_flashdata('status', $data["statusArr"]);
         redirect("/resources", "refresh");
     }
+    
+    public function getStats() {
+        $this->load->library('session');
+        $this->load->helper('resource');
+
+        $userId = $this->session->userdata("user")->id;
+        $data["resourceStats"] = $this->user_content_model->getUserContentStats($userId);
+        $data["resourceStats"]["total_filesizes"] = humanReadifyFilesize($data["resourceStats"]["total_filesizes"]);
+        $data["tools"] = getAllToolsInfo();
+        $data["resourceStats"]["total_for_user_per_tool"] = formatStatsperTool($data["resourceStats"]["total_for_user_per_tool"],$data["tools"] );
+//        echo "<pre>";
+//        print_r($data);
+//        echo "</pre>";
+        $this->load->view('header', getPageTitle($data, $this->toolName, "Statistics", ""));
+        $this->load->view('resources/resources_nav');
+        $this->load->view('resources/user_stats', $data);
+        $this->load->view('footer');
+    }
 
     public function view($id, $filename) {
         $userId = $this->session->userdata("user")->id;

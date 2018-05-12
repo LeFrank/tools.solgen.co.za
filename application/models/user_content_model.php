@@ -219,6 +219,40 @@ class user_content_model extends CI_Model {
         return $query->result_array();
     }
     
+    public function getUserContentStats($userId){
+        /*
+         * Global for User, general
+         */
+        $this->db->start_cache();
+        $this->db->where("user_id", $userId);
+        $this->db->from($this->tn);
+        $this->db->stop_cache();
+        $stats["total_count"] = $this->db->count_all_results();
+        $this->db->flush_cache();
+        
+        $this->db->start_cache();
+//        echo "Total Files: ".$stats["total_count"] . "<br/>";
+        $this->db->select_sum('filezise');
+        $query = $this->db->get_where($this->tn,array('user_id'=> $userId));
+        $this->db->stop_cache();
+        $stats["total_filesizes"] = $query->row()->filezise;
+        $this->db->flush_cache();
+//        echo "Total Files for All Users: ".$stats["total_filesizes"]. "<br/>";
+        /*
+         * tool Specific
+         */
+        $this->db->start_cache();
+        $this->db->select('count(*) as "file_count", sum(filezise) as "file_size", tool_id');
+        $this->db->group_by('tool_id'); 
+        $this->db->order_by('file_size', 'desc'); 
+        $query = $this->db->get_where($this->tn,array('user_id'=> $userId));
+        $this->db->stop_cache();
+        $stats["total_for_user_per_tool"] = $query->result_array();
+        $this->db->flush_cache();
+
+        return($stats);
+    }
+    
     public function uploadContent($userId, $allowedFileTypes, $toolId=0, $maxSize=100000000, $private=1, $passwordProtect=1, $description=""){
         $config['upload_path'] = './user_content/' . $userId . '/' . date('Y') . '/' . date('m') . '/' . date('d');
         if (!file_exists($config['upload_path'])) {

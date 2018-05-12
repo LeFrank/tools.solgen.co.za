@@ -53,6 +53,7 @@ $route['resources/view/resource/(:num)/(:any)'] = 'resource/view/$1/$2';
 $route['resources/download/resource/(:num)/(:any)'] = 'resource/download/$1/$2';
 $route['resources/page'] = 'resource/index';
 $route['resources/page/(:any)'] = 'resource/index/$1';
+$route['resources/stats'] = 'resource/getStats';
 
 $route['wishlist'] = 'wishlist/index';
 $route['wishlist/capture'] = 'wishlist/create';
