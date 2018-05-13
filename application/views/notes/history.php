@@ -103,7 +103,7 @@
             </div>
         </div>
         <div id="Notes">
-            <h3>Notes ( <?php echo $total_returned; ?> )</h3>
+            <h3>Notes ( <?php echo $totalNotes; ?> )</h3>
             <div class="pagination-centered">
                 <?php echo $this->pagination->create_links(); ?>
             </div>

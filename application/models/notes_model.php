@@ -22,7 +22,9 @@ class Notes_model extends CI_Model {
         $data = array(
             'user_id' => $this->session->userdata("user")->id,
             'heading' => $this->input->post('title'),
-            'body' => preg_replace('/[\x00-\x1F\x80-\xFF]/', '', $this->input->post('body')),
+//            removes emoticons
+//            'body' => preg_replace('/[\x00-\x1F\x80-\xFF]/', '', $this->input->post('body')),
+            'body' => $this->input->post('body'),
             'tagg' => $this->input->post('tags'),
             'create_date' => date('Y/m/d H:i', strtotime($this->input->post('noteDate')))
         );
@@ -226,7 +228,9 @@ class Notes_model extends CI_Model {
         $data = array(
             'user_id' => $this->session->userdata("user")->id,
             'heading' => $this->input->post('title'),
-            'body' => preg_replace('/[\x00-\x1F\x80-\xFF]/', '', $this->input->post('body')),
+//            removes emoticons
+//            'body' => preg_replace('/[\x00-\x1F\x80-\xFF]/', '', $this->input->post('body')),
+            'body' => $this->input->post('body'),
             'tagg' => $this->input->post('tags'),
             'create_date' => date('Y/m/d H:i', strtotime($this->input->post('noteDate'))),
             'update_date' => date('Y/m/d H:i'),

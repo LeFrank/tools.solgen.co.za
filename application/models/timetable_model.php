@@ -20,7 +20,7 @@ class timetable_model extends CI_Model {
             'tt_category_id' => $this->input->post('timetableCategory'),
             'create_date' => date('Y/m/d H:i:s'),
             'all_day_event' => ($this->input->post("allDayEvent") == "1") ? 1 : 0,
-            'duration' => date($this->input->post('endDate')) - date($this->input->post('startDate')),
+            'duration' => 0,
             'start_date' => $startdate,
             'end_date' => $enddate,
             'repition_id' => $this->input->post('timetableRepetition'),

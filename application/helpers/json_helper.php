@@ -51,7 +51,7 @@ function eventifyArrayWithCat($events, $timetableCategories){
             "id" => $v->id,
             "title"=>$v->name,
             "description" => $v->description,
-            "start"=>$v->start_date,
+            "start"=> $v->start_date,
             "end"=>$v->end_date,
             "color"=> $color,
             "textColor"=> $color,
