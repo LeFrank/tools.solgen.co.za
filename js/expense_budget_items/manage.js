@@ -1,7 +1,7 @@
 $(function () {
     $("#periodBtn").click(function () {
         $("#baselineItems").slideToggle("slow", function () {
-            console.log("get a previous periods expense items");
+//            console.log("get a previous periods expense items");
             $.ajax({
                 url: "/expense-budget-items/get-period-expense/" + budgetId +"/"+ periodId
             }).done(function (resp) {

@@ -12,10 +12,12 @@
         <p>Start Date: <?php echo $expensePeriod->start_date; ?></p>
         <p>End Date: <?php echo $expensePeriod->end_date; ?></p>
         <p>Description: <?php echo $expenseBudget->description; ?></p>
-
     </div>
 </div>
-<div class="row ">
+<?php 
+    echo $itemsTable;
+?>
+<div class="row expanded">
     <div class="large-12 columns">
         <div>
             <?php

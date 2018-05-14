@@ -62,12 +62,15 @@
             <h3>Capture Budget</h3>
             <?php echo validation_errors(); ?>
 
-            <?php echo form_open('expense-budget/capture') ?>
+            <?php 
+            $attributes = array('name' => 'budgetForm', 'id' => 'budgetForm');
+            
+            echo form_open('expense-budget/capture', $attributes) ?>
             <div class="row expanded">
                 <div class="large-4 columns">
                     <label> Filter by Period *
                     </label>
-                    <select id="expensePeriod" name="expensePeriod">
+                    <select id="expensePeriod" name="expensePeriod" >
                         <option value="0">Current Month</option>
                         <?php
                         foreach ($expensePeriods as $k => $v) {
@@ -86,9 +89,13 @@
                 </div>
             </div>
             <div class="row expanded">
+                <div class="large-12 columns" id="wishlist-items-for-period">
+                </div>
+            </div>
+            <div class="row expanded">
                 <div class="large-12 columns">
                     <label for="description">Description</label>
-                    <textarea name="description" cols="40" rows="5" placeholder="What was special about it, or a description of the expense."></textarea><br/><br/>
+                    <textarea name="description" id="description" cols="40" rows="5" placeholder="What was special about it, or a description of the expense."></textarea><br/><br/>
                 </div>
             </div>
             <input type="submit" name="submit" value="Record" class="button"/>
@@ -97,4 +104,7 @@
     </div>
 </div>
 <script type="text/javascript" src="/js/third_party/jquery.tablesorter.min.js"></script>
-<script type="text/javascript" src="/js/expense_budget_items/manage.js"></script>
+<script type="text/javascript" src="/js/expense_budget/manage.js"></script>
+<script type="text/javascript">
+    var expense_period = <?php echo json_encode($expensePeriods); ?>;
+</script>

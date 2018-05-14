@@ -33,11 +33,20 @@ class ExpensePeriods extends CI_Controller {
         $this->pagination->use_page_numbers = TRUE;
         $this->pagination->cur_page = $page;
         $user = $this->session->userdata("user");
+        $data["statusArr"] = $this->session->flashdata('status');
         $data["expensePeriods"] = mapKeyToId(
             $this->expense_period_model->getExpensePeriods($user->id,$this->pagination->per_page, (($page != null) ? ($page-1) * $this->pagination->per_page : null)), false);
         $data["totalExpensePeriods"] = $this->pagination->total_rows = $this->expense_period_model->getExpensePeriods($user->id, null, null, true);
         $this->load->view('header', getPageTitle($data, $this->toolName, "Manage Expense Periods"));
         $this->load->view('expenses/expense_nav');
+        if (!empty($data["statusArr"])) {
+            $data["status"] = $data["statusArr"]["status"];
+            $data["action_classes"] = strtolower($data["statusArr"]["status"]);
+            $data["action_description"] = $data["statusArr"]["message"];
+            $data["message_classes"] = strtolower($data["statusArr"]["status"]);
+            $data["message"] = $data["statusArr"]["description"];
+            $this->load->view('user/user_status', $data);
+        }
         $this->load->view("expense_periods/manage", $data);
         $this->load->view("footer");
     }
@@ -59,11 +68,14 @@ class ExpensePeriods extends CI_Controller {
             if (!$this->expense_period_model->doesItExist($this->session->userdata("user")->id, $this->input->post('description'))) {
                 $this->expense_period_model->capture_expense_period();
             }
-            $data["status"] = "Created Expense Period";
-            $data["action_classes"] = "success";
-            $data["action_description"] = "Create expense period";
-            $data["message_classes"] = "success";
-            $data["message"] = "You have successfully created an expense period";
+//            $data["status"] = "Created Expense Period";
+//            $data["action_classes"] = "success";
+//            $data["action_description"] = "Create expense period";
+//            $data["message_classes"] = "success";
+//            $data["message"] = "You have successfully created an expense period";
+            $data["statusArr"]["status"] = "Success";
+            $data["statusArr"]["message"] = "Created Expense Period";
+            $data["statusArr"]["description"] = "You have successfully created an expense period";
             $data["expensePeriods"] = mapKeyToId($this->expense_period_model->getExpensePeriods($this->session->userdata("user")->id), false);
             unset($_POST);
             $this->load->view("header");
@@ -71,7 +83,10 @@ class ExpensePeriods extends CI_Controller {
             $this->load->view("user/user_status", $data);
             $this->load->view("expense_periods/manage", $data);
             $this->load->view("footer");
+            $this->session->set_flashdata('status', $data["statusArr"]);
+            redirect("/expense-periods/manage", "refresh");
         }
+        
     }
 
     public function delete($id) {

@@ -129,6 +129,11 @@
                 ?>
             </div>
             <div id="note_content" >
+                <div id="action_content" class="note_action">
+                    <a href="/notes/edit/<?php echo $note->id; ?>">edit</a>
+                    &nbsp;&nbsp;|&nbsp;&nbsp;
+                    <a href="/notes/delete/<?php echo $note->id; ?>"  onclick="return confirm_delete()">delete</a>                            
+                </div>
                 <div id="title_content" class="note_title">
                     <?php echo $note->heading ?>
                 </div>

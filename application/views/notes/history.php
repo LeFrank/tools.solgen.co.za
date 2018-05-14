@@ -62,17 +62,17 @@
                                             </div>
                                         </div>
                                         <div class="row expanded">
-                                           <div class='large-4 columns' >
-                                               Text
+                                            <div class='large-4 columns' >
+                                                Text
                                             </div>
-                                           <div class='large-4 columns' >
-                                               From Date
+                                            <div class='large-4 columns' >
+                                                From Date
                                             </div>
-                                           <div class='large-4 columns' >
-                                               To Date
+                                            <div class='large-4 columns' >
+                                                To Date
                                             </div>
                                         </div>
-                                        <?php    
+                                        <?php
                                         foreach ($searches as $kk => $vv) {
                                             ?>
                                             <div class="row expanded">
@@ -83,7 +83,7 @@
                                                     <a href='/notes/history/search/<?php echo $vv["id"]; ?>' ><?php echo (($vv["start_date"] == "0000-00-00 00:00:00") ? "None" : $vv["start_date"]); ?></a>
                                                 </div>
                                                 <div class='large-4 columns' >
-                                                    <a href='/notes/history/search/<?php echo $vv["id"]; ?>' ><?php echo (($vv["end_date"] == "0000-00-00 00:00:00") ? "None" : $vv["end_date"]) ; ?></a>
+                                                    <a href='/notes/history/search/<?php echo $vv["id"]; ?>' ><?php echo (($vv["end_date"] == "0000-00-00 00:00:00") ? "None" : $vv["end_date"]); ?></a>
                                                 </div>
                                             </div>
                                             <?php
@@ -144,13 +144,20 @@
                         ?>
                     </div>
                     <div id="note_content" >
+                        <div id="action_content" class="note_action">
+                            <a href="/notes/view-note/<?php echo $v["id"]; ?>">view</a>
+                            &nbsp;&nbsp;|&nbsp;&nbsp;   
+                            <a href="/notes/edit/<?php echo $v["id"]; ?>">edit</a>
+                            &nbsp;&nbsp;|&nbsp;&nbsp;
+                            <a href="/notes/delete/<?php echo $v["id"]; ?>"  onclick="return confirm_delete()">delete</a>                            
+                        </div>
                         <div id="title_content" class="note_title">
                             <?php echo $v["heading"] ?>
                         </div>
                         <div id="body_content_<?php echo $v["id"] ?>" class="note_body notes_body_clamp">
                             <?php echo $v["body"] ?>
                         </div>
-                        <div id="showMoreDiv" class="show-content button tiny secondary" data-note-id="<?php echo $v["id"]?>">Show More</div>
+                        <div id="showMoreDiv" class="show-content button tiny secondary" data-note-id="<?php echo $v["id"] ?>">Show More</div>
                         <div id="tags_content" class="note_tagg">
                             <?php echo $v["tagg"] ?>
                         </div>

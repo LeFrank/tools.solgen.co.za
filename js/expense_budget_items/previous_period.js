@@ -3,19 +3,22 @@ $(function () {
         var total = parseFloat("0");
         var expenseTypeArr = $('[id^=epenseType]');
         for (i = 0; i < expenseTypeArr.length; i++) {
-            console.log($(expenseTypeArr[i]).val());
+//            console.log($(expenseTypeArr[i]).val());
             if (isNumber($(expenseTypeArr[i]).val())) {
                 total = total + parseFloat($(expenseTypeArr[i]).val());
             }
         }
         var unassigned =  parseFloat($("#currentBudgetCeiling").val().replace(",","") ).toFixed(2) - total;
-        if(total > parseFloat($("#currentBudgetCeiling").val().replace(",","") ).toFixed(2)){
+        if(parseFloat(total) > parseFloat($("#currentBudgetCeiling").val().replace(",","") )){
             $("#assignmenTxt").html("Items Overrun Limit by: ");
         }else{
             $("#assignmenTxt").html("Unassigned Funds: ");
         }
         $("#unassigned").html(parseFloat(unassigned).toFixed(2));
-        console.log(parseFloat($("#currentBudgetCeiling").val()).toFixed(2) - parseFloat(total).toFixed(2));
+//        console.log(parseFloat($("#currentBudgetCeiling").val()).toFixed(2) - parseFloat(total).toFixed(2));
+        
+        var assigned = parseFloat(total).toFixed(2);
+        $("#assigned").html(parseFloat(assigned).toFixed(2));
     });
     
     $("td").click(function () {

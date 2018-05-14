@@ -12,6 +12,7 @@ class ExpenseBudgetItems extends CI_Controller {
         $this->load->helper("array_helper");
         $this->load->helper('url');
         $this->load->helper('email');
+        $this->load->helper('wishlist');
         $this->load->library('form_validation');
         can_access(
                 $this->require_auth, $this->session);
@@ -20,6 +21,7 @@ class ExpenseBudgetItems extends CI_Controller {
         $this->load->model('expense_budget_item_model');
         $this->load->model('expense_model');
         $this->load->model('expense_type_model');
+        $this->load->model('wishlist_model');
     }
 
     public function capture() {
@@ -76,6 +78,16 @@ class ExpenseBudgetItems extends CI_Controller {
             );
             $data["expenseTypesTotals"] = getArrayOfTypeAmount($expensesForPeriod);
         }
+//        print_r($data["expensePeriod"]);
+        $data["wishlistItemsForPeriod"] = $this->wishlist_model->getItemsbyDateRange($data["expensePeriod"]->start_date, $data["expensePeriod"]->end_date, $this->session->userdata("user")->id);
+//        $data["wishlistItems"] = mapKeyTo($data["wishlistItemsForPeriod"], "expense_type_id");
+//        echo  "<pre>";
+//        print_r(array($data["wishlistItemsForPeriod"], $data["wishlistItems"]));
+//        echo  "</pre>";
+        $data["priorities"] = getWishlistPriorities();
+        $data["statuses"] = getWishlistStatuses();
+        $data["includeActions"] = FALSE;
+        $data["itemsTable"] = $this->load->view('wishlist/itemTable', $data, true);
         $this->load->view('header', getPageTitle($data, $this->toolName, "Budget Item limits"));
         $this->load->view('expenses/expense_nav');
         $this->load->view('expense_budget_item/manage', $data);
@@ -90,10 +102,12 @@ class ExpenseBudgetItems extends CI_Controller {
         $data["expenseBudget"] = $this->expense_budget_model->getExpenseBudget($budgetId);
         $data['previousBudget'] = $this->expense_budget_model->getPreviousBudget($userId, $budgetId);
         $data["expensePeriod"] = $this->expense_period_model->getExpensePeriod($data['previousBudget']->expense_period_id);
+        $data["currentBudgetExpensePeriod"] = $this->expense_period_model->getExpensePeriod($data["expenseBudget"]->expense_period_id);
         $data["previousExpenseBudgetItems"] = mapKeyTo($this->expense_budget_item_model->getExpenseBudgetItems($data['previousBudget']->id) , "expense_type_id" );
 //        echo "<pre>";
 //        print_r($data["previousExpenseBudgetItems"]);
 //        echo "</pre>";
+        $data["wishlistItemsForPeriod"] = $this->wishlist_model->getItemsbyDateRange($data["currentBudgetExpensePeriod"]->start_date, $data["currentBudgetExpensePeriod"]->end_date, $this->session->userdata("user")->id);
         $data["expenseTypes"] = mapKeyToId($this->expense_type_model->get_expense_types());
         $expensesForPeriod = $this->expense_model->getExpensesbyDateRange(
                 date('Y/m/d H:i', strtotime($data["expensePeriod"]->start_date)), date('Y/m/d H:i', strtotime($data["expensePeriod"]->end_date)), $this->session->userdata("user")->id, null, null, "amount", "desc"

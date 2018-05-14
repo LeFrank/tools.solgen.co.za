@@ -10,7 +10,10 @@
         <th>Expense Type</th>
         <th>Target Date</th>
         <th>Status</th>
-        <th>Amount</th>
+        <?php 
+        if(!isset($includeActions) || $includeActions){?>
+            <th>Amount</th>
+        <?php }?>
         <th>Actions</th>
     </thead>
     <tbody>
@@ -27,10 +30,12 @@
             echo "<td>" . $v["target_date"] . "</td>";
             echo "<td>" . $v["status"] . " - " . $statuses[$v["status"]] . "</td>";
             echo "<td class='align-right'>" . $v["cost"] . "</td>";
-            echo "<td><a href='/wishlist/edit/" . $v["id"] . "'>Edit</a>";
-            echo " | ";
-            echo "      <a href='/wishlist/delete/" . $v["id"] . "' onclick='return confirm_delete()'>Delete</a>";
-            echo "</td>";
+            if(!isset($includeActions) ||$includeActions){
+                echo "<td><a href='/wishlist/edit/" . $v["id"] . "'>Edit</a>";
+                echo " | ";
+                echo "      <a href='/wishlist/delete/" . $v["id"] . "' onclick='return confirm_delete()'>Delete</a>";
+                echo "</td>";
+            }
             echo "</tr>";
             $total += $v["cost"];
         }
