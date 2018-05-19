@@ -157,6 +157,9 @@ class resource extends CI_Controller {
 //            readfile($item->full_path);
             header('Content-Type: ' . $item->file_type);
             header('Content-Length: ' . filesize($item->full_path));
+            header("Cache-Control: public");
+            header("Content-Transfer-Encoding: binary\n");
+//            header("Content-Disposition: attachment; file=\"".$item->filename."\"");
 //            readfile($item->full_path);
 //            exit;   
             fpassthru($fp);
@@ -175,10 +178,12 @@ class resource extends CI_Controller {
             header('Content-Disposition: attachment; filename="' . $item->filename . '"');
             header('Expires: 0');
             header('Cache-Control: must-revalidate');
-            header('Pragma: public');
+//            header('Pragma: public');
 //            header('Content-Length: ' . $item->filezise);
             //header('Content-Type: '.$item->file_type);
             header('Content-Length: ' . filesize($item->full_path));
+//            header("Cache-Control: public");
+            header("Content-Transfer-Encoding: binary\n");
             readfile($item->full_path);
 //            readfile($item->full_path);
 //            exit;   
