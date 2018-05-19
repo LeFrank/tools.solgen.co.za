@@ -75,7 +75,7 @@ class resource extends CI_Controller {
     public function do_upload() {
         $userId = $this->session->userdata("user")->id;
         $data["user_content"] = $this->user_content_model->uploadContent(
-                $userId, 'gif|jpg|png|txt|pdf|doc|docx|xls|xlsx|json', $this->toolId, 100000000, $private = 0, $passwordProtect = 0, $this->input->post("description"));
+                $userId, 'gif|jpeg|png|txt|pdf|doc|docx|xls|xlsx|json', $this->toolId, 100000000, $private = 0, $passwordProtect = 0, $this->input->post("description"));
 //        print_r($data["user_content"]);
         if (key_exists("error", $data["user_content"])) {
 //            $this->load->view('resources/view', $data["user_content"]["error"]);
