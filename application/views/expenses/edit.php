@@ -11,7 +11,7 @@
             <input type="number" min="0.01" step="0.01" max="9999999999999" name="amount" value="<?php echo $expense->amount; ?>"/><br />
 
             <label for="expenseType">Expense Type</label>
-            <select name="expenseType">
+            <select name="expenseType" id="expenseType">
                 <?php
                 foreach ($expenseTypes as $k => $v) {
                     echo '<option value="' . $v["id"] . '" ' . (($expense->expense_type_id == $v["id"]) ? "selected" : "" ) . '>' . $v["description"] . '</option>';
@@ -56,5 +56,16 @@
     $(function() {
         $("#expenseDate").datetimepicker();
         CKEDITOR.replace('description');
+        $("#expenseType").change(function () {
+            $.post(
+                    "/expense-types/type/" + $(this).val(),
+                    null
+            ).done(function (resp) {
+                obj =  JSON.parse(resp);
+                if(null != obj.template && obj.template != "" ){
+                    CKEDITOR.instances.description.setData(CKEDITOR.instances.description.getData() + obj.template);
+                }
+            });
+        });
     });
 </script>
