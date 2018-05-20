@@ -11,6 +11,7 @@ class Expense_type_model extends CI_Model {
     public function create_expense_type() {
         $data = array(
             'description' => $this->input->post('description'),
+            'template' => $this->input->post('template'),
             'enabled' => ($this->input->post('enabled')) ? 1 : 0,
             'create_date' => date('Y/m/d H:i:s'),
             'user_id' => $this->session->userdata("user")->id
@@ -20,6 +21,11 @@ class Expense_type_model extends CI_Model {
 
     public function doesItBelongToMe($userId, $id) {
         $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'id' => $id));
+        return $query->num_rows();
+    }
+    
+    public function isItGlobal($userId, $id) {
+        $query = $this->db->get_where($this->tn, array('user_id' => NULL, 'id' => $id));
         return $query->num_rows();
     }
 
@@ -67,6 +73,7 @@ class Expense_type_model extends CI_Model {
     public function update() {
         $data = array(
             "description" => $this->input->post('description'),
+            'template' => $this->input->post('template'),
             "enabled" => ($this->input->post('enabled')) ? 1 : 0,
             "update_date" => date('Y/m/d H:i:s')
         );

@@ -11,6 +11,7 @@
         <table>
             <thead>
             <th>Description</th>
+            <th>Template</th>
             <th>Enabled</th>
             <th>Create Date</th>
             <th>Last Updated</th>
@@ -20,6 +21,7 @@
                 <?php foreach ($expenseTypes as $k => $v) { ?>
                     <tr>    
                         <td><?php echo $v["description"]; ?></td>
+                        <td><?php echo $v["template"]; ?></td>
                         <td><?php echo $v["enabled"]; ?></td>
                         <td><?php echo $v["create_date"]; ?></td>
                         <td><?php echo $v["update_date"]; ?></td>
@@ -48,6 +50,9 @@
     <label for="description">Description *</label>
     <input type="text" name="description" /><br />
 
+    <label for="template">Template</label>
+    <textarea name="template" id="template" cols="40" rows="5" ></textarea><br/><br/>
+    
     <label for="enabled">Expense Type</label>
     <select name="enabled">
         <option value="true">True</option>
@@ -58,3 +63,10 @@
 </div>
     </div>
 </div>
+<script src="/js/third_party/ckeditor/ckeditor.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/jquery.datetimepicker.css"/ >
+<script type="text/javascript">
+    $(function() {
+        CKEDITOR.replace('template');
+    });
+</script>

@@ -127,6 +127,7 @@ $route['expense-types/capture'] = 'expenseTypes/capture';
 $route['expense-types/edit/(:num)'] = 'expenseTypes/edit/$1';
 $route['expense-types/delete/(:num)'] = 'expenseTypes/delete/$1';
 $route['expense-types/update'] = 'expenseTypes/update';
+$route['expense-types/type/(:num)'] = 'expenseTypes/getExpenseTypeById/$1';
 
 
 $route['faq'] = 'faq/index';

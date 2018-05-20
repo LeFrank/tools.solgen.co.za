@@ -89,7 +89,7 @@ class ExpenseTypes extends CI_Controller {
         $mySession = $this->session->userdata("user")->id;
         $data["status"] = "Edit Expense Type";
         //check if this expense type belongs to you?
-        if ($this->expense_type_model->doesItBelongToMe($mySession, $id)) {
+        if ($this->expense_type_model->doesItBelongToMe($mySession, $id) || $this->expense_type_model->isItGlobal($mySession, $id)) {
             $data['expenseType'] = $this->expense_type_model->get_expense_type($id);
             //show new page
             $this->load->view("header");
@@ -109,6 +109,16 @@ class ExpenseTypes extends CI_Controller {
         }
     }
 
+    public function getExpenseTypeById($id=null){
+        if(null == $id){
+            echo json_encode(array("error" => "invalid ID" ));
+        }
+        $mySession = $this->session->userdata("user")->id;
+//        $this->expense_type_model->doesItBelongToMe($mySession, $id);
+        $data['expenseType'] = $this->expense_type_model->get_expense_type($id);
+        echo json_encode($data['expenseType']);
+    }
+    
     public function update() {
         $this->load->helper('form');
         $this->load->helper('url');
