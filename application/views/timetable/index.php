@@ -87,11 +87,11 @@
     <script type='text/javascript'>
         var expenseTypes = <?php echo json_encode($expenseTypes); ?>;
         var timetableCategories = <?php echo json_encode($timetableCategories);?>;
-        console.log(timetableCategories);
         var eventsArray = <?php echo $events; ?>;
         <?php if(isset($currentEvent)){
             echo "var currentEvent = " . $currentEvent .";";
         } ?>
+        var currentDateRange = {"startDate" : "<?php echo $startAndEndDateforMonth[0]; ?>" , "endDate": "<?php echo $startAndEndDateforMonth[1]; ?>"};
     </script>
     <link rel="stylesheet" type="text/css" href="/css/jquery.datetimepicker.css" />
     <link rel="stylesheet" href="/css/third_party/qtip/jquery.qtip.min.css">

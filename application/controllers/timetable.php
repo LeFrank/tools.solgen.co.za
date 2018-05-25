@@ -136,11 +136,19 @@ class Timetable extends CI_Controller {
     }
 
     public function index($data = null) {
+        $this->load->helper("date_helper");
         $data["css"] = "<link href='/css/third_party/fullcalendar/fullcalendar.css' rel='stylesheet' />
                             <link href='/css/third_party/fullcalendar/fullcalendar.print.css' rel='stylesheet' media='print' />";
         $user = $this->session->userdata("user");
+        $data["startAndEndDateforMonth"] = getStartAndEndDateforMonth(date("m"), date('Y'));
         $data["timetableCategories"] = mapKeyToId($this->timetable_category_model->get_user_timetable_Category($user->id));
-        $data["events"] = eventifyArrayWithCat($this->timetable_model->get_user_timetable_events($user->id), $data["timetableCategories"]);
+        $data["events"] = eventifyArrayWithCat(
+                $this->timetable_model->get_user_timetable_events(
+                        $user->id,  
+                        $data["startAndEndDateforMonth"][0],  
+                        $data["startAndEndDateforMonth"][1]
+                    ), $data["timetableCategories"]
+                );
         $data["eventRepetition"] = $this->timetable_repetition_model->get_timetable_repeats($user->id);
         $data["expenseTypes"] = mapKeyToId($this->expense_type_model->get_user_expense_types($user->id), true);
         $data["locations"] = $this->location_model->getLocations($user->id);
@@ -190,7 +198,16 @@ class Timetable extends CI_Controller {
     }
 
     public function timePeriod() {
-        echo __CLASS__ . " >> " . __FUNCTION__;
+//        echo __CLASS__ . " >> " . __FUNCTION__;
+        $user = $this->session->userdata("user");
+        $data["timetableCategories"] = mapKeyToId($this->timetable_category_model->get_user_timetable_Category($user->id));
+        echo eventifyArrayWithCat(
+            $this->timetable_model->get_user_timetable_events(
+                $user->id,  
+                $this->input->post("startDate"),  
+               $this->input->post("endDate")
+            ), $data["timetableCategories"]
+        );
     }
 
     public function view($id) {

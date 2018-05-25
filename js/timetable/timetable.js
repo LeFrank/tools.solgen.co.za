@@ -1,4 +1,5 @@
 var formatDate = "yy-mm-dd";
+var hasDataFor= {"earliestStartDate": moment(currentDateRange.startDate), "oldestEndDate": moment(currentDateRange.endDate)};
 $(document).ready(function () {
     $("#clearForm").click(function () {
         $("input[type=text], textarea").val("");
@@ -24,10 +25,10 @@ $(document).ready(function () {
                 startDate: date
             });
         }
-
     }
     
-    
+    console.log(currentDateRange.startDate);
+    console.log(currentDateRange.endDate);
     
     var myCalendar;
     myCalendar = $('#calendar').fullCalendar({
@@ -72,16 +73,6 @@ $(document).ready(function () {
         $("#fcViewState").val("agendaWeek");
     }).on('click', '.fc-agendaDay-button', function(){
         $("#fcViewState").val("agendaDay");
-    }).on('click', '.fc-next-button', function (date, jsEvent, view){
-        var currentView = $("#fcViewState").val();
-        if(currentView =="" || currentView == "month"){
-            console.log("Get next months data");
-        }else if(currentView =="agendaWeek"){
-            console.log("Get next weeks data");
-        }else if(currentView =="agendaDay"){
-            console.log("Get next days data");
-        }
-        
     });
     
     if (typeof currentEvent !== 'undefined') {
@@ -99,6 +90,76 @@ $(document).ready(function () {
             url: "/timetable/delete/" + $("#id").val()
         });
     });
+    
+    $('.fc-prev-button').click(function (){
+        var currentView = $("#fcViewState").val();
+        if(currentView =="" || currentView == "month"){
+            console.log("Get last months data");
+            var activeMonthStartDate = moment(currentDateRange.startDate);
+            var activeMonthEndDate = moment(currentDateRange.endDate);
+            activeMonthStartDate = activeMonthStartDate.subtract(1, 'month');
+            activeMonthEndDate = activeMonthEndDate.subtract(1, 'month');
+            currentDateRange.startDate = activeMonthStartDate.format();
+            currentDateRange.endDate = activeMonthEndDate.format();
+            if(checkCache(activeMonthStartDate, activeMonthEndDate) ){
+    //            console.log(activeMonthStartDate.format(), activeMonthEndDate.format());
+                $.ajax({
+                    type: "POST",
+                    url: "/timetable/time-period/search/",
+                    data: {
+                        "startDate": activeMonthStartDate.format(), 
+                        "endDate": activeMonthEndDate.format()
+                    },
+                    dataType: "json"
+                }).done(function (resp) {
+//                    console.log(resp);
+                    console.log("getting more data");
+                    myCalendar.fullCalendar( 'addEventSource', resp);
+                });
+            }else{
+                
+            }
+        }else if(currentView =="agendaWeek"){
+            console.log("Get next weeks data");
+        }else if(currentView =="agendaDay"){
+            console.log("Get next days data");
+        }
+    });
+    
+    
+    $('.fc-next-button').click(function (){
+        var currentView = $("#fcViewState").val();
+        if(currentView =="" || currentView == "month"){
+            console.log("Get next months data");
+            var activeMonthStartDate = moment(currentDateRange.startDate);
+            var activeMonthEndDate = moment(currentDateRange.endDate);
+            activeMonthStartDate = activeMonthStartDate.add(1, 'month');
+            activeMonthEndDate = activeMonthEndDate.add(1, 'month');
+            currentDateRange.startDate = activeMonthStartDate.format();
+            currentDateRange.endDate = activeMonthEndDate.format();
+            if(checkCache(activeMonthStartDate, activeMonthEndDate) ){
+                console.log("get the data");
+                $.ajax({
+                    type: "POST",
+                    url: "/timetable/time-period/search/",
+                    data: {
+                        "startDate": activeMonthStartDate.format(), 
+                        "endDate": activeMonthEndDate.format()
+                    },
+                    dataType: "json"
+                }).done(function (resp) {
+//                    console.log(resp);
+                    console.log("getting more data");
+                    myCalendar.fullCalendar( 'addEventSource', resp);
+                });
+            }
+        }else if(currentView =="agendaWeek"){
+            console.log("Get next weeks data");
+        }else if(currentView =="agendaDay"){
+            console.log("Get next days data");
+        }
+    });
+    
     $("#timetableRepetition").change(function () {
         var reps = $("#numberOfRepeats");
         var repsDesc = $("#repeatDescriptor");
@@ -185,3 +246,21 @@ function setEventEdit(eventId) {
             }
         });
     }
+    
+    
+   function checkCache(startDate, endDate){
+       var getData = false;
+       if( startDate.isBefore(hasDataFor.earliestStartDate)){
+           console.log(startDate.format() + " is before " + hasDataFor.earliestStartDate.format());
+           getData = true;
+           hasDataFor.earliestStartDate = startDate;
+           console.log(hasDataFor);
+       }
+       if( endDate.isAfter(hasDataFor.oldestEndDate)){
+           console.log(endDate.format() + " is after " + hasDataFor.oldestEndDate.format());
+           getData = true;
+           hasDataFor.oldestEndDate = endDate;
+           console.log(hasDataFor);
+       }
+       return getData;
+   }
