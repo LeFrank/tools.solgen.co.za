@@ -27,8 +27,8 @@ $(document).ready(function () {
         }
     }
     
-    console.log(currentDateRange.startDate);
-    console.log(currentDateRange.endDate);
+//    console.log(currentDateRange.startDate);
+//    console.log(currentDateRange.endDate);
     
     var myCalendar;
     myCalendar = $('#calendar').fullCalendar({
@@ -80,7 +80,7 @@ $(document).ready(function () {
     }
     
     if($("#fcViewState").val() != ""){
-        console.log($("#fcViewState").val());
+//        console.log($("#fcViewState").val());
         myCalendar.fullCalendar('changeView', $("#fcViewState").val());
     }
 
@@ -94,7 +94,7 @@ $(document).ready(function () {
     $('.fc-prev-button').click(function (){
         var currentView = $("#fcViewState").val();
         if(currentView =="" || currentView == "month"){
-            console.log("Get last months data");
+//            console.log("Get last months data");
             var activeMonthStartDate = moment(currentDateRange.startDate);
             var activeMonthEndDate = moment(currentDateRange.endDate);
             activeMonthStartDate = activeMonthStartDate.subtract(1, 'month');
@@ -113,7 +113,7 @@ $(document).ready(function () {
                     dataType: "json"
                 }).done(function (resp) {
 //                    console.log(resp);
-                    console.log("getting more data");
+//                    console.log("getting more data");
                     myCalendar.fullCalendar( 'addEventSource', resp);
                 });
             }else{
@@ -130,7 +130,7 @@ $(document).ready(function () {
     $('.fc-next-button').click(function (){
         var currentView = $("#fcViewState").val();
         if(currentView =="" || currentView == "month"){
-            console.log("Get next months data");
+//            console.log("Get next months data");
             var activeMonthStartDate = moment(currentDateRange.startDate);
             var activeMonthEndDate = moment(currentDateRange.endDate);
             activeMonthStartDate = activeMonthStartDate.add(1, 'month');
@@ -138,7 +138,7 @@ $(document).ready(function () {
             currentDateRange.startDate = activeMonthStartDate.format();
             currentDateRange.endDate = activeMonthEndDate.format();
             if(checkCache(activeMonthStartDate, activeMonthEndDate) ){
-                console.log("get the data");
+//                console.log("get the data");
                 $.ajax({
                     type: "POST",
                     url: "/timetable/time-period/search/",
@@ -149,7 +149,7 @@ $(document).ready(function () {
                     dataType: "json"
                 }).done(function (resp) {
 //                    console.log(resp);
-                    console.log("getting more data");
+//                    console.log("getting more data");
                     myCalendar.fullCalendar( 'addEventSource', resp);
                 });
             }
@@ -251,16 +251,16 @@ function setEventEdit(eventId) {
    function checkCache(startDate, endDate){
        var getData = false;
        if( startDate.isBefore(hasDataFor.earliestStartDate)){
-           console.log(startDate.format() + " is before " + hasDataFor.earliestStartDate.format());
+//           console.log(startDate.format() + " is before " + hasDataFor.earliestStartDate.format());
            getData = true;
            hasDataFor.earliestStartDate = startDate;
-           console.log(hasDataFor);
+//           console.log(hasDataFor);
        }
        if( endDate.isAfter(hasDataFor.oldestEndDate)){
-           console.log(endDate.format() + " is after " + hasDataFor.oldestEndDate.format());
+//           console.log(endDate.format() + " is after " + hasDataFor.oldestEndDate.format());
            getData = true;
            hasDataFor.oldestEndDate = endDate;
-           console.log(hasDataFor);
+//           console.log(hasDataFor);
        }
        return getData;
    }
