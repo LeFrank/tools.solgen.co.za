@@ -172,7 +172,7 @@ class resource extends CI_Controller {
         $item = $this->user_content_model->getUserContentitem($userId, $id);
 
         if (file_exists($item->full_path)) {
-            $fp = fopen($item->full_path, 'rb');
+            $fp = fopen($item->full_path, 'r');
             header('Content-Description: File Transfer');
             header('Content-Type: application/octet-stream');
             header('Content-Disposition: attachment; filename="' . $item->filename . '"');

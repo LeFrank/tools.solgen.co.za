@@ -37,4 +37,6 @@ CKEDITOR.editorConfig = function( config ) {
 	config.removeDialogTabs = 'image:advanced;link:advanced';
         config.height = 300;   
         config.extraPlugins = 'save';
+        config.extraPlugins = 'ckawesome';
+//        config.extraPlugins = 'emojione';
 };

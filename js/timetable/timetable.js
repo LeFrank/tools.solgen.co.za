@@ -219,6 +219,7 @@ $(document).ready(function () {
 });
 
 function setEventEdit(eventId) {
+    console.log("Clicked!! ");
         $.ajax({
             type: "GET",
             url: "/timetable/view/" + eventId

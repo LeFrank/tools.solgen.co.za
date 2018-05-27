@@ -104,8 +104,8 @@ class Wishlist extends CI_Controller {
         $userId = $this->session->userdata("user")->id;
         $data["expenseTypes"] = mapKeyToId($this->expense_type_model->get_user_expense_types($userId));
         $data["includeActions"] = True;
-        if ($this->input->post("actions") == null || !$this->input->post("actions")) {
-            $data["includeActions"] = $this->input->post("actions");
+        if ($this->input->post("includeActions") != null && $this->input->post("includeActions")) {
+            $data["includeActions"] = False;
         }
         $data["itemsTable"] = $this->load->view('wishlist/itemTable', $data, true);
         echo $data["itemsTable"];

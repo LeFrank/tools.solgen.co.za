@@ -129,6 +129,13 @@ $route['expense-types/delete/(:num)'] = 'expenseTypes/delete/$1';
 $route['expense-types/update'] = 'expenseTypes/update';
 $route['expense-types/type/(:num)'] = 'expenseTypes/getExpenseTypeById/$1';
 
+$route['health'] = 'health/index';
+$route['health/metrics'] = 'health/metricsView';
+$route['health/exercise/tracker'] = 'health/exerciseTrackerView';
+$route['health/diet'] = 'health/dietView';
+$route['health/emotion/tracker'] = 'health/emotionTracker';
+$route['health/medical/history'] = 'health/medicalhistory';
+$route['health/option'] = 'health/options';
 
 $route['faq'] = 'faq/index';
 

@@ -10,11 +10,11 @@
         <th>Expense Type</th>
         <th>Target Date</th>
         <th>Status</th>
+            <th>Amount</th>
         <?php 
         if(!isset($includeActions) || $includeActions){?>
-            <th>Amount</th>
-        <?php }?>
         <th>Actions</th>
+        <?php }?>
     </thead>
     <tbody>
         <?php

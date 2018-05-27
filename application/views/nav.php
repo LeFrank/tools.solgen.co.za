@@ -24,4 +24,6 @@
         &nbsp;&nbsp;    
         <a href="/resources" ><img src="/images/third_party/icons/resources.svg"  class="nav-icon-long svg-invert" alt="Picture"> Resources</a>
         &nbsp;&nbsp;   
+        <a href="/health" ><img src="/images/third_party/icons/heart.svg"  class="nav-icon-long svg-invert" alt="Picture"> Health</a>
+        &nbsp;&nbsp;  
         <a href="/faq" >FAQ</a>

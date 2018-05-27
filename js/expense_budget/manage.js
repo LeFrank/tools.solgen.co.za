@@ -22,11 +22,11 @@ $("#expensePeriod").change(function () {
         var selectedObj = getObjects(expense_period, "id", $("#expensePeriod").val());
     //    $("#fromDate").val(selectedObj[0]["start_date"]);
     //    $("#toDate").val(selectedObj[0]["end_date"]);
-        console.log(selectedObj[0]["start_date"]);
-        console.log(selectedObj[0]["end_date"]);
+//        console.log(selectedObj[0]["start_date"]);
+//        console.log(selectedObj[0]["end_date"]);
         $.post(
             "/wishlist/filter-search",
-            "fromDate=" + selectedObj[0]["start_date"] + "&toDate="+selectedObj[0]["end_date"] + "&actions=0"
+            "fromDate=" + selectedObj[0]["start_date"] + "&toDate="+selectedObj[0]["end_date"] + "&includeActions=false"
         ).done(function (resp) {
 //            console.log(resp);
             $("#wishlist-items-for-period").html(resp);
