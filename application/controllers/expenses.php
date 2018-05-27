@@ -369,6 +369,7 @@ class Expenses extends CI_Controller {
         } else {
             $data["startAndEndDateforMonth"] = array($this->input->post("fromDate"), $this->input->post("toDate"));
         }
+//        print_r($data["startAndEndDateforMonth"]);
         $data["expenseTypes"] = mapKeyToId($this->expense_type_model->get_expense_types());
         $data["expensePaymentMethod"] = mapKeyToId($this->payment_method_model->get_user_payment_method($this->session->userdata("user")->id), true);
         $data["expensePeriods"] = $this->expense_period_model->getExpensePeriods($this->session->userdata("user")->id, 5, null);
@@ -395,7 +396,9 @@ class Expenses extends CI_Controller {
         $data["expenseTypes"] = mapKeyToId($this->expense_type_model->get_expense_types());
         $data["eventsBudget"] = $this->load->view('expense_budget_item/manage', $data, true);
         $data["eventsBudgetItems"] = $this->load->view('expense_budget_item/budget_items_assigned', $data, true);
-
+//        echo "<pre>";
+//        print_r($data);
+//        echo "</pre>";
         $this->load->view('header', getPageTitle($data, $this->toolName, "Stats"));
         $this->load->view('expenses/expense_nav');
         $this->load->view('expenses/statistics', $data);

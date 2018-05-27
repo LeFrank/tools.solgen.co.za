@@ -28,3 +28,9 @@ function getNextSevenDays(){
     $return[1] = date('Y/m/d H:i',mktime(23, 59, 0, date("m"), date("d")+7 , date("Y")));
     return $return;
 }
+
+function getPastSevenDays(){
+    $return[0] = date('Y/m/d H:i',mktime(0, 0, 0, date("m"),date("d")-7 , date("Y")));
+    $return[1] = date('Y/m/d H:i',mktime(23, 59, 0, date("m"), date("d") , date("Y")));
+    return $return;
+}
