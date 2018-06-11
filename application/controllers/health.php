@@ -32,7 +32,7 @@ class health extends CI_Controller {
         $data["startAndEndDate"] = getPastSevenDays();
         $this->load->view('header', getPageTitle($data, $this->toolName, "Health"));
         $this->load->view('health/health_nav');
-//        $this->load->view('expenses/history', $data);
+        $this->load->view('health/overview');
         $this->load->view('footer');
     }
     

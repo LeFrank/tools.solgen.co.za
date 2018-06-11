@@ -21,13 +21,13 @@ CREATE TABLE `solgen`.`health_metric` (
 ALTER TABLE `solgen`.`health_metric` 
 CHANGE COLUMN `create_date` `create_date` TIMESTAMP NULL DEFAULT now() ;
 
-ALTER TABLE `solgen`.`health_metric` 
+ALTER TABLE `health_metric` 
 ADD COLUMN `user_id` INT(11) NULL AFTER `id`;
 
-ALTER TABLE `solgen`.`health_metric` 
+ALTER TABLE `health_metric` 
 CHANGE COLUMN `id` `id` INT(11) NOT NULL AUTO_INCREMENT ;
 
-ALTER TABLE `solgen`.`health_metric` 
+ALTER TABLE `health_metric` 
 CHANGE COLUMN `weight` `weight` FLOAT(5,2) NULL DEFAULT NULL ,
 CHANGE COLUMN `waist` `waist` FLOAT(5,2) NULL DEFAULT NULL ,
 CHANGE COLUMN `sleep` `sleep` FLOAT(5,2) NULL DEFAULT NULL ;
