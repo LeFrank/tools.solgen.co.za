@@ -133,6 +133,7 @@ $route['health'] = 'health/index';
 $route['health/metrics'] = 'health/metricsView';
 $route['health/metric/capture'] = 'health/metricsCapture';
 $route['health/exercise/tracker'] = 'health/exerciseTrackerView';
+$route['health/exercise/capture'] = 'health/exerciseCapture';
 $route['health/diet'] = 'health/dietView';
 $route['health/emotion/tracker'] = 'health/emotionTracker';
 $route['health/medical/history'] = 'health/medicalhistory';

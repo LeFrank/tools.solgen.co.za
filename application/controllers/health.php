@@ -24,12 +24,15 @@ class health extends CI_Controller {
                 $this->require_auth, $this->session);
         $this->load->helper('usability_helper');
         $this->load->model("health_metric_model");
+        $this->load->model("exercise_type_model");
+        $this->load->model("health_exercise_tracker_model");
      }
     //put your code here
     
     public function index(){
         $data = array();
         $data["startAndEndDate"] = getPastSevenDays();
+        $data["healthMetrics"] = $this->health_metric_model->getHealthMetricByDateRange($data["startAndEndDate"][0], $data["startAndEndDate"][1], $this->session->userdata("user")->id);
         $this->load->view('header', getPageTitle($data, $this->toolName, "Health"));
         $this->load->view('health/health_nav');
         $this->load->view('health/overview');
@@ -71,8 +74,41 @@ class health extends CI_Controller {
     }
     
     public function exerciseTrackerView(){
-        echo __CLASS__ . " >> ". __FUNCTION__ . " >> " . __LINE__;
+        $userId = $this->session->userdata("user")->id;
+        $data["startAndEndDate"] = getPastSevenDays();
+        $data["exercises"] = $this->health_exercise_tracker_model->getuserExercisesByDateRange($data["startAndEndDate"][0], $data["startAndEndDate"][1], $this->session->userdata("user")->id);
+        $data["expenseTypes"] = $this->exercise_type_model->get_user_exercise_types($userId);
+        $data["statusArr"] = $this->session->flashdata('status');
+        $this->load->view('header', getPageTitle($data, $this->toolName, "Health"));
+        if (!empty($data["statusArr"])) {
+            $data["status"] = $data["statusArr"]["status"];
+            $data["action_classes"] = strtolower($data["statusArr"]["status"]);
+            $data["action_description"] = $data["statusArr"]["message"];
+            $data["message_classes"] = strtolower($data["statusArr"]["status"]);
+            $data["message"] = $data["statusArr"]["description"];
+            $this->load->view('user/user_status', $data);
+        }
+        $this->load->view('health/health_nav');
+        $this->load->view('health/exercise/index', $data);
+        $this->load->view('footer');
     }
+    
+    public function exerciseCapture(){
+        $userId = $this->session->userdata("user")->id;
+        if ($this->health_exercise_tracker_model->capture_exercise()) {
+            $data["statusArr"]["status"] = "Success";
+            $data["statusArr"]["message"] = "Captured the metric has been added.";
+            $data["statusArr"]["description"] = "You have successfully captured a metric. well done!!";
+        } else {
+            $data["statusArr"]["status"] = "Failure";
+            $data["statusArr"]["message"] = "OOooops something went wrong";
+            $data["statusArr"]["description"] = "Please check that are fields are correctly completed and try again.";
+        }
+
+        $this->session->set_flashdata('status', $data["statusArr"]);
+        redirect("/health/metrics", "refresh");
+    }
+    
 
     public function dietView(){
         echo __CLASS__ . " >> ". __FUNCTION__ . " >> " . __LINE__;

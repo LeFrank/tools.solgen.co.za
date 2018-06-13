@@ -160,7 +160,7 @@
                         <div id="note_stat" >
                             Characters: <?php echo number_format(strlen($v["body"]),0, '', ','); ?> |
                             Words: <?php echo number_format(str_word_count($v["body"]),0, '', ','); ?> |
-                            Lines: <?php echo number_format(count(preg_split('/\n|\r/',$v["body"])),0, '', ','); ?> |
+                            Lines: <?php echo number_format(count(preg_split('/\n|\r/',$v["body"])),0, '', ','); ?>
 
                         </div>
                         <div id="showMoreDiv" class="show-content button tiny secondary" data-note-id="<?php echo $v["id"] ?>">Show More</div>

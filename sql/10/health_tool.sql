@@ -31,3 +31,37 @@ ALTER TABLE `health_metric`
 CHANGE COLUMN `weight` `weight` FLOAT(5,2) NULL DEFAULT NULL ,
 CHANGE COLUMN `waist` `waist` FLOAT(5,2) NULL DEFAULT NULL ,
 CHANGE COLUMN `sleep` `sleep` FLOAT(5,2) NULL DEFAULT NULL ;
+
+CREATE TABLE `health_exercise_tracker` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `user_id` INT(11) NULL,
+  `created_date` TIMESTAMP NULL,
+  `start_date` TIMESTAMP NULL,
+  `end_date` TIMESTAMP NULL,
+  `exercise_type_id` INT(11) NULL,
+  `distance` INT(11) NULL,
+  `difficulty` INT(2) NULL,
+  PRIMARY KEY (`id`));
+
+
+CREATE TABLE `solgen`.`exercise_type` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `user_id` INT(11) NULL,
+  `name` VARCHAR(255) NULL,
+  `description` VARCHAR(500) NULL,
+  `created_date` TIMESTAMP NULL,
+  `default_measurement_name` VARCHAR(255) NULL,
+  PRIMARY KEY (`id`));
+
+ALTER TABLE `health_exercise_tracker` 
+ADD COLUMN `measurement_value` INT(11) NULL AFTER `exercise_type_id`;
+
+
+INSERT INTO `exercise_type` 
+(`user_id`, `name`, `description`, `created_date`, `default_measurement_name`) VALUES 
+(null, 'Walking', 'Walking ', now(), 'Steps');
+
+
+
+ALTER TABLE `health_exercise_tracker` 
+ADD COLUMN `note` TEXT NULL AFTER `difficulty`;
