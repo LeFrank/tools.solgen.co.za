@@ -26,10 +26,10 @@
                 <div class="large-2 columns">
                     <label for="exerciseType">Exercise Type</label>
                     <select name="exerciseType" id="exerciseType" >
-                        <?php 
-                            foreach($expenseTypes as $k=>$v){
-                                echo "<option value='".$v["id"]."'>".$v["name"]."</option>";
-                            }
+                        <?php
+                        foreach ($expenseTypes as $k => $v) {
+                            echo "<option value='" . $v["id"] . "'>" . $v["name"] . "</option>";
+                        }
                         ?>
                     </select>
                 </div>
@@ -62,49 +62,65 @@
     </div>
 </div>
 <hr/>
+<div class="row expanded">
+    <?php echo form_open('/health/exercise/tracker') ?>
+    <div class="large-4 columns" >
+        <label>
+            from<input type="text" name="fromDate" id="fromDate" value="<?php echo $startDate; ?>"/>
+        </label>
+    </div>
+    <div class="large-4 columns" >
+        <label>
+            To<input type="text" name="toDate" id="toDate" value="<?php echo $endDate; ?>"/> 
+        </label>
+    </div>
+    <div class="large-4 columns" style="vertical-align: central;margin-top:15px;" >
+        <input type="submit" name="filter" value="Filter" id="filter"  class="button"/>
+    </div>
+    <?php echo form_close(); ?>
+</div>
 <div class="row expanded" >
     <div class="large-12 columns" >
-        Metrics from <?php echo $startAndEndDate[0]; ?> to <?php echo $startAndEndDate[1]; ?><br/><br/>
-            <?php if (is_array($exercises) && !empty($exercises)) {
-                ?>
-                <table id="health_metrics_history" class="tablesorter responsive">
-                    <thead>
-                        <tr>
-                            <th>Start Date</th>
-                            <th>End Date</th>
-                            <th>Exercise Type</th>
-                            <th>Measurement</th>
-                            <th>Distance (meters)</th>
-                            <th>Difficulty</th>
-                            <th>Description</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        foreach ($exercises as $k => $v) {
-                            echo "<tr>";
-                            echo "<td>" . date_format(date_create($v["start_date"]), "l, d F Y @ H:i") . "</td>";
-                            echo "<td>" . date_format(date_create($v["end_date"]), "l, d F Y @ H:i") . "</td>";
-                            echo "<td>" . $v["exercise_type_id"] . "</td>";
-                            echo "<td>" . $v["measurement_value"] . "</td>";
-                            echo "<td>" . $v["distance"] . "</td>";
-                            echo "<td>" . $v["difficulty"] . "</td>";
-                            echo "<td>" . $v["description"] . "</td>";
-                            echo "<td><a href='/health/metric/edit/" . $v["id"] . "'>Edit</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href='/health/metric/delete/" . $v["id"] . "' onclick='return confirm_delete()'>Delete</a></td>";
-                            echo "</tr>";
-                        }
-                        ?>
-                    </tbody>
-                </table>
-                <?php
-            } else {
-                echo "No metrics captured yet.";
-            }
+        <?php if (is_array($exercises) && !empty($exercises)) {
             ?>
+            <table id="health_metrics_history" class="tablesorter responsive">
+                <thead>
+                    <tr>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Exercise Type</th>
+                        <th>Measurement</th>
+                        <th>Distance (meters)</th>
+                        <th>Difficulty</th>
+                        <th>Description</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    foreach ($exercises as $k => $v) {
+                        echo "<tr>";
+                        echo "<td>" . date_format(date_create($v["start_date"]), "l, d F Y @ H:i") . "</td>";
+                        echo "<td>" . date_format(date_create($v["end_date"]), "l, d F Y @ H:i") . "</td>";
+                        echo "<td>" . $v["exercise_type_id"] . "</td>";
+                        echo "<td>" . $v["measurement_value"] . "</td>";
+                        echo "<td>" . $v["distance"] . "</td>";
+                        echo "<td>" . $v["difficulty"] . "</td>";
+                        echo "<td>" . $v["description"] . "</td>";
+                        echo "<td><a href='/health/metric/edit/" . $v["id"] . "'>Edit</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href='/health/metric/delete/" . $v["id"] . "' onclick='return confirm_delete()'>Delete</a></td>";
+                        echo "</tr>";
+                    }
+                    ?>
+                </tbody>
+            </table>
+            <?php
+        } else {
+            echo "No metrics captured yet.";
+        }
+        ?>
     </div>
 </div>
-    
+
 <script src="/js/third_party/ckeditor/ckeditor.js"></script>
 <link rel="stylesheet" type="text/css" href="/css/jquery.datetimepicker.css" />
 <script src="/js/jquery.datetimepicker.js"></script>
@@ -115,6 +131,8 @@
     $(function () {
         $("#exerciseStartDate").datetimepicker();
         $("#exerciseEndDate").datetimepicker();
+        $("#fromDate").datetimepicker();
+        $("#toDate").datetimepicker();
         CKEDITOR.replace('description');
     });
 </script>

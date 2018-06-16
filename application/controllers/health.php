@@ -20,6 +20,7 @@ class health extends CI_Controller {
         $this->load->helper('email');
         $this->load->helper("date_helper");
         $this->load->library('form_validation');
+        $this->load->library("input");
         can_access(
                 $this->require_auth, $this->session);
         $this->load->helper('usability_helper');
@@ -40,8 +41,30 @@ class health extends CI_Controller {
     }
     
     public function metricsView(){
-        $data["startAndEndDate"] = getPastSevenDays();
-        $data["healthMetrics"] = $this->health_metric_model->getHealthMetricByDateRange($data["startAndEndDate"][0], $data["startAndEndDate"][1], $this->session->userdata("user")->id);
+        $startDate = $endDate = null;
+        if(null != $this->input->post("fromDate")){
+            $startDate = $this->input->post("fromDate");
+        }
+        if(null != $this->input->post("toDate")){
+            $endDate = $this->input->post("toDate");
+        }
+        if($startDate == null){
+            $startDate = date('Y/m/d H:i', strtotime('-1 month'));
+        }else{
+            $startDate = date('Y/m/d H:i', strtotime($startDate));
+        }
+//        echo $startDate;
+        if($endDate== null ){
+            $endDate = date('Y/m/d H:i', strtotime("now"));
+        }else{
+            $endDate = date('Y/m/d H:i', strtotime($endDate));
+        }
+//        echo "<br/>".$endDate;
+        $search["startDate"] = $startDate;
+        $search["endDate"] = $endDate;
+        $data["startDate"] = $startDate;
+        $data["endDate"] = $endDate;
+        $data["healthMetrics"] = $this->health_metric_model->getHealthMetricByDateRange($data["startDate"], $data["endDate"], $this->session->userdata("user")->id);
         $data["statusArr"] = $this->session->flashdata('status');
         $this->load->view('header', getPageTitle($data, $this->toolName, "Health"));
         if (!empty($data["statusArr"])) {
@@ -74,9 +97,31 @@ class health extends CI_Controller {
     }
     
     public function exerciseTrackerView(){
+        $startDate = $endDate = null;
+        if(null != $this->input->post("fromDate")){
+            $startDate = $this->input->post("fromDate");
+        }
+        if(null != $this->input->post("toDate")){
+            $endDate = $this->input->post("toDate");
+        }
+        if($startDate == null){
+            $startDate = date('Y/m/d H:i', strtotime('-1 month'));
+        }else{
+            $startDate = date('Y/m/d H:i', strtotime($startDate));
+        }
+//        echo $startDate;
+        if($endDate== null ){
+            $endDate = date('Y/m/d H:i', strtotime("now"));
+        }else{
+            $endDate = date('Y/m/d H:i', strtotime($endDate));
+        }
+//        echo "<br/>".$endDate;
+        $search["startDate"] = $startDate;
+        $search["endDate"] = $endDate;
+        $data["startDate"] = $startDate;
+        $data["endDate"] = $endDate;
         $userId = $this->session->userdata("user")->id;
-        $data["startAndEndDate"] = getPastSevenDays();
-        $data["exercises"] = $this->health_exercise_tracker_model->getuserExercisesByDateRange($data["startAndEndDate"][0], $data["startAndEndDate"][1], $this->session->userdata("user")->id);
+        $data["exercises"] = $this->health_exercise_tracker_model->getuserExercisesByDateRange($data["startDate"], $data["endDate"], $this->session->userdata("user")->id);
         $data["expenseTypes"] = $this->exercise_type_model->get_user_exercise_types($userId);
         $data["statusArr"] = $this->session->flashdata('status');
         $this->load->view('header', getPageTitle($data, $this->toolName, "Health"));

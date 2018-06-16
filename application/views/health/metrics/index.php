@@ -48,45 +48,61 @@
     </div>
 </div>
 <hr/>
+<div class="row expanded">
+    <?php echo form_open('/health/metrics') ?>
+    <div class="large-4 columns" >
+        <label>
+            from<input type="text" name="fromDate" id="fromDate" value="<?php echo $startDate; ?>"/>
+        </label>
+    </div>
+    <div class="large-4 columns" >
+        <label>
+            To<input type="text" name="toDate" id="toDate" value="<?php echo $endDate; ?>"/> 
+        </label>
+    </div>
+    <div class="large-4 columns" style="vertical-align: central;margin-top:15px;" >
+        <input type="submit" name="filter" value="Filter" id="filter"  class="button"/>
+    </div>
+    <?php echo form_close(); ?>
+</div>
 <div class="row expanded" >
     <div class="large-12 columns" >
-        Metrics from <?php echo $startAndEndDate[0]; ?> to <?php echo $startAndEndDate[1]; ?><br/><br/>
-            <?php if (is_array($healthMetrics) && !empty($healthMetrics)) {
-                ?>
-                <table id="health_metrics_history" class="tablesorter responsive">
-                    <thead>
-                        <tr>
-                            <th>Date</th>
-                            <th>Weight</th>
-                            <th>Waist</th>
-                            <th>Sleep</th>
-                            <th>note</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        foreach ($healthMetrics as $k => $v) {
-                            echo "<tr>";
-                            echo "<td>" . date_format(date_create($v["measurement_date"]), "l, d F Y @ H:i") . "</td>";
-                            echo "<td>" . $v["weight"] . "</td>";
-                            echo "<td>" . $v["waist"] . "</td>";
-                            echo "<td>" . $v["sleep"] . "</td>";
-                            echo "<td>" . $v["note"] . "</td>";
-                            echo "<td><a href='/health/metric/edit/" . $v["id"] . "'>Edit</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href='/health/metric/delete/" . $v["id"] . "' onclick='return confirm_delete()'>Delete</a></td>";
-                            echo "</tr>";
-                        }
-                        ?>
-                    </tbody>
-                </table>
-                <?php
-            } else {
-                echo "No metrics captured yet.";
-            }
+        <?php if (is_array($healthMetrics) && !empty($healthMetrics)) {
             ?>
+            <table id="health_metrics_history" class="tablesorter responsive">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Weight</th>
+                        <th>Waist</th>
+                        <th>Sleep</th>
+                        <th>note</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    foreach ($healthMetrics as $k => $v) {
+                        echo "<tr>";
+                        echo "<td>" . date_format(date_create($v["measurement_date"]), "l, d F Y @ H:i") . "</td>";
+                        echo "<td>" . $v["weight"] . "</td>";
+                        echo "<td>" . $v["waist"] . "</td>";
+                        echo "<td>" . $v["sleep"] . "</td>";
+                        echo "<td>" . $v["note"] . "</td>";
+                        echo "<td><a href='/health/metric/edit/" . $v["id"] . "'>Edit</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href='/health/metric/delete/" . $v["id"] . "' onclick='return confirm_delete()'>Delete</a></td>";
+                        echo "</tr>";
+                    }
+                    ?>
+                </tbody>
+            </table>
+            <?php
+        } else {
+            echo "No metrics captured yet.";
+        }
+        ?>
     </div>
 </div>
-    
+
 <script src="/js/third_party/ckeditor/ckeditor.js"></script>
 <link rel="stylesheet" type="text/css" href="/css/jquery.datetimepicker.css" />
 <script src="/js/jquery.datetimepicker.js"></script>
@@ -96,6 +112,8 @@
 <script type="text/javascript">
     $(function () {
         $("#metricDate").datetimepicker();
+        $("#fromDate").datetimepicker();
+        $("#toDate").datetimepicker();
         CKEDITOR.replace('note');
     });
 </script>
