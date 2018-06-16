@@ -20,18 +20,19 @@
         <?php
         $total = 0.0;
         foreach ($wishlistItemsForPeriod as $k => $v) {
+            $status = "wishlist-status-". strtolower(str_replace(" ", "-",$statuses[$v["status"]]));
             echo "<tr>";
-            echo "<td>" . ++$k . "</td>";
-            echo "<td>" . $v["name"] . "</td>";
-            echo "<td>" . $v["description"] . "</td>";
-            echo "<td>" . $v["reason"] . "</td>";
-            echo "<td>" . $v["priority"] . " - " . $priorities[$v["priority"]] . "</td>";
-            echo "<td>" . $expenseTypes[$v["expense_type_id"]]["description"] . "</td>";
-            echo "<td>" . $v["target_date"] . "</td>";
-            echo "<td>" . $v["status"] . " - " . $statuses[$v["status"]] . "</td>";
-            echo "<td class='align-right'>" . $v["cost"] . "</td>";
+            echo "<td class='".$status."'>" . ++$k . "</td>";
+            echo "<td class='".$status."'>" . $v["name"] . "</td>";
+            echo "<td class='".$status."'>" . $v["description"] . "</td>";
+            echo "<td class='".$status."'>" . $v["reason"] . "</td>";
+            echo "<td class='".$status."'>" . $v["priority"] . " - " . $priorities[$v["priority"]] . "</td>";
+            echo "<td class='".$status."'>" . $expenseTypes[$v["expense_type_id"]]["description"] . "</td>";
+            echo "<td class='".$status."'>" . $v["target_date"] . "</td>";
+            echo "<td class='".$status."'>" . $v["status"] . " - " . $statuses[$v["status"]] . "</td>";
+            echo "<td class='align-right ".$status."'>" . $v["cost"] . "</td>";
             if(!isset($includeActions) ||$includeActions){
-                echo "<td><a href='/wishlist/edit/" . $v["id"] . "'>Edit</a>";
+                echo "<td ><a href='/wishlist/edit/" . $v["id"] . "'>Edit</a>";
                 echo " | ";
                 echo "      <a href='/wishlist/delete/" . $v["id"] . "' onclick='return confirm_delete()'>Delete</a>";
                 echo "</td>";

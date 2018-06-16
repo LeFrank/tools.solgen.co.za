@@ -8,7 +8,7 @@
 <div class="row expanded">
     <div class="large-12 columns">
         <h2>Recent Wishlist Items</h2>
-        <div id="latestItems">
+        <div id="latestItems" style="overflow-x:auto;">
             <h3>Five Latest Items</h3>
             <?php if (is_array($wishlistItems) && !empty($wishlistItems)) {
                 ?>
@@ -29,17 +29,18 @@
                         <?php
                         $total = 0.0;
                         foreach ($wishlistItems as $k => $v) {
+                            $status = "wishlist-status-". strtolower(str_replace(" ", "-",$statuses[$v["status"]]));
                             echo "<tr>";
-                            echo "<td>" . ++$k . "</td>";
-                            echo "<td>" . $v["name"] . "</td>";
-                            echo "<td>" . $v["description"] . "</td>";
-                            echo "<td>" . $v["reason"] . "</td>";
-                            echo "<td>" . $priorities[$v["priority"]] . "</td>";
-                            echo "<td>" . $expenseTypes[$v["expense_type_id"]]["description"] . "</td>";
-                            echo "<td>" . $v["target_date"] . "</td>";
-                            echo "<td>" . $statuses[$v["status"]] . "</td>";
-                            echo "<td class='align-right'>" . $v["cost"] . "</td>";
-                            echo "<td><a href='/wishlist/edit/" . $v["id"] . "'>Edit</a>&nbsp;&nbsp;|&nbsp;&nbsp;"
+                            echo "<td class='".$status."'>" . ++$k . "</td>";
+                            echo "<td class='".$status."'>" . $v["name"] . "</td>";
+                            echo "<td class='".$status."'>" . $v["description"] . "</td>";
+                            echo "<td class='".$status."'>" . $v["reason"] . "</td>";
+                            echo "<td class='".$status."'>" . $priorities[$v["priority"]] . "</td>";
+                            echo "<td class='".$status."'>" . $expenseTypes[$v["expense_type_id"]]["description"] . "</td>";
+                            echo "<td class='".$status."'>" . $v["target_date"] . "</td>";
+                            echo "<td class='".$status."'>" . $statuses[$v["status"]] . "</td>";
+                            echo "<td class='align-right ".$status."'>" . $v["cost"] . "</td>";
+                            echo "<td ><a href='/wishlist/edit/" . $v["id"] . "'>Edit</a>&nbsp;&nbsp;|&nbsp;&nbsp;"
                             . "<a href='/wishlist/delete/" . $v["id"] . "' onclick='return confirm_delete()' >Delete</a></td>";
                             echo "</tr>";
                             $total += $v["cost"];

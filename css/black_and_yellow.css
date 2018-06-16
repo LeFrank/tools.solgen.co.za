@@ -993,3 +993,39 @@ table.focus-highlight td:before {
 /*  .ui-autocomplete-loading {
     background: white url("images/ui-anim_basic_16x16.gif") right center no-repeat;
   }*/
+
+
+/****
+Wishlist stuff
+***/
+.wishlist-status-none{
+    
+}
+.wishlist-status-some-day{
+    background-color: #D3D3D3 !important;
+    -webkit-transition: all 1s linear;
+    border: 1px solid #FFF;
+}
+.wishlist-status-in-progress{
+    background-color: #FFA500 !important;
+    -webkit-transition: all 1s linear;
+    border: 1px solid #FFF;
+    color: #fff !important;
+}
+.wishlist-status-awaiting-action{
+    background-color: #00FF00 !important;
+    -webkit-transition: all 1s linear;
+    border: 1px solid #FFF;
+}
+.wishlist-status-rethink{
+    background-color: #78c8ff  !important;
+    -webkit-transition: all 1s linear;
+    border: 1px solid #FFF;
+    color: #fff !important;
+}
+
+.wishlist-status-done{
+    background-color: #dfdfdf  !important;
+    -webkit-transition: all 1s linear;
+    border: 1px solid #FFF;
+}
