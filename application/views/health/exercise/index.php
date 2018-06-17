@@ -26,15 +26,16 @@
                 <div class="large-2 columns">
                     <label for="exerciseType">Exercise Type</label>
                     <select name="exerciseType" id="exerciseType" >
+                        <option value="0">None</option>
                         <?php
                         foreach ($expenseTypes as $k => $v) {
-                            echo "<option value='" . $v["id"] . "'>" . $v["name"] . "</option>";
+                            echo "<option value='" . $v["id"] . "' data-default_measurement_name=".$v["default_measurement_name"].">" . $v["name"] . "</option>";
                         }
                         ?>
                     </select>
                 </div>
                 <div class="large-2 columns">
-                    <label for="measurement_value">Measurement Name</label>
+                    <label for="measurement_value" id="measurement_value_label">Measurement Name</label>
                     <input type="number" min="0.01" step="0.01" max="9999999999999" name="measurement_value" id="measurement_value" placeholder="0.00"/><br />
                 </div>
                 <div class="large-2 columns">
@@ -43,7 +44,19 @@
                 </div>
                 <div class="large-2 columns">
                     <label for="difficulty">Difficulty</label>
-                    <input type="number" min="0" step="1" max="10" name="difficulty" id="difficulty" placeholder="5"/><br />
+<!--                    <input type="number" min="0" step="1" max="10" name="difficulty" id="difficulty" placeholder="5"/><br />-->
+                    <select name="exerciseType" id="exerciseType" >
+                        <option value="1">1 - Easy, no sweat</option>
+                        <option value="2">2 - Easy with some variation in elevation</option>
+                        <option value="3">3 - Easy with technical sections</option>
+                        <option value="4">4 - Moderate, worked up a good sweat</option>
+                        <option value="5">5 - Moderate with variations in elevations</option>
+                        <option value="6">6 - Moderate with technical sections</option>
+                        <option value="7">7 - Hard, endurance required</option>
+                        <option value="8">8 - Hard, strength and stamina required</option>
+                        <option value="9">9 - Hard, intense training and specific preparation required</option>
+                        <option value="10">10 - Intense, pushed to beyond the limit</option>
+                    </select>
                 </div>
             </div>
             <div class="row expanded">
@@ -126,13 +139,4 @@
 <script src="/js/jquery.datetimepicker.js"></script>
 <script type="text/javascript" src="/js/third_party/jquery.tablesorter.min.js"></script>
 <script src="/js/third_party/jquery/ui/1.12.1/jquery-ui.js"></script>
-<script src="/js/location/autocomplete.js"></script>
-<script type="text/javascript">
-    $(function () {
-        $("#exerciseStartDate").datetimepicker();
-        $("#exerciseEndDate").datetimepicker();
-        $("#fromDate").datetimepicker();
-        $("#toDate").datetimepicker();
-        CKEDITOR.replace('description');
-    });
-</script>
+<script src="/js/health/exercise/tracker.js"></script>

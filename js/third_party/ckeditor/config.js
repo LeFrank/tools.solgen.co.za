@@ -28,7 +28,7 @@ CKEDITOR.editorConfig = function( config ) {
 
 	// Remove some buttons provided by the standard plugins, which are
 	// not needed in the Standard(s) toolbar.
-	config.removeButtons = 'Underline,Subscript,Superscript';
+//	config.removeButtons = 'Underline,Subscript,Superscript';
 
 	// Set the most common block elements.
 	config.format_tags = 'p;h1;h2;h3;pre';
@@ -36,7 +36,8 @@ CKEDITOR.editorConfig = function( config ) {
 	// Simplify the dialog windows.
 	config.removeDialogTabs = 'image:advanced;link:advanced';
         config.height = 300;   
-        config.extraPlugins = 'save';
-        config.extraPlugins = 'ckawesome';
+//        config.extraPlugins = 'save';
+        config.extraPlugins = 'save,ckawesome';
 //        config.extraPlugins = 'emojione';
+        config.fontawesomePath = '/css/third_party/fontawesome/css/font-awesome.min.css'
 };
