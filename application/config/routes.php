@@ -179,7 +179,7 @@ $route['notes/delete/(:any)'] = 'notes/delete/$1';
 $route['notes/(:any)'] = 'notes/view/$1';
 $route['notes'] = 'notes/history';
 $route['notes/stats'] = 'notes/viewStats';
-$route['notes/options'] = 'notes/history';
+$route['notes/options'] = 'notes/options';
 
 
 

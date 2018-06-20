@@ -70,11 +70,19 @@ class timetable_model extends CI_Model {
     public function get_user_timetable_events($userId, $startDate=null, $endDate=null) {
         $this->db->order_by("start_date", "asc");
         $this->db->or_where("user_id =", $userId);
+//        if ($startDate != null && $startDate != "" && $endDate != null && $endDate != "") {
+//            $this->db->where("start_date >=", date('Y/m/d', strtotime($startDate)));
+//            $this->db->where("end_date <=", date('Y/m/d H:i:s', mktime(23, 59, 0, date('m', strtotime($endDate)), date('d', strtotime($endDate)), date('Y', strtotime($endDate)))));
+//        }
         if ($startDate != null && $startDate != "" && $endDate != null && $endDate != "") {
-            $this->db->where("start_date >=", date('Y/m/d', strtotime($startDate)));
-            $this->db->where("end_date <=", date('Y/m/d H:i:s', mktime(23, 59, 0, date('m', strtotime($endDate)), date('d', strtotime($endDate)), date('Y', strtotime($endDate)))));
+            $this->db->where("start_date between '" .$startDate . "' and '" . $endDate ."' or end_date between '" .$startDate . "' and '" . $endDate ."'" );
+//            $this->db->where(array("end_date >" => $startDate , 'end_date <=' => $endDate));
+//            $this->db->or_where(array("start_date >=" => $startDate , 'start_date <=' => $endDate, "end_date >" => $startDate , 'end_date <=' => $endDate));
+        }else{
+            
         }
         $query = $this->db->get_where($this->tn);
+//        echo $this->db->last_query();
         return $query->result();
     }
 

@@ -1029,3 +1029,15 @@ Wishlist stuff
     -webkit-transition: all 1s linear;
     border: 1px solid #FFF;
 }
+
+
+/*****************************************
+* OPTIONS
+*****************************************/
+.option_label{
+    display: inline-block;
+    font-weight: bold;
+    vertical-align: middle;
+    width: 30%;
+}
+

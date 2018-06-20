@@ -168,6 +168,59 @@ class Notes extends CI_Controller {
         $this->load->view("notes/tag_notes", $data);
     }
 
+    public function options(){
+        $data["options"] = "";
+        $data["templates"] = array(
+            array("id"=>0, "name"=>"Income", "description"=>"Every month or so I capture a standard formatted note of my salary information for that month. Would be handy to have a template to speed up the process.", 
+                "titleTemplate" => "Income for ", 
+                "contentTemplate" => "<p>Nett salary: R 0.00</p>
+<p>Left over from MONTH: R 0.00</p>
+<p>Available for XXXXX Period: R 0.</p>
+<p>Other incomes:<ul><li>Income From: MONTH, Amount: XXXXX</li></ul></p>" ),
+            array("id" =>1, "name"=>"Dossier", "description"=> "When meeting someone for the first time and taking a keen interest in them, I like to remember important information about them. I call this a docier."
+                , "titleTemplate" => "",
+                "contentTemplate" => "
+<h3>Physical Attributes</h3>
+<p>Age: XXXX</p>
+<p>Sex: Male/Female</p>
+<p>Race: Asian/ Black/ Coloured/ White </p>
+<p>Marital Status: Single/ Divorced/ Widowed/ Married/ Other</p>
+<p>Height: XXX cm tall</p>
+<p>Weight: XXX KG</p>
+<p>Hair colour: Black / Blonde/ Brown/ Red/ Other</p>
+<p>Skin Colour: Asian/ Black/ Coloured/ White</p>
+<p>Eye Colour: Black/ Blue/ Brown/ Green/ Grey/ Other </p>
+<p>Health: Poor/ OK/ Good</p>
+
+<h3>Strengths:</h3>
+<ul>
+    <li></li>
+</ul>
+<h3>Weaknesses:</h3>
+<ul>
+    <li></li>
+</ul>
+"
+                )
+        );
+        $data["determinator"]["lb"] = "Less required is better.";
+        $data["determinator"]["mb"] = "More required is better.";
+        $data["rankingMeasurements"] = array(
+            array("id"=>0, "name"=>"Money", "description"=>"The monetary cost to aquire/ accomplish/ abandone goal. Less is better.", "positiveDeterminatior" => "lb"),
+            array("id" =>1, "name"=>"Time", "description"=> "Time required to complete the task or goal. Less is Better", "positiveDeterminatior"=> "lb"),
+            array("id" =>2, "name"=>"Assistance", "description"=> "Will the assistance of others be required and what scale.", "positiveDeterminatior"=> "lb"),
+            array("id" =>3, "name"=>"Mental Processing", "description"=> "Time required to complete the task or goal.", "positiveDeterminatior" => "lb"),
+            array("id" =>4, "name"=>"Courage", "description"=> "The courage to perform the action, task or goal is achieved until there is a threshold of believe. Where that threshold is, is influenced by how much or rather how little courage is required to take action.", "positiveDeterminatior" => "lb"),
+            array("id" =>5, "name"=>"Persistence", "description"=> "The measure of much continuing in an opinion or course of action in spite of difficulty or opposition will require.", "positiveDeterminatior" => "lb")
+        );
+        $this->load->view('header', getPageTitle($data, $this->toolName, "History"));
+        $this->load->view('notes/notes_nav', $data);
+        $data["capture_form"] = $this->load->view("notes/capture_form", $data, TRUE);
+        $this->load->view('notes/options', $data);
+        $this->load->view('notes/notes_includes', $data);
+        $this->load->view('footer');
+    }
+    
     public function update() {
         $data['title'] = 'Update a note';
         $this->form_validation->set_rules('body', 'body', 'required');
