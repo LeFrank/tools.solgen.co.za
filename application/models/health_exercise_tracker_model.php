@@ -51,8 +51,8 @@ class health_exercise_tracker_model extends CI_Model {
         return $this->db->delete($this->tn, array('user_id' => $userId, 'id' => $exerciseId));
     }
 
-    public function getUserExerciseById($id) {
-        $query = $this->db->get_where($this->tn, array('id' => $id));
+    public function getUserExerciseById($userId,$id) {
+        $query = $this->db->get_where($this->tn, array('user_id' => $userId,'id' => $id));
         return $query->row();
     }
 

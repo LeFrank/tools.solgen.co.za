@@ -206,7 +206,7 @@ class health extends CI_Controller {
         //echo "Class: ". __CLASS__ . " | Function: >> ". __FUNCTION__ . " | Line: >> " . __LINE__ . " | >> exerciseId: " . $exerciseId;
         $userId = $this->session->userdata("user")->id;
         //get exercise and supporting information
-        $data["exercise"] = $this->health_exercise_tracker_model->getUserExerciseById($this->session->userdata("user")->id, $exerciseId);
+        $data["exercise"] = $this->health_exercise_tracker_model->getUserExerciseById($userId, $exerciseId);
         $data["exerciseTypes"] = mapKeyToId($this->exercise_type_model->get_user_exercise_types($userId));
         //Display Exercise
         $this->load->view('header', getPageTitle($data, $this->toolName, "Exercise Edit"));
