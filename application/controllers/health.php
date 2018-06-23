@@ -122,7 +122,7 @@ class health extends CI_Controller {
         $data["endDate"] = $endDate;
         $userId = $this->session->userdata("user")->id;
         $data["exercises"] = $this->health_exercise_tracker_model->getuserExercisesByDateRange($data["startDate"], $data["endDate"], $this->session->userdata("user")->id);
-        $data["expenseTypes"] = $this->exercise_type_model->get_user_exercise_types($userId);
+        $data["exerciseTypes"] = mapKeyToId($this->exercise_type_model->get_user_exercise_types($userId));
         $data["statusArr"] = $this->session->flashdata('status');
         $this->load->view('header', getPageTitle($data, $this->toolName, "Health"));
         if (!empty($data["statusArr"])) {
@@ -142,8 +142,8 @@ class health extends CI_Controller {
         $userId = $this->session->userdata("user")->id;
         if ($this->health_exercise_tracker_model->capture_exercise()) {
             $data["statusArr"]["status"] = "Success";
-            $data["statusArr"]["message"] = "Captured the metric has been added.";
-            $data["statusArr"]["description"] = "You have successfully captured a metric. well done!!";
+            $data["statusArr"]["message"] = "Exercise has been added.";
+            $data["statusArr"]["description"] = "You have successfully captured the exercise. well done!!";
         } else {
             $data["statusArr"]["status"] = "Failure";
             $data["statusArr"]["message"] = "OOooops something went wrong";
@@ -151,7 +151,7 @@ class health extends CI_Controller {
         }
 
         $this->session->set_flashdata('status', $data["statusArr"]);
-        redirect("/health/metrics", "refresh");
+        redirect("health/exercise/tracker", "refresh");
     }
     
 

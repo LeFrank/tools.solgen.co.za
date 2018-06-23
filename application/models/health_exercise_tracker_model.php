@@ -17,7 +17,7 @@ class health_exercise_tracker_model extends CI_Model {
             'description' => $this->input->post('description'),
             'start_date' => date('Y/m/d H:i', strtotime($this->input->post('exerciseStartDate'))),
             'end_date' => date('Y/m/d H:i', strtotime($this->input->post('exerciseEndDate'))),
-            'exercise_type_id' => $this->input->post('exercise_type_id'),
+            'exercise_type_id' => $this->input->post('exerciseType'),
             'measurement_value' => $this->input->post('measurement_value'),
             'distance' => $this->input->post('distance'),
             'difficulty' => $this->input->post('difficulty'),

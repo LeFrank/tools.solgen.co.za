@@ -1,10 +1,3 @@
-<?php
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-?>
 <div class="row expanded" >
     <div class="large-12 columns" >
         <h2>Exercise Tracker</h2>
@@ -28,7 +21,7 @@
                     <select name="exerciseType" id="exerciseType" >
                         <option value="0">None</option>
                         <?php
-                        foreach ($expenseTypes as $k => $v) {
+                        foreach ($exerciseTypes as $k => $v) {
                             echo "<option value='" . $v["id"] . "' data-default_measurement_name=".$v["default_measurement_name"].">" . $v["name"] . "</option>";
                         }
                         ?>
@@ -45,7 +38,7 @@
                 <div class="large-2 columns">
                     <label for="difficulty">Difficulty</label>
 <!--                    <input type="number" min="0" step="1" max="10" name="difficulty" id="difficulty" placeholder="5"/><br />-->
-                    <select name="exerciseType" id="exerciseType" >
+                    <select name="difficulty" id="difficulty" >
                         <option value="1">1 - Easy, no sweat</option>
                         <option value="2">2 - Easy with some variation in elevation</option>
                         <option value="3">3 - Easy with technical sections</option>
@@ -94,7 +87,11 @@
 </div>
 <div class="row expanded" >
     <div class="large-12 columns" >
-        <?php if (is_array($exercises) && !empty($exercises)) {
+        <?php 
+//        echo "<pre>";
+//        print_r($exerciseTypes);
+//        echo "</pre>";
+        if (is_array($exercises) && !empty($exercises)) {
             ?>
             <table id="health_metrics_history" class="tablesorter responsive">
                 <thead>
@@ -115,7 +112,7 @@
                         echo "<tr>";
                         echo "<td>" . date_format(date_create($v["start_date"]), "l, d F Y @ H:i") . "</td>";
                         echo "<td>" . date_format(date_create($v["end_date"]), "l, d F Y @ H:i") . "</td>";
-                        echo "<td>" . $v["exercise_type_id"] . "</td>";
+                        echo "<td>" . $exerciseTypes[$v["exercise_type_id"]]["name"] . "</td>";
                         echo "<td>" . $v["measurement_value"] . "</td>";
                         echo "<td>" . $v["distance"] . "</td>";
                         echo "<td>" . $v["difficulty"] . "</td>";
