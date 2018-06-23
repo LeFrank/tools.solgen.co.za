@@ -117,7 +117,10 @@
                         echo "<td>" . $v["distance"] . "</td>";
                         echo "<td>" . $v["difficulty"] . "</td>";
                         echo "<td>" . $v["description"] . "</td>";
-                        echo "<td><a href='/health/metric/edit/" . $v["id"] . "'>Edit</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href='/health/metric/delete/" . $v["id"] . "' onclick='return confirm_delete()'>Delete</a></td>";
+                        echo "<td><a href='/health/exercise/edit/" . $v["id"] . "'>Edit</a>"
+                                . "&nbsp;&nbsp;|&nbsp;&nbsp;"
+                                . "<a href='/health/exercise/delete/" . $v["id"] . "' onclick='return confirm_delete()'>Delete</a>"
+                           . "</td>";
                         echo "</tr>";
                     }
                     ?>

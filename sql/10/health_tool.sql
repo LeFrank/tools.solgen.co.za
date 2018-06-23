@@ -65,3 +65,9 @@ INSERT INTO `exercise_type`
 
 ALTER TABLE `health_exercise_tracker` 
 ADD COLUMN `note` TEXT NULL AFTER `difficulty`;
+
+ALTER TABLE `health_exercise_tracker` 
+ADD COLUMN `update_date` TIMESTAMP NULL AFTER `description`;
+
+ALTER TABLE `health_metric` 
+ADD COLUMN `update_date` TIMESTAMP NULL AFTER `note`;

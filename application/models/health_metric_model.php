@@ -62,6 +62,11 @@ class health_metric_model extends CI_Model {
         return $query->num_rows();
     }
     
+    public function getUserMetricById($userId, $id) {
+        $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'id' => $id));
+        return $query->row();
+    }
+    
     /**
      * Get health metrics by date range. Can be filtered by user and delimited
      * 
@@ -90,6 +95,22 @@ class health_metric_model extends CI_Model {
         }
 //        echo $this->db->last_query();
         return $query->result_array();
+    }
+    
+    public function update() {
+        $data = array(
+            'measurement_date' => $this->input->post('metricDate'),
+            'weight'    => $this->input->post('weight'),
+            'waist'     => $this->input->post('waist'),
+            'sleep'     => $this->input->post('sleep'),
+            'note'      => $this->input->post('note'),
+            'update_date' => date('Y/m/d H:i:s')
+        );
+//        echo "<pre>";
+//        print_r($data);
+//        echo "</pre>";
+        $this->db->where('id', $this->input->post('id'));
+        return $this->db->update($this->tn, $data);
     }
     
 }

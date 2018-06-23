@@ -47,7 +47,7 @@ class health_exercise_tracker_model extends CI_Model {
         $this->db->delete($this->tn);
     }
 
-    public function get_expense_type($id) {
+    public function getUserExerciseById($id) {
         $query = $this->db->get_where($this->tn, array('id' => $id));
         return $query->row();
     }
@@ -96,11 +96,18 @@ class health_exercise_tracker_model extends CI_Model {
 
     public function update() {
         $data = array(
-            "description" => $this->input->post('description'),
-            'template' => $this->input->post('template'),
-            "enabled" => ($this->input->post('enabled')) ? 1 : 0,
-            "update_date" => date('Y/m/d H:i:s')
+            'description' => $this->input->post('description'),
+            'start_date' => date('Y/m/d H:i', strtotime($this->input->post('exerciseStartDate'))),
+            'end_date' => date('Y/m/d H:i', strtotime($this->input->post('exerciseEndDate'))),
+            'exercise_type_id' => $this->input->post('exerciseType'),
+            'measurement_value' => $this->input->post('measurement_value'),
+            'distance' => $this->input->post('distance'),
+            'difficulty' => $this->input->post('difficulty'),
+            'update_date' => date('Y/m/d H:i:s')
         );
+//        echo "<pre>";
+//        print_r($data);
+//        echo "</pre>";
         $this->db->where('id', $this->input->post('id'));
         return $this->db->update($this->tn, $data);
     }

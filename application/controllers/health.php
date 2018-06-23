@@ -96,6 +96,37 @@ class health extends CI_Controller {
         redirect("/health/metrics", "refresh");
     }
     
+    public function metricEdit($metricId){
+        //echo "Class: ". __CLASS__ . " | Function: >> ". __FUNCTION__ . " | Line: >> " . __LINE__ . " | >> exerciseId: " . $exerciseId;
+        $userId = $this->session->userdata("user")->id;
+        //get exercise and supporting information
+        $data["metric"] = $this->health_metric_model->getUserMetricById($userId, $metricId);
+        //Display Metric
+        $this->load->view('header', getPageTitle($data, $this->toolName, "Exercise Edit"));
+        $this->load->view('health/health_nav');
+        $this->load->view('health/metrics/edit', $data);
+        $this->load->view('footer');
+        //Done
+    }
+    
+    
+    public function metricUpdate(){
+//        echo "Class: ". __CLASS__ . " | Function: >> ". __FUNCTION__ . " | Line: >> " . __LINE__ . " | >> exerciseId: " . $exerciseId;
+        $userId = $this->session->userdata("user")->id;
+        if ($this->health_metric_model->update()) {
+            $data["statusArr"]["status"] = "Success";
+            $data["statusArr"]["message"] = "Health Metrics have been updated.";
+            $data["statusArr"]["description"] = "You have successfully updated the metric.";
+        } else {
+            $data["statusArr"]["status"] = "Failure";
+            $data["statusArr"]["message"] = "OOooops something went wrong";
+            $data["statusArr"]["description"] = "Please check that are fields are correctly completed and try again.";
+        }
+        $this->session->set_flashdata('status', $data["statusArr"]);
+        redirect("health/metrics", "refresh");
+    }
+
+    
     public function exerciseTrackerView(){
         $startDate = $endDate = null;
         if(null != $this->input->post("fromDate")){
@@ -125,6 +156,7 @@ class health extends CI_Controller {
         $data["exerciseTypes"] = mapKeyToId($this->exercise_type_model->get_user_exercise_types($userId));
         $data["statusArr"] = $this->session->flashdata('status');
         $this->load->view('header', getPageTitle($data, $this->toolName, "Health"));
+        $this->load->view('health/health_nav');
         if (!empty($data["statusArr"])) {
             $data["status"] = $data["statusArr"]["status"];
             $data["action_classes"] = strtolower($data["statusArr"]["status"]);
@@ -133,7 +165,6 @@ class health extends CI_Controller {
             $data["message"] = $data["statusArr"]["description"];
             $this->load->view('user/user_status', $data);
         }
-        $this->load->view('health/health_nav');
         $this->load->view('health/exercise/index', $data);
         $this->load->view('footer');
     }
@@ -154,6 +185,36 @@ class health extends CI_Controller {
         redirect("health/exercise/tracker", "refresh");
     }
     
+    public function exerciseEdit($exerciseId){
+        //echo "Class: ". __CLASS__ . " | Function: >> ". __FUNCTION__ . " | Line: >> " . __LINE__ . " | >> exerciseId: " . $exerciseId;
+        $userId = $this->session->userdata("user")->id;
+        //get exercise and supporting information
+        $data["exercise"] = $this->health_exercise_tracker_model->getUserExerciseById($this->session->userdata("user")->id, $exerciseId);
+        $data["exerciseTypes"] = mapKeyToId($this->exercise_type_model->get_user_exercise_types($userId));
+        //Display Exercise
+        $this->load->view('header', getPageTitle($data, $this->toolName, "Exercise Edit"));
+        $this->load->view('health/health_nav');
+        $this->load->view('health/exercise/edit', $data);
+        $this->load->view('footer');
+        //Done
+    }
+    
+    
+    public function exerciseUpdate(){
+//        echo "Class: ". __CLASS__ . " | Function: >> ". __FUNCTION__ . " | Line: >> " . __LINE__ . " | >> exerciseId: " . $exerciseId;
+        $userId = $this->session->userdata("user")->id;
+        if ($this->health_exercise_tracker_model->update()) {
+            $data["statusArr"]["status"] = "Success";
+            $data["statusArr"]["message"] = "Exercise has been updated.";
+            $data["statusArr"]["description"] = "You have successfully updated the exercise.";
+        } else {
+            $data["statusArr"]["status"] = "Failure";
+            $data["statusArr"]["message"] = "OOooops something went wrong";
+            $data["statusArr"]["description"] = "Please check that are fields are correctly completed and try again.";
+        }
+        $this->session->set_flashdata('status', $data["statusArr"]);
+        redirect("health/exercise/tracker", "refresh");
+    }
 
     public function dietView(){
         echo __CLASS__ . " >> ". __FUNCTION__ . " >> " . __LINE__;
