@@ -9,9 +9,6 @@ class health_exercise_tracker_model extends CI_Model {
 
     var $tn = "health_exercise_tracker";
 
-
-    
-    
     public function capture_exercise() {
         $data = array(
             'description' => $this->input->post('description'),
@@ -31,7 +28,7 @@ class health_exercise_tracker_model extends CI_Model {
         $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'id' => $id));
         return $query->num_rows();
     }
-    
+
     public function isItGlobal($userId, $id) {
         $query = $this->db->get_where($this->tn, array('user_id' => NULL, 'id' => $id));
         return $query->num_rows();
@@ -46,13 +43,13 @@ class health_exercise_tracker_model extends CI_Model {
         $this->db->where("id", $id);
         $this->db->delete($this->tn);
     }
-    
-    public function delete_exercise($userId, $exerciseId){
+
+    public function delete_exercise($userId, $exerciseId) {
         return $this->db->delete($this->tn, array('user_id' => $userId, 'id' => $exerciseId));
     }
 
-    public function getUserExerciseById($userId,$id) {
-        $query = $this->db->get_where($this->tn, array('user_id' => $userId,'id' => $id));
+    public function getUserExerciseById($userId, $id) {
+        $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'id' => $id));
         return $query->row();
     }
 
@@ -61,8 +58,8 @@ class health_exercise_tracker_model extends CI_Model {
         $query = $this->db->get_where($this->tn, array('enabled' => 1));
         return $query->result_array();
     }
-    
-   /**
+
+    /**
      * Get health metrics by date range. Can be filtered by user and delimited
      * 
      * @param type $startDate
@@ -74,10 +71,10 @@ class health_exercise_tracker_model extends CI_Model {
      * @param type $direction
      * @return null
      */
-    public function getuserExercisesByDateRange($startDate, $endDate, $userId = null, $limit = null, $offset = 0 , $orderBy=null, $direction = "asc") {
-        if(null != $orderBy){
+    public function getuserExercisesByDateRange($startDate, $endDate, $userId = null, $limit = null, $offset = 0, $orderBy = null, $direction = "asc") {
+        if (null != $orderBy) {
             $this->db->order_by($orderBy, $direction);
-        }else{
+        } else {
             $this->db->order_by("start_date", "desc");
         }
         if ($userId === null) {
@@ -91,7 +88,43 @@ class health_exercise_tracker_model extends CI_Model {
 //        echo $this->db->last_query();
         return $query->result_array();
     }
+
+    public function getOverallUserStatsByDateRange($startDate, $endDate, $userId = null) {
+        $sql = "SELECT 
+            count(*) as `total_captured`, 
+            count(distinct(exercise_type_id)) as `number_of_exercise_types`, 
+            avg(difficulty) as `average_difficulty`, 
+            min(difficulty) as `minimum_difficulty`,
+            max(difficulty) as `maximum_difficulty`
+        FROM 
+            " . $this->tn . "
+        WHERE 
+            user_id = " . $userId . "
+            and start_date between ? and ?";
+        return $this->db->query($sql, array($startDate, $endDate))->row();
+    }
     
+    
+    public function getOverallUserStatsForExceriseTypesByDateRange($startDate, $endDate, $userId = null) {
+        $sql = "SELECT 
+            exercise_type_id,
+            count(exercise_type_id) as `exercise_count`,
+            avg(measurement_value) as `average_value`, 
+            min(measurement_value) as `minimum_value`,
+            max(measurement_value) as `maximum_value`,
+            avg(distance) as `average_distance`, 
+            min(distance) as `minimum_distance`,
+            max(distance) as `maximum_distance`
+        FROM 
+            " . $this->tn . "
+        WHERE 
+            user_id = " . $userId . "
+            and start_date between ? and ?
+        group by exercise_type_id
+        order by exercise_type_id Desc";
+//        echo $this->db->last_query();
+        return $this->db->query($sql, array($startDate, $endDate))->result_array();
+    }
 
     public function deleteUserData($userId) {
         $this->db->where("user_id", $userId);
@@ -115,4 +148,5 @@ class health_exercise_tracker_model extends CI_Model {
         $this->db->where('id', $this->input->post('id'));
         return $this->db->update($this->tn, $data);
     }
+
 }

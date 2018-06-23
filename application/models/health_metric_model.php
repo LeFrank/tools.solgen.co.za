@@ -22,11 +22,14 @@ class health_metric_model extends CI_Model {
         $this->load->helper('date');
         $this->load->library("session");
         $date = ($this->input->post('metricDate') != "") ? date('Y/m/d H:i', strtotime($this->input->post('metricDate'))): date('Y/m/d H:i');
+        $weight = ($this->input->post('weight') != 0 )?$this->input->post('weight') : NULL;
+        $waist = ($this->input->post('waist') != 0 )?$this->input->post('waist') : NULL;
+        $sleep = ($this->input->post('sleep') != 0 )?$this->input->post('sleep') : NULL;
         $data = array(
             'measurement_date' => $date,
-            'weight'    => $this->input->post('weight'),
-            'waist'     => $this->input->post('waist'),
-            'sleep'     => $this->input->post('sleep'),
+            'weight'    => $weight,
+            'waist'     => $waist,
+            'sleep'     => $sleep,
             'user_id'   => $this->session->userdata("user")->id,
             'note'      => $this->input->post('note'),
         );
@@ -96,6 +99,29 @@ class health_metric_model extends CI_Model {
         return $query->result_array();
     }
     
+    
+    public function getOverallUserStatsByDateRange($startDate, $endDate, $userId = null) {
+        $sql = 
+        "SELECT 
+            count(*) as `total_captured`, 
+            avg(weight) as `average_weight`, 
+            min(weight) as `minimum_weight`, 
+            max(weight) as `maximum_weight`, 
+            avg(waist) as `average_waist`, 
+            min(waist) as `minimum_waist`, 
+            max(waist) as `maximum_waist`, 
+            avg(sleep)  as `average_sleep`,
+            min(sleep)  as `minimum_sleep`, 
+            max(sleep)  as `maximum_sleep`
+        FROM 
+            ".$this->tn."
+        WHERE
+            user_id = ".$userId."
+            AND measurement_date between ? and ?";
+        return $this->db->query($sql, array( $startDate, $endDate))->row();
+//        return $query->row();
+    }
+    
     public function update() {
         $data = array(
             'measurement_date' => $this->input->post('metricDate'),
@@ -105,11 +131,7 @@ class health_metric_model extends CI_Model {
             'note'      => $this->input->post('note'),
             'update_date' => date('Y/m/d H:i:s')
         );
-//        echo "<pre>";
-//        print_r($data);
-//        echo "</pre>";
         $this->db->where('id', $this->input->post('id'));
         return $this->db->update($this->tn, $data);
     }
-    
 }

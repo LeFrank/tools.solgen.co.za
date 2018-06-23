@@ -32,8 +32,35 @@ class health extends CI_Controller {
     
     public function index(){
         $data = array();
-        $data["startAndEndDate"] = getPastSevenDays();
-        $data["healthMetrics"] = $this->health_metric_model->getHealthMetricByDateRange($data["startAndEndDate"][0], $data["startAndEndDate"][1], $this->session->userdata("user")->id);
+        $startDate = $endDate = null;
+        if(null != $this->input->post("fromDate")){
+            $startDate = $this->input->post("fromDate");
+        }
+        if(null != $this->input->post("toDate")){
+            $endDate = $this->input->post("toDate");
+        }
+        if($startDate == null){
+            $startDate = date('Y/m/d H:i', strtotime('-1 month'));
+        }else{
+            $startDate = date('Y/m/d H:i', strtotime($startDate));
+        }
+//        echo $startDate;
+        if($endDate== null ){
+            $endDate = date('Y/m/d H:i', strtotime("now"));
+        }else{
+            $endDate = date('Y/m/d H:i', strtotime($endDate));
+        }
+//        echo "<br/>".$endDate;
+        $search["startDate"] = $startDate;
+        $search["endDate"] = $endDate;
+        $data["startDate"] = $startDate;
+        $data["endDate"] = $endDate;
+        $userId = $this->session->userdata("user")->id;
+        $data["healthMetricsStats"] = $this->health_metric_model->getOverallUserStatsByDateRange($data["startDate"], $data["endDate"], $userId);
+//        $data["healthMetrics"] = $this->health_metric_model->getHealthMetricByDateRange($data["startAndEndDate"][0], $data["startAndEndDate"][1], $this->session->userdata("user")->id);
+        $data["exerciseStats"] = $this->health_exercise_tracker_model->getOverallUserStatsByDateRange($data["startDate"], $data["endDate"], $userId);
+        $data["exerciseByExcerciseTypeStats"] = $this->health_exercise_tracker_model->getOverallUserStatsForExceriseTypesByDateRange($data["startDate"], $data["endDate"], $userId);
+        $data["exerciseTypes"] = mapKeyToId($this->exercise_type_model->get_user_exercise_types($userId));
         $this->load->view('header', getPageTitle($data, $this->toolName, "Health"));
         $this->load->view('health/health_nav');
         $this->load->view('health/overview');

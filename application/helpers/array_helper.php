@@ -10,7 +10,7 @@ function mapKeyToId($doubleDimensionsArray, $includeMisc = true) {
     $returnArray = null;
     if (!empty($doubleDimensionsArray)) {
         if ($includeMisc) {
-            $returnArray["0"] = array("id" => 0, "name"=> "miscellaneous","description" => "miscellaneous", "enabled" => 1, "create_date" => "2014-04-17 23:06:04", "user_id" => null);
+            $returnArray["0"] = array("id" => 0, "name"=> "miscellaneous","description" => "miscellaneous", "enabled" => 1, "create_date" => "2014-04-17 23:06:04", "user_id" => null, "default_measurement_name" => "Things");
         }
         if (null != $doubleDimensionsArray && !empty($doubleDimensionsArray)) {
             foreach ($doubleDimensionsArray as $k => $v) {
