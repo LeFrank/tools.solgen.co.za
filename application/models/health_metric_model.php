@@ -37,9 +37,8 @@ class health_metric_model extends CI_Model {
      * 
      * @param type $id
      */
-    public function delete($id) {
-        $this->db->where("id", $id);
-        $this->db->delete($this->tn);
+    public function delete_metric($userId, $id) {
+        return $this->db->delete($this->tn, array('user_id' => $userId, 'id' => $id));
     }
 
     /**

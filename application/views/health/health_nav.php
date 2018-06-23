@@ -4,7 +4,7 @@
         <div id="healthNav" class="healthNav">
             <a href="/health">Overview</a>
             &nbsp;&nbsp;|&nbsp;&nbsp;
-            <a href="/health/metrics">metrics</a>
+            <a href="/health/metrics">Metrics</a>
             &nbsp;&nbsp;|&nbsp;&nbsp;
             <a href="/health/exercise/tracker">Exercise Tracker</a>
             &nbsp;&nbsp;|&nbsp;&nbsp;

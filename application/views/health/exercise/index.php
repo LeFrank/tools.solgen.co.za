@@ -72,7 +72,7 @@
     <?php echo form_open('/health/exercise/tracker') ?>
     <div class="large-4 columns" >
         <label>
-            from<input type="text" name="fromDate" id="fromDate" value="<?php echo $startDate; ?>"/>
+            From<input type="text" name="fromDate" id="fromDate" value="<?php echo $startDate; ?>"/>
         </label>
     </div>
     <div class="large-4 columns" >

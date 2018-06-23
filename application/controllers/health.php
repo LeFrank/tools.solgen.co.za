@@ -67,6 +67,7 @@ class health extends CI_Controller {
         $data["healthMetrics"] = $this->health_metric_model->getHealthMetricByDateRange($data["startDate"], $data["endDate"], $this->session->userdata("user")->id);
         $data["statusArr"] = $this->session->flashdata('status');
         $this->load->view('header', getPageTitle($data, $this->toolName, "Health"));
+        $this->load->view('health/health_nav');
         if (!empty($data["statusArr"])) {
             $data["status"] = $data["statusArr"]["status"];
             $data["action_classes"] = strtolower($data["statusArr"]["status"]);
@@ -75,7 +76,6 @@ class health extends CI_Controller {
             $data["message"] = $data["statusArr"]["description"];
             $this->load->view('user/user_status', $data);
         }
-        $this->load->view('health/health_nav');
         $this->load->view('health/metrics/index', $data);
         $this->load->view('footer');
     }
@@ -107,6 +107,23 @@ class health extends CI_Controller {
         $this->load->view('health/metrics/edit', $data);
         $this->load->view('footer');
         //Done
+    }
+    
+    public function metricDelete($metricId){
+        //echo "Class: ". __CLASS__ . " | Function: >> ". __FUNCTION__ . " | Line: >> " . __LINE__ . " | >> exerciseId: " . $exerciseId;
+        $userId = $this->session->userdata("user")->id;
+        if ($this->health_metric_model->delete_metric($userId, $metricId)) {
+            $data["statusArr"]["status"] = "Success";
+            $data["statusArr"]["message"] = "Delete the metric.";
+            $data["statusArr"]["description"] = "You have successfully deleted a metric.";
+        } else {
+            $data["statusArr"]["status"] = "Failure";
+            $data["statusArr"]["message"] = "OOooops something went wrong";
+            $data["statusArr"]["description"] = "Please check that are fields are correctly completed and try again.";
+        }
+
+        $this->session->set_flashdata('status', $data["statusArr"]);
+        redirect("/health/metrics", "refresh");
     }
     
     
@@ -199,6 +216,22 @@ class health extends CI_Controller {
         //Done
     }
     
+    
+    public function exerciseDelete($exerciseId){
+        $userId = $this->session->userdata("user")->id;
+        if ($this->health_exercise_tracker_model->delete_exercise($userId, $exerciseId)) {
+            $data["statusArr"]["status"] = "Success";
+            $data["statusArr"]["message"] = "Exercise has been added.";
+            $data["statusArr"]["description"] = "You have successfully captured the exercise. well done!!";
+        } else {
+            $data["statusArr"]["status"] = "Failure";
+            $data["statusArr"]["message"] = "OOooops something went wrong";
+            $data["statusArr"]["description"] = "Please check that are fields are correctly completed and try again.";
+        }
+
+        $this->session->set_flashdata('status', $data["statusArr"]);
+        redirect("health/exercise/tracker", "refresh");
+    }
     
     public function exerciseUpdate(){
 //        echo "Class: ". __CLASS__ . " | Function: >> ". __FUNCTION__ . " | Line: >> " . __LINE__ . " | >> exerciseId: " . $exerciseId;
