@@ -23,7 +23,7 @@ class health extends CI_Controller {
         $this->load->library("input");
         can_access(
                 $this->require_auth, $this->session);
-        $this->load->helper('usability_helper');
+        $this->load->helper('health_statistics_helper');
         $this->load->model("health_metric_model");
         $this->load->model("exercise_type_model");
         $this->load->model("health_exercise_tracker_model");
@@ -56,11 +56,18 @@ class health extends CI_Controller {
         $data["startDate"] = $startDate;
         $data["endDate"] = $endDate;
         $userId = $this->session->userdata("user")->id;
+        $data["healthMetrics"] = $this->health_metric_model->getHealthMetricByDateRange($data["startDate"], $data["endDate"], $userId);
         $data["healthMetricsStats"] = $this->health_metric_model->getOverallUserStatsByDateRange($data["startDate"], $data["endDate"], $userId);
+        $data["waist"] = json_encode(getWaistOverDateRangeJson($data["healthMetrics"]));
+        $data["weight"] = json_encode(getWeightOverDateRangeJson($data["healthMetrics"]));
+        $data["sleep"] = json_encode(getSleepOverDateRangeJson($data["healthMetrics"]));
+        $data["sleepTarget"] = json_encode(getSleepTargetOverDateRangeJson($data["healthMetrics"]));
 //        $data["healthMetrics"] = $this->health_metric_model->getHealthMetricByDateRange($data["startAndEndDate"][0], $data["startAndEndDate"][1], $this->session->userdata("user")->id);
+        $data["exercises"] = $this->health_exercise_tracker_model->getuserExercisesByDateRange($data["startDate"], $data["endDate"], $this->session->userdata("user")->id);
         $data["exerciseStats"] = $this->health_exercise_tracker_model->getOverallUserStatsByDateRange($data["startDate"], $data["endDate"], $userId);
         $data["exerciseByExcerciseTypeStats"] = $this->health_exercise_tracker_model->getOverallUserStatsForExceriseTypesByDateRange($data["startDate"], $data["endDate"], $userId);
         $data["exerciseTypes"] = mapKeyToId($this->exercise_type_model->get_user_exercise_types($userId));
+        $data["exerciseGraphMetrics"] = getExerciseGraphDataPerType($data["exerciseTypes"],$data["exercises"]);
         $this->load->view('header', getPageTitle($data, $this->toolName, "Health"));
         $this->load->view('health/health_nav');
         $this->load->view('health/overview');
