@@ -62,15 +62,18 @@ function getExerciseGraphDataPerType($exerciseTypes , $exercises){
         $count = 0;
         $jsonDataArray = array();
         $jsonDataArray2 = array();
+        $jsonDataArray3 = array();
         foreach ($exercises as $kk => $vv) {
             if($vv["exercise_type_id"] == $v["id"]){
                 $jsonDataArray[$count] = array($vv["start_date"], floatVal($vv["measurement_value"]));
                 $jsonDataArray2[$count] = array($vv["start_date"], floatVal($vv["difficulty"]));
+                $jsonDataArray3[$count] = array($vv["start_date"], floatVal($vv["distance"]));
                 $count++;
             }
         }
         $data[$v["id"]]["measurement_value"] = $jsonDataArray;
         $data[$v["id"]]["difficulty"] = $jsonDataArray2;
+        $data[$v["id"]]["distance"] = $jsonDataArray3;
     }
     return $data;
 }

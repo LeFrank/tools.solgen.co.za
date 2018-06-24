@@ -91,6 +91,7 @@
                 foreach($exerciseTypes as $k=>$v){
                     echo "<div id='exercise-graph-".$v["id"]."-0'></div>";
                     echo "<div id='exercise-graph-".$v["id"]."-1'></div>";
+                    echo "<div id='exercise-graph-".$v["id"]."-2'></div>";
                 }
             ?>
         </div>
@@ -140,6 +141,10 @@
             if(!empty($exerciseGraphMetrics[$v["id"]]["difficulty"])){
                 echo "var exercise_type_".$v["id"]."_1 = " . json_encode($exerciseGraphMetrics[$v["id"]]["difficulty"]) . ";";
                 echo "createplot('exercise-graph-".$v["id"]."-1', 'exercise_type_".$v["id"]."_1' , '".$v["name"]." - Difficulty');\n";
+            }
+            if(!empty($exerciseGraphMetrics[$v["id"]]["distance"])){
+                echo "var exercise_type_".$v["id"]."_2 = " . json_encode($exerciseGraphMetrics[$v["id"]]["distance"]) . ";";
+                echo "createplot('exercise-graph-".$v["id"]."-2', 'exercise_type_".$v["id"]."_2' , '".$v["name"]." - Distance');\n";
             }
         }
     ?>
