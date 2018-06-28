@@ -123,11 +123,14 @@ class health_metric_model extends CI_Model {
     }
     
     public function update() {
+        $weight = ($this->input->post('weight') != 0 )?$this->input->post('weight') : NULL;
+        $waist = ($this->input->post('waist') != 0 )?$this->input->post('waist') : NULL;
+        $sleep = ($this->input->post('sleep') != 0 )?$this->input->post('sleep') : NULL;
         $data = array(
             'measurement_date' => $this->input->post('metricDate'),
-            'weight'    => $this->input->post('weight'),
-            'waist'     => $this->input->post('waist'),
-            'sleep'     => $this->input->post('sleep'),
+            'weight'    => $weight,
+            'waist'     => $waist,
+            'sleep'     => $sleep,
             'note'      => $this->input->post('note'),
             'update_date' => date('Y/m/d H:i:s')
         );
