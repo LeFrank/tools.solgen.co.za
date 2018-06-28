@@ -21,15 +21,15 @@
                 </div>
                 <div class="large-3 columns">
                     <label for="weight">Weight *</label>
-                    <input type="number" min="0.01" step="0.01" max="9999999999999" name="weight" id="weight" placeholder="0.00" /><br />
+                    <input type="number" name="weight" id="weight" placeholder="0.00" /><br />
                 </div>
                 <div class="large-3 columns">
                     <label for="waist">Waist *</label>
-                    <input type="number" min="0.01" step="0.01" max="9999999999999" name="waist" id="waist" placeholder="0.00"/><br />
+                    <input type="number"  name="waist" id="waist" placeholder="0.00"/><br />
                 </div>
                 <div class="large-3 columns">
                     <label for="sleep">Sleep ( Hours ) *</label>
-                    <input type="number" min="0.01" step="0.01" max="9999999999999" name="sleep" id="sleep" placeholder="0.00"/><br />
+                    <input type="number" step="0.5" max="9999999999999" name="sleep" id="sleep" placeholder="0.00"/><br />
                 </div>
             </div>
             <div class="row expanded">

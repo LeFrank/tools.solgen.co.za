@@ -15,15 +15,15 @@
                 </div>
                 <div class="large-3 columns">
                     <label for="weight">Weight *</label>
-                    <input type="number" min="0.01" step="0.01" max="9999999999999" name="weight" id="weight" value="<?php echo $metric->weight; ?>" /><br />
+                    <input type="number" name="weight" id="weight" value="<?php echo $metric->weight; ?>" /><br />
                 </div>
                 <div class="large-3 columns">
                     <label for="waist">Waist *</label>
-                    <input type="number" min="0.01" step="0.01" max="9999999999999" name="waist" id="waist" value="<?php echo $metric->waist; ?>"/><br />
+                    <input type="number" name="waist" id="waist" value="<?php echo $metric->waist; ?>"/><br />
                 </div>
                 <div class="large-3 columns">
                     <label for="sleep">Sleep ( Hours ) *</label>
-                    <input type="number" min="0.01" step="0.01" max="9999999999999" name="sleep" id="sleep" value="<?php echo $metric->sleep; ?>"/><br />
+                    <input type="number" name="sleep" id="sleep" value="<?php echo $metric->sleep; ?>"/><br />
                 </div>
             </div>
             <div class="row expanded">
