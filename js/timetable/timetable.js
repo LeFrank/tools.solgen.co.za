@@ -1,6 +1,11 @@
+/* global eventsArray */
+
 var formatDate = "yy-mm-dd";
-var hasDataFor= {"earliestStartDate": moment(currentDateRange.startDate), "oldestEndDate": moment(currentDateRange.endDate)};
+var hasDataFor = {"earliestStartDate": moment(currentDateRange.startDate), "oldestEndDate": moment(currentDateRange.endDate)};
 $(document).ready(function () {
+    var events = eventsArray;
+
+
     $("#clearForm").click(function () {
         $("input[type=text], textarea").val("");
         $("#id").val("");
@@ -26,10 +31,10 @@ $(document).ready(function () {
             });
         }
     }
-    
+
 //    console.log(currentDateRange.startDate);
 //    console.log(currentDateRange.endDate);
-    
+
     var myCalendar;
     myCalendar = $('#calendar').fullCalendar({
         header: {
@@ -66,20 +71,20 @@ $(document).ready(function () {
             } else {
                 $(this).css('background-color', '#f8f8f8');
             }
-        }        
-    }).on('click', '.fc-month-button', function(){
+        }
+    }).on('click', '.fc-month-button', function () {
         $("#fcViewState").val("month");
-    }).on('click', '.fc-agendaWeek-button', function(){
+    }).on('click', '.fc-agendaWeek-button', function () {
         $("#fcViewState").val("agendaWeek");
-    }).on('click', '.fc-agendaDay-button', function(){
+    }).on('click', '.fc-agendaDay-button', function () {
         $("#fcViewState").val("agendaDay");
     });
-    
+
     if (typeof currentEvent !== 'undefined') {
         myCalendar.fullCalendar('gotoDate', currentEvent[0].start);
     }
-    
-    if($("#fcViewState").val() != ""){
+
+    if ($("#fcViewState").val() != "") {
 //        console.log($("#fcViewState").val());
         myCalendar.fullCalendar('changeView', $("#fcViewState").val());
     }
@@ -90,10 +95,10 @@ $(document).ready(function () {
             url: "/timetable/delete/" + $("#id").val()
         });
     });
-    
-    $('.fc-prev-button').click(function (){
+
+    $('.fc-prev-button').click(function () {
         var currentView = $("#fcViewState").val();
-        if(currentView =="" || currentView == "month"){
+        if (currentView == "" || currentView == "month") {
 //            console.log("Get last months data");
             var activeMonthStartDate = moment(currentDateRange.startDate);
             var activeMonthEndDate = moment(currentDateRange.endDate);
@@ -101,35 +106,35 @@ $(document).ready(function () {
             activeMonthEndDate = activeMonthEndDate.subtract(1, 'month');
             currentDateRange.startDate = activeMonthStartDate.format();
             currentDateRange.endDate = activeMonthEndDate.format();
-            if(checkCache(activeMonthStartDate, activeMonthEndDate) ){
-    //            console.log(activeMonthStartDate.format(), activeMonthEndDate.format());
+            if (checkCache(activeMonthStartDate, activeMonthEndDate)) {
+                //            console.log(activeMonthStartDate.format(), activeMonthEndDate.format());
                 $.ajax({
                     type: "POST",
                     url: "/timetable/time-period/search/",
                     data: {
-                        "startDate": activeMonthStartDate.format(), 
+                        "startDate": activeMonthStartDate.format(),
                         "endDate": activeMonthEndDate.format()
                     },
                     dataType: "json"
                 }).done(function (resp) {
 //                    console.log(resp);
 //                    console.log("getting more data");
-                    myCalendar.fullCalendar( 'addEventSource', resp);
+                    myCalendar.fullCalendar('addEventSource', resp);
                 });
-            }else{
-                
+            } else {
+
             }
-        }else if(currentView =="agendaWeek"){
+        } else if (currentView == "agendaWeek") {
             console.log("Get next weeks data");
-        }else if(currentView =="agendaDay"){
+        } else if (currentView == "agendaDay") {
             console.log("Get next days data");
         }
     });
-    
-    
-    $('.fc-next-button').click(function (){
+
+
+    $('.fc-next-button').click(function () {
         var currentView = $("#fcViewState").val();
-        if(currentView =="" || currentView == "month"){
+        if (currentView == "" || currentView == "month") {
 //            console.log("Get next months data");
             var activeMonthStartDate = moment(currentDateRange.startDate);
             var activeMonthEndDate = moment(currentDateRange.endDate);
@@ -137,29 +142,29 @@ $(document).ready(function () {
             activeMonthEndDate = activeMonthEndDate.add(1, 'month');
             currentDateRange.startDate = activeMonthStartDate.format();
             currentDateRange.endDate = activeMonthEndDate.format();
-            if(checkCache(activeMonthStartDate, activeMonthEndDate) ){
+            if (checkCache(activeMonthStartDate, activeMonthEndDate)) {
 //                console.log("get the data");
                 $.ajax({
                     type: "POST",
                     url: "/timetable/time-period/search/",
                     data: {
-                        "startDate": activeMonthStartDate.format(), 
+                        "startDate": activeMonthStartDate.format(),
                         "endDate": activeMonthEndDate.format()
                     },
                     dataType: "json"
                 }).done(function (resp) {
 //                    console.log(resp);
 //                    console.log("getting more data");
-                    myCalendar.fullCalendar( 'addEventSource', resp);
+                    myCalendar.fullCalendar('addEventSource', resp);
                 });
             }
-        }else if(currentView =="agendaWeek"){
+        } else if (currentView == "agendaWeek") {
             console.log("Get next weeks data");
-        }else if(currentView =="agendaDay"){
+        } else if (currentView == "agendaDay") {
             console.log("Get next days data");
         }
     });
-    
+
     $("#timetableRepetition").change(function () {
         var reps = $("#numberOfRepeats");
         var repsDesc = $("#repeatDescriptor");
@@ -216,52 +221,96 @@ $(document).ready(function () {
         }
     });
     CKEDITOR.replace('description');
+
+    var now = moment();
+    for (var i = 0; i <= events.length; i++) {
+        var event = events[i];
+//        console.log(event["start"]);
+        var day = moment(event["start"], "YYYY-MM-DD HH:mm");
+        if (day.isSame(now.format(), 'day') && now.diff(day) < 0) {
+            console.log(event.start);
+            console.log(now.diff(day));
+            console.log(day.diff(now));
+            console.log(event);
+            var t = event.title;
+            var d = event.description;
+            setTimeout(function () {
+                notifyMe(t,d);
+            }, day.diff(now));
+        }
+    }
 });
 
 function setEventEdit(eventId) {
-    console.log("Clicked!! ");
-        $.ajax({
-            type: "GET",
-            url: "/timetable/view/" + eventId
-        }).done(function (resp) {
-            if (resp != "[]") {
-                var obj = $.parseJSON(resp);
-                $("#id").val(obj.id);
-                $("#name").val(obj.name);
-                $("#description").html(obj.description);
-                CKEDITOR.instances['description'].setData(obj.description);
-                if (obj.all_day_event == 1) {
-                    $("#allDayEvent").prop('checked', true);
-                } else {
-                    $("#allDayEvent").prop("checked", false);
-                }
-                $("#startDate").val(obj.start_date);
-                $("#endDate").val(obj.end_date);
-                $("#timetableCategory").val(obj.tt_category_id).prop('selected', true);
-                $("#timetableExpenseType").val(obj.expense_type_id).prop('selected', true);
-                $("#locationId").val(obj.location_id).prop('selected', true);
-                $("#location").val(obj.location_text);
-                $("#clearForm").show();
-                $("#delete").attr("href", "/timetable/delete/" + obj.id);
-                $("#delete").show();
+//    console.log("Clicked!! ");
+    $.ajax({
+        type: "GET",
+        url: "/timetable/view/" + eventId
+    }).done(function (resp) {
+        if (resp != "[]") {
+            var obj = $.parseJSON(resp);
+            $("#id").val(obj.id);
+            $("#name").val(obj.name);
+            $("#description").html(obj.description);
+            CKEDITOR.instances['description'].setData(obj.description);
+            if (obj.all_day_event == 1) {
+                $("#allDayEvent").prop('checked', true);
+            } else {
+                $("#allDayEvent").prop("checked", false);
+            }
+            $("#startDate").val(obj.start_date);
+            $("#endDate").val(obj.end_date);
+            $("#timetableCategory").val(obj.tt_category_id).prop('selected', true);
+            $("#timetableExpenseType").val(obj.expense_type_id).prop('selected', true);
+            $("#locationId").val(obj.location_id).prop('selected', true);
+            $("#location").val(obj.location_text);
+            $("#clearForm").show();
+            $("#delete").attr("href", "/timetable/delete/" + obj.id);
+            $("#delete").show();
+        }
+    });
+}
+
+
+function checkCache(startDate, endDate) {
+    var getData = false;
+    if (startDate.isBefore(hasDataFor.earliestStartDate)) {
+//           console.log(startDate.format() + " is before " + hasDataFor.earliestStartDate.format());
+        getData = true;
+        hasDataFor.earliestStartDate = startDate;
+//           console.log(hasDataFor);
+    }
+    if (endDate.isAfter(hasDataFor.oldestEndDate)) {
+//           console.log(endDate.format() + " is after " + hasDataFor.oldestEndDate.format());
+        getData = true;
+        hasDataFor.oldestEndDate = endDate;
+//           console.log(hasDataFor);
+    }
+    return getData;
+}
+
+function notifyMe(title,description) {
+    var options = {
+        body: description,
+        requireInteraction: true
+    }
+    if (!("Notification" in window)) {
+        alert("This browser does not support desktop notification");
+    }
+
+    // Let's check whether notification permissions have already been granted
+    else if (Notification.permission === "granted") {
+        // If it's okay let's create a notification
+        var notification = new Notification(title,options);
+    }
+
+    // Otherwise, we need to ask the user for permission
+    else if (Notification.permission !== "denied") {
+        Notification.requestPermission(function (permission) {
+            // If the user accepts, let's create a notification
+            if (permission === "granted") {
+                var notification = new Notification(title,options);
             }
         });
     }
-    
-    
-   function checkCache(startDate, endDate){
-       var getData = false;
-       if( startDate.isBefore(hasDataFor.earliestStartDate)){
-//           console.log(startDate.format() + " is before " + hasDataFor.earliestStartDate.format());
-           getData = true;
-           hasDataFor.earliestStartDate = startDate;
-//           console.log(hasDataFor);
-       }
-       if( endDate.isAfter(hasDataFor.oldestEndDate)){
-//           console.log(endDate.format() + " is after " + hasDataFor.oldestEndDate.format());
-           getData = true;
-           hasDataFor.oldestEndDate = endDate;
-//           console.log(hasDataFor);
-       }
-       return getData;
-   }
+}
