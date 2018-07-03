@@ -228,10 +228,10 @@ $(document).ready(function () {
 //        console.log(event["start"]);
         var day = moment(event["start"], "YYYY-MM-DD HH:mm");
         if (day.isSame(now.format(), 'day') && now.diff(day) < 0) {
-            console.log(event.start);
-            console.log(now.diff(day));
-            console.log(day.diff(now));
-            console.log(event);
+//            console.log(event.start);
+//            console.log(now.diff(day));
+//            console.log(day.diff(now));
+//            console.log(event);
             var t = event.title;
             var d = event.description;
             setTimeout(function () {
