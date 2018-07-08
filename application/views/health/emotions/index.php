@@ -1,4 +1,8 @@
 <?php
+
+?>
+
+<?php
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -7,29 +11,29 @@
 ?>
 <div class="row expanded" >
     <div class="large-12 columns" >
-        <h2>Metrics</h2>
+        <h2>Emotions</h2>
     </div>
 </div>
 <div class="row expanded" >
     <div class="large-12 columns" >
-        <form action="/health/metric/capture" method="POST">
+        <form action="/health/emotions/capture" method="POST">
             <h3>Capture Metrics</h3>
             <div class="row expanded">
                 <div class="large-3 columns">
-                    <label for="metricDate">Date</label>
-                    <input  type="text" id="metricDate" name="metricDate" placeholder="<?php echo date('Y/m/d H:i:s'); ?>" /><br/><br/>
+                    <label for="emotionDate">Date</label>
+                    <input  type="text" id="emotionDate" name="emotionDate" placeholder="<?php echo date('Y/m/d H:i:s'); ?>" /><br/><br/>
                 </div>
                 <div class="large-3 columns">
-                    <label for="weight">Weight *</label>
-                    <input type="number" step="0.1" name="weight" id="weight" placeholder="0.00" /><br />
+                    <label for="weight">Emotion *</label>
+                    <input type="number" name="weight" id="weight" placeholder="0.00" /><br />
                 </div>
                 <div class="large-3 columns">
                     <label for="waist">Waist *</label>
-                    <input type="number" step="0.1" name="waist" id="waist" placeholder="0.00"/><br />
+                    <input type="number"  name="waist" id="waist" placeholder="0.00"/><br />
                 </div>
                 <div class="large-3 columns">
                     <label for="sleep">Sleep ( Hours ) *</label>
-                    <input type="number" step="0.1" max="9999999999999" name="sleep" id="sleep" placeholder="0.00"/><br />
+                    <input type="number" step="0.5" max="9999999999999" name="sleep" id="sleep" placeholder="0.00"/><br />
                 </div>
             </div>
             <div class="row expanded">

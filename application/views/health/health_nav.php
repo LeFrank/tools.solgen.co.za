@@ -10,9 +10,13 @@
             &nbsp;&nbsp;|&nbsp;&nbsp;
             <a href="/health/diet">Diet</a>
             &nbsp;&nbsp;|&nbsp;&nbsp;
+            <a href="/health/medical/history">Medical History</a>
+            &nbsp;&nbsp;|&nbsp;&nbsp;
             <a href="/health/emotion/tracker">Emotional Tracker</a>
             &nbsp;&nbsp;|&nbsp;&nbsp;
-            <a href="/health/medical/history">Medical History</a>
+            <a href="/health/mental">Mental</a>
+            &nbsp;&nbsp;|&nbsp;&nbsp;
+            <a href="/health/spiritual">Spiritual</a>
             &nbsp;&nbsp;|&nbsp;&nbsp;
             <a href="/health/options">Options</a>
         </div>

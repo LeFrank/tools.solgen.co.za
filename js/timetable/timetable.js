@@ -298,8 +298,8 @@ function checkCache(startDate, endDate) {
 
 function notifyMe(title,description) {
     var options = {
-        body: description,
-        requireInteraction: true
+        body: description
+//        requireInteraction: true
     }
     if (!("Notification" in window)) {
         alert("This browser does not support desktop notification");
