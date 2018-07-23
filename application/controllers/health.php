@@ -301,7 +301,6 @@ class health extends CI_Controller {
     }
 
     public function dietView(){
-        echo __CLASS__ . " >> ". __FUNCTION__ . " >> " . __LINE__;
         $startDate = $endDate = null;
         if(null != $this->input->post("fromDate")){
             $startDate = $this->input->post("fromDate");
