@@ -113,7 +113,7 @@ table {
     font-size: 1em;
     line-height:125%;
     word-break: initial;
-    width:100%;
+    /*width:100%;*/
     -webkit-hyphens: auto;
     -moz-hyphens: auto;
     hyphens: auto;
@@ -866,10 +866,10 @@ span#createNote img{
     width: 100%;
     max-width: 100%; 
 }*/
-/*.full-width {
+.full-width {
     width: 100%;
     max-width: 100%; 
-}*/
+}
 
 .search-criteria{
     font-weight: bolder;

@@ -4,7 +4,7 @@
             <h3>Expenses</h3>
             <?php if (is_array($expenses) && !empty($expenses)) {
                 ?>
-                <table id="expense_history" class="tablesorter" >
+                <table id="expense_history" class="tablesorter responsive expanded full-width focus-highlight  widget-zebra" >
                     <thead>
                     <th/>
                     <th>Date</th>
@@ -52,3 +52,10 @@
 </div>
 <script type="text/javascript" src="/js/third_party/jquery.tablesorter.min.js"></script>
 <script type="text/javascript" src="/js/expenses/expense_table.js" ></script>
+<script type="text/javascript">
+    if(document.getElementById("expense_history")){
+        $('#expense_history').tablesorter();
+    }
+</script>
+    
+        

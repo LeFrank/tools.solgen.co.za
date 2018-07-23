@@ -57,6 +57,32 @@ function getSleepTargetOverDateRangeJson($metrics) {
     return $jsonDataArray;
 }
 
+function getWeightTargetOverDateRangeJson($metrics) {
+    $count = 0;
+    $jsonDataArray = array();
+    foreach ($metrics as $k => $v) {
+        if(null != $v["weight"]){
+            $jsonDataArray[$count] = array($v["measurement_date"], floatVal(96));
+            $count++;
+        }
+    }
+    return $jsonDataArray;
+}
+
+
+function getWaistTargetOverDateRangeJson($metrics) {
+    $count = 0;
+    $jsonDataArray = array();
+    foreach ($metrics as $k => $v) {
+        if(null != $v["waist"]){
+            $jsonDataArray[$count] = array($v["measurement_date"], floatVal(91.44));
+            $count++;
+        }
+    }
+    return $jsonDataArray;
+}
+
+
 function getExerciseGraphDataPerType($exerciseTypes , $exercises){
     foreach($exerciseTypes as $k=>$v){
         $count = 0;

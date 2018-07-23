@@ -71,3 +71,15 @@ ADD COLUMN `update_date` TIMESTAMP NULL AFTER `description`;
 
 ALTER TABLE `health_metric` 
 ADD COLUMN `update_date` TIMESTAMP NULL AFTER `note`;
+
+
+CREATE TABLE `health_diet_items` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `user_id` INT(11) NULL,
+  `create_date` TIMESTAMP NOT NULL DEFAULT NOW(),
+  `intake_type` INT(11) NULL,
+  `measurement` INT(11) NULL,
+  `deliciousness` INT(2) NULL,
+  `healthiness` INT(2) NULL,
+  `description` TEXT NULL,
+  PRIMARY KEY (`id`));

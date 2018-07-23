@@ -137,7 +137,7 @@ $.jqplot.config.enablePlugins = true;
                         lineWidth: 3
                     }
                 },
-                legend: {show: true, location: 'e'}
+                legend: {show: true, location: "outsideGrid"}
             }
     );
     /* CLICK CODE START*/
@@ -168,10 +168,10 @@ $.jqplot.config.enablePlugins = true;
                 barWidth: 10
             }
         },
-        legend: {
-            show: true,
-            placement: 'outsideGrid'
-        },
+//        legend: {
+//            show: true,
+//            placement: 'outsideGrid'
+//        },
         axes: {
             xaxis: {
                 renderer: $.jqplot.CategoryAxisRenderer,

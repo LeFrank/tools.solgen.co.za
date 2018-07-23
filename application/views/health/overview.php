@@ -1,5 +1,6 @@
-<?php 
-    $numberOfDays = floor((strtotime($endDate) - strtotime($startDate)) / (60 * 60 * 24));
+<?php
+$numberOfDays = floor((strtotime($endDate) - strtotime($startDate)) / (60 * 60 * 24));
+//    print_r($difficultyRating);
 ?>
 <br/>
 <div class="row expanded">
@@ -30,7 +31,7 @@
             <h2>Metrics</h2>
             <ul>
                 <li>Metrics captured: <?php echo number_format($healthMetricsStats->total_captured, 2, ".", ""); ?></li>
-                <li>Once every <?php echo number_format($numberOfDays / $healthMetricsStats->total_captured , 2, ".", ""); ?> days</li>
+                <li>Once every <?php echo number_format($numberOfDays / $healthMetricsStats->total_captured, 2, ".", ""); ?> days</li>
                 <li>Average Weight: <?php echo number_format($healthMetricsStats->average_weight, 2, ".", ""); ?> Kg</li>
                 <li>Minimum Weight: <?php echo number_format($healthMetricsStats->minimum_weight, 2, ".", ""); ?> Kg</li>
                 <li>Maximum Weight: <?php echo number_format($healthMetricsStats->maximum_weight, 2, ".", ""); ?> Kg</li>
@@ -61,38 +62,38 @@
             <h2>Exercises</h2>
             <ul>
                 <li>Exercises captured: <?php echo number_format($exerciseStats->total_captured, 0, ".", ""); ?></li>
-                <li>Once every <?php echo number_format($numberOfDays / $exerciseStats->total_captured , 2, ".", ""); ?> Days</li>
+                <li>Once every <?php echo number_format($numberOfDays / $exerciseStats->total_captured, 2, ".", ""); ?> Days</li>
                 <li>Number of Exercise Types: <?php echo number_format($exerciseStats->number_of_exercise_types, 0, ".", ""); ?></li>
-                <li>Average Difficulty: <?php echo number_format($exerciseStats->average_difficulty, 0, ".", ""); ?></li>
-                <li>Minimum Difficulty: <?php echo number_format($exerciseStats->minimum_difficulty, 0, ".", ""); ?></li>
-                <li>Maximum Difficulty: <?php echo number_format($exerciseStats->maximum_difficulty, 0, ".", ""); ?></li>
+                <li>Average Difficulty: <?php echo $difficultyRating[number_format($exerciseStats->average_difficulty, 0, ".", "")]; ?></li>
+                <li>Minimum Difficulty: <?php echo $difficultyRating[number_format($exerciseStats->minimum_difficulty, 0, ".", "")]; ?></li>
+                <li>Maximum Difficulty: <?php echo $difficultyRating[number_format($exerciseStats->maximum_difficulty, 0, ".", "")]; ?></li>
             </ul>
             <h3>Per Exercise</h3>
             <?php
-                foreach($exerciseByExcerciseTypeStats as $k=>$v){
-            ?>
+            foreach ($exerciseByExcerciseTypeStats as $k => $v) {
+                ?>
                 <ul>
                     <li>Exercises Type: <?php echo $exerciseTypes[$v["exercise_type_id"]]["name"]; ?></li>
                     <li>Number of Exercises: <?php echo $v["exercise_count"]; ?></li>
-                    <li>Average <?php echo $exerciseTypes[$v["exercise_type_id"]]["default_measurement_name"];?>: <?php echo number_format($v["average_value"], 0, ".", ","); ?></li>
+                    <li>Average <?php echo $exerciseTypes[$v["exercise_type_id"]]["default_measurement_name"]; ?>: <?php echo number_format($v["average_value"], 0, ".", ","); ?></li>
                     <li>Minimum <?php echo $exerciseTypes[$v["exercise_type_id"]]["default_measurement_name"]; ?>: <?php echo number_format($v["minimum_value"], 0, ".", ","); ?></li>
                     <li>Maximum <?php echo $exerciseTypes[$v["exercise_type_id"]]["default_measurement_name"]; ?>: <?php echo number_format($v["maximum_value"], 0, ".", ","); ?></li>
                     <li>Average Distance: <?php echo number_format($v["average_distance"], 0, ".", ","); ?> m</li>
                     <li>Minimum Distance: <?php echo number_format($v["minimum_distance"], 0, ".", ","); ?> m</</li>
                     <li>Maximum Distance: <?php echo number_format($v["maximum_distance"], 0, ".", ","); ?> m</li>
                 </ul>
-            <?php
-                }
+                <?php
+            }
             ?>
         </div>
-            <div class="large-8 columns" >
+        <div class="large-8 columns" >
             <h2>&nbsp;</h2>
-            <?php 
-                foreach($exerciseTypes as $k=>$v){
-                    echo "<div id='exercise-graph-".$v["id"]."-0'></div>";
-                    echo "<div id='exercise-graph-".$v["id"]."-1'></div>";
-                    echo "<div id='exercise-graph-".$v["id"]."-2'></div>";
-                }
+            <?php
+            foreach ($exerciseTypes as $k => $v) {
+                echo "<div id='exercise-graph-" . $v["id"] . "-0'></div>";
+                echo "<div id='exercise-graph-" . $v["id"] . "-1'></div>";
+                echo "<div id='exercise-graph-" . $v["id"] . "-2'></div>";
+            }
             ?>
         </div>
     </div>
@@ -103,13 +104,15 @@
         $("#fromDate").datetimepicker();
         $("#toDate").datetimepicker();
     });
-    
+
     var waist = <?php echo $waist; ?>;
     var weight = <?php echo $weight; ?>;
     var sleep = <?php echo $sleep; ?>;
     var sleepTarget = <?php echo $sleepTarget; ?>;
-    
-    
+    var weightTarget = <?php echo $weightTarget; ?>;
+    var waistTarget = <?php echo $waistTarget; ?>;
+
+
 </script>
 
 <link rel="stylesheet" type="text/css" href="/css/jquery.datetimepicker.css" />
@@ -127,29 +130,29 @@
         $("#fromDate").datetimepicker();
         $("#toDate").datetimepicker();
     });
-    
-    
-    <?php
+
+
+<?php
 //            echo "<pre>";
 //            print_r($exerciseGraphMetrics);
 //            echo "</pre>";
-        foreach($exerciseTypes as $k=>$v){
-            if(!empty($exerciseGraphMetrics[$v["id"]]["measurement_value"])){
-                echo "var exercise_type_".$v["id"]."_0 = " . json_encode($exerciseGraphMetrics[$v["id"]]["measurement_value"]) . ";";
-                echo "createplot('exercise-graph-".$v["id"]."-0', 'exercise_type_".$v["id"]."_0' , '".$v["name"]." - Number Of ".$v["default_measurement_name"]."');\n";
-            }
-            if(!empty($exerciseGraphMetrics[$v["id"]]["difficulty"])){
-                echo "var exercise_type_".$v["id"]."_1 = " . json_encode($exerciseGraphMetrics[$v["id"]]["difficulty"]) . ";";
-                echo "createplot('exercise-graph-".$v["id"]."-1', 'exercise_type_".$v["id"]."_1' , '".$v["name"]." - Difficulty');\n";
-            }
-            if(!empty($exerciseGraphMetrics[$v["id"]]["distance"])){
-                echo "var exercise_type_".$v["id"]."_2 = " . json_encode($exerciseGraphMetrics[$v["id"]]["distance"]) . ";";
-                echo "createplot('exercise-graph-".$v["id"]."-2', 'exercise_type_".$v["id"]."_2' , '".$v["name"]." - Distance');\n";
-            }
-        }
-    ?>
-        
-    function createplot(id, varName, description){
+foreach ($exerciseTypes as $k => $v) {
+    if (!empty($exerciseGraphMetrics[$v["id"]]["measurement_value"])) {
+        echo "var exercise_type_" . $v["id"] . "_0 = " . json_encode($exerciseGraphMetrics[$v["id"]]["measurement_value"]) . ";";
+        echo "createplot('exercise-graph-" . $v["id"] . "-0', 'exercise_type_" . $v["id"] . "_0' , '" . $v["name"] . " - Number Of " . $v["default_measurement_name"] . "');\n";
+    }
+    if (!empty($exerciseGraphMetrics[$v["id"]]["difficulty"])) {
+        echo "var exercise_type_" . $v["id"] . "_1 = " . json_encode($exerciseGraphMetrics[$v["id"]]["difficulty"]) . ";";
+        echo "createplot('exercise-graph-" . $v["id"] . "-1', 'exercise_type_" . $v["id"] . "_1' , '" . $v["name"] . " - Difficulty');\n";
+    }
+    if (!empty($exerciseGraphMetrics[$v["id"]]["distance"])) {
+        echo "var exercise_type_" . $v["id"] . "_2 = " . json_encode($exerciseGraphMetrics[$v["id"]]["distance"]) . ";";
+        echo "createplot('exercise-graph-" . $v["id"] . "-2', 'exercise_type_" . $v["id"] . "_2' , '" . $v["name"] . " - Distance');\n";
+    }
+}
+?>
+
+    function createplot(id, varName, description) {
         var tttt = window[varName];
 //        console.log(id);
 //        console.log(varName);
@@ -181,12 +184,13 @@
                 rendererOptions: {
                     smooth: true
                 }
-            }
+            },
+
         });
     }
-    
+
     // Waist and Weight measurements over period
-    var plot1 = $.jqplot('waist-and-weight-over-time-period', [weight, waist], {
+    var plot1 = $.jqplot('waist-and-weight-over-time-period', [weight, weightTarget, waist, waistTarget], {
         title: 'Tracking Body Wellbeing Metrics Over The Time Period',
         axes: {
             xaxis: {
@@ -212,18 +216,28 @@
             rendererOptions: {
                 smooth: true
             }
-        }
+        },
+        legend: {
+                show: true,
+                placement: 'outsideGrid'
+        },
+        series: [
+            {label: 'Weight'},
+            {label: 'Target Weight'},
+            {label: 'Waist'},
+            {label: 'Target Waist Measurement'}
+        ]
     });
-    
+
 //    $('#waist-and-weight-over-time-period').bind('jqplotDataClick',
 //            function(ev, seriesIndex, pointIndex, data) {
 //                var url = "http://" + window.location.host + "/expenses/getExpenses/" + healthMetrics[pointIndex].id + "?keepThis=true&TB_iframe=true&width=850&height=500";
 //                tb_show("Expenses", url);
 //            }
 //    );
-    
+
     // Sleep over period
-    var plot2 = $.jqplot('sleep-over-time-period', [sleep,sleepTarget], {
+    var plot2 = $.jqplot('sleep-over-time-period', [sleep, sleepTarget], {
         title: 'Tracking Sleep Duration Over The Time Period',
         axes: {
             xaxis: {
@@ -249,9 +263,17 @@
             rendererOptions: {
                 smooth: true
             }
-        }
+        },
+        legend: {
+                show: true,
+                placement: 'outsideGrid'
+        },
+        series: [
+            {label: 'Recorded Sleep'},
+            {label: 'Target Sleep Measurement'}
+        ]
     });
-    
+
 //    $('#sleep-over-time-period').bind('jqplotDataClick',
 //            function(ev, seriesIndex, pointIndex, data) {
 //                var url = "http://" + window.location.host + "/expenses/getExpenses/" + healthMetrics[pointIndex].id + "?keepThis=true&TB_iframe=true&width=850&height=500";
