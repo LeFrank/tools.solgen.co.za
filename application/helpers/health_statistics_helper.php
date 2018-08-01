@@ -45,24 +45,24 @@ function getSleepOverDateRangeJson($metrics) {
     return $jsonDataArray;
 }
 
-function getSleepTargetOverDateRangeJson($metrics) {
+function getSleepTargetOverDateRangeJson($metrics, $targetValue=0) {
     $count = 0;
     $jsonDataArray = array();
     foreach ($metrics as $k => $v) {
         if(null != $v["sleep"]){
-            $jsonDataArray[$count] = array($v["measurement_date"], floatVal(8));
+            $jsonDataArray[$count] = array($v["measurement_date"], floatVal($targetValue));
             $count++;
         }
     }
     return $jsonDataArray;
 }
 
-function getWeightTargetOverDateRangeJson($metrics) {
+function getWeightTargetOverDateRangeJson($metrics, $targetValue=0) {
     $count = 0;
     $jsonDataArray = array();
     foreach ($metrics as $k => $v) {
         if(null != $v["weight"]){
-            $jsonDataArray[$count] = array($v["measurement_date"], floatVal(96));
+            $jsonDataArray[$count] = array($v["measurement_date"], floatVal($targetValue));
             $count++;
         }
     }
@@ -70,12 +70,12 @@ function getWeightTargetOverDateRangeJson($metrics) {
 }
 
 
-function getWaistTargetOverDateRangeJson($metrics) {
+function getWaistTargetOverDateRangeJson($metrics, $targetValue=0 ) {
     $count = 0;
     $jsonDataArray = array();
     foreach ($metrics as $k => $v) {
         if(null != $v["waist"]){
-            $jsonDataArray[$count] = array($v["measurement_date"], floatVal(91.44));
+            $jsonDataArray[$count] = array($v["measurement_date"], floatVal($targetValue));
             $count++;
         }
     }

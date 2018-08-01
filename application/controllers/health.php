@@ -31,6 +31,7 @@ class health extends CI_Controller {
         $this->load->helper('url');
         $this->load->helper('email');
         $this->load->helper("date_helper");
+        $this->load->helper("user_config");
         $this->load->library('form_validation');
         $this->load->library("input");
         can_access(
@@ -40,6 +41,7 @@ class health extends CI_Controller {
         $this->load->model("exercise_type_model");
         $this->load->model("health_exercise_tracker_model");
         $this->load->model("health_diet_model");
+        $this->load->model("user_configs_model");
         
      }
     //put your code here
@@ -70,15 +72,16 @@ class health extends CI_Controller {
         $data["startDate"] = $startDate;
         $data["endDate"] = $endDate;
         $userId = $this->session->userdata("user")->id;
+        $data["userHealthConfigs"] = mapKeyToValue($this->user_configs_model->getUserConfigsByToolId($userId, $this->toolId));
         $data["difficultyRating"] = $this->difficultyRating;
         $data["healthMetrics"] = $this->health_metric_model->getHealthMetricByDateRange($data["startDate"], $data["endDate"], $userId);
         $data["healthMetricsStats"] = $this->health_metric_model->getOverallUserStatsByDateRange($data["startDate"], $data["endDate"], $userId);
         $data["waist"] = json_encode(getWaistOverDateRangeJson($data["healthMetrics"]));
         $data["weight"] = json_encode(getWeightOverDateRangeJson($data["healthMetrics"]));
         $data["sleep"] = json_encode(getSleepOverDateRangeJson($data["healthMetrics"]));
-        $data["sleepTarget"] = json_encode(getSleepTargetOverDateRangeJson($data["healthMetrics"]));
-        $data["waistTarget"] = json_encode(getWaistTargetOverDateRangeJson($data["healthMetrics"]));
-        $data["weightTarget"] = json_encode(getWeightTargetOverDateRangeJson($data["healthMetrics"]));
+        $data["sleepTarget"] = json_encode(getSleepTargetOverDateRangeJson($data["healthMetrics"], $data["userHealthConfigs"]["target_sleep"]));
+        $data["waistTarget"] = json_encode(getWaistTargetOverDateRangeJson($data["healthMetrics"], $data["userHealthConfigs"]["target_waist"]));
+        $data["weightTarget"] = json_encode(getWeightTargetOverDateRangeJson($data["healthMetrics"], $data["userHealthConfigs"]["target_weight"]));
 //        $data["healthMetrics"] = $this->health_metric_model->getHealthMetricByDateRange($data["startAndEndDate"][0], $data["startAndEndDate"][1], $this->session->userdata("user")->id);
         $data["exercises"] = $this->health_exercise_tracker_model->getuserExercisesByDateRange($data["startDate"], $data["endDate"], $this->session->userdata("user")->id);
         $data["exerciseStats"] = $this->health_exercise_tracker_model->getOverallUserStatsByDateRange($data["startDate"], $data["endDate"], $userId);
@@ -398,8 +401,9 @@ class health extends CI_Controller {
     }
     
     public function options(){
-        echo __CLASS__ . " >> ". __FUNCTION__ . " >> " . __LINE__;
+        $userId = $this->session->userdata("user")->id;
         $data = array();
+        $data["userHealthConfigs"] = mapKeyToValue($this->user_configs_model->getUserConfigsByToolId($userId, $this->toolId));
         $this->load->view('header', getPageTitle($data, $this->toolName, "Options"));
         $this->load->view('health/health_nav');
         $this->load->view('health/options', $data);

@@ -83,3 +83,16 @@ CREATE TABLE `health_diet_items` (
   `healthiness` INT(2) NULL,
   `description` TEXT NULL,
   PRIMARY KEY (`id`));
+
+
+CREATE TABLE `user_configs` (
+  `id` INT(11) NOT NULL,
+  `user_id` INT(11) NULL,
+  `tool_id` INT NULL,
+  `key` VARCHAR(45) NULL,
+  `val` VARCHAR(45) NULL,
+  `created_date` TIMESTAMP NULL,
+  PRIMARY KEY (`id`));
+
+ALTER TABLE `user_configs` 
+CHANGE COLUMN `id` `id` INT(11) NOT NULL AUTO_INCREMENT ;

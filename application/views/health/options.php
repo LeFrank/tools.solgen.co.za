@@ -1,4 +1,5 @@
 <?php
+print_r($userHealthConfigs);
 ?>
 <div class="row expanded" >
     <div class="large-12 columns" >
@@ -13,16 +14,16 @@
         <div class="large-9 columns" >
             <div  class="row expanded" >
                 <div class="large-4 columns" >
-                    <label for="targetWeight">Target Weight</label>
-                    <input type="number" name="targetWeight" id="targetWeight"  step="0.1" placeholder="0.00"/>
+                    <label for="target_weight">Target Weight</label>
+                    <input type="number" name="target_weight" id="targe_weight"  step="0.1" <?php echo ((isset($userHealthConfigs["target_weight"])) ?  "value='".$userHealthConfigs["target_weight"]."'" : "placeholder='0.0'"); ?>/>
                 </div>
                 <div class="large-4 columns" >
-                    <label for="targetWaist">Target Waist Measurement</label>
-                    <input type="number" name="targetWaist" id="targetWaist"  step="0.1" placeholder="0.00"/>
+                    <label for="target_waist">Target Waist Measurement</label>
+                    <input type="number" name="target_waist" id="target_waist"  step="0.1" <?php echo ((isset($userHealthConfigs["target_waist"])) ?  "value='".$userHealthConfigs["target_waist"]."'" : "placeholder='0.0'"); ?>  />
                 </div>
                 <div class="large-4 columns" >
-                    <label for="targetSleep">Daily Sleep Target</label>
-                    <input type="number" name="targetSleep" id="targetSleep"  step="0.1" placeholder="0.00" value="8.00"/>
+                    <label for="target_sleep">Daily Sleep Target</label>
+                    <input type="number" name="target_sleep" id="target_sleep"  step="0.1" <?php echo ((isset($userHealthConfigs["target_sleep"])) ?  "value='".$userHealthConfigs["target_sleep"]."'" : "placeholder='0.0'"); ?>/>
                 </div>
             </div>
         </div>
@@ -70,3 +71,5 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript" src="/js/health/options/index.js" />
