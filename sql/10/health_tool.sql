@@ -96,3 +96,11 @@ CREATE TABLE `user_configs` (
 
 ALTER TABLE `user_configs` 
 CHANGE COLUMN `id` `id` INT(11) NOT NULL AUTO_INCREMENT ;
+
+CREATE TABLE `health_emotion_record` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `user_id` INT(11) NULL,
+  `emotion_id` INT(3) NULL,
+  `created_date` TIMESTAMP NULL,
+  `description` TEXT NULL,
+  PRIMARY KEY (`id`));

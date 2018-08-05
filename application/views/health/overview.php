@@ -71,6 +71,12 @@ $numberOfDays = floor((strtotime($endDate) - strtotime($startDate)) / (60 * 60 *
             <h3>Per Exercise</h3>
             <?php
             foreach ($exerciseByExcerciseTypeStats as $k => $v) {
+                $totalDistance = "";
+                if($v["total_distance"] < 1000){
+                    $totalDistance = number_format($v["total_distance"], 0, ".", ",") ." m";
+                }else{
+                    $totalDistance = number_format($v["total_distance"]/1000, 2, ". ", ",") ." Km";
+                }
                 ?>
                 <ul>
                     <li>Exercises Type: <?php echo $exerciseTypes[$v["exercise_type_id"]]["name"]; ?></li>
@@ -78,9 +84,11 @@ $numberOfDays = floor((strtotime($endDate) - strtotime($startDate)) / (60 * 60 *
                     <li>Average <?php echo $exerciseTypes[$v["exercise_type_id"]]["default_measurement_name"]; ?>: <?php echo number_format($v["average_value"], 0, ".", ","); ?></li>
                     <li>Minimum <?php echo $exerciseTypes[$v["exercise_type_id"]]["default_measurement_name"]; ?>: <?php echo number_format($v["minimum_value"], 0, ".", ","); ?></li>
                     <li>Maximum <?php echo $exerciseTypes[$v["exercise_type_id"]]["default_measurement_name"]; ?>: <?php echo number_format($v["maximum_value"], 0, ".", ","); ?></li>
+                    <li>Total <?php echo $exerciseTypes[$v["exercise_type_id"]]["default_measurement_name"]; ?>: <?php echo number_format($v["total_value"], 0, ".", ","); ?></li>
                     <li>Average Distance: <?php echo number_format($v["average_distance"], 0, ".", ","); ?> m</li>
                     <li>Minimum Distance: <?php echo number_format($v["minimum_distance"], 0, ".", ","); ?> m</</li>
                     <li>Maximum Distance: <?php echo number_format($v["maximum_distance"], 0, ".", ","); ?> m</li>
+                    <li>Total Distance: <?php echo $totalDistance ?></li>
                 </ul>
                 <?php
             }

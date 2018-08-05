@@ -28,13 +28,7 @@ $(document).ready(function () {
 
     $('.editable').jinplace();
 });
-var delay = (function () {
-    var timer = 0;
-    return function (callback, ms) {
-        clearTimeout(timer);
-        timer = setTimeout(callback, ms);
-    };
-})();
+
 
 function replaceAll(string, find, replace) {
     return string.replace(new RegExp(escapeRegExp(find), 'g'), replace);

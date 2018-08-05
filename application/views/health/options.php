@@ -1,5 +1,5 @@
 <?php
-print_r($userHealthConfigs);
+//print_r($userHealthConfigs);
 ?>
 <div class="row expanded" >
     <div class="large-12 columns" >

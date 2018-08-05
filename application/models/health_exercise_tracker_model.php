@@ -112,9 +112,11 @@ class health_exercise_tracker_model extends CI_Model {
             avg(measurement_value) as `average_value`, 
             min(measurement_value) as `minimum_value`,
             max(measurement_value) as `maximum_value`,
+            sum(measurement_value) as `total_value`,
             avg(distance) as `average_distance`, 
             min(distance) as `minimum_distance`,
-            max(distance) as `maximum_distance`
+            max(distance) as `maximum_distance`,
+            sum(distance) as `total_distance`
         FROM 
             " . $this->tn . "
         WHERE 

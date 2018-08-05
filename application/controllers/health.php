@@ -32,6 +32,8 @@ class health extends CI_Controller {
         $this->load->helper('email');
         $this->load->helper("date_helper");
         $this->load->helper("user_config");
+        $this->load->helper("health_emotion_helper");
+        $this->load->helper('date');
         $this->load->library('form_validation');
         $this->load->library("input");
         can_access(
@@ -40,6 +42,7 @@ class health extends CI_Controller {
         $this->load->model("health_metric_model");
         $this->load->model("exercise_type_model");
         $this->load->model("health_exercise_tracker_model");
+        $this->load->model("health_emotion_record_model");
         $this->load->model("health_diet_model");
         $this->load->model("user_configs_model");
         
@@ -48,6 +51,7 @@ class health extends CI_Controller {
     
     public function index(){
         $data = array();
+
         $startDate = $endDate = null;
         if(null != $this->input->post("fromDate")){
             $startDate = $this->input->post("fromDate");
@@ -393,7 +397,54 @@ class health extends CI_Controller {
     
     
     public function emotionTracker(){
-        echo __CLASS__ . " >> ". __FUNCTION__ . " >> " . __LINE__;
+        $startDate = $endDate = null;
+        if(null != $this->input->post("fromDate")){
+            $startDate = $this->input->post("fromDate");
+        }
+        if(null != $this->input->post("toDate")){
+            $endDate = $this->input->post("toDate");
+        }
+        if($startDate == null){
+            $startDate = date('Y/m/d H:i', strtotime('-1 month'));
+        }else{
+            $startDate = date('Y/m/d H:i', strtotime($startDate));
+        }
+//        echo $startDate;
+        if($endDate== null ){
+            $endDate = date('Y/m/d H:i', strtotime("now"));
+        }else{
+            $endDate = date('Y/m/d H:i', strtotime($endDate));
+        }
+//        echo "<br/>".$endDate;
+        $search["startDate"] = $startDate;
+        $search["endDate"] = $endDate;
+        $data["startDate"] = $startDate;
+        $data["endDate"] = $endDate;
+        $data["emotionIcons"] = getEmotionIcons();
+//        echo "<pre>";
+//        print_r($data["emotionIcons"]);
+//        echo "</pre>";
+        $userId = $this->session->userdata("user")->id;
+        $data["userHealthConfigs"] = mapKeyToValue($this->user_configs_model->getUserConfigsByToolId($userId, $this->toolId));
+        $this->load->view('header', getPageTitle($data, $this->toolName, "Options"));
+        $this->load->view('health/health_nav');
+        $this->load->view('health/emotions/index', $data);
+        $this->load->view('footer');
+    }
+    
+    public function emotionCapture($emotionId){
+        echo $emotionId; 
+        $userId = $this->session->userdata("user")->id;
+        $emotion["emotion_id"] = $emotionId;
+        $emotion["created_date"] = date('Y/m/d H:i');;
+        $emotion["description"]  = null;
+        $emotion["user_id"] = $userId;
+        $emotion["id"] = $this->health_emotion_record_model->capture_emotion($emotion);
+//        echo __CLASS__ . " >> ". __FUNCTION__ . " >> " . __LINE__;
+//        echo "<pre>";
+//        print_r($emotion);
+//        echo "</pre>";
+//        echo __CLASS__ . " >> ". __FUNCTION__ . " >> " . __LINE__ . " >> ".$emotionId;
     }
     
     public function medicalhistory(){
