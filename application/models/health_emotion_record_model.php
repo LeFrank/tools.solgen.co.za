@@ -100,6 +100,35 @@ class health_emotion_record_model extends CI_Model {
         return $query->result_array();
     }
     
+    /**
+     * Get health metrics by date range. Can be filtered by user and delimited
+     * 
+     * @param type $startDate
+     * @param type $endDate
+     * @param type $userId
+     * @param type $limit
+     * @param type $offset
+     * @param type $orderBy
+     * @param type $direction
+     * @return null
+     */
+    public function getEmotionRecordsByDateRange($startDate, $endDate, $userId = null, $limit = null, $offset = 0, $orderBy = null, $direction = "asc") {
+        if (null != $orderBy) {
+            $this->db->order_by($orderBy, $direction);
+        } else {
+            $this->db->order_by("created_date", "desc");
+        }
+        if ($userId === null) {
+            return null;
+        }
+        if (null == $limit) {
+            $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'created_date >=' => $startDate, 'created_date <= ' => $endDate));
+        } else {
+            $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'created_date >=' => $startDate, 'created_date <= ' => $endDate), $limit, $offset);
+        }
+//        echo $this->db->last_query();
+        return $query->result_array();
+    }
     
     /**
      * 

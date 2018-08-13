@@ -425,6 +425,7 @@ class health extends CI_Controller {
 //        print_r($data["emotionIcons"]);
 //        echo "</pre>";
         $userId = $this->session->userdata("user")->id;
+        $data["emotions"] = $this->health_emotion_record_model->getEmotionRecordsByDateRange($data["startDate"], $data["endDate"], $this->session->userdata("user")->id);
         $data["userHealthConfigs"] = mapKeyToValue($this->user_configs_model->getUserConfigsByToolId($userId, $this->toolId));
         $this->load->view('header', getPageTitle($data, $this->toolName, "Options"));
         $this->load->view('health/health_nav');

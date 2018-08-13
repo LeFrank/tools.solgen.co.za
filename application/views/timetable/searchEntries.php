@@ -61,6 +61,7 @@
             if ($day != $date->format("d")) {
                 $day = $date->format("d");
                 $newDay = true;
+                echo '<hr/>';
                 echo '              <div id="entry-list-item-block" class="day-block">';
                 echo '                  <div class="row" >';
                 echo '                      <div class="large-3 columns text-left day-block-date">';
