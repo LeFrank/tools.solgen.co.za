@@ -434,7 +434,6 @@ class health extends CI_Controller {
     }
     
     public function emotionCapture($emotionId){
-        echo $emotionId; 
         $userId = $this->session->userdata("user")->id;
         $emotion["emotion_id"] = $emotionId;
         $emotion["created_date"] = date('Y/m/d H:i');;
@@ -447,6 +446,15 @@ class health extends CI_Controller {
 //        echo "</pre>";
 //        echo __CLASS__ . " >> ". __FUNCTION__ . " >> " . __LINE__ . " >> ".$emotionId;
     }
+    
+    public function emotionDescriptionCapture($id){
+        $userId = $this->session->userdata("user")->id;
+        $emotion = $this->health_emotion_record_model->getEmotionRecordbyId($id, $userId);
+        $emotion->description  = $this->input->post("value");
+        $this->health_emotion_record_model->update($emotion);
+        echo $this->health_emotion_record_model->getEmotionRecordbyId($id, $userId)->description;
+    }
+    
     
     public function medicalhistory(){
         echo __CLASS__ . " >> ". __FUNCTION__ . " >> " . __LINE__;

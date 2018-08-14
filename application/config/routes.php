@@ -148,6 +148,7 @@ $route['health/diet/delete/(:num)'] = 'health/dietDelete/$1';
 $route['health/emotion/tracker'] = 'health/emotionTracker';
 $route['health/medical/history'] = 'health/medicalhistory';
 $route['health/emotion/record/(:num)'] = 'health/emotionCapture/$1';
+$route['health/emotion/tracker/description/(:num)'] = 'health/emotionDescriptionCapture/$1';
 $route['health/option'] = 'health/options';
 
 $route['faq'] = 'faq/index';

@@ -62,7 +62,7 @@ class health_emotion_record_model extends CI_Model {
      * @param type $id
      * @return type
      */
-    public function getEmotionRecordbyId($id) {
+    public function getEmotionRecordbyId($id, $userId) {
         $query = $this->db->get_where($this->tn, array('user_id' => $userId,'id' => $id));
         return $query->row();
     }
@@ -136,11 +136,11 @@ class health_emotion_record_model extends CI_Model {
      */
     public function update($emotion) {
         $data = array(
-            'emotion_id' => $emotion["emotion_id"],
-            'created_date' => date('Y/m/d H:i', strtotime($emotion["date"])),
-            'description' => $emotion["description"],
+            'emotion_id' => $emotion->emotion_id,
+            'created_date' => date('Y/m/d H:i', strtotime($emotion->created_date)),
+            'description' => $emotion->description,
         );
-        $this->db->where('id', $this->input->post('id'));
+        $this->db->where('id', $emotion->id);
         return $this->db->update($this->tn, $data);
     }
 
