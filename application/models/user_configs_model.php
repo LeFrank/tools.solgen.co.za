@@ -68,7 +68,7 @@ class user_configs_model extends CI_Model {
      * @param type $id
      * @return type
      */
-    public function getUserConfig($id) {
+    public function getUserConfig($userId, $id) {
         $query = $this->db->get_where($this->tn, array('user_id' => $userId,'id' => $id));
         return $query->row();
     }
@@ -125,13 +125,13 @@ class user_configs_model extends CI_Model {
      */
     public function update($config) {
         $data = array(
-            'toolId' => $config["toolId"],
-            'key' => $config["key"],
-            'val' => $config["val"],
-            'created_date' => $date,
+            'tool_id' => $config->tool_id,
+            'key' => $config->key,
+            'val' => $config->val,
+            'created_date' => $config->created_date,
             'user_id' => $this->session->userdata("user")->id
         );
-        $this->db->where('id', $this->input->post('id'));
+        $this->db->where('id', $config->id);
         return $this->db->update($this->tn, $data);
     }
 

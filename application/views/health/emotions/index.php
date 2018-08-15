@@ -96,7 +96,7 @@
                      </span>
             </div>
             <div class="large-3 columns" >
-                Action
+                <a href="/health/emotion/tracker/delete/<?php echo $v["id"];?>" >Delete</a>
             </div>
         </div>
 <?php 

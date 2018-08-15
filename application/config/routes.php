@@ -150,6 +150,8 @@ $route['health/medical/history'] = 'health/medicalhistory';
 $route['health/emotion/record/(:num)'] = 'health/emotionCapture/$1';
 $route['health/emotion/tracker/description/(:num)'] = 'health/emotionDescriptionCapture/$1';
 $route['health/option'] = 'health/options';
+$route['health/option/update/(:num)'] = 'health/optionUpdate/$1';
+//target_weight
 
 $route['faq'] = 'faq/index';
 

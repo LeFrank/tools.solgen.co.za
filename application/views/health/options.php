@@ -1,5 +1,6 @@
 <?php
 //print_r($userHealthConfigs);
+//print_r($userHealthConfigs);
 ?>
 <div class="row expanded" >
     <div class="large-12 columns" >
@@ -15,15 +16,36 @@
             <div  class="row expanded" >
                 <div class="large-4 columns" >
                     <label for="target_weight">Target Weight</label>
-                    <input type="number" name="target_weight" id="targe_weight"  step="0.1" <?php echo ((isset($userHealthConfigs["target_weight"])) ?  "value='".$userHealthConfigs["target_weight"]."'" : "placeholder='0.0'"); ?>/>
+                    <span 
+                        class="editable"
+                            data-url="/health/option/update/<?php echo $userHealthConfigs["target_weight_id"]; ?>"
+                            data-type="textarea"
+                            data-ok-button="OK"
+                            data-cancel-button="Cancel" >
+                             <?php echo (!empty($userHealthConfigs["target_weight"])) ? $userHealthConfigs["target_weight"] : ""; ?>
+                     </span>
                 </div>
                 <div class="large-4 columns" >
                     <label for="target_waist">Target Waist Measurement</label>
-                    <input type="number" name="target_waist" id="target_waist"  step="0.1" <?php echo ((isset($userHealthConfigs["target_waist"])) ?  "value='".$userHealthConfigs["target_waist"]."'" : "placeholder='0.0'"); ?>  />
+                    <span 
+                        class="editable"
+                            data-url="/health/option/update/<?php echo $userHealthConfigs["target_waist_id"]; ?>"
+                            data-type="textarea"
+                            data-ok-button="OK"
+                            data-cancel-button="Cancel" >
+                             <?php echo (!empty($userHealthConfigs["target_waist"])) ? $userHealthConfigs["target_waist"] : ""; ?>
+                     </span>
                 </div>
                 <div class="large-4 columns" >
                     <label for="target_sleep">Daily Sleep Target</label>
-                    <input type="number" name="target_sleep" id="target_sleep"  step="0.1" <?php echo ((isset($userHealthConfigs["target_sleep"])) ?  "value='".$userHealthConfigs["target_sleep"]."'" : "placeholder='0.0'"); ?>/>
+                    <span 
+                        class="editable"
+                            data-url="/health/option/update/<?php echo $userHealthConfigs["target_sleep_id"]; ?>"
+                            data-type="textarea"
+                            data-ok-button="OK"
+                            data-cancel-button="Cancel" >
+                             <?php echo (!empty($userHealthConfigs["target_sleep"])) ? $userHealthConfigs["target_sleep"] : ""; ?>
+                     </span>
                 </div>
             </div>
         </div>
@@ -71,5 +93,7 @@
         </div>
     </div>
 </div>
-
-<script type="text/javascript" src="/js/health/options/index.js" />
+<link rel="stylesheet" href="/css/third_party/thickbox/thickbox.css" type="text/css" media="screen" />
+<script src="/js/third_party/jquery-ui.custom.min.js" type="text/javascript" ></script>
+<script type="text/javascript" src="/js/third_party/jinplace-1.2.1.min.js"></script>
+<script src="/js/health/options/index.js" ></script>

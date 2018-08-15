@@ -6,6 +6,7 @@
  * @author francois
  */
 class health extends CI_Controller {
+
     var $toolId = 8;
     var $toolName = "Health";
     var $require_auth = TRUE;
@@ -21,8 +22,8 @@ class health extends CI_Controller {
         9 => "9 - Hard, intense training and specific preparation required",
         10 => "10 - Intense, pushed to beyond the limit"
     );
-    
-     public function __construct() {
+
+    public function __construct() {
         parent::__construct();
         $this->load->library('session');
         $this->load->helper('auth_helper');
@@ -45,32 +46,28 @@ class health extends CI_Controller {
         $this->load->model("health_emotion_record_model");
         $this->load->model("health_diet_model");
         $this->load->model("user_configs_model");
-        
-     }
-    //put your code here
-    
-    public function index(){
+    }
+
+    public function index() {
         $data = array();
 
         $startDate = $endDate = null;
-        if(null != $this->input->post("fromDate")){
+        if (null != $this->input->post("fromDate")) {
             $startDate = $this->input->post("fromDate");
         }
-        if(null != $this->input->post("toDate")){
+        if (null != $this->input->post("toDate")) {
             $endDate = $this->input->post("toDate");
         }
-        if($startDate == null){
+        if ($startDate == null) {
             $startDate = date('Y/m/d H:i', strtotime('-1 month'));
-        }else{
+        } else {
             $startDate = date('Y/m/d H:i', strtotime($startDate));
         }
-//        echo $startDate;
-        if($endDate== null ){
+        if ($endDate == null) {
             $endDate = date('Y/m/d H:i', strtotime("now"));
-        }else{
+        } else {
             $endDate = date('Y/m/d H:i', strtotime($endDate));
         }
-//        echo "<br/>".$endDate;
         $search["startDate"] = $startDate;
         $search["endDate"] = $endDate;
         $data["startDate"] = $startDate;
@@ -86,38 +83,35 @@ class health extends CI_Controller {
         $data["sleepTarget"] = json_encode(getSleepTargetOverDateRangeJson($data["healthMetrics"], $data["userHealthConfigs"]["target_sleep"]));
         $data["waistTarget"] = json_encode(getWaistTargetOverDateRangeJson($data["healthMetrics"], $data["userHealthConfigs"]["target_waist"]));
         $data["weightTarget"] = json_encode(getWeightTargetOverDateRangeJson($data["healthMetrics"], $data["userHealthConfigs"]["target_weight"]));
-//        $data["healthMetrics"] = $this->health_metric_model->getHealthMetricByDateRange($data["startAndEndDate"][0], $data["startAndEndDate"][1], $this->session->userdata("user")->id);
         $data["exercises"] = $this->health_exercise_tracker_model->getuserExercisesByDateRange($data["startDate"], $data["endDate"], $this->session->userdata("user")->id);
         $data["exerciseStats"] = $this->health_exercise_tracker_model->getOverallUserStatsByDateRange($data["startDate"], $data["endDate"], $userId);
         $data["exerciseByExcerciseTypeStats"] = $this->health_exercise_tracker_model->getOverallUserStatsForExceriseTypesByDateRange($data["startDate"], $data["endDate"], $userId);
         $data["exerciseTypes"] = mapKeyToId($this->exercise_type_model->get_user_exercise_types($userId));
-        $data["exerciseGraphMetrics"] = getExerciseGraphDataPerType($data["exerciseTypes"],$data["exercises"]);
+        $data["exerciseGraphMetrics"] = getExerciseGraphDataPerType($data["exerciseTypes"], $data["exercises"]);
         $this->load->view('header', getPageTitle($data, $this->toolName, "Health"));
         $this->load->view('health/health_nav');
         $this->load->view('health/overview');
         $this->load->view('footer');
     }
-    
-    public function metricsView(){
+
+    public function metricsView() {
         $startDate = $endDate = null;
-        if(null != $this->input->post("fromDate")){
+        if (null != $this->input->post("fromDate")) {
             $startDate = $this->input->post("fromDate");
         }
-        if(null != $this->input->post("toDate")){
+        if (null != $this->input->post("toDate")) {
             $endDate = $this->input->post("toDate");
         }
-        if($startDate == null){
+        if ($startDate == null) {
             $startDate = date('Y/m/d H:i', strtotime('-1 month'));
-        }else{
+        } else {
             $startDate = date('Y/m/d H:i', strtotime($startDate));
         }
-//        echo $startDate;
-        if($endDate== null ){
+        if ($endDate == null) {
             $endDate = date('Y/m/d H:i', strtotime("now"));
-        }else{
+        } else {
             $endDate = date('Y/m/d H:i', strtotime($endDate));
         }
-//        echo "<br/>".$endDate;
         $search["startDate"] = $startDate;
         $search["endDate"] = $endDate;
         $data["startDate"] = $startDate;
@@ -137,8 +131,8 @@ class health extends CI_Controller {
         $this->load->view('health/metrics/index', $data);
         $this->load->view('footer');
     }
-    
-    public function metricsCapture(){
+
+    public function metricsCapture() {
         $userId = $this->session->userdata("user")->id;
         if ($this->health_metric_model->capture_metric()) {
             $data["statusArr"]["status"] = "Success";
@@ -153,9 +147,8 @@ class health extends CI_Controller {
         $this->session->set_flashdata('status', $data["statusArr"]);
         redirect("/health/metrics", "refresh");
     }
-    
-    public function metricEdit($metricId){
-        //echo "Class: ". __CLASS__ . " | Function: >> ". __FUNCTION__ . " | Line: >> " . __LINE__ . " | >> exerciseId: " . $exerciseId;
+
+    public function metricEdit($metricId) {
         $userId = $this->session->userdata("user")->id;
         //get exercise and supporting information
         $data["metric"] = $this->health_metric_model->getUserMetricById($userId, $metricId);
@@ -166,9 +159,8 @@ class health extends CI_Controller {
         $this->load->view('footer');
         //Done
     }
-    
-    public function metricDelete($metricId){
-        //echo "Class: ". __CLASS__ . " | Function: >> ". __FUNCTION__ . " | Line: >> " . __LINE__ . " | >> exerciseId: " . $exerciseId;
+
+    public function metricDelete($metricId) {
         $userId = $this->session->userdata("user")->id;
         if ($this->health_metric_model->delete_metric($userId, $metricId)) {
             $data["statusArr"]["status"] = "Success";
@@ -183,10 +175,8 @@ class health extends CI_Controller {
         $this->session->set_flashdata('status', $data["statusArr"]);
         redirect("/health/metrics", "refresh");
     }
-    
-    
-    public function metricUpdate(){
-//        echo "Class: ". __CLASS__ . " | Function: >> ". __FUNCTION__ . " | Line: >> " . __LINE__ . " | >> exerciseId: " . $exerciseId;
+
+    public function metricUpdate() {
         $userId = $this->session->userdata("user")->id;
         if ($this->health_metric_model->update()) {
             $data["statusArr"]["status"] = "Success";
@@ -201,27 +191,24 @@ class health extends CI_Controller {
         redirect("health/metrics", "refresh");
     }
 
-    
-    public function exerciseTrackerView(){
+    public function exerciseTrackerView() {
         $startDate = $endDate = null;
-        if(null != $this->input->post("fromDate")){
+        if (null != $this->input->post("fromDate")) {
             $startDate = $this->input->post("fromDate");
         }
-        if(null != $this->input->post("toDate")){
+        if (null != $this->input->post("toDate")) {
             $endDate = $this->input->post("toDate");
         }
-        if($startDate == null){
+        if ($startDate == null) {
             $startDate = date('Y/m/d H:i', strtotime('-1 month'));
-        }else{
+        } else {
             $startDate = date('Y/m/d H:i', strtotime($startDate));
         }
-//        echo $startDate;
-        if($endDate== null ){
+        if ($endDate == null) {
             $endDate = date('Y/m/d H:i', strtotime("now"));
-        }else{
+        } else {
             $endDate = date('Y/m/d H:i', strtotime($endDate));
         }
-//        echo "<br/>".$endDate;
         $search["startDate"] = $startDate;
         $search["endDate"] = $endDate;
         $data["startDate"] = $startDate;
@@ -243,8 +230,8 @@ class health extends CI_Controller {
         $this->load->view('health/exercise/index', $data);
         $this->load->view('footer');
     }
-    
-    public function exerciseCapture(){
+
+    public function exerciseCapture() {
         $userId = $this->session->userdata("user")->id;
         if ($this->health_exercise_tracker_model->capture_exercise()) {
             $data["statusArr"]["status"] = "Success";
@@ -259,9 +246,8 @@ class health extends CI_Controller {
         $this->session->set_flashdata('status', $data["statusArr"]);
         redirect("health/exercise/tracker", "refresh");
     }
-    
-    public function exerciseEdit($exerciseId){
-        //echo "Class: ". __CLASS__ . " | Function: >> ". __FUNCTION__ . " | Line: >> " . __LINE__ . " | >> exerciseId: " . $exerciseId;
+
+    public function exerciseEdit($exerciseId) {
         $userId = $this->session->userdata("user")->id;
         //get exercise and supporting information
         $data["exercise"] = $this->health_exercise_tracker_model->getUserExerciseById($userId, $exerciseId);
@@ -271,11 +257,9 @@ class health extends CI_Controller {
         $this->load->view('health/health_nav');
         $this->load->view('health/exercise/edit', $data);
         $this->load->view('footer');
-        //Done
     }
-    
-    
-    public function exerciseDelete($exerciseId){
+
+    public function exerciseDelete($exerciseId) {
         $userId = $this->session->userdata("user")->id;
         if ($this->health_exercise_tracker_model->delete_exercise($userId, $exerciseId)) {
             $data["statusArr"]["status"] = "Success";
@@ -290,9 +274,8 @@ class health extends CI_Controller {
         $this->session->set_flashdata('status', $data["statusArr"]);
         redirect("health/exercise/tracker", "refresh");
     }
-    
-    public function exerciseUpdate(){
-//        echo "Class: ". __CLASS__ . " | Function: >> ". __FUNCTION__ . " | Line: >> " . __LINE__ . " | >> exerciseId: " . $exerciseId;
+
+    public function exerciseUpdate() {
         $userId = $this->session->userdata("user")->id;
         if ($this->health_exercise_tracker_model->update()) {
             $data["statusArr"]["status"] = "Success";
@@ -307,33 +290,31 @@ class health extends CI_Controller {
         redirect("health/exercise/tracker", "refresh");
     }
 
-    public function dietView(){
+    public function dietView() {
         $startDate = $endDate = null;
-        if(null != $this->input->post("fromDate")){
+        if (null != $this->input->post("fromDate")) {
             $startDate = $this->input->post("fromDate");
         }
-        if(null != $this->input->post("toDate")){
+        if (null != $this->input->post("toDate")) {
             $endDate = $this->input->post("toDate");
         }
-        if($startDate == null){
+        if ($startDate == null) {
             $startDate = date('Y/m/d H:i', strtotime('-1 month'));
-        }else{
+        } else {
             $startDate = date('Y/m/d H:i', strtotime($startDate));
         }
-//        echo $startDate;
-        if($endDate== null ){
+        if ($endDate == null) {
             $endDate = date('Y/m/d H:i', strtotime("now"));
-        }else{
+        } else {
             $endDate = date('Y/m/d H:i', strtotime($endDate));
         }
-//        echo "<br/>".$endDate;
         $search["startDate"] = $startDate;
         $search["endDate"] = $endDate;
         $data["startDate"] = $startDate;
         $data["endDate"] = $endDate;
         $userId = $this->session->userdata("user")->id;
         $data["statusArr"] = $this->session->flashdata('status');
-        $data["items"] = $this->health_diet_model->getHealthDietItemsByDateRange($data["startDate"], $data["endDate"], $this->session->userdata("user")->id);
+        $data["items"] = $this->health_diet_model->getHealthDietItemsByDateRange($data["startDate"], $data["endDate"], $userId);
         $this->load->view('header', getPageTitle($data, $this->toolName, "Health"));
         $this->load->view('health/health_nav');
         if (!empty($data["statusArr"])) {
@@ -347,8 +328,8 @@ class health extends CI_Controller {
         $this->load->view('health/diet/index', $data);
         $this->load->view('footer');
     }
-    
-     public function dietCapture(){
+
+    public function dietCapture() {
         $userId = $this->session->userdata("user")->id;
         if ($this->health_diet_model->capture_diet_item()) {
             $data["statusArr"]["status"] = "Success";
@@ -363,23 +344,19 @@ class health extends CI_Controller {
         $this->session->set_flashdata('status', $data["statusArr"]);
         redirect("health/diet", "refresh");
     }
-    
-    public function dietEdit($dietItemId){
-        //echo "Class: ". __CLASS__ . " | Function: >> ". __FUNCTION__ . " | Line: >> " . __LINE__ . " | >> exerciseId: " . $exerciseId;
+
+    public function dietEdit($dietItemId) {
         $userId = $this->session->userdata("user")->id;
         //get exercise and supporting information
         $data["exercise"] = $this->health_diet_model->getUserDietItemById($userId, $dietItemId);
-//        $data["exerciseTypes"] = mapKeyToId($this->intake_type_model->get_user_exercise_types($userId));
         //Display Exercise
         $this->load->view('header', getPageTitle($data, $this->toolName, "Diet Edit"));
         $this->load->view('health/health_nav');
         $this->load->view('health/diet/edit', $data);
         $this->load->view('footer');
-        //Done
     }
-    
-    
-    public function dietDelete($exerciseId){
+
+    public function dietDelete($exerciseId) {
         $userId = $this->session->userdata("user")->id;
         if ($this->health_exercise_tracker_model->delete_exercise($userId, $exerciseId)) {
             $data["statusArr"]["status"] = "Success";
@@ -394,36 +371,30 @@ class health extends CI_Controller {
         $this->session->set_flashdata('status', $data["statusArr"]);
         redirect("health/exercise/tracker", "refresh");
     }
-    
-    
-    public function emotionTracker(){
+
+    public function emotionTracker() {
         $startDate = $endDate = null;
-        if(null != $this->input->post("fromDate")){
+        if (null != $this->input->post("fromDate")) {
             $startDate = $this->input->post("fromDate");
         }
-        if(null != $this->input->post("toDate")){
+        if (null != $this->input->post("toDate")) {
             $endDate = $this->input->post("toDate");
         }
-        if($startDate == null){
+        if ($startDate == null) {
             $startDate = date('Y/m/d H:i', strtotime('-1 month'));
-        }else{
+        } else {
             $startDate = date('Y/m/d H:i', strtotime($startDate));
         }
-//        echo $startDate;
-        if($endDate== null ){
+        if ($endDate == null) {
             $endDate = date('Y/m/d H:i', strtotime("now"));
-        }else{
+        } else {
             $endDate = date('Y/m/d H:i', strtotime($endDate));
         }
-//        echo "<br/>".$endDate;
         $search["startDate"] = $startDate;
         $search["endDate"] = $endDate;
         $data["startDate"] = $startDate;
         $data["endDate"] = $endDate;
         $data["emotionIcons"] = getEmotionIcons();
-//        echo "<pre>";
-//        print_r($data["emotionIcons"]);
-//        echo "</pre>";
         $userId = $this->session->userdata("user")->id;
         $data["emotions"] = $this->health_emotion_record_model->getEmotionRecordsByDateRange($data["startDate"], $data["endDate"], $this->session->userdata("user")->id);
         $data["userHealthConfigs"] = mapKeyToValue($this->user_configs_model->getUserConfigsByToolId($userId, $this->toolId));
@@ -432,35 +403,30 @@ class health extends CI_Controller {
         $this->load->view('health/emotions/index', $data);
         $this->load->view('footer');
     }
-    
-    public function emotionCapture($emotionId){
+
+    public function emotionCapture($emotionId) {
         $userId = $this->session->userdata("user")->id;
         $emotion["emotion_id"] = $emotionId;
-        $emotion["created_date"] = date('Y/m/d H:i');;
-        $emotion["description"]  = null;
+        $emotion["created_date"] = date('Y/m/d H:i');
+        ;
+        $emotion["description"] = null;
         $emotion["user_id"] = $userId;
         $emotion["id"] = $this->health_emotion_record_model->capture_emotion($emotion);
-//        echo __CLASS__ . " >> ". __FUNCTION__ . " >> " . __LINE__;
-//        echo "<pre>";
-//        print_r($emotion);
-//        echo "</pre>";
-//        echo __CLASS__ . " >> ". __FUNCTION__ . " >> " . __LINE__ . " >> ".$emotionId;
     }
-    
-    public function emotionDescriptionCapture($id){
+
+    public function emotionDescriptionCapture($id) {
         $userId = $this->session->userdata("user")->id;
         $emotion = $this->health_emotion_record_model->getEmotionRecordbyId($id, $userId);
-        $emotion->description  = $this->input->post("value");
+        $emotion->description = $this->input->post("value");
         $this->health_emotion_record_model->update($emotion);
         echo $this->health_emotion_record_model->getEmotionRecordbyId($id, $userId)->description;
     }
-    
-    
-    public function medicalhistory(){
-        echo __CLASS__ . " >> ". __FUNCTION__ . " >> " . __LINE__;
+
+    public function medicalhistory() {
+        echo __CLASS__ . " >> " . __FUNCTION__ . " >> " . __LINE__;
     }
-    
-    public function options(){
+
+    public function options() {
         $userId = $this->session->userdata("user")->id;
         $data = array();
         $data["userHealthConfigs"] = mapKeyToValue($this->user_configs_model->getUserConfigsByToolId($userId, $this->toolId));
@@ -469,4 +435,14 @@ class health extends CI_Controller {
         $this->load->view('health/options', $data);
         $this->load->view('footer');
     }
+
+    public function optionUpdate($optionId) {
+        $userId = $this->session->userdata("user")->id;
+        $data = array();
+        $config = $this->user_configs_model->getUserConfig($userId, $optionId);
+        $config->val = $this->input->post("value");
+        $this->user_configs_model->update($config);
+        echo $this->user_configs_model->getUserConfig($userId, $optionId)->val;
+    }
+
 }
