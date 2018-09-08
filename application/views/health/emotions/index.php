@@ -66,14 +66,44 @@
     <?php echo form_close(); ?>
 </div>
 <?php 
-//    echo "<pre>";
-//    print_r($emotions);
-//    echo "</pre>";
+    $dateFormat = "l, d F Y";
+    $dateTMP = NULL;
+    
     foreach($emotions as $k=>$v){
+        if($dateTMP == NULL ){
+            $dateTMP = date_create($v["created_date"]);
+            ?>
+                <div class="row expanded" >
+                    <div class="large-12 columns" >
+                <?php
+                    $dayHeader = "<h3>". date_format($dateTMP, $dateFormat)."</h3><hr/>";
+                    echo $dayHeader;
+                ?>
+                    </div>    
+                </div>
+            <?php
+        }else{
+            if((integer)$dateTMP->diff(date_create($v["created_date"]))->format( "%R%a" ) != 0 ){
+                //new date header
+                $dateTMP = date_create($v["created_date"]);
+                ?>
+                <div class="row expanded" >
+                    <div class="large-12 columns" >
+                <?php
+                $dayHeader = "<hr/><h3>". date_format($dateTMP, $dateFormat)."</h3><hr/>";
+                echo $dayHeader;
+                ?>
+                    </div>    
+                </div>
+                <?php
+            }else{
+                //do nothing
+            }
+        }
         ?>
         <div class="row expanded" >
-            <div class="large-3 columns" >
-                <?php echo date_format(date_create($v["created_date"]), "l, d F Y @ H:i")?>
+            <div class="large-1 columns" >
+                <?php echo date_format(date_create($v["created_date"]), "H:i")?>
             </div>
             <div class="large-1 columns" >
                 <img 
@@ -85,7 +115,7 @@
             <div class="large-1 columns" >
                 <?php echo $emotionIcons[$v["emotion_id"]]["name"]; ?>
             </div>
-            <div class="large-3 columns" >
+            <div class="large-8 columns" >
                  <span 
                      class="editable"
                          data-url="/health/emotion/tracker/description/<?php echo $v["id"]; ?>"
@@ -95,10 +125,11 @@
                              <?php echo (!empty($v["description"])) ? $v["description"] : ""; ?>
                      </span>
             </div>
-            <div class="large-3 columns" >
+            <div class="large-1 columns" >
                 <a href="/health/emotion/tracker/delete/<?php echo $v["id"];?>" >Delete</a>
             </div>
         </div>
+        <br/>
 <?php 
     }
 ?>

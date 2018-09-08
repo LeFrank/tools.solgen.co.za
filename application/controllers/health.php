@@ -132,6 +132,16 @@ class health extends CI_Controller {
         $this->load->view('footer');
     }
 
+    /**
+     * Capture a physical metric
+     * determine what the difference was since the last measurement was taken
+     * Positive or negative change
+     * Display alert if a negative pattern has been detected.
+     * e.g. 
+     *      X number of measurements in a row for weight gain has been detected
+     *      X number of waist measurements in a row increase has been detected.
+     *      X number of nights without meeting target sleep duration has been detected.
+     */
     public function metricsCapture() {
         $userId = $this->session->userdata("user")->id;
         if ($this->health_metric_model->capture_metric()) {
