@@ -1,4 +1,5 @@
 <?php ?>
+
 <div class="row expanded">
     <div class="large-12 columns">
         Results: <?php echo count($entries); ?> Entries.

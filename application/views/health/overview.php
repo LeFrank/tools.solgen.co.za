@@ -139,7 +139,6 @@ $numberOfDays = floor((strtotime($endDate) - strtotime($startDate)) / (60 * 60 *
         $("#toDate").datetimepicker();
     });
 
-
 <?php
 //            echo "<pre>";
 //            print_r($exerciseGraphMetrics);
@@ -162,10 +161,6 @@ foreach ($exerciseTypes as $k => $v) {
 
     function createplot(id, varName, description) {
         var tttt = window[varName];
-//        console.log(id);
-//        console.log(varName);
-//        console.log(description);
-//        console.log(tttt);
         var temp = $.jqplot(id, [tttt], {
             title: description,
             axes: {

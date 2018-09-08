@@ -228,16 +228,9 @@ $(document).ready(function () {
     for (var i = 0; i < events.length; i++) {
         eventT = events[i];
         if(!eventT.hasOwnProperty("start")){
-            console.log("the bastard!");
-            console.log(eventT);
         }else{
-    //        console.log(eventT["start"]);
             var day = moment(eventT["start"], "YYYY-MM-DD HH:mm");
             if (day.isSame(now.format(), 'day') && now.diff(day) < 0) {
-    //            console.log(event.start);
-    //            console.log(now.diff(day));
-    //            console.log(day.diff(now));
-    //            console.log(event);
                 var t = eventT.title;
                 var d = eventT.description;
                 setTimeout(function () {

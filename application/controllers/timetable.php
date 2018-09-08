@@ -149,6 +149,14 @@ class Timetable extends CI_Controller {
                         $data["startAndEndDateforMonth"][1]
                     ), $data["timetableCategories"]
                 );
+//        echo "<pre>";
+//        print_r($this->timetable_model->get_user_timetable_events(
+//                        $user->id,  
+//                        $data["startAndEndDateforMonth"][0],  
+//                        $data["startAndEndDateforMonth"][1]
+//                    ));
+//        echo "</pre>";
+//        return;
         $data["eventRepetition"] = $this->timetable_repetition_model->get_timetable_repeats($user->id);
         $data["expenseTypes"] = mapKeyToId($this->expense_type_model->get_user_expense_types($user->id), true);
         $data["locations"] = $this->location_model->getLocations($user->id);
@@ -180,9 +188,9 @@ class Timetable extends CI_Controller {
 
     public function filteredSearch() {
         $user = $this->session->userdata("user");
-//        echo "<pre>";
-//        print_r($this->input->post());
-//        echo "</pre>";
+        echo "<pre>";
+        print_r($this->input->post());
+        echo "</pre>";
         $search["id"] = $this->input->post("id");
         $search["name"] = $this->input->post("name");
         $search["description"] = $this->input->post("description");

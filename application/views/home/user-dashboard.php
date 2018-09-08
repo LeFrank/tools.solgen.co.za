@@ -14,7 +14,9 @@
     Next 7 days calendar events, starting with the current days events.
 </h3>
 <?php
-echo $eventsView;
+    if(isset($eventsView)){
+        echo $eventsView;
+    }
 ?>
 <script type='text/javascript'>
     var expenseTypes = <?php echo json_encode($expenseTypes); ?>;

@@ -14,7 +14,7 @@
                 </div>
                 <div class="large-2 columns">
                     <label for="exerciseEndDate">End Date</label>
-                    <input  type="text" id="exerciseEndDate" name="exerciseEndDate" placeholder="<?php echo date('Y/m/d H:i:s'); ?>" /><br/><br/>
+                    <input  type="text" id="exerciseEndDate" name="exerciseEndDate" placeholder="<?php echo date('Y/m/d H:i:s'); ?>" value="" /><br/><br/>
                 </div>
                 <div class="large-2 columns">
                     <label for="exerciseType">Exercise Type</label>

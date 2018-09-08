@@ -116,6 +116,7 @@ class Home extends CI_Controller {
                 $data["eventsBudgetItems"] = $this->load->view('expense_budget_item/budget_items_assigned', $data, true);
             }
             //$this->expenseBudgetItems->manage(7);
+//            print_r($data);
             $this->load->view('home/user-dashboard');
         }
         $this->load->view('footer');

@@ -34,7 +34,7 @@ function eventifyArrayWithCat($events, $timetableCategories){
 //    start: '2014-06-07',
 //    end: '2014-06-10'
     $count = 0;
-
+    $data = array();
     foreach($events as $k=>$v)
     {
         $color = null;
