@@ -11,6 +11,13 @@ $(document).ready(function () {
         }, 5000);
     }
     $('.editable').jinplace();
+    
+    $(function () {
+        $("#fromDate").datetimepicker();
+    });
+    $(function () {
+        $("#toDate").datetimepicker();
+    });
 });
 
 function recordEmotion(id) {

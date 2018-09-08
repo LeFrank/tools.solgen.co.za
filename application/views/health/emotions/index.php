@@ -136,4 +136,6 @@
 <link rel="stylesheet" href="/css/third_party/thickbox/thickbox.css" type="text/css" media="screen" />
 <script src="/js/third_party/jquery-ui.custom.min.js" type="text/javascript" ></script>
 <script type="text/javascript" src="/js/third_party/jinplace-1.2.1.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/jquery.datetimepicker.css" />
+<script src="/js/jquery.datetimepicker.js"></script>
 <script src="/js/health/emotions/index.js" ></script>
