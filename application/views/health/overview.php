@@ -29,19 +29,84 @@ $numberOfDays = floor((strtotime($endDate) - strtotime($startDate)) / (60 * 60 *
     <div class="large-12 columns" >
         <div class="large-4 columns" >
             <h2>Metrics</h2>
-            <ul>
-                <li>Metrics captured: <?php echo number_format($healthMetricsStats->total_captured, 2, ".", ""); ?></li>
-                <li>Once every <?php echo number_format($numberOfDays / $healthMetricsStats->total_captured, 2, ".", ""); ?> days</li>
-                <li>Average Weight: <?php echo number_format($healthMetricsStats->average_weight, 2, ".", ""); ?> Kg</li>
-                <li>Minimum Weight: <?php echo number_format($healthMetricsStats->minimum_weight, 2, ".", ""); ?> Kg</li>
-                <li>Maximum Weight: <?php echo number_format($healthMetricsStats->maximum_weight, 2, ".", ""); ?> Kg</li>
-                <li>Average Waist: <?php echo number_format($healthMetricsStats->average_waist, 2, ".", ""); ?> cm</li>
-                <li>Minimum Waist: <?php echo number_format($healthMetricsStats->minimum_waist, 2, ".", ""); ?> cm</li>
-                <li>Maximum Waist: <?php echo number_format($healthMetricsStats->maximum_waist, 2, ".", ""); ?> cm</li>
-                <li>Average Sleep: <?php echo number_format($healthMetricsStats->average_sleep, 2, ".", ""); ?> hours</li>
-                <li>Minimum Sleep: <?php echo number_format($healthMetricsStats->minimum_sleep, 2, ".", ""); ?> hours</li>
-                <li>Maximum Sleep: <?php echo number_format($healthMetricsStats->maximum_sleep, 2, ".", ""); ?> hours</li>
-            </ul>
+            <div class="row expanded">
+                <div class="large-12 columns" >
+                    <div class="large-6 columns" >
+                        <strong><?php echo number_format($healthMetricsStats->total_captured, 0, ".", ""); ?></strong>
+                        <p>Metrics captured</p>
+                    </div>
+                    <div class="large-6 columns" >
+                        <strong><?php echo number_format($numberOfDays / $healthMetricsStats->total_captured, 2, ".", ""); ?> days</strong>
+                        <p>Once every </p>
+                    </div>
+                </div>
+            </div>
+            <hr/>
+            <div class="row expanded">
+                <div class="large-12 columns" >
+                    <h3>Weight</h3>
+                    <div class="large-3 columns" >
+                        <strong><?php echo number_format($healthMetricsStats->average_weight, 2, ".", ""); ?> kg</strong>
+                        <p>Current</p>
+                    </div>
+                    <div class="large-3 columns" >
+                        <strong><?php echo number_format($healthMetricsStats->average_weight, 2, ".", ""); ?> kg</strong>
+                        <p>Avg</p>
+                    </div>
+                    <div class="large-3 columns" >
+                        <strong><?php echo number_format($healthMetricsStats->minimum_weight, 2, ".", ""); ?> kg</strong>
+                        <p>Min</p>
+                    </div>
+                    <div class="large-3 columns" >
+                        <strong><?php echo number_format($healthMetricsStats->maximum_weight, 2, ".", ""); ?> kg</strong>
+                        <p>Max</p>
+                    </div>
+                </div>
+            </div>
+            <hr/>
+            <div class="row expanded">
+                <div class="large-12 columns" >
+                    <h3>Waist</h3>
+                    <div class="large-3 columns" >
+                        <strong><?php echo number_format($healthMetricsStats->average_waist, 2, ".", ""); ?> cm</strong>
+                        <p>Current</p>
+                    </div>
+                    <div class="large-3 columns" >
+                        <strong><?php echo number_format($healthMetricsStats->average_waist, 2, ".", ""); ?> cm</strong>
+                        <p>Avg</p>
+                    </div>
+                    <div class="large-3 columns" >
+                        <strong><?php echo number_format($healthMetricsStats->minimum_waist, 2, ".", ""); ?> cm</strong>
+                        <p>Min</p>
+                    </div>
+                    <div class="large-3 columns" >
+                        <strong><?php echo number_format($healthMetricsStats->maximum_waist, 2, ".", ""); ?> cm</strong>
+                        <p>Max</p>
+                    </div>
+                </div>
+            </div>
+            <hr/>
+            <div class="row expanded">
+                <div class="large-12 columns" >
+                    <h3>Sleep</h3>
+                    <div class="large-3 columns" >
+                        <strong><?php echo number_format($healthMetricsStats->average_sleep, 2, ".", ""); ?> hours</strong>
+                        <p>Current</p>
+                    </div>
+                    <div class="large-3 columns" >
+                        <strong><?php echo number_format($healthMetricsStats->average_sleep, 2, ".", ""); ?> hours</strong>
+                        <p>Avg</p>
+                    </div>
+                    <div class="large-3 columns" >
+                        <strong><?php echo number_format($healthMetricsStats->minimum_sleep, 2, ".", ""); ?> hours</strong>
+                        <p>Min</p>
+                    </div>
+                    <div class="large-3 columns" >
+                        <strong><?php echo number_format($healthMetricsStats->maximum_sleep, 2, ".", ""); ?> hours</strong>
+                        <p>Max</p>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="large-8 columns" >
             <h2>&nbsp;</h2>
@@ -60,36 +125,102 @@ $numberOfDays = floor((strtotime($endDate) - strtotime($startDate)) / (60 * 60 *
     <div class="large-12 columns" >    
         <div class="large-4 columns" >
             <h2>Exercises</h2>
-            <ul>
-                <li>Exercises captured: <?php echo number_format($exerciseStats->total_captured, 0, ".", ""); ?></li>
-                <li>Once every <?php echo number_format($numberOfDays / $exerciseStats->total_captured, 2, ".", ""); ?> Days</li>
-                <li>Number of Exercise Types: <?php echo number_format($exerciseStats->number_of_exercise_types, 0, ".", ""); ?></li>
-                <li>Average Difficulty: <?php echo $difficultyRating[number_format($exerciseStats->average_difficulty, 0, ".", "")]; ?></li>
-                <li>Minimum Difficulty: <?php echo $difficultyRating[number_format($exerciseStats->minimum_difficulty, 0, ".", "")]; ?></li>
-                <li>Maximum Difficulty: <?php echo $difficultyRating[number_format($exerciseStats->maximum_difficulty, 0, ".", "")]; ?></li>
-            </ul>
-            <h3>Per Exercise</h3>
+            <div class="row expanded">
+                <div class="large-12 columns" >
+                    <h3>General</h3>
+                    <div class="large-4 columns" >
+                        <strong><?php echo number_format($exerciseStats->total_captured, 0, ".", ""); ?></strong>
+                        <p>Exercises captured</p>
+                    </div>
+                    <div class="large-4 columns" >
+                        <strong><?php echo number_format($numberOfDays / $exerciseStats->total_captured, 2, ".", ""); ?> Days</strong>
+                        <p>Once every</p>
+                    </div>
+                    <div class="large-4 columns" >
+                        <strong><?php echo number_format($exerciseStats->number_of_exercise_types, 0, ".", ""); ?></strong>
+                        <p># Exercise Types</p>
+                    </div>
+                </div>
+            </div>
+            <hr/>
+            <div class="row expanded">
+                <div class="large-12 columns" >
+                    <h3>Difficulty</h3>
+                    <div class="large-4 columns" >
+                        <strong><?php echo $difficultyRating[number_format($exerciseStats->average_difficulty, 0, ".", "")]; ?></strong>
+                        <p>Avg</p>
+                    </div>
+                    <div class="large-4 columns" >
+                        <strong><?php echo $difficultyRating[number_format($exerciseStats->minimum_difficulty, 0, ".", "")]; ?></strong>
+                        <p>Min</p>
+                    </div>
+                    <div class="large-4 columns" >
+                        <strong><?php echo $difficultyRating[number_format($exerciseStats->maximum_difficulty, 0, ".", "")]; ?></strong>
+                        <p>Max</p>
+                    </div>
+                </div>
+            </div>
+            <hr/>
+
             <?php
             foreach ($exerciseByExcerciseTypeStats as $k => $v) {
                 $totalDistance = "";
-                if($v["total_distance"] < 1000){
-                    $totalDistance = number_format($v["total_distance"], 0, ".", ",") ." m";
-                }else{
-                    $totalDistance = number_format($v["total_distance"]/1000, 2, ". ", ",") ." Km";
+                if ($v["total_distance"] < 1000) {
+                    $totalDistance = number_format($v["total_distance"], 0, ".", ",") . " m";
+                } else {
+                    $totalDistance = number_format($v["total_distance"] / 1000, 2, ". ", ",") . " Km";
                 }
                 ?>
-                <ul>
-                    <li>Exercises Type: <?php echo $exerciseTypes[$v["exercise_type_id"]]["name"]; ?></li>
-                    <li>Number of Exercises: <?php echo $v["exercise_count"]; ?></li>
-                    <li>Average <?php echo $exerciseTypes[$v["exercise_type_id"]]["default_measurement_name"]; ?>: <?php echo number_format($v["average_value"], 0, ".", ","); ?></li>
-                    <li>Minimum <?php echo $exerciseTypes[$v["exercise_type_id"]]["default_measurement_name"]; ?>: <?php echo number_format($v["minimum_value"], 0, ".", ","); ?></li>
-                    <li>Maximum <?php echo $exerciseTypes[$v["exercise_type_id"]]["default_measurement_name"]; ?>: <?php echo number_format($v["maximum_value"], 0, ".", ","); ?></li>
-                    <li>Total <?php echo $exerciseTypes[$v["exercise_type_id"]]["default_measurement_name"]; ?>: <?php echo number_format($v["total_value"], 0, ".", ","); ?></li>
-                    <li>Average Distance: <?php echo number_format($v["average_distance"], 0, ".", ","); ?> m</li>
-                    <li>Minimum Distance: <?php echo number_format($v["minimum_distance"], 0, ".", ","); ?> m</</li>
-                    <li>Maximum Distance: <?php echo number_format($v["maximum_distance"], 0, ".", ","); ?> m</li>
-                    <li>Total Distance: <?php echo $totalDistance ?></li>
-                </ul>
+                <div class="row expanded">
+                    <div class="large-12 columns" >
+                        <h3><?php echo $exerciseTypes[$v["exercise_type_id"]]["name"]; ?></h3>
+                        <div class="large-4 columns" >
+                            <strong><?php echo $v["exercise_count"]; ?></strong>
+                            <p># captured</p>
+                        </div>
+                        <div class="large-4 columns" >
+                            <strong><?php echo number_format($v["total_value"], 0, ".", ","); ?></strong>
+                            <p>Total <?php echo $exerciseTypes[$v["exercise_type_id"]]["default_measurement_name"]; ?></p>
+                        </div>
+                        <div class="large-4 columns" >
+                            <strong><?php echo $totalDistance ?></strong>
+                            <p>Total Distance</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row expanded">
+                    <div class="large-12 columns" >
+                        <div class="large-4 columns" >
+                            <strong><?php echo number_format($v["average_value"], 0, ".", ","); ?></strong>
+                            <p>Avg <?php echo $exerciseTypes[$v["exercise_type_id"]]["default_measurement_name"]; ?></p>
+                        </div>
+                        <div class="large-4 columns" >
+                            <strong><?php echo number_format($v["minimum_value"], 0, ".", ","); ?></strong>
+                            <p>Min <?php echo $exerciseTypes[$v["exercise_type_id"]]["default_measurement_name"]; ?></p>
+                        </div>
+                        <div class="large-4 columns" >
+                            <strong><?php echo number_format($v["maximum_value"], 0, ".", ","); ?></strong>
+                            <p>Max <?php echo $exerciseTypes[$v["exercise_type_id"]]["default_measurement_name"]; ?></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row expanded">
+                    <div class="large-12 columns" >
+                        <div class="large-4 columns" >
+                            <strong><?php echo number_format($v["average_distance"], 0, ".", ","); ?> m</strong>
+                            <p>Avg Distance</p>
+                        </div>
+                        <div class="large-4 columns" >
+                            <strong><?php echo number_format($v["minimum_distance"], 0, ".", ","); ?> m</strong>
+                            <p>Min Distance</p>
+                        </div>
+                        <div class="large-4 columns" >
+                            <strong><?php echo number_format($v["maximum_distance"], 0, ".", ","); ?> m</strong>
+                            <p>Max Distance</p>
+                        </div>
+                    </div>
+                </div>
+                <hr/>
                 <?php
             }
             ?>
@@ -221,8 +352,8 @@ foreach ($exerciseTypes as $k => $v) {
             }
         },
         legend: {
-                show: true,
-                placement: 'outsideGrid'
+            show: true,
+            placement: 'outsideGrid'
         },
         series: [
             {label: 'Weight'},
@@ -268,8 +399,8 @@ foreach ($exerciseTypes as $k => $v) {
             }
         },
         legend: {
-                show: true,
-                placement: 'outsideGrid'
+            show: true,
+            placement: 'outsideGrid'
         },
         series: [
             {label: 'Recorded Sleep'},
