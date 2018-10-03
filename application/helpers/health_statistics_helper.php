@@ -18,6 +18,9 @@ function getWaistOverDateRangeJson($metrics) {
             $count++;
         }
     }
+//        echo "<pre>";
+//    print_r($jsonDataArray);
+//    echo "</pre>";
     return $jsonDataArray;
 }
 
@@ -83,7 +86,14 @@ function getWaistTargetOverDateRangeJson($metrics, $targetValue=0 ) {
 }
 
 
-function getExerciseGraphDataPerType($exerciseTypes , $exercises){
+function getExerciseGraphDataPerType($exerciseTypes , $exercises, $dateRange=false){
+//    echo "<b><hr/></b>";
+//    echo "<pre>";
+//    print_r($exercises);
+//    print_r($exercises[0]);
+//    print_r($exercises[count($exercises)-1]);
+//    echo "</pre>";
+//    echo "<b><hr/></b>";
     foreach($exerciseTypes as $k=>$v){
         $count = 0;
         $jsonDataArray = array();

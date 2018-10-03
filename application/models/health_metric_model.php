@@ -122,6 +122,17 @@ class health_metric_model extends CI_Model {
 //        return $query->row();
     }
     
+    public function getLatestMetricForUser($startDate, $endDate, $userId = null ){
+        if($userId == null){
+            return null;
+        }else{
+            $this->db->order_by("measurement_date", "desc");
+            $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'measurement_date >=' => $startDate, 'measurement_date <= ' => $endDate), 1);
+            return $query->row();
+        }
+        
+    }
+    
     public function update() {
         $weight = ($this->input->post('weight') != 0 )?$this->input->post('weight') : NULL;
         $waist = ($this->input->post('waist') != 0 )?$this->input->post('waist') : NULL;

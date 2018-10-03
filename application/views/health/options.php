@@ -49,6 +49,29 @@
                 </div>
             </div>
         </div>
+        <br/>
+        <br/>
+        <div class="large-9 columns" >
+            <div  class="row expanded" >
+                <div class="large-4 columns" >
+                    
+                </div>
+                <div class="large-4 columns" >
+                    
+                </div>
+                <div class="large-4 columns" >
+                    <label for="neg_trigger_sleep">Number of days target missed warning?</label>
+                    <span 
+                        class="editable"
+                            data-url="/health/option/update/<?php echo $userHealthConfigs["neg_trigger_sleep_id"]; ?>"
+                            data-type="textarea"
+                            data-ok-button="OK"
+                            data-cancel-button="Cancel" >
+                             <?php echo (!empty($userHealthConfigs["neg_trigger_sleep"])) ? $userHealthConfigs["neg_trigger_sleep"] : ""; ?>
+                     </span>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <div id="notesContent" class="row expanded" >

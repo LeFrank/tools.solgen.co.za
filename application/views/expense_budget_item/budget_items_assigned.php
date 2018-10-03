@@ -1,3 +1,4 @@
+<?php if(isset($budgetId)){?>
 <div class="row expanded">
     <div class="large-12 columns">
         <table id="budget_expense_items" class="tablesorter hover-highlight focus-highlight widget-zebra">
@@ -167,3 +168,6 @@
 <script type="text/javascript" src="/js/third_party/thickbox-compressed.js"></script>
 <script type="text/javascript" src="/js/third_party/jquery.tablesorter.min.js"></script>
 <script type="text/javascript" src="/js/expense_budget_items/items.js" ></script>
+<?php }else{ ?>
+    <h3>No Budget Created Yet.</h3>
+<?php }?>

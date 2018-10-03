@@ -76,7 +76,9 @@ class health extends CI_Controller {
         $data["userHealthConfigs"] = mapKeyToValue($this->user_configs_model->getUserConfigsByToolId($userId, $this->toolId));
         $data["difficultyRating"] = $this->difficultyRating;
         $data["healthMetrics"] = $this->health_metric_model->getHealthMetricByDateRange($data["startDate"], $data["endDate"], $userId);
+//        print_r($data["healthMetrics"]);
         $data["healthMetricsStats"] = $this->health_metric_model->getOverallUserStatsByDateRange($data["startDate"], $data["endDate"], $userId);
+        $data["currentMetricStat"] = $this->health_metric_model->getLatestMetricForUser($data["startDate"], $data["endDate"], $userId);
         $data["waist"] = json_encode(getWaistOverDateRangeJson($data["healthMetrics"]));
         $data["weight"] = json_encode(getWeightOverDateRangeJson($data["healthMetrics"]));
         $data["sleep"] = json_encode(getSleepOverDateRangeJson($data["healthMetrics"]));

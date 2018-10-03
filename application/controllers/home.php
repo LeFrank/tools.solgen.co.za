@@ -69,7 +69,7 @@ class Home extends CI_Controller {
             $data["currentExpensePeriod"] = $this->expense_period_model->getCurrentExpensePeriod($user->id);
 
             $data["currentExpenseBudget"] = $this->expense_budget_model->getExpenseBudgetByPeriodId($data["currentExpensePeriod"]->id);
-
+            if(!empty($data["currentExpenseBudget"])){
             $data["budgetId"] = $data["currentExpenseBudget"]->id;
             $data["expenseBudget"] = $this->expense_budget_model->getExpenseBudget($data["budgetId"]);
             $data["expenseBudgetItems"] = $this->expense_budget_item_model->getExpenseBudgetItems($data["budgetId"]);
@@ -80,8 +80,9 @@ class Home extends CI_Controller {
             );
             $data["expenseTypesTotals"] = getArrayOfTypeAmount($expensesForPeriod);
             $data["eventsBudget"] = $this->load->view('expense_budget_item/manage', $data, true);
-            $data["eventsBudgetItems"] = $this->load->view('expense_budget_item/budget_items_assigned', $data, true);
             //$this->expenseBudgetItems->manage(7);
+            }
+            $data["eventsBudgetItems"] = $this->load->view('expense_budget_item/budget_items_assigned', $data, true);
             // get admin data
             // what is admin data?
             $data["registered_users"] = $this->user_model->get_admin_data();
