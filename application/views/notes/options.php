@@ -31,7 +31,7 @@
                 </div>
             <?php
             }?>
-            <a href="/notes/options/templates" >Manage Templates</a>
+            <a href="/notes/templates" >Manage Templates</a>
         </div>
     </div>
 </div>
@@ -55,7 +55,7 @@
             <?php foreach($notes_templates as $k=>$v){
                 echo "<a href='/notes/options/templates/edit'".$v["id"]." >".$v["name"]."</a> - ".$v["description"]."<br/>";
             }?>
-            <a href="/notes/options/templates" >Manage Templates</a>
+            <a href="/notes/templates" >Manage Templates</a>
         </div>
     </div>
 </div>
