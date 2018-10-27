@@ -40,6 +40,7 @@ class health extends CI_Controller {
         can_access(
                 $this->require_auth, $this->session);
         $this->load->helper('health_statistics_helper');
+        $this->load->helper('health_exercise_type_helper');
         $this->load->model("health_metric_model");
         $this->load->model("exercise_type_model");
         $this->load->model("health_exercise_tracker_model");
@@ -420,7 +421,7 @@ class health extends CI_Controller {
         $userId = $this->session->userdata("user")->id;
         $emotion["emotion_id"] = $emotionId;
         $emotion["created_date"] = date('Y/m/d H:i');
-        ;
+//        ;
         $emotion["description"] = null;
         $emotion["user_id"] = $userId;
         $emotion["id"] = $this->health_emotion_record_model->capture_emotion($emotion);
@@ -442,12 +443,24 @@ class health extends CI_Controller {
         $userId = $this->session->userdata("user")->id;
         $data = array();
         $data["userHealthConfigs"] = mapKeyToValue($this->user_configs_model->getUserConfigsByToolId($userId, $this->toolId));
+        $data["exercise_types"] = $this->exercise_type_model->get_user_exercise_types($userId);
+//        print_r($data["exercise_types"]);
+        $data["user_exercise_types"] = countByFieldValue($data["exercise_types"], "user_id", $userId, true);
         $this->load->view('header', getPageTitle($data, $this->toolName, "Options"));
         $this->load->view('health/health_nav');
         $this->load->view('health/options', $data);
         $this->load->view('footer');
     }
 
+    public function optionCreate($optionType=null) {
+        $userId = $this->session->userdata("user")->id;
+        $config["tool_id"] = $this->toolId;
+        $config["key"] = $optionType;
+        $config["val"] = $this->input->post("value");
+        $optionId = $this->user_configs_model->capture_user_config($config);
+        echo $this->user_configs_model->getUserConfig($userId, $optionId)->val;
+    }
+    
     public function optionUpdate($optionId) {
         $userId = $this->session->userdata("user")->id;
         $data = array();

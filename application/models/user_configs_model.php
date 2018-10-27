@@ -25,13 +25,14 @@ class user_configs_model extends CI_Model {
         $this->load->library("session");
         $date = date('Y/m/d H:i');
         $data = array(
-            'toolId' => $config["toolId"],
+            'tool_id' => $config["tool_id"],
             'key' => $config["key"],
             'val' => $config["val"],
             'created_date' => $date,
             'user_id' => $this->session->userdata("user")->id
         );
-        return $this->db->insert($this->tn, $data);
+        $this->db->insert($this->tn, $data);
+        return $this->db->insert_id();
     }
     
     /**

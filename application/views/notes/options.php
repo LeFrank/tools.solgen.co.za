@@ -11,27 +11,27 @@
             <h2>Templates</h2>
         </div>
         <div class="large-9 columns" >
-            Number of Templates: <?php echo count($templates)?><br/>
-            <?php foreach($templates as $k=>$v){
+            Number of Templates: <?php echo count($notes_templates)?><br/>
+            <?php foreach($notes_templates as $k=>$v){
                 ?>
                 <div id="notesContent" class="row expanded" >
                     <div class="large-12 columns" >
                         <div class="large-4 columns" >
                             
                         <?php
-                            echo "<a href='/notes/options/templates/edit'".$v["id"]." >".$v["name"]."</a> - ".$v["description"]."<br/>";
+                            echo "<a href='/notes/templates/edit'".$v["id"]." >".$v["name"]."</a> - ".$v["description"]."<br/>";
                             ?>
                         </div>
                         <div class="large-8 columns" >
                             <?php
-                                echo "Title Template:<br/> ". $v["titleTemplate"] ."<br/><br/>Content Template:<br/> ".$v["contentTemplate"];
+                                echo "Template Title:<br/> ". $v["template_title"] ."<br/><br/>Template Content:<br/> ".$v["template_content"];
                                 ?>
                         </div>
                     </div>
                 </div>
             <?php
             }?>
-            <a href="/notes/options/templates" >Create Templates</a>
+            <a href="/notes/options/templates" >Manage Templates</a>
         </div>
     </div>
 </div>
@@ -51,11 +51,11 @@
             <h2>Importance</h2>
         </div>
         <div class="large-9 columns" >
-            Number of Templates: <?php echo count($templates)?><br/>
-            <?php foreach($templates as $k=>$v){
+            Number of Templates: <?php echo count($notes_templates)?><br/>
+            <?php foreach($notes_templates as $k=>$v){
                 echo "<a href='/notes/options/templates/edit'".$v["id"]." >".$v["name"]."</a> - ".$v["description"]."<br/>";
             }?>
-            <a href="/notes/options/templates" >Create Templates</a>
+            <a href="/notes/options/templates" >Manage Templates</a>
         </div>
     </div>
 </div>

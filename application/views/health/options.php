@@ -63,7 +63,11 @@
                     <label for="neg_trigger_sleep">Number of days target missed warning?</label>
                     <span 
                         class="editable"
-                            data-url="/health/option/update/<?php echo $userHealthConfigs["neg_trigger_sleep_id"]; ?>"
+                            <?php if(isset($userHealthConfigs["neg_trigger_sleep_id"])){?>
+                                data-url="/health/option/update/<?php echo $userHealthConfigs["neg_trigger_sleep_id"]; ?>"
+                            <?php }else{ ?>
+                                data-url="/health/option/create/neg_trigger_sleep"
+                            <?php }?>
                             data-type="textarea"
                             data-ok-button="OK"
                             data-cancel-button="Cancel" >
@@ -90,7 +94,7 @@
             <h2>Exercise Types</h2>
         </div>
         <div class="large-9 columns" >
-            Number of Templates: <?php echo 6?><br/>
+            Number of Templates: <?php echo $user_exercise_types; ?><br/>
             <a href="/health/options/exerciseTypes" >Exercise Types</a>
         </div>
     </div>

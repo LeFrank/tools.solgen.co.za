@@ -151,6 +151,7 @@ $route['health/emotion/record/(:num)'] = 'health/emotionCapture/$1';
 $route['health/emotion/tracker/description/(:num)'] = 'health/emotionDescriptionCapture/$1';
 $route['health/option'] = 'health/options';
 $route['health/option/update/(:num)'] = 'health/optionUpdate/$1';
+$route['health/option/create/(:any)'] = 'health/optionCreate/$1';
 //target_weight
 
 $route['faq'] = 'faq/index';
@@ -194,6 +195,10 @@ $route['notes/(:any)'] = 'notes/view/$1';
 $route['notes'] = 'notes/history';
 $route['notes/stats'] = 'notes/viewStats';
 $route['notes/options'] = 'notes/options';
+$route['notes/templates'] = 'notes/templateIndex';
+$route['notes/templates/capture'] = 'notes/templateCreate';
+$route['notes/templates/update'] = 'notes/templateUpdate';
+$route['notes/templates/delete'] = 'notes/templateDelete';
 
 
 
