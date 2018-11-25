@@ -93,7 +93,7 @@
 //        echo "</pre>";
         if (is_array($exercises) && !empty($exercises)) {
             ?>
-            <table id="health_metrics_history" class="tablesorter responsive">
+            <table id='health_exercise_tracker_history' name='health_exercise_tracker_history' class='tablesorter responsive'>
                 <thead>
                     <tr>
                         <th>Start Date</th>
@@ -137,6 +137,6 @@
 <script src="/js/third_party/ckeditor/ckeditor.js"></script>
 <link rel="stylesheet" type="text/css" href="/css/jquery.datetimepicker.css" />
 <script src="/js/jquery.datetimepicker.js"></script>
-<script type="text/javascript" src="/js/third_party/jquery.tablesorter.min.js"></script>
 <script src="/js/third_party/jquery/ui/1.12.1/jquery-ui.js"></script>
+<script type="text/javascript" src="/js/third_party/jquery.tablesorter.min.js"></script>
 <script src="/js/health/exercise/tracker.js"></script>

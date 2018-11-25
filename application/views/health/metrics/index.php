@@ -69,7 +69,7 @@
     <div class="large-12 columns" >
         <?php if (is_array($healthMetrics) && !empty($healthMetrics)) {
             ?>
-            <table id="health_metrics_history" class="tablesorter responsive">
+            <table id="health_metrics_history" name="health_metrics_history" class="tablesorter responsive">
                 <thead>
                     <tr>
                         <th>Date</th>
@@ -115,5 +115,6 @@
         $("#fromDate").datetimepicker();
         $("#toDate").datetimepicker();
         CKEDITOR.replace('note');
+        $('#health_metrics_history').tablesorter();
     });
 </script>

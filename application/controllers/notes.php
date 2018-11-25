@@ -310,6 +310,7 @@ class Notes extends CI_Controller {
     }
     
     public function templateCreate(){
+        $user = $this->session->userdata("user");
 //        print_r($this->input->post());
         $this->notes_template_model->capture_note_template();
         $data["notes_templates"] = $this->notes_template_model->getNotesTemplates($user->id);
