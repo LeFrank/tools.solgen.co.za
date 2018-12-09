@@ -38,6 +38,9 @@ class timeline extends CI_Controller {
         $this->load->model("timetable_category_model");
         $this->load->helper('tool_info_helper');
         $this->load->model("user_content_model");
+        $this->load->model("health_metric_model");
+        $this->load->model("health_exercise_tracker_model");
+        $this->load->model("exercise_type_model");
         
     }
     
@@ -75,9 +78,17 @@ class timeline extends CI_Controller {
         $search["allDayEvent"] = 1;
         $data["events"] = timelineTimetableFormat($this->timetable_model->getFilteredTimetableEvents($user->id, $search), $data["events"], $data["timetableCategories"] );
         // Resources
-        $data["tools"] = getAllToolsInfo();
+//        $data["tools"] = getAllToolsInfo();
         $data["resources"] = $this->user_content_model->getUserContentDateRange($startDate, $endDate, $user->id);
         $data["events"] = timelineResourceFormat($data["resources"], $data["events"], $data["tools"]);
+        // Health
+        //  -   Metrics
+        $data["healthMetrics"] = $this->health_metric_model->getHealthMetricByDateRange($startDate, $endDate, $user->id);
+        $data["events"] = timelineHealthMetricsFormat($data["healthMetrics"], $data["events"], $data["tools"]);
+        //  -   Exercises
+        $data["exerciseTypes"] = mapKeyToId($this->exercise_type_model->get_user_exercise_types($user->id));
+        $data["healthExercises"] = $this->health_exercise_tracker_model->getuserExercisesByDateRange($startDate, $endDate, $user->id);
+        $data["events"] = timelineHealthExercisesFormat($data["healthExercises"], $data["events"], $data["tools"], $data["exerciseTypes"]);
         $data["events"] = orderTimeline($data["events"]);
         
 //        echo "<br/>".count($data["events"]) . "<pre>";

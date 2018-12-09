@@ -97,6 +97,46 @@ function timelineResourceFormat($events, $timelineEvents, $toolInfo){
     return $timelineEvents;
 }
 
+function timelineHealthMetricsFormat($events, $timelineEvents, $toolInfo){
+//    echo "<pre>";
+//    print_r($events);
+//    print_r($timelineEvents);
+//    print_r($toolInfo);
+//    echo "</pre>";
+    foreach($events as $k=> $v){
+        $event = getEvent();
+        $event->date = $v["create_date"];
+        $event->toolId = 8;
+        $event->toolName = "Health - Metrics";
+        $event->toolName = $toolInfo[8]["name"];
+        $event->id = $v["id"];
+        $event->title = "<i class='fas fa-weight' style='color:".$toolInfo[8]["colour"]."; font-size:24px'>&nbsp;</i>&nbsp;". $v["weight"] 
+                ."&nbsp;&nbsp;<i class='fas fa-tape' style='color:".$toolInfo[8]["colour"]."; font-size:24px'>&nbsp;</i>&nbsp;" . $v["waist"] 
+                . "&nbsp;&nbsp;<i class='fas fa-bed' style='color:".$toolInfo[8]["colour"]."; font-size:24px'>&nbsp;</i>&nbsp;" . $v["sleep"];
+        $event->body = $v["note"];
+        $event->url = "health/metric/edit/". $v["id"];
+        $timelineEvents[] = $event;
+    }
+    return $timelineEvents;
+}
+function timelineHealthExercisesFormat($events, $timelineEvents, $toolInfo, $exerciseTypes){
+    foreach($events as $k=> $v){
+        $event = getEvent();
+        $event->date = $v["created_date"];
+        $event->toolId = 8;
+        $event->toolName = "Health - Exercises";
+        $event->toolName = $toolInfo[8]["name"];
+        $event->id = $v["id"];
+        $duration = gmdate("h:i:s",strtotime($v["end_date"]) - strtotime($v["start_date"]));
+        $event->title = "<i class='fas fa-". strtolower($exerciseTypes[$v["exercise_type_id"]]["name"])."' style='color:".$toolInfo[8]["colour"]."; font-size:24px'>&nbsp;</i>&nbsp;". $exerciseTypes[$v["exercise_type_id"]]["name"].
+                "&nbsp;&nbsp;| Duration: " . $duration;
+        $event->body = $v["description"];
+        $event->url = "health/exercise/edit/". $v["id"];
+        $timelineEvents[] = $event;
+    }
+    return $timelineEvents;
+}
+
 function orderTimeline($events){
     arsort($events);
     return $events;

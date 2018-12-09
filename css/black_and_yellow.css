@@ -1095,3 +1095,10 @@ height: 110px;
 /*.editable{
     text-decoration: underline;
 }*/
+
+#div1, #div2, #div3 {
+    width: 350px;
+    height: 70px;
+    padding: 10px;
+    border: 1px solid #aaaaaa;
+}

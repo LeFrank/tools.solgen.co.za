@@ -232,6 +232,8 @@ $route['weather/measurement'] = 'weather/saveMeasurement';
 
 $route['rest/user/login'] = 'user/login_post';
 
+$route['lists'] = 'lists/index';
+
 //$route['(:any)'] = 'pages/view/$1';
 //$route['default_controller'] = 'pages/view';
 $route['default_controller'] = 'home/index';

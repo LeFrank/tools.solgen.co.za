@@ -57,5 +57,6 @@
 
     <link rel="stylesheet" type="text/css" href="/css/jquery.datetimepicker.css" />
     <link rel="stylesheet" href="/css/third_party/thickbox/thickbox.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="/css/third_party/fontawesome/fontawesome-all.min.css" type="text/css" media="screen" />
     <script type="text/javascript" src="/js/jquery.datetimepicker.js" ></script>
     <script type="text/javascript" src="/js/timeline/view.js" ></script>

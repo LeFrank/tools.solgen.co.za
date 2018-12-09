@@ -19,7 +19,7 @@ Modules - reusable parts of our design
 .cd-container {
   /* this class is used to give a max-width to the element it is applied to, and center it horizontally when it reaches that max-width */
   width: 90%;
-  max-width: 1170px;
+  max-width: 100%;
   margin: 0 auto;
 }
 .cd-container::after {
@@ -134,7 +134,7 @@ header h1 {
   background: #75ce66;
 }
 .cd-timeline-img.timetable {
-  background: #c03b44;
+  background: #9933ff;
 }
 .cd-timeline-img.notes {
   background: #f0ca45;
@@ -142,6 +142,11 @@ header h1 {
 .cd-timeline-img.resources {
   background: #0066cc;
 }
+
+.cd-timeline-img.health {
+  background: #c03b44;
+}
+
 @media only screen and (min-width: 1170px) {
   .cd-timeline-img {
     width: 60px;
