@@ -7,8 +7,10 @@ if (!function_exists('can_access')) {
         $instance->load->library('session');
         if ($shouldCheck) {
             if (empty($session->userdata["loggedIn"])) {
+                $session->set_userdata("targetUrl", str_replace("index.php/", "", current_url()));
                 redirect('/', 'refresh');
             }else if(!$session->userdata["loggedIn"]){
+                $session->set_userdata("targetUrl", str_replace("index.php/", "", current_url()));
                 redirect('/', 'refresh');
             }
         }

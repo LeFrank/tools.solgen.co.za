@@ -66,7 +66,13 @@ class User extends CI_Controller {
                 $this->session->set_userdata("loggedIn", TRUE);
                 $this->session->set_userdata("isAdmin", ($user->user_type == "admin") ? TRUE : FALSE);
                 $this->session->set_userdata("user", $user);
-                redirect('/home/dashboard', 'refresh');
+                if (!empty($this->session->userdata["targetUrl"])){
+                    $targetUrl = $this->session->userdata["targetUrl"];
+                    $this->session->unset_userdata("targetUrl");
+                    redirect($targetUrl, 'refresh');
+                }else{
+                    redirect('/home/dashboard', 'refresh');
+                }
             } else {
                 $this->session->set_userdata("loggedIn", FALSE);
                 $data["error_message"] = "Invlid login details provided.";
