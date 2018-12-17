@@ -1,7 +1,8 @@
-<?php ?>
+<?php 
+?>
 <div class="row expanded">
     <div class="large-12 columns">
-        <form action="/notes/<?php echo (!empty($note->id) ? "update" : "capture" ); ?>" method="post" accept-charset="utf-8" id="captureNoteForm">
+        <form action="/notes/<?php echo (!empty($note->id) ? "update" : "capture" ); ?>" method="post" accept-charset="utf-8" id="captureNoteForm" name="captureNoteForm">
             <input type="hidden" id="id" name="id" value="<?php echo (!empty($note->id) ? $note->id : "" ); ?>" />
             <div class="error"><?php echo validation_errors(); ?></div>
             <label for="title">Title *</label>
@@ -26,7 +27,7 @@
             <input type="text" value="<?php echo (!empty($note->create_date) ? $note->create_date : date('Y/m/d H:i:s')); ?>" name="noteDate" id="noteDate"/>
             <br/><br/>
             <input type="submit" id="submit-note" value="<?php echo (!empty($note->id) ? "Update" : "Capture" ); ?>"  class="button"  />&nbsp;&nbsp;&nbsp;&nbsp;
-            <input id="cancel-new-note" type="button" value="Cancel" class="button secondary"/>
+            <input id="cancel-new-note" type="button" value="Cancel" class="button secondary"/>&nbsp;&nbsp;<span id="note_status"></span>
         </form>
     </div>
 </div>
@@ -34,6 +35,29 @@
     $("#submit-note").click(function(){
         window.onbeforeunload = null;
     });
+    // Auto save
+    // get the target save interval. default 5 minutes
+    // get auto save setting
+    <?php
+        if(!empty($note->id)){
+    ?>    
+        window.setInterval(function(){
+            $.ajax({
+                method: "POST",
+                url: "/notes/update/",
+                data: {id: $("#id").val() , title: $("#title").val(), body: CKEDITOR.instances['body'].getData() , tags: $("#noteTaggs").val(), noteDate: $("#noteDate").val() }
+            }).done(function (msg, resp) {
+                if(resp == "success"){
+                    $("#note_status").html("Note Auto-saved");
+                    delay(function(){
+                        $("#note_status").html("");
+                    },5000);
+                }
+            });
+        }, 300000);
+    <?php
+        }
+    ?>
 <?php 
     if(isset($exitCheck) && $exitCheck == true){
         ?>
