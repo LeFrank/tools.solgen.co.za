@@ -35,39 +35,60 @@
     $("#submit-note").click(function(){
         window.onbeforeunload = null;
     });
-    // Auto save
+    
+    function stopAutoSave(){
+        clearInterval(refreshIntervalId);
+        return null;
+    }
+    
+    function startAutoSave(){
+        // Auto save
     // get the target save interval. default 5 minutes
     // get auto save setting
+//        console.log(CKEDITOR.instances['body'].getData().length);
     <?php
         if(!empty($note->id)){
     ?>    
-        window.setInterval(function(){
-            $.ajax({
-                method: "POST",
-                url: "/notes/update/",
-                data: {id: $("#id").val() , title: $("#title").val(), body: CKEDITOR.instances['body'].getData() , tags: $("#noteTaggs").val(), noteDate: $("#noteDate").val() }
-            }).done(function (msg, resp) {
-                if(resp == "success"){
-                    $("#note_status").html("Note Auto-saved");
-                    delay(function(){
-                        $("#note_status").html("");
-                    },5000);
-                }
-            });
-        }, 300000);
+        var currentContentLength = CKEDITOR.instances['body'].getData().length
+        refreshIntervalId = window.setInterval(function(){
+//            console.log(currentContentLength + " ? " + CKEDITOR.instances['body'].getData().length);
+            if(currentContentLength != CKEDITOR.instances['body'].getData().length){
+                $.ajax({
+                    method: "POST",
+                    url: "/notes/update/",
+                    data: {id: $("#id").val() , title: $("#title").val(), body: CKEDITOR.instances['body'].getData() , tags: $("#noteTaggs").val(), noteDate: $("#noteDate").val() }
+                }).done(function (msg, resp) {
+                    if(resp === "success"){
+                        $("#note_status").html("Note Auto-saved");
+                        currentContentLength = CKEDITOR.instances['body'].getData().length;
+                        delay(function(){
+                            $("#note_status").html("Last Auto-save: " + moment().format('hh:mm:ss') );
+                        },5000);
+                    }
+                });
+            }
+        }, 5 * 1000 * 60 );
     <?php
         }
     ?>
+        return null;
+    }
+    
+$(document).ready(function () {
+    var refreshIntervalId = null;
+    startAutoSave();
+    
 <?php 
     if(isset($exitCheck) && $exitCheck == true){
         ?>
         window.onbeforeunload = confirmOnPageExit;
-        console.log("Check before exiting!");
         <?php 
     }
     if (!empty($note->tagg)) { ?>
-        var tagsVar = "[<?php echo $note->tagg; ?>]";
-<?php } else { ?>
-        var tagsVar = "";
-<?php } ?>
+        tagsVar = "[<?php echo $note->tagg; ?>]";
+    <?php } else { ?>
+        tagsVar = "[]";
+    <?php } ?>
+
+    });
 </script>

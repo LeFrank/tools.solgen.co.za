@@ -11,11 +11,14 @@
     $(function() {
         $("#noteDate").datetimepicker();
     });
-    $("#noteTaggs").tagit({
-        availableTags: tagsVar,
-        allowSpaces: true,
-        singleField: true,
-        fieldName: 'tags'
-    });
+    if(typeof tagsVar !== 'undefined'){
+        var tagsVar = "[]";
+    }
+        $("#noteTaggs").tagit({
+            availableTags: tagsVar,
+            allowSpaces: true,
+            singleField: true,
+            fieldName: 'tags'
+        });
 </script>
 <script type="text/javascript" src="/js/notes/index.js" ></script>
