@@ -117,7 +117,9 @@ if (!empty($note->id)) {
 
         $(document).ready(function () {
             var refreshIntervalId = null;
-            startAutoSave();
+            <?php if($userNotesConfigs["auto_save_note"] == 1){ ?>
+                startAutoSave();
+            <?php } ?>
             $("#auto_save").change(function () {
                 console.log("Checked = " + $(this).is(":checked"));
                 if ($(this).is(":checked")) {
