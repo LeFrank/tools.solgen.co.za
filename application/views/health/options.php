@@ -17,7 +17,7 @@
                 <div class="large-4 columns" >
                     <label for="target_weight">Target Weight</label>
                     <span 
-                        class="editable"
+                        class="editable editable-expanded"
                             data-url="/health/option/update/<?php echo $userHealthConfigs["target_weight_id"]; ?>"
                             data-type="textarea"
                             data-ok-button="OK"
@@ -28,7 +28,7 @@
                 <div class="large-4 columns" >
                     <label for="target_waist">Target Waist Measurement</label>
                     <span 
-                        class="editable"
+                        class="editable editable-expanded"
                             data-url="/health/option/update/<?php echo $userHealthConfigs["target_waist_id"]; ?>"
                             data-type="textarea"
                             data-ok-button="OK"
@@ -39,7 +39,7 @@
                 <div class="large-4 columns" >
                     <label for="target_sleep">Daily Sleep Target</label>
                     <span 
-                        class="editable"
+                        class="editable editable-expanded"
                             data-url="/health/option/update/<?php echo $userHealthConfigs["target_sleep_id"]; ?>"
                             data-type="textarea"
                             data-ok-button="OK"

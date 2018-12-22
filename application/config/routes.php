@@ -175,6 +175,7 @@ $route['payment-methods/update'] = 'paymentMethods/update';
 
 $route['test'] = 'pages/test';
 
+$route['notes/option/update/(:num)'] = 'notes/optionsUpdate/$1';
 $route['notes/view-note/(:num)'] = 'notes/viewNote/$1';
 $route['notes/history/search'] = 'notes/searchHistorySave';
 $route['notes/history/search/(:num)'] = 'notes/searchHistory/$1';

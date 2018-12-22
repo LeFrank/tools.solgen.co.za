@@ -12,5 +12,6 @@ function mapKeyToValue($doubleDimensionsArray) {
             }
         }
     }
+//    print_r($returnArray);
     return $returnArray;
 }

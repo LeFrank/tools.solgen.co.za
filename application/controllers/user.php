@@ -37,24 +37,38 @@ class User extends CI_Controller {
         } else {
             $res = $this->user_model->set_user();
             if ($res == 1) {
+                $this->setDefaultUserConfigs();
                 $message = $this->load->view('user/registered_confirmation_email_form.php', $data, TRUE);
                 $this->load->library('email');
                 $this->email->from('system@solgen.co.za', 'System');
                 $this->email->to($this->input->post('email'));
-                $this->email->subject('Solgen : Account Registered');
+                $this->email->subject('Solgen: Account Registered');
                 $this->email->message($message);
                 $this->email->send();
                 $data["status"] = "Success";
                 $data["action_classes"] = "success";
                 $data["message_classes"] = "success";
                 $data["message"] = "Your account has been registered, please login in to continue.";
+                // Create user default configs
+                // 
             }
             $this->load->view('header', $data);
             $this->load->view('user/registered', $data);
             $this->load->view('footer');
         }
     }
-
+    public function setDefaultUserConfigs(){
+        $this->load->model('user_configs_model');
+        $config["tool_id"] = 5;
+        $config["key"] = "auto_save_note";
+        $config["val"] = 1;
+        $this->user_configs_model->capture_user_config($config);
+        $config["tool_id"] = 5;
+        $config["key"] = "auto_save_note_interval";
+        $config["val"] = 5;
+        $this->user_configs_model->capture_user_config($config);
+    }
+    
     public function login() {
         if ($this->input->post('email') != "" && $this->input->post('password') != "") {
             $user = $this->user_model->login($this->input->post('email'), $this->input->post('password'));

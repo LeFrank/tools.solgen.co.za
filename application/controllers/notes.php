@@ -2,7 +2,7 @@
 
 class Notes extends CI_Controller {
 
-    var $toolId = 4;
+    var $toolId = 5;
     var $toolName = "Notes";
     var $require_auth = TRUE;
 
@@ -21,6 +21,7 @@ class Notes extends CI_Controller {
         $this->load->model('notes_model');
         $this->load->model('notes_template_model');
         $this->load->model('notes_search_model');
+        $this->load->model('user_configs_model');
         $this->load->library('pagination');
         $data["globalTitle"] = $this->toolName;
     }
@@ -60,9 +61,14 @@ class Notes extends CI_Controller {
     }
 
     public function edit($id = null) {
+        $this->load->helper('user_config_helper');
         $user = $this->session->userdata("user");
         $data["note"] = $this->notes_model->getNote($user->id, $id);
         $data["exitCheck"] = true;
+        $data["userNotesConfigs"] = mapKeyToValue($this->user_configs_model->getUserConfigsByToolId($user->id , $this->toolId));
+//        echo "<pre>";
+//        print_r($data["userNotesConfigs"]);
+//        echo "</pre>";
         $this->load->view('header', getPageTitle($data, $this->toolName, "Edit", $data["note"]->heading));
         $this->load->view('notes/notes_nav', $data);
         $this->load->view("notes/capture_form", $data);
@@ -206,7 +212,12 @@ class Notes extends CI_Controller {
 //"
 //                )
 //        );
+        $this->load->helper('user_config_helper');
         $user = $this->session->userdata("user");
+        $data["userNotesConfigs"] = mapKeyToValue($this->user_configs_model->getUserConfigsByToolId($user->id , $this->toolId));
+//        echo "<pre>";
+//        print_r($data["userNotesConfigs"]);
+//        echo "</pre>";
         $data["notes_templates"] = $this->notes_template_model->getNotesTemplates($user->id);
         $data["determinator"]["lb"] = "Less required is better.";
         $data["determinator"]["mb"] = "More required is better.";
@@ -305,7 +316,7 @@ class Notes extends CI_Controller {
         $this->load->view('notes/notes_nav', $data);
         $data["capture_form"] = $this->load->view("notes/templates/template_capture_form", $data, TRUE);
         $this->load->view('notes/templates/index', $data);
-        $this->load->view('notes/notes_includes', $data);
+        $this->load->view('notes/templates/template_includes', $data);
         $this->load->view('footer');
     }
     
@@ -332,5 +343,12 @@ class Notes extends CI_Controller {
         $this->load->view('footer');
     }
 
-
+    public function optionsUpdate($optionId){
+        $userId = $this->session->userdata("user")->id;
+        $data = array();
+        $config = $this->user_configs_model->getUserConfig($userId, $optionId);
+        $config->val = $this->input->post("value");
+        $this->user_configs_model->update($config);
+        echo $this->user_configs_model->getUserConfig($userId, $optionId)->val;
+    }
 }

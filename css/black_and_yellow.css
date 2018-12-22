@@ -1092,9 +1092,13 @@ height: 110px;
     transition: visibility 0.3s, opacity 0.3s linear;
 }
 
-/*.editable{
-    text-decoration: underline;
-}*/
+.editable-expanded{
+    /*text-decoration: underline;*/
+/*    padding:10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);*/
+    color: #f1b836;
+    cursor: pointer;
+}
 
 #div1, #div2, #div3 {
     width: 350px;

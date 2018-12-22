@@ -13,6 +13,10 @@
 </h3>
 <label>User Count:
     <?php echo $registered_users["user_count"]; ?> </label>
+<label>Latest Created Users: 
+    <?php echo $registered_users["last_created_user"]->firstname ."&nbsp;&nbsp;|&nbsp;&nbsp;Date Created: ". $registered_users["last_created_user"]->create_date; ?> 
+</label>
+
 <br/>
 <h3>
     Next 7 days calendar events, starting with the current days events.

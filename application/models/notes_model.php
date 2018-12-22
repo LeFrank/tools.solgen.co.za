@@ -236,6 +236,8 @@ class Notes_model extends CI_Model {
             'update_date' => date('Y/m/d H:i'),
             'update_count' => $updateCount
         );
+//        print_r($data);
+//        exit;
         $this->db->where('id', $this->input->post('id'));
         return $this->db->update($this->tn, $data);
     }

@@ -17,6 +17,11 @@ class User_model extends CI_Model {
 
     public function get_admin_data(){
         $data["user_count"] = $this->db->count_all($this->tn);
+        $limit=1;
+        $offset=0;
+//        $this->db->order_by("create_date", "desc");
+        $query = $this->db->query("SELECT firstname, create_date FROM ".$this->tn." order by create_date desc limit 1");
+        $data["last_created_user"] = $query->row();
         return $data;
     }
     
@@ -53,15 +58,15 @@ class User_model extends CI_Model {
             'active' => TRUE
         );
         return $this->db->insert($this->tn, $data);
+        // return $this->db->insert_id();
     }
 
     public function updateLastLogin($id) {
         $this->load->helper('date');
-        $data = array(
-            "last_login" => date('Y/m/d H:i:s')
-        );
+        $user = $this->get_user($id);
+        $user->last_login = date('Y/m/d H:i:s');
         $this->db->where('id', $id);
-        return $this->db->update($this->tn, $data);
+        return $this->db->update($this->tn, $user);
     }
 
     public function update_password($id, $password) {
