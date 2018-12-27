@@ -127,9 +127,10 @@ function timelineHealthExercisesFormat($events, $timelineEvents, $toolInfo, $exe
         $event->toolName = "Health - Exercises";
         $event->toolName = $toolInfo[8]["name"];
         $event->id = $v["id"];
+        $interval = date_diff(new DateTime($v["end_date"]), new DateTime($v["start_date"]));
         $duration = gmdate("h:i:s",strtotime($v["end_date"]) - strtotime($v["start_date"]));
         $event->title = "<i class='fas fa-". strtolower($exerciseTypes[$v["exercise_type_id"]]["name"])."' style='color:".$toolInfo[8]["colour"]."; font-size:24px'>&nbsp;</i>&nbsp;". $exerciseTypes[$v["exercise_type_id"]]["name"].
-                "&nbsp;&nbsp;| Duration: " . $duration;
+                "&nbsp;&nbsp;| Duration (aprox) : " . $interval->h. " hours, " .$interval->i . " minutes";
         $event->body = $v["description"];
         $event->url = "health/exercise/edit/". $v["id"];
         $timelineEvents[] = $event;

@@ -240,19 +240,25 @@ $numberOfDays = floor((strtotime($endDate) - strtotime($startDate)) / (60 * 60 *
         </div>
     </div>
 </div>
+<?php 
+//echo "<pre>";
+//print_r(json_encode($healthMetrics));
+//echo "</pre>";
 
+?>
 <script type="text/javascript">
     $(function () {
         $("#fromDate").datetimepicker();
         $("#toDate").datetimepicker();
     });
-
+    
     var waist = <?php echo $waist; ?>;
     var weight = <?php echo $weight; ?>;
     var sleep = <?php echo $sleep; ?>;
     var sleepTarget = <?php echo $sleepTarget; ?>;
     var weightTarget = <?php echo $weightTarget; ?>;
     var waistTarget = <?php echo $waistTarget; ?>;
+//    var healthMetrics = 
 
 
 </script>
@@ -411,10 +417,16 @@ foreach ($exerciseTypes as $k => $v) {
         ]
     });
 
-//    $('#sleep-over-time-period').bind('jqplotDataClick',
+//    $('#waist-and-weight-over-time-period').bind('jqplotDataClick',
 //            function(ev, seriesIndex, pointIndex, data) {
-//                var url = "http://" + window.location.host + "/expenses/getExpenses/" + healthMetrics[pointIndex].id + "?keepThis=true&TB_iframe=true&width=850&height=500";
-//                tb_show("Expenses", url);
+//                console.log(window.location.host);
+//                console.log(ev);
+//                console.log(seriesIndex);
+//                console.log(pointIndex);
+////                console.log(healthMetrics[pointIndex].id);
+//                console.log(data);
+////                var url = "http://" + window.location.host + "/expenses/getExpenses/" + healthMetrics[pointIndex].id + "?keepThis=true&TB_iframe=true&width=850&height=500";
+////                tb_show("Expenses", url);
 //            }
 //    );
 

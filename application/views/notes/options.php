@@ -57,16 +57,21 @@
                         <div class="large-4 columns" >
 
                             <?php
-                            echo "<a href='/notes/templates/edit'" . $v["id"] . " >" . $v["name"] . "</a> - " . $v["description"] . "<br/>";
+                            echo $v["name"] . " - " . $v["description"] . "<br/>";
                             ?>
                         </div>
                         <div class="large-8 columns" >
                             <?php
-                            echo "Template Title:<br/> " . $v["template_title"] . "<br/><br/>Template Content:<br/> " . $v["template_content"];
+                            echo "Template Title:<br/> " . $v["template_title"] . "<br/>";
                             ?>
                         </div>
                     </div>
                 </div>
+            <div id="notesContent" class="row expanded" >
+                <div class="large-12 columns" >
+                    <hr>
+                </div>
+            </div>
             <?php }
             ?>
             <a href="/notes/templates" >Manage Templates</a>
@@ -92,7 +97,7 @@
             Number of Templates: <?php echo count($notes_templates) ?><br/>
             <?php
             foreach ($notes_templates as $k => $v) {
-                echo "<a href='/notes/options/templates/edit'" . $v["id"] . " >" . $v["name"] . "</a> - " . $v["description"] . "<br/>";
+                echo "<a href='/notes/options/templates/edit" . $v["id"] . "' >" . $v["name"] . "</a> - " . $v["description"] . "<br/>";
             }
             ?>
             <a href="/notes/templates" >Manage Templates</a>

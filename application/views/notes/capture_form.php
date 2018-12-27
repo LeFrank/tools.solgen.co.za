@@ -8,9 +8,20 @@
     </div>
     <?php if (empty($note->id)) { ?>
         <div class="row expanded">
-            <div class="large-12 columns">
+            <div class="large-10 columns">
                 <label for="title">Title *</label>
                 <input type="text" autofocus value="<?php echo (!empty($note->heading) ? $note->heading : "" ); ?>" name="title" id="title" placeholder="I wonder if ..."  />
+            </div>
+            <div class="large-2 columns">
+                <label for="title">Select Template</label>
+                <select id="templateId" name="templateId">
+                    <option value="0">None</option>
+                    <?php
+                    foreach ($notes_templates as $k => $v) {
+                        echo "<option value='" . $v["id"] . "'>" . $v["name"] . "- ".$v["description"]. "</option>";
+                    }
+                    ?>
+                </select>
             </div>
         </div> 
     <?php } else { ?>
@@ -117,9 +128,9 @@ if (!empty($note->id)) {
 
         $(document).ready(function () {
             var refreshIntervalId = null;
-            <?php if($userNotesConfigs["auto_save_note"] == 1){ ?>
+    <?php if ($userNotesConfigs["auto_save_note"] == 1) { ?>
                 startAutoSave();
-            <?php } ?>
+    <?php } ?>
             $("#auto_save").change(function () {
                 console.log("Checked = " + $(this).is(":checked"));
                 if ($(this).is(":checked")) {
@@ -129,6 +140,26 @@ if (!empty($note->id)) {
                 }
             });
         });
+    <?php
+} else {
+    ?>
+        $("#templateId").change(function () {
+            if ($(this).val() > 0) {
+                $.post(
+                        "/notes/templates/template/" + $(this).val(),
+                        null
+                        ).done(function (resp) {
+                    obj = JSON.parse(resp);
+                    if (null != obj.template_content && obj.template_content != "") {
+                        $("#title").val(obj.template_title);
+                        CKEDITOR.instances['body'].setData(CKEDITOR.instances['body'].getData() + obj.template_content);
+                    }
+                });
+            }
+        });
+
+
+
     <?php
 }
 ?>

@@ -23,8 +23,8 @@ class Notes_search_model extends CI_Model {
             array(
                 'user_id' => $this->session->userdata("user")->id, 
                 'text' => $this->input->post("searchText"), 
-                'start_date' => (($this->input->post('fromDate') == "") ? "0000-00-00 00:00:00" : date('Y/m/d H:i', strtotime($this->input->post('fromDate')))),
-                'end_date' => (($this->input->post('toDate') == "") ? "0000-00-00 00:00:00" : date('Y/m/d H:i', strtotime($this->input->post('toDate'))))
+                'start_date' => (($this->input->post('fromDate') == "") ? null : date('Y/m/d H:i', strtotime($this->input->post('fromDate')))),
+                'end_date' => (($this->input->post('toDate') == "") ? null : date('Y/m/d H:i', strtotime($this->input->post('toDate'))))
                 ));
         if($query->num_rows() > 0){
             $res = $query->result_array();
@@ -34,8 +34,8 @@ class Notes_search_model extends CI_Model {
             $data = array(
                 'user_id' => $this->session->userdata("user")->id,
                 'text' => $this->input->post("searchText"),
-                'start_date' => (($this->input->post('fromDate') == "") ? "0000-00-00 00:00:00" : date('Y/m/d H:i', strtotime($this->input->post('fromDate')))),
-                'end_date' => (($this->input->post('toDate') == "") ? "0000-00-00 00:00:00" : date('Y/m/d H:i', strtotime($this->input->post('toDate')))),
+                'start_date' => (($this->input->post('fromDate') == "") ? null : date('Y/m/d H:i', strtotime($this->input->post('fromDate')))),
+                'end_date' => (($this->input->post('toDate') == "") ? null : date('Y/m/d H:i', strtotime($this->input->post('toDate')))),
                 'create_date' => date('Y/m/d H:i')
             );
             $this->db->insert($this->tn, $data);

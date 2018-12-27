@@ -17,7 +17,7 @@
             <div class="large-4 columns" >
 
                 <?php
-                echo "<a href='/notes/options/templates/edit'" . $v["id"] . " >" . $v["name"] . "</a> - " . $v["description"] . "<br/>";
+                echo "<a href='/notes/options/templates/edit" . $v["id"] . "' >" . $v["name"] . "</a> - " . $v["description"] . "<br/>";
                 ?>
             </div>
             <div class="large-8 columns" >

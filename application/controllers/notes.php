@@ -69,6 +69,7 @@ class Notes extends CI_Controller {
 //        echo "<pre>";
 //        print_r($data["userNotesConfigs"]);
 //        echo "</pre>";
+        $data["notes_templates"] = $this->notes_template_model->getNotesTemplates($user->id);
         $this->load->view('header', getPageTitle($data, $this->toolName, "Edit", $data["note"]->heading));
         $this->load->view('notes/notes_nav', $data);
         $this->load->view("notes/capture_form", $data);
@@ -96,6 +97,7 @@ class Notes extends CI_Controller {
         $data["searches"] = $this->notes_search_model->getSearches($user->id, 10, null, false);
         $this->load->view('header', getPageTitle($data, $this->toolName, "History"));
         $this->load->view('notes/notes_nav', $data);
+        $data["notes_templates"] = $this->notes_template_model->getNotesTemplates($user->id);
         $data["capture_form"] = $this->load->view("notes/capture_form", $data, TRUE);
         $this->load->view('notes/history', $data);
         $this->load->view('notes/notes_includes', $data);
@@ -138,6 +140,8 @@ class Notes extends CI_Controller {
 //        echo (($page != null) ? ( $page - 1 ) * $this->pagination->per_page : $this->pagination->per_page);
         $data["notes"] = $this->notes_model->searchNotesCriteria($user->id, (($page != null) ? ( $page - 1 ) * $this->pagination->per_page : $this->pagination->per_page), (($page != null) ? ( $page - 1 ) * $this->pagination->per_page : null), false, $data["search"][0]["text"], $data["search"][0]["start_date"], $data["search"][0]["end_date"]);
         $data["totalNotes"] = $this->pagination->total_rows = $data["total_returned"] = $this->notes_model->searchNotesCriteria($user->id, null, null, true, $data["search"][0]["text"], $data["search"][0]["start_date"], $data["search"][0]["end_date"]);
+        $data["notes_templates"] = $this->notes_template_model->getNotesTemplates($user->id);
+
         $this->load->view('header', getPageTitle($data, $this->toolName, "Search", $data["search"][0]["text"] . " (". $data["total_returned"] .")"));
         $this->load->view('notes/notes_nav', $data);
         $data["capture_form"] = $this->load->view("notes/capture_form", $data, TRUE);
@@ -323,6 +327,8 @@ class Notes extends CI_Controller {
     public function templateCreate(){
         $user = $this->session->userdata("user");
 //        print_r($this->input->post());
+        $this->load->helper('user_config_helper');
+        $data["userNotesConfigs"] = mapKeyToValue($this->user_configs_model->getUserConfigsByToolId($user->id , $this->toolId));
         $this->notes_template_model->capture_note_template();
         $data["notes_templates"] = $this->notes_template_model->getNotesTemplates($user->id);
         $data["determinator"]["lb"] = "Less required is better.";
@@ -341,6 +347,12 @@ class Notes extends CI_Controller {
         $this->load->view('notes/options', $data);
         $this->load->view('notes/notes_includes', $data);
         $this->load->view('footer');
+    }
+    
+    public function getTemplate($templateId){
+        $user = $this->session->userdata("user");
+//        print_r($this->input->post());
+        echo json_encode($this->notes_template_model->getNotesTemplate($user->id, $templateId));
     }
 
     public function optionsUpdate($optionId){
