@@ -175,6 +175,9 @@ $route['payment-methods/update'] = 'paymentMethods/update';
 
 $route['test'] = 'pages/test';
 
+$route['notes/templates/update'] = 'notes/templateUpdate';
+$route['notes/templates/delete/(:num)'] = 'notes/templateDelete/$1';
+$route['notes/templates/edit/(:num)'] = 'notes/templateEdit/$1';
 $route['notes/option/update/(:num)'] = 'notes/optionsUpdate/$1';
 $route['notes/templates/template/(:num)'] = 'notes/getTemplate/$1';
 $route['notes/view-note/(:num)'] = 'notes/viewNote/$1';
@@ -199,8 +202,9 @@ $route['notes/stats'] = 'notes/viewStats';
 $route['notes/options'] = 'notes/options';
 $route['notes/templates'] = 'notes/templateIndex';
 $route['notes/templates/capture'] = 'notes/templateCreate';
-$route['notes/templates/update'] = 'notes/templateUpdate';
-$route['notes/templates/delete'] = 'notes/templateDelete';
+
+
+
 
 
 

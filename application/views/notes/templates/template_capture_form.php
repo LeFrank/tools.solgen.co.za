@@ -1,5 +1,5 @@
 <?php ?>
-<form action="/notes/templates/<?php echo (!empty($note->id) ? "update" : "capture" ); ?>" method="post" accept-charset="utf-8" id="captureNoteTemplateForm">
+<form action="/notes/templates/<?php echo (!empty($note_template->id) ? "update" : "capture" ); ?>" method="post" accept-charset="utf-8" id="captureNoteTemplateForm">
     <div class="row expanded">
         <input type="hidden" id="id" name="id" value="<?php echo (!empty($note_template->id) ? $note_template->id : "" ); ?>" />
         <div class="error"><?php echo validation_errors(); ?></div>
@@ -32,9 +32,9 @@
     <div class="row expanded">
         <div class="large-12 columns">
             <label for="date">Date</label>
-            <input type="text" value="<?php echo (!empty($note->create_date) ? $note->create_date : date('Y/m/d H:i:s')); ?>" name="noteDate" id="noteDate"/>
+            <input type="text" value="<?php echo (!empty($note_template->create_date) ? $note_template->create_date : date('Y/m/d H:i:s')); ?>" name="noteDate" id="noteDate"/>
             <br/><br/>
-            <input type="submit" id="submit-note" value="<?php echo (!empty($note->id) ? "Update" : "Capture" ); ?>"  class="button"  />&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="submit" id="submit-note" value="<?php echo (!empty($note_template->id) ? "Update" : "Capture" ); ?>"  class="button"  />&nbsp;&nbsp;&nbsp;&nbsp;
             <input id="cancel-new-note" type="button" value="Cancel" class="button secondary"/>
         </div>
     </div>

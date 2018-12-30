@@ -349,6 +349,63 @@ class Notes extends CI_Controller {
         $this->load->view('footer');
     }
     
+    public function templateEdit($templateId){
+        $user = $this->session->userdata("user");
+//        print_r($this->input->post());
+        $this->load->helper('user_config_helper');
+        $data["userNotesConfigs"] = mapKeyToValue($this->user_configs_model->getUserConfigsByToolId($user->id , $this->toolId));
+        $data["note_template"] = $this->notes_template_model->getNotesTemplate($user->id, $templateId);
+        $this->load->view('header', getPageTitle($data, $this->toolName, "History"));
+        $this->load->view('notes/notes_nav', $data);
+        $this->load->view("notes/templates/template_capture_form", $data);
+        $this->load->view('notes/templates/template_includes', $data);
+        $this->load->view('footer');
+    }
+    
+    public function templateDelete($templateId){
+        $user = $this->session->userdata("user");
+        $data['title'] = 'Delete a note template';
+        $data["action_description"] = "Deleting a note template";
+        if ($this->notes_template_model->doesItBelongToMe($user->id, $templateId)) {
+            $this->notes_template_model->delete($templateId);
+            $data["status"] = "Deleted Note Template";
+            $data["action_classes"] = "success";
+            $data["message_classes"] = "success";
+            $data["message"] = "The note template was deleted";
+        } else {
+            $data["status"] = "Note template does not belong to you.";
+            $data["action_classes"] = "faliure";
+            $data["message_classes"] = "failure";
+            $data["message"] = "The note template was not deleted";
+        }
+        redirect("/notes/templates", "refresh");
+    }
+    
+    public function templateUpdate(){
+        $user = $this->session->userdata("user");
+        $data['title'] = 'Update a note template';
+        $this->form_validation->set_rules('template_content', 'template_content', 'required');
+        $data["status"] = "Update Note Template";
+        $data["action_description"] = "Update a note template";
+        if ($this->form_validation->run() == FALSE) {
+            $data["action_classes"] = "faliure";
+            $data["message_classes"] = "failure";
+            $data["message"] = "The note template was not updated";
+            // Get and list templates
+            $data["notes_templates"] = $this->notes_template_model->getNotesTemplates($user->id);
+            $this->load->view('header');
+            $this->load->view('notes/notes_nav', $data);
+            $data["capture_form"] = $this->load->view("notes/templates/template_capture_form", $data, TRUE);
+            $this->load->view('general/action_status', $data);
+            $this->load->view('notes/templates/index', $data);
+            $this->load->view('notes/templates/template_includes', $data);
+            $this->load->view('footer');
+        } else {
+            $data["note_template"] = $this->notes_template_model->update();
+            redirect("/notes/templates/", "refresh");
+        }
+    }
+    
     public function getTemplate($templateId){
         $user = $this->session->userdata("user");
 //        print_r($this->input->post());
