@@ -146,7 +146,7 @@ class resource extends CI_Controller {
 //        exit;
 
         if (file_exists($item->full_path)) {
-            $fp = fopen($item->full_path, 'rb');
+//            $fp = fopen($item->full_path, 'rb');
 //            header('Content-Description: File Transfer');
 //            header('Content-Type: application/octet-stream');
 //            header('Content-Disposition: attachment; filename="' . $item->filename . '"');
@@ -157,13 +157,13 @@ class resource extends CI_Controller {
 //            readfile($item->full_path);
             header('Content-Type: ' . $item->file_type);
             header('Content-Length: ' . filesize($item->full_path));
-            header("Cache-Control: public");
-            header("Content-Transfer-Encoding: binary\n");
+//            header("Cache-Control: public");
+//            header("Content-Transfer-Encoding: binary\n");
 //            header("Content-Disposition: attachment; file=\"".$item->filename."\"");
-//            readfile($item->full_path);
 //            exit;   
-            fpassthru($fp);
-            fclose($fp);
+//            fpassthru($fp);
+//            fclose($fp);
+            readfile($item->full_path);
             exit;
         }
     }
