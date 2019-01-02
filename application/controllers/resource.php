@@ -172,7 +172,7 @@ class resource extends CI_Controller {
         $item = $this->user_content_model->getUserContentitem($userId, $id);
 
         if (file_exists($item->full_path)) {
-            $fp = fopen($item->full_path, 'r');
+//            $fp = fopen($item->full_path, 'r');
             header('Content-Description: File Transfer');
             header('Content-Type: application/octet-stream');
             header('Content-Disposition: attachment; filename="' . trim($item->filename) . '"');
@@ -184,7 +184,7 @@ class resource extends CI_Controller {
             header('Content-Length: ' . filesize($item->full_path));
 //            header("Cache-Control: public");
             header("Content-Transfer-Encoding: binary\n");
-            readfile($item->full_path);
+            echo readfile($item->full_path);
 //            readfile($item->full_path);
 //            exit;   
 //            fpassthru($fp);
