@@ -139,33 +139,35 @@ class resource extends CI_Controller {
 
     public function view($id, $filename) {
         $userId = $this->session->userdata("user")->id;
-        $item = $this->user_content_model->getUserContentitem($userId, $id);
-//        print_r($item);
-//        exit;
-//        echo $item->full_path;
-//        exit;
+        if($this->user_content_model->doesItBelongToMe($userId, $id)){
+            $item = $this->user_content_model->getUserContentitem($userId, $id);
+    //        print_r($item);
+    //        exit;
+    //        echo $item->full_path;
+    //        exit;
 
-        if (file_exists($item->full_path)) {
-            $fp = fopen($item->full_path, 'rb');
-//            header('Content-Description: File Transfer');
-//            header('Content-Type: application/octet-stream');
-//            header('Content-Disposition: attachment; filename="' . $item->filename . '"');
-//            header('Expires: 0');
-//            header('Cache-Control: must-revalidate');
-//            header('Pragma: public');
-//            header('Content-Length: ' . $item->filezise);
-//            readfile($item->full_path);
-//            header('Content-Type:' . $item->file_type);
-              header("Content-Type: image/png");
-//            header('Content-Length:' . filesize($item->full_path));
-//            header("Cache-Control: public");
-//            header("Content-Transfer-Encoding: binary\n");
-//            header("Content-Disposition: attachment; file=\"".$item->filename."\"");
-//            exit;   
-            fpassthru($fp);
-//            fclose($fp);
-//            readfile($item->full_path);
-            exit;
+            if (file_exists($item->full_path)) {
+                $fp = fopen($item->full_path, 'rb');
+    //            header('Content-Description: File Transfer');
+    //            header('Content-Type: application/octet-stream');
+    //            header('Content-Disposition: attachment; filename="' . $item->filename . '"');
+    //            header('Expires: 0');
+    //            header('Cache-Control: must-revalidate');
+    //            header('Pragma: public');
+    //            header('Content-Length: ' . $item->filezise);
+    //            readfile($item->full_path);
+                header('Content-Type: ' . $item->file_type);
+                header('Content-Length: ' . filesize($item->full_path));
+                header("Cache-Control: public");
+                header("Content-Transfer-Encoding: binary\n");
+    //            header("Content-Disposition: attachment; file=\"".$item->filename."\"");
+    //            readfile($item->full_path);
+    //            exit;   
+                fpassthru($fp);
+                exit;
+            }
+        }else{
+            echo "Does not belong to you!";
         }
     }
 
@@ -175,22 +177,26 @@ class resource extends CI_Controller {
 
         if (file_exists($item->full_path)) {
 //            $fp = fopen($item->full_path, 'r');
-            header('Content-Description: File Transfer');
-            header('Content-Type: application/octet-stream');
-            header('Content-Disposition: attachment; filename="' . trim($item->filename) . '"');
-            header('Expires: 0');
-            header('Cache-Control: must-revalidate');
-//            header('Pragma: public');
-//            header('Content-Length: ' . $item->filezise);
-            //header('Content-Type: '.$item->file_type);
-            header('Content-Length: ' . filesize($item->full_path));
-//            header("Cache-Control: public");
-            header("Content-Transfer-Encoding: binary\n");
-            readfile(trim($item->full_path));
+//            header('Content-Description: File Transfer');
+//            header('Content-Type: application/octet-stream');
+//            header('Content-Disposition: attachment; filename="' . $item->filename . '"');
+//            header('Expires: 0');
+//            header('Cache-Control: must-revalidate');
+////            header('Pragma: public');
+////            header('Content-Length: ' . $item->filezise);
+//            //header('Content-Type: '.$item->file_type);
+//            header('Content-Length: ' . filesize($item->full_path));
+////            header("Cache-Control: public");
+//            header("Content-Transfer-Encoding: binary\n");
 //            readfile($item->full_path);
-//            exit;   
-//            fpassthru($fp);
-            exit;
+////            readfile($item->full_path);
+////            exit;   
+////            fpassthru($fp);
+//            exit;
+            $this->load->helper('download');
+            $content = file_get_contents($item->full_path); // Read the file's contents
+            $file_name = $item->filename;
+            force_download($file_name, $content);
         }
     }
 
