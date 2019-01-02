@@ -185,7 +185,7 @@ class resource extends CI_Controller {
             header('Content-Length: ' . filesize($item->full_path));
 //            header("Cache-Control: public");
             header("Content-Transfer-Encoding: binary\n");
-            echo readfile($item->full_path);
+            readfile(trim($item->full_path));
 //            readfile($item->full_path);
 //            exit;   
 //            fpassthru($fp);
