@@ -163,6 +163,7 @@ class resource extends CI_Controller {
 //            readfile($item->full_path);
 //            exit;   
             fpassthru($fp);
+            fclose($fp);
             exit;
         }
     }
