@@ -155,8 +155,8 @@ class resource extends CI_Controller {
 //            header('Pragma: public');
 //            header('Content-Length: ' . $item->filezise);
 //            readfile($item->full_path);
-            header('Content-Type: ' . $item->file_type);
-            header('Content-Length: ' . filesize($item->full_path));
+//            header('Content-Type: ' . $item->file_type);
+//            header('Content-Length: ' . filesize($item->full_path));
 //            header("Cache-Control: public");
 //            header("Content-Transfer-Encoding: binary\n");
 //            header("Content-Disposition: attachment; file=\"".$item->filename."\"");
