@@ -162,7 +162,7 @@ class resource extends CI_Controller {
 //            header("Content-Disposition: attachment; file=\"".$item->filename."\"");
 //            readfile($item->full_path);
 //            exit;   
-            fpassthru($fp);
+            echo fpassthru($fp);
             exit;
         }
     }
@@ -189,10 +189,10 @@ class resource extends CI_Controller {
             header("Content-Transfer-Encoding: Binary");
             header("Content-length: ".filesize($item->full_path));
             header("Content-disposition: attachment; filename=\"".basename($item->filename)."\"");
-//            readfile($item->full_path);
+           echo readfile($item->full_path);
 //            readfile($item->full_path);
 //            exit;   
-            fpassthru($fp);
+//            echo fpassthru($fp);
             exit;
         }
     }
