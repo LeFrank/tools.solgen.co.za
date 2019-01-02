@@ -158,11 +158,11 @@ class resource extends CI_Controller {
             header('Content-Type: ' . $item->file_type);
             header('Content-Length: ' . filesize($item->full_path));
             header("Cache-Control: public");
-            header("Content-Transfer-Encoding: Binary");
+            header("Content-Transfer-Encoding: binary\n");
 //            header("Content-Disposition: attachment; file=\"".$item->filename."\"");
 //            readfile($item->full_path);
 //            exit;   
-            echo fpassthru($fp);
+            fpassthru($fp);
             exit;
         }
     }
@@ -173,26 +173,21 @@ class resource extends CI_Controller {
 
         if (file_exists($item->full_path)) {
             $fp = fopen($item->full_path, 'r');
-//            header('Content-Description: File Transfer');
-//            header('Content-Type: application/octet-stream');
-//            header('Content-disposition: attachment; filename="' . $item->filename . '"');
-//            header('Expires: 0');
-//            header('Cache-Control: must-revalidate');
-////            header('Pragma: public');
-////            header('Content-Length: ' . $item->filezise);
-//            //header('Content-Type: '.$item->file_type);
-//            header('Content-Length: ' . filesize($item->full_path));
-////            header("Cache-Control: public");
-//            header("Content-Transfer-Encoding: Binary");
-            header ("Cache-Control: must-revalidate, post-check=0, pre-check=0");
-            header('Content-Type: application/octetstream');
-            header("Content-Transfer-Encoding: Binary");
-            header("Content-length: ".filesize($item->full_path));
-            header("Content-disposition: attachment; filename=\"".basename($item->filename)."\"");
-           echo readfile($item->full_path);
+            header('Content-Description: File Transfer');
+            header('Content-Type: application/octet-stream');
+            header('Content-Disposition: attachment; filename="' . trim($item->filename) . '"');
+            header('Expires: 0');
+            header('Cache-Control: must-revalidate');
+//            header('Pragma: public');
+//            header('Content-Length: ' . $item->filezise);
+            //header('Content-Type: '.$item->file_type);
+            header('Content-Length: ' . filesize($item->full_path));
+//            header("Cache-Control: public");
+            header("Content-Transfer-Encoding: binary\n");
+            readfile($item->full_path);
 //            readfile($item->full_path);
 //            exit;   
-//            echo fpassthru($fp);
+//            fpassthru($fp);
             exit;
         }
     }
