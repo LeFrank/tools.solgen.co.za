@@ -172,18 +172,23 @@ class resource extends CI_Controller {
         $item = $this->user_content_model->getUserContentitem($userId, $id);
 
         if (file_exists($item->full_path)) {
-            $fp = fopen($item->full_path, 'r');
+//            $fp = fopen($item->full_path, 'r');
 //            header('Content-Description: File Transfer');
-            header('Content-Type: application/octet-stream');
-            header('Content-disposition: attachment; filename="' . $item->filename . '"');
-            header('Expires: 0');
-            header('Cache-Control: must-revalidate');
-//            header('Pragma: public');
-//            header('Content-Length: ' . $item->filezise);
-            //header('Content-Type: '.$item->file_type);
-            header('Content-Length: ' . filesize($item->full_path));
-//            header("Cache-Control: public");
+//            header('Content-Type: application/octet-stream');
+//            header('Content-disposition: attachment; filename="' . $item->filename . '"');
+//            header('Expires: 0');
+//            header('Cache-Control: must-revalidate');
+////            header('Pragma: public');
+////            header('Content-Length: ' . $item->filezise);
+//            //header('Content-Type: '.$item->file_type);
+//            header('Content-Length: ' . filesize($item->full_path));
+////            header("Cache-Control: public");
+//            header("Content-Transfer-Encoding: Binary");
+            header ("Cache-Control: must-revalidate, post-check=0, pre-check=0");
+            header('Content-Type: application/octetstream');
             header("Content-Transfer-Encoding: Binary");
+            header("Content-length: ".filesize($item->full_path));
+            header("Content-disposition: attachment; filename=\"".basename($item->filename)."\"");
             readfile($item->full_path);
 //            readfile($item->full_path);
 //            exit;   
