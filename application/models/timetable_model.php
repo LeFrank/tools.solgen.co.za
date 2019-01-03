@@ -25,7 +25,7 @@ class timetable_model extends CI_Model {
             'end_date' => $enddate,
             'repition_id' => $this->input->post('timetableRepetition'),
             'expense_type_id' => $this->input->post('timetableExpenseType'),
-            'location_id' => $this->input->post('locationId'),
+            'location_id' => ($this->input->post('locationId') == "") ? 0 : $this->input->post('locationId'),
             'location_text' => $this->input->post('location')
         );
         if ($this->input->post('allDayEvent')) {
