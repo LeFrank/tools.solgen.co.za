@@ -189,11 +189,12 @@ class Notes_model extends CI_Model {
        if ($userId == null) {
             return null;
         }
-        if ($start_date != "0000-00-00 00:00:00") {
+//        print_r(array($start_date, $end_date));
+        if ($start_date != "") {
             $fromDate = date('Y/m/d H:i', strtotime($start_date));
             $this->db->where('create_date >= ', $fromDate);
         }
-        if ($end_date != "0000-00-00 00:00:00") {
+        if ($end_date != "") {
             $toDate = date('Y/m/d H:i', strtotime($end_date));
             $this->db->where('create_date <= ', $toDate);
         }
