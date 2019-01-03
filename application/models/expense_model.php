@@ -29,7 +29,7 @@ class expense_model extends CI_Model {
             'expense_type_id' => $this->input->post('expenseType'),
             'description' => $this->input->post('description'),
             'location' => $this->input->post('location'),
-            'location_id' => $this->input->post('locationId'),
+            'location_id' => ($this->input->post('locationId') == "") ? 0 : $this->input->post('locationId'),
             'expense_date' => $date,
             'user_id' => $this->session->userdata("user")->id,
             'payment_method_id' => $this->input->post('paymentMethod')
