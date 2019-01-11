@@ -194,9 +194,13 @@ class resource extends CI_Controller {
 ////            fpassthru($fp);
 //            exit;
             $this->load->helper('download');
-            $content = file_get_contents($item->full_path); // Read the file's contents
+//            $content = file_get_contents($item->full_path); // Read the file's contents
             $file_name = $item->filename;
-            force_download($file_name, $content);
+//            force_download($file_name, $content);
+            header('Content-Type: application/octet-stream'); 
+            header("Content-Disposition: attachment; filename=$file_name");
+            ob_clean(); flush(); 
+            readfile($item->full_path);
         }
     }
 
