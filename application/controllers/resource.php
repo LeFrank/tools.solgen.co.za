@@ -162,7 +162,8 @@ class resource extends CI_Controller {
                 header("Content-Transfer-Encoding: binary\n");
     //            header("Content-Disposition: attachment; file=\"".$item->filename."\"");
     //            readfile($item->full_path);
-    //            exit;   
+    //            exit;
+                ob_clean(); flush(); 
                 fpassthru($fp);
                 exit;
             }
