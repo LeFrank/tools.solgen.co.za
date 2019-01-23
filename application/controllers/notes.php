@@ -292,11 +292,12 @@ class Notes extends CI_Controller {
         $this->load->library('session');
         $user = $this->session->userdata("user");
         if ($this->notes_model->doesItBelongToMe($this->session->userdata("user")->id, $id)) {
+            $data = array();
+            $data["capture_form"] = $this->load->view("notes/capture_form", $data, TRUE);
             $data["note"] = $this->notes_model->getNote($user->id,$id);
             $data["searches"] = $this->notes_search_model->getSearches($user->id, 10, null, false);
             $this->load->view('header', getPageTitle($data, $this->toolName, "View", $data["note"]->heading));
             $this->load->view('notes/notes_nav', $data);
-            $data["capture_form"] = $this->load->view("notes/capture_form", $data, TRUE);
             $this->load->view("notes/view_note", $data);
             $this->load->view('notes/notes_includes', $data);
             $this->load->view('footer');
@@ -355,7 +356,7 @@ class Notes extends CI_Controller {
         $this->load->helper('user_config_helper');
         $data["userNotesConfigs"] = mapKeyToValue($this->user_configs_model->getUserConfigsByToolId($user->id , $this->toolId));
         $data["note_template"] = $this->notes_template_model->getNotesTemplate($user->id, $templateId);
-        $this->load->view('header', getPageTitle($data, $this->toolName, "History"));
+        $this->load->view('header', getPageTitle($data, $this->toolName, "Template Editing."));
         $this->load->view('notes/notes_nav', $data);
         $this->load->view("notes/templates/template_capture_form", $data);
         $this->load->view('notes/templates/template_includes', $data);
