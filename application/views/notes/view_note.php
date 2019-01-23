@@ -93,6 +93,11 @@
                 </form>
             </div>
         </div>
+        <div id="createNoteHistory" >
+            <div id="createNoteForm" class="notesHistoryHidden createNote">
+                <?php echo $capture_form; ?>
+            </div>
+        </div>
         <div id="Note">
             <h3>Note</h3>
             <?php
