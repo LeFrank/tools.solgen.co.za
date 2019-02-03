@@ -135,13 +135,14 @@ class health_exercise_tracker_model extends CI_Model {
     }
 
     public function update() {
+        $distance = (empty($this->input->post('distance')))? 0 : $this->input->post('distance');
         $data = array(
             'description' => $this->input->post('description'),
             'start_date' => date('Y/m/d H:i', strtotime($this->input->post('exerciseStartDate'))),
             'end_date' => date('Y/m/d H:i', strtotime($this->input->post('exerciseEndDate'))),
             'exercise_type_id' => $this->input->post('exerciseType'),
             'measurement_value' => $this->input->post('measurement_value'),
-            'distance' => $this->input->post('distance'),
+            'distance' => $distance,
             'difficulty' => $this->input->post('difficulty'),
             'update_date' => date('Y/m/d H:i:s')
         );
