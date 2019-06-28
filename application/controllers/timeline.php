@@ -46,6 +46,7 @@ class timeline extends CI_Controller {
     
     public function index($startDate = null, $endDate = null){
         $data["css"] = "<link href='/css/third_party/codyhouse/vertical-timeline/style.css' rel='stylesheet' />";
+        $data["events"] = null;
         $user = $this->session->userdata("user");
         //default date period. One month ago
         if(null != $this->input->post("fromDate")){
@@ -65,30 +66,48 @@ class timeline extends CI_Controller {
         }else{
             $endDate = date('Y/m/d H:i', strtotime($endDate));
         }
+//        print_r($this->input->post());
+        $electedTools = $this->input->post("toolIds");
 //        echo "<br/>".$endDate;
+//        print_r($electedTools );
         $search["startDate"] = $startDate;
         $search["endDate"] = $endDate;
         $data["startDate"] = $startDate;
         $data["endDate"] = $endDate;
-        $data["tools"] = getAllToolsInfo();
-        $data["events"] = timelineNoteFormat($this->notes_model->getNotesForPeriod($user->id, $startDate, $endDate), null);
-        $data["expenseTypes"] = mapKeyToId($this->expense_type_model->get_expense_types());
-        $data["events"] = timelineExpenseFormat($this->expense_model->getExpensesbyDateRange( $startDate, $endDate, $user->id), $data["events"], $data["expenseTypes"]);
-        $data["timetableCategories"] = mapKeyToId($this->timetable_category_model->get_user_timetable_category($user->id), false);
-        $search["allDayEvent"] = 1;
-        $data["events"] = timelineTimetableFormat($this->timetable_model->getFilteredTimetableEvents($user->id, $search), $data["events"], $data["timetableCategories"] );
-        // Resources
-//        $data["tools"] = getAllToolsInfo();
-        $data["resources"] = $this->user_content_model->getUserContentDateRange($startDate, $endDate, $user->id);
-        $data["events"] = timelineResourceFormat($data["resources"], $data["events"], $data["tools"]);
+        $data["tools"] = getAllToolsInfo(True);
+        $data["toolInfo"] = getAllToolsInfo();
+//        print_r($data["tools"]);
+        if($electedTools[0] == "all" || in_array(5, $electedTools)){
+            $data["events"] = timelineNoteFormat($this->notes_model->getNotesForPeriod($user->id, $startDate, $endDate), null);
+        }
+        if($electedTools[0] == "all" || in_array(1, $electedTools)){
+            $data["expenseTypes"] = mapKeyToId($this->expense_type_model->get_expense_types());
+            $data["events"] = timelineExpenseFormat($this->expense_model->getExpensesbyDateRange( $startDate, $endDate, $user->id), $data["events"], $data["expenseTypes"]);
+        }
+        if($electedTools[0] == "all" || in_array(4, $electedTools)){
+            $data["timetableCategories"] = mapKeyToId($this->timetable_category_model->get_user_timetable_category($user->id), false);
+            $search["allDayEvent"] = 1;
+            $data["events"] = timelineTimetableFormat($this->timetable_model->getFilteredTimetableEvents($user->id, $search), $data["events"], $data["timetableCategories"] );
+        }
+//        // Resources
+        if($electedTools[0] == "all" || in_array(9, $electedTools)){
+            $data["resources"] = $this->user_content_model->getUserContentDateRange($startDate, $endDate, $user->id);
+            $data["events"] = timelineResourceFormat($data["resources"], $data["events"], $data["toolInfo"]);
+        }
         // Health
-        //  -   Metrics
-        $data["healthMetrics"] = $this->health_metric_model->getHealthMetricByDateRange($startDate, $endDate, $user->id);
-        $data["events"] = timelineHealthMetricsFormat($data["healthMetrics"], $data["events"], $data["tools"]);
-        //  -   Exercises
-        $data["exerciseTypes"] = mapKeyToId($this->exercise_type_model->get_user_exercise_types($user->id));
-        $data["healthExercises"] = $this->health_exercise_tracker_model->getuserExercisesByDateRange($startDate, $endDate, $user->id);
-        $data["events"] = timelineHealthExercisesFormat($data["healthExercises"], $data["events"], $data["tools"], $data["exerciseTypes"]);
+        if($electedTools[0] == "all" || in_array(8, $electedTools)){
+            //  -   Metrics
+            $data["healthMetrics"] = $this->health_metric_model->getHealthMetricByDateRange($startDate, $endDate, $user->id);
+            $data["events"] = timelineHealthMetricsFormat($data["healthMetrics"], $data["events"], $data["toolInfo"]);
+            //  -   Exercises
+            $data["exerciseTypes"] = mapKeyToId($this->exercise_type_model->get_user_exercise_types($user->id));
+            $data["healthExercises"] = $this->health_exercise_tracker_model->getuserExercisesByDateRange($startDate, $endDate, $user->id);
+            $data["events"] = timelineHealthExercisesFormat($data["healthExercises"], $data["events"], $data["toolInfo"], $data["exerciseTypes"]);
+        }
+        
+        //:Todo Wishlist
+        //:Todo Location
+        //:Todo Lists
         $data["events"] = orderTimeline($data["events"]);
         
 //        echo "<br/>".count($data["events"]) . "<pre>";

@@ -67,6 +67,9 @@ function timelineTimetableFormat($events, $timelineEvents, $timetableCategories)
 }
 
 function timelineResourceFormat($events, $timelineEvents, $toolInfo){
+    if($events == null && $timelineEvents == null){
+        return null;
+    }
 //    echo "<pre>";
 //    print_r($events);
 //    print_r($timelineEvents);
@@ -139,6 +142,9 @@ function timelineHealthExercisesFormat($events, $timelineEvents, $toolInfo, $exe
 }
 
 function orderTimeline($events){
+    if(empty($events)){
+        return $events;
+    }
     arsort($events);
     return $events;
 }

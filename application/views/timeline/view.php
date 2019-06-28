@@ -1,46 +1,75 @@
 <div class="row expanded">
     <?php echo form_open('timeline') ?>
-    <div class="large-4 columns" >
+    <div class="large-3 columns" >
         <label>
             from<input type="text" name="fromDate" id="fromDate" value="<?php echo $startDate; ?>"/>
         </label>
     </div>
-    <div class="large-4 columns" >
+    <div class="large-3 columns" >
         <label>
             To<input type="text" name="toDate" id="toDate" value="<?php echo $endDate; ?>"/> 
         </label>
     </div>
-    <div class="large-4 columns" style="vertical-align: central;margin-top:15px;" >
+    <div class="large-3 columns"  >
+        <label>
+            Tools: 
+            <?php // echo "<pre>"; print_r($tools); echo "</pre>";
+            ?> 
+            <div class="row">
+            <div class="large-12 columns">                        
+                <input type="checkbox" checked="checked" value="all" name="toolIds[]" /><label>all</label>
+            </div>
+            <?php
+            $pmCount = 0;
+            $bpmBeakCount = 2;
+            foreach ($tools as $k => $v) {
+                echo "<div class='large-6 columns'><input type='checkbox' value='" . $v["id"] . "' name='toolIds[]' /><label>" . $v["name"] . "</label></div>";
+                $pmCount++;
+                if ($pmCount % $bpmBeakCount === 0) {
+                    echo "</div><div class='row'>";
+                }
+            }
+            ?>
+            </div>
+        </label>
+    </div>
+    <div class="large-3 columns" style="vertical-align: central;margin-top:15px;" >
         <input type="submit" name="filter" value="Filter" id="filter"  class="button"/>
     </div>
     <?php echo form_close(); ?>
 </div>
+<?php
+        if(empty($events)){
+            echo "Zero events of the specified type in the specified period.";
+        }else{
+            ?>
 <div class="row expanded">
     <section id="cd-timeline" class="cd-container">
         <?php
-        foreach ($events as $k => $v) {
-            echo '<div class="cd-timeline-block">';
-            echo '  <div class="cd-timeline-img ' . strtolower($v->toolName) . '">';
-            echo '      <img src="/images/third_party/icons/'. strtolower($v->toolName). '.svg" alt="Picture">';
-            echo '  </div>';
-            echo '  <div class="cd-timeline-content">';
-            echo '      <h2>' . $v->title . '</h2>';
-//            if($v->toolId == "7"){
-            echo '      <div id="body_content_' . $v->toolId . $v->id . '" class="note_body notes_body_clamp">' . $v->body . '</div>';
-//            }else{
-//                echo '      <div>'. $v->body. '</div>';
-//            }
-            echo '      <br/><br/><a href="' . $v->url . '" target="_blank" class="cd-read-more thickbox">Read more</a>';
-            if($v->toolId == "4" || $v->toolId == "1" || $v->toolId == "5" ){
-            echo '      &nbsp;&nbsp;<div id="showMoreDiv" class="show-content button tiny secondary" data-note-id="' . $v->toolId . $v->id . '">Show More</div>';
+            foreach ($events as $k => $v) {
+                echo '<div class="cd-timeline-block">';
+                echo '  <div class="cd-timeline-img ' . strtolower($v->toolName) . '">';
+                echo '      <img src="/images/third_party/icons/' . strtolower($v->toolName) . '.svg" alt="Picture">';
+                echo '  </div>';
+                echo '  <div class="cd-timeline-content">';
+                echo '      <h2>' . $v->title . '</h2>';
+    //            if($v->toolId == "7"){
+                echo '      <div id="body_content_' . $v->toolId . $v->id . '" class="note_body notes_body_clamp">' . $v->body . '</div>';
+    //            }else{
+    //                echo '      <div>'. $v->body. '</div>';
+    //            }
+                echo '      <br/><br/><a href="' . $v->url . '" target="_blank" class="cd-read-more thickbox">Read more</a>';
+                if ($v->toolId == "4" || $v->toolId == "1" || $v->toolId == "5") {
+                    echo '      &nbsp;&nbsp;<div id="showMoreDiv" class="show-content button tiny secondary" data-note-id="' . $v->toolId . $v->id . '">Show More</div>';
+                }
+                echo '      <span class="cd-date">' . $v->date . '</span>';
+                echo '  </div>';
+                echo '</div>';
             }
-            echo '      <span class="cd-date">' . $v->date . '</span>';
-            echo '  </div>';
-            echo '</div>';
-        }
         ?>
     </section>
 </div>
+<?php } ?>
 <script type="text/javascript" src="/js/third_party/codyhouse/vertical-timeline/main.js" ></script>
 <script type="text/javascript">
     $(".show-content").click(function () {
@@ -55,8 +84,8 @@
     });
 </script>
 
-    <link rel="stylesheet" type="text/css" href="/css/jquery.datetimepicker.css" />
-    <link rel="stylesheet" href="/css/third_party/thickbox/thickbox.css" type="text/css" media="screen" />
-    <link rel="stylesheet" href="/css/third_party/fontawesome/fontawesome-all.min.css" type="text/css" media="screen" />
-    <script type="text/javascript" src="/js/jquery.datetimepicker.js" ></script>
-    <script type="text/javascript" src="/js/timeline/view.js" ></script>
+<link rel="stylesheet" type="text/css" href="/css/jquery.datetimepicker.css" />
+<link rel="stylesheet" href="/css/third_party/thickbox/thickbox.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="/css/third_party/fontawesome/fontawesome-all.min.css" type="text/css" media="screen" />
+<script type="text/javascript" src="/js/jquery.datetimepicker.js" ></script>
+<script type="text/javascript" src="/js/timeline/view.js" ></script>

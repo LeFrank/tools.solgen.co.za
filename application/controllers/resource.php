@@ -166,6 +166,9 @@ class resource extends CI_Controller {
                 ob_clean(); flush(); 
                 fpassthru($fp);
                 exit;
+                /* This article saved my bacon. Thank you internet stranger:
+                * https://stackoverflow.com/questions/10888810/invalid-image-when-using-force-download-in-codeigniter
+                */
             }
         }else{
             echo "Does not belong to you!";

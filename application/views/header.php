@@ -14,7 +14,7 @@
         <link rel="stylesheet" href="/css/third_party/foundation/normalize.css" />
         <link rel="stylesheet" href="/css/third_party/foundation/6.3.0/foundation.min.css" />
         <link rel="stylesheet" type="text/css" media="all" href="/css/third_party/foundation/3.0.0/foundation-icons.css" />
-        <link rel="stylesheet" type="text/css" media="all" href="/css/black_and_yellow.css" />
+        <link rel="stylesheet" type="text/css" media="all" href="/css/black_and_yellow.scss" />
         <link rel="stylesheet" href="/css/third_party/foundation/6.3.0/responsive-tables.css" />
         <link rel="stylesheet" href="/css/third_party/fontawesome/css/font-awesome.min.css" />
         <?php

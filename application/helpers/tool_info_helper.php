@@ -7,16 +7,16 @@
  */
 function geToolData(){
     $tools = array(
-        1 => array("name" => "Expenses", "id" => 1, "colour"=>"#75ce66"),
-        2 => array("name" => "Weather", "id" => 2, "colour"=>""),
-        3 => array("name" => "Location", "id" => 3, "colour"=>""),
-        4 => array("name" => "Timetable", "id" => 4, "colour"=>"#9933ff"),
-        5 => array("name" => "Notes", "id" => 5, "colour"=>"#f0ca45"),
-        6 => array("name" => "Timeline", "id" => 6, "colour"=>""),
-        7 => array("name" => "Wishlist", "id" => 7, "colour"=>"#75ce66"),
-        8 => array("name" => "Health", "id" => 8, "colour"=>"#c03b44"),
-        9 => array("name" => "Resources", "id" => 9, "colour"=>"#0066cc"),
-        10 => array("name" => "Lists", "id" => 10, "colour"=>"#0066cc")
+        1 => array("name" => "Expenses", "id" => 1, "colour"=>"#75ce66", "hasOwnContent"=>True ),
+        2 => array("name" => "Weather", "id" => 2, "colour"=>"", "hasOwnContent"=>False),
+        3 => array("name" => "Location", "id" => 3, "colour"=>"", "hasOwnContent"=>True),
+        4 => array("name" => "Timetable", "id" => 4, "colour"=>"#9933ff", "hasOwnContent"=>True),
+        5 => array("name" => "Notes", "id" => 5, "colour"=>"#f0ca45", "hasOwnContent"=>True),
+        6 => array("name" => "Timeline", "id" => 6, "colour"=>"", "hasOwnContent"=>False),
+        7 => array("name" => "Wishlist", "id" => 7, "colour"=>"#75ce66", "hasOwnContent"=>True),
+        8 => array("name" => "Health", "id" => 8, "colour"=>"#c03b44", "hasOwnContent"=>True),
+        9 => array("name" => "Resources", "id" => 9, "colour"=>"#0066cc", "hasOwnContent"=>True)
+        #,10 => array("name" => "Lists", "id" => 10, "colour"=>"#0066cc")
     );
     return $tools;
 }
@@ -27,6 +27,16 @@ function getToolInfo($id) {
     return geToolData()[$id];
 }
 
-function getAllToolsInfo(){
-    return geToolData();
+function getAllToolsInfo($hasOwnContent=false){
+    $tools =  geToolData();
+    if($hasOwnContent){
+        foreach($tools as $k=>$v){
+            if($v["hasOwnContent"] != ""){
+                $tools_filtered[] = $v;
+            }
+        }
+        return $tools_filtered;
+    }else{
+        return $tools;
+    }
 }

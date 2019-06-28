@@ -284,7 +284,7 @@ class user_content_model extends CI_Model {
             $userContent["filezise"] = $data['upload_data']["file_size"];
             $userContent["file_type"] = $data['upload_data']["file_type"];
             $userContent["file_path"] = $data['upload_data']["file_path"];
-            $userContent["full_path"] = $data['upload_data']["full_path"];
+            $userContent["full_path"] = trim($data['upload_data']["full_path"]);
             $userContent["raw_name"] = $data['upload_data']["raw_name"];
             $userContent["original_name"] = $data['upload_data']["orig_name"];
             $userContent["client_name"] = $data['upload_data']["client_name"];

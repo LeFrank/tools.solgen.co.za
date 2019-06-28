@@ -1,4 +1,4 @@
-<?php echo $error; ?>
+<?php echo $error;?>
 <h3>Upload Resource</h3>
 <?php echo form_open_multipart('resources/do_upload'); ?>
 <label for="note_content">File *</label>
@@ -95,7 +95,7 @@
         </div>
 
         <hr>
-        <?php
+        <?php 
     }
 } else {
     ?>

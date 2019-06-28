@@ -26,7 +26,7 @@ class Notes_search_model extends CI_Model {
                 'start_date' => (($this->input->post('fromDate') == "") ? null : date('Y/m/d H:i', strtotime($this->input->post('fromDate')))),
                 'end_date' => (($this->input->post('toDate') == "") ? null : date('Y/m/d H:i', strtotime($this->input->post('toDate'))))
                 ));
-        if($query->num_rows() > 0){
+        if($qhttps://www.youtube.com/watch?v=abN-_5W_2Usuery->num_rows() > 0){
             $res = $query->result_array();
             $this->updateReSearchCount($res[0]["id"]);
             return $res[0]["id"];
