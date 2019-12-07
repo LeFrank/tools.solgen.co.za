@@ -101,7 +101,7 @@ foreach ($expensePaymentMethod as $k => $v) {
             </div>
             <div class="large-6 columns">
                 <label for="expenseDate">Expense Date</label>
-                <input autocomplete="false" type="text" id="expenseDate" name="expenseDate" placeholder="<?php echo date('Y/m/d H:i:s'); ?>" /><br/><br/>
+                <input autocomplete="off" type="text" id="expenseDate" name="expenseDate" placeholder="<?php echo date('Y/m/d H:i:s'); ?>" /><br/><br/>
             </div>
         </div>
         <span>* Required Field</span><br/><br/>
