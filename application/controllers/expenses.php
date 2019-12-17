@@ -28,6 +28,7 @@ class Expenses extends CI_Controller {
         $this->load->model('payment_method_model');
         $this->load->model('expense_period_model');
         //$this->load->model('user_expense_type_model');
+        $this->session->keep_flashdata('expenses');
     }
 
     public function capture() {
