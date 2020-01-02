@@ -17,7 +17,7 @@
             <div class="row expanded">
                 <div class="large-3 columns">
                     <label for="metricDate">Date</label>
-                    <input  type="text" id="metricDate" name="metricDate" placeholder="<?php echo date('Y/m/d H:i:s'); ?>" /><br/><br/>
+                    <input  type="text" id="metricDate" autocomplete="off" name="metricDate" placeholder="<?php echo date('Y/m/d H:i:s'); ?>" /><br/><br/>
                 </div>
                 <div class="large-3 columns">
                     <label for="weight">Weight *</label>
