@@ -1,5 +1,7 @@
 <h3>Welcome</h3>
-<p>Tasters go here.</p>
-<p>Or just general stats</p>
-<p>Blurb about what I wish to accomplist with the site.</p>
-<p>Maybe pull in some content from the main solgen site.</p>
+<section>
+   Imagine something slick and sexy here :D
+   <br/>
+   For now see the FAQ ( old school )
+    
+</section>

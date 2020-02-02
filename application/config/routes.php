@@ -118,6 +118,7 @@ $route['expense-periods/manage/page/(:any)'] = 'expensePeriods/manage/$1';
 
 $route['expense-budget-item/comment/(:num)'] = 'expenseBudgetItems/comment/$1';
 
+$route['expense-budget-items/edit/budget/(:num)'] = 'expenseBudgetItems/editItems/$1';
 $route['expense-budget-items/items/(:num)'] = 'expenseBudgetItems/manage/$1';
 $route['expense-budget-items/get-period-expense/(:num)/(:num)'] = 'expenseBudgetItems/getExpensesPerTypeFromPeriod/$1/$2';
 $route['expense-budget-items/capture'] = 'expenseBudgetItems/capture';

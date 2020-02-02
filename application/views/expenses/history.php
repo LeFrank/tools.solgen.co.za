@@ -27,12 +27,12 @@
                         <div class="row">
                             <div class="large-6 columns">
                                 <label> Date From
-                                    <input type="text" name="fromDate" id="fromDate" value="<?php echo $startAndEndDateforMonth[0]; ?>"/>
+                                    <input type="text" autocomplete="off" name="fromDate" id="fromDate" value="<?php echo $startAndEndDateforMonth[0]; ?>"/>
                                 </label>
                             </div>
                             <div class="large-6 columns">
                                 <label>
-                                    Date To<input type="text" name="toDate" id="toDate" value="<?php echo $startAndEndDateforMonth[1]; ?>"/>
+                                    Date To<input type="text" autocomplete="off" name="toDate" id="toDate" value="<?php echo $startAndEndDateforMonth[1]; ?>"/>
                                 </label>
                             </div>
                         </div>

@@ -30,14 +30,14 @@
                         <input type="button" value="Use Expenses from Previous Period" 
                                class="button secondary" name="periodBtn" id="periodBtn" />
                     </div>
-                    <div class="large-4 columns">
+                    <!-- <div class="large-4 columns">
                         <input type="button" value="Use Previous Budget" 
                                class="button secondary" name="budgetBtn" id="budgetBtn" />
                     </div>
                     <div class="large-4 columns">
                         <input type="button" value="Use Expense Types" 
                                class="button secondary" name="typesBtn" id="typesBtn"/>
-                    </div>
+                    </div>-->
                 </div>
                 <div id="baselineItems" class="hidden">
 

@@ -68,9 +68,35 @@ class ExpenseBudget extends CI_Controller {
     }
 
     public function edit($id) {
+        $this->load->model("expense_period_model");
+        $this->load->model("expense_budget_model");
+        $this->load->model("expense_model");
+        $this->load->model("expense_type_model");
+        $this->load->model("expense_budget_item_model");       
+        $this->load->helper("array_helper");
+        $this->load->helper("expense_statistics_helper");
+        $this->load->helper("expense_budget_post_analysis_helper");
+        
+        
         if ($this->expense_budget_model->doesItBelongToMe($this->session->userdata("user")->id, $id)) {
             $data["expenseBudget"] = $this->expense_budget_model->getExpenseBudget($id);
             $data["expensePeriods"] = mapKeyToId($this->expense_period_model->getExpensePeriods($this->session->userdata("user")->id), false);
+            if(!empty($data["expenseBudget"])){
+                $data["budgetId"] = $data["expenseBudget"]->id;
+                $data["expenseBudget"] = $this->expense_budget_model->getExpenseBudget($data["budgetId"]);
+                $data["expenseBudgetItems"] = $this->expense_budget_item_model->getExpenseBudgetItems($data["budgetId"]);
+                $data["expensePeriod"] = $this->expense_period_model->getExpensePeriod($data["expenseBudget"]->expense_period_id);
+                $data["expenseTypes"] = mapKeyToId($this->expense_type_model->get_expense_types());
+                $expensesForPeriod = $this->expense_model->getExpensesbyDateRange(
+                        date('Y/m/d H:i', strtotime($data["expensePeriod"]->start_date)), date('Y/m/d H:i', strtotime($data["expensePeriod"]->end_date)), $this->session->userdata("user")->id, null, null, "amount", "desc"
+                );
+                $data["expenseTypesTotals"] = getArrayOfTypeAmount($expensesForPeriod);
+                $data["eventsBudget"] = $this->load->view('expense_budget_item/manage', $data, true);
+                //$this->expenseBudgetItems->manage(7);
+            }
+            $data["eventsBudgetItems"] = $this->load->view('expense_budget_item/budget_items_assigned', $data, true);
+
+            
         } else {
             
         }
@@ -79,7 +105,7 @@ class ExpenseBudget extends CI_Controller {
         $this->load->view('expense_budget/edit', $data);
         $this->load->view('footer');
     }
-
+    
     public function getBudgets($budgetIds) {
         
     }

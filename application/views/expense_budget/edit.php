@@ -43,5 +43,23 @@
             </div>
         </div>
     </div>
-    <script type="text/javascript" src="/js/third_party/jquery.tablesorter.min.js"></script>
-    <script type="text/javascript" src="/js/expense_budget_items/manage.js"></script>
+</div>
+<div class="row expanded">
+    <div class="large-12 columns">
+        <div class="row expanded">
+            <div class="large-6 columns">
+                <h3>
+                    Current budget position
+                </h3>
+            </div>
+            <div class="large-6 columns">
+                <a href="/expense-budget-items/edit/budget/<?php echo $expenseBudget->id ?>" class="button secondary" >Edit</a>
+            </div>
+        </div>
+        <?php
+            echo $eventsBudgetItems;
+        ?>
+    </div>
+</div>
+<script type="text/javascript" src="/js/third_party/jquery.tablesorter.min.js"></script>
+<script type="text/javascript" src="/js/expense_budget_items/manage.js"></script>

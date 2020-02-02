@@ -55,6 +55,15 @@ class ExpenseBudgetItems extends CI_Controller {
         
     }
 
+    
+    public function editItems($id){
+        if($id = null){
+            echo "OOPs";
+        }else{
+            echo "## ". $id . " ##";
+        }
+    }
+    
     public function getBudgets($budgetIds) {
         
     }
