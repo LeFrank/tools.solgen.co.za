@@ -28,7 +28,7 @@ class Expenses extends CI_Controller {
         $this->load->model('payment_method_model');
         $this->load->model('expense_period_model');
         //$this->load->model('user_expense_type_model');
-        $this->session->keep_flashdata('expenses');
+//        $this->session->keep_flashdata('expenses');
     }
 
     public function capture() {
@@ -334,14 +334,14 @@ class Expenses extends CI_Controller {
 //        echo "<pre>";
 //        print_r($expenses);
 //        echo "</pre>";
-        $this->session->set_flashdata('expenses', $expenses);
+        $this->session->set_tempdata('expenses', $expenses, 30);
         redirect("/expenses/import/captured", "refresh");
         
     }
     
     public function importCaptured(){
         $this->load->library('session');
-        $data["expenses"] = $this->session->flashdata('expenses');
+        $data["expenses"] = $this->session->tempdata('expenses');
         $data["expenseTypes"] = mapKeyToId($this->expense_type_model->get_expense_types());
         $data["expensePaymentMethod"] = mapKeyToId($this->payment_method_model->get_user_payment_method($this->session->userdata("user")->id), false);
           
