@@ -253,13 +253,23 @@ class user_content_model extends CI_Model {
         return($stats);
     }
     
-    public function uploadContent($userId, $allowedFileTypes, $toolId=0, $maxSize=100000000, $private=1, $passwordProtect=1, $description=""){
+    public function uploadContent(
+        $userId, 
+        $allowedFileTypes, 
+        $toolId=0, 
+        $maxSize=100000000, 
+        $private=1, 
+        $passwordProtect=1, 
+        $description="",
+        $toolEntityId = 0
+            
+    ){
         $config['upload_path'] = './user_content/' . $userId . '/' . date('Y') . '/' . date('m') . '/' . date('d');
         if (!file_exists($config['upload_path'])) {
             if (mkdir($config['upload_path'], 0755, true)) {
-//                echo "Folder created successfully";
+                echo "Folder created successfully";
             } else {
-//                echo "Folder unable to be created";
+                echo "Folder unable to be created";
             }
         }
         $config['allowed_types'] = $allowedFileTypes;
@@ -278,7 +288,7 @@ class user_content_model extends CI_Model {
             $date = date('Y/m/d H:i');
             $userContent["tool_id"] = $this->toolId;
             $userContent["user_id"] = $userId;
-            $userContent["tool_entity_id"] = 0;
+            $userContent["tool_entity_id"] = $toolEntityId;
             $userContent["filename"] = $data['upload_data']["file_name"];
             $userContent["description"] = $description;
             $userContent["filezise"] = $data['upload_data']["file_size"];

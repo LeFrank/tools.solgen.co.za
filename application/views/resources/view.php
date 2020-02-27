@@ -1,5 +1,9 @@
-<?php echo $error;?>
+<?php echo $error; ?>
 <h3>Upload Resource</h3>
+<form action="resources/do_upload" method="Post" class="dropzone">
+    <div class="dropzone"></div>
+    <button id="startUpload">UPLOAD</button>
+</form>
 <?php echo form_open_multipart('resources/do_upload'); ?>
 <label for="note_content">File *</label>
 <input type="file" name="userfile" size="20" />
@@ -95,7 +99,7 @@
         </div>
 
         <hr>
-        <?php 
+        <?php
     }
 } else {
     ?>

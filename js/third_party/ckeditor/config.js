@@ -39,5 +39,6 @@ CKEDITOR.editorConfig = function( config ) {
 //        config.extraPlugins = 'save';
         config.extraPlugins = 'save,ckawesome';
 //        config.extraPlugins = 'emojione';
-        config.fontawesomePath = '/css/third_party/fontawesome/css/font-awesome.min.css'
+        config.fontawesomePath = '/css/third_party/fontawesome/css/font-awesome.min.css';
+        config.targetField = '_blank';
 };
