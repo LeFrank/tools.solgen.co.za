@@ -6,7 +6,7 @@
             ?>
             <table id="expenseSummary" class="tablesorter responsive expanded widget-zebra">
                 <thead>
-                <th>Status</th>
+                <!-- <th>Status</th> -->
                 <th>Date</th>
                 <th>Expense Type</th>
                 <th>Payment Method</th>
@@ -20,18 +20,18 @@
                     $total = 0.0;
                     foreach ($expenses as $k => $v) {
                         echo "<tr>";
-                        echo "<td>" . $v["status"] . ": " . $v["statusMessage"] . "</td>";
+                        // echo "<td>" . $v["status"] . ": " . $v["statusMessage"] . "</td>";
                         echo "<td>" . $v["expense_date"] . "</td>";
                         echo "<td>" . $expenseTypes[$v["expense_type_id"]]["description"] . "</td>";
                         echo "<td>" . $expensePaymentMethod[$v["payment_method_id"]]["description"] . "</td>";
                         echo "<td>" . $v["description"] . "</td>";
                         echo "<td>" . $v["location"] . "</td>";
                         echo "<td class='align-right'>" . $v["amount"] . "</td>";
-                        if ($v["status"] == "Success") {
+                        // if ($v["status"] == "Success") {
                             echo "<td><a href='/expenses/edit/" . $v["id"] . "'>Edit</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href='/expenses/delete/" . $v["id"] . "' onclick='return confirm_delete()'>Delete</a></td>";
-                        } else {
-                            echo "<td>&nbsp;</td>";
-                        }
+                        // } else {
+                        //     echo "<td>&nbsp;</td>";
+                        // }
                         echo "</tr>";
                         $total += $v["amount"];
                     }

@@ -167,7 +167,8 @@ class Expenses extends CI_Controller {
     }
 
     public function forecast() {
-        echo __CLASS__ . " > " . __FUNCTION__;
+        echo __CLASS__ . " > " . __FUNCTION__ . PHP_EOL;
+        // echo "Hello {$to}!".PHP_EOL;
     }
 
     public function getExpenses($expenseIds) {
@@ -331,19 +332,29 @@ class Expenses extends CI_Controller {
             $expenses[] = $expense;
         }
         $expenses = $this->expense_model->capture_expenses($expenses);
-//        echo "<pre>";
-//        print_r($expenses);
-//        echo "</pre>";
-        $this->session->set_tempdata('expenses', $expenses, 30);
+    //    echo "<pre>";
+    //    print_r($expenses);
+    //    echo "</pre>";
+        $expenseIds = multiArrGetKeyValFromObjById($expenses, 'id');
+        // echo "<pre>";
+        // print_r($expenseIds);
+        // echo "</pre>";
+        // exit;
+        $this->session->set_flashdata('expenses', $expenseIds, 30);
         redirect("/expenses/import/captured", "refresh");
         
     }
     
     public function importCaptured(){
         $this->load->library('session');
-        $data["expenses"] = $this->session->tempdata('expenses');
+        $userId = $this->session->userdata("user")->id;
+        $data["expenseIds"] = $this->session->flashdata('expenses');
+        // echo "<pre>";
+        // print_r($data["expenseIds"]);
+        // echo "</pre>";
+        $data["expenses"] = $this->expense_model->getExpensesByIds($userId  , $data["expenseIds"]);
         $data["expenseTypes"] = mapKeyToId($this->expense_type_model->get_expense_types());
-        $data["expensePaymentMethod"] = mapKeyToId($this->payment_method_model->get_user_payment_method($this->session->userdata("user")->id), false);
+        $data["expensePaymentMethod"] = mapKeyToId($this->payment_method_model->get_user_payment_method($userId), false);
           
         $this->load->view('header', getPageTitle($data, $this->toolName, "Bulk Captured Expenses"));
         $this->load->view('expenses/expense_nav');
