@@ -9,8 +9,8 @@ if ($this->session->flashdata("success") !== FALSE) {
 
         <div id="latestExpenses">
             <h3>Five Latest Expenses</h3>
-<?php if (is_array($expense) && !empty($expense)) {
-    ?>
+            <?php if (is_array($expense) && !empty($expense)) {
+                ?>
                 <table id="expenseSummary" class="tablesorter responsive expanded widget-zebra">
                     <thead>
                     <th/>
@@ -23,33 +23,33 @@ if ($this->session->flashdata("success") !== FALSE) {
                     <th>Actions</th>
                     </thead>
                     <tbody>
-    <?php
-    $total = 0.0;
-    foreach ($expense as $k => $v) {
-        echo "<tr>";
-        echo "<td>" . ++$k . "</td>";
-        echo "<td>" . $v["expense_date"] . "</td>";
-        echo "<td>" . $expenseTypes[$v["expense_type_id"]]["description"] . "</td>";
-        echo "<td>" . $expensePaymentMethod[$v["payment_method_id"]]["description"] . "</td>";
-        echo "<td>" . $v["description"] . "</td>";
-        echo "<td>" . $v["location"] . "</td>";
-        echo "<td class='align-right'>" . $v["amount"] . "</td>";
-        echo "<td><a href='/expenses/edit/" . $v["id"] . "'>Edit</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href='/expenses/delete/" . $v["id"] . "' onclick='return confirm_delete()'>Delete</a></td>";
-        echo "</tr>";
-        $total += $v["amount"];
-    }
-    echo "<tr class='td-total'>"
-    . "  <td class='align-left'>Latest Expenses Total</span></td>"
-    . "  <td colspan='6' class='align-right'>" . number_format($total, 2, '.', ',') . "</td>"
-    . "</tr>";
-    ?>
+                        <?php
+                        $total = 0.0;
+                        foreach ($expense as $k => $v) {
+                            echo "<tr>";
+                            echo "<td>" . ++$k . "</td>";
+                            echo "<td>" . $v["expense_date"] . "</td>";
+                            echo "<td>" . $expenseTypes[$v["expense_type_id"]]["description"] . "</td>";
+                            echo "<td>" . $expensePaymentMethod[$v["payment_method_id"]]["description"] . "</td>";
+                            echo "<td>" . $v["description"] . "</td>";
+                            echo "<td>" . $v["location"] . "</td>";
+                            echo "<td class='align-right'>" . $v["amount"] . "</td>";
+                            echo "<td><a href='/expenses/edit/" . $v["id"] . "'>Edit</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href='/expenses/delete/" . $v["id"] . "' onclick='return confirm_delete()'>Delete</a></td>";
+                            echo "</tr>";
+                            $total += $v["amount"];
+                        }
+                        echo "<tr class='td-total'>"
+                        . "  <td class='align-left'>Latest Expenses Total</span></td>"
+                        . "  <td colspan='6' class='align-right'>" . number_format($total, 2, '.', ',') . "</td>"
+                        . "</tr>";
+                        ?>
                     </tbody>
                 </table>
-    <?php
-} else {
-    echo "No expenses captured.";
-}
-?>
+                <?php
+            } else {
+                echo "No expenses captured.";
+            }
+            ?>
         </div>
         <br/>
     </div>
@@ -57,8 +57,8 @@ if ($this->session->flashdata("success") !== FALSE) {
 <div class="row expanded">
     <div class="large-12 columns">
         <h3>Capture Expense</h3>
-<?php echo validation_errors(); ?>
-        <?php echo form_open('expenses/capture') ?>
+        <?php echo validation_errors(); ?>
+        <?php echo form_open_multipart('expenses/capture') ?>
         <div class="row expanded">
             <div class="large-4 columns">
                 <label for="amount">Amount *</label>
@@ -67,23 +67,23 @@ if ($this->session->flashdata("success") !== FALSE) {
             <div class="large-4 columns">
                 <label for="expenseType">Expense Type</label>
                 <select name="expenseType" id="expenseType"> 
-<?php
-foreach ($expenseTypes as $k => $v) {
-    echo '<option value="' . $v["id"] . '">' . $v["description"] . '</option>';
-}
-?>
+                    <?php
+                    foreach ($expenseTypes as $k => $v) {
+                        echo '<option value="' . $v["id"] . '">' . $v["description"] . '</option>';
+                    }
+                    ?>
                 </select>
             </div>
             <div class="large-4 columns">
                 <label for="paymentMethod">Payment Method</label>
                 <select name="paymentMethod">
-<?php
-foreach ($expensePaymentMethod as $k => $v) {
-    echo '<option value="' . $v["id"] . '"  '
-    . ((strtolower($v["description"]) == "cash") ? 'selected="selected"' : '')
-    . '>' . $v["description"] . '</option>';
-}
-?>
+                    <?php
+                    foreach ($expensePaymentMethod as $k => $v) {
+                        echo '<option value="' . $v["id"] . '"  '
+                        . ((strtolower($v["description"]) == "cash") ? 'selected="selected"' : '')
+                        . '>' . $v["description"] . '</option>';
+                    }
+                    ?>
                 </select>
             </div>
         </div>
@@ -104,10 +104,16 @@ foreach ($expensePaymentMethod as $k => $v) {
                 <input autocomplete="off" type="text" id="expenseDate" name="expenseDate" placeholder="<?php echo date('Y/m/d H:i:s'); ?>" /><br/><br/>
             </div>
         </div>
-        <span>* Required Field</span><br/><br/>
-        <input type="submit" name="submit" value="Record" class="button"/>
-        </form>
+        <div class="row expanded">
+            <div class="large-12 columns">
+                <input name="userfile" id="userfile" type="file" />
+            </div>
+        </div>
     </div>
+    <span>* Required Field</span><br/><br/>
+    <input type="submit" name="submit" value="Record" class="button"/>
+</form>
+</div>
 </div>
 <script src="/js/third_party/ckeditor/ckeditor.js"></script>
 <link rel="stylesheet" type="text/css" href="/css/jquery.datetimepicker.css" />
@@ -124,9 +130,9 @@ foreach ($expensePaymentMethod as $k => $v) {
             $.post(
                     "/expense-types/type/" + $(this).val(),
                     null
-            ).done(function (resp) {
-                obj =  JSON.parse(resp);
-                if(null != obj.template && obj.template != "" ){
+                    ).done(function (resp) {
+                obj = JSON.parse(resp);
+                if (null != obj.template && obj.template != "") {
                     CKEDITOR.instances.description.setData(CKEDITOR.instances.description.getData() + obj.template);
                 }
             });

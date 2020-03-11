@@ -34,7 +34,8 @@ class expense_model extends CI_Model {
             'user_id' => $this->session->userdata("user")->id,
             'payment_method_id' => $this->input->post('paymentMethod')
         );
-        return $this->db->insert($this->tn, $data);
+        $this->db->insert($this->tn, $data);
+        return $this->db->insert_id();
     }
     
     /**

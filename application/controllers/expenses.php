@@ -18,7 +18,7 @@ class Expenses extends CI_Controller {
         $this->load->helper('auth_helper');
         $this->load->helper("array_helper");
         $this->load->helper('usability_helper');
-        $this->load->helper('url');
+        $this->load->helper(array('form', 'url'));
         $this->load->helper('email');
         $this->load->library('form_validation');
         can_access(
@@ -28,17 +28,19 @@ class Expenses extends CI_Controller {
         $this->load->model('payment_method_model');
         $this->load->model('expense_period_model');
         //$this->load->model('user_expense_type_model');
-//        $this->session->keep_flashdata('expenses');
+        $this->session->keep_flashdata('expenses');
     }
 
     public function capture() {
         $this->load->library('session');
-        $this->load->helper('form');
-        $this->load->helper('url');
         $this->load->library('form_validation');
-
-        $data['title'] = 'Create an expense';
-
+        $this->load->helper("array_helper");
+        $this->load->helper("date_helper");
+        $this->load->helper("usability_helper");
+        $this->load->library('session');
+        $this->load->model("user_content_model");
+        $userId = $this->session->userdata("user")->id;
+        
         $this->form_validation->set_rules('amount', 'amount', 'required');
         if ($this->form_validation->run() == FALSE) {
             $this->view();
@@ -51,6 +53,20 @@ class Expenses extends CI_Controller {
             $data["message_classes"] = "success";
             $data["action_description"] = "Capture an expense";
             $data["message"] = "The expense was captured. " . $data["remaining_budget"];
+            $data["user_content"] = 
+            $this->user_content_model->uploadContent(
+                    $userId, 
+                    'csv|txt|png|jpg',
+                    $this->toolId,
+                    100000000, 
+                    $private=0, 
+                    $passwordProtect=0,
+                    $data["expense"]
+            );
+            $data['title'] = 'Create an expense';
+            if(key_exists("error",$data["user_content"])){
+                $this->session->set_flashdata("fail", $this->load->view('general/action_status', $data, true));
+            }
             $this->session->set_flashdata("success", $this->load->view('general/action_status', $data, true));
             redirect("/expenses/view", "refresh");
         }
@@ -332,6 +348,7 @@ class Expenses extends CI_Controller {
             $expenses[] = $expense;
         }
         $expenses = $this->expense_model->capture_expenses($expenses);
+<<<<<<< HEAD
     //    echo "<pre>";
     //    print_r($expenses);
     //    echo "</pre>";
@@ -341,18 +358,28 @@ class Expenses extends CI_Controller {
         // echo "</pre>";
         // exit;
         $this->session->set_flashdata('expenses', $expenseIds, 30);
+=======
+//        echo "<pre>";
+//        print_r($expenses);
+//        echo "</pre>";
+        $this->session->set_flashdata('expenses', $expenses);
+>>>>>>> e3eb8b8e6b4ad524c41d145b1f427ae0ec29de67
         redirect("/expenses/import/captured", "refresh");
         
     }
     
     public function importCaptured(){
         $this->load->library('session');
+<<<<<<< HEAD
         $userId = $this->session->userdata("user")->id;
         $data["expenseIds"] = $this->session->flashdata('expenses');
         // echo "<pre>";
         // print_r($data["expenseIds"]);
         // echo "</pre>";
         $data["expenses"] = $this->expense_model->getExpensesByIds($userId  , $data["expenseIds"]);
+=======
+        $data["expenses"] = $this->session->flashdata('expenses');
+>>>>>>> e3eb8b8e6b4ad524c41d145b1f427ae0ec29de67
         $data["expenseTypes"] = mapKeyToId($this->expense_type_model->get_expense_types());
         $data["expensePaymentMethod"] = mapKeyToId($this->payment_method_model->get_user_payment_method($userId), false);
           
@@ -419,6 +446,7 @@ class Expenses extends CI_Controller {
 
     public function view() {
         $this->load->library('session');
+        $this->load->model("user_content_model");
         $data["expenseTypes"] = mapKeyToId($this->expense_type_model->get_user_expense_types($this->session->userdata("user")->id));
         $data["expensePaymentMethod"] = mapKeyToId($this->payment_method_model->get_user_payment_method($this->session->userdata("user")->id), false);
         $data["expense"] = $this->expense_model->getExpenses($this->session->userdata("user")->id, 5);
