@@ -52,3 +52,17 @@ function arrayObjMap($array) {
     }
     return $arr;
 }
+
+
+function multiArrGetKeyValFromObjById($sourceMultiDimenArr, $idName, $level = 1){
+    $arr = array();
+    foreach( $sourceMultiDimenArr as $k=>$v){
+        if($v["status"] != "Failure"){
+            $arr[] = $v[$idName];
+        }
+    }
+    // echo "<pre>";
+    // print_r($arr);
+    // echo "</pre>";
+    return $arr;
+}
