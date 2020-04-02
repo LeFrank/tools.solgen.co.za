@@ -8,6 +8,15 @@ $(document).ready(function () {
         }
     });
     $(document).foundation();
+    var toggler = document.getElementsByClassName("caret");
+    var i;
+
+    for (i = 0; i < toggler.length; i++) {
+        toggler[i].addEventListener("click", function () {
+            this.parentElement.querySelector(".nested").classList.toggle("active");
+            this.classList.toggle("caret-down");
+        });
+    }
 });
 function getObjects(obj, key, val) {
     var objects = [];
@@ -61,3 +70,6 @@ var delay = (function () {
         timer = setTimeout(callback, ms);
     };
 })();
+
+
+

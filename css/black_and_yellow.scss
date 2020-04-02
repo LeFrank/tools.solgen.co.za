@@ -78,11 +78,11 @@ ul, ol {
 ul li{
     color:#666666;
 }
-ul li a{
+/*ul li a{
     color:#666666;
     text-decoration: none;
     font-style:italic;
-}
+}*/
 ul li a:hover {
     color:#f1b836;
     -webkit-transition: all 300ms cubic-bezier(0.250, 0.250, 0.750, 0.750);
@@ -184,11 +184,11 @@ button:hover, button:focus, .button:hover, .button:focus {
     background-color: #666666;
     border-color: #f1b836;
     animation: pulsing 3s linear infinite;
-        
+
     z-index: 1;
     position: relative;
     &:before,
-    &:after {
+        &:after {
         width: 100%;
         height: 100%;
         border: inherit;
@@ -197,29 +197,29 @@ button:hover, button:focus, .button:hover, .button:focus {
         z-index: 0;
         background: #fff;
         animation: pulsing 1s linear infinite;
-	}
+    }
 }
 
 @keyframes pulsing {
-	0% {
-		opacity: 1;
-		transform: scaleY(1) scaleX(1);
-	}
-	20% {
-		opacity: 0.7;
-	}
-	70% {
-		opacity: 0.4;
-		transform: scaleY(1.8) scaleX(1.4);
-	}
-	80% {
-		opacity: 0.2;
-		transform: scaleY(1.8) scaleX(1.4);
-	}
-	90% {
-		opacity: 0.1;
-		transform: scaleY(1) scaleX(1);
-	}
+    0% {
+        opacity: 1;
+        transform: scaleY(1) scaleX(1);
+    }
+    20% {
+        opacity: 0.7;
+    }
+    70% {
+        opacity: 0.4;
+        transform: scaleY(1.8) scaleX(1.4);
+    }
+    80% {
+        opacity: 0.2;
+        transform: scaleY(1.8) scaleX(1.4);
+    }
+    90% {
+        opacity: 0.1;
+        transform: scaleY(1) scaleX(1);
+    }
 }
 
 .pagination-centered{
@@ -337,10 +337,15 @@ Custom classes go here
     margin:0px 0px 10px 0px;
     padding:10px 0px 10px 0px;
     background-color: #666666;
+
+
 }
 .top-nav ul li{
-
-    text-decoration: none;
+    /*text-decoration: none;*/
+}
+.top-nav a{
+    vertical-align: top;
+    /*text-decoration: none;*/
 
 }
 .clear-float{
@@ -586,11 +591,11 @@ table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSo
 ************/
 input .flatinput{
     border: none;
-  display: inline;
-  font-family: inherit;
-  font-size: inherit;
-  padding: none;
-  width: auto;
+    display: inline;
+    font-family: inherit;
+    font-size: inherit;
+    padding: none;
+    width: auto;
 }
 
 
@@ -1036,7 +1041,7 @@ table.focus-highlight td:before {
 Wishlist stuff
 ***/
 .wishlist-status-none{
-    
+
 }
 .wishlist-status-some-day{
     background-color: #8CEDF8 !important;
@@ -1091,30 +1096,30 @@ Wishlist stuff
 
 /* XOMISSE START CSS FOR BUTTON  */
 .emotionIcon {
-/*background-color: #333;  adds a background colour to the button */
-/*color: #fff;  changes the text colour */
-cursor: pointer; /* changes the mouse on hover */
-/*padding: 10px 30px;  adds 10px of space to top and bottom of text and 30px of space on either side */ 
-height: 80px;
-width:80px;
-padding: 5px;
-border:3px none;
-border-radius: 5px;
-padding: 5px;
-transition: all 0.5s ease;
+    /*background-color: #333;  adds a background colour to the button */
+    /*color: #fff;  changes the text colour */
+    cursor: pointer; /* changes the mouse on hover */
+    /*padding: 10px 30px;  adds 10px of space to top and bottom of text and 30px of space on either side */ 
+    height: 80px;
+    width:80px;
+    padding: 5px;
+    border:3px none;
+    border-radius: 5px;
+    padding: 5px;
+    transition: all 0.5s ease;
 }
 
 .emotionIcon:hover {
-transition: all 0.5s ease;
-/*background-color: #fff;  adds a background hover colour to the button */
-/*color: #333;  changes the text colour on hover */
-/*filter:invert(1);*/
-/*border:3px solid grey;*/
-/*border-radius: 5px;*/
-padding: 5px;
-/*filter:drop-shadow(8px 8px 8px grey);*/  
-width: 110px;
-height: 110px;
+    transition: all 0.5s ease;
+    /*background-color: #fff;  adds a background hover colour to the button */
+    /*color: #333;  changes the text colour on hover */
+    /*filter:invert(1);*/
+    /*border:3px solid grey;*/
+    /*border-radius: 5px;*/
+    padding: 5px;
+    /*filter:drop-shadow(8px 8px 8px grey);*/  
+    width: 110px;
+    height: 110px;
 }
 /* XOMISSE END CSS FOR BUTTON */
 .emoticonBox:hover span{
@@ -1131,8 +1136,8 @@ height: 110px;
 
 .editable-expanded{
     /*text-decoration: underline;*/
-/*    padding:10px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);*/
+    /*    padding:10px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);*/
     color: #f1b836;
     cursor: pointer;
 }
@@ -1143,3 +1148,55 @@ height: 110px;
     padding: 10px;
     border: 1px solid #aaaaaa;
 }
+
+
+
+/*
+
+*/
+
+/* Remove default bullets */
+ul, #myUL {
+    list-style-type: none;
+    vertical-align: top;
+}
+
+/* Remove margins and padding from the parent ul */
+#myUL {
+    margin: 0;
+    padding: 0;
+    color:white;
+    display: inline-block;
+}
+
+/* Style the caret/arrow */
+.caret {
+    cursor: pointer; 
+    user-select: none; /* Prevent text selection */
+    color:white;
+}
+
+/* Create the caret/arrow with a unicode, and style it */
+.caret::before {
+    content: "\25B6";
+    color: white;
+    display: inline-block;
+    margin-right: 6px;
+}
+
+/* Rotate the caret/arrow icon when clicked on (using JavaScript) */
+.caret-down::before {
+    transform: rotate(90deg); 
+}
+
+/* Hide the nested list */
+.nested {
+    display: none;
+    color:white;
+}
+
+/* Show the nested list when the user clicks on the caret/arrow (with JavaScript) */
+.active {
+    display: block;
+}
+
