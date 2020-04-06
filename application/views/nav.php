@@ -81,7 +81,7 @@
     <li><span class="caret"><a href="/resources" ><img src="/images/third_party/icons/resources.svg"  class="nav-icon-long svg-invert" alt="Picture"> Resources</a></span>
         <ul class="nested">
             <li><a href="/resources">List</a></li>
-            <li><a href="/resources">List</a></li>
+            <li><a href="/resources/stats">Stats</a></li>
         </ul>
     </li>
 </ul>
