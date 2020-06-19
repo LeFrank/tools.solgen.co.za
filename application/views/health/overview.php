@@ -37,7 +37,13 @@ $numberOfDays = floor((strtotime($endDate) - strtotime($startDate)) / (60 * 60 *
                         <br/>Metrics captured
                     </div>
                     <div class="large-6 columns" >
-                        <strong><?php echo number_format($numberOfDays / $healthMetricsStats->total_captured, 2, ".", ""); ?> days</strong>
+                        <strong><?php 
+                            if($numberOfDays != 0 and $healthMetricsStats->total_captured != 0 ){
+                                echo number_format($numberOfDays / $healthMetricsStats->total_captured, 2, ".", ""); 
+                            }else{
+                                echo 0;
+                            }
+                        ?> days</strong>
                         <br/>Once every
                     </div>
                 </div>
@@ -47,7 +53,13 @@ $numberOfDays = floor((strtotime($endDate) - strtotime($startDate)) / (60 * 60 *
                 <div class="large-12 columns" >
                     <h3>Weight</h3>
                     <div class="large-3 columns" >
-                        <strong><?php echo number_format($currentMetricStat->weight, 2, ".", ""); ?> kg</strong>
+                        <strong><?php 
+                        if(isset($currentMetricStatweight)){
+                            echo number_format($currentMetricStat->weight, 2, ".", ""); 
+                        }else{
+                            echo 0;
+                        }
+                        ?> kg</strong>
                         <br/>Current
                     </div>
                     <div class="large-3 columns" >
@@ -69,7 +81,13 @@ $numberOfDays = floor((strtotime($endDate) - strtotime($startDate)) / (60 * 60 *
                 <div class="large-12 columns" >
                     <h3>Waist</h3>
                     <div class="large-3 columns" >
-                        <strong><?php echo number_format($currentMetricStat->waist, 2, ".", ""); ?> cm</strong>
+                        <strong><?php 
+                            if(isset($currentMetricStat->waist)){
+                                echo number_format($currentMetricStat->waist, 2, ".", "");
+                            }else{
+                                echo 0;
+                            }
+                             ?> cm</strong>
                         <br/>Current
                     </div>
                     <div class="large-3 columns" >
@@ -91,7 +109,13 @@ $numberOfDays = floor((strtotime($endDate) - strtotime($startDate)) / (60 * 60 *
                 <div class="large-12 columns" >
                     <h3>Sleep</h3>
                     <div class="large-3 columns" >
-                        <strong><?php echo number_format($currentMetricStat->sleep, 2, ".", ""); ?> hours</strong>
+                        <strong><?php 
+                            if(isset($currentMetricStat->sleep)){
+                                echo number_format($currentMetricStat->sleep, 2, ".", ""); 
+                            }else{
+                                echo 0;
+                            }
+                            ?> hours</strong>
                         <br/>Current
                     </div>
                     <div class="large-3 columns" >
@@ -134,7 +158,13 @@ $numberOfDays = floor((strtotime($endDate) - strtotime($startDate)) / (60 * 60 *
                         <br/>Exercises captured
                     </div>
                     <div class="large-4 columns" >
-                        <strong><?php echo number_format($numberOfDays / $exerciseStats->total_captured, 2, ".", ""); ?> Days</strong>
+                        <strong><?php
+                            if(null != $numberOfDays and ( isset($exerciseStats->total_captured) && $exerciseStats->total_captured != 0)){
+                                echo number_format($numberOfDays / $exerciseStats->total_captured, 2, ".", ""); 
+                            }else{
+                                echo 0;
+                            }
+                        ?> Days</strong>
                         <br/>Once every
                     </div>
                     <div class="large-4 columns" >
@@ -148,15 +178,34 @@ $numberOfDays = floor((strtotime($endDate) - strtotime($startDate)) / (60 * 60 *
                 <div class="large-12 columns" >
                     <h3>Difficulty</h3>
                     <div class="large-4 columns" >
-                        <strong><?php echo $difficultyRating[number_format($exerciseStats->average_difficulty, 0, ".", "")]; ?></strong>
+                        <strong><?php 
+                            if(isset($exerciseStats->average_difficulty)){
+                                echo $difficultyRating[number_format($exerciseStats->average_difficulty, 0, ".", "")]; 
+                            }else{
+                                echo 0;
+                            }
+
+                        ?></strong>
                         <br/>Avg
                     </div>
                     <div class="large-4 columns" >
-                        <strong><?php echo $difficultyRating[number_format($exerciseStats->minimum_difficulty, 0, ".", "")]; ?></strong>
+                        <strong><?php 
+                            if(isset($exerciseStats->minimum_difficulty)){
+                                echo $difficultyRating[number_format($exerciseStats->minimum_difficulty, 0, ".", "")]; 
+                            }else{
+                                echo 0;
+                            }
+                            ?></strong>
                         <br/>Min
                     </div>
                     <div class="large-4 columns" >
-                        <strong><?php echo $difficultyRating[number_format($exerciseStats->maximum_difficulty, 0, ".", "")]; ?></strong>
+                        <strong><?php 
+                            if(isset($exerciseStats->maximum_difficulty)){
+                                echo $difficultyRating[number_format($exerciseStats->maximum_difficulty, 0, ".", "")]; 
+                            }else{
+                                echo 0;
+                            }
+                        ?></strong>
                         <br/>Max
                     </div>
                 </div>
