@@ -19,7 +19,8 @@ $(document).ready(function () {
         if ($(this).attr("id") === "spent-to-date") {
             if ($(this).attr("data-expense-count") > 0) {
                 console.log(arr[0]);
-                var url = arr[0] + "://" + window.location.host + "/expenses/getExpenses/" + replaceAll($(this).attr("data-expense-ids"), ",", "-") + "?keepThis=true&TB_iframe=true&width=850&height=500";
+                var prot = arr[0];
+                var url = prot + "://" + window.location.host + "/expenses/getExpenses/" + replaceAll($(this).attr("data-expense-ids"), ",", "-") + "?keepThis=true&TB_iframe=true&width=850&height=500";
                 tb_show("Expenses", url);
             }
         }
