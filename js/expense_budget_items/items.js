@@ -20,7 +20,8 @@ $(document).ready(function () {
             if ($(this).attr("data-expense-count") > 0) {
                 console.log(arr[0]);
                 var prot = arr[0];
-                var url = prot + "://" + window.location.host + "/expenses/getExpenses/" + replaceAll($(this).attr("data-expense-ids"), ",", "-") + "?keepThis=true&TB_iframe=true&width=850&height=500";
+                var url = prot + "//" + window.location.host + "/expenses/getExpenses/" + replaceAll($(this).attr("data-expense-ids"), ",", "-") + "?keepThis=true&TB_iframe=true&width=850&height=500";
+                console.log(url);
                 tb_show("Expenses", url);
             }
         }
