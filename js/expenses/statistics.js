@@ -1,4 +1,6 @@
 $(document).ready(function() {
+    var url = window.location.href
+    var arr = url.split("/");
     $(function() {
         $("#fromDate").datetimepicker();
         $("#toDate").datetimepicker();
@@ -81,14 +83,14 @@ $.jqplot.config.enablePlugins = true;
 
     $('#expense-type-totals').bind('jqplotDataClick',
         function(ev, seriesIndex, pointIndex, data) {
-            var url = "http://" + window.location.host + "/expenses/getExpenses/" + expenseTypeIdsForTotals[pointIndex] + "?keepThis=true&TB_iframe=true&width=850&height=500";
+            var url = arr[0] + "://" + window.location.host + "/expenses/getExpenses/" + expenseTypeIdsForTotals[pointIndex] + "?keepThis=true&TB_iframe=true&width=850&height=500";
             tb_show("Expenses", url);
         }
     );
     
     $('#payment-method-totals').bind('jqplotDataClick',
         function(ev, seriesIndex, pointIndex, data) {
-            var url = "http://" + window.location.host + "/expenses/getExpenses/" + paymentMethodIdsForTotals[pointIndex] + "?keepThis=true&TB_iframe=true&width=850&height=500";
+            var url = arr[0] + "://" + window.location.host + "/expenses/getExpenses/" + paymentMethodIdsForTotals[pointIndex] + "?keepThis=true&TB_iframe=true&width=850&height=500";
             tb_show("Expenses", url);
         }
     );
@@ -143,14 +145,14 @@ $.jqplot.config.enablePlugins = true;
     /* CLICK CODE START*/
     $('#days-on-which-expenses-were-made').bind('jqplotDataClick',
             function(ev, seriesIndex, pointIndex, data) {
-                var url = "http://" + window.location.host + "/expenses/getExpenses/" + expenseIdsForDayOfWeek[pointIndex] + "?keepThis=true&TB_iframe=true&width=850&height=500";
+                var url = arr[0] + "://" + window.location.host + "/expenses/getExpenses/" + expenseIdsForDayOfWeek[pointIndex] + "?keepThis=true&TB_iframe=true&width=850&height=500";
                 tb_show("Expenses", url);
             }
     );
 
     $('#expenses-over-time-period').bind('jqplotDataClick',
             function(ev, seriesIndex, pointIndex, data) {
-                var url = "http://" + window.location.host + "/expenses/getExpenses/" + allExpenses[pointIndex].id + "?keepThis=true&TB_iframe=true&width=850&height=500";
+                var url = arr[0] + "://" + window.location.host + "/expenses/getExpenses/" + allExpenses[pointIndex].id + "?keepThis=true&TB_iframe=true&width=850&height=500";
                 tb_show("Expenses", url);
             }
     );

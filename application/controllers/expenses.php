@@ -43,6 +43,9 @@ class Expenses extends CI_Controller {
         if ($this->form_validation->run() == FALSE) {
             $this->view();
         } else {
+            print_r($this->input->post());
+            exit;
+            exit("-- ttt -- ");
             $data["expense"] = $this->expense_model->capture_expense();
             $data["remaining_budget"] = $this->getRemainingBudget(
                     $this->session->userdata("user")->id, $this->input->post('expenseType'), ($this->input->post('expenseDate') != "") ? date('Y-m-d H:i', strtotime($this->input->post('expenseDate'))) : date('Y-m-d H:i'));

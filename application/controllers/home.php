@@ -129,4 +129,7 @@ class Home extends CI_Controller {
         $this->load->view('footer');
     }
 
+    public function test(){
+        echo "-->>";
+    }
 }

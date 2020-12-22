@@ -204,11 +204,6 @@ $route['notes/options'] = 'notes/options';
 $route['notes/templates'] = 'notes/templateIndex';
 $route['notes/templates/capture'] = 'notes/templateCreate';
 
-
-
-
-
-
 $route['news/create'] = 'news/create';
 $route['news/delete/(:any)'] = 'news/delete/$1';
 $route['news/(:any)'] = 'news/view/$1';

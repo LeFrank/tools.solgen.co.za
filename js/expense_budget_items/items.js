@@ -1,4 +1,6 @@
 $(document).ready(function () {
+    var url = window.location.href
+    var arr = url.split("/");
     $('#budget_expense_items').tablesorter();
 
     // Make table cell focusable
@@ -15,7 +17,7 @@ $(document).ready(function () {
     $("td").click(function () {
         if ($(this).attr("id") === "spent-to-date") {
             if ($(this).attr("data-expense-count") > 0) {
-                var url = "http://" + window.location.host + "/expenses/getExpenses/" + replaceAll($(this).attr("data-expense-ids"), ",", "-") + "?keepThis=true&TB_iframe=true&width=850&height=500";
+                var url = arr[0] + "://" + window.location.host + "/expenses/getExpenses/" + replaceAll($(this).attr("data-expense-ids"), ",", "-") + "?keepThis=true&TB_iframe=true&width=850&height=500";
                 tb_show("Expenses", url);
             }
         }

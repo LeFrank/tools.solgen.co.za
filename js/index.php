@@ -5,7 +5,7 @@
         <title>Sandbox</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <link rel="stylesheet" type="text/css" media="all" href="/css/black_and_yellow.scss.css" />
-        <link href='http://fonts.googleapis.com/css?family=Sarina' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Sarina' rel='stylesheet' type='text/css'>
         <script src="/js/third_party/jquery-1.6.4.min.js"></script>
         <script src="/js/third_party/jquery.masonry.min.js"></script>
     </head>
