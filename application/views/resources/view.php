@@ -89,7 +89,7 @@
             <div class="large-2 columns">
                 <a href="/resource/delete/resource/<?php echo $v["id"]; ?>" onclick="return confirm_delete()">Delete</a>
                 &nbsp;&nbsp;|&nbsp;&nbsp;
-                <a target="_blank" href="/resource/view/resource/<?php echo $v["id"]; ?>/<?php echo $v["filename"]; ?>">View</a>
+                <a target="_blank" href="/resource/view/<?php echo $v["id"]; ?>/<?php echo $v["filename"]; ?>">View</a>
                 &nbsp;&nbsp;|&nbsp;&nbsp;
                 <a href="/resource/download/<?php echo $v["id"]; ?>/<?php echo $v["filename"]; ?>">Download</a>
                 &nbsp;&nbsp;|&nbsp;&nbsp;
