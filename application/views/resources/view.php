@@ -91,7 +91,7 @@
                 &nbsp;&nbsp;|&nbsp;&nbsp;
                 <a target="_blank" href="/resource/view/resource/<?php echo $v["id"]; ?>/<?php echo $v["filename"]; ?>">View</a>
                 &nbsp;&nbsp;|&nbsp;&nbsp;
-                <a href="/resource/download/resource/<?php echo $v["id"]; ?>/<?php echo $v["filename"]; ?>">Download</a>
+                <a href="/resource/download/<?php echo $v["id"]; ?>/<?php echo $v["filename"]; ?>">Download</a>
                 &nbsp;&nbsp;|&nbsp;&nbsp;
                 <a href="#/<?php echo $v["id"]; ?>">Re-Process</a>
 

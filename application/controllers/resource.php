@@ -177,8 +177,9 @@ class resource extends CI_Controller {
 
     public function download($id, $filename) {
         $userId = $this->session->userdata("user")->id;
+        print_r(array($id, $filename));
         $item = $this->user_content_model->getUserContentitem($userId, $id);
-
+        print_r($item);
         if (file_exists($item->full_path)) {
 //            $fp = fopen($item->full_path, 'r');
 //            header('Content-Description: File Transfer');
