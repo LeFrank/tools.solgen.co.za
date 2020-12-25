@@ -1,10 +1,10 @@
 <?php echo $error; ?>
 <h3>Upload Resource</h3>
-<form action="resources/do_upload" method="Post" class="dropzone">
+<form action="resource/do_upload" method="Post" class="dropzone">
     <div class="dropzone"></div>
     <button id="startUpload">UPLOAD</button>
 </form>
-<?php echo form_open_multipart('resources/do_upload'); ?>
+<?php echo form_open_multipart('resource/do_upload'); ?>
 <label for="note_content">File *</label>
 <input type="file" name="userfile" size="20" />
 <br />
@@ -87,11 +87,11 @@
                 <?php echo $tools[$v["tool_id"]]["name"]; ?>
             </div>
             <div class="large-2 columns">
-                <a href="/resources/delete/resource/<?php echo $v["id"]; ?>" onclick="return confirm_delete()">Delete</a>
+                <a href="/resource/delete/resource/<?php echo $v["id"]; ?>" onclick="return confirm_delete()">Delete</a>
                 &nbsp;&nbsp;|&nbsp;&nbsp;
-                <a target="_blank" href="/resources/view/resource/<?php echo $v["id"]; ?>/<?php echo $v["filename"]; ?>">View</a>
+                <a target="_blank" href="/resource/view/resource/<?php echo $v["id"]; ?>/<?php echo $v["filename"]; ?>">View</a>
                 &nbsp;&nbsp;|&nbsp;&nbsp;
-                <a href="/resources/download/resource/<?php echo $v["id"]; ?>/<?php echo $v["filename"]; ?>">Download</a>
+                <a href="/resource/download/resource/<?php echo $v["id"]; ?>/<?php echo $v["filename"]; ?>">Download</a>
                 &nbsp;&nbsp;|&nbsp;&nbsp;
                 <a href="#/<?php echo $v["id"]; ?>">Re-Process</a>
 

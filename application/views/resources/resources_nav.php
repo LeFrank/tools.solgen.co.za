@@ -2,13 +2,13 @@
 <div class="row expanded">
     <div class="large-12 columns">
         <div id="resourcesNav" class="resourcesNav">
-            <a href="/resources">List</a>
+            <a href="/resource">List</a>
             &nbsp;&nbsp;|&nbsp;&nbsp;
-            <a href="/resources/history">History</a>
+            <a href="/resource/history">History</a>
             &nbsp;&nbsp;|&nbsp;&nbsp;
-            <a href="/resources/stats">Stats</a>
+            <a href="/resource/stats">Stats</a>
             &nbsp;&nbsp;|&nbsp;&nbsp;
-            <a href="/resources/options">Options</a>
+            <a href="/resource/options">Options</a>
         </div>
     </div>
 </div>

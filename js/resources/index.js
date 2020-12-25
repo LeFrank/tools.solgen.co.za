@@ -5,7 +5,7 @@ Dropzone.autoDiscover = false;
 $(function() {
     //Dropzone class
     var myDropzone = new Dropzone(".dropzone", {
-		url: "resources/do_upload",
+		url: "resource/do_upload",
 		paramName: "file",
 		maxFilesize: 2,
 		maxFiles: 10,

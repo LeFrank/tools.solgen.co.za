@@ -35,14 +35,14 @@ class resource extends CI_Controller {
 
     public function index($page = null) {
         if ($page == null) {
-            $config['base_url'] = 'http://' . $_SERVER['SERVER_NAME'] . '/resources/page/1';
+            $config['base_url'] = 'http://' . $_SERVER['SERVER_NAME'] . '/resource/page/1';
             $config['per_page'] = 10;
             $config['total_rows'] = 10;
             $this->pagination->initialize($config);
         } else {
             $this->pagination->uri_segment = 3;
         }
-        $this->pagination->base_url = 'http://' . $_SERVER['SERVER_NAME'] . '/resources/page/';
+        $this->pagination->base_url = 'http://' . $_SERVER['SERVER_NAME'] . '/resource/page/';
         $this->pagination->per_page = 10;
         $this->pagination->use_page_numbers = TRUE;
         $this->pagination->cur_page = $page;
@@ -89,7 +89,7 @@ class resource extends CI_Controller {
         }
 
         $this->session->set_flashdata('status', $data["statusArr"]);
-        redirect("/resources", "refresh");
+        redirect("/resource", "refresh");
     }
 
     public function delete($id = null) {
@@ -116,7 +116,7 @@ class resource extends CI_Controller {
         $data["resources"] = $this->user_content_model->getUserContentItems($userId);
         $data["tools"] = getAllToolsInfo();
         $this->session->set_flashdata('status', $data["statusArr"]);
-        redirect("/resources", "refresh");
+        redirect("/resource", "refresh");
     }
     
     public function getStats() {

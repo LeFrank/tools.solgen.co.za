@@ -78,10 +78,10 @@
 <a href="/timeline" ><img src="/images/third_party/icons/timeline.svg" class="nav-icon-long svg-invert" alt="Picture"> Timeline</a>
 &nbsp;&nbsp;    
 <ul id="myUL">
-    <li><span class="caret"><a href="/resources" ><img src="/images/third_party/icons/resources.svg"  class="nav-icon-long svg-invert" alt="Picture"> Resources</a></span>
+    <li><span class="caret"><a href="/resource" ><img src="/images/third_party/icons/resources.svg"  class="nav-icon-long svg-invert" alt="Picture"> Resources</a></span>
         <ul class="nested">
-            <li><a href="/resources">List</a></li>
-            <li><a href="/resources/stats">Stats</a></li>
+            <li><a href="/resource">List</a></li>
+            <li><a href="/resource/stats">Stats</a></li>
         </ul>
     </li>
 </ul>
