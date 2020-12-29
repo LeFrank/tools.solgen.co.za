@@ -70,5 +70,9 @@
         <div class="row expanded">
             <div class="large-12 columns">
                 <div id="contentMain" class="contentMain">
+                <?php 
+                    // echo phpinfo();
+                    // xdebug_info();
+                ?>
                 
 

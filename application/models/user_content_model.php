@@ -314,4 +314,13 @@ class user_content_model extends CI_Model {
             return $userContent;
         }
     }
+
+
+    public function getUserContentByToolData($userId , $toolId, $toolEntityId){
+        if ($userId == null) {
+            return null;
+        }
+        $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'tool_id' => $toolId, 'tool_entity_id' => $toolEntityId), 100);
+        return $query->result_array();
+    }
 }

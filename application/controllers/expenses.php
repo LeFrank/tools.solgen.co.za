@@ -21,6 +21,7 @@ class Expenses extends CI_Controller {
         $this->load->helper('url');
         $this->load->helper('email');
         $this->load->library('form_validation');
+        $this->load->helper('tool_info_helper');
         can_access(
                 $this->require_auth, $this->session);
         $this->load->model('expense_model');
@@ -29,6 +30,7 @@ class Expenses extends CI_Controller {
         $this->load->model('expense_period_model');
         //$this->load->model('user_expense_type_model');
 //        $this->session->keep_flashdata('expenses');
+        $this->load->model("user_content_model");
     }
 
     public function capture() {
@@ -36,17 +38,36 @@ class Expenses extends CI_Controller {
         $this->load->helper('form');
         $this->load->helper('url');
         $this->load->library('form_validation');
-
+        $userId = $this->session->userdata("user")->id;
         $data['title'] = 'Create an expense';
 
         $this->form_validation->set_rules('amount', 'amount', 'required');
         if ($this->form_validation->run() == FALSE) {
             $this->view();
         } else {
-            print_r($this->input->post());
-            exit;
-            exit("-- ttt -- ");
+            // print_r($this->input->post());
             $data["expense"] = $this->expense_model->capture_expense();
+            $data["user_content"] = $this->user_content_model->uploadContent(
+                $userId, 
+                'txt|gif|jpeg|jpg|png|pdf|doc|docx|xls|xlsx|json|ppt|pptx', 
+                $this->toolId, 
+                100000000, 
+                $private = 0, 
+                $passwordProtect = 0, 
+                $this->input->post("description"),
+                $data["expense"]
+            );
+            // print_r($data["user_content"]);
+            if (key_exists("error", $data["user_content"])) {
+    //            $this->load->view('resources/view', $data["user_content"]["error"]);
+                $data["statusArr"]["status"] = "Failure";
+                $data["statusArr"]["message"] = "Unable to upload the resource.";
+                $data["statusArr"]["description"] = $data["user_content"]["error"];
+            } else {
+                $data["statusArr"]["status"] = "Success";
+                $data["statusArr"]["message"] = $data["user_content"]["filename"] . " has been added.";
+                $data["statusArr"]["description"] = "You have successfully uploaded file: " . $data["user_content"]["filename"];
+            }
             $data["remaining_budget"] = $this->getRemainingBudget(
                     $this->session->userdata("user")->id, $this->input->post('expenseType'), ($this->input->post('expenseDate') != "") ? date('Y-m-d H:i', strtotime($this->input->post('expenseDate'))) : date('Y-m-d H:i'));
             $data["status"] = "Expense Captured";
@@ -95,16 +116,21 @@ class Expenses extends CI_Controller {
 
     public function edit($id) {
         $this->load->library('session');
-        $data["expenseTypes"] = mapKeyToId($this->expense_type_model->get_user_expense_types($this->session->userdata("user")->id));
+        $data["tools"] = getAllToolsInfo();
+        $userId = $this->session->userdata("user")->id;
+        $data["expenseTypes"] = mapKeyToId($this->expense_type_model->get_user_expense_types($userId));
         $data["expensePaymentMethod"] = mapKeyToId($this->payment_method_model->get_user_payment_method($this->session->userdata("user")->id), false);
-        if ($this->expense_model->doesItBelongToMe($this->session->userdata("user")->id, $id)) {
+        if ($this->expense_model->doesItBelongToMe($userId, $id)) {
             $data["expense"] = $this->expense_model->getExpense($id);
+            // has file(s?)
+            $data["expense_resources"]  = 
+                $this->user_content_model->getUserContentByToolData($userId, $this->toolId, $id );
             $this->load->view('header', $data);
             $this->load->view('expenses/expense_nav');
             $this->load->view('expenses/edit', $data);
             $this->load->view('footer');
         } else {
-            $data["expense"] = $this->expense_model->getExpenses($this->session->userdata("user")->id, 5);
+            $data["expense"] = $this->expense_model->getExpenses($userId, 5);
             $data["status"] = "Edit Expense";
             $data["action_classes"] = "failure";
             $data["action_description"] = "Edit an expense";
@@ -437,10 +463,33 @@ class Expenses extends CI_Controller {
         $this->load->helper('form');
         $this->load->helper('url');
         $this->load->library('form_validation');
+        $userId = $this->session->userdata("user")->id;
+        $id = $this->input->post('id');
         $this->form_validation->set_rules('amount', 'amount', 'required');
         if ($this->form_validation->run() == FALSE) {
             $this->edit($this->input->post("id"));
         } else {
+            $data["user_content"] = $this->user_content_model->uploadContent(
+                $userId, 
+                'txt|gif|jpeg|jpg|png|pdf|doc|docx|xls|xlsx|json|ppt|pptx', 
+                $this->toolId, 
+                100000000, 
+                $private = 0, 
+                $passwordProtect = 0, 
+                $this->input->post("description"),
+                $id
+            );
+            // print_r($data["user_content"]);
+            if (key_exists("error", $data["user_content"])) {
+    //            $this->load->view('resources/view', $data["user_content"]["error"]);
+                $data["statusArr"]["status"] = "Failure";
+                $data["statusArr"]["message"] = "Unable to upload the resource.";
+                $data["statusArr"]["description"] = $data["user_content"]["error"];
+            } else {
+                $data["statusArr"]["status"] = "Success";
+                $data["statusArr"]["message"] = $data["user_content"]["filename"] . " has been added.";
+                $data["statusArr"]["description"] = "You have successfully uploaded file: " . $data["user_content"]["filename"];
+            }
             $data["status"] = "Edit Expense";
             $data["action_classes"] = "success";
             $data["action_description"] = "Updated the Expense";
