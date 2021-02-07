@@ -129,11 +129,13 @@ class expense_model extends CI_Model {
             return null;
         }
         $this->db->order_by("expense_date", "desc");
+        $this->db->join('user_content', 'user_content.tool_entity_id = expense.id', 'LEFT');
         if (null == $limit) {
-            $query = $this->db->get_where($this->tn, array('user_id' => $userId));
+            $query = $this->db->get_where($this->tn, array('expense.user_id' => $userId));
         } else {
-            $query = $this->db->get_where($this->tn, array('user_id' => $userId), $limit, $offset);
+            $query = $this->db->get_where($this->tn, array('expense.user_id' => $userId), $limit, $offset);
         }
+
         return $query->result_array();
     }
 
