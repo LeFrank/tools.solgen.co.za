@@ -454,10 +454,10 @@ class Expenses extends CI_Controller {
         $data["expenseTypes"] = mapKeyToId($this->expense_type_model->get_user_expense_types($this->session->userdata("user")->id));
         $data["expensePaymentMethod"] = mapKeyToId($this->payment_method_model->get_user_payment_method($this->session->userdata("user")->id), false);
         $data["expense"] = $this->expense_model->getExpenses($this->session->userdata("user")->id, 5);
-        echo "<pre>";
-        print_r($data["expense"]);
-        echo "</pre>";
-        exit;
+        // echo "<pre>";
+        // print_r($data["expense"]);
+        // echo "</pre>";
+        // exit;
         $data["css"] = '<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">';
         $data["js"] = '';
         $this->load->view('header', getPageTitle($data, $this->toolName, "Overview", ""));
