@@ -6,7 +6,7 @@
 </form>
 <?php echo form_open_multipart('resource/do_upload'); ?>
 <label for="note_content">File *</label>
-<input type="file" name="userfile" size="20" />
+<input type="file" name="userfile" size="20"  />
 <br />
 <label for="resource_description">Note *</label>
 <textarea name="description" id="description" cols="40" rows="15" placeholder="This file is important because ..."></textarea>

@@ -105,8 +105,28 @@ if ($this->session->flashdata("success") !== FALSE) {
             </div>
         </div>
         <div class="row expanded">
-            <div class="large-12 columns">
+            <div class="large-6 columns">
                 <input name="userfile" id="userfile" type="file" />
+            </div>
+            <div class="large-6 columns">
+                <div id="commandline">
+                    <div class="cle">
+                        <div class="top-panel">
+                            <div class="results">
+                                <pre class="res">8</pre>
+                            </div>
+                            <button class="fullscreen" title="Toggle full screen display (Ctrl+F11)" style="top: 8px; right: 8px;"></button>
+                        </div>
+                        <div class="bottom-panel">
+                            <div class="input-left">
+                                <input class="input" title="Enter an expression">
+                            </div>
+                            <div class="input-right">
+                                <button class="eval" title="Evaluate the expression (Enter)">Evaluate</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

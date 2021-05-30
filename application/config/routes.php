@@ -46,14 +46,14 @@ $route['404_override'] = '';
 $route['attributions'] = 'home/attributions';
 $route['terms-and-conditions'] = 'home/termsAndConditions';
 
-$route['resources'] = 'resource/index';
-$route['resources/do_upload'] = 'resource/do_upload';
-$route['resources/delete/resource/(:num)'] = 'resource/delete/$1';
-$route['resources/view/resource/(:num)/(:any)'] = 'resource/view/$1/$2';
-$route['resources/download/resource/(:num)/(:any)'] = 'resource/download/$1/$2';
-$route['resources/page'] = 'resource/index';
-$route['resources/page/(:any)'] = 'resource/index/$1';
-$route['resources/stats'] = 'resource/getStats';
+$route['resource'] = 'resource/index';
+$route['resource/do_upload'] = 'resource/do_upload';
+$route['resource/delete/resource/(:num)'] = 'resource/delete/$1';
+$route['resource/view/resource/(:num)/(:any)'] = 'resource/view/$1/$2';
+$route['resource/download/resource/(:num)/(:any)'] = 'resource/download/$1/$2';
+$route['resource/page'] = 'resource/index';
+$route['resource/page/(:any)'] = 'resource/index/$1';
+$route['resource/stats'] = 'resource/getStats';
 
 $route['wishlist'] = 'wishlist/index';
 $route['wishlist/capture'] = 'wishlist/create';

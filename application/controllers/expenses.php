@@ -205,10 +205,10 @@ class Expenses extends CI_Controller {
         $data["expenseTypes"] = mapKeyToId($this->expense_type_model->get_user_expense_types($this->session->userdata("user")->id));
         $data["expensePaymentMethod"] = mapKeyToId($this->payment_method_model->get_user_payment_method($this->session->userdata("user")->id), false);
         $data["expenses"] = $this->expense_model->getExpensesByIds($this->session->userdata("user")->id, array_filter(explode("-", $expenseIds)));
-        echo "<pre>";
-        print_r($data["expenses"]);
-        echo "</pre>";
-        exit;
+        // echo "<pre>";
+        // print_r($data["expenses"]);
+        // echo "</pre>";
+        // exit;
         $this->load->view("header_no_banner");
         $this->load->view("expenses/expense_table", $data);
         $this->load->view("footer");

@@ -282,7 +282,7 @@ class user_content_model extends CI_Model {
             return array('error' => $this->upload->display_errors());
         } else {
             $data = array('upload_data' => $this->upload->data());
-//            print_r($data['upload_data']);
+           print_r($data['upload_data']);
             //Write to db
             $this->load->helper('date');
             $date = date('Y/m/d H:i');
