@@ -76,7 +76,7 @@ class resource extends CI_Controller {
         $userId = $this->session->userdata("user")->id;
         $data["user_content"] = $this->user_content_model->uploadContent(
                 $userId, 
-                'zip|txt|gif|jpeg|jpg|png|pdf|doc|docx|xls|xlsx|json|ppt|pptx', 
+                'zip|txt|gif|jpeg|jpg|png|pdf|doc|docx|xls|xlsx|json|ppt|pptx|mkv|MKV|mp4|mp3|MOV', 
                 $this->toolId, 
                 100000000, 
                 $private = 0, 
