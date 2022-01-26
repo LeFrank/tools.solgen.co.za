@@ -100,7 +100,7 @@ class resource extends CI_Controller {
     }
 
     public function delete($id = null) {
-        $this->load->library('session');
+        $this->load->library('session'); 
         $this->load->helper('form');
         $this->load->helper('url');
 

@@ -109,24 +109,10 @@ if ($this->session->flashdata("success") !== FALSE) {
                 <input name="userfile" id="userfile" type="file" />
             </div>
             <div class="large-6 columns">
-                <div id="commandline">
-                    <div class="cle">
-                        <div class="top-panel">
-                            <div class="results">
-                                <pre class="res">8</pre>
-                            </div>
-                            <button class="fullscreen" title="Toggle full screen display (Ctrl+F11)" style="top: 8px; right: 8px;"></button>
-                        </div>
-                        <div class="bottom-panel">
-                            <div class="input-left">
-                                <input class="input" title="Enter an expression">
-                            </div>
-                            <div class="input-right">
-                                <button class="eval" title="Evaluate the expression (Enter)">Evaluate</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <label for="min_calc">mini Calc</label>
+                <input class="input" id="calc" name="calc" title="Enter an expression">
+                &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; 
+                <span>Result:</span>&nbsp;<span id="res" name="res"></span>
             </div>
         </div>
     </div>
@@ -140,11 +126,18 @@ if ($this->session->flashdata("success") !== FALSE) {
 <script src="/js/jquery.datetimepicker.js"></script>
 <script type="text/javascript" src="/js/third_party/jquery.tablesorter.min.js"></script>
 <script type="text/javascript" src="/js/expenses/expense_table.js" ></script>
+<script type="text/javascript" src="/js/third_party/math.js" ></script>
 <script src="/js/third_party/jquery/ui/1.12.1/jquery-ui.js"></script>
 <script src="/js/location/autocomplete.js"></script>
 <script type="text/javascript">
+    const re = /(?:(?:^|[-+_*/])(?:\s*-?\d+(\.\d+)?(?:[eE][+-]?\d+)?\s*))+$/;
+    function test_expr(s) {
+        console.log("%s is valid? %s", s, re.test(s));
+        return true;
+    }
     $(function () {
         $("#expenseDate").datetimepicker();
+        var timer = null;
         CKEDITOR.replace('description');
         $("#expenseType").change(function () {
             $.post(
@@ -156,6 +149,20 @@ if ($this->session->flashdata("success") !== FALSE) {
                     CKEDITOR.instances.description.setData(CKEDITOR.instances.description.getData() + obj.template);
                 }
             });
+        });
+        $("#calc").keyup(function () {
+            clearTimeout(timer);
+            // console.log($(this).val());
+            let expr = $(this).val();
+            timer = setTimeout(function() {
+                try {
+                    let res = eval(expr);
+                    $("#res").html( res );    
+                }catch(err){
+                    $("#res").html("invalid expression");
+                }
+            }, 500);
+            
         });
     });
 </script>
