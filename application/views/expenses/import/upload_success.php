@@ -3,11 +3,42 @@
     <div class="large-12 columns">
         <h3>Your file was successfully uploaded!</h3>
 
-        <ul>
-            <?php foreach ($user_content as $item => $value): ?>
-                <li><?php echo $item; ?>: <?php echo $value; ?></li>
-            <?php endforeach; ?>
-        </ul>
+        <div class="row expanded">
+            <div class="large-1 columns">
+                <span>Icon: </span>
+                <br/>
+                <img style="width:30px;margin-top:5px;" src="../../../images/third_party/icons/110942-file-formats-icons/svg/<?php echo ltrim($user_content["file_extension"], "."); ?>-file-format-symbol.svg">
+            </div>
+            <div class="large-2 columns">
+                <span>Name: </span>
+                <br/>
+                <strong><?php echo $user_content["original_name"]; ?></strong>
+            </div>
+            <div class="large-2 columns">
+                <span>Description: </span>
+                <br/>
+                <?php echo (empty($user_content["description"])) ? "&nbsp;" : $user_content["description"]; ?>
+            </div>
+            <div class="large-1 columns">
+                <span>Created: </span>
+                <br/>
+                <?php echo $user_content["created_on"]; ?>
+            </div>
+            <div class="large-1 columns">
+                <span>File Size: </span>
+                <br/>
+                <?php
+                if ($user_content["filezise"] < 1024) {
+                    echo $user_content["filezise"] . " KB";
+                } elseif ($user_content["filezise"] > 1024 && $user_content["filezise"] < ( 1024 * 1024 )) {
+                    echo round($user_content["filezise"] / 1024, 2) . " MB";
+                }
+                ?>
+            </div>
+            <div class="large-6 columns">
+                &nbsp;
+            </div>
+        </div>
 
         <p><?php echo anchor('upload', 'Upload Another File!'); ?></p>
         <?php

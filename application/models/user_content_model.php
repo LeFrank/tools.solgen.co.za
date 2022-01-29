@@ -267,9 +267,9 @@ class user_content_model extends CI_Model {
         $config['upload_path'] = './user_content/' . $userId . '/' . date('Y') . '/' . date('m') . '/' . date('d');
         if (!file_exists($config['upload_path'])) {
             if (mkdir($config['upload_path'], 0755, true)) {
-                echo "Folder created successfully";
+                // echo "Folder created successfully";
             } else {
-                echo "Folder unable to be created";
+                // echo "Folder unable to be created";
             }
         }
         $config['allowed_types'] = $allowedFileTypes;
@@ -282,7 +282,7 @@ class user_content_model extends CI_Model {
             return array('error' => $this->upload->display_errors());
         } else {
             $data = array('upload_data' => $this->upload->data());
-           print_r($data['upload_data']);
+            // print_r($data['upload_data']);
             //Write to db
             $this->load->helper('date');
             $date = date('Y/m/d H:i');
