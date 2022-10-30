@@ -292,10 +292,20 @@ class Expenses extends CI_Controller {
             $expenses = array();
             if (($handle = fopen($data["user_content"]["full_path"], "r")) !== FALSE) {
                 while (($rowData = fgetcsv($handle, 1000, ",")) !== FALSE) {
+                    $isABSA = false;
+                    $isDiscovery = false;
                     if ($row == 1) {
+                        // echo "<pre>";
+                        // print_r($rowData);
+                        // echo "</pre>";
                         foreach ($rowData as $k => $v) {
                             if (strtolower($v) == 'date') {
                                 $keys["date_column"] = $k;
+                                $isABSA = true;
+                            }
+                            if (strtolower($v) == 'value date') {
+                                $keys["date_column"] = $k;
+                                $isDiscovery = true;
                             }
                             if (strtolower($v) == 'value' || strtolower($v) == 'cost' || strtolower($v) == 'amount') {
                                 $keys["amount_column"] = $k;
@@ -303,13 +313,12 @@ class Expenses extends CI_Controller {
                             if (strtolower($v) == 'description' || strtolower($v) == 'desc') {
                                 $keys["description_column"] = $k;
                             }
+                            if (strtolower($v) == strtolower('Beneficiary or CardHolder')){
+                                $isDiscovery = true;
+                            }
                         }
                     } else {
                         $num = count($rowData);
-//                    echo "<p> $num fields in line $row: <br /></p>\n";
-//                    for ($c=0; $c < $num; $c++) {
-////                        echo $rowData[$c] . "<br />\n";
-//                    }
                         $expense["date"] = $rowData[$keys["date_column"]];
                         $expense["description"] = $rowData[$keys["description_column"]];
                         $expense["amount"] = $rowData[$keys["amount_column"]];
@@ -320,9 +329,6 @@ class Expenses extends CI_Controller {
                 fclose($handle);
             }
             $data["expenses"] = $expenses;
-//            echo "<pre>";
-//            print_r($expenses);
-//            echo "</pre>";
             $data["expenseTypes"] = mapKeyToId($this->expense_type_model->get_expense_types());
             $data["expensePaymentMethod"] = mapKeyToId($this->payment_method_model->get_user_payment_method($this->session->userdata("user")->id), false);
             $data["expenseTypeSelect"] = $this->load->view('expense_types/expense_type_dropdown', $data, true);
