@@ -7,14 +7,14 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="">
-        <meta name="author" content="">
+        <meta name="author" content="Francois Campbell">
         <link rel="shortcut icon" href="/images/favicon.ico" />
         <link rel='stylesheet' id='googafont-css'  href='https://fonts.googleapis.com/css?family=Marvel%7CRoboto%3A300%2C500%2C400italic&#038;ver=3.9.1' type='text/css' media='all' />
         <link rel="stylesheet" href="/css/third_party/jquery/1.10.4/themes/smoothness/jquery-ui.css" />
         <link rel="stylesheet" href="/css/third_party/foundation/normalize.css" />
         <link rel="stylesheet" href="/css/third_party/foundation/6.3.0/foundation.min.css" />
         <link rel="stylesheet" type="text/css" media="all" href="/css/third_party/foundation/3.0.0/foundation-icons.css" />
-        <link rel="stylesheet" type="text/css" media="all" href="/css/black_and_yellow.scss" />
+        <link rel="stylesheet" type="text/css" media="all" href="/css/black_and_yellow_dark.scss" />
         <link rel="stylesheet" href="/css/third_party/foundation/6.3.0/responsive-tables.css" />
         <link rel="stylesheet" href="/css/third_party/fontawesome/css/font-awesome.min.css" />
         <?php

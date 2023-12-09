@@ -203,7 +203,7 @@ require_once BASEPATH.'core/CodeIgniter.php';
 
 /* End of file index.php */
 /* Location: ./index.php */
-if( ! ini_get('date.timezone') )
-{
-   date_default_timezone_set('Africa/Johannesburg');
-} 
+// if( ! ini_get('date.timezone') )
+// {
+//    date_default_timezone_set('Africa/Johannesburg');
+// } 

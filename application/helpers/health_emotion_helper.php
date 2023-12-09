@@ -26,7 +26,8 @@ function getEmotionIcons(){
         21 => array("name" => "Cool", "id" => 21, "colour"=>"#0066cc", "icon"=>$directory.$ds."021-cool.svg", "category"=>"relaxation","triggered"=>"true"),
         22 => array("name" => "Bored", "id" => 22, "colour"=>"#0066cc", "icon"=>$directory.$ds."022-bored.svg", "category"=>"subduing","triggered"=>"true"),
         23 => array("name" => "Embarassed", "id" => 23, "colour"=>"#0066cc", "icon"=>$directory.$ds."023-blush.svg", "category"=>"unpleasurable","triggered"=>"true"),
-        24 => array("name" => "Jubilation", "id" => 24, "colour"=>"#0066cc", "icon"=>$directory.$ds."025-happy.svg", "category"=>"pleasurable","triggered"=>"true")
+        24 => array("name" => "Jubilation", "id" => 24, "colour"=>"#0066cc", "icon"=>$directory.$ds."025-happy.svg", "category"=>"pleasurable","triggered"=>"true"),
+        25 => array("name" => "Contemplative", "id" => 25, "colour"=>"#0066cc", "icon"=>$directory.$ds."013-meh.svg", "category"=>"comtemplative","triggered"=>"true")
     );
     return $tools;
 }
