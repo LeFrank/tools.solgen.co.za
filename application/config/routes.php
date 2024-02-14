@@ -37,6 +37,21 @@
 | in the URL cannot be matched to a valid route.
 |
 */
+$route['income'] = 'income/view';
+$route['income/capture'] = 'income/capture';
+$route['income/delete/(:num)'] = 'income/delete/$1';
+$route['income/edit/(:num)'] = 'income/edit/$1';
+$route['income/export'] = 'income/filteredSearchExportTo';
+$route['income/filter-search'] = 'income/filteredSearch';
+$route['income/forecast'] = 'income/forecast';
+$route['income/getincome/(:any)'] = 'income/getincome/$1';
+$route['income/history'] = 'income/history';
+$route['income/options'] = 'income/options';
+$route['income/stats'] = 'income/statistics';
+$route['income/import'] = 'income/import';
+$route['income/import/do_upload'] = 'income/importUpload';
+$route['income/import/capture'] = 'income/importCapture';
+$route['income/import/captured'] = 'income/importCaptured';
 
 $route['404_override'] = '';
 
@@ -235,6 +250,11 @@ $route['weather/measurement'] = 'weather/saveMeasurement';
 $route['rest/user/login'] = 'user/login_post';
 
 $route['lists'] = 'lists/index';
+
+
+
+
+
 
 //$route['(:any)'] = 'pages/view/$1';
 //$route['default_controller'] = 'pages/view';

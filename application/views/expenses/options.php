@@ -21,6 +21,9 @@
             <li>
                 <h4><a href="/expenses/import">Import Expenses</a></h4>
             </li>
+            <li>
+                <h4><a href="/income-types/manage">Manage Income Types</a></h4>
+            </li>
         </ul>
     </div>
 </div>

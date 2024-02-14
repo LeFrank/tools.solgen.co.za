@@ -11,3 +11,6 @@ application/logs/*
 /application/config/database.php
 /user_content/*
 !user_content/*
+user_content/
+.vscode
+config/database.php
