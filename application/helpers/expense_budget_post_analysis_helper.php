@@ -7,6 +7,7 @@
  * @param type $categorisedExpenseItems
  */
 function analyseBudgetItemsEndState($expenseBudgetItems, $categorisedExpenseItems) {
+    echo "HERE";
     foreach ($expenseBudgetItems as $k => $v) {
         if(array_key_exists($v["expense_type_id"], $categorisedExpenseItems)){
             $remainder = number_format( $v["limit_amount"] - $categorisedExpenseItems[$v["expense_type_id"]]["value"], 2, ".", "");
