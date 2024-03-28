@@ -157,7 +157,6 @@ class ExpenseBudget extends CI_Controller {
         $data["expenseBudgetItems"] = $this->expense_budget_item_model->getExpenseBudgetItems($budget->id);
         $data["expensePeriod"] = $this->expense_period_model->getExpensePeriod($data["expenseBudget"]->expense_period_id);
         $data["expenseTypes"] = mapKeyToId($this->expense_type_model->get_expense_types());
-
         $expensesForPeriod = $this->expense_model->getExpensesbyDateRange(
                 date('Y/m/d H:i', strtotime($data["expensePeriod"]->start_date)), date('Y/m/d H:i', strtotime($data["expensePeriod"]->end_date)), $this->session->userdata("user")->id, null, null, "amount", "desc"
         );
@@ -169,9 +168,6 @@ class ExpenseBudget extends CI_Controller {
         $data["totalSpent"] = totalSpent($data["expenseTypesTotals"]);
         $data["overSpentCategories"] = overSpentCategories($postStateBudgetItems);
         $data["underSpentCategories"] = underSpentCategories($postStateBudgetItems);
-        echo "<pre>";
-        print_r($data);
-        echo "</pre>";
         // give answers to why I went over on those budget items also 
         // see a list of expenses for categories where I went over.
         // Show the overall state of the budget for that period.
