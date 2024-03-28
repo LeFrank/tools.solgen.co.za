@@ -8,6 +8,9 @@
  */
 function analyseBudgetItemsEndState($expenseBudgetItems, $categorisedExpenseItems) {
     echo "HERE";
+    echo "<pre>";
+    print_r(array( $expenseBudgetItems, $categorisedExpenseItems ) );
+    echo "</pre>";
     foreach ($expenseBudgetItems as $k => $v) {
         if(array_key_exists($v["expense_type_id"], $categorisedExpenseItems)){
             $remainder = number_format( $v["limit_amount"] - $categorisedExpenseItems[$v["expense_type_id"]]["value"], 2, ".", "");
