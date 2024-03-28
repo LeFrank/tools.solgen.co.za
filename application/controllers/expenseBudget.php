@@ -157,6 +157,9 @@ class ExpenseBudget extends CI_Controller {
         $data["expenseBudgetItems"] = $this->expense_budget_item_model->getExpenseBudgetItems($budget->id);
         $data["expensePeriod"] = $this->expense_period_model->getExpensePeriod($data["expenseBudget"]->expense_period_id);
         $data["expenseTypes"] = mapKeyToId($this->expense_type_model->get_expense_types());
+        echo "<pre>";
+        print_r($data);
+        echo "</pre>";
         $expensesForPeriod = $this->expense_model->getExpensesbyDateRange(
                 date('Y/m/d H:i', strtotime($data["expensePeriod"]->start_date)), date('Y/m/d H:i', strtotime($data["expensePeriod"]->end_date)), $this->session->userdata("user")->id, null, null, "amount", "desc"
         );
