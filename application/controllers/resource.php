@@ -186,8 +186,10 @@ class resource extends CI_Controller {
         $userId = $this->session->userdata("user")->id;
         // print_r(array($id, $filename));
         $item = $this->user_content_model->getUserContentitem($userId, $id);
-        // print_r($item);
+        print_r($item);
         error_reporting(E_ALL);
+        
+        exit;
         if (file_exists($item->full_path)) {
 //            $fp = fopen($item->full_path, 'r');
 //            header('Content-Description: File Transfer');
@@ -214,6 +216,8 @@ class resource extends CI_Controller {
             header("Content-Disposition: attachment; filename=$file_name");
             ob_clean(); flush(); 
             readfile($item->full_path);
+        }else{
+            echo "File does not exist.";
         }
     }
 
