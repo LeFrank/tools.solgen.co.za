@@ -148,10 +148,9 @@ class resource extends CI_Controller {
         $userId = $this->session->userdata("user")->id;
         if($this->user_content_model->doesItBelongToMe($userId, $id)){
             $item = $this->user_content_model->getUserContentitem($userId, $id);
-    //        print_r($item);
-    //        exit;
-    //        echo $item->full_path;
-    //        exit;
+           print_r($item);
+           echo $item->full_path;
+           exit;
 
             if (file_exists($item->full_path)) {
                 $fp = fopen($item->full_path, 'rb');
@@ -188,7 +187,7 @@ class resource extends CI_Controller {
         $item = $this->user_content_model->getUserContentitem($userId, $id);
         print_r($item);
         error_reporting(E_ALL);
-        
+
         exit;
         if (file_exists($item->full_path)) {
 //            $fp = fopen($item->full_path, 'r');
