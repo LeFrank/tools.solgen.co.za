@@ -14,3 +14,4 @@ application/logs/*
 user_content/
 .vscode
 config/database.php
+application/config/config.php
