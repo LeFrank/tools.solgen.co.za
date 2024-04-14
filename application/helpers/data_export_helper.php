@@ -22,9 +22,9 @@
 	function csvify_budget_items($data, $expense_types, $payment_methods){
 		$exportData[0] = array("Number","Date", "Expense_Type", "Limit_Amount", "Description", "Comment");
 		$count = 1;
-		echo "<pre>";
-		print_r($data);
-		echo "</pre>";
+		// echo "<pre>";
+		// print_r($data);
+		// echo "</pre>";
 		foreach($data as $k=>$v){
 			$exportData[$count]	= 
 				array( 
