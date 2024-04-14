@@ -122,6 +122,7 @@ $route['expense-budget/update'] = 'expenseBudget/update/$1';
 $route['expense-budget/post-analysis/(:num)'] = 'expenseBudget/postAnalysis/$1';
 $route['expense-budget/manage/page'] = 'expenseBudget/manage';
 $route['expense-budget/manage/page/(:any)'] = 'expenseBudget/manage/$1';
+$route['expense-budget/export/(:num)'] = 'expenseBudget/export/$1';
 
 $route['expense-periods/capture'] = 'expensePeriods/capture';
 $route['expense-periods/manage'] = 'expensePeriods/manage';

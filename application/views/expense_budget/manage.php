@@ -35,10 +35,14 @@
                             . "&nbsp;&nbsp;|&nbsp;&nbsp;"
                             . "<a href='/expense-budget/edit/" . $v["id"] . "'>Edit</a>"
                             . "&nbsp;&nbsp;|&nbsp;&nbsp;"
-                            . "<a href='/expense-budget/delete/" . $v["id"] . "' onclick=\"return confirm_delete()\">Delete</a>";
+                            . "<a href='/expense-budget/delete/" . $v["id"] . "' onclick=\"return confirm_delete()\">Delete</a>"
+                            . "&nbsp;&nbsp;|&nbsp;&nbsp;"
+                            . "<a href='/expense-budget/export/" . $v["id"] . "'>Export</a>";
                             if (!$expensePeriods[$v["expense_period_id"]]["active"]) {
                                 echo "&nbsp;&nbsp;|&nbsp;&nbsp;";
                                 echo "<a href='/expense-budget/post-analysis/" . $v["id"] . "'>Post Analysis</a>";
+                                echo "&nbsp;&nbsp;|&nbsp;&nbsp;";
+                                echo "<a href='/expense-budget/export/" . $v["id"] . "'>Export</a>";
                             }
                             echo "</td>";
                             echo "</tr>";

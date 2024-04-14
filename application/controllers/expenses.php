@@ -168,7 +168,7 @@ class Expenses extends CI_Controller {
         $paymentMethods = mapKeyToId($this->payment_method_model->get_user_payment_method($this->session->userdata("user")->id), false);
         switch ($output) {
             case "csv" :
-                $data = csvify($data, $expenseTypes, $paymentMethods);
+                $data = csvify_expenses($data, $expenseTypes, $paymentMethods);
                 $filename = "expenses.csv";
                 $temp = tmpfile();
                 foreach ($data as $k => $line) {

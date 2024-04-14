@@ -219,4 +219,70 @@ class ExpenseBudget extends CI_Controller {
         }
     }
 
+    public function export($budgetId = null, $output = "csv") {
+        $userId = $this->session->userdata("user")->id;
+        $this->load->helper('url');
+        $this->load->helper('form');
+        $this->load->helper('data_export_helper');
+        $this->load->model('expense_budget_item_model');
+        $this->load->model('expense_type_model');
+        $this->load->model('expense_model');
+        $this->load->model('payment_method_model');
+        $this->load->helper("array_helper");
+        $this->load->helper("expense_statistics_helper");
+        $this->load->helper("expense_budget_post_analysis_helper");
+        // Get budget
+        $budget = $this->expense_budget_model->getExpenseBudget($budgetId);
+        // save the end state of the expense budget items
+        $data["budgetId"] = $budget->id;
+        $data["expensePeriod"] = $this->expense_period_model->getExpensePeriod($budget->expense_period_id);
+        $data["expenseBudget"] = $budget;
+        $data["expenseBudgetItems"] = $this->expense_budget_item_model->getExpenseBudgetItems($budget->id);
+        $data["expensePeriod"] = $this->expense_period_model->getExpensePeriod($data["expenseBudget"]->expense_period_id);
+        $data["expenseTypes"] = mapKeyToId($this->expense_type_model->get_expense_types());
+        $data["expensePaymentMethod"] = mapKeyToId($this->payment_method_model->get_user_payment_method($this->session->userdata("user")->id), false);
+        $expenseTypes = $data["expenseTypes"];
+        $paymentMethods = $data["expensePaymentMethod"];
+        $expensesForPeriod = $this->expense_model->getExpensesbyDateRange(
+                date('Y/m/d H:i', strtotime($data["expensePeriod"]->start_date)), date('Y/m/d H:i', strtotime($data["expensePeriod"]->end_date)), $this->session->userdata("user")->id, null, null, "amount", "desc"
+        );
+        $contentType = "application/vnd.ms-excel";
+        // print_r($data);
+        // exit;
+        $expenseTypes = mapKeyToId($this->expense_type_model->get_user_expense_types($this->session->userdata("user")->id));
+        $paymentMethods = mapKeyToId($this->payment_method_model->get_user_payment_method($this->session->userdata("user")->id), false);
+        $budget_items = $data["expenseBudgetItems"];
+        // $budget = $data["expenseBudget"];
+        $expense_period = $data["expensePeriod"];
+        // print_r($data["expensePeriod"]);
+        // exit;
+        switch ($output) {
+            case "csv" :
+                $data = csvify_budget_items($budget_items, $expenseTypes, $paymentMethods);
+                $filename = "Budget_For_".trim($expense_period->name)."_Created_on_".date('YmdHi').".csv";
+                $temp = tmpfile();
+                foreach ($data as $k => $line) {
+                    fputcsv($temp, $line);
+                }
+                $meta_data = stream_get_meta_data($temp);
+                header('Content-Length: ' . filesize($meta_data["uri"])); //<-- sends filesize header
+                header('Content-Type: ' . $contentType); //<-- send mime-type header
+                header('Content-Disposition: inline; filename="' . $filename . '";'); //<-- sends filename header
+                readfile($meta_data["uri"]); //<--reads and outputs the file onto the output buffer
+                fclose($temp);
+                die(); //<--cleanup
+                exit; //and exit  
+                break;
+            case "json" :
+                $contentType = "application/json";
+                $data = json_encode($data);
+                $this->output->set_content_type($contentType)->set_output($data);
+                return $this->output->get_output();
+                break;
+            default:
+                echo "Output type not supportted. Only .CSV & .JSON is presently supportted.";
+                break;
+        }
+    }
+
 }
