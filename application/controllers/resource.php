@@ -146,6 +146,8 @@ class resource extends CI_Controller {
 
     public function view($id, $filename) {
         $userId = $this->session->userdata("user")->id;
+        print_r(array($id, $filename, $userId));
+        exit;
         if($this->user_content_model->doesItBelongToMe($userId, $id)){
             $item = $this->user_content_model->getUserContentitem($userId, $id);
            print_r($item);
