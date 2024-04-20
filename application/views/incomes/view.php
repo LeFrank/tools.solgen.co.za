@@ -95,24 +95,12 @@ if ($this->session->flashdata("success") !== FALSE) {
         </div>
         <div class="row expanded">
             <div class="large-6 columns">
-                <label for="location">Location</label>
-                <input  type="text" id="location" name="location" placeholder="Where was the income made?"/>
-                <input  type="hidden" id="locationId" name="locationId" value="0"/><br/><br/>
+                <label for="source">Source</label>
+                <input  type="text" id="source" name="source" placeholder="Source of income?"/>
             </div>
             <div class="large-6 columns">
-                <label for="incomeDate">income Date</label>
+                <label for="incomeDate">Income Date</label>
                 <input autocomplete="off" type="text" id="incomeDate" name="incomeDate" placeholder="<?php echo date('Y/m/d H:i:s'); ?>" /><br/><br/>
-            </div>
-        </div>
-        <div class="row expanded">
-            <div class="large-6 columns">
-                <input name="userfile" id="userfile" type="file" />
-            </div>
-            <div class="large-6 columns">
-                <label for="min_calc">mini Calc</label>
-                <input class="input" id="calc" name="calc" title="Enter an expression">
-                &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; 
-                <span>Result:</span>&nbsp;<span id="res" name="res"></span>
             </div>
         </div>
     </div>
@@ -128,7 +116,6 @@ if ($this->session->flashdata("success") !== FALSE) {
 <script type="text/javascript" src="/js/income/income_table.js" ></script>
 <script type="text/javascript" src="/js/third_party/math.js" ></script>
 <script src="/js/third_party/jquery/ui/1.12.1/jquery-ui.js"></script>
-<script src="/js/location/autocomplete.js"></script>
 <script type="text/javascript">
     const re = /(?:(?:^|[-+_*/])(?:\s*-?\d+(\.\d+)?(?:[eE][+-]?\d+)?\s*))+$/;
     function test_expr(s) {
@@ -149,20 +136,6 @@ if ($this->session->flashdata("success") !== FALSE) {
                     CKEDITOR.instances.description.setData(CKEDITOR.instances.description.getData() + obj.template);
                 }
             });
-        });
-        $("#calc").keyup(function () {
-            clearTimeout(timer);
-            // console.log($(this).val());
-            let expr = $(this).val();
-            timer = setTimeout(function() {
-                try {
-                    let res = eval(expr);
-                    $("#res").html( res );    
-                }catch(err){
-                    $("#res").html("invalid expression");
-                }
-            }, 500);
-            
         });
     });
 </script>
