@@ -128,5 +128,18 @@ class Income extends CI_Controller {
         }
     }
 
+    public function filteredSearch() {
+        $this->load->helper('url');
+        $this->load->helper('form');
+        $data["expenseTypes"] = mapKeyToId($this->expense_type_model->get_expense_types());
+        $data["expensePaymentMethod"] = mapKeyToId($this->payment_method_model->get_user_payment_method($this->session->userdata("user")->id), false);
+        // print_r(array($this->input->post("fromDate"), $this->input->post("toDate")));
+        $data["startAndEndDateforMonth"] = array($this->input->post("fromDate"), $this->input->post("toDate"));
+        $data['incomesForPeriod'] = $this->income_model->getincomesByCriteria($this->session->userdata("user")->id);
+        // echo "<pre>";
+        // print_r($data);
+        // echo "<pre>";
+        echo $this->load->view('incomes/history_table', $data, true);
+    }
 
 }
