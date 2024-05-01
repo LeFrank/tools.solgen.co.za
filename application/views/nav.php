@@ -9,13 +9,12 @@
 <!--        <a href="/expenses" ><img src="/images/third_party/icons/expenses.svg" class="nav-icon-wide svg-invert" alt="Picture"> Finances</a>
 &nbsp;&nbsp;-->
 <ul id="myUL">
-    <li><span class="caret"><a href="/expenses" ><img src="/images/third_party/icons/expenses.svg" class="nav-icon-wide svg-invert" alt="Picture"> Finances</a></span>
+    <li><span class="caret"><a href="/expenses" > - <img src="/images/third_party/icons/expenses.svg" class="nav-icon-wide svg-invert" alt="Picture"> Expenses </a></span>
         <ul class="nested">
             <li><a href="/expenses">Capture Expense</a></li>
             <li><a href="/expenses/history">History</a></li>
             <li><a href="/expense-budget/manage">Budget</a></li>
             <li><a href="/expenses/stats">Stats</a></li>
-            <li><a href="/income">Capture Income</a></li>
             <li><span class="caret">Options</span>
                 <ul class="nested">
                     <li><a href="/payment-methods/manage">Create Payment Methods</a></li>
@@ -23,6 +22,22 @@
                     <li><a href="/expense-periods/manage">Manage Expense Periods</a></li>
                     <li><a href="/expense-wishlist/priorities">Wishlist Priorities</a></li>
                     <li><a href="/expenses/import">Import Expenses</a></li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>
+&nbsp;&nbsp;
+<ul id="myUL">
+    <li><span class="caret"><a href="/income" > + <img src="/images/third_party/icons/expenses.svg" class="nav-icon-wide svg-invert" alt="Picture"> Income </a></span>
+        <ul class="nested">
+            <li><a href="/income">Capture Income</a></li>
+            <li><a href="/income/history">History</a></li>
+            <li><a href="/income/stats">Stats</a></li>
+            <li><span class="caret">Options</span>
+                <ul class="nested">
+                    <li><a href="/income-methods/manage">Create Payment Methods</a></li>
+                    <li><a href="/income-types/manage">Create Expense Types</a></li>
                     <li><a href="/income-type/manage">Manage Income Types</a></li>
                 </ul>
             </li>

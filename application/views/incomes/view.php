@@ -9,14 +9,15 @@ if ($this->session->flashdata("success") !== FALSE) {
 
         <div id="latestIncomes">
             <h3>Five Latest Incomes</h3>
-            <?php if (is_array($income) && !empty($income)) {
+            <?php 
+            if (is_array($income) && !empty($income)) {
                 ?>
                 <table id="incomeSummary" class="tablesorter responsive expanded widget-zebra">
                     <thead>
                     <th/>
                     <th>Date</th>
                     <th>Income Type</th>
-                    <th>Payment Method</th>
+                    <th>Income Asset</th>
                     <th>Description</th>
                     <th>Source</th>
                     <th>Amount</th>
@@ -30,7 +31,7 @@ if ($this->session->flashdata("success") !== FALSE) {
                             echo "<td>" . ++$k . "</td>";
                             echo "<td>" . $v["income_date"] . "</td>";
                             echo "<td>" . $incomeTypes[$v["income_type_id"]]["description"] . "</td>";
-                            echo "<td>" . $expensePaymentMethod[$v["payment_method_id"]]["description"] . "</td>";
+                            echo "<td>" . $incomeAssets[$v["income_asset_id"]]["description"] . "</td>";
                             echo "<td>" . $v["description"] . "</td>";
                             echo "<td>" . $v["source"] . "</td>";
                             echo "<td class='align-right'>" . $v["amount"] . "</td>";
@@ -75,10 +76,11 @@ if ($this->session->flashdata("success") !== FALSE) {
                 </select>
             </div>
             <div class="large-4 columns">
-                <label for="paymentMethod">Payment Method</label>
-                <select name="paymentMethod">
+                <label for="incomeAsset">Income Asset</label>
+                <select name="incomeAsset">
                     <?php
-                    foreach ($expensePaymentMethod as $k => $v) {
+                    foreach ($incomeAssets as $k => $v) {
+                        echo "--";
                         echo '<option value="' . $v["id"] . '"  '
                         . ((strtolower($v["description"]) == "cash") ? 'selected="selected"' : '')
                         . '>' . $v["description"] . '</option>';

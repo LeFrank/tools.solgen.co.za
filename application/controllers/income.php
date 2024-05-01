@@ -8,7 +8,7 @@
 
 class Income extends CI_Controller {
 
-    var $toolId = 1;
+    var $toolId = 10;
     var $toolName = "Income";
     var $require_auth = TRUE;
 
@@ -26,8 +26,8 @@ class Income extends CI_Controller {
                 $this->require_auth, $this->session);
         $this->load->model('income_model');
         // $this->load->model('income_type_model');
-        $this->load->model('expense_type_model');
-        $this->load->model('payment_method_model');
+        $this->load->model('income_type_model');
+        $this->load->model('income_asset_model');
         $this->load->model('expense_period_model');
         // $this->load->model('user_expense_type_model');
 //        $this->session->keep_flashdata('expenses');
@@ -58,15 +58,44 @@ class Income extends CI_Controller {
         }
     }
 
+    public function edit($id) {
+        $this->load->library('session');
+        $data["tools"] = getAllToolsInfo();
+        $userId = $this->session->userdata("user")->id;
+        $data["incomeTypes"] = mapKeyToId($this->income_type_model->get_user_income_types($userId));
+        $data["incomeAssets"] = mapKeyToId($this->income_asset_model->get_user_income_assets($this->session->userdata("user")->id), false);
+        if ($this->income_model->doesItBelongToMe($userId, $id)) {
+            $data["income"] = $this->income_model->getIncome($id);
+            $this->load->view('header', $data);
+            $this->load->view('incomes/income_nav');
+            $this->load->view('incomes/edit', $data);
+            $this->load->view('footer');
+        } else {
+            $data["income"] = $this->income_model->getIncomes($userId, 5);
+            $data["status"] = "Edit Income";
+            $data["action_classes"] = "failure";
+            $data["action_description"] = "Edit an income";
+            $data["message_classes"] = "failure";
+            $data["message"] = "The income you are attempting to edit does not exist or does not belong to you.";
+            $this->load->view('header', $data);
+            $this->load->view('incomes/income_nav');
+            $this->load->view('user/user_status', $data);
+            $this->load->view('incomes/view', $data);
+            $this->load->view('footer');
+        }
+    }
+
     public function view() {
         $this->load->library('session');
-        $data["incomeTypes"] = mapKeyToId($this->expense_type_model->get_user_expense_types($this->session->userdata("user")->id));
-        $data["expensePaymentMethod"] = mapKeyToId($this->payment_method_model->get_user_payment_method($this->session->userdata("user")->id), false);
+        $data["incomeTypes"] = mapKeyToId($this->income_type_model->get_user_income_types($this->session->userdata("user")->id));
+        // echo "1";
+        $data["incomeAssets"] = mapKeyToId($this->income_asset_model->get_user_income_assets($this->session->userdata("user")->id), false);
+        // echo "2";
         $data["income"] = $this->income_model->getIncomes($this->session->userdata("user")->id, 5);
-        // // echo "<pre>";
-        // // print_r($data["expense"]);
-        // // echo "</pre>";
-        // // exit;
+        // echo "<pre>";
+        // print_r($data);
+        // echo "</pre>";
+        // exit;
         $data["css"] = '<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">';
         $data["js"] = '';
         $this->load->view('header', getPageTitle($data, $this->toolName, "Overview", ""));
@@ -80,8 +109,8 @@ class Income extends CI_Controller {
         $this->load->helper("date_helper");
         $this->load->helper("usability_helper");
         $this->load->library('session');
-        $data["expenseTypes"] = mapKeyToId($this->expense_type_model->get_expense_types());
-        $data["expensePaymentMethod"] = mapKeyToId($this->payment_method_model->get_user_payment_method($this->session->userdata("user")->id), false);
+        $data["incomeTypes"] = mapKeyToId($this->income_type_model->get_income_types());
+        $data["incomeAssets"] = mapKeyToId($this->income_asset_model->get_user_income_assets($this->session->userdata("user")->id), false);
         $data["expensePeriods"] = $this->expense_period_model->getExpensePeriods($this->session->userdata("user")->id, 5, null);
         //$data["startAndEndDateOfWeek"] = getStartAndEndDateforWeek(date('W'), date('Y'));
         $data["startAndEndDateforMonth"] = getStartAndEndDateforMonth(date("m"), date('Y'));
@@ -131,15 +160,52 @@ class Income extends CI_Controller {
     public function filteredSearch() {
         $this->load->helper('url');
         $this->load->helper('form');
-        $data["expenseTypes"] = mapKeyToId($this->expense_type_model->get_expense_types());
-        $data["expensePaymentMethod"] = mapKeyToId($this->payment_method_model->get_user_payment_method($this->session->userdata("user")->id), false);
-        // print_r(array($this->input->post("fromDate"), $this->input->post("toDate")));
+        $data["incomeTypes"] = mapKeyToId($this->income_type_model->get_income_types());
+        $data["incomeAssets"] = mapKeyToId($this->income_asset_model->get_user_income_assets($this->session->userdata("user")->id), false);        // print_r(array($this->input->post("fromDate"), $this->input->post("toDate")));
         $data["startAndEndDateforMonth"] = array($this->input->post("fromDate"), $this->input->post("toDate"));
         $data['incomesForPeriod'] = $this->income_model->getincomesByCriteria($this->session->userdata("user")->id);
         // echo "<pre>";
         // print_r($data);
         // echo "<pre>";
         echo $this->load->view('incomes/history_table', $data, true);
+    }
+
+    public function options() {
+        $this->load->helper("usability_helper");
+        $data[] = array();
+        $this->load->view('header', getPageTitle($data, $this->toolName, "Options"));
+        $this->load->view('incomes/income_nav');
+        $this->load->view('incomes/options');
+        $this->load->view('footer');
+    }
+
+
+
+    public function update() {
+        $this->load->helper('form');
+        $this->load->helper('url');
+        $this->load->library('form_validation');
+        $userId = $this->session->userdata("user")->id;
+        $id = $this->input->post('id');
+        $this->form_validation->set_rules('amount', 'amount', 'required');
+        if ($this->form_validation->run() == FALSE) {
+            $this->edit($this->input->post("id"));
+        } else {
+            $data["status"] = "Edit Income";
+            $data["action_classes"] = "success";
+            $data["action_description"] = "Updated the Income";
+            $data["message_classes"] = "success";
+            $data["message"] = "You have successfully updated the income";
+            $this->income_model->update($this->input->post('id'));
+            $data["incomeTypes"] = mapKeyToId($this->income_type_model->get_user_income_types($this->session->userdata("user")->id));
+            $data["incomeAssets"] = mapKeyToId($this->income_asset_model->get_user_income_assets($this->session->userdata("user")->id), false);
+            $data["income"] = $this->income_model->getIncomes($this->session->userdata("user")->id, 5);
+            $this->load->view('header', $data);
+            $this->load->view('incomes/income_nav');
+            $this->load->view('user/user_status', $data);
+            $this->load->view('incomes/view', $data);
+            $this->load->view('footer');
+        }
     }
 
 }

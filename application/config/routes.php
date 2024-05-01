@@ -37,6 +37,13 @@
 | in the URL cannot be matched to a valid route.
 |
 */
+$route['income-types/manage'] = 'incomeTypes/manage';
+$route['income-types/capture'] = 'incomeTypes/capture';
+$route['income-types/edit/(:num)'] = 'incomeTypes/edit/$1';
+$route['income-types/delete/(:num)'] = 'incomeTypes/delete/$1';
+$route['income-types/update'] = 'incomeTypes/update';
+$route['income-types/type/(:num)'] = 'incomeTypes/getincomeTypeById/$1';
+
 $route['income'] = 'income/view';
 $route['income/capture'] = 'income/capture';
 $route['income/delete/(:num)'] = 'income/delete/$1';
@@ -52,6 +59,13 @@ $route['income/import'] = 'income/import';
 $route['income/import/do_upload'] = 'income/importUpload';
 $route['income/import/capture'] = 'income/importCapture';
 $route['income/import/captured'] = 'income/importCaptured';
+$route['income/update'] = 'income/update';
+
+$route['income-assets/manage'] = 'incomeAssets/manage';
+$route['income-assets/capture'] = 'incomeAssets/capture';
+$route['income-assets/edit/(:num)'] = 'incomeAssets/edit/$1';
+$route['income-assets/delete/(:num)'] = 'incomeAssets/delete/$1';
+$route['income-assets/update'] = 'incomeAssets/update';
 
 $route['404_override'] = '';
 
@@ -143,7 +157,8 @@ $route['expense-types/manage'] = 'expenseTypes/manage';
 $route['expense-types/capture'] = 'expenseTypes/capture';
 $route['expense-types/edit/(:num)'] = 'expenseTypes/edit/$1';
 $route['expense-types/delete/(:num)'] = 'expenseTypes/delete/$1';
-$route['expense-types/update'] = 'expenseTypes/update';
+$route['expense-types/ALTER TABLE `income` 
+CHANGE `payment_method_id` `income_asset_id` int DEFAULT NULL ;'] = 'expenseTypes/update';
 $route['expense-types/type/(:num)'] = 'expenseTypes/getExpenseTypeById/$1';
 
 $route['health'] = 'health/index';

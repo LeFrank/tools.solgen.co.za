@@ -1,7 +1,7 @@
 
         <div id="incomeHistoryContent" class="incomeHistoryContent" >
             <div id="historyGraph">
-                <h2>income History</h2>
+                <h2>Income History</h2>
                 Table of full data from <?php echo $startAndEndDateforMonth[0]; ?> to <?php echo $startAndEndDateforMonth[1]; ?><br/><br/>
                 <?php if (is_array($incomesForPeriod) && !empty($incomesForPeriod)) {
                     ?>
@@ -11,7 +11,7 @@
                                 <th>&nbsp;</th>
                                 <th>Date</th>
                                 <th>income Type</th>
-                                <th>Payment Method</th>
+                                <th>Income Asset</th>
                                 <th>Description</th>
                                 <th>Source</th>
                                 <th>Amount</th>
@@ -29,12 +29,12 @@
                                 echo "<tr>";
                                 echo "<td>" . ++$k . "</td>";
                                 echo "<td>" . $v["income_date"] . "</td>";
-                                echo "<td>" . $expenseTypes[$v["income_type_id"]]["description"] . "</td>";
-                                echo "<td>" . $expensePaymentMethod[$v["payment_method_id"]]["description"] . "</td>";
+                                echo "<td>" . $incomeTypes[$v["income_type_id"]]["description"] . "</td>";
+                                echo "<td>" . $incomeAssets[$v["income_asset_id"]]["description"] . "</td>";
                                 echo "<td>" . $v["description"] . "</td>";
                                 echo "<td>" . $v["source"] . "</td>";
                                 echo "<td class='align-right'>" . $v["amount"] . "</td>";
-                                echo "<td><a href='/incomes/edit/" . $v["id"] . "'>Edit</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href='/incomes/delete/" . $v["id"] . "' onclick='return confirm_delete()'>Delete</a></td>";
+                                echo "<td><a href='/income/edit/" . $v["id"] . "'>Edit</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href='/incomes/delete/" . $v["id"] . "' onclick='return confirm_delete()'>Delete</a></td>";
                                 echo "</tr>";
                                 $total += $v["amount"];
                             }

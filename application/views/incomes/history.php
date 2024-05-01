@@ -76,8 +76,8 @@
                                     <?php
                                     $count = 1;
                                     $breakCount = 2;
-                                    foreach ($expenseTypes as $k => $v) {
-                                        echo "<div class='large-6 columns'><input type='checkbox' value='" . $v["id"] . "' name='expenseType[]' /><label>" . $v["description"] . "</label></div>";
+                                    foreach ($incomeTypes as $k => $v) {
+                                        echo "<div class='large-6 columns'><input type='checkbox' value='" . $v["id"] . "' name='incomeType[]' /><label>" . $v["description"] . "</label></div>";
                                         $count++;
                                         if ($count % $breakCount === 0) {
                                             echo "</div><div class='row'>";
@@ -89,16 +89,16 @@
                         </div>
                         <div class="row">
                             <div class="large-12 columns">
-                                Payment Method
+                                Income Asset
                                 <div class="row">
                                     <div class="large-6 columns">                        
-                                        <input type="checkbox" checked="checked" value="all" name="paymentMethod[]" /><label>all</label>
+                                        <input type="checkbox" checked="checked" value="all" name="incomeAsset[]" /><label>all</label>
                                     </div>
                                     <?php
                                     $pmCount = 1;
                                     $bpmBeakCount = 2;
-                                    foreach ($expensePaymentMethod as $k => $v) {
-                                        echo "<div class='large-6 columns'><input type='checkbox' value='" . $v["id"] . "' name='paymentMethod[]' /><label>" . $v["description"] . "</label></div>";
+                                    foreach ($incomeAssets as $k => $v) {
+                                        echo "<div class='large-6 columns'><input type='checkbox' value='" . $v["id"] . "' name='incomeAsset[]' /><label>" . $v["description"] . "</label></div>";
                                         $pmCount++;
                                         if ($pmCount % $bpmBeakCount === 0) {
                                             echo "</div><div class='row'>";
@@ -133,8 +133,8 @@
 <script type="text/javascript" src="/js/third_party/jquery.tablesorter.min.js"></script>
 <script type="text/javascript" src="/js/incomes/history.js" ></script>
 <script type="text/javascript">
-    var expense_types = <?php echo json_encode($expenseTypes); ?>;
-    var payment_methods = <?php echo json_encode($expensePaymentMethod); ?>;
+    var income_types = <?php echo json_encode($incomeTypes); ?>;
+    var income_assets = <?php echo json_encode($incomeAssets); ?>;
     var income_period = <?php echo json_encode($incomePeriods); ?>;
     var default_start_date = "<?php echo $startAndEndDateforMonth[0]; ?>";
     var default_end_date = "<?php echo $startAndEndDateforMonth[1]; ?>";

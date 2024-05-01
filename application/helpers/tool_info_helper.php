@@ -15,8 +15,8 @@ function geToolData(){
         6 => array("name" => "Timeline", "id" => 6, "colour"=>"", "hasOwnContent"=>False),
         7 => array("name" => "Wishlist", "id" => 7, "colour"=>"#75ce66", "hasOwnContent"=>True),
         8 => array("name" => "Health", "id" => 8, "colour"=>"#c03b44", "hasOwnContent"=>True),
-        9 => array("name" => "Resources", "id" => 9, "colour"=>"#0066cc", "hasOwnContent"=>True)
-        #,10 => array("name" => "Lists", "id" => 10, "colour"=>"#0066cc")
+        9 => array("name" => "Resources", "id" => 9, "colour"=>"#0066cc", "hasOwnContent"=>True),
+        10 => array("name" => "Income", "id" => 10, "colour"=>"#0066cc", "hasOwnContent"=>True)
     );
     return $tools;
 }

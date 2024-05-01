@@ -113,7 +113,7 @@ class income_model extends CI_Model {
      * @param type $id
      * @return type
      */
-    public function getExpense($id) {
+    public function getIncome($id) {
         $query = $this->db->get_where($this->tn, array('id' => $id));
         return $query->row();
     }
@@ -254,13 +254,18 @@ class income_model extends CI_Model {
             'amount' => $this->input->post('amount'),
             'income_type_id' => $this->input->post('incomeType'),
             'description' => $this->input->post('description'),
-            'location' => $this->input->post('location'),
-            'location_id' => $this->input->post('locationId'),
+            'source' => $this->input->post('source'),
             'income_date' => date('Y/m/d H:i', strtotime($this->input->post('incomeDate'))),
             'user_id' => $this->session->userdata("user")->id,
-            'payment_method_id' => $this->input->post('paymentMethod')
+            'income_asset_id' => $this->input->post('incomeAsset')
         );
+        // print(__FILE__ . "<br/>");
+        // echo("<pre>");
+        // print_r($data);
+        // echo("</pre>");
+        // exit;
         $this->db->where('id', $this->input->post('id'));
+        // print(__FILE__ . "<br/>");
         return $this->db->update($this->tn, $data);
     }
 
