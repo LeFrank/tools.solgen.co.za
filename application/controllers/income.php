@@ -54,7 +54,7 @@ class Income extends CI_Controller {
             $data["action_description"] = "Capture an Income";
             $data["message"] = "The income was captured. ";
             $this->session->set_flashdata("success", $this->load->view('general/action_status', $data, true));
-            redirect("/income/view", "refresh");
+            redirect("/income", "refresh");
         }
     }
 

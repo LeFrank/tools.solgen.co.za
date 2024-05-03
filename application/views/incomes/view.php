@@ -26,6 +26,7 @@ if ($this->session->flashdata("success") !== FALSE) {
                     <tbody>
                         <?php
                         $total = 0.0;
+                        // print_r($income);
                         foreach ($income as $k => $v) {
                             echo "<tr>";
                             echo "<td>" . ++$k . "</td>";
@@ -80,7 +81,6 @@ if ($this->session->flashdata("success") !== FALSE) {
                 <select name="incomeAsset">
                     <?php
                     foreach ($incomeAssets as $k => $v) {
-                        echo "--";
                         echo '<option value="' . $v["id"] . '"  '
                         . ((strtolower($v["description"]) == "cash") ? 'selected="selected"' : '')
                         . '>' . $v["description"] . '</option>';

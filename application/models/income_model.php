@@ -23,7 +23,7 @@ class income_model extends CI_Model {
     public function capture_income() {
         $this->load->helper('date');
         $this->load->library("session");
-        echo "----";
+        // echo "----";
         $date = ($this->input->post('incomeDate') != "") ? date('Y/m/d H:i', strtotime($this->input->post('incomeDate'))): date('Y/m/d H:i');
         $data = array(
             'amount' => $this->input->post('amount'),
@@ -33,7 +33,7 @@ class income_model extends CI_Model {
             'source_id' => ($this->input->post('sourceId') == "") ? 0 : $this->input->post('sourceId'),
             'income_date' => $date,
             'user_id' => $this->session->userdata("user")->id,
-            'payment_method_id' => $this->input->post('paymentMethod')
+            'income_asset_id' => $this->input->post('incomeAsset')
         );
         $this->db->insert($this->tn, $data);
         return $this->db->insert_id();
@@ -56,7 +56,7 @@ class income_model extends CI_Model {
                 'source_id' => $income["source_id"],
                 'income_date' => $date,
                 'user_id' => $income["user_id"],
-                'payment_method_id' => $income["payment_method_id"]
+                'income_asset_id' => $income["income_asset_id"]
             );
             // check to see if there is not already a matching entry before trying to create a new one.
 //            echo "<br/>isDuplicate: ". $this->isDuplicate($income);
@@ -176,7 +176,7 @@ class income_model extends CI_Model {
                 $this->db->where_in("income_type_id", array_map('intval', $this->input->post("incomeType")));
             }
             if (!empty($paymentMethodArr) && $paymentMethodArr[0] != "all") {
-                $this->db->where_in("payment_method_id", array_map('intval', $this->input->post("paymentMethod")));
+                $this->db->where_in("income_asset_id", array_map('intval', $this->input->post("paymentMethod")));
             }
             if (null == $limit) {
                 $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'income_date >=' => $this->input->post("fromDate"), 'income_date <= ' => $this->input->post("toDate")));
