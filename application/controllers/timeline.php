@@ -79,10 +79,10 @@ class timeline extends CI_Controller {
         $data["endDate"] = $endDate;
         $data["tools"] = getAllToolsInfo(True);
         $data["toolInfo"] = getAllToolsInfo();
-        echo "<pre>";
-        print_r($electedTools);
-        print_r($data["tools"]);
-        echo "</pre>";
+        // echo "<pre>";
+        // print_r($electedTools);
+        // print_r($data["tools"]);
+        // echo "</pre>";
         if($electedTools[0] == "all" || in_array(3, $electedTools)){
             $data["events"] = timelineNoteFormat($this->notes_model->getNotesForPeriod($user->id, $startDate, $endDate), null);
         }
