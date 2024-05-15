@@ -67,7 +67,10 @@ class timeline extends CI_Controller {
             $endDate = date('Y/m/d H:i', strtotime($endDate));
         }
 //        print_r($this->input->post());
-        $electedTools = $this->input->post("toolIds");
+        $electedTools = array("all");
+        if(null != $this->input->post("toolIds")){
+            $electedTools = $this->input->post("toolIds");
+        }
 //        echo "<br/>".$endDate;
 //        print_r($electedTools );
         $search["startDate"] = $startDate;
@@ -76,8 +79,11 @@ class timeline extends CI_Controller {
         $data["endDate"] = $endDate;
         $data["tools"] = getAllToolsInfo(True);
         $data["toolInfo"] = getAllToolsInfo();
-//        print_r($data["tools"]);
-        if($electedTools[0] == "all" || in_array(5, $electedTools)){
+        echo "<pre>";
+        print_r($electedTools);
+        print_r($data["tools"]);
+        echo "</pre>";
+        if($electedTools[0] == "all" || in_array(3, $electedTools)){
             $data["events"] = timelineNoteFormat($this->notes_model->getNotesForPeriod($user->id, $startDate, $endDate), null);
         }
         if($electedTools[0] == "all" || in_array(1, $electedTools)){
