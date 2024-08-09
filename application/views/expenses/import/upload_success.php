@@ -77,7 +77,7 @@
                 foreach ($expenses as $k => $v) {
                     if ($v["amount"] < 0) {
                         ?>
-                        <tr id="row_<?php echo $k; ?>">
+                        <tr id="row_<?php echo $k; ?>" >
                             <td><span id="remove-row" onClick="removeTabRow(<?php echo $k; ?>)">Remove</span></td>
                             <td>
                                 <input type="hidden" name="createDate[]" id="createDate[]" value="<?php echo date('Y/m/d H:i', strtotime($v["date"])); ?>" />
@@ -92,7 +92,7 @@
                                 <input  type="text" id="location[]" name="location[]" placeholder="Where was the expense made?"/>
                                 <input  type="hidden" id="locationId[]" name="locationId[]" value="0"/><br/><br/>
                             </td>
-                            <td><input type="hidden" name="amount[]" id="amount[]" value="<?php echo $v["amount"]; ?>" /><?php echo $v["amount"]; ?></td>
+                            <td class="import_expense" ><input type="hidden" name="amount[]" id="amount[]" value="<?php echo $v["amount"]; ?>" /><?php echo $v["amount"]; ?></td>
                         </tr>
                         <?php
                     } else {
@@ -108,7 +108,7 @@
                                 <?php echo (!empty($v["description"])) ? $v["description"] : ""; ?>
                             </td>
                             <td>&nbsp;</td>
-                            <td>
+                            <td class="import_income" >
                                 <?php echo $v["amount"]; ?>
                             </td>
                         </tr>

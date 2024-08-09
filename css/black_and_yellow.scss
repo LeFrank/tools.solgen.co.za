@@ -1203,3 +1203,31 @@ ul, #myUL {
     display: block;
 }
 
+
+.import_expense{ 
+    background-color:#ffcccc !important;
+    background:#ffcccc;
+    color:#990000;
+    text-align:right;
+    font-weight: 700;
+}
+#import_expense{ 
+    background-color:#ffcccc !important;
+    background:#ffcccc;
+    color:#990000;
+}
+.import_income{
+    background-color:#ccffdd !important;
+    background:#ccffdd;
+    color:#004d1a;
+    margin-top: 40px;margin-bottom: 40px;
+    line-height:2;
+    text-align:right;
+    font-weight: 1000;
+}
+#import_income{
+    background-color:#ccffdd !important;
+    background:#ccffdd;
+    color:#004d1a;
+    margin-top: 20px;margin-bottom: 20px;
+}
