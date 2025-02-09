@@ -1,7 +1,7 @@
 <?php ?>
-<select name="incomeAsset">
+<select name="incomeType">
     <?php
-    foreach ($incomeAssets as $k => $v) {
+    foreach ($incomeTypes as $k => $v) {
         echo '<option value="' . $v["id"] . '"  '
         . ((strtolower($v["description"]) == "cash") ? 'selected="selected"' : '')
         . '>' . $v["description"] . '</option>';

@@ -266,6 +266,7 @@ class user_content_model extends CI_Model {
     ){
         $config['upload_path'] = './user_content/' . $userId . '/' . date('Y') . '/' . date('m') . '/' . date('d');
         if (!file_exists($config['upload_path'])) {
+            echo $config['upload_path'];
             if (mkdir($config['upload_path'], 0755, true)) {
                 // echo "Folder created successfully";
             } else {

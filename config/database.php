@@ -49,8 +49,8 @@ $active_group = 'default';
 $active_record = TRUE;
 
 $db['default']['hostname'] = '127.0.0.1';
-$db['default']['username'] = 'root';
-$db['default']['password'] = 'Openpleas3';
+$db['default']['username'] = 'tools';
+$db['default']['password'] = 'Openple@s3';
 $db['default']['database'] = 'solgen';
 $db['default']['dbdriver'] = 'mysqli';
 $db['default']['dbprefix'] = '';
@@ -64,6 +64,11 @@ $db['default']['swap_pre'] = '';
 $db['default']['autoinit'] = TRUE;
 $db['default']['stricton'] = FALSE;
 
+// echo "<pre>";
+// print_r($db);
+// phpinfo();
+// echo "</pre>";
+// exit;
 
 /* End of file database.php */
 /* Location: ./application/config/database.php */

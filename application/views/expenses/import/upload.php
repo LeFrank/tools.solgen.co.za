@@ -18,6 +18,28 @@
         </p>
         <?php echo $error; ?>
         <?php echo form_open_multipart('expenses/import/do_upload'); ?>
+        <br/>
+        <h1>Choose Expense Defaults</h1>
+        <br/>
+        <div class="row expanded">
+            <div class="large-6 columns">
+                <?php echo $expenseTypeSelect; ?>
+            </div>
+            <div class="large-6 columns">
+                <?php echo $paymentMethodSelect; ?>
+            </div>
+        </div>
+        <h1>Choose Income Defaults</h1>
+        <br/>
+        <div class="row expanded">
+            <div class="large-6 columns">
+                <?php echo $incomeTypeSelect; ?>
+            </div>
+            <div class="large-6 columns">
+                <?php echo $incomeAssetSelect; ?>
+            </div>
+        </div>
+        <br/>
         <input type="file" name="userfile" size="20" />
         <br /><br />
         <input type="submit" value="upload" />

@@ -31,6 +31,9 @@ class Expenses extends CI_Controller {
         //$this->load->model('user_expense_type_model');
 //        $this->session->keep_flashdata('expenses');
         $this->load->model("user_content_model");
+        $this->load->model('income_type_model');
+        $this->load->model('income_asset_model');
+
     }
 
     public function capture() {
@@ -261,6 +264,18 @@ class Expenses extends CI_Controller {
         $this->load->helper("usability_helper");
         $data[] = array();
         $data["error"] = '';
+        $data["expenseTypes"] = mapKeyToId($this->expense_type_model->get_expense_types());
+        $data["expensePaymentMethod"] = mapKeyToId($this->payment_method_model->get_user_payment_method($this->session->userdata("user")->id), false);
+        $data["expenseTypeSelect"] = $this->load->view('expense_types/expense_type_dropdown_single', $data, true);
+        $data["paymentMethodSelect"] = $this->load->view('payment_methods/payment_method_dropdown_single', $data, true);
+        
+        $data["incomeTypes"] = mapKeyToId($this->income_type_model->get_user_income_types($this->session->userdata("user")->id));
+        $data["incomeAssets"] = mapKeyToId($this->income_asset_model->get_user_income_assets($this->session->userdata("user")->id), false);
+        
+        $data["incomeTypeSelect"] = $this->load->view('income_types/income_type_dropdown', $data, true);
+        $data["incomeAssetSelect"] = $this->load->view('income_assets/income_asset_dropdown', $data, true);
+        
+
         $this->load->view('header', getPageTitle($data, $this->toolName, "Expense Import"));
         $this->load->view('expenses/expense_nav');
         $this->load->view('expenses/import/upload');
@@ -273,6 +288,22 @@ class Expenses extends CI_Controller {
         $this->load->helper("usability_helper");
         $this->load->library('session');
         $this->load->model('user_content_model');
+        // echo "<pre>";
+        // print_r($this->session);
+        // print_r($this->input->post());
+        // echo "</pre>";
+        if($this->input->post("expenseType") != null){
+            $data["default_expense_type"] = $this->input->post("expenseType");
+        }
+        if($this->input->post("paymentMethod") != null){
+            $data["default_payment_method"] = $this->input->post("paymentMethod");
+        }
+        if($this->input->post("incomeType") != null){
+            $data["default_income_type"] = $this->input->post("incomeType");
+        }
+        if($this->input->post("incomeAsset") != null){
+            $data["default_income_asset"] = $this->input->post("incomeAsset");
+        }
         $userId = $this->session->userdata("user")->id;
         $data["user_content"] = 
             $this->user_content_model->uploadContent(
@@ -332,6 +363,9 @@ class Expenses extends CI_Controller {
             $data["expenseTypes"] = mapKeyToId($this->expense_type_model->get_expense_types());
             $data["expensePaymentMethod"] = mapKeyToId($this->payment_method_model->get_user_payment_method($this->session->userdata("user")->id), false);
             $data["expenseTypeSelect"] = $this->load->view('expense_types/expense_type_dropdown', $data, true);
+            // echo "<pre>";
+            // print_r($data);
+            // echo "</pre>";
             $data["paymentMethodSelect"] = $this->load->view('payment_methods/payment_method_dropdown', $data, true);
             $this->load->view('header', getPageTitle($data, $this->toolName, "Import Uploaded Expenses"));
             $this->load->view('expenses/expense_nav');
