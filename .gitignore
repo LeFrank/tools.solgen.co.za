@@ -17,5 +17,5 @@ config/database.php
 application/config/config.php
 config/database.php
 config/config.php
-config/config.php
-config/database.php
+!config/config.php
+!config/database.php

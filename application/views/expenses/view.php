@@ -104,17 +104,6 @@ if ($this->session->flashdata("success") !== FALSE) {
                 <input autocomplete="off" type="text" id="expenseDate" name="expenseDate" placeholder="<?php echo date('Y/m/d H:i:s'); ?>" /><br/><br/>
             </div>
         </div>
-        <div class="row expanded">
-            <div class="large-6 columns">
-                <input name="userfile" id="userfile" type="file" />
-            </div>
-            <div class="large-6 columns">
-                <label for="min_calc">mini Calc</label>
-                <input class="input" id="calc" name="calc" title="Enter an expression">
-                &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; 
-                <span>Result:</span>&nbsp;<span id="res" name="res"></span>
-            </div>
-        </div>
     </div>
     <span>* Required Field</span><br/><br/>
     <input type="submit" name="submit" value="Record" class="button"/>
@@ -149,20 +138,6 @@ if ($this->session->flashdata("success") !== FALSE) {
                     CKEDITOR.instances.description.setData(CKEDITOR.instances.description.getData() + obj.template);
                 }
             });
-        });
-        $("#calc").keyup(function () {
-            clearTimeout(timer);
-            // console.log($(this).val());
-            let expr = $(this).val();
-            timer = setTimeout(function() {
-                try {
-                    let res = eval(expr);
-                    $("#res").html( res );    
-                }catch(err){
-                    $("#res").html("invalid expression");
-                }
-            }, 500);
-            
         });
     });
 </script>

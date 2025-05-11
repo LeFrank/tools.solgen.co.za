@@ -50,27 +50,7 @@ class Expenses extends CI_Controller {
         } else {
             // print_r($this->input->post());
             $data["expense"] = $this->expense_model->capture_expense();
-            $data["user_content"] = $this->user_content_model->uploadContent(
-                $userId, 
-                'txt|gif|jpeg|jpg|png|pdf|doc|docx|xls|xlsx|json|ppt|pptx', 
-                $this->toolId, 
-                100000000, 
-                $private = 0, 
-                $passwordProtect = 0, 
-                $this->input->post("description"),
-                $data["expense"]
-            );
             // print_r($data["user_content"]);
-            if (key_exists("error", $data["user_content"])) {
-    //            $this->load->view('resources/view', $data["user_content"]["error"]);
-                $data["statusArr"]["status"] = "Failure";
-                $data["statusArr"]["message"] = "Unable to upload the resource.";
-                $data["statusArr"]["description"] = $data["user_content"]["error"];
-            } else {
-                $data["statusArr"]["status"] = "Success";
-                $data["statusArr"]["message"] = $data["user_content"]["filename"] . " has been added.";
-                $data["statusArr"]["description"] = "You have successfully uploaded file: " . $data["user_content"]["filename"];
-            }
             $data["remaining_budget"] = $this->getRemainingBudget(
                     $this->session->userdata("user")->id, $this->input->post('expenseType'), ($this->input->post('expenseDate') != "") ? date('Y-m-d H:i', strtotime($this->input->post('expenseDate'))) : date('Y-m-d H:i'));
             $data["status"] = "Expense Captured";
