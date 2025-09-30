@@ -124,8 +124,8 @@ class Income extends CI_Controller {
     }
 
     public function delete($id) {
-        $data["incomeTypes"] = mapKeyToId($this->expense_type_model->get_user_expense_types($this->session->userdata("user")->id));
-        $data["expensePaymentMethod"] = mapKeyToId($this->payment_method_model->get_user_payment_method($this->session->userdata("user")->id), false);
+        $data["incomeTypes"] = mapKeyToId($this->income_type_model->get_user_income_types($this->session->userdata("user")->id));
+        $data["incomeAssets"] = mapKeyToId($this->income_asset_model->get_user_income_assets($this->session->userdata("user")->id), false);
         if ($this->income_model->doesItBelongToMe($this->session->userdata("user")->id, $id)) {
             $data["income"] = $this->income_model->delete($id);
             $data["income"] = $this->income_model->getIncomes($this->session->userdata("user")->id, 5);

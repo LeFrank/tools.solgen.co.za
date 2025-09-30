@@ -31,6 +31,7 @@ class Expenses extends CI_Controller {
         //$this->load->model('user_expense_type_model');
 //        $this->session->keep_flashdata('expenses');
         $this->load->model("user_content_model");
+        $this->load->model('income_model');
         $this->load->model('income_type_model');
         $this->load->model('income_asset_model');
 
@@ -252,8 +253,8 @@ class Expenses extends CI_Controller {
         $data["incomeTypes"] = mapKeyToId($this->income_type_model->get_user_income_types($this->session->userdata("user")->id));
         $data["incomeAssets"] = mapKeyToId($this->income_asset_model->get_user_income_assets($this->session->userdata("user")->id), false);
         
-        $data["incomeTypeSelect"] = $this->load->view('income_types/income_type_dropdown', $data, true);
-        $data["incomeAssetSelect"] = $this->load->view('income_assets/income_asset_dropdown', $data, true);
+        $data["incomeTypeSelect"] = $this->load->view('income_types/income_type_dropdown_single', $data, true);
+        $data["incomeAssetSelect"] = $this->load->view('income_assets/income_asset_dropdown_single', $data, true);
         
 
         $this->load->view('header', getPageTitle($data, $this->toolName, "Expense Import"));
@@ -272,6 +273,9 @@ class Expenses extends CI_Controller {
         // print_r($this->session);
         // print_r($this->input->post());
         // echo "</pre>";
+        $data["incomeTypes"] = mapKeyToId($this->income_type_model->get_user_income_types($this->session->userdata("user")->id));
+        $data["incomeAssets"] = mapKeyToId($this->income_asset_model->get_user_income_assets($this->session->userdata("user")->id), false);
+        
         if($this->input->post("expenseType") != null){
             $data["default_expense_type"] = $this->input->post("expenseType");
         }
@@ -347,6 +351,14 @@ class Expenses extends CI_Controller {
             // print_r($data);
             // echo "</pre>";
             $data["paymentMethodSelect"] = $this->load->view('payment_methods/payment_method_dropdown', $data, true);
+            // $data["incomeTypeSelect"] = $this->load->view('income_types/income_type_dropdown', $data, true);
+            // $data["incomeAssetSelect"] = $this->load->view('income_assets/income_asset_dropdown', $data, true);
+            // #ToDO: Fuckery happens here. Fix it.
+            $data["expenseTypes"] = $data["incomeTypes"] ;
+            $data["expensePaymentMethod"] = $data["incomeAssets"];
+            $data["incomeTypeSelect"] = $this->load->view('expense_types/expense_type_dropdown', $data, true);
+            $data["incomeAssetSelect"] = $this->load->view('payment_methods/payment_method_dropdown', $data, true);
+            // #ToDO End. 
             $this->load->view('header', getPageTitle($data, $this->toolName, "Import Uploaded Expenses"));
             $this->load->view('expenses/expense_nav');
             $this->load->view('expenses/import/upload_success', $data);
@@ -363,54 +375,103 @@ class Expenses extends CI_Controller {
         $createDates = $this->input->post("createDate");
         $expenseTypes = $this->input->post("expenseType");
         $paymentMethods = $this->input->post("paymentMethod");
+        $incomeTypes = $this->input->post("incomeType");
+        $incomeAssets = $this->input->post("incomeAsset");
         $descriptions = $this->input->post("description");
         $locations = $this->input->post("location");
         $amounts = $this->input->post("amount");
+        $expenses = array();
+        $incomes = array();
+        // $incomeTypes = mapKeyToId($this->income_type_model->get_user_income_types($this->session->userdata("user")->id));
+        // $incomeAssets = mapKeyToId($this->income_asset_model->get_user_income_assets($this->session->userdata("user")->id), false);
+        
 //        echo "<pre>";
 //        print_r(array($createDates, $expenseTypes, $paymentMethods, $descriptions, $locations, $amounts));
 //        echo "</pre>";
-        
+        /*--------------------------------------------------------------- 
+        Changes required for transactionalism, phase 1 refactored to support income and expenses
+        --------------------------------------------------------------- */
+        // Done: If transaction value is negative, treat as an expense
+        // Done: if positive, treat as income
         foreach($createDates as $k=>$v){
-            $expense["amount"] = abs($amounts[$k]);
-            $expense["expense_type_id"] = $expenseTypes[$k];
-            $expense["description"] = $descriptions[$k];
-            $expense["location"] = $locations[$k];
-            $expense["location_id"] = 0;
-            $expense["expense_date"] = $createDates[$k];
-            $expense["user_id"] = $userId;
-            $expense["payment_method_id"] = $paymentMethods[$k];
-            $expense["status"] = "";
-            $expense["statusMessage"] = "";
-            $expenses[] = $expense;
+            // echo $amounts[$k];
+            if( $amounts[$k] > 0 ){
+                // echo "<h3>Income</h3>";
+                $income["amount"] = abs($amounts[$k]);
+                // #ToDO: Fuckery happens here. Fix it.
+                $income["income_type_id"] = $expenseTypes[$k];
+                // #ToDO End.
+                $income["description"] = $descriptions[$k];
+                $income["source"] = $locations[$k];
+                $income["source_id"] = 0;
+                $income["income_date"] = $createDates[$k];
+                $income["user_id"] = $userId;
+                // #ToDO: Fuckery happens here. Fix it.
+                $income["income_asset_id"] = $paymentMethods[$k];
+                // #ToDO End.
+                $income["status"] = "";
+                $income["statusMessage"] = "";
+                $incomes[] = $income;
+            }else{
+                // echo "<h3>Expense</h3>";
+                $expense["amount"] = abs($amounts[$k]);
+                $expense["expense_type_id"] = $expenseTypes[$k];
+                $expense["description"] = $descriptions[$k];
+                $expense["location"] = $locations[$k];
+                $expense["location_id"] = 0;
+                $expense["expense_date"] = $createDates[$k];
+                $expense["user_id"] = $userId;
+                $expense["payment_method_id"] = $paymentMethods[$k];
+                $expense["status"] = "";
+                $expense["statusMessage"] = "";
+                $expenses[] = $expense;
+            }
+            
         }
+        // echo "<pre>";
+        // print_r($expenses);
+        // echo "</pre>";
+
+        // echo "<pre>";
+        // print_r($incomes);
+        // echo "</pre>";
+        // exit;
         $expenses = $this->expense_model->capture_expenses($expenses);
-    //    echo "<pre>";
-    //    print_r($expenses);
-    //    echo "</pre>";
+        $incomes = $this->income_model->capture_incomes($incomes);
+
         $expenseIds = multiArrGetKeyValFromObjById($expenses, 'id');
+        $incomeIds = multiArrGetKeyValFromObjById($incomes, 'id');
         // echo "<pre>";
         // print_r($expenseIds);
         // echo "</pre>";
         // exit;
         $this->session->set_flashdata('expenses', $expenseIds, 30);
+        $this->session->set_flashdata('incomes', $incomeIds, 30);
         redirect("/expenses/import/captured", "refresh");
         
     }
     
+    //TODO: Refactor to extract this function out into transaction controller.
     public function importCaptured(){
         $this->load->library('session');
         $userId = $this->session->userdata("user")->id;
         $data["expenseIds"] = $this->session->flashdata('expenses');
+        $data["incomeIds"] = $this->session->flashdata('incomes');
         // echo "<pre>";
         // print_r($data["expenseIds"]);
         // echo "</pre>";
         $data["expenses"] = $this->expense_model->getExpensesByIds($userId  , $data["expenseIds"]);
         $data["expenseTypes"] = mapKeyToId($this->expense_type_model->get_expense_types());
         $data["expensePaymentMethod"] = mapKeyToId($this->payment_method_model->get_user_payment_method($userId), false);
+
+        $data["incomes"] = $this->income_model->getIncomesByIds($userId  , $data["incomeIds"]);
+        $data["incomeTypes"] = mapKeyToId($this->income_type_model->get_user_income_types($userId));
+        $data["incomeAssets"] = mapKeyToId($this->income_asset_model->get_user_income_assets($userId), false);
           
         $this->load->view('header', getPageTitle($data, $this->toolName, "Bulk Captured Expenses"));
         $this->load->view('expenses/expense_nav');
         $this->load->view('expenses/import/captured', $data);
+        $this->load->view('incomes/import/captured', $data);
         $this->load->view('footer');
     }
 

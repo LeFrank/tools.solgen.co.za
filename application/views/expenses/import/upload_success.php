@@ -57,16 +57,16 @@
                 Date
             </th>
             <th>
-                Expense Type
+                Expense/Income Type
             </th>
             <th>
-                Payment Method
+                Payment Method / Asset
             </th>
             <th>
                 Description
             </th>
             <th>
-                Location
+                Location / Source
             </th>
             <th>
                 Amount
@@ -98,18 +98,23 @@
                     } else {
                         ?>
                         <tr id="row_<?php echo $k; ?>" style="margin-top: 20px;margin-bottom: 20px;">
-                            <td>&nbsp;</td>
+                            <td><span id="remove-row" onClick="removeTabRow(<?php echo $k; ?>)">Remove</span></td>
                             <td>
+                                <input type="hidden" name="createDate[]" id="createDate[]" value="<?php echo date('Y/m/d H:i', strtotime($v["date"])); ?>" />
                                 <?php echo date('Y/m/d H:i', strtotime($v["date"])); ?>
                             </td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
+                            <td><?php echo $incomeTypeSelect; ?></td>
+                            <td><?php echo $incomeAssetSelect; ?></td>
                             <td>
-                                <?php echo (!empty($v["description"])) ? $v["description"] : ""; ?>
+                                <textarea row="1" name="description[]" ><?php echo (!empty($v["description"])) ? $v["description"] : ""; ?>
+                                </textarea>
                             </td>
-                            <td>&nbsp;</td>
+                                                      <td>
+                                <input  type="text" id="location[]" name="location[]" placeholder="Where was the expense made?"/>
+                                <input  type="hidden" id="locationId[]" name="locationId[]" value="0"/><br/><br/>
+                            </td>
                             <td class="import_income" >
-                                <?php echo $v["amount"]; ?>
+                                <input type="hidden" name="amount[]" id="amount[]" value="<?php echo $v["amount"]; ?>" /><?php echo $v["amount"]; ?>
                             </td>
                         </tr>
                         <?php
