@@ -402,7 +402,7 @@ class Expenses extends CI_Controller {
                 $income["income_type_id"] = $expenseTypes[$k];
                 // #ToDO End.
                 $income["description"] = $descriptions[$k];
-                $income["source"] = $locations[$k];
+                $income["source"] = "";
                 $income["source_id"] = 0;
                 $income["income_date"] = $createDates[$k];
                 $income["user_id"] = $userId;
