@@ -7,7 +7,7 @@
                 <div id="incomeHistoryFilter" class="incomeHistoryFilter">
                     <h3>Filter incomes History</h3>
                     <div id="validation_errors" ></div>
-                    <form accept-charset="utf-8" method="post" action="/incomes/export" id="filterIncomeForm" >
+                    <form accept-charset="utf-8" method="post" action="/income/export" id="filterIncomeForm" >
                         <div class="row">
                             <div class="large-6 columns">
                                 <label> Filter by Period

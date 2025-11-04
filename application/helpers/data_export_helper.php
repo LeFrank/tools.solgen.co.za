@@ -43,4 +43,23 @@
 		// exit;
 		return $exportData;
 	}
+
+	function csvify_income($data, $incomeTypes, $incomeAssets){
+		$exportData[0] = array("Number","Date", "Incomee_Type", "Income Assets", "Description", "Source", "Amount");
+		$count = 1;
+		foreach($data as $k=>$v){
+			$exportData[$count]	= 
+				array( 
+					$count, 
+					$v["income_date"],
+					$incomeTypes[$v["income_type_id"]]["description"],
+					$incomeAssets[$v["income_asset_id"]]["description"],
+					$v["description"],
+					$v["source"],
+					$v["amount"]
+				);
+			$count++;
+		}
+		return $exportData;
+	}
 ?>

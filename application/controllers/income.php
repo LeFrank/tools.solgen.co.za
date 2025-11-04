@@ -170,6 +170,45 @@ class Income extends CI_Controller {
         echo $this->load->view('incomes/history_table', $data, true);
     }
 
+        // will support csv, json ???
+    public function filteredSearchExportTo($output = "csv") {
+        $this->load->helper('data_export_helper');
+        $contentType = "application/vnd.ms-excel";
+        $this->load->helper('url');
+        $this->load->helper('form');
+        $incomeTypes = mapKeyToId($this->income_type_model->get_income_types());
+        $incomeAssets = mapKeyToId($this->income_asset_model->get_user_income_assets($this->session->userdata("user")->id), false);        // print_r(array($this->input->post("fromDate"), $this->input->post("toDate")));
+        $data["startAndEndDateforMonth"] = array($this->input->post("fromDate"), $this->input->post("toDate"));
+        $data['incomesForPeriod'] = $this->income_model->getincomesByCriteria($this->session->userdata("user")->id);
+        switch ($output) {
+            case "csv" :
+                $data = csvify_income($data['incomesForPeriod'] , $incomeTypes, $incomeAssets );
+                $filename = "incrome_".$this->input->post("fromDate")."_".$this->input->post("toDate").".csv";
+                $temp = tmpfile();
+                foreach ($data as $k => $line) {
+                    fputcsv($temp, $line);
+                }
+                $meta_data = stream_get_meta_data($temp);
+                header('Content-Length: ' . filesize($meta_data["uri"])); //<-- sends filesize header
+                header('Content-Type: ' . $contentType); //<-- send mime-type header
+                header('Content-Disposition: inline; filename="' . $filename . '";'); //<-- sends filename header
+                readfile($meta_data["uri"]); //<--reads and outputs the file onto the output buffer
+                fclose($temp);
+                die(); //<--cleanup
+                exit; //and exit  
+                break;
+            case "json" :
+                $contentType = "application/json";
+                $data = json_encode($data);
+                $this->output->set_content_type($contentType)->set_output($data);
+                return $this->output->get_output();
+                break;
+            default:
+                echo "Output type not supportted. Only .CSV & .JSON is presently supportted.";
+                break;
+        }
+    }
+    
     public function options() {
         $this->load->helper("usability_helper");
         $data[] = array();
