@@ -132,7 +132,8 @@ th {
 }
 
 td {
-    background: #f8f8f8;
+    color:#666666;
+    // background: #666666;
     text-align: left;
     font-size: 1em;
     line-height:125%;
@@ -203,6 +204,11 @@ button:hover, button:focus, .button:hover, .button:focus {
         background: #fff;
         animation: pulsing 1s linear infinite;
     }
+}
+label {
+    color: #f3f3f3;
+    padding: 0;
+    background-color:#212121;
 }
 
 @keyframes pulsing {
@@ -504,7 +510,7 @@ table.tablesorter thead tr .header {
 table.tablesorter tbody td {
     color: #212121;
     padding: 4px;
-    background-color: #464646;
+    // background-color: #464646;
     vertical-align: top;
 }
 table.tablesorter tbody tr.odd td {

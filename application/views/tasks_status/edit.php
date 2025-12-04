@@ -1,0 +1,43 @@
+<div class="row expanded">
+    <div class="large-12 columns">
+        <h3>Edit Task Status</h3>
+        <?php echo validation_errors(); ?>
+
+        <?php echo form_open('tasks/status/update') ?>
+
+        <input type="hidden" name="id" value="<?php echo $tasksStatus->id; ?>" />+
+        <label for="name">Name *</label>
+        <input type="text" name="name" value="<?php echo $tasksStatus->name; ?>" /><br />
+
+        <label for="description">Description *</label>
+        <textarea 
+            name="description" 
+            id="description" 
+            cols="40" 
+            rows="5" 
+            placeholder="As detailed and clear description of the problem, proposed solution and actions required to complete this task.">
+            <?php echo $tasksStatus->description; ?>
+            </textarea><br/><br/>
+               
+       <label for="text_colour">Text Colour</label>
+        <input type="color" name="text_colour" id="text_colour" value="<?php echo $tasksStatus->text_colour; ?>" 
+            placeholder="#d8d8d8" onchange="changeColour(this)" />
+        
+        <label for="background_colour">Background Colour</label>
+        <input type="color" name="background_colour" id="background_colour" value="<?php echo $tasksStatus->background_colour; ?>" 
+            placeholder="#d8d8d8" onchange="changeColour(this)" />
+        <input type="submit" name="submit" value="Save" class="button" /><a href="/tasks/status/manage" >Cancel</a>
+        </form>
+    </div>
+</div>
+<script src="/js/third_party/ckeditor/ckeditor.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/jquery.datetimepicker.css"/ >
+<script src="/js/jquery.datetimepicker.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>'
+
+<script type="text/javascript">
+    $(function() {
+        CKEDITOR.replace('description');
+
+    });
+</script>

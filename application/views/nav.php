@@ -9,6 +9,22 @@
 <!--        <a href="/expenses" ><img src="/images/third_party/icons/expenses.svg" class="nav-icon-wide svg-invert" alt="Picture"> Finances</a>
 &nbsp;&nbsp;-->
 <ul id="myUL">
+    <li><span class="caret"><a href="/tasks" > - <img src="/images/third_party/icons/expenses.svg" class="nav-icon-wide svg-invert" alt="Picture"> Tasks </a></span>
+        <ul class="nested">
+            <li><a href="/tasks">Tasks</a></li>
+            <li><a href="/tasks/history">History</a></li>
+            <li><a href="/tasks/manage">Budget</a></li>
+            <li><a href="/tasks/stats">Stats</a></li>
+            <li><span class="caret">Options</span>
+                <ul class="nested">
+                    <li><a href="/tasks/domains/manage">Manage Task Domains</a></li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>
+&nbsp;&nbsp;
+<ul id="myUL">
     <li><span class="caret"><a href="/expenses" > - <img src="/images/third_party/icons/expenses.svg" class="nav-icon-wide svg-invert" alt="Picture"> Expenses </a></span>
         <ul class="nested">
             <li><a href="/expenses">Capture Expense</a></li>

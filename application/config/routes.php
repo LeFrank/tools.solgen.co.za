@@ -157,8 +157,7 @@ $route['expense-types/manage'] = 'expenseTypes/manage';
 $route['expense-types/capture'] = 'expenseTypes/capture';
 $route['expense-types/edit/(:num)'] = 'expenseTypes/edit/$1';
 $route['expense-types/delete/(:num)'] = 'expenseTypes/delete/$1';
-$route['expense-types/ALTER TABLE `income` 
-CHANGE `payment_method_id` `income_asset_id` int DEFAULT NULL ;'] = 'expenseTypes/update';
+$route['expense-types/update'] = 'expenseTypes/update';
 $route['expense-types/type/(:num)'] = 'expenseTypes/getExpenseTypeById/$1';
 
 $route['health'] = 'health/index';
@@ -241,6 +240,29 @@ $route['news/(:any)'] = 'news/view/$1';
 $route['news'] = 'news';
 $route['test'] = 'test/index';
  
+$route['tasks/domains/manage'] = 'tasksDomains/manage';
+$route['tasks/domains/create'] = 'tasksDomains/create';
+$route['tasks/domains/edit/(:num)'] = 'tasksDomains/edit/$1';
+$route['tasks/domains/update'] = 'tasksDomains/update';
+$route['tasks/domains/delete/(:num)'] = 'tasksDomains/delete/$1';
+$route['tasks/domains/view/(:num)'] = 'tasksDomains/view/$1';
+$route['tasks'] = 'tasks/index';
+$route['tasks/create'] = 'tasks/create';
+$route['tasks/edit/(:num)'] = 'tasks/edit/$1';
+$route['tasks/update/(:num)'] = 'tasks/update/$1';
+$route['tasks/delete/(:num)'] = 'tasks/delete/$1';
+$route['tasks/view/(:num)'] = 'tasks/view/$1';
+$route['tasks/options'] = 'tasks/options';
+$route['tasks/stats'] = 'tasks/stats';
+$route['tasks/status/manage'] = 'tasksStatus/manage';
+$route['tasks/status/create'] = 'tasksStatus/create';
+$route['tasks/status/edit/(:num)'] = 'tasksStatus/edit/$1';
+$route['tasks/status/update'] = 'tasksStatus/update';
+$route['tasks/status/delete/(:num)'] = 'tasksStatus/delete/$1';
+$route['tasks/status/view/(:num)'] = 'tasksStatus/view/$1';
+
+
+
 $route['timetable'] = 'timetable/index';
 $route['timetable/capture'] = 'timetable/capture';
 $route['timetable/delete/(:num)'] = 'timetable/delete/$1';
