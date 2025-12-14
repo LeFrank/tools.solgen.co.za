@@ -163,4 +163,29 @@ class Tasks extends CI_Controller {
         }
     }
 
+    public function MarkAsDone($id){
+        $userId = $this->session->userdata("user")->id;
+        if ($this->tasks_model->doesItBelongToMe($userId, $id)) {
+            $this->tasks_model->markAsDone($id);
+            $this->session->set_flashdata("success", "The task was marked as done.");
+            echo json_encode(array("status" => "success", "message"=>"The task was marked as done."));
+            // echo "yes";
+        } else {
+            $this->session->set_flashdata("error", "The task you are attempting to mark as done does not exist or does not belong to you.");
+            echo json_encode(array("status" => "error", "message"=>"The completion of the task failed."));
+        }
+    }   
+
+    public function MarkAsUnDone($id){
+        $userId = $this->session->userdata("user")->id;
+        if ($this->tasks_model->doesItBelongToMe($userId, $id)) {
+            $this->tasks_model->markAsUnDone($id);
+            $this->session->set_flashdata("success", "The task status was reset.");
+            echo json_encode(array("status" => "success", "message"=>"The task was marked as undone."));
+        } else {
+            $this->session->set_flashdata("error", "The task you are attempting to mark as done does not exist or does not belong to you.");
+            echo json_encode(array("status" => "error", "message"=>"The task undoing of the task failed."));
+        }
+    }   
+
 }

@@ -29,7 +29,24 @@ if ($this->session->flashdata("success") !== FALSE) {
                         <?php
                         $total = 0.0;
                         foreach ($tasks as $k => $v) {
-                            echo "<tr>";
+                            $tr_style = "";
+                            $checked = "";
+                            if($v["status_id"] == 2){ // Completed
+                                $tr_style = "style='"
+                                    . "background-color: "
+                                    . $tasksStatuses[$v["status_id"]]["background_colour"]
+                                    . ";"
+                                    . "color: "
+                                    . $tasksStatuses[$v["status_id"]]["text_colour"]
+                                    . ";"
+                                    . "'";
+                                $checked = " checked ";
+                            }else{
+                                $tr_style = "";
+                                $checked = "";
+                            }
+
+                            echo "<tr ".$tr_style.">";
                             echo "<td>" . ++$k . "</td>";
                             echo "<td style='
                                     text-align: center;vertical-align: middle;'>
@@ -40,7 +57,9 @@ if ($this->session->flashdata("success") !== FALSE) {
                                 type='checkbox' 
                                 id='".$v["id"]."' 
                                 name='check_".$v["id"]."'
+                                class='tasks_checkbox'
                                 value='".$v["id"]."'
+                                ".$checked."
                                 >
                                 <label for=check_".$v["id"]."'></label>
                                 </td>";
@@ -133,7 +152,7 @@ if ($this->session->flashdata("success") !== FALSE) {
 <!-- <script type="text/javascript" src="/js/expenses/expense_table.js" ></script> -->
 <script type="text/javascript" src="/js/third_party/math.js" ></script>
 <script src="/js/third_party/jquery/ui/1.12.1/jquery-ui.js"></script>
-<script src="/js/location/autocomplete.js"></script>
+<script src="/js/tasks/view.js"></script>
 <script type="text/javascript">
     // const re = /(?:(?:^|[-+_*/])(?:\s*-?\d+(\.\d+)?(?:[eE][+-]?\d+)?\s*))+$/;
     // function test_expr(s) {
@@ -146,16 +165,5 @@ if ($this->session->flashdata("success") !== FALSE) {
         $("#target_date").datetimepicker();
         var timer = null;
         CKEDITOR.replace('description');
-        $("#expenseType").change(function () {
-            $.post(
-                    "/expense-types/type/" + $(this).val(),
-                    null
-                    ).done(function (resp) {
-                obj = JSON.parse(resp);
-                if (null != obj.template && obj.template != "") {
-                    CKEDITOR.instances.description.setData(CKEDITOR.instances.description.getData() + obj.template);
-                }
-            });
-        });
     });
 </script>

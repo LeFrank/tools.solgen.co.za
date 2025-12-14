@@ -69,10 +69,10 @@ class tasksStatus extends CI_Controller {
             $data["message_classes"] = "success";
             $data["message"] = "You have successfully deleted the tasks Status";
             $this->tasks_status_model->delete($id);
-            $data["tasksStatus"] = mapKeyToId($this->tasks_status_model->get_only_user_tasks_Status($this->session->userdata("user")->id), false);
+            $data["tasksStatus"] = mapKeyToId($this->tasks_status_model->get_only_user_tasks_statuses($this->session->userdata("user")->id), false);
             $this->load->view("header");
             $this->load->view("user/user_status", $data);
-            $this->load->view("tasks_Status/manage", $data);
+            $this->load->view("tasks_status/manage", $data);
             $this->load->view("footer");
         } else {
             $data["action_classes"] = "failure";
@@ -80,11 +80,11 @@ class tasksStatus extends CI_Controller {
             $data["message_classes"] = "failure";
             $data["message"] = "The task Status does not exist or it does not belong to you.";
 
-            $data["tasksStatus"] = mapKeyToId($this->tasks_status_model->get_only_user_tasks_Status($this->session->userdata("user")->id), false);
+            $data["tasksStatus"] = mapKeyToId($this->tasks_status_model->get_only_user_tasks_statuses($this->session->userdata("user")->id), false);
             $this->load->view("header");
             $this->load->view("tasks/tasks_nav", $data);
             $this->load->view("user/user_status", $data);
-            $this->load->view("tasks_Status/manage", $data);
+            $this->load->view("tasks_status/manage", $data);
             $this->load->view("footer");
         }
     }

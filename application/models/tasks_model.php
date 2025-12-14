@@ -119,5 +119,27 @@ class tasks_model extends CI_Model {
         return $this->db->update($this->tn, $data);
     }
 
+    /**
+     * markAsDone
+     * @param type $id
+     */
+    public function markAsDone($id){
+        $data = array(
+            'status_id' => 2
+        );
+        $this->db->where('id', $id);
+        return $this->db->update($this->tn, $data);
+    }
 
+    /**
+     * markAsUnDone
+     * @param type $id
+     */
+    public function markAsUnDone($id){
+        $data = array(
+            'status_id' => 0
+        );
+        $this->db->where('id', $id);
+        return $this->db->update($this->tn, $data);
+    }
 }

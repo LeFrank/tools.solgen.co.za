@@ -1210,3 +1210,26 @@ ul, #myUL {
     display: block;
 }
 
+.tasks_checkbox{
+    accent-color: #309d8b;
+    color:#fff;
+    height: 20px; /* not needed */
+    width: 20px; /* not needed */
+
+}
+
+.tasks_checkbox input:checked + .checkmark::after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 1px;
+  width: 6px;
+  height: 12px;
+  border: solid #333;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.tasks_checkbox:hover .checkmark {
+    background-color: #ddd;
+}

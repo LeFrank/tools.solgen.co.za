@@ -21,11 +21,11 @@
                
        <label for="text_colour">Text Colour</label>
         <input type="color" name="text_colour" id="text_colour" value="<?php echo $tasksStatus->text_colour; ?>" 
-            placeholder="#d8d8d8" onchange="changeColour(this)" />
+            onchange="changeColour(this)" />
         
         <label for="background_colour">Background Colour</label>
         <input type="color" name="background_colour" id="background_colour" value="<?php echo $tasksStatus->background_colour; ?>" 
-            placeholder="#d8d8d8" onchange="changeColour(this)" />
+            onchange="changeColour(this)" />
         <input type="submit" name="submit" value="Save" class="button" /><a href="/tasks/status/manage" >Cancel</a>
         </form>
     </div>
