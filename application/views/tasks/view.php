@@ -32,10 +32,6 @@ if ($this->session->flashdata("success") !== FALSE) {
                             $tr_style = "";
                             $checked = "";
                             if($v["status_id"] == 2){ // Completed
-                                $checked = " checked ";
-                            }else{
-                                $checked = "";
-                            }
                                 $tr_style = "style='"
                                     . "background-color: "
                                     . $tasksStatuses[$v["status_id"]]["background_colour"]
@@ -44,9 +40,10 @@ if ($this->session->flashdata("success") !== FALSE) {
                                     . $tasksStatuses[$v["status_id"]]["text_colour"]
                                     . ";"
                                     . "'";
-                                
-                            
-
+                                $checked = " checked ";
+                            }else{
+                                $checked = "";
+                            }
                             echo "<tr ".$tr_style.">";
                             echo "<td>" . ++$k . "</td>";
                             echo "<td style='
@@ -154,15 +151,13 @@ if ($this->session->flashdata("success") !== FALSE) {
 </form>
 </div>
 </div>
-
+<script src="/js/third_party/ckeditor/ckeditor.js"></script>
 <link rel="stylesheet" type="text/css" href="/css/jquery.datetimepicker.css" />
 <script src="/js/jquery.datetimepicker.js"></script>
 <script type="text/javascript" src="/js/third_party/jquery.tablesorter.min.js"></script>
-<!-- <script type="text/javascript" src="/js/expenses/expense_table.js" ></script> -->
 <script type="text/javascript" src="/js/third_party/math.js" ></script>
 <script src="/js/third_party/jquery/ui/1.12.1/jquery-ui.js"></script>
 <script src="/js/tasks/view.js"></script>
-<script src="/js/third_party/ckeditor/ckeditor.js"></script>
 <script type="text/javascript">
     // const re = /(?:(?:^|[-+_*/])(?:\s*-?\d+(\.\d+)?(?:[eE][+-]?\d+)?\s*))+$/;
     // function test_expr(s) {
