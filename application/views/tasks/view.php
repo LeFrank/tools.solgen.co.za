@@ -154,7 +154,7 @@ if ($this->session->flashdata("success") !== FALSE) {
 </form>
 </div>
 </div>
-<script src="/js/third_party/ckeditor/ckeditor.js"></script>
+
 <link rel="stylesheet" type="text/css" href="/css/jquery.datetimepicker.css" />
 <script src="/js/jquery.datetimepicker.js"></script>
 <script type="text/javascript" src="/js/third_party/jquery.tablesorter.min.js"></script>
@@ -162,6 +162,7 @@ if ($this->session->flashdata("success") !== FALSE) {
 <script type="text/javascript" src="/js/third_party/math.js" ></script>
 <script src="/js/third_party/jquery/ui/1.12.1/jquery-ui.js"></script>
 <script src="/js/tasks/view.js"></script>
+<script src="/js/third_party/ckeditor/ckeditor.js"></script>
 <script type="text/javascript">
     // const re = /(?:(?:^|[-+_*/])(?:\s*-?\d+(\.\d+)?(?:[eE][+-]?\d+)?\s*))+$/;
     // function test_expr(s) {
