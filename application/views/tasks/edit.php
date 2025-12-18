@@ -31,7 +31,12 @@
                 <select name="status">
                     <?php
                         foreach ($tasksStatuses as $k => $v) {
-                            echo '<option value="' . $v["id"] . '">' . $v["name"] . '</option>';
+                            if ($v["id"] == $task->status_id) {
+                                $selected = " selected";
+                            } else {
+                                $selected = "";
+                            } 
+                            echo '<option value="' . $v["id"] . '" '. $selected .'  >' . $v["name"] . '</option>';
                         }
                     ?>
                 </select>

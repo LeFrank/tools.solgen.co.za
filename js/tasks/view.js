@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    $('#taskSummary').tablesorter();
     $('input[type="checkbox"]').click(function() {
         if($(this).prop("checked") == true) {
             // alert("Checkbox is checked.");

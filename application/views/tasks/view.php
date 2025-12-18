@@ -32,6 +32,10 @@ if ($this->session->flashdata("success") !== FALSE) {
                             $tr_style = "";
                             $checked = "";
                             if($v["status_id"] == 2){ // Completed
+                                $checked = " checked ";
+                            }else{
+                                $checked = "";
+                            }
                                 $tr_style = "style='"
                                     . "background-color: "
                                     . $tasksStatuses[$v["status_id"]]["background_colour"]
@@ -40,11 +44,8 @@ if ($this->session->flashdata("success") !== FALSE) {
                                     . $tasksStatuses[$v["status_id"]]["text_colour"]
                                     . ";"
                                     . "'";
-                                $checked = " checked ";
-                            }else{
-                                $tr_style = "";
-                                $checked = "";
-                            }
+                                
+                            
 
                             echo "<tr ".$tr_style.">";
                             echo "<td>" . ++$k . "</td>";
@@ -63,7 +64,15 @@ if ($this->session->flashdata("success") !== FALSE) {
                                 >
                                 <label for=check_".$v["id"]."'></label>
                                 </td>";
-                            echo "<td>" . $tasksDomains[$v["domain_id"]]["name"] . "</td>";
+                                $tr_style = "style='"
+                                    . "background-color: "
+                                    . $tasksDomains[$v["domain_id"]]["background_colour"]
+                                    . ";"
+                                    . "color: "
+                                    . $tasksDomains[$v["domain_id"]]["text_colour"]
+                                    . ";"
+                                    . "'";
+                            echo "<td ".$tr_style." >" . json_decode($tasksDomains[$v["domain_id"]]["emoji"]) . " " . $tasksDomains[$v["domain_id"]]["name"] . "</td>";
                             echo "<td>" . $v["name"] . "</td>";
                             echo "<td>" . $v["description"] . "</td>";
                             // echo "<td>" . $v["status_id"] . "</td>";
@@ -148,6 +157,7 @@ if ($this->session->flashdata("success") !== FALSE) {
 <script src="/js/third_party/ckeditor/ckeditor.js"></script>
 <link rel="stylesheet" type="text/css" href="/css/jquery.datetimepicker.css" />
 <script src="/js/jquery.datetimepicker.js"></script>
+<script type="text/javascript" src="/js/third_party/handlebars-v1.3.0.js" ></script>
 <script type="text/javascript" src="/js/third_party/jquery.tablesorter.min.js"></script>
 <!-- <script type="text/javascript" src="/js/expenses/expense_table.js" ></script> -->
 <script type="text/javascript" src="/js/third_party/math.js" ></script>

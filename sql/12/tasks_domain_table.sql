@@ -11,3 +11,6 @@ CREATE TABLE `tasks_domain` (
     `update_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP, 
     PRIMARY KEY (`id`)
 ) ENGINE = MyISAM AUTO_INCREMENT = 1 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
+
+alter table tasks_domain modify description mediumtext;
+alter table tasks_domain modify emoji varchar(255);
