@@ -42,6 +42,86 @@
                 </select>
             </div>
         </div>
+
+        <div class="row expanded">
+            <div class="large-12 columns">
+                &nbsp;
+            </div>
+        </div>
+        <div class="row expanded">
+            <div class="large-2 columns">
+                <label for="importance_level_id">Importance</label>
+                <select name="importance_level_id">
+                    <?php
+                    foreach ($importanceLevels as $k => $v) {
+                        $default = "";
+                        if ($v["id"] == $task->importance_level_id) {
+                            $default = " selected ";
+                        }
+                        echo '<option value="' . $v["id"] . '"' . $default . '>' . $v["name"] . '</option>';
+                    }
+                    ?>
+                </select>
+            </div>
+            <div class="large-2 columns">
+                <label for="urgency_level_id">Urgency</label>
+                <select name="urgency_level_id">
+                    <?php
+                    foreach ($urgencyLevels as $k => $v) {
+                        $default = "";
+                        if ($v["id"] == $task->urgency_level_id) {
+                            $default = " selected ";
+                        }
+                        echo '<option value="' . $v["id"] . '"' . $default . '>' . $v["name"] . '</option>';
+                    }
+                    ?>
+                </select>
+            </div>
+            <div class="large-2 columns">
+                <label for="risk_level_id">Risk</label>
+                <select name="risk_level_id">
+                    <?php
+                    foreach ($riskLevels as $k => $v) {
+                        $default = "";
+                        if ($v["id"] == $task->risk_level_id) {
+                            $default = " selected ";
+                        }
+                        echo '<option value="' . $v["id"] . '"' . $default . '>' . $v["name"] . '</option>';
+                    }
+                    ?>
+                </select>
+            </div>
+            <div class="large-3 columns">
+                <label for="gain_level_id">Gain </label>
+                <select name="gain_level_id">
+                    <?php
+                    foreach ($gainLevels as $k => $v) {
+                        $default = "";
+                        if ($v["id"] == $task->gain_level_id) {
+                            $default = " selected ";
+                        }
+                        echo '<option value="' . $v["id"] . '"' . $default . '>' . $v["name"] . '</option>';
+                    }
+                    ?>
+                </select>
+            </div>
+            <div class="large-3 columns">
+                <label for="reward_category_id">Reward</label>
+                <select name="reward_category_id">
+                    <?php
+                    foreach ($rewardsCategory as $k => $v) {
+                        $default = "";
+                        if ($v["id"] == $task->reward_category_id) {
+                            $default = " selected ";
+                        }
+                        echo '<option value="' . $v["id"] . '"' . $default . '>' . $v["name"] . '</option>';
+                    }
+                    ?>
+                </select>
+
+            </div>
+        </div>
+
         <div class="row expanded">
             <div class="large-12 columns">
                 <label for="description">Description</label>
@@ -52,17 +132,59 @@
         <textarea name="template" id="template" cols="40" rows="5" ><?php echo $task->description; ?></textarea><br/><br/>
          -->
         <div class="row expanded">
-            <div class="large-4 columns">
+            <div class="large-2 columns">
                 <label for="start_date">Start Date</label>
                 <input autocomplete="off" type="text" id="start_date" name="start_date" value="<?php echo $task->start_date; ?>" /><br/><br/>
             </div>
-            <div class="large-4 columns">
+            <div class="large-2 columns">
                 <label for="end_date">End Date</label>
                 <input autocomplete="off" type="text" id="end_date" name="end_date" value="<?php echo $task->end_date; ?>" /><br/><br/>
             </div>
-            <div class="large-4 columns">
+            <div class="large-2 columns">
                 <label for="target_date">Target Date</label>
                 <input autocomplete="off" type="text" id="target_date" name="target_date" value="<?php echo $task->target_date; ?>" /><br/><br/>
+            </div>
+            <div class="large-2 columns">
+                <label for="cycle_id">Cycles</label>
+                <select name="cycle_id">
+                    <?php
+                    foreach ($cycles as $k => $v) {
+                        $default = "";
+                        if ($v["id"] == $task->cycle_id) {
+                            $default = " selected ";
+                        }
+                        echo '<option value="' . $v["id"] . '"' . $default . '>' . $v["name"] . '</option>';
+                    }
+                    ?>
+                </select>
+            </div>
+                <div class="large-2 columns">
+                <label for="scale_id">Scale</label>
+                <select name="scale_id">
+                    <?php
+                    foreach ($scales as $k => $v) {
+                        $default = "";
+                        if ($v["id"] == $task->scale_id) {
+                            $default = " selected ";
+                        }
+                        echo '<option value="' . $v["id"] . '"' . $default . '>' . $v["name"] . '</option>';
+                    }
+                    ?>
+                </select>
+            </div>
+                <div class="large-2 columns">
+                <label for="scope_id">Scope</label>
+                <select name="scope_id">
+                    <?php
+                    foreach ($scopes as $k => $v) {
+                        $default = "";
+                        if ($v["id"] == $task->scope_id) {
+                            $default = " selected ";
+                        }
+                        echo '<option value="' . $v["id"] . '"' . $default . '>' . $v["name"] . '</option>';
+                    }
+                    ?>
+                </select>
             </div>
         </div>
         <input type="submit" name="submit" value="Update Task" class="button" />        <a href="/tasks" >Cancel</a>

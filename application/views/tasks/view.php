@@ -21,6 +21,14 @@ if ($this->session->flashdata("success") !== FALSE) {
                     <th>Status</th>
                     <th>Date</th>
                     <th>Target Date</th>
+                    <th>Importance</th>
+                    <th>Urgency</th>
+                    <th>Risk</th>
+                    <th>Gain</th>
+                    <th>Reward Category</th>
+                    <th>Cycle</th>
+                    <th>Scale</th>
+                    <th>Scope</th>
                     <th>Notes</th>
                     <th>Artifacts</th>
                     <th>Actions</th>
@@ -76,6 +84,14 @@ if ($this->session->flashdata("success") !== FALSE) {
                             echo "<td>" . $tasksStatuses[$v["status_id"]]["name"]  . "</td>";
                             echo "<td>" . $v["create_date"] . "</td>";
                             echo "<td>" . $v["target_date"] . "</td>";
+                            echo "<td>" . $importanceLevels[$v["importance_level_id"]]["name"] . "</td>"; 
+                            echo "<td>" . $urgencyLevels[$v["urgency_level_id"]]["name"] . "</td>";
+                            echo "<td>" . $riskLevels[$v["risk_level_id"]]["name"] . "</td>";
+                            echo "<td>" . $gainLevels[$v["gain_level_id"]]["name"] . "</td>";
+                            echo "<td>" . $rewardsCategory[$v['reward_category_id']]['name'] . "</td>";
+                            echo "<td>" . $cycles[$v["cycle_id"]]["name"] . "</td>";
+                            echo "<td>" . $scales[$v["scale_id"]]["name"] . "</td>";
+                            echo "<td>" . $scopes[$v["scope_id"]]["name"] . "</td>";
                             echo "<td>" . "ToDo" . "</td>";
                             echo "<td>" . "ToDo" . "</td>";
                             echo "<td><a href='/tasks/edit/" . $v["id"] . "'>Edit</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href='/tasks/delete/" . $v["id"] . "' onclick='return confirm_delete()'>Delete</a></td>";
@@ -119,7 +135,11 @@ if ($this->session->flashdata("success") !== FALSE) {
                 <select name="status">
                     <?php
                     foreach ($tasksStatuses as $k => $v) {
-                        echo '<option value="' . $v["id"] . '">' . $v["name"] . '</option>';
+                        $default = "";
+                        if ($v["id"] == 1) {
+                            $default = " selected ";
+                        }
+                        echo '<option value="' . $v["id"] . '"' . $default . '>' . $v["name"] . '</option>';
                     }
                     ?>
                 </select>
@@ -127,22 +147,143 @@ if ($this->session->flashdata("success") !== FALSE) {
         </div>
         <div class="row expanded">
             <div class="large-12 columns">
+                &nbsp;
+            </div>
+        </div>
+        <div class="row expanded">
+            <div class="large-2 columns">
+                <label for="importance_level_id">Importance</label>
+                <select name="importance_level_id">
+                    <?php
+                    foreach ($importanceLevels as $k => $v) {
+                        $default = "";
+                        if ($v["default"] == true) {
+                            $default = " selected ";
+                        }
+                        echo '<option value="' . $v["id"] . '"' . $default . '>' . $v["name"] . '</option>';
+                    }
+                    ?>
+                </select>
+            </div>
+            <div class="large-2 columns">
+                <label for="urgency_level_id">Urgency</label>
+                <select name="urgency_level_id">
+                    <?php
+                    foreach ($urgencyLevels as $k => $v) {
+                        $default = "";
+                        if ($v["default"] == true) {
+                            $default = " selected ";
+                        }
+                        echo '<option value="' . $v["id"] . '"' . $default . '>' . $v["name"] . '</option>';
+                    }
+                    ?>
+                </select>
+            </div>
+            <div class="large-2 columns">
+                <label for="risk_level_id">Risk</label>
+                <select name="risk_level_id">
+                    <?php
+                    foreach ($riskLevels as $k => $v) {
+                        $default = "";
+                        if ($v["default"] == true) {
+                            $default = " selected ";
+                        }
+                        echo '<option value="' . $v["id"] . '"' . $default . '>' . $v["name"] . '</option>';
+                    }
+                    ?>
+                </select>
+            </div>
+            <div class="large-3 columns">
+                <label for="gain_level_id">Gain </label>
+                <select name="gain_level_id">
+                    <?php
+                    foreach ($gainLevels as $k => $v) {
+                        $default = "";
+                        if ($v["default"] == true) {
+                            $default = " selected ";
+                        }
+                        echo '<option value="' . $v["id"] . '"' . $default . '>' . $v["name"] . '</option>';
+                    }
+                    ?>
+                </select>
+            </div>
+            <div class="large-3 columns">
+                <label for="reward_category_id">Reward</label>
+                <select name="reward_category_id">
+                    <?php
+                    foreach ($rewardsCategory as $k => $v) {
+                        $default = "";
+                        if ($v["default"] == true) {
+                            $default = " selected ";
+                        }
+                        echo '<option value="' . $v["id"] . '"' . $default . '>' . $v["name"] . '</option>';
+                    }
+                    ?>
+                </select>
+
+            </div>
+        </div>
+
+        <div class="row expanded">
+            <div class="large-12 columns">
                 <label for="description">Description</label>
                 <textarea name="description" id="description" cols="40" rows="5" placeholder="As detailed and clear description of the problem, proposed solution and actions required to complete this task."></textarea><br/><br/>
             </div>
         </div>
         <div class="row expanded">
-            <div class="large-4 columns">
+            <div class="large-2 columns">
                 <label for="start_date">Start Date</label>
                 <input autocomplete="off" type="text" id="start_date" name="start_date" value="<?php echo date('Y/m/d H:i:s'); ?>" /><br/><br/>
             </div>
-            <div class="large-4 columns">
+            <div class="large-2 columns">
                 <label for="end_date">End Date</label>
                 <input autocomplete="off" type="text" id="end_date" name="end_date" value="<?php echo date('Y/m/d H:i:s'); ?>" /><br/><br/>
             </div>
-            <div class="large-4 columns">
+            <div class="large-2 columns">
                 <label for="target_date">Target Date</label>
                 <input autocomplete="off" type="text" id="target_date" name="target_date" value="<?php echo date('Y/m/d H:i:s'); ?>" /><br/><br/>
+            </div>
+            <div class="large-2 columns">
+                <label for="cycle_id">Cycles</label>
+                <select name="cycle_id">
+                    <?php
+                    foreach ($cycles as $k => $v) {
+                        $default = "";
+                        if ($v["default"] == true) {
+                            $default = " selected ";
+                        }
+                        echo '<option value="' . $v["id"] . '"' . $default . '>' . $v["name"] . '</option>';
+                    }
+                    ?>
+                </select>
+            </div>
+                <div class="large-2 columns">
+                <label for="scale_id">Scale</label>
+                <select name="scale_id">
+                    <?php
+                    foreach ($scales as $k => $v) {
+                        $default = "";
+                        if ($v["default"] == true) {
+                            $default = " selected ";
+                        }
+                        echo '<option value="' . $v["id"] . '"' . $default . '>' . $v["name"] . '</option>';
+                    }
+                    ?>
+                </select>
+            </div>
+                <div class="large-2 columns">
+                <label for="scope_id">Scope</label>
+                <select name="scope_id">
+                    <?php
+                    foreach ($scopes as $k => $v) {
+                        $default = "";
+                        if ($v["default"] == true) {
+                            $default = " selected ";
+                        }
+                        echo '<option value="' . $v["id"] . '"' . $default . '>' . $v["name"] . '</option>';
+                    }
+                    ?>
+                </select>
             </div>
         </div>
     </div>

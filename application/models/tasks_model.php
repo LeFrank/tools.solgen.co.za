@@ -32,7 +32,15 @@ class tasks_model extends CI_Model {
             'start_date' => date('Y/m/d H:i', strtotime($this->input->post('start_date'))),
             'end_date' => date('Y/m/d H:i', strtotime($this->input->post('end_date'))),
             'target_date' => date('Y/m/d H:i', strtotime($this->input->post('target_date'))),
-            'user_id' => $this->session->userdata("user")->id
+            'user_id' => $this->session->userdata("user")->id,
+            'importance_level_id' => $this->input->post('importance_level_id'),
+            'urgency_level_id' => $this->input->post('urgency_level_id'),
+            'risk_level_id' => $this->input->post('risk_level_id'),
+            'gain_level_id' => $this->input->post('gain_level_id'),
+            'reward_category_id' => $this->input->post('reward_category_id'),
+            'cycle_id' => $this->input->post('cycle_id'),
+            'scale_id' => $this->input->post('scale_id'),
+            'scope_id' => $this->input->post('scope_id')
         );
         $this->db->insert($this->tn, $data);
         return $this->db->insert_id();
@@ -113,7 +121,15 @@ class tasks_model extends CI_Model {
             'start_date' => date('Y/m/d H:i', strtotime($this->input->post('start_date'))),
             'end_date' => date('Y/m/d H:i', strtotime($this->input->post('end_date'))),
             'target_date' => date('Y/m/d H:i', strtotime($this->input->post('target_date'))),
-            'user_id' => $this->session->userdata("user")->id
+            'user_id' => $this->session->userdata("user")->id,
+            'importance_level_id' => $this->input->post('importance_level_id'),
+            'urgency_level_id' => $this->input->post('urgency_level_id'),
+            'risk_level_id' => $this->input->post('risk_level_id'),
+            'gain_level_id' => $this->input->post('gain_level_id'),
+            'reward_category_id' => $this->input->post('reward_category_id'),
+            'cycle_id' => $this->input->post('cycle_id'),
+            'scale_id' => $this->input->post('scale_id'),
+            'scope_id' => $this->input->post('scope_id')     
         );
         $this->db->where('id', $this->input->post('id'));
         return $this->db->update($this->tn, $data);
@@ -125,7 +141,8 @@ class tasks_model extends CI_Model {
      */
     public function markAsDone($id){
         $data = array(
-            'status_id' => 2
+            'status_id' => 2,
+            'end_date' => date('Y/m/d H:i')
         );
         $this->db->where('id', $id);
         return $this->db->update($this->tn, $data);
