@@ -6,6 +6,8 @@
             &nbsp;&nbsp;|&nbsp;&nbsp;
             <a href="/tasks/history">History</a>
             &nbsp;&nbsp;|&nbsp;&nbsp;
+            <a href="/tasks/dashboard">Dashboard</a>
+            &nbsp;&nbsp;|&nbsp;&nbsp;
             <a href="/tasks/domains/manage">Manage Domains</a>
             &nbsp;&nbsp;|&nbsp;&nbsp;
             <a href="/tasks/status/manage">Manage Status Types</a>

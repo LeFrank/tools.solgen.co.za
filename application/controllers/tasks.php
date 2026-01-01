@@ -311,6 +311,34 @@ class Tasks extends CI_Controller {
         }
     }
 
+    public function history(){
+        $this->load->library('session');
+        $this->load->helper('form');
+        $this->load->helper('url');
+        $this->load->helper("date_helper");
+        $this->load->helper("expense_statistics_helper");
+        $this->load->library('form_validation');
+        $userId = $this->session->userdata("user")->id;
+        $data["tasksHistory"] = $this->tasks_model->getTasks($userId, 100);
+        $data["tasksDomains"] = mapKeyToId($this->tasks_domains_model->get_user_tasks_domains($userId, 50));
+        $data["tasksStatuses"] = mapKeyToId($this->tasks_status_model->get_user_tasks_statuses($userId), false);
+        $data["importanceLevels"] = $this->importanceLevels;
+        $data["urgencyLevels"] = $this->urgencyLevels;
+        $data["riskLevels"] = $this->riskLevels;
+        $data["gainLevels"] = $this->gainLevels;
+        $data["rewardsCategory"] = $this->rewardsCategory;
+        $data["cycles"] = $this->cycles;
+        $data["scales"] = $this->scales;
+        $data["scopes"] = $this->scopes;
+        $data["startAndEndDateforMonth"] = getStartAndEndDateforYear( date('Y'));
+        $data["tasks"] = $this->tasks_model->getTasksByDateRange($data["startAndEndDateforMonth"][0], $data["startAndEndDateforMonth"][1], $this->session->userdata("user")->id);
+        $data["history_table"] = $this->load->view('tasks/history_table', $data, true);
+        $this->load->view('header', getPageTitle($data, $this->toolName, "History", ""));
+        $this->load->view('tasks/tasks_nav');
+        $this->load->view('tasks/history', $data);
+        $this->load->view('footer');            
+    }
+
     public function update() {
         $this->load->helper('form');
         $this->load->helper('url');
@@ -344,6 +372,28 @@ class Tasks extends CI_Controller {
             $this->load->view('tasks/view', $data);
             $this->load->view('footer');
         }
+    }
+
+    public function filteredSearch() {
+        $userId = $this->session->userdata("user")->id;
+        $data["tasksHistory"] = $this->tasks_model->getTasks($userId, 100);
+        $data["tasksDomains"] = mapKeyToId($this->tasks_domains_model->get_user_tasks_domains($userId, 50));
+        $data["tasksStatuses"] = mapKeyToId($this->tasks_status_model->get_user_tasks_statuses($userId), false);
+        $data["importanceLevels"] = $this->importanceLevels;
+        $data["urgencyLevels"] = $this->urgencyLevels;
+        $data["riskLevels"] = $this->riskLevels;
+        $data["gainLevels"] = $this->gainLevels;
+        $data["rewardsCategory"] = $this->rewardsCategory;
+        $data["cycles"] = $this->cycles;
+        $data["scales"] = $this->scales;
+        $data["scopes"] = $this->scopes;
+        $data["tasks"] = $this->tasks_model->getTasksByCriteria($userId);
+        // $this->load->view('tasks/history_table', $data);      
+        
+        $this->load->helper('url');
+        $this->load->helper('form');
+        $data["startAndEndDateforMonth"] = array($this->input->post("fromDate"), $this->input->post("toDate"));
+        echo $this->load->view('tasks/history_table', $data, true);
     }
 
     public function MarkAsDone($id){

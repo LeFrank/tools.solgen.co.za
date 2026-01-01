@@ -262,6 +262,9 @@ $route['tasks/status/edit/(:num)'] = 'tasksStatus/edit/$1';
 $route['tasks/status/update'] = 'tasksStatus/update';
 $route['tasks/status/delete/(:num)'] = 'tasksStatus/delete/$1';
 $route['tasks/status/view/(:num)'] = 'tasksStatus/view/$1';
+$route['tasks/history'] = 'tasks/history';
+$route['tasks/dashboard'] = 'tasks/dashboard';
+$route['tasks/filter-search'] = 'tasks/filteredSearch';
 
 
 

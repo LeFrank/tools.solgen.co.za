@@ -109,6 +109,79 @@ class tasks_model extends CI_Model {
 
 
     /**
+     * Get tasks by date range. Can be filtered by user and delimited
+     * 
+     * @param type $startDate
+     * @param type $endDate
+     * @param type $userId
+     * @param type $limit
+     * @param type $offset
+     * @param type $orderBy
+     * @param type $direction
+     * @return null
+     */
+    public function getTasksByDateRange($startDate, $endDate, $userId = null, $limit = null, $offset = 0 , $orderBy=null, $direction = "asc") {
+        if(null != $orderBy){
+            $this->db->order_by($orderBy, $direction);
+        }else{
+            $this->db->order_by("create_date", "desc");
+        }
+        if ($userId === null) {
+            return null;
+        }
+        if (null == $limit) {
+            $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'create_date >=' => $startDate, 'create_date <= ' => $endDate));
+        } else {
+            $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'create_date >=' => $startDate, 'create_date <= ' => $endDate), $limit, $offset);
+        }
+//        echo $this->db->last_query();
+        return $query->result_array();
+    }
+
+    /**
+     * 
+     * @param type $userId
+     * @param type $limit
+     * @param type $offset
+     * @return type
+     */
+    public function getTasksByCriteria($userId = null, $limit = null, $offset = 0) {
+        if (null != $userId) {
+            $this->db->order_by("start_date", "desc");
+            // if ($this->input->post("fromAmount") != $this->input->post("toAmount")) {
+            //     $this->db->where("amount >=", $this->input->post("fromAmount"));
+            //     $this->db->where("amount <=", $this->input->post("toAmount"));
+            // }
+            if ($this->input->post("keyword") != "") {
+                $this->db->like("description", $this->input->post("keyword"));
+            }
+            $tasksDomainArr = $this->input->post("tasksDomains");
+            $tasksStatusdArr = $this->input->post("tasksStatuses");
+            
+
+
+
+
+
+
+            if (!empty($tasksDomainArr) && $tasksDomainArr[0] != "all") {
+                $this->db->where_in("domain_id", array_map('intval', $tasksDomainArr));
+            }
+            if (!empty($tasksStatusdArr) && $tasksStatusdArr[0] != "all") {
+                $this->db->where_in("status_id", array_map('intval', $tasksStatusdArr));
+            }
+            if (null == $limit) {
+                $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'start_date >=' => $this->input->post("fromDate"), 'start_date <= ' => $this->input->post("toDate")));
+            } else {
+                $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'start_date >=' => $this->input->post("fromDate"), 'start_date <= ' => $this->input->post("toDate")), $limit, $offset);
+            }
+            // echo $this->db->last_query();
+            return $query->result_array();
+        }
+    }
+
+
+    /**
      * 
      * @return type
      */
