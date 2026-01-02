@@ -319,7 +319,6 @@ class Tasks extends CI_Controller {
         $this->load->helper("expense_statistics_helper");
         $this->load->library('form_validation');
         $userId = $this->session->userdata("user")->id;
-        $data["tasksHistory"] = $this->tasks_model->getTasks($userId, 100);
         $data["tasksDomains"] = mapKeyToId($this->tasks_domains_model->get_user_tasks_domains($userId, 50));
         $data["tasksStatuses"] = mapKeyToId($this->tasks_status_model->get_user_tasks_statuses($userId), false);
         $data["importanceLevels"] = $this->importanceLevels;
@@ -336,6 +335,28 @@ class Tasks extends CI_Controller {
         $this->load->view('header', getPageTitle($data, $this->toolName, "History", ""));
         $this->load->view('tasks/tasks_nav');
         $this->load->view('tasks/history', $data);
+        $this->load->view('footer');            
+    }
+
+    public function dashboard(){
+        $this->load->helper("date_helper");
+        $userId = $this->session->userdata("user")->id;
+        $data["tasksDomains"] = mapKeyToId($this->tasks_domains_model->get_user_tasks_domains($userId, 50));
+        $data["tasksStatuses"] = mapKeyToId($this->tasks_status_model->get_user_tasks_statuses($userId), false);
+        $data["importanceLevels"] = $this->importanceLevels;
+        $data["urgencyLevels"] = $this->urgencyLevels;
+        $data["riskLevels"] = $this->riskLevels;
+        $data["gainLevels"] = $this->gainLevels;
+        $data["rewardsCategory"] = $this->rewardsCategory;
+        $data["cycles"] = $this->cycles;
+        $data["scales"] = $this->scales;
+        $data["scopes"] = $this->scopes;
+        $data["startAndEndDateforMonth"] = getStartAndEndDateforYear( date('Y'));
+        $data["tasks"] = $this->tasks_model->getTasks(  $this->session->userdata("user")->id);
+        // $data["dashboard_overview"] = $this->load->view('tasks/dashboard_overview', $data, true);
+        $this->load->view('header', getPageTitle($data, $this->toolName, "Dashboard", ""));
+        $this->load->view('tasks/tasks_nav');
+        $this->load->view('tasks/dashboard_overview', $data);
         $this->load->view('footer');            
     }
 
