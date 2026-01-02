@@ -4,7 +4,7 @@
     <div class="large-12 columns" >
         <div class="row expanded">
             <div class="large-12 columns" >
-                <h1>Dashboard Overview</h1>
+                <h1>Dashboard Overview ( Tasks: <?php echo sizeof($tasks); ?> )</h1>
             </div>
         </div>
         <div class="row expanded">
@@ -22,7 +22,7 @@
                                 $taskCount++;
                             }
                     }
-                    echo "<p>&nbsp;&nbsp;&nbsp;&nbsp;" . $v['name'] . ": " . $taskCount . "</p>";
+                    echo "<p>&nbsp;&nbsp;&nbsp;&nbsp;". (!empty($v["emoji"]) ? json_decode($v["emoji"]) : "&nbsp;&nbsp;&nbsp;&nbsp;") ." ". $v['name'] . ": " . $taskCount . "</p>";
                     }
                     echo "</div>";
                     ?>
@@ -206,6 +206,45 @@
                     }
                     echo "</div>";
                 ?>
+            </div>  
+            <div class="large-4 columns">
+                <h3>Forgotten or Abandoned</h3>
+                <!-- Forgotten tasks are tasks where the start date has passed but the task is still in state that is None, Not Started -->
+                <?php
+                    $forgottenCount = 0;
+                    $currentDate = date('Y-m-d');
+                    foreach ($tasks as $task) {
+                        if (in_array($task['status_id'], array(1,3,6,7)) && ($task['start_date'] < $currentDate)) {
+                            $forgottenCount++;
+                        }
+                    }
+                    echo "<p>Forgotten or Abandoned Tasks: " . $forgottenCount . "</p>"; 
+                    ?>
+            </div>  
+            <div class="large-4 columns">
+                <h3>Delayed</h3>
+                <!-- Delayed tasks are tasks where the end date has passed but the task is still in a non-completed state -->
+                <?php
+                    $delayedCount = 0;
+                    $currentDate = date('Y-m-d');
+                    foreach ($tasks as $task) {
+                        if (!in_array($task['status_id'], array(2,6,7)) && ($task['end_date'] < $currentDate)) {
+                            $delayedCount++;
+                        }
+                    }
+                    echo "<p>Delayed Tasks: " . $delayedCount . "</p>"; 
+                    ?>
+            </div>  
+        </div>
+        <br/>
+        <div class="row expanded">
+            <div class="large-6 columns">
+                <h3>General Age Range of Incomplete Tasks</h3>
+                <div>&nbsp;</div>
+            </div>  
+            <div class="large-6 columns">
+                <h3>General Overview of Completed Tasks</h3>
+                <div></div>
             </div>  
         </div>
     </div>
