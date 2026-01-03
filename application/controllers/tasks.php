@@ -79,12 +79,12 @@ class Tasks extends CI_Controller {
             "default" => false, 
             "description" => "Reduces dependency and improves self-sufficiency." ),
         3 => array(
-            "name" => "Dependency reduction", 
+            "name" => "Self-Sufficiency Progress", 
             "id" => 3, "order" =>3, 
             "default" => false, 
             "description" => "Progress in foundational skills and basic financial stability " ),
         4 => array(
-            "name" => "Dependency reduction", 
+            "name" => "Comfort and stadbility", 
             "id" => 4, "order" =>4, 
             "default" => false, 
             "description" => "Noticeable inconvenience requiring modest time/money to fix; no long-term harm." ),
