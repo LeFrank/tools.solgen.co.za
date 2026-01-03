@@ -32,7 +32,7 @@ function getTaskAgeByStartDateAndEndDate($task){
     return $age;
 }
 
-function getTaskTargettedAgeByStartDateAndEndDate($task){
+function getTaskTargettedAgeByStartDate($task){
     $age = round(( strtotime($task["target_date"]) - strtotime($task["start_date"])) / 86400);
     return $age;
 }   

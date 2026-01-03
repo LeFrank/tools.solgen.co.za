@@ -244,7 +244,7 @@
                     <?php
                         echo "<p>Number of Incomplete Tasks: ".sizeof($tasksPastStartDate) ."</p>";
                         foreach($tasksPastStartDateAged as $task){
-                            echo "<p>Task: <b>". $task["name"] ."</b> | Age (days): <b>". $task["age"] ."</b></p>";
+                            echo "<p>Task: <b>". $task["name"] ."</b> | Age (days): <b>". $task["age"] ." | Targetted Age (days): <b>". $task["targetted_age"] ."</b></p>";
                         }
                     ?>
                 </div>

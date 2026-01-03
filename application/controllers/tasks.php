@@ -364,13 +364,14 @@ class Tasks extends CI_Controller {
         foreach($data["tasksPastStartDate"] as $task){
             $age = getTaskAgeByCreateDate($task);
             $task["age"] = $age;
+            $task["targetted_age"] = getTaskTargettedAgeByStartDate($task);
             $data["tasksPastStartDateAged"][] = $task;
         }
         foreach($data["tasks"] as $task){
             if($task["status_id"] == 2){
                 // print_r($task);
                 $age = getTaskAgeByStartDateAndEndDate($task);
-                $task["targetted_age"] = getTaskTargettedAgeByStartDateAndEndDate($task);
+                $task["targetted_age"] = getTaskTargettedAgeByStartDate($task);
                 $task["age"] = $age;
                 $completedTasksAges[] = $task;
             }
