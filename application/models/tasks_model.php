@@ -180,6 +180,22 @@ class tasks_model extends CI_Model {
         }
     }
 
+    public function getTasksPastStartDate($userId = null, $currentDate = null, $statuses = array(), $limit = null, $offset = 0) {
+        if (null != $userId) {
+            $this->db->order_by("start_date", "asc");
+            if (!empty($statuses)) {
+                $this->db->where_in("status_id", array_map('intval', $statuses));
+            }
+            if (null == $limit) {
+                $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'start_date <=' => $currentDate));
+            } else {
+                $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'start_date <=' => $currentDate), $limit, $offset);
+            }
+            // echo $this->db->last_query();
+            return $query->result_array();
+        }
+    }
+
 
     /**
      * 

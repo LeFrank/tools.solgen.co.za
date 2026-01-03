@@ -240,11 +240,25 @@
         <div class="row expanded">
             <div class="large-6 columns">
                 <h3>General Age Range of Incomplete Tasks</h3>
-                <div>&nbsp;</div>
+                <div>
+                    <?php
+                        echo "<p>Number of Incomplete Tasks: ".sizeof($tasksPastStartDate) ."</p>";
+                        foreach($tasksPastStartDateAged as $task){
+                            echo "<p>Task: <b>". $task["name"] ."</b> | Age (days): <b>". $task["age"] ."</b></p>";
+                        }
+                    ?>
+                </div>
             </div>  
             <div class="large-6 columns">
                 <h3>General Overview of Completed Tasks</h3>
-                <div></div>
+                <div>
+                    <?php 
+                        echo "<p>Number of Completed Tasks: ". sizeof($completedTasksAgesArr) ."</p>";  
+                        foreach($completedTasksAgesArr as $task){
+                            echo "<p>Task: <b>". $task["name"] ."</b> | Age (days): <b>". $task["age"] ."</b> | Targetted Age (days): <b>". $task["targetted_age"] ."</b></p>";
+                        }
+                    ?>
+                </div>
             </div>  
         </div>
     </div>
