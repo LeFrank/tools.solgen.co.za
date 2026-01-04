@@ -194,7 +194,7 @@
 <script src="/js/third_party/ckeditor/ckeditor.js"></script>
 <link rel="stylesheet" type="text/css" href="/css/jquery.datetimepicker.css"/ >
 <script src="/js/jquery.datetimepicker.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>'
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script type="text/javascript">
     $(function() {
         CKEDITOR.replace('description');
