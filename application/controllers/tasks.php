@@ -330,7 +330,15 @@ class Tasks extends CI_Controller {
         $data["scales"] = $this->scales;
         $data["scopes"] = $this->scopes;
         $data["startAndEndDateforMonth"] = getStartAndEndDateforYear( date('Y'));
-        $data["tasks"] = $this->tasks_model->getTasksByDateRange($data["startAndEndDateforMonth"][0], $data["startAndEndDateforMonth"][1], $this->session->userdata("user")->id);
+        // print_r($data["startAndEndDateforMonth"]);
+        $this->load->helper("tasks_helper");
+        $tasks = $this->tasks_model->getTasksByDateRange($data["startAndEndDateforMonth"][0], $data["startAndEndDateforMonth"][1], $userId);
+        foreach($tasks as $task){
+            $age = getTaskAgeByCreateDate($task);
+            $task["age"] = $age;
+            $data["tasks"][] = $task;
+        }
+        // print_r($data["tasks"]);
         $data["history_table"] = $this->load->view('tasks/history_table', $data, true);
         $this->load->view('header', getPageTitle($data, $this->toolName, "History", ""));
         $this->load->view('tasks/tasks_nav');
@@ -379,11 +387,56 @@ class Tasks extends CI_Controller {
         $data["completedTasksAgesArr"] = $completedTasksAges;
         $data["incompleteAverageAge"] = 0;
         $incomepleteAverageAgeRange = 0;
+        $data["dashboard_content"] = $this->load->view('tasks/dashboard_content', $data, true);
         // $data["dashboard_overview"] = $this->load->view('tasks/dashboard_overview', $data, true);
         $this->load->view('header', getPageTitle($data, $this->toolName, "Dashboard", ""));
         $this->load->view('tasks/tasks_nav');
         $this->load->view('tasks/dashboard_overview', $data);
         $this->load->view('footer');            
+    }
+
+    public function dashboardFilteredSearch() {
+        $this->load->helper("date_helper");
+        $this->load->helper("tasks_helper");
+        $userId = $this->session->userdata("user")->id;
+        $data["tasksDomains"] = mapKeyToId($this->tasks_domains_model->get_user_tasks_domains($userId, 50));
+        $data["tasksStatuses"] = mapKeyToId($this->tasks_status_model->get_user_tasks_statuses($userId), false);
+        $data["importanceLevels"] = $this->importanceLevels;
+        $data["urgencyLevels"] = $this->urgencyLevels;
+        $data["riskLevels"] = $this->riskLevels;
+        $data["gainLevels"] = $this->gainLevels;
+        $data["rewardsCategory"] = $this->rewardsCategory;
+        $data["cycles"] = $this->cycles;
+        $data["scales"] = $this->scales;
+        $data["scopes"] = $this->scopes;
+        $data["startAndEndDateforMonth"] = array($this->input->post("fromDate"), $this->input->post("toDate"));
+        $data["tasks"] = $this->tasks_model->getTasksByCriteria( $userId );
+        $incompleteTasksAges = 0;
+        $statusesOfIncompleteTasks = array(1,3,4,5,6,7,8);
+        $completeTasks = array(2);
+        $completedTasksAges = array();
+        $data["tasksPastStartDate"] = $this->tasks_model->getTasksPastStartDate($userId, date('Y-m-d'), $statusesOfIncompleteTasks);
+        // print_r($data["tasksPastStartDate"]);
+        $data["tasksPastStartDateAged"] = array();
+        foreach($data["tasksPastStartDate"] as $task){
+            $age = getTaskAgeByCreateDate($task);
+            $task["age"] = $age;
+            $task["targetted_age"] = getTaskTargettedAgeByStartDate($task);
+            $data["tasksPastStartDateAged"][] = $task;
+        }
+        foreach($data["tasks"] as $task){
+            if($task["status_id"] == 2){
+                // print_r($task);
+                $age = getTaskAgeByStartDateAndEndDate($task);
+                $task["targetted_age"] = getTaskTargettedAgeByStartDate($task);
+                $task["age"] = $age;
+                $completedTasksAges[] = $task;
+            }
+        }
+        $data["completedTasksAgesArr"] = $completedTasksAges;
+        $data["incompleteAverageAge"] = 0;
+        $incomepleteAverageAgeRange = 0;
+        echo $this->load->view('tasks/dashboard_content', $data, true);
     }
 
     public function update() {
@@ -434,7 +487,14 @@ class Tasks extends CI_Controller {
         $data["cycles"] = $this->cycles;
         $data["scales"] = $this->scales;
         $data["scopes"] = $this->scopes;
-        $data["tasks"] = $this->tasks_model->getTasksByCriteria($userId);
+        // $data["tasks"] = $this->tasks_model->getTasksByCriteria($userId);
+        $this->load->helper("tasks_helper");
+        $tasks = $this->tasks_model->getTasksByCriteria($userId);
+        foreach($tasks as $task){
+            $age = getTaskAgeByCreateDate($task);
+            $task["age"] = $age;
+            $data["tasks"][] = $task;
+        }
         // $this->load->view('tasks/history_table', $data);      
         
         $this->load->helper('url');

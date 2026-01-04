@@ -264,6 +264,7 @@ $route['tasks/status/delete/(:num)'] = 'tasksStatus/delete/$1';
 $route['tasks/status/view/(:num)'] = 'tasksStatus/view/$1';
 $route['tasks/history'] = 'tasks/history';
 $route['tasks/dashboard'] = 'tasks/dashboard';
+$route['tasks/dashboard_filter'] = 'tasks/dashboardFilteredSearch';
 $route['tasks/filter-search'] = 'tasks/filteredSearch';
 
 

@@ -134,7 +134,7 @@ class tasks_model extends CI_Model {
         } else {
             $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'create_date >=' => $startDate, 'create_date <= ' => $endDate), $limit, $offset);
         }
-//        echo $this->db->last_query();
+    //    echo $this->db->last_query();
         return $query->result_array();
     }
 
