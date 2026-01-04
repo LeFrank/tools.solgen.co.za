@@ -158,7 +158,6 @@ class tasks_model extends CI_Model {
             $tasksDomainArr = $this->input->post("tasksDomains");
             $tasksStatusdArr = $this->input->post("tasksStatuses");
             
-            print_r($this->input->post("date_filter"));
             $FilterDateField = "start_date";
             if($this->input->post("date_filter") == "create_date"){
                 $FilterDateField = "create_date";
@@ -265,7 +264,7 @@ class tasks_model extends CI_Model {
      */
     public function markAsUnDone($id){
         $data = array(
-            'status_id' => 0
+            'status_id' => 4
         );
         $this->db->where('id', $id);
         return $this->db->update($this->tn, $data);

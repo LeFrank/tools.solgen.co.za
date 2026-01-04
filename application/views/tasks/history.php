@@ -122,9 +122,6 @@
 <script type="text/javascript" src="/js/third_party/jquery.tablesorter.min.js"></script>
 <script type="text/javascript" src="/js/tasks/history.js" ></script>
 <script type="text/javascript">
-    var expense_types = <?php echo json_encode($expenseTypes); ?>;
-    var payment_methods = <?php echo json_encode($expensePaymentMethod); ?>;
-    var expense_period = <?php echo json_encode($expensePeriods); ?>;
     var default_start_date = "<?php echo $startAndEndDateforMonth[0]; ?>";
     var default_end_date = "<?php echo $startAndEndDateforMonth[1]; ?>";
 </script>

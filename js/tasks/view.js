@@ -10,14 +10,14 @@ $(document).ready(function () {
                 null
             ).done(function (resp) {
                 // console.log(resp);
-                console.log("Task marked as done.");
+                // console.log("Task marked as done.");
                 let resp_value = JSON.parse(resp);
-                console.log(resp_value["status"]);
-                console.log(resp_value["message"]);
+                // console.log(resp_value["status"]);
+                // console.log(resp_value["message"]);
             });
         }else{
             // alert("Checkbox is unchecked.");
-            console.log("Unchecked: " + $(this).val());
+            // console.log("Unchecked: " + $(this).val());
             //mark-as-undone
             $.post(
                 "/tasks/mark-as-undone/" + $(this).val(),
