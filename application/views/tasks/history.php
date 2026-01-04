@@ -8,6 +8,24 @@
                     <div id="validation_errors" ></div>
                     <form accept-charset="utf-8" method="post" action="/tasks/export" id="filterTasksForm" >
                         <div class="row">
+                            <div class="large-12 columns">
+                                <fieldset>
+                                    <legend>Filter by:</legend>
+                                    <div>
+                                        <input type="radio" id="create_date"  name="date_filter" value="create_date" />
+                                        <label for="create_date">Create Date</label>
+                                        <br/>
+                                        <input type="radio" id="start_date" checked="checked" name="date_filter" value="start_date" />
+                                        <label for="start_date">Start Date</label>                                          
+                                        <br/>
+                                        <input type="radio" id="target_date" name="date_filter" value="target_date" />
+                                        <label for="target_date">Target Date</label>
+                                        <br/>
+                                    </div>
+                                </fieldset>
+                            </div>      
+                        </div>
+                        <div class="row">
                             <div class="large-6 columns">
                                 <label> Start Date From
                                     <input type="text" autocomplete="off" name="fromDate" id="fromDate" value="<?php echo $startAndEndDateforMonth[0]; ?>"/>

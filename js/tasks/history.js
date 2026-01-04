@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $('#tasks_history').tablesorter();
+    $('#taskSummary').tablesorter();
 
     $(function () {
         $("#fromDate").datetimepicker();
@@ -12,7 +12,7 @@ $(document).ready(function () {
                 $("#filterTasksForm").serialize()
                 ).done(function (resp) {
             $("#historyGraph").html(resp);
-            $('#tasks_history').tablesorter();
+            $('#taskSummary').tablesorter();
         });
     });
 });

@@ -158,11 +158,13 @@ class tasks_model extends CI_Model {
             $tasksDomainArr = $this->input->post("tasksDomains");
             $tasksStatusdArr = $this->input->post("tasksStatuses");
             
-
-
-
-
-
+            print_r($this->input->post("date_filter"));
+            $FilterDateField = "start_date";
+            if($this->input->post("date_filter") == "create_date"){
+                $FilterDateField = "create_date";
+            }else if($this->input->post("date_filter") == "target_date"){
+                $FilterDateField = "target_date";
+            }                       
 
             if (!empty($tasksDomainArr) && $tasksDomainArr[0] != "all") {
                 $this->db->where_in("domain_id", array_map('intval', $tasksDomainArr));
@@ -171,9 +173,29 @@ class tasks_model extends CI_Model {
                 $this->db->where_in("status_id", array_map('intval', $tasksStatusdArr));
             }
             if (null == $limit) {
-                $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'start_date >=' => $this->input->post("fromDate"), 'start_date <= ' => $this->input->post("toDate")));
+                if($FilterDateField == "create_date")
+                {
+                    $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'create_date >=' => $this->input->post("fromDate"), 'create_date <= ' => $this->input->post("toDate")));
+                }
+                else if($FilterDateField == "target_date")
+                {
+                    $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'target_date >=' => $this->input->post("fromDate"), 'target_date <= ' => $this->input->post("toDate")));
+                }
+                else{
+                    $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'start_date >=' => $this->input->post("fromDate"), 'start_date <= ' => $this->input->post("toDate")));
+                }
             } else {
-                $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'start_date >=' => $this->input->post("fromDate"), 'start_date <= ' => $this->input->post("toDate")), $limit, $offset);
+                if($FilterDateField == "create_date")
+                {
+                    $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'create_date >=' => $this->input->post("fromDate"), 'create_date <= ' => $this->input->post("toDate")), $limit, $offset);
+                }
+                else if($FilterDateField == "target_date")
+                {
+                    $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'target_date >=' => $this->input->post("fromDate"), 'target_date <= ' => $this->input->post("toDate")), $limit, $offset);
+                }
+                else{
+                    $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'start_date >=' => $this->input->post("fromDate"), 'start_date <= ' => $this->input->post("toDate")), $limit, $offset);
+                }
             }
             // echo $this->db->last_query();
             return $query->result_array();
