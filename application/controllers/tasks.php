@@ -490,6 +490,9 @@ class Tasks extends CI_Controller {
         // $data["tasks"] = $this->tasks_model->getTasksByCriteria($userId);
         $this->load->helper("tasks_helper");
         $tasks = $this->tasks_model->getTasksByCriteria($userId);
+        if ($tasks == null || count($tasks) == 0){
+            $data["tasks"] = null;
+        }
         foreach($tasks as $task){
             $age = getTaskAgeByCreateDate($task);
             $task["age"] = $age;
