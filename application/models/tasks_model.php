@@ -172,8 +172,8 @@ class tasks_model extends CI_Model {
                     'user_id' => $userId, 
                     'start_date <=' => date('Y/m/d H:i'), 
                     'target_date >= ' => date('Y/m/d H:i'),
-                    'start_date >=' => $return[0],
-                    'start_date <= ' => $return[1],
+                    // 'start_date >=' => $return[0],
+                    // 'start_date <= ' => $return[1],
                     'target_date >=' => $return[0],
                     'target_date <= ' => $return[1]
                     )
@@ -185,8 +185,8 @@ class tasks_model extends CI_Model {
                         'user_id' => $userId, 
                         'start_date >=' => $startDate, 
                         'target_date <= ' => $endDate, 
-                        'start_date >=' => $return[0],
-                        'start_date <= ' => $return[1],
+                        // 'start_date >=' => $return[0],
+                        // 'start_date <= ' => $return[1],
                         'target_date >=' => $return[0],
                         'target_date <= ' => $return[1],
                         $limit, 
