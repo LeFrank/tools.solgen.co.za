@@ -79,7 +79,7 @@ class Home extends CI_Controller {
         $data["startAndEndDateforMonth"] = getStartAndEndDateforWeek(date("w"), date('Y'));
         // print_r($data["startAndEndDateforMonth"]);
         $this->load->helper("tasks_helper");
-        $tasks = $this->tasks_model->getTasksByDateRangeTargetDate($data["startAndEndDateforMonth"][0], $data["startAndEndDateforMonth"][1], $userId);
+        $tasks = $this->tasks_model->getActiveTasks($userId);
         foreach($tasks as $task){
             $age = getTaskAgeByCreateDate($task);
             $task["age"] = $age;

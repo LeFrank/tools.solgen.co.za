@@ -151,7 +151,11 @@ class tasks_model extends CI_Model {
      * @param type $direction
      * @return null
      */
-    public function getTasksByDateRangeTargetDate($startDate, $endDate, $userId = null, $limit = null, $offset = 0 , $orderBy=null, $direction = "asc") {
+    public function getActiveTasks( $userId = null, $limit = null, $offset = 0 , $orderBy=null, $direction = "asc") {
+        $month = date('m');
+        $year = date('Y');
+        $return[0] = date('Y/m/d H:i',mktime(0, 0, 0, $month, 1,   $year));
+        $return[1] = date('Y/m/d H:i',mktime(23, 59, 0, $month+1, 1-1,   $year));
         if(null != $orderBy){
             $this->db->order_by($orderBy, $direction);
         }else{
@@ -161,9 +165,34 @@ class tasks_model extends CI_Model {
             return null;
         }
         if (null == $limit) {
-            $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'target_date >=' => $startDate, 'target_date <= ' => $endDate));
+            // $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'target_date >=' => $startDate, 'target_date <= ' => $endDate));
+            $query = $this->db->get_where(
+                $this->tn, 
+                array(
+                    'user_id' => $userId, 
+                    'start_date <=' => date('Y/m/d H:i'), 
+                    'target_date >= ' => date('Y/m/d H:i'),
+                    'start_date >=' => $return[0],
+                    'start_date <= ' => $return[1],
+                    'target_date >=' => $return[0],
+                    'target_date <= ' => $return[1]
+                    )
+                );
         } else {
-            $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'target_date >=' => $startDate, 'target_date <= ' => $endDate), $limit, $offset);
+            $query = $this->db->get_where(
+                $this->tn, 
+                array(
+                        'user_id' => $userId, 
+                        'start_date >=' => $startDate, 
+                        'target_date <= ' => $endDate, 
+                        'start_date >=' => $return[0],
+                        'start_date <= ' => $return[1],
+                        'target_date >=' => $return[0],
+                        'target_date <= ' => $return[1],
+                        $limit, 
+                        $offset
+                )
+            );
         }
     //    echo $this->db->last_query();
         return $query->result_array();
