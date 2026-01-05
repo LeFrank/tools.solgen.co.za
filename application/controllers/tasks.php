@@ -141,7 +141,8 @@ class Tasks extends CI_Controller {
         7 => array("name" => "Work-Life Balance", "id" => 7, "order" => 7, "default" => false , "type" => "Intangible", "description" => "Flexible hours or extra time off."),
         8 => array("name" => "Positive Work Environment", "id" => 8, "order" => 8, "default" => false , "type" => "Intangible", "description" => "A supportive culture, good relationships with colleagues, and meaningful work."),
         9 => array("name" => "Autonomy and Trust", "id" => 9, "order" => 9, "default" => false , "type" => "Intangible", "description" => "Being included in decision-making or given freedom in how work is done."),
-        10 => array("name" => "Confidence Boost", "id" => 10, "order" => 10, "default" => false , "type" => "Intangible", "description" => "")
+        10 => array("name" => "Confidence Boost", "id" => 10, "order" => 10, "default" => false , "type" => "Intangible", "description" => ""),
+        11 => array("name" => "Mental Clarity", "id" => 11, "order" => 11, "default" => false , "type" => "Intangible", "description" => "")
     );
 
     var $cycles = array(

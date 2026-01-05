@@ -111,10 +111,11 @@ class Income extends CI_Controller {
         $this->load->library('session');
         $data["incomeTypes"] = mapKeyToId($this->income_type_model->get_income_types());
         $data["incomeAssets"] = mapKeyToId($this->income_asset_model->get_user_income_assets($this->session->userdata("user")->id), false);
-        $data["expensePeriods"] = $this->expense_period_model->getExpensePeriods($this->session->userdata("user")->id, 5, null);
+        $data["expensePeriods"] = $this->expense_period_model->getExpensePeriods($this->session->userdata("user")->id, 13, null);
         //$data["startAndEndDateOfWeek"] = getStartAndEndDateforWeek(date('W'), date('Y'));
         $data["startAndEndDateforMonth"] = getStartAndEndDateforMonth(date("m"), date('Y'));
         $data["incomesForPeriod"] = $this->income_model->getIncomesbyDateRange($data["startAndEndDateforMonth"][0], $data["startAndEndDateforMonth"][1], $this->session->userdata("user")->id);
+        
         $data["history_table"] = $this->load->view('incomes/history_table', $data, true);
         $this->load->view('header', getPageTitle($data, $this->toolName, "History"));
         $this->load->view('incomes/income_nav');

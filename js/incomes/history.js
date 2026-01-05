@@ -21,7 +21,7 @@ $(document).ready(function () {
             $("#fromDate").val(default_start_date);
             $("#toDate").val(default_end_date);
         } else {
-            var selectedObj = getObjects(income_period, "id", $("#incomePeriod").val());
+            var selectedObj = getObjects(expense_period, "id", $("#incomePeriod").val());
             $("#fromDate").val(selectedObj[0]["start_date"]);
             $("#toDate").val(selectedObj[0]["end_date"]);
 

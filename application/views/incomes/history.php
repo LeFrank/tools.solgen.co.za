@@ -17,7 +17,7 @@
                                 <select id="incomePeriod" name="incomePeriod">
                                     <option value="0">Current Month</option>
                                     <?php
-                                    foreach ($incomePeriods as $k => $v) {
+                                    foreach ($expensePeriods as $k => $v) {
                                         echo "<option value='" . $v["id"] . "'>" . $v["name"] . "</option>";
                                     }
                                     ?>
@@ -135,7 +135,9 @@
 <script type="text/javascript">
     var income_types = <?php echo json_encode($incomeTypes); ?>;
     var income_assets = <?php echo json_encode($incomeAssets); ?>;
-    var income_period = <?php echo json_encode($incomePeriods); ?>;
+    // var income_period = <?php //echo json_encode($incomePeriods); ?>;
+    var expense_period = <?php echo json_encode($expensePeriods); ?>;
+    console.log(expense_period);
     var default_start_date = "<?php echo $startAndEndDateforMonth[0]; ?>";
     var default_end_date = "<?php echo $startAndEndDateforMonth[1]; ?>";
 </script>
