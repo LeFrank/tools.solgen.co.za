@@ -1,7 +1,7 @@
 
         <div id="tasksHistoryContent" class="tasksHistoryContent" >
             <div id="historyGraph">
-                <h2>Tasks History</h2>
+            <h2>Tasks History ( <?php echo sizeof($tasks); ?> )</h2>
                 Table of full data from <?php echo $startAndEndDateforMonth[0]; ?> to <?php echo $startAndEndDateforMonth[1]; ?><br/><br/>
                 <?php if (is_array($tasks) && !empty($tasks)) {
                 ?>
