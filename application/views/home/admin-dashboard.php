@@ -18,6 +18,12 @@
 </label>
 
 <br/>
+<hr/>
+<h3>Tasks targetted completion, for this week.</h3>
+<?php echo $history_table; ?>
+<br/>
+<hr/>
+<br/>
 <h3>
     Next 7 days calendar events, starting with the current days events.
 </h3>

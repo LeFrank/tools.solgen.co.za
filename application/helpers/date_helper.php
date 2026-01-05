@@ -2,7 +2,7 @@
 function getStartAndEndDateforWeek($week, $year)
 {
 
-    $time = strtotime("1 January $year", time());
+    $time = strtotime(date("Y-m-d"), time());
     $day = date('w', $time);
     $time += ((7*($week-1))-$day)*24*3600;
     $return[0] = date('Y/m/d H:i', $time);

@@ -138,6 +138,37 @@ class tasks_model extends CI_Model {
         return $query->result_array();
     }
 
+
+    /**
+     * Get tasks by date range. Can be filtered by user and delimited
+     * 
+     * @param type $startDate
+     * @param type $endDate
+     * @param type $userId
+     * @param type $limit
+     * @param type $offset
+     * @param type $orderBy
+     * @param type $direction
+     * @return null
+     */
+    public function getTasksByDateRangeTargetDate($startDate, $endDate, $userId = null, $limit = null, $offset = 0 , $orderBy=null, $direction = "asc") {
+        if(null != $orderBy){
+            $this->db->order_by($orderBy, $direction);
+        }else{
+            $this->db->order_by("create_date", "desc");
+        }
+        if ($userId === null) {
+            return null;
+        }
+        if (null == $limit) {
+            $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'target_date >=' => $startDate, 'target_date <= ' => $endDate));
+        } else {
+            $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'target_date >=' => $startDate, 'target_date <= ' => $endDate), $limit, $offset);
+        }
+    //    echo $this->db->last_query();
+        return $query->result_array();
+    }
+
     /**
      * 
      * @param type $userId

@@ -53,6 +53,43 @@ class Home extends CI_Controller {
         $this->load->model("expense_model");
         $this->load->model("expense_type_model");
         $this->load->model("expense_budget_item_model");
+
+        // Load user tasks table for this coming week. 
+        $this->load->library('session');
+        $this->load->helper('form');
+        $this->load->helper('url');
+        $this->load->helper("date_helper");
+        $this->load->helper("expense_statistics_helper");
+        $this->load->library('form_validation');
+        $this->load->model("tasks_model");
+        $this->load->model("tasks_domains_model");
+        $this->load->model("tasks_status_model");
+        $this->load->library("../controllers/tasks");
+        $userId = $this->session->userdata("user")->id;
+        $data["tasksDomains"] = mapKeyToId($this->tasks_domains_model->get_user_tasks_domains($userId, 50));
+        $data["tasksStatuses"] = mapKeyToId($this->tasks_status_model->get_user_tasks_statuses($userId), false);
+        $data["importanceLevels"] = $this->tasks->importanceLevels;
+        $data["urgencyLevels"] = $this->tasks->urgencyLevels;
+        $data["riskLevels"] = $this->tasks->riskLevels;
+        $data["gainLevels"] = $this->tasks->gainLevels;
+        $data["rewardsCategory"] = $this->tasks->rewardsCategory;
+        $data["cycles"] = $this->tasks->cycles;
+        $data["scales"] = $this->tasks->scales;
+        $data["scopes"] = $this->tasks->scopes;
+        $data["startAndEndDateforMonth"] = getStartAndEndDateforWeek(date("w"), date('Y'));
+        // print_r($data["startAndEndDateforMonth"]);
+        $this->load->helper("tasks_helper");
+        $tasks = $this->tasks_model->getTasksByDateRangeTargetDate($data["startAndEndDateforMonth"][0], $data["startAndEndDateforMonth"][1], $userId);
+        foreach($tasks as $task){
+            $age = getTaskAgeByCreateDate($task);
+            $task["age"] = $age;
+            if (!in_array($task['status_id'], array(2))) {
+                $data["tasks"][] = $task;
+            }
+        }
+        // print_r($data["tasks"]);
+        $data["history_table"] = $this->load->view('tasks/history_table', $data, true);
+
         if ($this->session->userdata("isAdmin")) {
             $data["css"] = "<link href='/css/third_party/fullcalendar/fullcalendar.css' rel='stylesheet' />
                             <link href='/css/third_party/fullcalendar/fullcalendar.print.css' rel='stylesheet' media='print' />";
@@ -119,7 +156,11 @@ class Home extends CI_Controller {
             //$this->expenseBudgetItems->manage(7);
 //            print_r($data);
             $this->load->view('home/user-dashboard');
+
+            
         }
+
+
         $this->load->view('footer');
     }
     
