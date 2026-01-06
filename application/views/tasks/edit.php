@@ -172,13 +172,27 @@
                     ?>
                 </select>
             </div>
-                <div class="large-2 columns">
+            <div class="large-1 columns">
                 <label for="scope_id">Scope</label>
                 <select name="scope_id">
                     <?php
                     foreach ($scopes as $k => $v) {
                         $default = "";
                         if ($v["id"] == $task->scope_id) {
+                            $default = " selected ";
+                        }
+                        echo '<option value="' . $v["id"] . '"' . $default . '>' . $v["name"] . '</option>';
+                    }
+                    ?>
+                </select>
+            </div>
+            <div class="large-1 columns">
+                <label for="difficulty_level_id">Difficulty</label>
+                <select name="difficulty_level_id">
+                    <?php
+                    foreach ($difficultyLevels as $k => $v) {
+                        $default = "";
+                        if ($v["id"] == $task->difficulty_level_id) {
                             $default = " selected ";
                         }
                         echo '<option value="' . $v["id"] . '"' . $default . '>' . $v["name"] . '</option>';
