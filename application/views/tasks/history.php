@@ -21,6 +21,9 @@
                                         <input type="radio" id="target_date" name="date_filter" value="target_date" />
                                         <label for="target_date">Target Date</label>
                                         <br/>
+                                        <input type="radio" id="end_date" name="date_filter" value="end_date" />
+                                        <label for="end_date">End Date</label>
+                                        <br/>
                                     </div>
                                 </fieldset>
                             </div>      

@@ -241,6 +241,10 @@ class tasks_model extends CI_Model {
                 {
                     $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'target_date >=' => $this->input->post("fromDate"), 'target_date <= ' => $this->input->post("toDate")));
                 }
+                else if($FilterDateField == "end_date")
+                {
+                    $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'end_date >=' => $this->input->post("fromDate"), 'end_date <= ' => $this->input->post("toDate")));
+                }
                 else{
                     $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'start_date >=' => $this->input->post("fromDate"), 'start_date <= ' => $this->input->post("toDate")));
                 }
@@ -252,6 +256,10 @@ class tasks_model extends CI_Model {
                 else if($FilterDateField == "target_date")
                 {
                     $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'target_date >=' => $this->input->post("fromDate"), 'target_date <= ' => $this->input->post("toDate")), $limit, $offset);
+                }
+                 else if($FilterDateField == "end_date")
+                {
+                    $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'end_date >=' => $this->input->post("fromDate"), 'end_date <= ' => $this->input->post("toDate")), $limit, $offset);
                 }
                 else{
                     $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'start_date >=' => $this->input->post("fromDate"), 'start_date <= ' => $this->input->post("toDate")), $limit, $offset);
