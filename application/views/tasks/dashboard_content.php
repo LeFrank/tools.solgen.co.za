@@ -210,10 +210,10 @@
                     echo "<p>Number of Difficulty Types: ".sizeof($difficultyLevels) ."</p>";
                     echo "<div><p>Number of Tasks Per Difficulty:</p>";
                     // print_r($tasks); 
-                    foreach ($scopes as $k => $v) {
+                    foreach ($difficultyLevels as $k => $v) {
                         $taskCount = 0;
                         foreach ($tasks as $task) {
-                            if ($task['scope_id'] == $v['id']) {
+                            if ($task['difficulty_level_id'] == $v['id']) {
                                 $taskCount++;
                             }
                         }
