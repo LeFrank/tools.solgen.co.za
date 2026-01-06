@@ -26,6 +26,9 @@ ADD COLUMN cycle_id int DEFAULT 1,
 ADD COLUMN scale_id int DEFAULT 1,
 ADD COLUMN scope_id int DEFAULT 1;
 
+ALTER TABLE tasks
+ADD COLUMN difficulty_level_id int DEFAULT 1;
+
 -- ALTER TABLE tasks 
 -- RENAME COLUMN reward_level_id TO reward_category_id;
 

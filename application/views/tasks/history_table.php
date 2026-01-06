@@ -23,6 +23,7 @@
                     <th>Cycle</th>
                     <th>Scale</th>
                     <th>Scope</th>
+                    <th>Difficulty</th>
                     <th>Notes</th>
                     <th>Artifacts</th>
                     <th>Age</th>
@@ -87,6 +88,7 @@
                             echo "<td>" . $cycles[$v["cycle_id"]]["name"] . "</td>";
                             echo "<td>" . $scales[$v["scale_id"]]["name"] . "</td>";
                             echo "<td>" . $scopes[$v["scope_id"]]["name"] . "</td>";
+                            echo "<td>" . $difficultyLevels[$v["difficulty_level_id"]]["name"] . "</td>";
                             echo "<td>" . "ToDo" . "</td>";
                             echo "<td>" . "ToDo" . "</td>";
                             echo "<td>" . $v["age"] . "</td>";

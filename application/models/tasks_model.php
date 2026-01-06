@@ -40,7 +40,8 @@ class tasks_model extends CI_Model {
             'reward_category_id' => $this->input->post('reward_category_id'),
             'cycle_id' => $this->input->post('cycle_id'),
             'scale_id' => $this->input->post('scale_id'),
-            'scope_id' => $this->input->post('scope_id')
+            'scope_id' => $this->input->post('scope_id'),
+            'difficulty_level_id' => $this->input->post('difficulty_level_id')
         );
         $this->db->insert($this->tn, $data);
         return $this->db->insert_id();
@@ -299,7 +300,8 @@ class tasks_model extends CI_Model {
             'reward_category_id' => $this->input->post('reward_category_id'),
             'cycle_id' => $this->input->post('cycle_id'),
             'scale_id' => $this->input->post('scale_id'),
-            'scope_id' => $this->input->post('scope_id')     
+            'scope_id' => $this->input->post('scope_id'),
+            'difficulty_level_id' => $this->input->post('difficulty_level_id')
         );
         $this->db->where('id', $this->input->post('id'));
         return $this->db->update($this->tn, $data);

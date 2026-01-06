@@ -184,7 +184,7 @@
         </div>
         <br/>
         <div class="row expanded">
-            <div class="large-4 columns">
+            <div class="large-6 columns">
                 <h3>Scope</h3>
                 <?php
                 // Example: Display task domains and their counts
@@ -202,8 +202,30 @@
                     }
                     echo "</div>";
                 ?>
-            </div>  
-            <div class="large-4 columns">
+            </div> 
+            <div class="large-6 columns">
+                <h3>Difficulty</h3>
+                <?php
+                // Example: Display task domains and their counts
+                    echo "<p>Number of Difficulty Types: ".sizeof($difficultyLevels) ."</p>";
+                    echo "<div><p>Number of Tasks Per Difficulty:</p>";
+                    // print_r($tasks); 
+                    foreach ($scopes as $k => $v) {
+                        $taskCount = 0;
+                        foreach ($tasks as $task) {
+                            if ($task['scope_id'] == $v['id']) {
+                                $taskCount++;
+                            }
+                        }
+                        echo "<p>&nbsp;&nbsp;&nbsp;&nbsp;" . $v['name'] . ": " . $taskCount . "</p>";
+                    }
+                    echo "</div>";
+                ?>
+            </div>
+        </div>   
+        <br/>
+        <div class="row expanded">
+            <div class="large-6 columns">
                 <h3>Forgotten or Abandoned</h3>
                 <!-- Forgotten tasks are tasks where the start date has passed but the task is still in state that is None, Not Started -->
                 <?php
@@ -217,7 +239,7 @@
                     echo "<p>Forgotten or Abandoned Tasks: " . $forgottenCount . "</p>"; 
                     ?>
             </div>  
-            <div class="large-4 columns">
+            <div class="large-6 columns">
                 <h3>Delayed</h3>
                 <!-- Delayed tasks are tasks where the end date has passed but the task is still in a non-completed state -->
                 <?php

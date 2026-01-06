@@ -29,6 +29,7 @@ if ($this->session->flashdata("success") !== FALSE) {
                     <th>Cycle</th>
                     <th>Scale</th>
                     <th>Scope</th>
+                    <th>Difficulty</th>
                     <th>Notes</th>
                     <th>Artifacts</th>
                     <th>Actions</th>
@@ -92,6 +93,7 @@ if ($this->session->flashdata("success") !== FALSE) {
                             echo "<td>" . $cycles[$v["cycle_id"]]["name"] . "</td>";
                             echo "<td>" . $scales[$v["scale_id"]]["name"] . "</td>";
                             echo "<td>" . $scopes[$v["scope_id"]]["name"] . "</td>";
+                            echo "<td>" . $difficultyLevels[$v["difficulty_level_id"]]["name"] . "</td>";
                             echo "<td>" . "ToDo" . "</td>";
                             echo "<td>" . "ToDo" . "</td>";
                             echo "<td><a href='/tasks/edit/" . $v["id"] . "'>Edit</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href='/tasks/delete/" . $v["id"] . "' onclick='return confirm_delete()'>Delete</a></td>";
@@ -271,11 +273,25 @@ if ($this->session->flashdata("success") !== FALSE) {
                     ?>
                 </select>
             </div>
-                <div class="large-2 columns">
+            <div class="large-1 columns">
                 <label for="scope_id">Scope</label>
                 <select name="scope_id">
                     <?php
                     foreach ($scopes as $k => $v) {
+                        $default = "";
+                        if ($v["default"] == true) {
+                            $default = " selected ";
+                        }
+                        echo '<option value="' . $v["id"] . '"' . $default . '>' . $v["name"] . '</option>';
+                    }
+                    ?>
+                </select>
+            </div>
+            <div class="large-1 columns">
+                <label for="difficulty_level_id">Difficulty</label>
+                <select name="difficulty_level_id">
+                    <?php
+                    foreach ($difficultyLevels as $k => $v) {
                         $default = "";
                         if ($v["default"] == true) {
                             $default = " selected ";

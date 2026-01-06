@@ -76,6 +76,7 @@ class Home extends CI_Controller {
         $data["cycles"] = $this->tasks->cycles;
         $data["scales"] = $this->tasks->scales;
         $data["scopes"] = $this->tasks->scopes;
+        $data["difficultyLevels"] = $this->tasks->difficultyLevels;
         $data["startAndEndDateforMonth"] = getStartAndEndDateforWeek(date("w"), date('Y'));
         // print_r($data["startAndEndDateforMonth"]);
         $this->load->helper("tasks_helper");

@@ -248,4 +248,47 @@ class Income extends CI_Controller {
         }
     }
 
+    public function statistics(){
+        // echo "Income Statistics - To be implemented.";
+        $this->load->helper("date_helper");
+        $this->load->helper("expense_statistics_helper");
+        $this->load->helper("usability_helper");
+        //get the data ready
+        if ( null == $this->input->post()) {
+            $data["startAndEndDateforMonth"] = getStartAndEndDateforMonth(date("m") - 1, date('Y'));
+        } else {
+            $data["startAndEndDateforMonth"] = array($this->input->post("fromDate"), $this->input->post("toDate"));
+        }
+        // print_r($data["startAndEndDateforMonth"]);
+        $incomeTypes = mapKeyToId($this->income_type_model->get_income_types());
+        $incomeAssets = mapKeyToId($this->income_asset_model->get_user_income_assets($this->session->userdata("user")->id), false);        // print_r(array($this->input->post("fromDate"), $this->input->post("toDate")));
+        $data["expensePeriods"] = $this->expense_period_model->getExpensePeriods($this->session->userdata("user")->id, 12, null);
+        $data["incomesForPeriod"] = $this->income_model->getIncomesbyDateRange($data["startAndEndDateforMonth"][0], $data["startAndEndDateforMonth"][1], $this->session->userdata("user")->id);
+       
+        $data["allIncomes"] = $data["incomesForPeriod"];
+        $data["incomesTotal"] = getExpensesTotal($data["incomesForPeriod"]);
+        $data["averageIncome"] = getAveragePerExpense($data["incomesTotal"], $data["incomesForPeriod"]);
+        // $data["topFiveExpenses"] = array_slice($expensesForPeriod, 0, 5);
+        // $data["topFiveExpenseTypes"] = array_slice(getArrayOfTypeAmount($expensesForPeriod), 0, 5, true);
+        // $data["expenseTypesTotals"] = getArrayOfTypeAmount($expensesForPeriod);
+        // $data["topFivePaymentMethods"] = array_slice(getArrayOfPaymentMethodAmount($expensesForPeriod), 0, 5, true);
+        // $data["paymentMethodsTotal"] = getArrayOfPaymentMethodAmount($expensesForPeriod);
+        // $data["topFiveLocations"] = array_slice(getArrayOfLocationAmount($expensesForPeriod), 0, 5, true);
+        // $data["expensesOverPeriod"] = json_encode(getExpensesOverPeriodJson($expensesOverPeriod));
+        // $data["expensesByDayOfWeek"] = getDayOfWeekForExpense($expensesForPeriod);
+        // $data["expensesByHourOfDay"] = getExpensesForHourOfDay($expensesForPeriod);
+        // $data["daysOfWeek"] = getDaysOfWeek();
+
+        // $data["expenseTypes"] = mapKeyToId($this->expense_type_model->get_expense_types());
+        // $data["eventsBudget"] = $this->load->view('expense_budget_item/manage', $data, true);
+        // $data["eventsBudgetItems"] = $this->load->view('expense_budget_item/budget_items_assigned', $data, true);
+//        echo "<pre>";
+//        print_r($data);
+//        echo "</pre>";
+        $this->load->view('header', getPageTitle($data, $this->toolName, "Stats"));
+        $this->load->view('incomes/income_nav');
+        $this->load->view('incomes/statistics', $data);
+        $this->load->view('footer');
+    }
+
 }

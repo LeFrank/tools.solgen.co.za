@@ -176,6 +176,19 @@ class Tasks extends CI_Controller {
         8 => array("name" => "Global / Planetary", "id" => 8, "order" => 8, "default" => false) 
     );
 
+    var $difficultyLevels = array(
+        0 => array("name" => "Unspecified", "id" => 0, "order" => 0, "default" => true ),
+        1 => array("name" => "Easy", "id" => 1, "order" => 1, "default" => false ),
+        2 => array("name" => "Moderate", "id" => 2, "order" => 2, "default" => false ),
+        3 => array("name" => "Intermediate", "id" => 3, "order" => 3, "default" => false ),
+        4 => array("name" => "Advanced", "id" => 4, "order" => 4, "default" => false ),
+        5 => array("name" => "Expert", "id" => 5, "order" => 5, "default" => false ),
+        6 => array("name" => "Organizational", "id" => 6, "order" => 6, "default" => false),
+        7=> array("name" => "Industrial", "id" => 7, "order" => 7, "default" => false),
+        8 => array("name" => "National", "id" => 8, "order" => 8, "default" => false ),
+        9 => array("name" => "Global", "id" => 9, "order" => 9, "default" => false )
+    );
+
     public function __construct() {
         parent::__construct();
         $this->load->library('session');
@@ -208,6 +221,7 @@ class Tasks extends CI_Controller {
         $data["cycles"] = $this->cycles;
         $data["scales"] = $this->scales;
         $data["scopes"] = $this->scopes;
+        $data["difficultyLevels"] = $this->difficultyLevels;
         // echo "<pre>";
         // print_r($data);
         // echo "</pre>";
@@ -293,6 +307,7 @@ class Tasks extends CI_Controller {
         $data["cycles"] = $this->cycles;
         $data["scales"] = $this->scales;
         $data["scopes"] = $this->scopes;
+        $data["difficultyLevels"] = $this->difficultyLevels;
         if ($this->tasks_model->doesItBelongToMe($userId, $id)) {
             $data["task"] = $this->tasks_model->getTask($id);
             $this->load->view('header', $data);
@@ -330,6 +345,7 @@ class Tasks extends CI_Controller {
         $data["cycles"] = $this->cycles;
         $data["scales"] = $this->scales;
         $data["scopes"] = $this->scopes;
+        $data["difficultyLevels"] = $this->difficultyLevels;
         $data["startAndEndDateforMonth"] = getStartAndEndDateforYear( date('Y'));
         // print_r($data["startAndEndDateforMonth"]);
         $this->load->helper("tasks_helper");
@@ -361,6 +377,7 @@ class Tasks extends CI_Controller {
         $data["cycles"] = $this->cycles;
         $data["scales"] = $this->scales;
         $data["scopes"] = $this->scopes;
+        $data["difficultyLevels"] = $this->difficultyLevels;        
         $data["startAndEndDateforMonth"] = getStartAndEndDateforYear( date('Y'));
         $data["tasks"] = $this->tasks_model->getTasks(  $this->session->userdata("user")->id);
         $incompleteTasksAges = 0;
@@ -410,6 +427,7 @@ class Tasks extends CI_Controller {
         $data["cycles"] = $this->cycles;
         $data["scales"] = $this->scales;
         $data["scopes"] = $this->scopes;
+        $data["difficultyLevels"] = $this->difficultyLevels;
         $data["startAndEndDateforMonth"] = array($this->input->post("fromDate"), $this->input->post("toDate"));
         $data["tasks"] = $this->tasks_model->getTasksByCriteria( $userId );
         $incompleteTasksAges = 0;
@@ -467,6 +485,7 @@ class Tasks extends CI_Controller {
             $data["cycles"] = $this->cycles;
             $data["scales"] = $this->scales;
             $data["scopes"] = $this->scopes;
+            $data["difficultyLevels"] = $this->difficultyLevels;
             $this->load->view('header', $data);
             $this->load->view('tasks/tasks_nav');
             $this->load->view('user/user_status', $data);
@@ -488,6 +507,7 @@ class Tasks extends CI_Controller {
         $data["cycles"] = $this->cycles;
         $data["scales"] = $this->scales;
         $data["scopes"] = $this->scopes;
+        $data["difficultyLevels"] = $this->difficultyLevels;        
         // $data["tasks"] = $this->tasks_model->getTasksByCriteria($userId);
         $this->load->helper("tasks_helper");
         $tasks = $this->tasks_model->getTasksByCriteria($userId);
