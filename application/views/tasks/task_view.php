@@ -4,7 +4,7 @@
 <?php echo form_open('tasks/update_short') ?>
 <div class="row expanded">
     <div class="large-12 columns" >
-        <h1>Task Detail: <?php echo $task->name; ?></h1>
+        <h2><?php echo $task->name; ?></h2>
         <div class="row expanded">
             <div class="large-2 columns">
                 <label>Domain:</label><p><?php echo $tasksDomains[$task->domain_id]["name"]; ?></p><br/>
