@@ -247,6 +247,7 @@ $route['tasks/domains/update'] = 'tasksDomains/update';
 $route['tasks/domains/delete/(:num)'] = 'tasksDomains/delete/$1';
 $route['tasks/domains/view/(:num)'] = 'tasksDomains/view/$1';
 $route['tasks'] = 'tasks/index';
+$route['tasks/task/(:num)'] = 'tasks/taskView/$1';
 $route['tasks/create'] = 'tasks/create';
 $route['tasks/edit/(:num)'] = 'tasks/edit/$1';
 $route['tasks/update/(:num)'] = 'tasks/update/$1';
@@ -266,6 +267,7 @@ $route['tasks/history'] = 'tasks/history';
 $route['tasks/dashboard'] = 'tasks/dashboard';
 $route['tasks/dashboard_filter'] = 'tasks/dashboardFilteredSearch';
 $route['tasks/filter-search'] = 'tasks/filteredSearch';
+$route['tasks/update_short'] = 'tasks/updateShort';
 
 
 

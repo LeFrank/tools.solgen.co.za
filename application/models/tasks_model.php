@@ -316,6 +316,20 @@ class tasks_model extends CI_Model {
     }
 
     /**
+     * 
+     * @return type
+     */
+    public function update_short() {
+        $data = array(
+            'description' => $this->input->post('description'),
+            'update_date' => date('Y/m/d H:i'),
+        );
+        $this->db->where('id', $this->input->post('id'));
+        return $this->db->update($this->tn, $data);
+    }
+
+
+    /**
      * markAsDone
      * @param type $id
      */

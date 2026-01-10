@@ -494,6 +494,21 @@ class Tasks extends CI_Controller {
         }
     }
 
+    public function updateShort() {
+        $this->load->helper('form');
+        $this->load->helper('url');
+        $this->load->library('form_validation');
+        $userId = $this->session->userdata("user")->id;
+        $id = $this->input->post('id');
+        $this->form_validation->set_rules('description', 'description', 'required');
+        if ($this->form_validation->run() == FALSE) {
+            $this->edit($this->input->post("id"));
+        }else{
+            $this->tasks_model->update_short($this->input->post('id'));
+            redirect("/tasks", "refresh");
+        }
+    }
+
     public function filteredSearch() {
         $userId = $this->session->userdata("user")->id;
         $data["tasksHistory"] = $this->tasks_model->getTasks($userId, 100);
@@ -551,5 +566,37 @@ class Tasks extends CI_Controller {
             echo json_encode(array("status" => "error", "message"=>"The task undoing of the task failed."));
         }
     }   
+
+    public function taskView($id){
+        $userId = $this->session->userdata("user")->id;
+        $data["tasksDomains"] = mapKeyToId($this->tasks_domains_model->get_user_tasks_domains($userId, 50));
+        $data["tasksStatuses"] = mapKeyToId($this->tasks_status_model->get_user_tasks_statuses($userId), false);
+        $data["importanceLevels"] = $this->importanceLevels;
+        $data["urgencyLevels"] = $this->urgencyLevels;
+        $data["riskLevels"] = $this->riskLevels;
+        $data["gainLevels"] = $this->gainLevels;
+        $data["rewardsCategory"] = $this->rewardsCategory;
+        $data["cycles"] = $this->cycles;
+        $data["scales"] = $this->scales;
+        $data["scopes"] = $this->scopes;
+        $data["difficultyLevels"] = $this->difficultyLevels;        
+        if ($this->tasks_model->doesItBelongToMe($userId, $id)) {
+            $data["task"] = $this->tasks_model->getTask($id);
+            $this->load->view('header', getPageTitle($data, $this->toolName, "Task View", ""));
+            $this->load->view('tasks/tasks_nav');
+            $this->load->view('tasks/task_view', $data);
+            $this->load->view('footer');
+        } else {
+            $data["tasks"] =$this->tasks_model->getTasks($this->session->userdata("user")->id, 50);
+            $data["status"] = "View Task";
+            $data["action_classes"] = "failure";
+            $data["action_description"] = "Unable to view the task";
+            $data["message_classes"] = "failure";
+            $data["message"] = "The task you are attempting to view does not exist or does not belong to you.";
+            $data["reUrl"] = "/tasks";
+            $this->session->set_flashdata("error", $this->load->view('general/action_status', $data, true));
+            redirect("/tasks", "refresh");
+        }
+    }
 
 }

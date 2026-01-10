@@ -92,7 +92,7 @@
                             echo "<td>" . "ToDo" . "</td>";
                             echo "<td>" . "ToDo" . "</td>";
                             echo "<td>" . $v["age"] . "</td>";
-                            echo "<td><a href='/tasks/edit/" . $v["id"] . "'>Edit</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href='/tasks/delete/" . $v["id"] . "' onclick='return confirm_delete()'>Delete</a></td>";
+                            echo "<td><a href='/tasks/task/" . $v["id"] . "'>Work</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href='/tasks/edit/" . $v["id"] . "'>Edit</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href='/tasks/delete/" . $v["id"] . "' onclick='return confirm_delete()'>Delete</a></td>";
                             echo "</tr>";
                         }
                         ?>
