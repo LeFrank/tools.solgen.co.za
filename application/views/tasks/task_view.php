@@ -4,36 +4,37 @@
 <?php echo form_open('tasks/update_short') ?>
 <div class="row expanded">
     <div class="large-12 columns" >
-        <h1>Task Details</h1>
+        <h1>Task Detail: <?php echo $task->name; ?></h1>
         <div class="row expanded">
-            <div class="large-6 columns">
-                <label>Task Name: </label>
-                <p><?php echo $task->name; ?></p><br/>
-                <label>Description:</label><p><?php echo $task->description; ?></p><br/>
-                <div class="row expanded">
-                    <div class="large-6 columns">
-                        <label>Domain:</label><p><?php echo $tasksDomains[$task->domain_id]["name"]; ?></p><br/>
-                        <label>Status:</label><p> <?php echo $tasksStatuses[$task->status_id]["name"]; ?></p><br/>
-                    </div>
-                    <div class="large-6 columns">
-                        <label>Scale:</label><p> <?php echo $scales[$task->scale_id]["name"]; ?></p><br/>
-                        <label>Scope:</label><p> <?php echo $scopes[$task->scope_id]["name"]; ?></p><br/>
-                    </div>
-                </div>
+            <div class="large-2 columns">
+                <label>Domain:</label><p><?php echo $tasksDomains[$task->domain_id]["name"]; ?></p><br/>
+                <label>Status:</label><p> <?php echo $tasksStatuses[$task->status_id]["name"]; ?></p><br/>
+                <label>Importance:</label><p> <?php echo $importanceLevels[$task->importance_level_id]["name"]; ?></p><br/>
             </div>
-            <div class="large-3 columns">
+            <div class="large-2 columns">
+                <label>Scale:</label><p> <?php echo $scales[$task->scale_id]["name"]; ?></p><br/>
+                <label>Scope:</label><p> <?php echo $scopes[$task->scope_id]["name"]; ?></p><br/>
+                <label>Importance:</label><p> <?php echo $importanceLevels[$task->importance_level_id]["name"]; ?></p><br/>
+            </div>
+            <div class="large-2 columns">
                 <label>Created On:</label><p><?php echo date_format(date_create($task->create_date), 'D,  d M Y - H:m'); ?></p><br/>
                 <label>Start Date:</label><p><?php echo date_format(date_create($task->start_date), 'D,  d M Y - H:m'); ?></p><br/>
                 <label>Target Date:</label><p><?php echo date_format(date_create($task->target_date), 'D,  d M Y - H:m'); ?></p><br/>
             </div>
-            <div class="large-3 columns">
-                <label>Importance:</label><p> <?php echo $importanceLevels[$task->importance_level_id]["name"]; ?></p><br/>
+            <div class="large-2 columns">
                 <label>Urgency:</label><p> <?php echo $urgencyLevels[$task->urgency_level_id]["name"]; ?></p><br/>
                 <label>Risk:</label><p> <?php echo $riskLevels[$task->risk_level_id]["name"]; ?></p><br/>
+                <label>Cycle:</label><p> <?php echo $cycles[$task->cycle_id]["name"]; ?></p><br/>
+               
+            </div>
+            <div class="large-2 columns">
+                 <label>Risk:</label><p> <?php echo $riskLevels[$task->risk_level_id]["name"]; ?></p><br/>
                 <label>Gain:</label><p> <?php echo $gainLevels[$task->gain_level_id]["name"]; ?></p><br/>
                 <label>Reward Category:</label><p> <?php echo $rewardsCategory[$task->reward_category_id]["name"]; ?></p><br/>
-                <label>Cycle:</label><p> <?php echo $cycles[$task->cycle_id]["name"]; ?></p><br/>
-                <label>Difficulty:</label><p> <?php echo $difficultyLevels[$task->difficulty_level_id]["name"]; ?></p><br/>
+            </div>
+            <div class="large-2 columns">
+                 <label>Urgency:</label><p> <?php echo $urgencyLevels[$task->urgency_level_id]["name"]; ?></p><br/>
+                  <label>Difficulty:</label><p> <?php echo $difficultyLevels[$task->difficulty_level_id]["name"]; ?></p><br/>
             </div>
         </div>
     </div>
