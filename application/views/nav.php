@@ -127,13 +127,9 @@
         <ul class="nested">
             <li><a href="/tasks">Tasks</a></li>
             <li><a href="/tasks/history">History</a></li>
-            <li><a href="/tasks/manage">Budget</a></li>
-            <li><a href="/tasks/stats">Stats</a></li>
-            <li><span class="caret">Options</span>
-                <ul class="nested">
-                    <li><a href="/tasks/domains/manage">Manage Task Domains</a></li>
-                </ul>
-            </li>
+            <li><a href="/tasks/dashboard">Dashboard</a></li>
+            <li><a href="/tasks/domains/manage">Manage Domains</a></li>
+            <li><a href="/tasks/status/manage">Manage Status Types</a></li>
         </ul>
     </li>
 </ul> 
