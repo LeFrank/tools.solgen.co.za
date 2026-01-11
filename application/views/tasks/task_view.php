@@ -20,6 +20,7 @@
                 <label>Created On:</label><p><?php echo date_format(date_create($task->create_date), 'D,  d M Y - H:m'); ?></p><br/>
                 <label>Start Date:</label><p><?php echo date_format(date_create($task->start_date), 'D,  d M Y - H:m'); ?></p><br/>
                 <label>Target Date:</label><p><?php echo date_format(date_create($task->target_date), 'D,  d M Y - H:m'); ?></p><br/>
+                <label>End Date:</label><p><?php echo date_format(date_create($task->end_date), 'D,  d M Y - H:m'); ?></p><br/>
             </div>
             <div class="large-2 columns">
                 <label>Urgency:</label><p> <?php echo $urgencyLevels[$task->urgency_level_id]["name"]; ?></p><br/>
