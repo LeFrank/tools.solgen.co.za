@@ -233,7 +233,9 @@ class tasks_model extends CI_Model {
                 $FilterDateField = "create_date";
             }else if($this->input->post("date_filter") == "target_date"){
                 $FilterDateField = "target_date";
-            }                       
+            }else if($this->input->post("date_filter") == "end_date"){
+                $FilterDateField = "end_date";
+            }                           
 
             if (!empty($tasksDomainArr) && $tasksDomainArr[0] != "all") {
                 $this->db->where_in("domain_id", array_map('intval', $tasksDomainArr));
