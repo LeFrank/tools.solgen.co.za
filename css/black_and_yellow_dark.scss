@@ -108,6 +108,10 @@ ul ul {
 a {
     color: #f1b836;
 }
+a.plain-text {
+  text-decoration: none;
+  color: inherit;
+}
 a:hover {
     color: #f1b836;
 }
