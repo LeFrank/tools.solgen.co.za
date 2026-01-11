@@ -47,6 +47,7 @@
                                 </label>
                             </div>
                         </div>
+                        <br/>
                         <div class="row">
                             <div class="large-12 columns">
                                 <input type="button" name="filter" value="Filter" id="filter" class="button" />
@@ -100,12 +101,222 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
+                        <!-- <div class="row">
                             <div class="large-12 columns">
                                 <input type="button" name="filter" value="Filter" id="filter" class="button" />
                                 <input type="button" name="export" value="Export To CSV" id="export" class="button secondary" onClick="submit()"/>
                             </div>
-                        </div>
+                        </div> -->
+                        <p>More Options: <span id="searchExpand"><img src="/images/third_party/icons/Search_icon.png" /></span></p>                                
+                        <div id="dashboardContent" style="display: none;">
+                            <div class="row expanded">
+                                <div class="large-12 columns">
+                                    <label>Importance Levels</label>
+                                    <br/>
+                                    <div class="row">
+                                        <div class="large-6 columns">                        
+                                            <input type="checkbox" checked="checked" value="all" name="importanceLevels[]" /><label>all</label>
+                                        </div>
+                                        <?php
+                                        $pmCount = 1;
+                                        $bpmBeakCount = 2;
+                                        foreach ($importanceLevels as $k => $v) {
+                                            echo "<div class='large-6 columns'><input type='checkbox' value='" . $v["id"] . "' name='importanceLevels[]' /><label>" . $v["name"] . "</label></div>";
+                                            $pmCount++;
+                                            if ($pmCount % $bpmBeakCount === 0) {
+                                                echo "</div><div class='row'>";
+                                            }
+                                        }
+                                        ?>
+                                    </div>
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="row expanded">
+                                <div class="large-12 columns">
+                                    <label>Urgency Levels</label>
+                                    <br/>
+                                    <div class="row">
+                                        <div class="large-6 columns">                        
+                                            <input type="checkbox" checked="checked" value="all" name="urgencyLevels[]" /><label>all</label>
+                                        </div>
+                                        <?php
+                                        $pmCount = 1;
+                                        $bpmBeakCount = 2;
+                                        foreach ($urgencyLevels as $k => $v) {
+                                            echo "<div class='large-6 columns'><input type='checkbox' value='" . $v["id"] . "' name='urgencyLevels[]' /><label>" . $v["name"] . "</label></div>";
+                                            $pmCount++;
+                                            if ($pmCount % $bpmBeakCount === 0) {
+                                                echo "</div><div class='row'>";
+                                            }
+                                        }
+                                        ?>
+                                    </div>
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="row expanded">
+                                <div class="large-12 columns">
+                                    <label>Risk Levels</label>
+                                    <br/>
+                                    <div class="row">
+                                        <div class="large-6 columns">                        
+                                            <input type="checkbox" checked="checked" value="all" name="riskLevels[]" /><label>all</label>
+                                        </div>
+                                        <?php
+                                        $pmCount = 1;
+                                        $bpmBeakCount = 2;
+                                        foreach ($riskLevels as $k => $v) {
+                                            echo "<div class='large-6 columns'><input type='checkbox' value='" . $v["id"] . "' name='riskLevels[]' /><label>" . $v["name"] . "</label></div>";
+                                            $pmCount++;
+                                            if ($pmCount % $bpmBeakCount === 0) {
+                                                echo "</div><div class='row'>";
+                                            }
+                                        }
+                                        ?>
+                                    </div>
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="row expanded">
+                                <div class="large-12 columns">
+                                    <label>Gain Levels</label>
+                                    <br/>
+                                    <div class="row">
+                                        <div class="large-6 columns">                        
+                                            <input type="checkbox" checked="checked" value="all" name="gainLevels[]" /><label>all</label>
+                                        </div>
+                                        <?php
+                                        $pmCount = 1;
+                                        $bpmBeakCount = 2;
+                                        foreach ($gainLevels as $k => $v) {
+                                            echo "<div class='large-6 columns'><input type='checkbox' value='" . $v["id"] . "' name='gainLevels[]' /><label>" . $v["name"] . "</label></div>";
+                                            $pmCount++;
+                                            if ($pmCount % $bpmBeakCount === 0) {
+                                                echo "</div><div class='row'>";
+                                            }
+                                        }
+                                        ?>
+                                    </div>
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="row expanded">
+                                <div class="large-12 columns">
+                                    <label>Rewards Category</label>
+                                    <br/>
+                                    <div class="row">
+                                        <div class="large-6 columns">                        
+                                            <input type="checkbox" checked="checked" value="all" name="rewardsCategory[]" /><label>all</label>
+                                        </div>
+                                        <?php
+                                        $pmCount = 1;
+                                        $bpmBeakCount = 2;
+                                        foreach ($rewardsCategory as $k => $v) {
+                                            echo "<div class='large-6 columns'><input type='checkbox' value='" . $v["id"] . "' name='rewardsCategory[]' /><label>" . $v["name"] . "</label></div>";
+                                            $pmCount++;
+                                            if ($pmCount % $bpmBeakCount === 0) {
+                                                echo "</div><div class='row'>";
+                                            }
+                                        }
+                                        ?>
+                                    </div>
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="row expanded">
+                                <div class="large-12 columns">
+                                    <label>Cycles</label>
+                                    <br/>
+                                    <div class="row">
+                                        <div class="large-6 columns">                        
+                                            <input type="checkbox" checked="checked" value="all" name="cycles[]" /><label>all</label>
+                                        </div>
+                                        <?php
+                                        $pmCount = 1;
+                                        $bpmBeakCount = 2;
+                                        foreach ($cycles as $k => $v) {
+                                            echo "<div class='large-6 columns'><input type='checkbox' value='" . $v["id"] . "' name='cycles[]' /><label>" . $v["name"] . "</label></div>";
+                                            $pmCount++;
+                                            if ($pmCount % $bpmBeakCount === 0) {
+                                                echo "</div><div class='row'>";
+                                            }
+                                        }
+                                        ?>
+                                    </div>
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="row expanded">
+                                <div class="large-12 columns">
+                                    <label>Scales</label>
+                                    <br/>
+                                    <div class="row">
+                                        <div class="large-6 columns">                        
+                                            <input type="checkbox" checked="checked" value="all" name="scales[]" /><label>all</label>
+                                        </div>
+                                        <?php
+                                        $pmCount = 1;
+                                        $bpmBeakCount = 2;
+                                        foreach ($scales as $k => $v) {
+                                            echo "<div class='large-6 columns'><input type='checkbox' value='" . $v["id"] . "' name='scales[]' /><label>" . $v["name"] . "</label></div>";
+                                            $pmCount++;
+                                            if ($pmCount % $bpmBeakCount === 0) {
+                                                echo "</div><div class='row'>";
+                                            }
+                                        }
+                                        ?>
+                                    </div>
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="row expanded">
+                                <div class="large-12 columns">
+                                    <label>Scopes</label>
+                                    <br/>
+                                    <div class="row">
+                                        <div class="large-6 columns">                        
+                                            <input type="checkbox" checked="checked" value="all" name="scopes[]" /><label>all</label>
+                                        </div>
+                                        <?php
+                                        $pmCount = 1;
+                                        $bpmBeakCount = 2;
+                                        foreach ($scopes as $k => $v) {
+                                            echo "<div class='large-6 columns'><input type='checkbox' value='" . $v["id"] . "' name='scopes[]' /><label>" . $v["name"] . "</label></div>";
+                                            $pmCount++;
+                                            if ($pmCount % $bpmBeakCount === 0) {
+                                                echo "</div><div class='row'>";
+                                            }
+                                        }
+                                        ?>
+                                    </div>
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="row expanded">
+                                <div class="large-12 columns">
+                                    <label>Difficulty Levels</label>
+                                    <br/>
+                                    <div class="row">
+                                        <div class="large-6 columns">                        
+                                            <input type="checkbox" checked="checked" value="all" name="difficultyLevels[]" /><label>all</label>
+                                        </div>
+                                        <?php
+                                        $pmCount = 1;
+                                        $bpmBeakCount = 2;
+                                        foreach ($difficultyLevels as $k => $v) {
+                                            echo "<div class='large-6 columns'><input type='checkbox' value='" . $v["id"] . "' name='difficultyLevels[]' /><label>" . $v["name"] . "</label></div>";
+                                            $pmCount++;
+                                            if ($pmCount % $bpmBeakCount === 0) {
+                                                echo "</div><div class='row'>";
+                                            }
+                                        }
+                                        ?>
+                                    </div>
+                                </div>
+                            </div>
+                            <br/>
+                        </div>  
                     </form>
                 </div>
             </div>
@@ -123,7 +334,6 @@
 <script type="text/javascript" src="/js/jquery.datetimepicker.js" ></script>
 <script type="text/javascript" src="/js/third_party/handlebars-v1.3.0.js" ></script>
 <script type="text/javascript" src="/js/third_party/jquery.tablesorter.min.js"></script>
-<script type="text/javascript" src="/js/tasks/history.js" ></script>
 <script type="text/javascript">
     var default_start_date = "<?php echo $startAndEndDateforMonth[0]; ?>";
     var default_end_date = "<?php echo $startAndEndDateforMonth[1]; ?>";

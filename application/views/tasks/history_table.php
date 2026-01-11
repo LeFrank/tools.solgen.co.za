@@ -1,7 +1,7 @@
 
         <div id="tasksHistoryContent" class="tasksHistoryContent" >
             <div id="historyGraph">
-            <h2>Tasks History ( <?php echo sizeof($tasks); ?> )</h2>
+            <h2>Tasks History ( <?php echo (null == $tasks) ? 0 : sizeof($tasks); ?> )</h2>
                 Table of full data from <?php echo $startAndEndDateforMonth[0]; ?> to <?php echo $startAndEndDateforMonth[1]; ?><br/><br/>
                 <?php if (is_array($tasks) && !empty($tasks)) {
                 ?>
@@ -108,35 +108,4 @@
         </div>
     </div>
 </div>
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('#taskSummary').tablesorter();
-        $('input[type="checkbox"]').click(function() {
-            if($(this).prop("checked") == true) {
-                // alert("Checkbox is checked.");
-                console.log("Checked: " + $(this).val());
-                //ToDo: Enable the lines below to make it functional
-                $.post(
-                    "/tasks/mark-as-done/" + $(this).val(),
-                    null
-                ).done(function (resp) {
-                    // console.log(resp);
-                    // console.log("Task marked as done.");
-                    let resp_value = JSON.parse(resp);
-                    // console.log(resp_value["status"]);
-                    // console.log(resp_value["message"]);
-                });
-            }else{
-                // alert("Checkbox is unchecked.");
-                // console.log("Unchecked: " + $(this).val());
-                //mark-as-undone
-                $.post(
-                    "/tasks/mark-as-undone/" + $(this).val(),
-                    null
-                ).done(function (resp) {
-                    console.log(resp);
-                });
-            }
-        });
-    });
-</script>
+<script type="text/javascript" src="/js/tasks/history.js" ></script>

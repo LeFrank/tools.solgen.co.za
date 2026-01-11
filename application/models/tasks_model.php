@@ -218,6 +218,15 @@ class tasks_model extends CI_Model {
             }
             $tasksDomainArr = $this->input->post("tasksDomains");
             $tasksStatusdArr = $this->input->post("tasksStatuses");
+            $difficultyLevelsArr = $this->input->post("difficultyLevels");
+            $importanceLevelsArr = $this->input->post("importanceLevels");
+            $urgencyLevelsArr = $this->input->post("urgencyLevels");
+            $riskLevelsArr = $this->input->post("riskLevels");
+            $gainLevelsArr = $this->input->post("gainLevels");
+            $rewardCategoriesArr = $this->input->post("rewardCategories");
+            $cyclesArr = $this->input->post("cycles");
+            $scalesArr = $this->input->post("scales");
+            $scopesArr = $this->input->post("scopes");  
             
             $FilterDateField = "start_date";
             if($this->input->post("date_filter") == "create_date"){
@@ -231,6 +240,33 @@ class tasks_model extends CI_Model {
             }
             if (!empty($tasksStatusdArr) && $tasksStatusdArr[0] != "all") {
                 $this->db->where_in("status_id", array_map('intval', $tasksStatusdArr));
+            }
+            if (!empty($difficultyLevelsArr) && $difficultyLevelsArr[0] != "all") {
+                $this->db->where_in("difficulty_level_id", array_map('intval', $difficultyLevelsArr));
+            }
+            if (!empty($importanceLevelsArr) && $importanceLevelsArr[0] != "all") {
+                $this->db->where_in("importance_level_id", array_map('intval', $importanceLevelsArr));
+            }
+            if (!empty($urgencyLevelsArr) && $urgencyLevelsArr[0] != "all") {
+                $this->db->where_in("urgency_level_id", array_map('intval', $urgencyLevelsArr));
+            }
+            if (!empty($riskLevelsArr) && $riskLevelsArr[0] != "all") {
+                $this->db->where_in("risk_level_id", array_map('intval', $riskLevelsArr));
+            }
+            if (!empty($gainLevelsArr) && $gainLevelsArr[0] != "all") {
+                $this->db->where_in("gain_level_id", array_map('intval', $gainLevelsArr));
+            }
+            if (!empty($rewardCategoriesArr) && $rewardCategoriesArr[0] != "all") {
+                $this->db->where_in("reward_category_id", array_map('intval', $rewardCategoriesArr));
+            }
+            if (!empty($cyclesArr) && $cyclesArr[0] != "all") {
+                $this->db->where_in("cycle_id", array_map('intval', $cyclesArr));
+            }
+            if (!empty($scalesArr) && $scalesArr[0] != "all") {
+                $this->db->where_in("scale_id", array_map('intval', $scalesArr));
+            }
+            if (!empty($scopesArr) && $scopesArr[0] != "all") {
+                $this->db->where_in("scope_id", array_map('intval', $scopesArr));
             }
             if (null == $limit) {
                 if($FilterDateField == "create_date")
