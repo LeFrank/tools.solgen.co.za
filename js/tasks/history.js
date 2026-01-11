@@ -24,8 +24,8 @@ $(document).ready(function () {
                 "/tasks/mark-as-done/" + $(this).val(),
                 null
             ).done(function (resp) {
-                // let resp_value = JSON.parse(resp);
-                // console.log(resp);
+                let resp_value = JSON.parse(resp);
+                console.log(resp);
             });
         }else{
             // console.log("Unchecked: " + $(this).val());
@@ -33,7 +33,7 @@ $(document).ready(function () {
                 "/tasks/mark-as-undone/" + $(this).val(),
                 null
             ).done(function (resp) {
-                // console.log(resp);
+                console.log(resp);
             });
         }
     });

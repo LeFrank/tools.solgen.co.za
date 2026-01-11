@@ -108,7 +108,7 @@
                             </div>
                         </div> -->
                         <p>More Options: <span id="searchExpand"><img src="/images/third_party/icons/Search_icon.png" /></span></p>                                
-                        <div id="dashboardContent" style="display: none;">
+                        <div id="dashboardContent" class="notesHistoryHidden">
                             <div class="row expanded">
                                 <div class="large-12 columns">
                                     <label>Importance Levels</label>
