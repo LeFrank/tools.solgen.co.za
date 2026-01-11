@@ -74,7 +74,7 @@
                                     . ";"
                                     . "'";
                             echo "<td ".$tr_style." >" . json_decode($tasksDomains[$v["domain_id"]]["emoji"]) . " " . $tasksDomains[$v["domain_id"]]["name"] . "</td>";
-                            echo "<td><a href='/tasks/task/" . $v["id"] . "' class='plain-text'>" . $v["name"] . "</a></td>";
+                            echo "<td><a href='/tasks/task/" . $v["id"] . "' class='plain-text' target='_blank'>" . $v["name"] . "</a></td>";
                             echo "<td>" . $v["description"] . "</td>";
                             // echo "<td>" . $v["status_id"] . "</td>";
                             echo "<td>" . $tasksStatuses[$v["status_id"]]["name"]  . "</td>";
