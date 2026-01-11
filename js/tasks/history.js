@@ -44,8 +44,6 @@ $(document).ready(function () {
         $("#dashboardContent").slideToggle("slow", function () {
             if ($("#dashboardContent").is(":visible")) {
                 $(this).addClass("notesHistory");
-            }else{
-                $(this).removeClass("notesHistory");
             }
         });
     });
