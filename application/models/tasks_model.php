@@ -303,7 +303,7 @@ class tasks_model extends CI_Model {
                     $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'start_date >=' => $this->input->post("fromDate"), 'start_date <= ' => $this->input->post("toDate")), $limit, $offset);
                 }
             }
-            echo $this->db->last_query();
+            // echo $this->db->last_query();
             return $query->result_array();
         }
     }
