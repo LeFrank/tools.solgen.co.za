@@ -1,0 +1,27 @@
+@media print {
+  /* All your print styles go here */
+  #elder-container,
+  #top-nav,
+  #tasksNav,
+  #page-footer,
+  #header,
+  #footer,
+  #nav,
+  button, 
+  input, 
+  textarea, 
+  select,
+  .button,
+  #cke_1_top,
+  #work_note_delete_link,
+  #drop-zone {
+    display: none !important;
+  }
+    /* Convert form fields to text for print */
+  input[type="text"], textarea {
+    border: none;
+    background: none;
+    color: black;
+    font-size: inherit;
+  }
+}

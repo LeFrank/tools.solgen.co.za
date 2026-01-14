@@ -75,7 +75,7 @@
                             </div>
                             <div class="large-2 columns" >
                                 <p>
-                                    <a href="/tasks/<?php echo $task->id; ?>/work-note/delete/<?php echo $vv["id"]; ?>" onclick="return confirm_delete();">Delete</a>
+                                    <a href="/tasks/<?php echo $task->id; ?>/work-note/delete/<?php echo $vv["id"]; ?>" onclick="return confirm_delete();" id="work_note_delete_link">Delete</a>
                                 </p>
                             </div>
                         </div>
@@ -98,8 +98,13 @@
         <br/>
         <h3>Add Artefacts</h3>
         <div>
-            <!-- Artefact upload will go here -->
-            <p>Drag and drop stuff here.</p>
+            <label id="drop-zone">
+                Drop images here, or click to upload.
+                <input type="file" id="file-input" multiple accept="*/*" />
+            </label>
+            <ul id="preview"></ul>
+            <button id="clear-btn" class="button secondary">Clear</button>
+            <br/><br/><br/>
         </div>
     </div>
 </div>
@@ -114,7 +119,7 @@
     });
 </script>
 <script type="text/javascript" >
-    var editableItemsIds = <?php echo json_encode($editableItems); ?>;
+    // var editableItemsIds = <?php //echo json_encode($editableItems); ?>;
 </script>
 <link rel="stylesheet" href="/css/third_party/thickbox/thickbox.css" type="text/css" media="screen" />
 <script src="/js/third_party/jquery-ui.custom.min.js" type="text/javascript" ></script>

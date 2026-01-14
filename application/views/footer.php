@@ -1,7 +1,7 @@
                 </div>
             </div>        
         </div>
-        <div class="row">
+        <div id="page-footer" class="row">
             <div class="large-12 columns" style="text-align: center;">
                 <button onclick="topFunction()" id="ScrollToTopBtn" title="Go to top">Top</button>
 
