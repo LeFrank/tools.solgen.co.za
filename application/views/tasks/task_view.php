@@ -75,7 +75,7 @@
                             </div>
                             <div class="large-2 columns" >
                                 <p>
-                                    <a href="/tasks/work-note/delete/<?php echo $vv["id"]; ?>" onclick="return confirm_delete();">Delete</a>
+                                    <a href="/tasks/<?php echo $task->id; ?>/work-note/delete/<?php echo $vv["id"]; ?>" onclick="return confirm_delete();">Delete</a>
                                 </p>
                             </div>
                         </div>

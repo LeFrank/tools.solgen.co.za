@@ -47,6 +47,11 @@ class Tasks_work_notes_model extends CI_Model {
         $this->db->delete($this->tn);
     }
 
+    public function deleteWorkNoteByTaskId($id, $taskId) {
+        $this->db->where(array("id" => $id, "task_id" => $taskId));
+        $this->db->delete($this->tn);
+    }
+
     /**
      * 
      * @param type $userId
@@ -74,6 +79,11 @@ class Tasks_work_notes_model extends CI_Model {
      */
     public function getTasksWorkNote($user_id, $id) {
         $query = $this->db->get_where($this->tn, array('user_id' => $user_id,'id' => $id));
+        return $query->row();
+    }
+
+    public function getTasksWorkNoteByTaskId($user_id, $id, $taskId) {
+        $query = $this->db->get_where($this->tn, array('user_id' => $user_id,'id' => $id, 'task_id' => $taskId));
         return $query->row();
     }
 

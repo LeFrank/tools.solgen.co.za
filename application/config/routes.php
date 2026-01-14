@@ -270,6 +270,7 @@ $route['tasks/filter-search'] = 'tasks/filteredSearch';
 $route['tasks/update_short'] = 'tasks/updateShort';
 $route['tasks/work-note/(:num)'] = 'tasks/workNote/$1';
 $route['tasks/work-note/update/(:num)'] = 'tasks/workNoteUpdate/$1';
+$route['tasks/(:num)/work-note/delete/(:num)'] = 'tasks/workNoteDelete/$1/$2';
 
 
 

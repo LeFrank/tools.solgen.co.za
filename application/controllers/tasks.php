@@ -645,4 +645,17 @@ class Tasks extends CI_Controller {
         
     }
 
+
+    public function workNoteDelete($taskId ,$work_note_id){
+        $userId = $this->session->userdata("user")->id;
+        $data["workNote"] = $this->tasks_work_notes_model->getTasksWorkNoteByTaskId($userId, $work_note_id, $taskId);
+        if($data["workNote"]){
+            //Update existing work note
+            $this->tasks_work_notes_model->deleteWorkNoteByTaskId($work_note_id, $taskId);
+            echo json_encode(array("status" => "success", "message"=>"The work note was deleted."));
+        }else{
+            echo json_encode(array("status" => "error", "message"=>"The work note could not be found."));
+        }
+    }
+
 }
