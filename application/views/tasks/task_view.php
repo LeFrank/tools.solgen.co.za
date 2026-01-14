@@ -50,21 +50,56 @@
     </div>
     <div class="large-6 columns" >
         <br/><br/>
-        <h2>Notes</h2>
+        <h2>Work Notes&nbsp</h2>
         <div>
-            <!-- Notes will go here -->
-            <ol>
-                <li>Note 1</li>
-                <li>Note 2</li> 
-            </ol>
+            <div>
+                <?php
+                // print_r($workNotes);
+                if(!empty($workNotes)){
+                    foreach($workNotes as $kk=>$vv){
+                        ?>
+                        <div class="row expanded">
+                            <div class="large-10 columns" >
+                        <?php
+                                echo "<p><strong>Added on: </strong>".date_format(date_create($vv["create_date"]), 'D,  d M Y - H:m')."</p>";
+                        ?>
+                                <span 
+                                    class="editable"
+                                    data-url="/tasks/work-note/update/<?php echo $vv["id"]; ?>"
+                                    data-type="textarea"
+                                    data-ok-button="OK"
+                                    data-cancel-button="Cancel" 
+                                    >
+                                    <?php echo (!empty($vv["work_note"]))?nl2br($vv["work_note"]):""; ?>
+                                </span>
+                            </div>
+                            <div class="large-2 columns" >
+                                <p>
+                                    <a href="/tasks/work-note/delete/<?php echo $vv["id"]; ?>" onclick="return confirm_delete();">Delete</a>
+                                </p>
+                            </div>
+                        </div>
+                    <hr/>   
+                    <br/>  
+                <?php } 
+                }?>
+                <span 
+                    class="editable"
+                    data-url="/tasks/work-note/<?php echo $task->id; ?>"
+                    data-type="textarea"
+                    data-ok-button="OK"
+                    data-cancel-button="Cancel" 
+                    >
+                    <?php echo (!empty($work_notes["work_note"]))?$work_notes["work_note"]:""; ?>
+                </span>
+                <br/>
+            </div>
         </div>
+        <br/>
         <h3>Add Artefacts</h3>
         <div>
             <!-- Artefact upload will go here -->
-            <ol>
-                <li>Artefact 1</li>
-                <li>Artefact 2</li> 
-            </ol>
+            <p>Drag and drop stuff here.</p>
         </div>
     </div>
 </div>
@@ -75,35 +110,15 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script type="text/javascript">
     $(function() {
-        CKEDITOR.replace('description');
-        $("#start_date").datetimepicker();
-        $("#end_date").datetimepicker();
-        $("#target_date").datetimepicker();
+
     });
 </script>
-
-<!-- 
-stdClass Object ( 
-
-[id] => 56 
-[domain_id] => 15 
-[name] => Personal => View of todays tasks 
-[description] =>
-Show tasks which are targetted for today, or for this week.
-
-[status_id] => 4 
-[user_id] => 1 
-[create_date] => 2026-01-03 17:17:52 
-[update_date] => 2026-01-03 17:17:52 
-[start_date] => 2026-01-03 17:17:00 
-[end_date] => 2026-01-04 17:29:00 
-[target_date] => 2026-01-06 22:00:00 
-[importance_level_id] => 5 
-[urgency_level_id] => 5 
-[risk_level_id] => 1 
-[gain_level_id] => 9 
-[reward_category_id] => 7 
-[cycle_id] => 1 
-[scale_id] => 2 
-[scope_id] => 1 
-[difficulty_level_id] => 1 ) -->
+<script type="text/javascript" >
+    var editableItemsIds = <?php echo json_encode($editableItems); ?>;
+</script>
+<link rel="stylesheet" href="/css/third_party/thickbox/thickbox.css" type="text/css" media="screen" />
+<script src="/js/third_party/jquery-ui.custom.min.js" type="text/javascript" ></script>
+<script type="text/javascript" src="/js/third_party/thickbox-compressed.js"></script>
+<script type="text/javascript" src="/js/third_party/jinplace-1.2.1.min.js"></script>
+<script type="text/javascript" src="/js/third_party/jquery.tablesorter.min.js"></script>
+<script type="text/javascript" src="/js/tasks/task_view.js" ></script>

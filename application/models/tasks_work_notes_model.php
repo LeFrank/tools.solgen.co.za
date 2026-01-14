@@ -1,8 +1,8 @@
 <?php
 
-class Notes_model extends CI_Model {
+class Tasks_work_notes_model extends CI_Model {
 
-    var $tn = "notes";
+    var $tn = "tasks_work_notes";
 
     public function __construct() {
         parent::__construct();
@@ -16,24 +16,25 @@ class Notes_model extends CI_Model {
      * Capture a users expense from a post request. 
      * @return type
      */
-    public function capture_note() {
+    public function capture_work_note() {
         $this->load->helper('date');
         $this->load->library("session");
         $data = array(
             'user_id' => $this->session->userdata("user")->id,
-            'heading' => $this->input->post('title'),
-//            removes emoticons
-//            'body' => preg_replace('/[\x00-\x1F\x80-\xFF]/', '', $this->input->post('body')),
-            'body' => $this->input->post('body'),
-            'tagg' => $this->input->post('tags'),
-            'create_date' => date('Y/m/d H:i', strtotime($this->input->post('noteDate')))
+            'task_id' => $this->input->post('task_id'),
+            'work_note' => $this->input->post('work_note'),
+            'create_date' => date('Y/m/d H:i', strtotime($this->input->post('note_work_date')))
         );
-//        echo $id = $this->db->insert($this->tn, $data);
-//        $tags = explode(",", $this->input->post('tags'));
-//        foreach($tags as $k=>$v){
-//            echo $v;
-//            $
-//        }
+        return $this->db->insert($this->tn, $data);
+    }
+
+    public function createWorkNote($user_id, $tasks_id, $work_note){
+        $data = array(
+            'user_id' => $user_id,
+            'task_id' => $tasks_id,
+            'work_note' => $work_note,
+            'create_date' => date('Y/m/d H:i', strtotime(date("Y-m-d H:i:s")))
+        );
         return $this->db->insert($this->tn, $data);
     }
 
@@ -71,7 +72,7 @@ class Notes_model extends CI_Model {
      * @param type $id
      * @return type
      */
-    public function getNote($user_id, $id) {
+    public function getTasksWorkNote($user_id, $id) {
         $query = $this->db->get_where($this->tn, array('user_id' => $user_id,'id' => $id));
         return $query->row();
     }
@@ -83,16 +84,16 @@ class Notes_model extends CI_Model {
      * @param type $offset if present offset the result by this value else no offset
      * @return null
      */
-    public function getNotes($userId = null, $limit = null, $offset = 0, $count = false) {
+    public function getTasksWorkNotesByTaskId($userId = null, $taskId = null, $limit = null, $offset = 0, $count = false) {
 //        echo "userId: ".$userId." >> limit: ".$limit . " >> offset: ". $offset ." >> count: ". $count;
         if ($userId === null) {
             return null;
         }
         $this->db->order_by("create_date", "desc");
         if (null == $limit) {
-            $query = $this->db->get_where($this->tn, array('user_id' => $userId));
+            $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'task_id' => $taskId));
         } else {
-            $query = $this->db->get_where($this->tn, array('user_id' => $userId), $limit, $offset);
+            $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'task_id' => $taskId), $limit, $offset);
         }
 //        echo $this->db->last_query();
         if ($count) {
@@ -102,37 +103,21 @@ class Notes_model extends CI_Model {
         }
     }
 
-    public function getNotesByIds($userId, $noteIds) {
+    public function getTasksWorkNotesByIds($userId, $WorkNoteIds) {
         if ($userId == null) {
             return null;
         }
-        if ($noteIds == null) {
+        if ($WorkNoteIds == null) {
             return null;
         }
         $this->db->order_by("create_date", "desc");
-        $this->db->where_in('id', $noteIds);
+        $this->db->where_in('id', $WorkNoteIds);
         $query = $this->db->get_where($this->tn, array('user_id' => $userId), 100);
         return $query->result_array();
     }
 
-    public function getTags($userId) {
-        if ($userId == null) {
-            return null;
-        }
-        $this->db->order_by("tagg", "desc");
-        $this->db->select('id, tagg');
-        $query = $this->db->get_where($this->tn, array('user_id' => $userId));
-        return $query->result_array();
-    }
 
-    public function getNotesByTag($userId, $tag) {
-        $this->db->order_by("create_date", "desc");
-        $this->db->where('tagg', $tag);
-        $query = $this->db->get_where($this->tn, array('user_id' => $userId), 100);
-        return $query->result_array();
-    }
-
-    public function getTotalNumberOfNotesForUser($userId, $dateFrom = null, $dateTo = null) {
+    public function getTotalNumberOfTasksWorkNotesForUser($userId, $dateFrom = null, $dateTo = null) {
         if ($dateFrom != null) {
             $this->db->where('create_date >=', $dateFrom);
         }
@@ -143,9 +128,9 @@ class Notes_model extends CI_Model {
         $this->db->from($this->tn);
         return $this->db->count_all_results();
     }
-    
-    
-    public function getNotesForPeriod($userId = null, $dateFrom = null, $dateTo = null) {
+
+
+    public function getTasksWorkNotesForPeriod($userId = null, $dateFrom = null, $dateTo = null) {
         if ($dateFrom != null) {
             $this->db->where('create_date >=', $dateFrom);
         }
@@ -158,7 +143,7 @@ class Notes_model extends CI_Model {
         return $query->result_array();
     }
 
-    public function searchNotes($userId = null, $limit = null, $offset = 0, $count = false) {
+    public function searchTasksWorkNotes($userId = null, $limit = null, $offset = 0, $count = false) {
         if ($userId == null) {
             return null;
         }
@@ -173,9 +158,7 @@ class Notes_model extends CI_Model {
         $this->db->order_by("create_date", "desc");
         if ($this->input->post("searchText") != "") {
             $search = $this->input->post("searchText");
-            $this->db->or_like('heading', $search);
-            $this->db->or_like('body', $search);
-            $this->db->or_like('tagg', $search);
+            $this->db->or_like('work_note', $search);
         }
         $query = $this->db->get_where($this->tn, array('user_id' => $userId), 100);
         if ($count) {
@@ -184,8 +167,8 @@ class Notes_model extends CI_Model {
             return $query->result_array();
         }
     }
-    
-    public function searchNotesCriteria($userId = null, $limit = null, $offset = 0, $count = false , $text= null, $start_date = null, $end_date = null){
+
+    public function searchTasksWorkNotesCriteria($userId = null, $limit = null, $offset = 0, $count = false , $text= null, $start_date = null, $end_date = null){
        if ($userId == null) {
             return null;
         }
@@ -200,11 +183,12 @@ class Notes_model extends CI_Model {
         }
         $this->db->order_by("create_date", "desc");
         if ($text != null) {
-            $where = "(heading like '%".$text."%' or body like '%".$text."%' or tagg like '%".$text."%')";
+            // $where = "(heading like '%".$text."%' or body like '%".$text."%' or tagg like '%".$text."%')";
 //            $this->db->or_like('heading', $text);
 //            $this->db->or_like('body', $text);
 //            $this->db->or_like('tagg', $text);
-              $this->db->where($where);
+            $this->db->or_like('work_note', $search);
+            // $this->db->where($where);
         }
         if (null == $limit) {
             $query = $this->db->get_where($this->tn, array('user_id' => $userId));
@@ -219,37 +203,36 @@ class Notes_model extends CI_Model {
         } 
     }
 
-    public function getNotesPerToolItem($userId, $toolId, $toolDataId) {
-        $this->db->order_by("create_date", "desc");
-        $query = $this->db->get_where($this->tn, array(
-            'user_id' => $userId,
-            'tool_id' => $toolId,
-            'tool_data_id' => $toolDataId
-        ));
-        return $query->result_array();
-    }
-
     /**
      * Update the note, expects post and session data to be present.
      * @return type
      */
     public function update() {
-        $note = $this->getNote($this->session->userdata("user")->id, $this->input->post('id'));
-        $updateCount = $note->update_count + 1;
+        $note = $this->getTasksWorkNote($this->session->userdata("user")->id, $this->input->post('tasks_work_note_id'));
+        // $updateCount = $note->update_count + 1;
         $data = array(
             'user_id' => $this->session->userdata("user")->id,
-            'heading' => $this->input->post('title'),
-//            removes emoticons
-//            'body' => preg_replace('/[\x00-\x1F\x80-\xFF]/', '', $this->input->post('body')),
-            'body' => $this->input->post('body'),
-            'tagg' => $this->input->post('tags'),
-            'create_date' => date('Y/m/d H:i', strtotime($this->input->post('noteDate'))),
-            'update_date' => date('Y/m/d H:i'),
-            'update_count' => $updateCount
+            'task_id' => $this->input->post('task_id'),
+            'work_note' => $this->input->post('work_note'),
+            'update_date' => date('Y/m/d H:i')
+            // ,            'update_count' => $updateCount
         );
 //        print_r($data);
 //        exit;
         $this->db->where('id', $this->input->post('id'));
+        return $this->db->update($this->tn, $data);
+    }
+
+
+    public function updateWorkNote($work_note_id, $work_note){
+        $note = $this->getTasksWorkNote($this->session->userdata("user")->id, $work_note_id);
+        // $updateCount = $note->update_count + 1;
+        $data = array(
+            'work_note' => $work_note,
+            'update_date' => date('Y/m/d H:i')
+            // ,'update_count' => $updateCount
+        );
+        $this->db->where(array('user_id' => $this->session->userdata("user")->id, 'id' => $work_note_id));
         return $this->db->update($this->tn, $data);
     }
 }

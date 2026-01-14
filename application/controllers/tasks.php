@@ -205,6 +205,8 @@ class Tasks extends CI_Controller {
         $this->load->model('tasks_domains_model');
         $this->load->model('tasks_status_model');
         $this->load->model("user_content_model");
+        $this->load->model('notes_model');
+        $this->load->model('tasks_work_notes_model');
     }   
 
     public function index() {
@@ -346,7 +348,7 @@ class Tasks extends CI_Controller {
         $data["scales"] = $this->scales;
         $data["scopes"] = $this->scopes;
         $data["difficultyLevels"] = $this->difficultyLevels;
-        $data["startAndEndDateforMonth"] = getStartAndEndDateforYear( date('Y'));
+        $data["startAndEndDateforMonth"] = getStartAndEndDateforMonth(date("m"), date('Y'));
         // print_r($data["startAndEndDateforMonth"]);
         $this->load->helper("tasks_helper");
         $tasks = $this->tasks_model->getTasksByDateRange($data["startAndEndDateforMonth"][0], $data["startAndEndDateforMonth"][1], $userId);
@@ -579,7 +581,9 @@ class Tasks extends CI_Controller {
         $data["cycles"] = $this->cycles;
         $data["scales"] = $this->scales;
         $data["scopes"] = $this->scopes;
-        $data["difficultyLevels"] = $this->difficultyLevels;        
+        $data["difficultyLevels"] = $this->difficultyLevels;
+        $data["notes"] = $this->notes_model->getNotesPerToolItem($userId, $this->toolId, $id);
+        $data["workNotes"] = $this->tasks_work_notes_model->getTasksWorkNotesByTaskId($userId, $taskId = $id);
         if ($this->tasks_model->doesItBelongToMe($userId, $id)) {
             $data["task"] = $this->tasks_model->getTask($id);
             $this->load->view('header', getPageTitle($data, $this->toolName, "Task View", ""));
@@ -597,6 +601,48 @@ class Tasks extends CI_Controller {
             $this->session->set_flashdata("error", $this->load->view('general/action_status', $data, true));
             redirect("/tasks", "refresh");
         }
+    }
+
+    public function WorkNote($id){
+        $userId = $this->session->userdata("user")->id;
+
+        $data["workNote"] = $this->tasks_work_notes_model->getTasksWorkNote($userId, $id);
+        if(!$data["workNote"] && $this->input->post()){
+            //Create new work note
+            $data["workNote"] = $this->tasks_work_notes_model->createWorkNote(
+                $userId,
+                $id,
+                $this->input->post("value")
+            );
+        }else{
+            //Update existing work note
+            if($this->input->post()){
+                $data["workNote"] = $this->tasks_work_notes_model->updateWorkNote(
+                    $data["workNote"]["id"],
+                    $this->input->post("value")
+                );
+            }
+        }
+
+        echo  $data["workNote"];
+    }
+
+    public function workNoteUpdate($work_note_id){
+        $userId = $this->session->userdata("user")->id;
+        $data["workNote"] = $this->tasks_work_notes_model->getTasksWorkNote($userId, $work_note_id);
+        print_r($this->input->post("value"));
+        if($data["workNote"]){
+            //Update existing work note
+            if($this->input->post()){
+                $data["workNote"] = $this->tasks_work_notes_model->updateWorkNote(
+                    $work_note_id,
+                    $this->input->post("value")
+                );
+            }
+        }
+
+        return nl2br($data["workNote"]);
+        
     }
 
 }

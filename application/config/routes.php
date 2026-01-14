@@ -268,6 +268,8 @@ $route['tasks/dashboard'] = 'tasks/dashboard';
 $route['tasks/dashboard_filter'] = 'tasks/dashboardFilteredSearch';
 $route['tasks/filter-search'] = 'tasks/filteredSearch';
 $route['tasks/update_short'] = 'tasks/updateShort';
+$route['tasks/work-note/(:num)'] = 'tasks/workNote/$1';
+$route['tasks/work-note/update/(:num)'] = 'tasks/workNoteUpdate/$1';
 
 
 

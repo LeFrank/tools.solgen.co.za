@@ -1257,3 +1257,18 @@ ul, #myUL {
 #ScrollToTopBtn:hover {
   background-color: #555;
 }
+
+// span.editable {
+//     resize: vertical; 
+// }
+
+span.editable :empty::before {
+    content: 'Make a new tag';
+    display: inline-block;
+}
+
+span.editable form textarea{
+    // display: inline-block;
+    height: 90px;
+    width: 100%;
+}
