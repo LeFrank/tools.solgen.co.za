@@ -99,18 +99,12 @@
             </div>
         </div>
         <br/>
-        <h3>Add Artefacts</h3>
         <div id="artefact-list-view" name="artefact-list-view">
-        </div>
             <?php if (!empty($userContentArray)) { ?>
                 <?php $this->load->view('tasks/task_view_artefacts_post_upload', ['userContentArray' => $userContentArray, 'tools' => $tools]); ?>
-            <?php } else { ?>
-                <div class="row expanded">
-                    <div class="large-12 columns">
-                        No artefacts have been uploaded yet.
-                    </div>
-                </div>
             <?php } ?>
+        </div>
+            
         <br/>
         <h3>Upload New Artefact</h3>
         <div>
