@@ -584,6 +584,8 @@ class Tasks extends CI_Controller {
         $data["difficultyLevels"] = $this->difficultyLevels;
         $data["notes"] = $this->notes_model->getNotesPerToolItem($userId, $this->toolId, $id);
         $data["workNotes"] = $this->tasks_work_notes_model->getTasksWorkNotesByTaskId($userId, $taskId = $id);
+        $data["tools"] = getAllToolsInfo();
+        $data["userContentArray"] = $this->user_content_model->getUserContentByToolData($userId, $this->toolId, $id);
         if ($this->tasks_model->doesItBelongToMe($userId, $id)) {
             $data["task"] = $this->tasks_model->getTask($id);
             $this->load->view('header', getPageTitle($data, $this->toolName, "Task View", ""));
@@ -656,6 +658,126 @@ class Tasks extends CI_Controller {
         }else{
             echo json_encode(array("status" => "error", "message"=>"The work note could not be found."));
         }
+    }
+
+    public function uploadArtefact($taskId){
+        $this->load->helper('url');
+        $this->load->library('session');
+        $this->load->model('user_content_model');
+        $data["tools"] = getAllToolsInfo();
+        $userId = $this->session->userdata("user")->id;
+        $userContentArray = array();
+        // print_r($this->input->post());
+        // // echo "-------------------";
+        // echo "<pre>";
+        // print_r($_FILES);
+        // echo "</pre>";
+        // exit();
+        // $data["uploadResult"] = $this->user_content_model->uploadUserContentForToolItem(
+        //     $userId,
+        //     $this->toolId,
+        //     $taskId,
+        //     $_FILES['artefactFile']
+        // );
+        
+        $allowedFileTypes = 'zip|txt|gif|jpeg|jpg|png|webp|md|pdf|doc|docx|xls|xlsx|json|ppt|pptx|html|csv|json'; 
+        $toolId = $this->toolId;
+        $maxSize = 100000000;
+        $private = 1;
+        $passwordProtect = 1;
+        $description = "";
+        $toolEntityId = $taskId;
+        $config['upload_path'] = './user_content/' . $userId . '/' . date('Y') . '/' . date('m') . '/' . date('d');
+        if (!file_exists($config['upload_path'])) {
+            echo $config['upload_path'];
+            if (mkdir($config['upload_path'], 0755, true)) {
+                // echo "Folder created successfully";
+            } else {
+                // echo "Folder unable to be created";
+            }
+        }
+        $config['allowed_types'] = $allowedFileTypes;
+        $config['max_size'] = $maxSize;
+//        $config['max_width'] = 1024;
+//        $config['max_height'] = 768;
+        // echo "Here " . __FILE__ . " line " . __LINE__;
+        $artefacts = [];
+        // echo "<pre>";
+        // print_r($_FILES);
+        // echo "</pre>";
+        $files = $_FILES['task-artefacts'];
+
+        // echo "<pre>";
+        // print_r($files);
+        // echo "</pre>";
+        // exit();
+        $this->load->library('upload', $config);
+
+        foreach ($files['name'] as $key => $task_file) {
+            $_FILES['task-artefacts']['name']     = $files['name'][$key];
+            $_FILES['task-artefacts']['type']     = $files['type'][$key];
+            $_FILES['task-artefacts']['tmp_name'] = $files['tmp_name'][$key];
+            $_FILES['task-artefacts']['error']    = $files['error'][$key];
+            $_FILES['task-artefacts']['size']     = $files['size'][$key];
+
+            $fileName = $files['name'][$key];
+            
+            $artefacts[] = $fileName;
+
+            $config['file_name'] = $fileName;
+
+            $this->upload->initialize($config);
+
+            if ($this->upload->do_upload('task-artefacts')) {
+                $uploadData = $this->upload->data();
+                $this->load->helper('date');
+                $date = date('Y/m/d H:i');
+                $userContent["tool_id"] = $this->toolId;
+                $userContent["user_id"] = $userId;
+                $userContent["tool_entity_id"] = $toolEntityId;
+                $userContent["filename"] = $uploadData["file_name"];
+                $userContent["description"] = "";
+                $userContent["filezise"] = $uploadData["file_size"];
+                $userContent["file_type"] = $uploadData["file_type"];
+                $userContent["file_path"] = $uploadData["file_path"];
+                $userContent["full_path"] = trim($uploadData["full_path"]);
+                $userContent["raw_name"] = $uploadData["raw_name"];
+                $userContent["original_name"] = $uploadData["orig_name"];
+                $userContent["client_name"] = $uploadData["client_name"];
+                $userContent["file_extension"] = $uploadData["file_ext"];
+                $userContent["is_image"] = (empty($uploadData["is_image"])) ? 0 : 1;
+                $userContent["image_widgth"] = (empty($uploadData["image_width"])) ? 0 : 1;
+                $userContent["image_height"] = (empty($uploadData["image_height"])) ? 0 : 1;
+                $userContent["image_type"] = $uploadData["image_type"];
+                $userContent["image_size_string"] = $uploadData["image_size_str"];
+                $userContent["created_by"] = $userId;
+                $userContent["created_on"] = $date;
+                $userContent["private"] = $private;
+                $userContent["password_protect"] = $passwordProtect;
+                $userContent["mdf5_hash"] = md5_file($userContent["full_path"]);
+                $userContent["id"] = $this->user_content_model->capture_user_content($userContent);
+                chmod($userContent["full_path"], 0755 );
+                $data["userContentArray"][] = $userContent;
+            }
+            
+            // return false;
+        }
+
+        // echo "<pre>";
+        // print_r($_FILES);
+        // echo "</pre>";
+
+        // echo "<pre>";
+        // print_r($artefacts);
+        // echo "</pre>";
+        // return $artefacts;
+        // exit();
+        // if($data["uploadResult"]["status"] == "success"){
+        //     $this->session->set_flashdata("success", "The artefact was successfully uploaded.");
+        // }else{
+        //     $this->session->set_flashdata("error", "The artefact upload failed: ".$data["uploadResult"]["message"]);
+        // }
+        echo $this->load->view('tasks/task_view_artefacts_post_upload', $data, true);
     }
 
 }

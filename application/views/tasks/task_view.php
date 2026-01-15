@@ -1,7 +1,7 @@
 <?php
     // print_r($task);
 ?>
-<?php echo form_open('tasks/update_short') ?>
+
 <div class="row expanded">
     <div class="large-12 columns" >
         <h2><?php echo $task->name; ?></h2>
@@ -42,11 +42,14 @@
 </div>
 <div class="row expanded">
     <div class="large-6 columns" >
-        <label>Description:</label><br/>
-        <textarea name="description" id="description" cols="40" rows="5" placeholder="As detailed and clear description of the problem, proposed solution and actions required to complete this task."><?php echo $task->description; ?></textarea><br/><br/>
-        <input type="hidden" class="hidden" name="id" value="<?php echo $task->id; ?>" />
-        <input type="submit" name="submit" value="Update" class="button primary" />
-        <a href="/tasks/edit/<?php echo $task->id; ?>" class="button">Edit Task</a>
+        <?php echo form_open('tasks/update_short') ?>
+            <label>Description:</label><br/>
+            <textarea name="description" id="description" cols="40" rows="5" placeholder="As detailed and clear description of the problem, proposed solution and actions required to complete this task."><?php echo $task->description; ?></textarea><br/><br/>
+            <input type="hidden" class="hidden" name="id" value="<?php echo $task->id; ?>" />
+            <input type="hidden" class="hidden" name="taskId" id="taskId" value="<?php echo $task->id; ?>" />
+            <input type="submit" name="submit" value="Update" class="button primary" />
+            <a href="/tasks/edit/<?php echo $task->id; ?>" class="button">Edit Task</a>
+        </form>
     </div>
     <div class="large-6 columns" >
         <br/><br/>
@@ -97,18 +100,50 @@
         </div>
         <br/>
         <h3>Add Artefacts</h3>
+        <div id="artefact-list-view" name="artefact-list-view">
+        </div>
+            <?php if (!empty($userContentArray)) { ?>
+                <?php $this->load->view('tasks/task_view_artefacts_post_upload', ['userContentArray' => $userContentArray, 'tools' => $tools]); ?>
+            <?php } else { ?>
+                <div class="row expanded">
+                    <div class="large-12 columns">
+                        No artefacts have been uploaded yet.
+                    </div>
+                </div>
+            <?php } ?>
+        <br/>
+        <h3>Upload New Artefact</h3>
         <div>
-            <label id="drop-zone">
-                Drop images here, or click to upload.
-                <input type="file" id="file-input" multiple accept="*/*" />
-            </label>
-            <ul id="preview"></ul>
-            <button id="clear-btn" class="button secondary">Clear</button>
-            <br/><br/><br/>
+            <?php echo form_open_multipart('tasks/task/'.$task->id.'/upload-artefact', array('id' => 'upload-artefact-form', 'name' => 'upload-artefact-form')); ?>
+                
+                <br /><br />
+                <label id="drop-zone">
+                    Drop images here, or click to upload.
+                    <input type="file" id="task-artefacts" name="task-artefacts[]" multiple size="20" 
+                    accept=".jpg, 
+                        .png, 
+                        .webp, 
+                        .gif, 
+                        .txt,
+                        .md, 
+                        .pdf, 
+                        .xlxs, 
+                        .doc, 
+                        .docx, 
+                        .csv, 
+                        .json, 
+                        .sql, 
+                        .tar.gz, 
+                        .zip,
+                        .html"
+                    />
+                </label>
+                <ul id="preview"></ul>
+                <input type="button" id="upload-artefact-button" name="upload-artefact-button" class="button tertiary" value="Upload Artefact" />  
+            </form>
         </div>
     </div>
 </div>
-</form>
 <script src="/js/third_party/ckeditor/ckeditor.js"></script>
 <link rel="stylesheet" type="text/css" href="/css/jquery.datetimepicker.css"/ >
 <script src="/js/jquery.datetimepicker.js"></script>

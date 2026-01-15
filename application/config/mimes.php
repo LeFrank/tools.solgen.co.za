@@ -102,7 +102,8 @@ $mimes = array(	'hqx'	=>	'application/mac-binhex40',
 				'mp4'	=> 	'video/mp4',
 				'3gp'	=>	array('video/3gpp', 'audio/3gpp'),
 				'flv'	=>	'video/x-flv',
-				'mkv'	=>	'video/x-matroska'
+				'mkv'	=>	'video/x-matroska',
+				'webp' => array('image/webp', 'application/octet-stream'),
 			);
 
 
