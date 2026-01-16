@@ -7,8 +7,28 @@
         <h2><?php echo $task->name; ?></h2>
         <div class="row expanded">
             <div class="large-2 columns">
-                <label>Domain:</label><p><?php echo $tasksDomains[$task->domain_id]["name"]; ?></p><br/>
-                <label>Status:</label><p> <?php echo $tasksStatuses[$task->status_id]["name"]; ?></p><br/>
+                <?php 
+                    $field_style = "style='padding-left:10px;padding-top:5px;padding-bottom:5px;"
+                        . "background-color: "
+                        . $tasksDomains[$task->domain_id]["background_colour"]
+                        . ";"
+                        . "color: "
+                        . $tasksDomains[$task->domain_id]["text_colour"]
+                        . ";"
+                        . "'";
+                ?>
+                <label>Domain:</label><p  <?php echo $field_style; ?>><?php echo $tasksDomains[$task->domain_id]["name"]; ?></p><br/>
+                <?php 
+                    $field_style = "style='padding-left:10px;padding-top:5px;padding-bottom:5px;"
+                        . "background-color: "
+                        . $tasksStatuses[$task->status_id]["background_colour"]
+                        . ";"
+                        . "color: "
+                        . $tasksStatuses[$task->status_id]["text_colour"]
+                        . ";"
+                        . "'";
+                ?>
+                <label>Status:</label><p <?php echo $field_style; ?> > <?php echo $tasksStatuses[$task->status_id]["name"]; ?></p><br/>
                 <label>Importance:</label><p> <?php echo $importanceLevels[$task->importance_level_id]["name"]; ?></p><br/>
             </div>
             <div class="large-2 columns">
