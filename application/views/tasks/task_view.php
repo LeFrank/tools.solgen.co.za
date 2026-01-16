@@ -8,7 +8,7 @@
         <div class="row expanded">
             <div class="large-2 columns">
                 <?php 
-                    $field_style = "style='padding-left:10px;padding-top:5px;padding-bottom:5px;"
+                    $field_style = "style='padding:15px;"
                         . "background-color: "
                         . $tasksDomains[$task->domain_id]["background_colour"]
                         . ";"
@@ -19,7 +19,7 @@
                 ?>
                 <label>Domain:</label><p  <?php echo $field_style; ?>><?php echo $tasksDomains[$task->domain_id]["name"]; ?></p><br/>
                 <?php 
-                    $field_style = "style='padding-left:10px;padding-top:5px;padding-bottom:5px;"
+                    $field_style = "style='padding:15px;"
                         . "background-color: "
                         . $tasksStatuses[$task->status_id]["background_colour"]
                         . ";"
