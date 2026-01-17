@@ -588,7 +588,7 @@ class Tasks extends CI_Controller {
         $data["userContentArray"] = $this->user_content_model->getUserContentByToolData($userId, $this->toolId, $id);
         if ($this->tasks_model->doesItBelongToMe($userId, $id)) {
             $data["task"] = $this->tasks_model->getTask($id);
-            $this->load->view('header', getPageTitle($data, $this->toolName, "Task View", ""));
+            $this->load->view('header', getPageTitle($data, $this->toolName, "Task: ". $id . ": ". $data["task"]->name , ""));
             $this->load->view('tasks/tasks_nav');
             $this->load->view('tasks/task_view', $data);
             $this->load->view('footer');
