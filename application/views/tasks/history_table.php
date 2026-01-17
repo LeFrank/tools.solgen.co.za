@@ -48,7 +48,7 @@
                             }else{
                                 $checked = "";
                             }
-                            echo "<tr ".$tr_style.">";
+                            echo "<tr ".$tr_style." id='row_".$v["id"]."'>";
                             echo "<td>" . ++$k . "</td>";
                             echo "<td style='
                                     text-align: center;vertical-align: middle;'>
@@ -108,4 +108,7 @@
         </div>
     </div>
 </div>
-<script type="text/javascript" src="/js/tasks/history.js" ></script>
+<script type="text/javascript" src="/js/third_party/toastr/toastr.min.js" ></script>
+<script type="text/javascript" src="/js/third_party/toastr/glimpse.js" ></script>
+<script type="text/javascript" src="/js/third_party/toastr/glimpse.toastr.js" ></script>
+<script type="text/javascript" src="/js/tasks/history_table.js" ></script>

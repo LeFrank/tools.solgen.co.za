@@ -18,6 +18,7 @@
         <link rel="stylesheet" type="text/css" media="all" href="/css/black_and_yellow_dark.scss" />
         <link rel="stylesheet" href="/css/third_party/foundation/6.3.0/responsive-tables.css" />
         <link rel="stylesheet" href="/css/third_party/fontawesome/css/font-awesome.min.css" />
+        <link rel="stylesheet" href="/css/third_party/toastr/toastr.min.css" />
         <link rel="stylesheet" type="text/css" media="print" href="/css/print.css" />
 
         <?php

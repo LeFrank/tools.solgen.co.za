@@ -334,6 +334,7 @@
 <script type="text/javascript" src="/js/jquery.datetimepicker.js" ></script>
 <script type="text/javascript" src="/js/third_party/handlebars-v1.3.0.js" ></script>
 <script type="text/javascript" src="/js/third_party/jquery.tablesorter.min.js"></script>
+<script type="text/javascript" src="/js/tasks/history.js" ></script>
 <script type="text/javascript">
     var default_start_date = "<?php echo $startAndEndDateforMonth[0]; ?>";
     var default_end_date = "<?php echo $startAndEndDateforMonth[1]; ?>";
