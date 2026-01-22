@@ -607,9 +607,7 @@ class Tasks extends CI_Controller {
 
     public function WorkNote($task_id){
         $userId = $this->session->userdata("user")->id;
-
-        $data["workNote"] = $this->tasks_work_notes_model->getTasksWorkNote($userId, $task_id);
-        if( !$data["workNote"] && $this->input->post()){
+        if( $this->input->post()){
             //Create new work note
             $work_note_id= $this->tasks_work_notes_model->createWorkNote(
                 $userId,
@@ -619,17 +617,8 @@ class Tasks extends CI_Controller {
             // echo $work_note_id;
             $data["workNote"] = $this->tasks_work_notes_model->getTasksWorkNote($userId, $work_note_id);
             // print_r($data["workNote"]);
-        }else{
-            //Update existing work note
-            if($this->input->post()){
-                $data["workNote"] = $this->tasks_work_notes_model->updateWorkNote(
-                    $data["workNote"]["id"],
-                    $this->input->post("value")
-                );
-            }
+            echo $data["workNote"]->work_note;
         }
-        // print_r($data["workNote"]);
-        echo $data["workNote"]->work_note;
     }
 
     public function workNoteUpdate($work_note_id){
