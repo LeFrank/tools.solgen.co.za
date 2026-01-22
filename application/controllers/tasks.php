@@ -605,17 +605,20 @@ class Tasks extends CI_Controller {
         }
     }
 
-    public function WorkNote($id){
+    public function WorkNote($task_id){
         $userId = $this->session->userdata("user")->id;
 
-        $data["workNote"] = $this->tasks_work_notes_model->getTasksWorkNote($userId, $id);
-        if(!$data["workNote"] && $this->input->post()){
+        $data["workNote"] = $this->tasks_work_notes_model->getTasksWorkNote($userId, $task_id);
+        if( !$data["workNote"] && $this->input->post()){
             //Create new work note
-            $data["workNote"] = $this->tasks_work_notes_model->createWorkNote(
+            $work_note_id= $this->tasks_work_notes_model->createWorkNote(
                 $userId,
-                $id,
+                $task_id,
                 $this->input->post("value")
             );
+            // echo $work_note_id;
+            $data["workNote"] = $this->tasks_work_notes_model->getTasksWorkNote($userId, $work_note_id);
+            // print_r($data["workNote"]);
         }else{
             //Update existing work note
             if($this->input->post()){
@@ -625,14 +628,14 @@ class Tasks extends CI_Controller {
                 );
             }
         }
-
-        echo  $data["workNote"];
+        // print_r($data["workNote"]);
+        echo $data["workNote"]->work_note;
     }
 
     public function workNoteUpdate($work_note_id){
         $userId = $this->session->userdata("user")->id;
         $data["workNote"] = $this->tasks_work_notes_model->getTasksWorkNote($userId, $work_note_id);
-        print_r($this->input->post("value"));
+        // print_r($this->input->post("value"));
         if($data["workNote"]){
             //Update existing work note
             if($this->input->post()){
@@ -643,7 +646,7 @@ class Tasks extends CI_Controller {
             }
         }
 
-        return nl2br($data["workNote"]);
+        return $data["workNote"];
         
     }
 
@@ -778,6 +781,39 @@ class Tasks extends CI_Controller {
         //     $this->session->set_flashdata("error", "The artefact upload failed: ".$data["uploadResult"]["message"]);
         // }
         echo $this->load->view('tasks/task_view_artefacts_post_upload', $data, true);
+    }
+
+
+
+
+    public function domainTaskAllocation(){
+        $data = array();
+        $this->load->helper("date_helper");
+        $this->load->helper("tasks_helper");
+        $userId = $this->session->userdata("user")->id;
+        $data["tasksDomains"] = mapKeyToId($this->tasks_domains_model->get_user_tasks_domains($userId, 50), false);
+        $data["tasksStatuses"] = mapKeyToId($this->tasks_status_model->get_user_tasks_statuses($userId), false);
+        $data["importanceLevels"] = $this->importanceLevels;
+        $data["urgencyLevels"] = $this->urgencyLevels;
+        $data["riskLevels"] = $this->riskLevels;
+        $data["gainLevels"] = $this->gainLevels;
+        $data["rewardsCategory"] = $this->rewardsCategory;
+        $data["cycles"] = $this->cycles;
+        $data["scales"] = $this->scales;
+        $data["scopes"] = $this->scopes;
+        $data["difficultyLevels"] = $this->difficultyLevels;
+        $data["startAndEndDateforMonth"] = getStartAndEndDateforMonth(date("m"), date('Y'));
+        // print_r($data["startAndEndDateforMonth"]);
+        $this->load->helper("tasks_helper");
+        $data["tasks"] = $this->tasks_model->getTasksByDateRange($data["startAndEndDateforMonth"][0], $data["startAndEndDateforMonth"][1], $userId);
+        
+        // $data["tasks"] = $this->tasks_model->getTasksByCriteria( $userId );
+
+        $data["domain_to_task_allocation_content"] = $this->load->view('tasks/domain_to_task_allocation_content', $data, true);
+        $this->load->view('header', getPageTitle($data, $this->toolName, "Task To Domain Allocation"));
+        $this->load->view('tasks/tasks_nav');
+        $this->load->view('tasks/daomain_to_task_allocation', $data);
+        $this->load->view('footer'); 
     }
 
 }

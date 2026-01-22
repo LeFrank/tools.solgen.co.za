@@ -5,6 +5,10 @@ $(document).ready(function () {
     $("#end_date").datetimepicker();
     $("#target_date").datetimepicker();
 
+    $(".jip-button jip-ok-button").click(function(){
+        console.log("Fired!!!!!");
+    });
+
     $("#toggle_data").click(function(){
         var noteId = $(this).attr("data");
         var contentDiv = $("#content_" + noteId);

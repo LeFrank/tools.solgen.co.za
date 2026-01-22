@@ -272,6 +272,7 @@ $route['tasks/work-note/(:num)'] = 'tasks/workNote/$1';
 $route['tasks/work-note/update/(:num)'] = 'tasks/workNoteUpdate/$1';
 $route['tasks/(:num)/work-note/delete/(:num)'] = 'tasks/workNoteDelete/$1/$2';
 $route['tasks/task/(:num)/upload-artefact'] = 'tasks/uploadArtefact/$1';
+$route['tasks/task-domain-alocation'] = 'tasks/domainTaskAllocation/';
 
 
 $route['timetable'] = 'timetable/index';

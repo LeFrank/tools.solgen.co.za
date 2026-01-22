@@ -35,7 +35,8 @@ class Tasks_work_notes_model extends CI_Model {
             'work_note' => $work_note,
             'create_date' => date('Y/m/d H:i', strtotime(date("Y-m-d H:i:s")))
         );
-        return $this->db->insert($this->tn, $data);
+        $this->db->insert($this->tn, $data);
+        return  $this->db->insert_id();
     }
 
     /**

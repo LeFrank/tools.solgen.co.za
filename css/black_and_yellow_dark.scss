@@ -1322,3 +1322,27 @@ span.editable form textarea{
     background-color: #c5f4b8;
     color: #007502;
 }
+
+.dropbox {
+    width: 350px;
+    height: 40px;
+    padding: 15px;
+    border: 1px solid #292828;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.dnd_domains_area {
+    width:200%;
+    height:1000px;
+}
+
+.dnd_domains_draggable_zone {
+    width:160px;
+    border: solid 5px grey;
+    border-radius: 10px;
+    height:1000px;
+    text-align: center;
+}
