@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    $('#taskSummary').tablesorter();
     toastr.options = {
                 closeButton: true,
                 onclick: null
@@ -13,7 +14,7 @@ $(document).ready(function () {
                 null
             ).done(function (resp) {
                 let resp_value = JSON.parse(resp);
-                console.log(resp_value["status"] +"" + resp_value["message"]);
+                // console.log(resp_value["status"] +"" + resp_value["message"]);
                 if(resp_value["status"] == "success"){
                     // console.log(resp["message"]);
                     toastr.success(resp_value["message"]);
@@ -33,7 +34,7 @@ $(document).ready(function () {
                 null
             ).done(function (resp) {
                 let resp_value = JSON.parse(resp);
-                console.log(resp_value["status"] +"" + resp_value["message"]);
+                // console.log(resp_value["status"] +"" + resp_value["message"]);
                 if(resp_value["status"] == "success"){
                     // console.log(resp["message"]);
                     toastr.success(resp_value["message"]);

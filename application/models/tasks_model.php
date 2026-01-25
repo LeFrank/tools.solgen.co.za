@@ -169,50 +169,80 @@ class tasks_model extends CI_Model {
      * @return null
      */
     public function getActiveTasks( $userId = null, $limit = null, $offset = 0 , $orderBy=null, $direction = "asc") {
+        $task_tool_Id = 11;
         $month = date('m');
         $year = date('Y');
         $return[0] = date('Y/m/d H:i',mktime(0, 0, 0, $month, 1,   $year));
         $return[1] = date('Y/m/d H:i',mktime(23, 59, 0, $month+1, 1-1,   $year));
+        // if(null != $orderBy){
+        //     $this->db->order_by($orderBy, $direction);
+        // }else{
+        //     $this->db->order_by("create_date", "desc");
+        // }
+        // if ($userId === null) {
+        //     return null;
+        // }
+        // if (null == $limit) {
+        //     // $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'target_date >=' => $startDate, 'target_date <= ' => $endDate));
+        //     $query = $this->db->get_where(
+        //         $this->tn, 
+        //         array(
+        //             'user_id' => $userId, 
+        //             'start_date >=' => $return[0], 
+        //             'start_date <= ' => $return[1],
+        //             // 'start_date >=' => $return[0],
+        //             // 'start_date <= ' => $return[1],
+        //             'target_date >=' => $return[0],
+        //             'target_date <= ' => $return[1]
+        //             )
+        //         );
+        // } else {
+        //     $query = $this->db->get_where(
+        //         $this->tn, 
+        //         array(
+        //                 'user_id' => $userId, 
+        //                 'start_date >= ' => $return[0], 
+        //                 'start_date <= ' => $return[1], 
+        //                 // 'start_date >=' => $return[0],
+        //                 // 'start_date <= ' => $return[1],
+        //                 'target_date >=' => $return[0],
+        //                 'target_date <= ' => $return[1],
+        //                 $limit, 
+        //                 $offset
+        //         )
+        //     );
+        // }
+
+        $this->db->select("tasks" . '.*, ' . 
+            ' COUNT(`tasks_work_notes`.`task_id`) as num_notes ,'. 
+            ' COUNT(`uc`.`tool_entity_id`) as num_artefacts')
+            ->from("tasks")
+            ->where("tasks.user_id = " . $userId . " and tasks.start_date >= '" . $return[0] ."' and tasks.start_date <= '" . $return[1] ."'")
+            // ->order_by($this->tn.'.id', 'desc')
+            ->group_by('tasks.id');
+            // ->limit(3);
+
+        $this->db->join('tasks_work_notes', 'task_id = ' . "tasks" . '.id', "left")
+            ->group_by('tasks_work_notes.task_id');
+
+        $this->db->join('user_content as uc', 'uc.tool_entity_id = ' . "tasks" . '.id and uc.tool_id = '.$task_tool_Id , "left")
+            ->group_by('uc.tool_entity_id');
         if(null != $orderBy){
             $this->db->order_by($orderBy, $direction);
         }else{
-            $this->db->order_by("create_date", "desc");
+            $this->db->order_by("target_date", "desc");
+        }    
+        if (null != $limit) {
+            $this->db->limit($limit);
+            $this->db->offset($offset);
         }
-        if ($userId === null) {
-            return null;
-        }
-        if (null == $limit) {
-            // $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'target_date >=' => $startDate, 'target_date <= ' => $endDate));
-            $query = $this->db->get_where(
-                $this->tn, 
-                array(
-                    'user_id' => $userId, 
-                    'start_date <=' => date('Y/m/d H:i'), 
-                    'target_date >= ' => date('Y/m/d H:i'),
-                    // 'start_date >=' => $return[0],
-                    // 'start_date <= ' => $return[1],
-                    'target_date >=' => $return[0],
-                    'target_date <= ' => $return[1]
-                    )
-                );
-        } else {
-            $query = $this->db->get_where(
-                $this->tn, 
-                array(
-                        'user_id' => $userId, 
-                        'start_date >=' => $startDate, 
-                        'target_date <= ' => $endDate, 
-                        // 'start_date >=' => $return[0],
-                        // 'start_date <= ' => $return[1],
-                        'target_date >=' => $return[0],
-                        'target_date <= ' => $return[1],
-                        $limit, 
-                        $offset
-                )
-            );
-        }
-    //    echo $this->db->last_query();
+
+        $query = $this->db->get();
+        // echo $this->db->last_query();
         return $query->result_array();
+
+    //    echo $this->db->last_query();
+        // return $query->result_array();
     }
 
     /**

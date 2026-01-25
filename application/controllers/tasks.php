@@ -510,7 +510,7 @@ class Tasks extends CI_Controller {
             $this->edit($this->input->post("id"));
         }else{
             $this->tasks_model->update_short($this->input->post('id'));
-            redirect("/tasks", "refresh");
+            redirect("/tasks/task/".$id, "refresh");
         }
     }
 
