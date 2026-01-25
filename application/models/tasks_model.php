@@ -368,7 +368,7 @@ class tasks_model extends CI_Model {
                 ->group_by('tasks_work_notes.task_id');
 
             $this->db->join('user_content as uc', 'uc.tool_entity_id = ' . $this->tn . '.id and uc.tool_id = '.$toolId , "left")
-                ->group_by('uc.tool_entity_id');
+                ->group_by('uc.tool_id, uc.tool_entity_id');
             // if(null != $orderBy){
             //     $this->db->order_by($orderBy, $direction);
             // }else{
