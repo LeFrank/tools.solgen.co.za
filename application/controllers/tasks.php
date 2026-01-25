@@ -352,6 +352,9 @@ class Tasks extends CI_Controller {
         // print_r($data["startAndEndDateforMonth"]);
         $this->load->helper("tasks_helper");
         $tasks = $this->tasks_model->getTasksByDateRange($data["startAndEndDateforMonth"][0], $data["startAndEndDateforMonth"][1], $userId);
+        // echo "<pre>";
+        // print_r($tasks);
+        // echo "</pre>";
         foreach($tasks as $task){
             $age = getTaskAgeByCreateDate($task);
             $task["age"] = $age;
@@ -528,6 +531,9 @@ class Tasks extends CI_Controller {
         // $data["tasks"] = $this->tasks_model->getTasksByCriteria($userId);
         $this->load->helper("tasks_helper");
         $tasks = $this->tasks_model->getTasksByCriteria($userId);
+        // echo "<pre>";
+        // print_r($tasks);
+        // echo "</pre>";
         if ($tasks == null || count($tasks) == 0){
             $data["tasks"] = null;
         }

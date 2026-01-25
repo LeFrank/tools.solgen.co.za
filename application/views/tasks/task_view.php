@@ -1,11 +1,12 @@
 <?php
     // print_r($task);
+    // phpinfo();
 ?>
 
-<div class="row expanded">
-    <div class="large-12 columns" >
-        <h2><?php echo $task->name; ?></h2>
-        <div class="row expanded">
+<div class="row expanded task-work-note-pane">
+    <h2><?php echo $task->name; ?></h2>
+    <div class="large-12 columns " >
+        <div class="row expanded ">
             <div class="large-2 columns">
                 <?php 
                     $field_style = "style='padding:15px;"
@@ -60,6 +61,7 @@
         </div>
     </div>
 </div>
+<br/>
 <div class="row expanded">
     <div class="large-6 columns" >
         <?php echo form_open('tasks/update_short') ?>

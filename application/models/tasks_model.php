@@ -121,22 +121,38 @@ class tasks_model extends CI_Model {
      * @param type $direction
      * @return null
      */
-    public function getTasksByDateRange($startDate, $endDate, $userId = null, $limit = null, $offset = 0 , $orderBy=null, $direction = "asc") {
+    public function getTasksByDateRange($startDate, $endDate, $userId = null, $limit = null, $offset = 0 , $orderBy=null, $direction = "asc", $toolId=11) {
+        if ($userId === null) {
+            return null;
+        }
+        $this->db->select($this->tn . '.*, ' . 
+                ' COUNT(`tasks_work_notes`.`task_id`) as num_notes ,'. 
+                ' COUNT(`uc`.`tool_entity_id`) as num_artefacts')
+            ->from($this->tn)
+            ->where("tasks.user_id = " . $userId . " and tasks.create_date >= '" . $startDate ."' and tasks.create_date <= '" . $endDate ."'")
+            // ->order_by($this->tn.'.id', 'desc')
+            ->group_by('tasks.id');
+            // ->limit(3);
+
+        $this->db->join('tasks_work_notes', 'task_id = ' . $this->tn . '.id', "left")
+            ->group_by('tasks_work_notes.task_id');
+
+        $this->db->join('user_content as uc', 'uc.tool_entity_id = ' . $this->tn . '.id and uc.tool_id = '.$toolId , "left")
+            ->group_by('uc.tool_entity_id');
         if(null != $orderBy){
             $this->db->order_by($orderBy, $direction);
         }else{
             $this->db->order_by("create_date", "desc");
+        }    
+        if (null != $limit) {
+            $this->db->limit($limit);
+            $this->db->offset($offset);
         }
-        if ($userId === null) {
-            return null;
-        }
-        if (null == $limit) {
-            $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'create_date >=' => $startDate, 'create_date <= ' => $endDate));
-        } else {
-            $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'create_date >=' => $startDate, 'create_date <= ' => $endDate), $limit, $offset);
-        }
-    //    echo $this->db->last_query();
+
+        $query = $this->db->get();
+        // echo $this->db->last_query();
         return $query->result_array();
+        
     }
 
 
@@ -206,9 +222,9 @@ class tasks_model extends CI_Model {
      * @param type $offset
      * @return type
      */
-    public function getTasksByCriteria($userId = null, $limit = null, $offset = 0) {
+    public function getTasksByCriteria($userId = null, $limit = null, $offset = 0, $toolId=11) {
         if (null != $userId) {
-            $this->db->order_by("start_date", "desc");
+            $this->db->order_by("tasks.start_date", "desc");
             // if ($this->input->post("fromAmount") != $this->input->post("toAmount")) {
             //     $this->db->where("amount >=", $this->input->post("fromAmount"));
             //     $this->db->where("amount <=", $this->input->post("toAmount"));
@@ -237,74 +253,139 @@ class tasks_model extends CI_Model {
                 $FilterDateField = "end_date";
             }                           
 
+            // if (!empty($tasksDomainArr) && $tasksDomainArr[0] != "all") {
+            //     $this->db->where_in("domain_id", array_map('intval', $tasksDomainArr));
+            // }
+            // if (!empty($tasksStatusdArr) && $tasksStatusdArr[0] != "all") {
+            //     $this->db->where_in("status_id", array_map('intval', $tasksStatusdArr));
+            // }
+            // if (!empty($difficultyLevelsArr) && $difficultyLevelsArr[0] != "all") {
+            //     $this->db->where_in("difficulty_level_id", array_map('intval', $difficultyLevelsArr));
+            // }
+            // if (!empty($importanceLevelsArr) && $importanceLevelsArr[0] != "all") {
+            //     $this->db->where_in("importance_level_id", array_map('intval', $importanceLevelsArr));
+            // }
+            // if (!empty($urgencyLevelsArr) && $urgencyLevelsArr[0] != "all") {
+            //     $this->db->where_in("urgency_level_id", array_map('intval', $urgencyLevelsArr));
+            // }
+            // if (!empty($riskLevelsArr) && $riskLevelsArr[0] != "all") {
+            //     $this->db->where_in("risk_level_id", array_map('intval', $riskLevelsArr));
+            // }
+            // if (!empty($gainLevelsArr) && $gainLevelsArr[0] != "all") {
+            //     $this->db->where_in("gain_level_id", array_map('intval', $gainLevelsArr));
+            // }
+            // if (!empty($rewardCategoriesArr) && $rewardCategoriesArr[0] != "all") {
+            //     $this->db->where_in("reward_category_id", array_map('intval', $rewardCategoriesArr));
+            // }
+            // if (!empty($cyclesArr) && $cyclesArr[0] != "all") {
+            //     $this->db->where_in("cycle_id", array_map('intval', $cyclesArr));
+            // }
+            // if (!empty($scalesArr) && $scalesArr[0] != "all") {
+            //     $this->db->where_in("scale_id", array_map('intval', $scalesArr));
+            // }
+            // if (!empty($scopesArr) && $scopesArr[0] != "all") {
+            //     $this->db->where_in("scope_id", array_map('intval', $scopesArr));
+            // }
+            // if (null == $limit) {
+            //     if($FilterDateField == "create_date")
+            //     {
+            //         $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'create_date >=' => $this->input->post("fromDate"), 'create_date <= ' => $this->input->post("toDate")));
+            //     }
+            //     else if($FilterDateField == "target_date")
+            //     {
+            //         $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'target_date >=' => $this->input->post("fromDate"), 'target_date <= ' => $this->input->post("toDate")));
+            //     }
+            //     else if($FilterDateField == "end_date")
+            //     {
+            //         $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'end_date >=' => $this->input->post("fromDate"), 'end_date <= ' => $this->input->post("toDate")));
+            //     }
+            //     else{
+            //         $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'start_date >=' => $this->input->post("fromDate"), 'start_date <= ' => $this->input->post("toDate")));
+            //     }
+            // } else {
+            //     if($FilterDateField == "create_date")
+            //     {
+            //         $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'create_date >=' => $this->input->post("fromDate"), 'create_date <= ' => $this->input->post("toDate")), $limit, $offset);
+            //     }
+            //     else if($FilterDateField == "target_date")
+            //     {
+            //         $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'target_date >=' => $this->input->post("fromDate"), 'target_date <= ' => $this->input->post("toDate")), $limit, $offset);
+            //     }
+            //      else if($FilterDateField == "end_date")
+            //     {
+            //         $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'end_date >=' => $this->input->post("fromDate"), 'end_date <= ' => $this->input->post("toDate")), $limit, $offset);
+            //     }
+            //     else{
+            //         $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'start_date >=' => $this->input->post("fromDate"), 'start_date <= ' => $this->input->post("toDate")), $limit, $offset);
+            //     }
+            // }
+
+            if ($userId === null) {
+                   return null;
+            }
+            $this->db->select($this->tn . '.*, ' . 
+                ' COUNT(`tasks_work_notes`.`task_id`) as num_notes ,'. 
+                ' COUNT(`uc`.`tool_entity_id`) as num_artefacts')
+            ->from($this->tn)
+            ->where("tasks.user_id = " . $userId . " and tasks.". $FilterDateField." >= '" . $this->input->post("fromDate") ."' and tasks.". $FilterDateField." <= '" . $this->input->post("toDate") ."'")
+            // ->order_by($this->tn.'.id', 'desc')
+            ->group_by('tasks.id');
+            // ->limit(3);
             if (!empty($tasksDomainArr) && $tasksDomainArr[0] != "all") {
-                $this->db->where_in("domain_id", array_map('intval', $tasksDomainArr));
+                $this->db->where_in("tasks.domain_id", array_map('intval', $tasksDomainArr));
             }
             if (!empty($tasksStatusdArr) && $tasksStatusdArr[0] != "all") {
-                $this->db->where_in("status_id", array_map('intval', $tasksStatusdArr));
+                $this->db->where_in("tasks.status_id", array_map('intval', $tasksStatusdArr));
             }
             if (!empty($difficultyLevelsArr) && $difficultyLevelsArr[0] != "all") {
-                $this->db->where_in("difficulty_level_id", array_map('intval', $difficultyLevelsArr));
+                $this->db->where_in("tasks.difficulty_level_id", array_map('intval', $difficultyLevelsArr));
             }
             if (!empty($importanceLevelsArr) && $importanceLevelsArr[0] != "all") {
-                $this->db->where_in("importance_level_id", array_map('intval', $importanceLevelsArr));
+                $this->db->where_in("tasks.importance_level_id", array_map('intval', $importanceLevelsArr));
             }
             if (!empty($urgencyLevelsArr) && $urgencyLevelsArr[0] != "all") {
-                $this->db->where_in("urgency_level_id", array_map('intval', $urgencyLevelsArr));
+                $this->db->where_in("tasks.urgency_level_id", array_map('intval', $urgencyLevelsArr));
             }
             if (!empty($riskLevelsArr) && $riskLevelsArr[0] != "all") {
-                $this->db->where_in("risk_level_id", array_map('intval', $riskLevelsArr));
+                $this->db->where_in("tasks.risk_level_id", array_map('intval', $riskLevelsArr));
             }
             if (!empty($gainLevelsArr) && $gainLevelsArr[0] != "all") {
-                $this->db->where_in("gain_level_id", array_map('intval', $gainLevelsArr));
+                $this->db->where_in("tasks.gain_level_id", array_map('intval', $gainLevelsArr));
             }
             if (!empty($rewardCategoriesArr) && $rewardCategoriesArr[0] != "all") {
-                $this->db->where_in("reward_category_id", array_map('intval', $rewardCategoriesArr));
+                $this->db->where_in("tasks.reward_category_id", array_map('intval', $rewardCategoriesArr));
             }
             if (!empty($cyclesArr) && $cyclesArr[0] != "all") {
-                $this->db->where_in("cycle_id", array_map('intval', $cyclesArr));
+                $this->db->where_in("tasks.cycle_id", array_map('intval', $cyclesArr));
             }
             if (!empty($scalesArr) && $scalesArr[0] != "all") {
-                $this->db->where_in("scale_id", array_map('intval', $scalesArr));
+                $this->db->where_in("tasks.scale_id", array_map('intval', $scalesArr));
             }
             if (!empty($scopesArr) && $scopesArr[0] != "all") {
-                $this->db->where_in("scope_id", array_map('intval', $scopesArr));
+                $this->db->where_in("tasks.scope_id", array_map('intval', $scopesArr));
             }
-            if (null == $limit) {
-                if($FilterDateField == "create_date")
-                {
-                    $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'create_date >=' => $this->input->post("fromDate"), 'create_date <= ' => $this->input->post("toDate")));
-                }
-                else if($FilterDateField == "target_date")
-                {
-                    $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'target_date >=' => $this->input->post("fromDate"), 'target_date <= ' => $this->input->post("toDate")));
-                }
-                else if($FilterDateField == "end_date")
-                {
-                    $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'end_date >=' => $this->input->post("fromDate"), 'end_date <= ' => $this->input->post("toDate")));
-                }
-                else{
-                    $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'start_date >=' => $this->input->post("fromDate"), 'start_date <= ' => $this->input->post("toDate")));
-                }
-            } else {
-                if($FilterDateField == "create_date")
-                {
-                    $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'create_date >=' => $this->input->post("fromDate"), 'create_date <= ' => $this->input->post("toDate")), $limit, $offset);
-                }
-                else if($FilterDateField == "target_date")
-                {
-                    $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'target_date >=' => $this->input->post("fromDate"), 'target_date <= ' => $this->input->post("toDate")), $limit, $offset);
-                }
-                 else if($FilterDateField == "end_date")
-                {
-                    $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'end_date >=' => $this->input->post("fromDate"), 'end_date <= ' => $this->input->post("toDate")), $limit, $offset);
-                }
-                else{
-                    $query = $this->db->get_where($this->tn, array('user_id' => $userId, 'start_date >=' => $this->input->post("fromDate"), 'start_date <= ' => $this->input->post("toDate")), $limit, $offset);
-                }
+            $this->db->join('tasks_work_notes', 'task_id = ' . $this->tn . '.id', "left")
+                ->group_by('tasks_work_notes.task_id');
+
+            $this->db->join('user_content as uc', 'uc.tool_entity_id = ' . $this->tn . '.id and uc.tool_id = '.$toolId , "left")
+                ->group_by('uc.tool_entity_id');
+            // if(null != $orderBy){
+            //     $this->db->order_by($orderBy, $direction);
+            // }else{
+            //     $this->db->order_by("create_date", "desc");
+            // }    
+            if (null != $limit) {
+                $this->db->limit($limit);
+                $this->db->offset($offset);
             }
+
+            $query = $this->db->get();
             // echo $this->db->last_query();
             return $query->result_array();
+
+                // echo $this->db->last_query();
+                // return $query->result_array();
+            // }
         }
     }
 

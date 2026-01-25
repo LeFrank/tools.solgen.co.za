@@ -1346,3 +1346,19 @@ span.editable form textarea{
     height:1000px;
     text-align: center;
 }
+
+.task-work-note-pane{
+    box-shadow:0 0 10px #aeb7c933!important;
+    border-radius: 15px;
+}
+
+.task-work-note-pane h2{
+    width:100%;
+    // margin-left:5px;
+    padding-left:1em;
+    padding-right:1em;
+    padding-top:0.25em;
+    padding-bottom:0.25em;
+    border-radius: 15px 15px 0 0;
+}
+
