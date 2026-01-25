@@ -260,7 +260,7 @@ class tasks_model extends CI_Model {
             //     $this->db->where("amount <=", $this->input->post("toAmount"));
             // }
             if ($this->input->post("keyword") != "") {
-                $this->db->like("description", $this->input->post("keyword"));
+                $this->db->like("tasks.description", $this->input->post("keyword"));
             }
             $tasksDomainArr = $this->input->post("tasksDomains");
             $tasksStatusdArr = $this->input->post("tasksStatuses");
