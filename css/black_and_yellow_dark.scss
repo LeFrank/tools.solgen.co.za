@@ -1335,12 +1335,12 @@ span.editable form textarea{
 }
 
 .dnd_domains_area {
-    width:275%;
+    width:4400px;
     min-height:1000px;
 }
 
 .dnd_domains_draggable_zone {
-    width:300px;
+    width:350px;
     border: solid 5px grey;
     border-radius: 10px;
     min-height:1000px;
@@ -1349,6 +1349,7 @@ span.editable form textarea{
     // flex: 0 1 auto;
     text-align: center;
     box-shadow: 0 0 10px #aeb7c933 !important;
+
 }
 
 .task-work-note-pane{
@@ -1366,6 +1367,10 @@ span.editable form textarea{
     border-radius: 15px 15px 0 0;
 }
 
+.dnd_domains_draggable_zone h3{
+    border-radius: 5px 5px 0 0;
+    padding:5px 0 5px 0;
+}
 
 .domain_tile_header h3{
     width:100%;
@@ -1375,6 +1380,7 @@ span.editable form textarea{
     padding-top:0.25em;
     padding-bottom:0.25em;
     border-radius: 15px 15px 0 0;
+    // margin:5px 0 5px 0;
 }
 
 

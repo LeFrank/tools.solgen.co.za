@@ -44,7 +44,7 @@
                                             class='domain_task_tile_draggable'
                                             style='cursor: grab;'>".
                                             "<div >".
-                                            "TS: ". $task["id"] ." =>".$task["name"]  .
+                                            "TS: ". $task["id"] ." => ".$task["name"]  .
                                             "</div>".
                                         "</div>";
                                 }
