@@ -9,6 +9,7 @@
 class tasks_model extends CI_Model {
 
     var $tn = "tasks";
+    var $toolId = 11;
 
     public function __construct() {
         $this->load->database();
@@ -30,7 +31,7 @@ class tasks_model extends CI_Model {
             'description' => $this->input->post('description'),
             'status_id' => $this->input->post('status'),
             'start_date' => date('Y/m/d H:i', strtotime($this->input->post('start_date'))),
-            'end_date' => date('Y/m/d H:i', strtotime($this->input->post('end_date'))),
+            'end_date' => ((null == $this->input->post('end_date')))? NULL:date('Y/m/d H:i', strtotime($this->input->post('end_date'))),
             'target_date' => date('Y/m/d H:i', strtotime($this->input->post('target_date'))),
             'user_id' => $this->session->userdata("user")->id,
             'importance_level_id' => $this->input->post('importance_level_id'),
@@ -59,12 +60,33 @@ class tasks_model extends CI_Model {
             return null;
         }
         $this->db->order_by("create_date", "desc");
-        // $this->db->join('user_content', 'user_content.tool_entity_id = expense.id', 'LEFT');
+        // // $this->db->join('user_content', 'user_content.tool_entity_id = expense.id', 'LEFT');
         if (null == $limit) {
             $query = $this->db->get_where($this->tn, array('tasks.user_id' => $userId));
         } else {
             $query = $this->db->get_where($this->tn, array('tasks.user_id' => $userId), $limit, $offset);
         }
+
+        $this->db->select($this->tn . '.*, ' . 
+                ' COUNT(`tasks_work_notes`.`task_id`) as num_notes ,'. 
+                ' COUNT(`uc`.`tool_entity_id`) as num_artefacts')
+            ->from($this->tn)
+            // ->where("tasks.user_id = " . $userId . " and tasks.create_date >= '" . $startDate ."' and tasks.create_date <= '" . $endDate ."'")
+            // ->order_by($this->tn.'.id', 'desc')
+            ->group_by('tasks.id');
+            // ->limit(3);
+
+        $this->db->join('tasks_work_notes', 'task_id = ' . $this->tn . '.id', "left")
+            ->group_by('tasks_work_notes.task_id');
+
+        $this->db->join('user_content as uc', 'uc.tool_entity_id = ' . $this->tn . '.id and uc.tool_id = '.$this->toolId , "left")
+            ->group_by('uc.tool_entity_id');
+        if (null != $limit) {
+            $this->db->limit($limit);
+            $this->db->offset($offset);
+        }
+
+        $query = $this->db->get();
 
         return $query->result_array();
     }
@@ -447,7 +469,7 @@ class tasks_model extends CI_Model {
             'description' => $this->input->post('description'),
             'status_id' => $this->input->post('status'),
             'start_date' => date('Y/m/d H:i', strtotime($this->input->post('start_date'))),
-            'end_date' => date('Y/m/d H:i', strtotime($this->input->post('end_date'))),
+            'end_date' => ( null == $this->input->post('end_date')) ? NULL: date('Y/m/d H:i', strtotime($this->input->post('end_date'))),
             'target_date' => date('Y/m/d H:i', strtotime($this->input->post('target_date'))),
             'user_id' => $this->session->userdata("user")->id,
             'importance_level_id' => $this->input->post('importance_level_id'),
@@ -500,6 +522,20 @@ class tasks_model extends CI_Model {
             'status_id' => 4
         );
         $this->db->where('id', $id);
+        return $this->db->update($this->tn, $data);
+    }
+
+
+    /**
+     * 
+     * @return type
+     */
+    public function shift_domain( $taskId , $taskDomainId ) {
+        $data = array(
+            'domain_id' => $taskDomainId,
+            'update_date' => date('Y/m/d H:i'),
+        );
+        $this->db->where('id', $taskId);
         return $this->db->update($this->tn, $data);
     }
 }

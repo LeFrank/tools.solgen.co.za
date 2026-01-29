@@ -142,7 +142,8 @@ class Tasks extends CI_Controller {
         8 => array("name" => "Positive Work Environment", "id" => 8, "order" => 8, "default" => false , "type" => "Intangible", "description" => "A supportive culture, good relationships with colleagues, and meaningful work."),
         9 => array("name" => "Autonomy and Trust", "id" => 9, "order" => 9, "default" => false , "type" => "Intangible", "description" => "Being included in decision-making or given freedom in how work is done."),
         10 => array("name" => "Confidence Boost", "id" => 10, "order" => 10, "default" => false , "type" => "Intangible", "description" => ""),
-        11 => array("name" => "Mental Clarity", "id" => 11, "order" => 11, "default" => false , "type" => "Intangible", "description" => "")
+        11 => array("name" => "Mental Clarity", "id" => 11, "order" => 11, "default" => false , "type" => "Intangible", "description" => ""),
+        12 => array("name" => "Getting Un-stuck", "id" => 12, "order" => 12, "default" => false , "type" => "Intangible", "description" => "Helps move forward in life with less friction and self-doubt, self-criticism")
     );
 
     var $cycles = array(
@@ -210,6 +211,7 @@ class Tasks extends CI_Controller {
     }   
 
     public function index() {
+        // phpinfo();
         $userId = $this->session->userdata("user")->id;
         $this->load->library('session');
         $data["tasks"] = $this->tasks_model->getTasks($userId, 50);
@@ -787,6 +789,7 @@ class Tasks extends CI_Controller {
         $this->load->helper("tasks_helper");
         $userId = $this->session->userdata("user")->id;
         $data["tasksDomains"] = mapKeyToId($this->tasks_domains_model->get_user_tasks_domains($userId, 50), false);
+        ksort($data["tasksDomains"]);
         $data["tasksStatuses"] = mapKeyToId($this->tasks_status_model->get_user_tasks_statuses($userId), false);
         $data["importanceLevels"] = $this->importanceLevels;
         $data["urgencyLevels"] = $this->urgencyLevels;
@@ -811,4 +814,61 @@ class Tasks extends CI_Controller {
         $this->load->view('footer'); 
     }
 
+
+    public function taskAlterDomainAllocation($taskId, $target_domain_id){
+        $this->load->helper('form');
+        $this->load->helper('url');
+        $this->load->library('form_validation');
+        $userId = $this->session->userdata("user")->id;
+        if ($taskId != null && $target_domain_id != null) {
+            //  Update the task domain relationship
+            $outcome = $this->tasks_model->shift_domain($taskId, $target_domain_id);
+            if ( $outcome){
+                echo json_encode(array("status" => "success", "message"=>"Task has been shifted to a different domain"));
+            }else{
+                echo json_encode(array("status" => "error", "message"=>"The task was not able to be shifted to a different domain."));
+            }
+        }else{
+            // Return a sensible message
+            echo json_encode(array("status" => "error", "message"=>"Insufficient information provided, unable to shift the task to a different domain."));
+
+        }
+    }
+
+    public function taskFilterDomainAllocation(){
+        $userId = $this->session->userdata("user")->id;
+        // $data["tasksHistory"] = $this->tasks_model->getTasks($userId, 100);
+        $data["tasksDomains"] = mapKeyToId($this->tasks_domains_model->get_user_tasks_domains($userId, 50),false);
+        $data["tasksStatuses"] = mapKeyToId($this->tasks_status_model->get_user_tasks_statuses($userId), false);
+        ksort($data["tasksDomains"]);
+        $data["importanceLevels"] = $this->importanceLevels;
+        $data["urgencyLevels"] = $this->urgencyLevels;
+        $data["riskLevels"] = $this->riskLevels;
+        $data["gainLevels"] = $this->gainLevels;
+        $data["rewardsCategory"] = $this->rewardsCategory;
+        $data["cycles"] = $this->cycles;
+        $data["scales"] = $this->scales;
+        $data["scopes"] = $this->scopes;
+        $data["difficultyLevels"] = $this->difficultyLevels;        
+        // $data["tasks"] = $this->tasks_model->getTasksByCriteria($userId);
+        $this->load->helper("tasks_helper");
+        $tasks = $this->tasks_model->getTasksByCriteria($userId);
+        // echo "<pre>";
+        // print_r($tasks);
+        // echo "</pre>";
+        if ($tasks == null || count($tasks) == 0){
+            $data["tasks"] = null;
+        }
+        foreach($tasks as $task){
+            $age = getTaskAgeByCreateDate($task);
+            $task["age"] = $age;
+            $data["tasks"][] = $task;
+        }
+        // $this->load->view('tasks/history_table', $data);      
+        
+        $this->load->helper('url');
+        $this->load->helper('form');
+        $data["startAndEndDateforMonth"] = array($this->input->post("fromDate"), $this->input->post("toDate"));
+        echo $this->load->view('tasks/domain_to_task_allocation_content', $data, true);
+    }
 }

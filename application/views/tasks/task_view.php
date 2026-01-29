@@ -51,7 +51,9 @@
                 <label>Created On:</label><p><?php echo date_format(date_create($task->create_date), 'D,  d M Y - H:m'); ?></p><br/>
                 <label>Start Date:</label><p><?php echo date_format(date_create($task->start_date), 'D,  d M Y - H:m'); ?></p><br/>
                 <label>Target Date:</label><p><?php echo date_format(date_create($task->target_date), 'D,  d M Y - H:m'); ?></p><br/>
+                <?php if (NULL != $task->end_date){ ?> 
                 <label>End Date:</label><p><?php echo date_format(date_create($task->end_date), 'D,  d M Y - H:m'); ?></p><br/>
+                <?php }?>
             </div>
         </div>
     </div>

@@ -1335,16 +1335,20 @@ span.editable form textarea{
 }
 
 .dnd_domains_area {
-    width:200%;
-    height:1000px;
+    width:275%;
+    min-height:1000px;
 }
 
 .dnd_domains_draggable_zone {
-    width:160px;
+    width:300px;
     border: solid 5px grey;
     border-radius: 10px;
-    height:1000px;
+    min-height:1000px;
+    // display:table-row;
+    // height: 100%;
+    // flex: 0 1 auto;
     text-align: center;
+    box-shadow: 0 0 10px #aeb7c933 !important;
 }
 
 .task-work-note-pane{
@@ -1362,3 +1366,35 @@ span.editable form textarea{
     border-radius: 15px 15px 0 0;
 }
 
+
+.domain_tile_header h3{
+    width:100%;
+    // margin-left:5px;
+    padding-left:1em;
+    padding-right:1em;
+    padding-top:0.25em;
+    padding-bottom:0.25em;
+    border-radius: 15px 15px 0 0;
+}
+
+
+.domain_task_tile_draggable {
+    border: grey 1px solid;
+    border-radius: 5px;
+    background-color: #666666;
+    margin:10px;
+    box-shadow: 0 0 10px #aeb7c933 !important;
+}
+
+.domain_drop_zones{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 100%;
+    height: 100px;
+    padding: 1em;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    color: slategray;
+}

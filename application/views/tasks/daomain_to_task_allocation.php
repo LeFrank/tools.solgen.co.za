@@ -1,11 +1,28 @@
 <?php ?>
+<script type="text/javascript" src="/js/third_party/toastr/toastr.min.js" ></script>
+<script type="text/javascript" src="/js/third_party/toastr/glimpse.js" ></script>
+<script type="text/javascript" src="/js/third_party/toastr/glimpse.toastr.js" ></script>
 <script>
+    toastr.options = {
+        closeButton: true,
+        onclick: null
+    };
+
+    let domain_placeholder_string = "drag_point_domain_";
+    let task_tile_placeholder_string = "drag"
+
     function droppoint(event) {
         event.preventDefault();
         var data = event.dataTransfer.getData("text/plain");
-        console.log(data);
-        console.log($(event).);
+        drop_point_id = event.target.id;
+        task_id = data.replace(task_tile_placeholder_string, "");
+        domain_id = drop_point_id.replace(domain_placeholder_string, "");
+        // console.log(data);
+        // console.log($(event));
         event.target.appendChild(document.getElementById(data));
+        // console.log("drop point: " + event.target.id);
+        // console.log("Domain-id: " + domain_id);
+        record_task_domain_shift(task_id  ,domain_id);
     }
 
     function allowDropOption(event) {
@@ -14,7 +31,28 @@
 
     function dragpoint(event) {
         event.dataTransfer.setData("text/plain", event.target.id);
-        
+        // console.log($(this).val());
+    }
+
+
+    function record_task_domain_shift(task_id, target_domain_id){
+        console.log("Task #: " + task_id +" will move to domain_id: " + target_domain_id);
+        $.post(
+            "/tasks/task/"+task_id+"/shift-domain/" + target_domain_id,
+        ).done(function (resp) {
+            //worked, so animate to show success
+            let resp_value = JSON.parse(resp);
+            if(resp_value["status"] == "success"){
+                toastr.success(resp_value["message"]);
+                // $("#row_"+task_id).css({"background-color": "#c5f4b8", "color": "#007502"});
+            } else {
+                toastr.error(resp_value["message"]);
+            }
+        }).error(function (xhr, textStatus, errorThrown){
+            // alert('request failed');
+            toastr.error("Error: " + xhr.status+ " => " + errorThrown);
+            console.log(xhr);
+        });
     }
 </script>
 

@@ -13,15 +13,13 @@ $(function () {
 
     $("#filter").click(function () {
         $.post(
-                "/tasks/dashboard_filter",
-                $("#filterTasksForm").serialize()
-                ).done(function (resp) {
-                    $("#dashboardContent").html("");
-            $("#dashboardContent").html(resp).slideDown();
-            // $('#taskSummary').tablesorter();
+            "/tasks/domain-to-task-filter",
+            $("#domain_to_task_filter_form").serialize()
+        ).done(function (resp) {
+                $("#domain_to_task_allocation_content").html("");
+                $("#domain_to_task_allocation_content").html(resp).slideDown();
+                // $('#taskSummary').tablesorter();
         });
     });
-
-
 });
 

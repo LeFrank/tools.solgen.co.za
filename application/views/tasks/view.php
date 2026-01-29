@@ -129,10 +129,12 @@ if ($this->session->flashdata("success") !== FALSE) {
                 <label for="start_date">Start Date</label>
                 <input autocomplete="off" type="text" id="start_date" name="start_date" value="<?php echo date('Y/m/d H:i:s'); ?>" /><br/><br/>
             </div>
-            <div class="large-2 columns">
+            <!-- <div class="large-2 columns">
                 <label for="end_date">End Date</label>
-                <input autocomplete="off" type="text" id="end_date" name="end_date" value="<?php echo date('Y/m/d H:i:s'); ?>" /><br/><br/>
-            </div>
+                <input autocomplete="off" type="text" id="end_date" name="end_date" value="<?php 
+                    //echo date('Y/m/d H:i:s'); ?>
+                    " /><br/><br/>
+            </div> -->
             <div class="large-2 columns">
                 <label for="target_date">Target Date</label>
                 <input autocomplete="off" type="text" id="target_date" name="target_date" value="<?php echo date('Y/m/d H:i:s'); ?>" /><br/><br/>
@@ -165,7 +167,7 @@ if ($this->session->flashdata("success") !== FALSE) {
                     ?>
                 </select>
             </div>
-            <div class="large-1 columns">
+            <div class="large-2 columns">
                 <label for="scope_id">Scope</label>
                 <select name="scope_id">
                     <?php
@@ -179,7 +181,7 @@ if ($this->session->flashdata("success") !== FALSE) {
                     ?>
                 </select>
             </div>
-            <div class="large-1 columns">
+            <div class="large-2 columns">
                 <label for="difficulty_level_id">Difficulty</label>
                 <select name="difficulty_level_id">
                     <?php
@@ -291,8 +293,8 @@ if ($this->session->flashdata("success") !== FALSE) {
                             echo "<td>" . $scales[$v["scale_id"]]["name"] . "</td>";
                             echo "<td>" . $scopes[$v["scope_id"]]["name"] . "</td>";
                             echo "<td>" . $difficultyLevels[$v["difficulty_level_id"]]["name"] . "</td>";
-                            echo "<td>" . "ToDo" . "</td>";
-                            echo "<td>" . "ToDo" . "</td>";
+                            echo "<td>" . $v["num_notes"] . "</td>";
+                            echo "<td>" . $v["num_artefacts"] . "</td>";
                             echo "<td><a href='/tasks/task/" . $v["id"] . "'>Work</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href='/tasks/edit/" . $v["id"] . "'>Edit</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href='/tasks/delete/" . $v["id"] . "' onclick='return confirm_delete()'>Delete</a></td>";
                             echo "</tr>";
                         }
